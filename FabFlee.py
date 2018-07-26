@@ -163,7 +163,7 @@ def close_camp(camp_name, country, closure_start=0, closure_end=-1):     # Synta
   """ Close camp located within neighbouring country. """
 
   with open("%s/plugins/FabFlee/conflict_data/active_conflict/commands.log.txt" % (env.localroot), "a") as myfile:
-    myfile.write("fab localhost close_camp:%s\n" % (camp_name,country))
+    myfile.write("fab localhost close_camp:%s,%s\n" % (camp_name,country))
 
   # 1. Change closure_start and closure_end or add a new camp closure to closures.csv.
   # Format: closure type <location>,name1,name2,closure_start,closure_end
