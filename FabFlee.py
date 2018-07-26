@@ -21,7 +21,7 @@ def flee(config,**args):
             wall_time : wall-time job limit
             memory : memory per node
     """
-    update_environment({"input_directory":"%s/config_files/%s/input_csv" % (env.localroot, config),"validation_data_directory":"%s/config_files/%s/source_data" % (env.localroot, config)})
+    update_environment({"input_directory":"%s/plugins/FabFlee/config_files/%s/input_csv" % (env.localroot, config),"validation_data_directory":"%s/config_files/%s/source_data" % (env.localroot, config)})
     #print_local_environment()
     update_environment(args)
     with_config(config)
@@ -103,7 +103,7 @@ def change_capacities(**capacities):     # Syntax: fab localhost change_capaciti
 def add_camp(camp_name, region=" ", country=" ", lat=0.0, lon=0.0):    # Syntax: fab localhost add_camp:camp_name,region,country(,lat,lon)
   """ Add an additional new camp to locations.csv. """
 
-  with open("%s/conflict_data/active_conflict/commands.log.txt" % (env.localroot), "a") as myfile:
+  with open("%s/plugins/FabFlee/conflict_data/active_conflict/commands.log.txt" % (env.localroot), "a") as myfile:
     myfile.write("fab localhost add_camp:%s\n" % camp_name)
 
   # 1. Add (or make existing forwarding hub) a new camp to locations.csv
