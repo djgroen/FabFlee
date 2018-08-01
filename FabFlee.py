@@ -21,7 +21,7 @@ def flee(config,**args):
             wall_time : wall-time job limit
             memory : memory per node
     """
-    update_environment({"input_directory":"%s/plugins/FabFlee/config_files/%s/input_csv" % (env.localroot, config),"validation_data_directory":"%s/config_files/%s/source_data" % (env.localroot, config)})
+    update_environment({"input_directory":"%s/config_files/%s/input_csv" % (get_plugin_path("FabFlee"), config),"validation_data_directory":"%s/config_files/%s/source_data" % (get_plugin_path("FabFlee"), config)})
     #print_local_environment()
     update_environment(args)
     with_config(config)
@@ -56,13 +56,13 @@ def load_conflict(conflict_name):     # Syntax: fab localhost load_conflict:conf
 
   # 2. Move these CSVs to an "active_conflict" directory.
   # This is located in $FABSIM/conflict_data/active_conflict.
-  local(template("mkdir -p %s/plugins/FabFlee/conflict_data/active_conflict" % (env.localroot)))
-  local(template("cp %s/plugins/FabFlee/conflict_data/%s/*.csv %s/plugins/FabFlee/conflict_data/active_conflict/") % (env.localroot, conflict_name, env.localroot))
-  local(template("mkdir -p %s/plugins/FabFlee/conflict_data/active_conflict/source_data" % (env.localroot)))
-  local(template("cp %s/plugins/FabFlee/conflict_data/%s/source_data/*.csv %s/plugins/FabFlee/conflict_data/active_conflict/source_data/") % (env.localroot, conflict_name, env.localroot))
+  local(template("mkdir -p %s/conflict_data/active_conflict" % (get_plugin_path("FabFlee"))))
+  local(template("cp %s/conflict_data/%s/*.csv %s/conflict_data/active_conflict/") % (get_plugin_path("FabFlee") , conflict_name, get_plugin_path("FabFlee")))
+  local(template("mkdir -p %s/conflict_data/active_conflict/source_data" % (get_plugin_path("FabFlee"))))
+  local(template("cp %s/conflict_data/%s/source_data/*.csv %s/conflict_data/active_conflict/source_data/") % (get_plugin_path("FabFlee"), conflict_name, get_plugin_path("FabFlee")))
 
 
-  with open("%s/plugins/FabFlee/conflict_data/active_conflict/commands.log.txt" % (env.localroot), "a") as myfile:
+  with open("%s/conflict_data/active_conflict/commands.log.txt" % (get_plugin_path("FabFlee")), "a") as myfile:
     myfile.write("fab localhost load_conflict:%s\n" % conflict_name)
 
 
@@ -74,13 +74,13 @@ def change_capacities(**capacities):     # Syntax: fab localhost change_capaciti
   capacities_string = ""
   for c in capacities.keys():
     capacities_string += "%s=%s" % (c,capacities[c])
-  with open("%s/plugins/FabFlee/conflict_data/active_conflict/commands.log.txt" % (env.localroot), "a") as myfile:
+  with open("%s/conflict_data/active_conflict/commands.log.txt" % (get_plugin_path("FabFlee")), "a") as myfile:
     myfile.write("fab localhost change_capacities:%s\n" % capacities_string)
 
   # 1. Read in locations.csv
   # 2. for each location in the dict, find it in the csv, and modify the population value accordingly.
   import csv
-  r = csv.reader(open("%s/plugins/FabFlee/conflict_data/active_conflict/locations.csv" % (env.localroot)))
+  r = csv.reader(open("%s/conflict_data/active_conflict/locations.csv" % (get_plugin_path("FabFlee"))))
   lines = [l for l in r]
 
   for camp_name in capacities.keys():
@@ -95,7 +95,7 @@ def change_capacities(**capacities):     # Syntax: fab localhost change_capaciti
       print(lines[i])
 
   # 3. Write the updated CSV file.
-  writer = csv.writer(open("%s/plugins/FabFlee/conflict_data/active_conflict/locations.csv" % (env.localroot), "w"))
+  writer = csv.writer(open("%s/conflict_data/active_conflict/locations.csv" % (get_plugin_path("FabFlee")), "w"))
   writer.writerows(lines)
 
 
@@ -103,14 +103,14 @@ def change_capacities(**capacities):     # Syntax: fab localhost change_capaciti
 def add_camp(camp_name, region=" ", country=" ", lat=0.0, lon=0.0):    # Syntax: fab localhost add_camp:camp_name,region,country(,lat,lon)
   """ Add an additional new camp to locations.csv. """
 
-  with open("%s/plugins/FabFlee/conflict_data/active_conflict/commands.log.txt" % (env.localroot), "a") as myfile:
+  with open("%s/conflict_data/active_conflict/commands.log.txt" % (get_plugin_path("FabFlee")), "a") as myfile:
     myfile.write("fab localhost add_camp:%s\n" % camp_name)
 
   # 1. Add (or make existing forwarding hub) a new camp to locations.csv
   # If new camp, add country,lat,lon,location_type(camp)
   # If existing camp, change location_type to camp
   import csv
-  r = csv.reader(open("%s/plugins/FabFlee/conflict_data/active_conflict/locations.csv" % (env.localroot), "r"))
+  r = csv.reader(open("%s/conflict_data/active_conflict/locations.csv" % (get_plugin_path("FabFlee")), "r"))
   lines = [l for l in r]
 
   for i in range(1,len(lines)):
@@ -121,7 +121,7 @@ def add_camp(camp_name, region=" ", country=" ", lat=0.0, lon=0.0):    # Syntax:
 
   # 2. Append one line to lines, containing the details of the new camp.
   add_camp = [camp_name,region,country,lat,lon,"camp"]
-  with open("%s/plugins/FabFlee/conflict_data/active_conflict/locations.csv" % (env.localroot), "a") as new_csv:
+  with open("%s/conflict_data/active_conflict/locations.csv" % (get_plugin_path("FabFlee")), "a") as new_csv:
     writer = csv.writer(new_csv)
     writer.writerow(add_camp)
   print(add_camp)
@@ -131,17 +131,17 @@ def add_camp(camp_name, region=" ", country=" ", lat=0.0, lon=0.0):    # Syntax:
 def delete_location(location_name):     # Syntax: fab localhost delete_location:location_name
   """ Delete not required camp (or location) from locations.csv. """
 
-  with open("%s/plugins/FabFlee/conflict_data/active_conflict/commands.log.txt" % (env.localroot), "a") as myfile:
+  with open("%s/conflict_data/active_conflict/commands.log.txt" % (get_plugin_path("FabFlee")), "a") as myfile:
     myfile.write("fab localhost delete_location:%s\n" % location_name)
 
   # 1. Delete camp from locations.csv containing the details of the camp.
   # 2. Write the updated CSV file.
   import csv
 
-  r = csv.reader(open("%s/plugins/FabFlee/conflict_data/active_conflict/locations.csv" % (env.localroot), "r"))
+  r = csv.reader(open("%s/conflict_data/active_conflict/locations.csv" % (get_plugin_path("FabFlee")), "r"))
   lines = [l for l in r]
 
-  writer = csv.writer(open("%s/plugins/FabFlee/conflict_data/active_conflict/locations.csv" % (env.localroot), "w"))
+  writer = csv.writer(open("%s/conflict_data/active_conflict/locations.csv" % (get_plugin_path("FabFlee")), "w"))
 
   for i in range(0,len(lines)):
     if lines[i][0].strip() != location_name:
@@ -162,13 +162,13 @@ def delete_location(location_name):     # Syntax: fab localhost delete_location:
 def close_camp(camp_name, country, closure_start=0, closure_end=-1):     # Syntax: fab localhost close_camp:camp_name,country(,closure_start,closure_end)
   """ Close camp located within neighbouring country. """
 
-  with open("%s/plugins/FabFlee/conflict_data/active_conflict/commands.log.txt" % (env.localroot), "a") as myfile:
+  with open("%s/conflict_data/active_conflict/commands.log.txt" % (get_plugin_path("FabFlee")), "a") as myfile:
     myfile.write("fab localhost close_camp:%s,%s\n" % (camp_name,country))
 
   # 1. Change closure_start and closure_end or add a new camp closure to closures.csv.
   # Format: closure type <location>,name1,name2,closure_start,closure_end
   import csv
-  r = csv.reader(open("%s/plugins/FabFlee/conflict_data/active_conflict/closures.csv" % (env.localroot))) # Here your csv file
+  r = csv.reader(open("%s/conflict_data/active_conflict/closures.csv" % (get_plugin_path("FabFlee")))) # Here your csv file
   lines = [l for l in r]
   camp_found = False
 
@@ -189,7 +189,7 @@ def close_camp(camp_name, country, closure_start=0, closure_end=-1):     # Synta
   #print(lines)
 
   # 2. Write the updated closures.csv in the active_conflict directory.
-  writer = csv.writer(open("%s/plugins/FabFlee/conflict_data/active_conflict/closures.csv" % (env.localroot), "w"))
+  writer = csv.writer(open("%s/conflict_data/active_conflict/closures.csv" % (get_plugin_path("FabFlee")), "w"))
   writer.writerows(lines)
 
 
@@ -197,14 +197,14 @@ def close_camp(camp_name, country, closure_start=0, closure_end=-1):     # Synta
 def close_border(country1, country2, closure_start=0, closure_end=-1):     # Syntax: fab localhost close_border:country1,country2(,closure_start,closure_end)
   """ Close border between conflict country and camps located within specific neighbouring country. """
 
-  with open("%s/plugins/FabFlee/conflict_data/active_conflict/commands.log.txt" % (env.localroot), "a") as myfile:
+  with open("%s/conflict_data/active_conflict/commands.log.txt" % (get_plugin_path("FabFlee")), "a") as myfile:
     myfile.write("fab localhost close_border:%s,%s\n" % (country1,country2))
 
   # 1. Change closure_start and closure_end or add a new camp closure to closures.csv.
   # Format: closure type <country>,name1,name2,closure_start,closure_end
   import csv
 
-  r = csv.reader(open("%s/plugins/FabFlee/conflict_data/active_conflict/closures.csv" % (env.localroot)))
+  r = csv.reader(open("%s/conflict_data/active_conflict/closures.csv" % (get_plugin_path("FabFlee"))))
   lines = [l for l in r]
   border_found = False
 
@@ -223,11 +223,11 @@ def close_border(country1, country2, closure_start=0, closure_end=-1):     # Syn
   if not border_found:
     lines.append(["country",country1,country2,closure_start,closure_end])
 
-  #local(template("cp %s/plugins/FabFlee/conflict_data/%s/*.csv %s/plugins/FabFlee/conflict_data/active_conflict/") % (env.localroot, conflict_name, env.localroot))
+  #local(template("cp %s/conflict_data/%s/*.csv %s/conflict_data/active_conflict/") % (get_plugin_path("FabFlee"), conflict_name, get_plugin_path("FabFlee")))
   #print(lines)
 
   # 2. Write the updated closures.csv in the active_conflict directory.
-  writer = csv.writer(open("%s/plugins/FabFlee/conflict_data/active_conflict/closures.csv" % (env.localroot), "w"))
+  writer = csv.writer(open("%s/conflict_data/active_conflict/closures.csv" % (get_plugin_path("FabFlee")), "w"))
   writer.writerows(lines)
 
 
@@ -235,7 +235,7 @@ def close_border(country1, country2, closure_start=0, closure_end=-1):     # Syn
 def redirect(source, destination):    # Syntax: fab localhost redirect:location_name1,location_name2
   """ Redirect from town or (small/other)camp to (main)camp """
 
-  with open("%s/plugins/FabFlee/conflict_data/active_conflict/commands.log.txt" % (env.localroot), "a") as myfile:
+  with open("%s/conflict_data/active_conflict/commands.log.txt" % (get_plugin_path("FabFlee")), "a") as myfile:
     myfile.write("fab localhost redirect:%s,%s\n" % (source,destination))
 
 
@@ -243,7 +243,7 @@ def redirect(source, destination):    # Syntax: fab localhost redirect:location_
   # 2. Change location_type of source location to forwarding_hub.
   import csv
 
-  r = csv.reader(open("%s/plugins/FabFlee/conflict_data/active_conflict/locations.csv" % (env.localroot)))
+  r = csv.reader(open("%s/conflict_data/active_conflict/locations.csv" % (get_plugin_path("FabFlee"))))
   lines = [l for l in r]
 
   for i in range(1,len(lines)):
@@ -254,11 +254,11 @@ def redirect(source, destination):    # Syntax: fab localhost redirect:location_
     print(lines[i])
 
   # 3. Write the updated CSV file.
-  writer = csv.writer(open("%s/plugins/FabFlee/conflict_data/active_conflict/locations.csv" % (env.localroot), "w"))
+  writer = csv.writer(open("%s/conflict_data/active_conflict/locations.csv" % (get_plugin_path("FabFlee")), "w"))
   writer.writerows(lines)
 
   # 4. Find the route from source to destination in routes.csv, and enable forced_redirection.
-  r = csv.reader(open("%s/plugins/FabFlee/conflict_data/active_conflict/routes.csv" % (env.localroot)))
+  r = csv.reader(open("%s/conflict_data/active_conflict/routes.csv" % (get_plugin_path("FabFlee"))))
   lines = [l for l in r]
 
   for i in range(1,len(lines)):
@@ -278,7 +278,7 @@ def redirect(source, destination):    # Syntax: fab localhost redirect:location_
     print(lines[i])
 
   # 5. Write the updated CSV file.
-  writer = csv.writer(open("%s/plugins/FabFlee/conflict_data/active_conflict/routes.csv" % (env.localroot), "w"))
+  writer = csv.writer(open("%s/conflict_data/active_conflict/routes.csv" % (get_plugin_path("FabFlee")), "w"))
   writer.writerows(lines)
 
 
@@ -286,13 +286,13 @@ def redirect(source, destination):    # Syntax: fab localhost redirect:location_
 def change_distance(source, destination, distance):         #Syntax: fab localhost change_distance:name1,name2,distance
   """ Change distance between two locations in routes.csv """
 
-  with open("%s/plugins/FabFlee/conflict_data/active_conflict/commands.log.txt" % (env.localroot), "a") as myfile:
+  with open("%s/conflict_data/active_conflict/commands.log.txt" % (get_plugin_path("FabFlee")), "a") as myfile:
     myfile.write("fab localhost change_distance:%s,%s,%s\n" % (source, destination, distance))
 
   # 1. Read routes.csv and for each location in the dict, find in the csv, and change distance between two locations.
   import csv
 
-  r = csv.reader(open("%s/plugins/FabFlee/conflict_data/active_conflict/routes.csv" % (env.localroot)))
+  r = csv.reader(open("%s/conflict_data/active_conflict/routes.csv" % (get_plugin_path("FabFlee"))))
   lines = [l for l in r]
 
   for i in range(1,len(lines)):
@@ -304,7 +304,7 @@ def change_distance(source, destination, distance):         #Syntax: fab localho
     print(lines[i])
 
   # 2. Write the updated closures.csv in the active_conflict directory.
-  writer = csv.writer(open("%s/plugins/FabFlee/conflict_data/active_conflict/routes.csv" % (env.localroot), "w"))
+  writer = csv.writer(open("%s/conflict_data/active_conflict/routes.csv" % (get_plugin_path("FabFlee")), "w"))
   writer.writerows(lines)
 
 
@@ -312,7 +312,7 @@ def change_distance(source, destination, distance):         #Syntax: fab localho
 def clear_active_conflict():     # Syntax: fab localhost clear_active_conflict
   """ Delete all content in the active conflict directory"""
 
-  local(template("rm -rf %s/plugins/FabFlee/conflict_data/active_conflict/" % (env.localroot)))
+  local(template("rm -rf %s/conflict_data/active_conflict/" % (get_plugin_path("FabFlee"))))
 
 
 
@@ -321,13 +321,13 @@ def instantiate(conflict_name):      # Syntax: fab localhost instantiate:conflic
   """ Copy modified active conflict directory to config_files (i.e. flee_conflict_name) to run instance with Flee """
 
   # 1. Copy modified active_conflict directory to instantiate runs with specific conflict name
-  local(template("mkdir -p %s/plugins/FabFlee/config_files/%s" % (env.localroot, conflict_name)))
-  local(template("mkdir -p %s/plugins/FabFlee/config_files/%s/input_csv" % (env.localroot, conflict_name)))
-  local(template("cp %s/plugins/FabFlee/conflict_data/active_conflict/*.csv %s/plugins/FabFlee/config_files/%s/input_csv") % (env.localroot, env.localroot, conflict_name))
-  local(template("cp %s/plugins/FabFlee/conflict_data/active_conflict/commands.log.txt %s/plugins/FabFlee/config_files/%s/") % (env.localroot, env.localroot, conflict_name))
-  local(template("mkdir -p %s/plugins/FabFlee/config_files/%s/source_data" % (env.localroot, conflict_name)))
-  local(template("cp %s/plugins/FabFlee/conflict_data/active_conflict/source_data/*.csv %s/plugins/FabFlee/config_files/%s/source_data") % (env.localroot, env.localroot, conflict_name))
-  local(template("cp %s/plugins/FabFlee/config_files/flee/run.py %s/plugins/FabFlee/config_files/%s/run.py") % (env.localroot, env.localroot, conflict_name))
+  local(template("mkdir -p %s/config_files/%s" % (get_plugin_path("FabFlee"), conflict_name)))
+  local(template("mkdir -p %s/config_files/%s/input_csv" % (get_plugin_path("FabFlee"), conflict_name)))
+  local(template("cp %s/conflict_data/active_conflict/*.csv %s/config_files/%s/input_csv") % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"), conflict_name))
+  local(template("cp %s/conflict_data/active_conflict/commands.log.txt %s/config_files/%s/") % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"), conflict_name))
+  local(template("mkdir -p %s/config_files/%s/source_data" % (get_plugin_path("FabFlee"), conflict_name)))
+  local(template("cp %s/conflict_data/active_conflict/source_data/*.csv %s/config_files/%s/source_data") % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"), conflict_name))
+  local(template("cp %s/config_files/run.py %s/config_files/%s/run.py") % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"), conflict_name))
 
 # Test Functions
 from plugins.FabFlee.test_FabFlee import *
@@ -363,7 +363,7 @@ def test_sensitivity(config,**args):     #Syntax: fab localhost test_sensitivity
   for v in values:
     instantiate("%s_%s_%s" % (config, args["name"], v))
 
-    csvfile = open('%s/plugins/FabFlee/config_files/%s_%s_%s/simsetting.csv' % (env.localroot, config, args["name"], v), "wb")
+    csvfile = open('%s/config_files/%s_%s_%s/simsetting.csv' % (get_plugin_path("FabFlee"), config, args["name"], v), "wb")
     writer = csv.writer(csvfile)
     writer.writerow([args["name"], v])
     csvfile.close()
