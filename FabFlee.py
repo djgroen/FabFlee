@@ -52,7 +52,7 @@ def load_conflict(conflict_name):     # Syntax: fab localhost load_conflict:conf
     local(template("cp %s/conflict_data/%s/*.csv %s/conflict_data/active_conflict/") % (get_plugin_path("FabFlee") , conflict_name, get_plugin_path("FabFlee")))
     local(template("mkdir -p %s/conflict_data/active_conflict/source_data" % (get_plugin_path("FabFlee"))))
     local(template("cp %s/conflict_data/%s/source_data/*.csv %s/conflict_data/active_conflict/source_data/") % (get_plugin_path("FabFlee"), conflict_name, get_plugin_path("FabFlee")))
-
+    local(template("cp %s/config_files/run.py %s/conflict_data/active_conflict") % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee")))
 
     with open("%s/conflict_data/active_conflict/commands.log.txt" % (get_plugin_path("FabFlee")), "a") as myfile:
       myfile.write("fab localhost load_conflict:%s\n" % conflict_name)
@@ -349,7 +349,7 @@ def instantiate(conflict_name):      # Syntax: fab localhost instantiate:conflic
     local(template("cp %s/conflict_data/active_conflict/commands.log.txt %s/config_files/%s/") % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"), conflict_name))
     local(template("mkdir -p %s/config_files/%s/source_data" % (get_plugin_path("FabFlee"), conflict_name)))
     local(template("cp %s/conflict_data/active_conflict/source_data/*.csv %s/config_files/%s/source_data") % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"), conflict_name))
-    local(template("cp %s/config_files/run.py %s/config_files/%s/run.py") % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"), conflict_name))
+    local(template("cp %s/conflict_data/active_conflict/run.py %s/config_files/%s/run.py") % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"), conflict_name))
 
 
 
