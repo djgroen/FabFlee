@@ -18,8 +18,8 @@ def date_to_sim_days(date):
 
 if __name__ == "__main__":
 
-  end_time = 100
-  last_physical_day = 100
+  end_time = 604
+  last_physical_day = 604
 
   if len(sys.argv)<4:
     print("Please run using: python3 run.py <your_csv_directory> <your_refugee_data_directory> <duration in days> <optional: simulation_settings.csv> > <output_directory>/<output_csv_filename>")

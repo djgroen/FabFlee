@@ -1,5 +1,4 @@
 fab localhost load_conflict:SSudan
-fab localhost load_conflict:SSudan
 fab localhost add_new_link:Pochalla,Pugnido,170
 fab localhost add_new_link:Akobo,Pugnido,332
 fab localhost add_new_link:Pugnido,Gambela,100

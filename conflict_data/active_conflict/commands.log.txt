@@ -1,13 +1,1 @@
 fab localhost load_conflict:SSudan
-fab localhost load_conflict:SSudan
-fab localhost add_new_link:Pochalla,Pugnido,170
-fab localhost add_new_link:Akobo,Pugnido,332
-fab localhost add_new_link:Pugnido,Gambela,100
-fab localhost add_new_link:Akobo,Nasir,188
-fab localhost add_new_link:Nasir,Tierkidi,270
-fab localhost add_new_link:Nasir,Kule,254
-fab localhost close_camp:Tierkidi,Ethiopia
-fab localhost close_camp:Kule,Ethiopia
-fab localhost close_camp:Jewi,Ethiopia
-fab localhost change_capacities:Adjumani=56367
-fab localhost change_capacities:Adjumani=169101
