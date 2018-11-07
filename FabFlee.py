@@ -387,7 +387,7 @@ def test_sensitivity(config,**args):     #Syntax: fab localhost test_sensitivity
     # 2. Create a config directory for each simSettingsCSV (for each value in the list), and place csv in it
     for v in values:
       #instantiate("%s_%s_%s" % (config, args["name"], v))
-      local("cp -r %s/config_files/%s  %s/config_files/%s_%s_%s" % (env.localroot, config, env.localroot, config, args["name"], v))
+      local("cp -r %s/config_files/%s  %s/config_files/%s_%s_%s" % (get_plugin_path("FabFlee"), config, get_plugin_path("FabFlee"), config, args["name"], v))
 
       csvfile = open('%s/config_files/%s_%s_%s/simsetting.csv' % (get_plugin_path("FabFlee"), config, args["name"], v), "wb")
       writer = csv.writer(csvfile)
@@ -402,4 +402,4 @@ def test_sensitivity(config,**args):     #Syntax: fab localhost test_sensitivity
 
 # Test Functions
 # from plugins.FabFlee.test_FabFlee import *
-# from plugins.FabFlee.run_simulation_sets import *
+from plugins.FabFlee.run_simulation_sets import *
