@@ -13,4 +13,4 @@ rm -rf results
 
 cp -r $job_config_path/* .
 /usr/bin/env > env.log
-python3 run.py $input_directory $validation_data_directory $simulation_period > out.csv
+python3 run.py $input_directory $validation_data_directory $simulation_period simsetting.csv > out.csv
