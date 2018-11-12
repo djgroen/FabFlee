@@ -4,8 +4,8 @@ from plugins.FabFlee.FabFlee import *
 @task
 def run_ssudan_paper():
   for postfix in ["default","reg","links","ccamp","cborder","redirect","adjumani1","adjumani2"]:  
-    #flee("ssudan_%s" % (postfix),simulation_period=604)
-    #plot_output("ssudan_%s_localhost_16" % (postfix),"out")
+    flee("ssudan_%s" % (postfix),simulation_period=604)
+    plot_output("ssudan_%s_localhost_16" % (postfix),"out")
 
     test_sensitivity("ssudan_%s" % (postfix),simulation_period=604,name="MaxMoveSpeed",values="25-50-100-150-200-250")
     for i in [25, 50, 100, 150, 200, 250]:
