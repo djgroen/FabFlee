@@ -1,0 +1,12 @@
+fab localhost load_conflict:ABC
+fab localhost load_conflict:ABC
+fab localhost change_capacities:X=20Y=2000Z=200
+fab localhost load_conflict:ABC
+fab localhost change_capacities:Y=2000Z=2
+fab localhost load_conflict:ABC
+fab localhost change_capacities:Z=200Y=100
+fab localhost load_conflict:SSudan
+fab localhost load_conflict:SSudan
+fab localhost load_conflict:SSudan
+fab localhost load_conflict:SSudan
+fab localhost load_conflict:SSudan
