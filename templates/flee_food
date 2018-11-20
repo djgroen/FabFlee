@@ -9,8 +9,6 @@
 cd $job_results
 $run_prefix
 export PYTHONPATH=$flee_location:$$PYTHONPATH
-rm -rf results
 
-cp -r $job_config_path/* .
 /usr/bin/env > env.log
 python3 run_food.py $input_directory $validation_data_directory $simulation_period simsetting.csv > out.csv
