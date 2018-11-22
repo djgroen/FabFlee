@@ -1,7 +1,7 @@
 from flee import food_flee as flee 	#use food_flee instead of flee to account for food modifications but call it flee so nothing else has to change in the code
 from datamanager import handle_refugee_data
 from datamanager import DataTable #DataTable.subtract_dates()
-from flee import InputGeography
+from flee import InputGeography_food as InputGeography
 import numpy as np
 import outputanalysis.analysis as a
 import sys
@@ -65,7 +65,14 @@ if __name__ == "__main__":
   refugee_debt = 0
   refugees_raw = 0 #raw (interpolated) data from TOTAL UNHCR refugee count only.
 
+  #Load food info:
+  [critict,IPC_all,current_i]=flee.initiate_food() #has to go in the main part of flee before starting time count
+  old_line=0
+  print("Loaded food info", file=sys.stderr)
+
   for t in range(0,end_time):
+    #Evaluate needed line for IPC:
+    line_IPC=flee.line42day(t,current_i,critict)           #has to go in the time count of flee to choose the values of IPC according to t
 
     #if t>0:
     ig.AddNewConflictZones(e,t)
@@ -86,6 +93,14 @@ if __name__ == "__main__":
 
     e.refresh_conflict_weights()
     t_data = t
+
+    #Update (if needed the IPC indexes and movechances)
+    if not old_line==line_IPC:
+      print("Time = %d. Updating IPC indexes and movechances"%(t), file=sys.stderr)
+      e.update_IPC_MC(line_IPC,IPC_all)                 #update all locations in the ecosystem: IPC indexes and movechances (inside t loop)
+      #print("After updating IPC and movechance:")
+      e.printInfo()
+    old_line=line_IPC
 
     e.enact_border_closures(t)
     e.evolve()
