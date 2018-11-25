@@ -381,7 +381,8 @@ def plot_output(output_dir="", graphs_dir=""):      # Syntax: fab localhost plot
 
 @task
 def compare_food(output_dir_1=""):			# Syntax: fab localhost compare_food:food_flee_conflict_name_localhost_16
-   """ Compare results of the food based simulation with the original flee results throughout the whole simulation. """
+   """ Compare results of the food based simulation with the original flee results throughout the whole simulation.
+       Syntax: fab localhost compare_food:food_flee_conflict_name_localhost_16 **or any name the food directory you want to use has. Make sure that the non-food one exists as well."""
    local("mkdir -p %s/%s/comparison"%(env.results_path, output_dir_1))
    output_dir_2=output_dir_1.partition("_")[2]
    local("python3 %s/compare.py %s/%s %s/%s" % (env.flee_location, env.results_path, output_dir_1, env.results_path, output_dir_2))
