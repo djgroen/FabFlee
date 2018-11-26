@@ -28,6 +28,23 @@ def flee(config,**args):
     execute(put_configs,config)
     job(dict(script='flee', wall_time='0:15:0', memory='2G'),args)
 
+@task
+def food_flee(config,**args):
+    """ Submit a Flee job to the remote queue.
+    The job results will be stored with a name pattern as defined in the environment,
+    e.g. car-abcd1234-localhost-4
+    config : config directory to use for the simulation script, e.g. config=car2014
+    Keyword arguments:
+            cores : number of compute cores to request
+            wall_time : wall-time job limit
+            memory : memory per node
+    """
+    update_environment({"input_directory":"%s/config_files/%s/input_csv" % (get_plugin_path("FabFlee"), config),"validation_data_directory":"%s/config_files/%s/source_data" % (get_plugin_path("FabFlee"), config)})
+    #print_local_environment()
+    update_environment(args)
+    with_config(config)
+    execute(put_configs,config)
+    job(dict(script='flee_food', wall_time='0:15:0', memory='2G'),args)
 
 @task
 def flees(config,**args):
@@ -350,6 +367,8 @@ def instantiate(conflict_name):      # Syntax: fab localhost instantiate:conflic
     local(template("mkdir -p %s/config_files/%s/source_data" % (get_plugin_path("FabFlee"), conflict_name)))
     local(template("cp %s/conflict_data/active_conflict/source_data/*.csv %s/config_files/%s/source_data") % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"), conflict_name))
     local(template("cp %s/conflict_data/active_conflict/run.py %s/config_files/%s/run.py") % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"), conflict_name))
+    local(template("cp %s/config_files/run_food.py %s/config_files/%s/run_food.py") % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"), conflict_name))	#line added to copy run_food.py as well (otherwise executing food_flee doesn't work...)
+    local(template("cp %s/config_files/simsetting.csv %s/config_files/%s/simsetting.csv") % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"), conflict_name))	#line added to copy simsetting.csv and make sure that flee.SimulationSettings....ReadfromCSV works.
 
 
 
@@ -359,6 +378,14 @@ def plot_output(output_dir="", graphs_dir=""):      # Syntax: fab localhost plot
     # python3 $flee_dir/plot-flee-output.py $fabsim_results/$output_dir
     local("mkdir -p %s/%s/%s" % (env.results_path, output_dir, graphs_dir))
     local("python3 %s/plot-flee-output.py %s/%s %s/%s/%s" % (env.flee_location, env.results_path, output_dir, env.results_path, output_dir, graphs_dir))
+
+@task
+def compare_food(output_dir_1=""):			# Syntax: fab localhost compare_food:food_flee_conflict_name_localhost_16
+   """ Compare results of the food based simulation with the original flee results throughout the whole simulation.
+       Syntax: fab localhost compare_food:food_flee_conflict_name_localhost_16 **or any name the food directory you want to use has. Make sure that the non-food one exists as well."""
+   local("mkdir -p %s/%s/comparison"%(env.results_path, output_dir_1))
+   output_dir_2=output_dir_1.partition("_")[2]
+   local("python3 %s/compare.py %s/%s %s/%s" % (env.flee_location, env.results_path, output_dir_1, env.results_path, output_dir_2))
 
 
 @task
