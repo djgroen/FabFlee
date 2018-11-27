@@ -3,6 +3,7 @@ from datamanager import handle_refugee_data
 from datamanager import DataTable #DataTable.subtract_dates()
 from flee import InputGeography_food as InputGeography
 import numpy as np
+import pandas as pd
 import outputanalysis.analysis as a
 import sys
 
@@ -14,6 +15,15 @@ def AddInitialRefugees(e, d, loc):
 
 def date_to_sim_days(date):
   return DataTable.subtract_dates(date,"2013-12-15")
+
+def start_movechance_log(e, end_time):
+  MC_log=pd.DataFrame(index=range(0,end_time),columns=e.locationNames)
+  return MC_log
+
+def movechance_log(MC_log, e, t, end_time):
+  for i in range(len(e.locationNames)):
+    MC_log.loc[t,e.locationNames[i]]=e.locations[i].movechance
+  return MC_log
 
 
 if __name__ == "__main__":
@@ -70,6 +80,8 @@ if __name__ == "__main__":
   old_line=0
   print("Loaded food info", file=sys.stderr)
 
+  MC_log=start_movechance_log(e,end_time)
+
   for t in range(0,end_time):
     #Evaluate needed line for IPC:
     line_IPC=flee.line42day(t,current_i,critict)           #has to go in the time count of flee to choose the values of IPC according to t
@@ -101,6 +113,8 @@ if __name__ == "__main__":
       #print("After updating IPC and movechance:")
       e.printInfo()
     old_line=line_IPC
+
+    movechance_log(MC_log,e,t,end_time)				#adds a line to the Pandas dataframe where all the movechances are being saved
 
     e.enact_border_closures(t)
     e.evolve()
@@ -142,3 +156,5 @@ if __name__ == "__main__":
 
 
     print(output)
+
+  MC_log.to_csv("movechance.csv",index_label="Days")
