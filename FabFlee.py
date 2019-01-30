@@ -21,7 +21,7 @@ def flee(config,**args):
             wall_time : wall-time job limit
             memory : memory per node
     """
-    update_environment({"input_directory":"%s/config_files/%s/input_csv" % (get_plugin_path("FabFlee"), config),"validation_data_directory":"%s/config_files/%s/source_data" % (get_plugin_path("FabFlee"), config)})
+    #update_environment({"input_directory":"%s/config_files/%s/input_csv" % (get_plugin_path("FabFlee"), config),"validation_data_directory":"%s/config_files/%s/source_data" % (get_plugin_path("FabFlee"), config)})
     #print_local_environment()
     update_environment(args)
     with_config(config)
