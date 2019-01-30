@@ -399,6 +399,16 @@ def test_variability(config,**args):     # Syntax: fab localhost test_variabilit
 
 
 @task
+def test_variability_food(config,**args):     # Syntax: fab localhost test_variability_food:flee_conflict_name,simulation_period=number,replicas=number
+    """ Run a number of replicas for a specific conflict. """
+
+    number_of_replicas = int(args["replicas"])
+    for i in range(0, number_of_replicas):
+      update_environment({"label":"%s" % i})
+      food_flee(config, **args)
+
+
+@task
 def test_sensitivity(config,**args):     #Syntax: fab localhost test_sensitivity:flee_conflict_name,simulation_period=number,name=MaxMoveSpeed,values=50-100-200
     """ Run simulation using different speed limits, movechances and awareness levels to test sensitivity. """
     #SimSettingsCSVs directory: movechance and attractiveness

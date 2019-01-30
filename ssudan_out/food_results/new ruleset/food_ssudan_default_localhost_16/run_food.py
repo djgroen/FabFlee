@@ -81,7 +81,6 @@ if __name__ == "__main__":
   print("Loaded food info", file=sys.stderr)
 
   MC_log=start_movechance_log(e,end_time)
-  MC=[]
 
   for t in range(0,end_time):
     #Evaluate needed line for IPC:
@@ -114,8 +113,6 @@ if __name__ == "__main__":
       #print("After updating IPC and movechance:")
       e.printInfo()
     old_line=line_IPC
- 
-    MC=meanMC(MC)
 
     movechance_log(MC_log,e,t,end_time)				#adds a line to the Pandas dataframe where all the movechances are being saved
 
@@ -161,4 +158,3 @@ if __name__ == "__main__":
     print(output)
 
   MC_log.to_csv("movechance.csv",index_label="Days")
-  print(mean(MC), file=sys.stderr)
