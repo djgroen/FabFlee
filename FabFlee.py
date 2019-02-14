@@ -54,6 +54,21 @@ def flees(config,**args):
     # Generate config directories, copying from the config provided, and adding a different generated test.csv in each directory.
     # Run the flee() a number of times.
 
+@task
+def flee_ensemble(config="flee_test",**args):
+    """
+    Submits an ensemble of dummy jobs.
+    One job is run for each file in <config_file_directory>/flee_test/SWEEP.
+    """
+
+    path_to_config = find_config_file_path(config)
+    print("local config file path at: %s" % path_to_config)
+    sweep_dir = path_to_config + "/SWEEP"
+    env.script = 'flee'
+    env.input_name_in_config = 'flee.txt'
+
+    run_ensemble(config, sweep_dir, **args)
+
 
 @task
 def load_conflict(conflict_name):     # Syntax: fab localhost load_conflict:conflict_name
@@ -436,6 +451,7 @@ def test_sensitivity(config,**args):     #Syntax: fab localhost test_sensitivity
       flee(instance_config, **args)
 
     # 4. Analyse output and report sensitivity
+
 
 # Test Functions
 # from plugins.FabFlee.test_FabFlee import *
