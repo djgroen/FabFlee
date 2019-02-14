@@ -25,10 +25,10 @@ To modify simulation and explore policy decisions, type `fab localhost <FabFlee_
 |Border closure              |close_border:country1,country2,closure_start,closure_end   |
 |Forced redirection          |redirect:source,destination,redirect_start,redirect_end    |
     
-### 3. Instantiate
+### 3. Instantiation
 To instantiate Flee simulation, type `fab localhost instantiate:conflict_given_name`. It saves parameter changes of the simulation in a new directory of config_files including conflict name, version and date of instantiation on users insert choice. It also duplicates base files of conflict scenario. 
 
-### 4. Clean and iterate
+### 4. Cleaning and iteration
 To create a clean slate for further work, type `fab localhost clear_active_conflict`. It clears the active conflict directory upon which you can reload the conflict and change other parameters (and instantiate and run a new simulation).
 
 
