@@ -52,6 +52,6 @@ This does the following:
   - Copy your job input, which is in `plugins/FabFlee/config_files/<conflict_given_name>`, to the remote location specified in the variable `remote_path_template` in `deploy/machines.yml`.
   - Copy the input to the remote results directory.
   - Start the remote job.
-2. Simply wait for it to finish, or cancel the job using Ctrl+C.
+2. Simply wait for it to finish, or cancel the job.
 3. After the job has finished, the terminal becomes available again, and a message is printing indicating where the output data resides remotely.
 4. You can then fetch the remote data using `fab localhost fetch_results`, and investigate the output as you see fit. Local results are typically locations in the `results/` subdirectory.
