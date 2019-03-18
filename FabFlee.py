@@ -29,6 +29,24 @@ def flee(config,**args):
     job(dict(script='flee', wall_time='0:15:0', memory='2G'),args)
 
 @task
+def pflee(config,**args):
+    """ Submit a Pflee job to the remote queue.
+    The job results will be stored with a name pattern as defined in the environment,
+    e.g. car-abcd1234-localhost-4
+    config : config directory to use for the simulation script, e.g. config=car2014
+    Keyword arguments:
+            cores : number of compute cores to request
+            wall_time : wall-time job limit
+            memory : memory per node
+    """
+    #update_environment({"input_directory":"%s/config_files/%s/input_csv" % (get_plugin_path("FabFlee"), config),"validation_data_directory":"%s/config_files/%s/source_data" % (get_plugin_path("FabFlee"), config)})
+    #print_local_environment()
+    update_environment(args)
+    with_config(config)
+    execute(put_configs,config)
+    job(dict(script='pflee', wall_time='0:15:0', memory='2G'),args)
+
+@task
 def food_flee(config,**args):
     """ Submit a Flee job to the remote queue.
     The job results will be stored with a name pattern as defined in the environment,
@@ -55,7 +73,7 @@ def flees(config,**args):
     # Run the flee() a number of times.
 
 @task
-def flee_ensemble(config="flee_test",**args):
+def flee_ensemble(config="flee_test",script='flee',**args):
     """
     Submits an ensemble of dummy jobs.
     One job is run for each file in <config_file_directory>/flee_test/SWEEP.
@@ -64,10 +82,14 @@ def flee_ensemble(config="flee_test",**args):
     path_to_config = find_config_file_path(config)
     print("local config file path at: %s" % path_to_config)
     sweep_dir = path_to_config + "/SWEEP"
-    env.script = 'flee'
+    env.script = script
     env.input_name_in_config = 'flee.txt'
 
     run_ensemble(config, sweep_dir, **args)
+    
+@task
+def pflee_ensemble(config="flee_test",**args):
+    flee_ensemble(config,script='pflee',**args)
 
 
 @task
