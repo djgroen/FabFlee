@@ -49,15 +49,15 @@ if __name__ == "__main__":
 
   d = handle_refugee_data.RefugeeTable(csvformat="generic", data_directory=validation_data_directory, start_date="2013-12-15", data_layout="data_layout.csv")
 
-  d.correctLevel1Registrations("Tierkidi","2014-08-08")
-  d.correctLevel1Registrations("Pugnido","2015-06-26")
-  d.correctLevel1Registrations("Jewi","2015-07-31")
-  d.correctLevel1Registrations("Kule","2014-09-12")
-  d.correctLevel1Registrations("Kakuma","2014-06-26")
-  d.correctLevel1Registrations("Khartoum","2014-04-27")
-  d.correctLevel1Registrations("West_Kordofan","2015-08-05")
-  d.correctLevel1Registrations("Rhino","2014-05-21")
-  d.correctLevel1Registrations("Kiryandongo","2014-05-27")
+  #d.correctLevel1Registrations("Tierkidi","2014-08-08")
+  #d.correctLevel1Registrations("Pugnido","2015-06-26")
+  #d.correctLevel1Registrations("Jewi","2015-07-31")
+  #d.correctLevel1Registrations("Kule","2014-09-12")
+  #d.correctLevel1Registrations("Kakuma","2014-06-26")
+  #d.correctLevel1Registrations("Khartoum","2014-04-27")
+  #d.correctLevel1Registrations("West_Kordofan","2015-08-05")
+  #d.correctLevel1Registrations("Rhino","2014-05-21")
+  #d.correctLevel1Registrations("Kiryandongo","2014-05-27")
 
   output_header_string = "Day,"
 
