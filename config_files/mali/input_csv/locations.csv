@@ -1,0 +1,25 @@
+#name,region,country,lat,lon,location_type,conflict_date,population
+Kidal,,Mali,18.444305,1.401523,town,,25617
+Gao,,Mali,16.27091,-0.04021,town,,86633
+Timbuktu,,Mali,16.78026,-3.00159,town,,54453
+Mopti,,Mali,,,town,,148456
+Douentza,,Mali,,,town,,28005
+Konna,,Mali,,,town,,36767
+Menaka,,Mali,,,conflict_zone,,20702
+Niafounke,,Mali,,,conflict_zone,,1000
+Bourem,,Mali,,,town,,27486
+Bamako,,Mali,,,town,,1809106
+Tenenkou,,Mali,14.5004532,-4.8748448,town,,11310
+Segou,,Mali,,,town,,130690
+Ansongo,,Mali,,,town,,32709
+Lere,,Mali,,,town,,16072
+Dire,,Mali,,,town,,22365
+Goundam,,Mali,,,town,,16253
+Mbera,,Mauritania,15.639012,-5.751422,camp,,103731
+Fassala,,Mauritania,,,???,,????
+Mentao,,Burkina Faso,,,camp,,10038
+Bobo-Dioulasso,,Burkina Faso,,,camp,,1926
+Abala,,Niger,,,camp,,18573
+Mangaize,,Niger,,,camp,,4356
+Niamey,,Niger,,,camp,,6327
+Tabareybarey,,Niger,,,camp,,9189
