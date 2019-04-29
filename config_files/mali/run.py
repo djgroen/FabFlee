@@ -51,11 +51,11 @@ if __name__ == "__main__":
 
   d = handle_refugee_data.RefugeeTable(csvformat="generic", data_directory=validation_data_directory, start_date=start_date, data_layout="data_layout.csv")
 
-  d.correctLevel1Registrations("Mbera","2012-12-31")
-  d.correctLevel1Registrations("Mentao","2012-10-03")
-  d.correctLevel1Registrations("Abala","2012-12-21")
-  d.correctLevel1Registrations("Mangaize","2012-12-21")
-  d.correctLevel1Registrations("Tabareybarey","2012-12-21")
+  lm["Mbera"].capacity *= d.correctLevel1Registrations("Mbera","2012-12-31")
+  lm["Mentao"].capacity *= d.correctLevel1Registrations("Mentao","2012-10-03")
+  lm["Abala"].capacity *= d.correctLevel1Registrations("Abala","2012-12-21")
+  lm["Mangaize"].capacity *= d.correctLevel1Registrations("Mangaize","2012-12-21")
+  lm["Tabareybarey"].capacity *= d.correctLevel1Registrations("Tabareybarey","2012-12-21")
 
   #d.correctLevel1Registrations("Tierkidi","2014-08-08")
   #d.correctLevel1Registrations("Pugnido","2015-06-26")

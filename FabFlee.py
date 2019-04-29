@@ -29,6 +29,16 @@ def flee(config,**args):
     job(dict(script='flee', wall_time='0:15:0', memory='2G'),args)
 
 @task
+def flee_and_plot(config, **args):
+    """
+    Runs Flee and plots the output in a graph subdir
+    """
+    update_environment(args)
+    env.simulation_settings = "simsetting.csv"
+    flee(config, **args)
+    plot_output("%s" % (env.job_name),"graph")
+
+@task
 def pflee(config,**args):
     """ Submit a Pflee job to the remote queue.
     The job results will be stored with a name pattern as defined in the environment,
@@ -415,6 +425,7 @@ def plot_output(output_dir="", graphs_dir=""):      # Syntax: fab localhost plot
     # python3 $flee_dir/plot-flee-output.py $fabsim_results/$output_dir
     local("mkdir -p %s/%s/%s" % (env.results_path, output_dir, graphs_dir))
     local("python3 %s/plot-flee-output.py %s/%s %s/%s/%s" % (env.flee_location, env.results_path, output_dir, env.results_path, output_dir, graphs_dir))
+
 
 @task
 def compare_food(output_dir_1=""):			# Syntax: fab localhost compare_food:food_flee_conflict_name_localhost_16
