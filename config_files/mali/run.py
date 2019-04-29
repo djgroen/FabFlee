@@ -12,8 +12,10 @@ def AddInitialRefugees(e, d, loc):
   for i in range(0, num_refugees):
     e.addAgent(location=loc)
 
+start_date = "2012-02-29"
+
 def date_to_sim_days(date):
-  return DataTable.subtract_dates(date,"2013-12-15")
+  return DataTable.subtract_dates(date,start_date)
 
 
 if __name__ == "__main__":
@@ -47,7 +49,13 @@ if __name__ == "__main__":
 
   #print("Network data loaded")
 
-  d = handle_refugee_data.RefugeeTable(csvformat="generic", data_directory=validation_data_directory, start_date="2013-12-15", data_layout="data_layout.csv")
+  d = handle_refugee_data.RefugeeTable(csvformat="generic", data_directory=validation_data_directory, start_date=start_date, data_layout="data_layout.csv")
+
+  d.correctLevel1Registrations("Mbera","2012-12-31")
+  d.correctLevel1Registrations("Mentao","2012-10-03")
+  d.correctLevel1Registrations("Abala","2012-12-21")
+  d.correctLevel1Registrations("Mangaize","2012-12-21")
+  d.correctLevel1Registrations("Tabareybarey","2012-12-21")
 
   #d.correctLevel1Registrations("Tierkidi","2014-08-08")
   #d.correctLevel1Registrations("Pugnido","2015-06-26")
