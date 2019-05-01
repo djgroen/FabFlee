@@ -51,11 +51,11 @@ if __name__ == "__main__":
 
   d = handle_refugee_data.RefugeeTable(csvformat="generic", data_directory=validation_data_directory, start_date=start_date, data_layout="data_layout.csv")
 
-  lm["Fassala-Mbera"].capacity *= d.correctLevel1Registrations("Fassala-Mbera","2012-12-31")
-  lm["Mentao"].capacity *= d.correctLevel1Registrations("Mentao","2012-10-03")
-  lm["Abala"].capacity *= d.correctLevel1Registrations("Abala","2012-12-21")
-  lm["Mangaize"].capacity *= d.correctLevel1Registrations("Mangaize","2012-12-21")
-  lm["Tabareybarey"].capacity *= d.correctLevel1Registrations("Tabareybarey","2012-12-21")
+  d.correctLevel1Registrations("Fassala-Mbera","2012-12-31")
+  d.correctLevel1Registrations("Mentao","2012-10-03") # no capacity correction, as pop increases after correction.
+  d.correctLevel1Registrations("Abala","2012-12-21")
+  d.correctLevel1Registrations("Mangaize","2012-12-21")
+  d.correctLevel1Registrations("Tabareybarey","2012-12-21")
 
   #d.correctLevel1Registrations("Tierkidi","2014-08-08")
   #d.correctLevel1Registrations("Pugnido","2015-06-26")
@@ -72,7 +72,7 @@ if __name__ == "__main__":
   camp_locations      = e.get_camp_names()
 
   for l in camp_locations:
-    #AddInitialRefugees(e,d,lm[l])
+    AddInitialRefugees(e,d,lm[l])
     output_header_string += "%s sim,%s data,%s error," % (lm[l].name, lm[l].name, lm[l].name)
 
   output_header_string += "Total error,refugees in camps (UNHCR),total refugees (simulation),raw UNHCR refugee count,refugees in camps (simulation),refugee_debt"
@@ -91,6 +91,11 @@ if __name__ == "__main__":
     # Determine number of new refugees to insert into the system.
     new_refs = d.get_daily_difference(t, FullInterpolation=True) - refugee_debt
     refugees_raw += d.get_daily_difference(t, FullInterpolation=True)
+
+    #Refugees are pre-placed in Mali, so set new_refs to 0 on Day 0.
+    if t == 0:
+      new_refs = 0
+      #refugees_raw = 0
 
     if new_refs < 0:
       refugee_debt = -new_refs
