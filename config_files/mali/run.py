@@ -13,6 +13,7 @@ def AddInitialRefugees(e, d, loc):
     e.addAgent(location=loc)
 
 start_date = "2012-02-29"
+insert_day0_refugees_in_camps = True
 
 def date_to_sim_days(date):
   return DataTable.subtract_dates(date,start_date)
@@ -72,8 +73,9 @@ if __name__ == "__main__":
   camp_locations      = e.get_camp_names()
 
   for l in camp_locations:
-    AddInitialRefugees(e,d,lm[l])
-    output_header_string += "%s sim,%s data,%s error," % (lm[l].name, lm[l].name, lm[l].name)
+      if insert_day0_refugees_in_camps:  
+          AddInitialRefugees(e,d,lm[l])
+      output_header_string += "%s sim,%s data,%s error," % (lm[l].name, lm[l].name, lm[l].name)
 
   output_header_string += "Total error,refugees in camps (UNHCR),total refugees (simulation),raw UNHCR refugee count,refugees in camps (simulation),refugee_debt"
 
@@ -93,9 +95,10 @@ if __name__ == "__main__":
     refugees_raw += d.get_daily_difference(t, FullInterpolation=True)
 
     #Refugees are pre-placed in Mali, so set new_refs to 0 on Day 0.
-    if t == 0:
-      new_refs = 0
-      #refugees_raw = 0
+    if insert_day0_refugees_in_camps:  
+        if t == 0:
+            new_refs = 0
+            #refugees_raw = 0
 
     if new_refs < 0:
       refugee_debt = -new_refs
