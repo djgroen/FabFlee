@@ -35,10 +35,13 @@ if __name__ == "__main__":
 
   if len(sys.argv)==5:
     flee.SimulationSettings.SimulationSettings.ReadFromCSV(sys.argv[4])
+  flee.SimulationSettings.SimulationSettings.FlareConflictInputFile = "%s/conflicts.csv" % input_csv_directory
 
   e = flee.Ecosystem()
 
   ig = InputGeography.InputGeography()
+
+  ig.ReadFlareConflictInputCSV(flee.SimulationSettings.SimulationSettings.FlareConflictInputFile)
 
   ig.ReadLocationsFromCSV("%s/locations.csv" % input_csv_directory)
 

@@ -10,6 +10,16 @@ from base.fab import *
 # Add local script, blackbox and template path.
 add_local_paths("FabFlee")
 
+#import conflicts
+
+@task
+def extract_conflict_file(config, simulation_period, **args):
+    """
+    Travels to the input_csv directory of a specific config and extracts a conflict progression CSV file from locations.csv.
+    """
+    config_dir = "%s/config_files/%s" % (get_plugin_path("FabFlee"), config)
+    local("python3 %s/scripts/location2conflict.py %s %s/input_csv/locations.csv %s/input_csv/conflicts.csv" % (get_plugin_path("FabFlee"), simulation_period, config_dir, config_dir))
+
 @task
 def flee(config,**args):
     """ Submit a Flee job to the remote queue.
