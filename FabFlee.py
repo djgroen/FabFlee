@@ -48,6 +48,22 @@ def flare_ensemble(config, simulation_period, N, out_dir, **args):
         instance_out_dir = "%s/%s" % (out_dir,i)
         flare_local(config, simulation_period, instance_out_dir, **args)
 
+@task
+def flee_conflict_forecast(config, simulation_period, N, **args):
+    """
+    Run Flare ensemble, convert output to Flee ensemble input, run Flee ensemble.
+    (visualize Flee output with uncertainty).
+    """
+
+    local("rm -rf %s/flare-results/flare-out-scratch/*" % (get_plugin_path("FabFlee")))
+    flare_ensemble(config, simulation_period, N, "flare-out-scratch", **args)
+
+    config_dir = "%s/config_files/%s" % (get_plugin_path("FabFlee"), config)
+    local("mkdir -p %s/SWEEP" % (config_dir))
+    local("cp -r %s/results-flare/flare-out-scratch/* %s/SWEEP/" % (get_plugin_path("FabFlee"), config_dir))
+
+    pflee_ensemble(config, simulation_period, **args)
+
 
 @task
 def flee(config,**args):
