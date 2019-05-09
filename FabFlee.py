@@ -35,6 +35,19 @@ def flare_local(config, simulation_period, out_dir="", **args):
     local("mkdir -p %s" % flare_out_dir)
     local("python3 %s/scripts/run_flare.py %s %s/input_csv %s/flare-out.csv" % (get_plugin_path("FabFlee"), simulation_period, config_dir, flare_out_dir))
 
+@task
+def flare_ensemble(config, simulation_period, N, out_dir, **args):
+    """
+    Run an ensemble of flare instances locally.
+    config: configuration directory.
+    simulation_period: simulation period in days.
+    N: number of instances in ensemble.
+    out_dir: base output subdirectory in flare-results.
+    """
+    for i in range(0,int(N)):
+        instance_out_dir = "%s/%s" % (out_dir,i)
+        flare_local(config, simulation_period, instance_out_dir, **args)
+
 
 @task
 def flee(config,**args):
