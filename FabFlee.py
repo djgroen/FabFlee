@@ -21,6 +21,22 @@ def extract_conflict_file(config, simulation_period, **args):
     local("python3 %s/scripts/location2conflict.py %s %s/input_csv/locations.csv %s/input_csv/conflicts.csv" % (get_plugin_path("FabFlee"), simulation_period, config_dir, config_dir))
 
 @task
+def flare_local(config, simulation_period, out_dir="", **args):
+    """
+    Run an instance of Flare on the local host.
+    """
+
+    if len(out_dir) == 0:
+        out_dir = "%s_single" % (config)
+    
+    flare_out_dir = "%s/results-flare/%s" % (get_plugin_path("FabFlee"), out_dir)
+    config_dir = "%s/config_files/%s" % (get_plugin_path("FabFlee"), config)
+
+    local("mkdir -p %s" % flare_out_dir)
+    local("python3 %s/scripts/run_flare.py %s %s/input_csv %s/flare-out.csv" % (get_plugin_path("FabFlee"), simulation_period, config_dir, flare_out_dir))
+
+
+@task
 def flee(config,**args):
     """ Submit a Flee job to the remote queue.
     The job results will be stored with a name pattern as defined in the environment,
