@@ -479,14 +479,12 @@ def instantiate(conflict_name):      # Syntax: fab localhost instantiate:conflic
 @task
 def plot_output(output_dir="", graphs_dir=""):      # Syntax: fab localhost plot_output:flee_conflict_name_localhost_16(,graphs_dir_name)
     """ Plot generated output results using plot-flee-output.py. """
-    # python3 $flee_dir/plot-flee-output.py $fabsim_results/$output_dir
     local("mkdir -p %s/%s/%s" % (env.results_path, output_dir, graphs_dir))
     local("python3 %s/plot-flee-output.py %s/%s %s/%s/%s" % (env.flee_location, env.results_path, output_dir, env.results_path, output_dir, graphs_dir))
 
 @task
-def plot_uq_output(output_dir="", graphs_dir=""):      # Syntax: fab localhost plot_output:flee_conflict_name_localhost_16(,graphs_dir_name)
+def plot_uq_output(output_dir="", graphs_dir=""):      # Syntax: fab localhost plot_uq_output:flee_conflict_name_localhost_16(,graphs_dir_name)
     """ Plot generated output results using plot-flee-output.py. """
-    # python3 $flee_dir/plot-flee-output.py $fabsim_results/$output_dir
     local("mkdir -p %s/%s/%s" % (env.results_path, output_dir, graphs_dir))
     local("python3 %s/plot-flee-uq-output.py %s/%s %s/%s/%s" % (env.flee_location, env.results_path, output_dir, env.results_path, output_dir, graphs_dir))
 
