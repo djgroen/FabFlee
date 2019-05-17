@@ -63,7 +63,7 @@ def flee_conflict_forecast(config, **args):
     local("mkdir -p %s/SWEEP" % (config_dir))
     local("cp -r %s/results-flare/flare-out-scratch/* %s/SWEEP/" % (get_plugin_path("FabFlee"), config_dir))
 
-    pflee_ensemble(config, **args)
+    flee_ensemble(config, **args)
 
 
 @task
@@ -483,6 +483,12 @@ def plot_output(output_dir="", graphs_dir=""):      # Syntax: fab localhost plot
     local("mkdir -p %s/%s/%s" % (env.results_path, output_dir, graphs_dir))
     local("python3 %s/plot-flee-output.py %s/%s %s/%s/%s" % (env.flee_location, env.results_path, output_dir, env.results_path, output_dir, graphs_dir))
 
+@task
+def plot_uq_output(output_dir="", graphs_dir=""):      # Syntax: fab localhost plot_output:flee_conflict_name_localhost_16(,graphs_dir_name)
+    """ Plot generated output results using plot-flee-output.py. """
+    # python3 $flee_dir/plot-flee-output.py $fabsim_results/$output_dir
+    local("mkdir -p %s/%s/%s" % (env.results_path, output_dir, graphs_dir))
+    local("python3 %s/plot-flee-uq-output.py %s/%s %s/%s/%s" % (env.flee_location, env.results_path, output_dir, env.results_path, output_dir, graphs_dir))
 
 @task
 def compare_food(output_dir_1=""):			# Syntax: fab localhost compare_food:food_flee_conflict_name_localhost_16
