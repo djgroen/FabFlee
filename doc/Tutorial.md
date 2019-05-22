@@ -55,8 +55,8 @@ Once you have installed FabSim3, you can install FabFlee by typing:
 
 ### Running an ensemble simulation on a supercomputer using Pilot Jobs
 
-`fab eagle flee_ensemble:mali,N=20,simulation_period=300`
+`fab eagle flee_ensemble:mali,N=20,simulation_period=300,Pilot=true`
 
 ### Running an ensemble simulation on a supercomputer using Pilot Jobs and QCG Broker
 
-`fab qcg flee_ensemble:mali,N=20,simulation_period=300`
+`fab qcg flee_ensemble:mali,N=20,simulation_period=300,Pilot=true`
