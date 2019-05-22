@@ -28,7 +28,7 @@ Once you have installed FabSim3, you can install FabFlee by typing:
 
 ## Configuration
 
-## Refugee movement : description
+## Forced migration simulations: description
 
 ### model structure
 
