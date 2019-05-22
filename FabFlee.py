@@ -10,6 +10,62 @@ from base.fab import *
 # Add local script, blackbox and template path.
 add_local_paths("FabFlee")
 
+#import conflicts
+
+@task
+def extract_conflict_file(config, simulation_period, **args):
+    """
+    Travels to the input_csv directory of a specific config and extracts a conflict progression CSV file from locations.csv.
+    """
+    config_dir = "%s/config_files/%s" % (get_plugin_path("FabFlee"), config)
+    local("python3 %s/scripts/location2conflict.py %s %s/input_csv/locations.csv %s/input_csv/conflicts.csv" % (get_plugin_path("FabFlee"), simulation_period, config_dir, config_dir))
+
+@task
+def flare_local(config, simulation_period, out_dir=""):
+    """
+    Run an instance of Flare on the local host.
+    """
+
+    if len(out_dir) == 0:
+        out_dir = "%s_single" % (config)
+    
+    flare_out_dir = "%s/results-flare/%s" % (get_plugin_path("FabFlee"), out_dir)
+    config_dir = "%s/config_files/%s" % (get_plugin_path("FabFlee"), config)
+
+    local("mkdir -p %s" % flare_out_dir)
+    local("python3 %s/scripts/run_flare.py %s %s/input_csv %s/flare-out.csv" % (get_plugin_path("FabFlee"), simulation_period, config_dir, flare_out_dir))
+
+@task
+def flare_ensemble(config, simulation_period, N, out_dir):
+    """
+    Run an ensemble of flare instances locally.
+    config: configuration directory.
+    simulation_period: simulation period in days.
+    N: number of instances in ensemble.
+    out_dir: base output subdirectory in flare-results.
+    """
+    for i in range(0,int(N)):
+        instance_out_dir = "%s/%s" % (out_dir,i)
+        flare_local(config, simulation_period, instance_out_dir)
+
+@task
+def flee_conflict_forecast(config, **args):
+    """
+    Run Flare ensemble, convert output to Flee ensemble input, run Flee ensemble.
+    (visualize Flee output with uncertainty).
+    """
+    update_environment(args)
+
+    local("rm -rf %s/flare-results/flare-out-scratch/*" % (get_plugin_path("FabFlee")))
+    flare_ensemble(config, env.simulation_period, env.N, "flare-out-scratch")
+
+    config_dir = "%s/config_files/%s" % (get_plugin_path("FabFlee"), config)
+    local("mkdir -p %s/SWEEP" % (config_dir))
+    local("cp -r %s/results-flare/flare-out-scratch/* %s/SWEEP/" % (get_plugin_path("FabFlee"), config_dir))
+
+    flee_ensemble(config, **args)
+
+
 @task
 def flee(config,**args):
     """ Submit a Flee job to the remote queue.
@@ -27,6 +83,34 @@ def flee(config,**args):
     with_config(config)
     execute(put_configs,config)
     job(dict(script='flee', wall_time='0:15:0', memory='2G'),args)
+
+@task
+def flee_and_plot(config, **args):
+    """
+    Runs Flee and plots the output in a graph subdir
+    """
+    update_environment(args)
+    env.simulation_settings = "simsetting.csv"
+    flee(config, **args)
+    plot_output("%s" % (env.job_name),"graph")
+
+@task
+def pflee(config,**args):
+    """ Submit a Pflee job to the remote queue.
+    The job results will be stored with a name pattern as defined in the environment,
+    e.g. car-abcd1234-localhost-4
+    config : config directory to use for the simulation script, e.g. config=car2014
+    Keyword arguments:
+            cores : number of compute cores to request
+            wall_time : wall-time job limit
+            memory : memory per node
+    """
+    #update_environment({"input_directory":"%s/config_files/%s/input_csv" % (get_plugin_path("FabFlee"), config),"validation_data_directory":"%s/config_files/%s/source_data" % (get_plugin_path("FabFlee"), config)})
+    #print_local_environment()
+    update_environment(args)
+    with_config(config)
+    execute(put_configs,config)
+    job(dict(script='pflee', wall_time='0:15:0', memory='2G'),args)
 
 @task
 def food_flee(config,**args):
@@ -53,6 +137,26 @@ def flees(config,**args):
 
     # Generate config directories, copying from the config provided, and adding a different generated test.csv in each directory.
     # Run the flee() a number of times.
+
+@task
+def flee_ensemble(config="flee_test", script='flee', **args):
+    """
+    Submits an ensemble of dummy jobs.
+    One job is run for each file in <config_file_directory>/flee_test/SWEEP.
+    """
+    update_environment(args)
+
+    path_to_config = find_config_file_path(config)
+    print("local config file path at: %s" % path_to_config)
+    sweep_dir = path_to_config + "/SWEEP"
+    env.script = script
+    env.input_name_in_config = 'flee.txt'
+
+    run_ensemble(config, sweep_dir, **args)
+    
+@task
+def pflee_ensemble(config="flee_test", **args):
+    flee_ensemble(config=config, script='pflee', **args)
 
 
 @task
@@ -375,9 +479,14 @@ def instantiate(conflict_name):      # Syntax: fab localhost instantiate:conflic
 @task
 def plot_output(output_dir="", graphs_dir=""):      # Syntax: fab localhost plot_output:flee_conflict_name_localhost_16(,graphs_dir_name)
     """ Plot generated output results using plot-flee-output.py. """
-    # python3 $flee_dir/plot-flee-output.py $fabsim_results/$output_dir
     local("mkdir -p %s/%s/%s" % (env.results_path, output_dir, graphs_dir))
     local("python3 %s/plot-flee-output.py %s/%s %s/%s/%s" % (env.flee_location, env.results_path, output_dir, env.results_path, output_dir, graphs_dir))
+
+@task
+def plot_uq_output(output_dir="", graphs_dir=""):      # Syntax: fab localhost plot_uq_output:flee_conflict_name_localhost_16(,graphs_dir_name)
+    """ Plot generated output results using plot-flee-output.py. """
+    local("mkdir -p %s/%s/%s" % (env.results_path, output_dir, graphs_dir))
+    local("python3 %s/plot-flee-uq-output.py %s/%s %s/%s/%s" % (env.flee_location, env.results_path, output_dir, env.results_path, output_dir, graphs_dir))
 
 @task
 def compare_food(output_dir_1=""):			# Syntax: fab localhost compare_food:food_flee_conflict_name_localhost_16
@@ -436,6 +545,7 @@ def test_sensitivity(config,**args):     #Syntax: fab localhost test_sensitivity
       flee(instance_config, **args)
 
     # 4. Analyse output and report sensitivity
+
 
 # Test Functions
 # from plugins.FabFlee.test_FabFlee import *

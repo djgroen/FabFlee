@@ -24,7 +24,6 @@ Once you have installed FabSim3, you can install FabFlee by typing `fab localhos
 
 ## Configuration
 
-
 ## Refugee movement : description
 
 ### model structure
