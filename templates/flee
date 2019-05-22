@@ -1,6 +1,10 @@
 cd $job_results
 $run_prefix
+
+if [ -z "$flee_location" ]
+then
 export PYTHONPATH=$flee_location:$$PYTHONPATH
+fi
 
 /usr/bin/env > env.log
 
