@@ -44,7 +44,47 @@ Once you have installed the required dependencies, you will need to take a few s
   a. flee_location=(Flee Home) #NOTE: please replace (Flee Home) with your actual install directory.
   b. flare_location=(Flare Home) #NOTE: please replace (Flee Home) with your actual install directory.
 
-## Forced migration simulations: description
+# Forced migration simulations
+
+In this section we will show you how you can run different types of migration simulations. We first explain how you can do basic analysis using a single model, and then explain how you can perform a coupled application run that features very basic uncertainty quantification.
+
+## Executing single-model migration simulations
+
+FabFlee comes with a range of sample simulation domains. For instance a basic model for the 2012 Mali conflict can be found in `config_files/mali`.
+
+To run a single population displacement validation test, using this model, simply type:
+
+`fab localhost flee:mali,simulation_period=300`
+
+You can copy back any results from completed runs using:
+`fab localhost fetch_results`
+
+This is a little redundant for runs on localhost, but essential if you run on any remote machines, so it is good to get into this habit.
+You can plot the simulation output using:
+
+`fab localhost plot_output:flee_mali_localhost_16,out`
+
+### Ensembles
+
+_Add: Generate SWEEP dir with multiple identical config files_
+
+Now you may want to run multiple simulations, to see to what extent the stochastic elements in Flee affect the overall results. To do so, you can type:
+
+`fab localhost flee_ensemble:mali,simulation_period=300,N=10`
+
+You can copy back any results from completed runs using:
+`fab localhost fetch_results`
+
+And you can plot the simulation output using:
+
+`fab localhost plot_uq_output:flee_mali_localhost_16,out`
+
+Not that this last command is slightly different here, as with `plot_uq_output` you analyse an ensemble, rather than output from a single run :).
+
+
+## Executing coupled migration simulations
+
+Now a single simulation run is nice, but as this tutorial is part of a project on *multiscale* uncertainty quantification, the least we can offer is a simple UQ analysis using a coupled scenario.
 
 The workflow you will test out here involves the following:
 1. We run a set of simple conflict evolution simulations (Flare) in the context of Mali.
@@ -52,19 +92,50 @@ The workflow you will test out here involves the following:
 3. We run a Flee simulation for each conflict evolution generated.
 4. We analyze and visualize a basic result.
 
-# Executing simulations of population displacement
+### Step 1: Run a Flare ensemble
 
-### run a single population displacement validation test
+To run an ensemble of Flare simulations, generating different conflict evolutions, one can simply type:
 
-`fab localhost flee:mali,simulation_period=300`
+`fab localhost flare_ensemble:mali,N=10,simulation_period=300,out_dir=flare-out-scratch`
 
-### run an ensemble simulation, analyzing variability.
+This generates a range of CSV files, which you can find in `(FabFlee Home)/flare-results/flare-out-scratch`.
 
-`fab localhost flee_ensemble:mali,simulation_period=300,N=10`
+### Step 2: Convert Flare output to Flee input
 
-### run a coupled simulation with basic UQ
+To convert this output to Flee input you can then use.
+
+`fab localhost couple_flare_to_flee:mali,flare_out=flare-out-scratch`
+
+This generates a SWEEP directory in `(FabFlee Home)/config_files/mali`, which in turn contains all the different conflict evolutions.
+
+### Step 3: Run an ensemble of Flee simulations
+
+To then run a Flee ensemble over all the different configurations, simply type:
+
+`fab localhost flee_ensemble:mali,simulation_period=300`
+
+Note that for Flee ensembles there is no need to specify the parameter `N`. It simply launches one run for every subdirectory in the `SWEEP` folder.
+
+### Step 4: Analyze the output
+
+You can copy back any results from runs using:
+`fab localhost fetch_results`
+
+The results will then be in a directory inside `(FabSim Home)/results` which is most likely called `flee_mali_localhost_16`.
+
+Assuming this name, you can then run the following command to generate plots:
+`fab localhost plot_uq_output:flee_mali_localhost_16,out`
+
+And you can inspect the plots by examining the `out` subdirectory of your results directory.
+
+### Step 1-3 in a one-liner
+
+To run a coupled simulation with basic UQ, and basically repeat steps 1-3 in one go, just type:
 
 `fab localhost flee_conflict_forecast:mali,N=2,simulation_period=300`
+
+
+
 
 # Going the next mile (optional content)
 
