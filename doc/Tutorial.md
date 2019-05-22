@@ -2,11 +2,13 @@
 
 ## Prerequisites
 
-This tutorial requires the following:
+To perform this tutorial you will require the following installed:
 * Flee
 * Flare
 * FabSim3
 * The FabFlee plugin
+
+Below you can find installation instructions for each of these tools.
 
 ### Installing Flee
 
