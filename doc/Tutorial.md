@@ -46,3 +46,17 @@ Once you have installed FabSim3, you can install FabFlee by typing:
 ### run a coupled simulation with basic UQ
 
 `fab localhost flee_conflict_forecast:mali,N=2,simulation_period=300`
+
+# Going the next mile (optional content)
+
+### Running the coupled simulation on a supercomputer
+
+`fab eagle flee_conflict_forecast:mali,N=20,simulation_period=300`
+
+### Running an ensemble simulation on a supercomputer using Pilot Jobs
+
+`fab eagle flee_ensemble:mali,N=20,simulation_period=300`
+
+### Running an ensemble simulation on a supercomputer using Pilot Jobs and QCG Broker
+
+`fab qcg flee_ensemble:mali,N=20,simulation_period=300`
