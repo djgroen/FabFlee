@@ -20,7 +20,9 @@ For installation instructions, see http://www.github.com/djgroen/flare-release
 
 For installation instructions, see http://www.github.com/djgroen/FabSim3/INSTALL
 
-Once you have installed FabSim3, you can install FabFlee by typing `fab localhost install_plugin:FabFlee`.
+Once you have installed FabSim3, you can install FabFlee by typing:
+
+`fab localhost install_plugin:FabFlee`.
 
 ## Configuration
 
@@ -31,8 +33,16 @@ Once you have installed FabSim3, you can install FabFlee by typing `fab localhos
 ### model refinement
 
 
-## Execution of a Refugee model
+# Executing simulations of population displacement
 
-### run a single validation test
+### run a single population displacement validation test
 
-### run an ensemble simulation
+`fab localhost flee:mali,simulation_period=300`
+
+### run an ensemble simulation, analyzing variability.
+
+`fab localhost flee_ensemble:mali,simulation_period=300,N=10`
+
+### run a coupled simulation with basic UQ
+
+`fab localhost flee_conflict_forecast:mali,N=2,simulation_period=300`
