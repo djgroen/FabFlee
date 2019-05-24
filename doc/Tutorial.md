@@ -150,3 +150,7 @@ To run a coupled simulation with basic UQ, and basically repeat steps 1-3 in one
 ### Running an ensemble simulation on a supercomputer using Pilot Jobs and QCG Broker
 
 `fab qcg flee_ensemble:mali,N=20,simulation_period=300,Pilot=true`
+
+# Acknowledgements
+
+This work was supported by the VECMA and HiDALGO projects, which has received funding from the European Union Horizon 2020 research and innovation programme under grant agreement No 800925 and 824115.
