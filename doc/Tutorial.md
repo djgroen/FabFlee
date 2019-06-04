@@ -63,7 +63,7 @@ You can copy back any results from completed runs using:
 This is a little redundant for runs on localhost, but essential if you run on any remote machines, so it is good to get into this habit.
 You can plot the simulation output using:
 
-`fab localhost plot_output:flee_mali_localhost_16,out`
+`fab localhost plot_output:mali_localhost_16,out`
 
 ### Ensembles
 
