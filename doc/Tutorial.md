@@ -122,7 +122,7 @@ Note that for Flee ensembles there is no need to specify the parameter `N`. It s
 You can copy back any results from runs using:
 `fab localhost fetch_results`
 
-The results will then be in a directory inside `(FabSim Home)/results` which is most likely called `flee_mali_localhost_16`.
+The results will then be in a directory inside `(FabSim Home)/results` which is most likely called `mali_localhost_16`.
 
 Assuming this name, you can then run the following command to generate plots:
 `fab localhost plot_uq_output:flee_mali_localhost_16,out`
