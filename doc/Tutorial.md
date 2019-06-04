@@ -57,6 +57,8 @@ To run a single population displacement validation test, using this model, simpl
 
 `fab localhost flee:mali,simulation_period=300`
 
+_NOTE: Please ensure that you reside within the FabSim3 installation directory (or a subdirectory of it), whenever you run any `fab` commands._
+
 You can copy back any results from completed runs using:
 `fab localhost fetch_results`
 
@@ -67,11 +69,25 @@ You can plot the simulation output using:
 
 ### Ensembles
 
-_Add: Generate SWEEP dir with multiple identical config files_
+Now you may want to run multiple simulations, to see to what extent the definition of the maximum run speed in Flee affect the overall results. To do so, you can create an ensemble definition.
 
-Now you may want to run multiple simulations, to see to what extent the stochastic elements in Flee affect the overall results. To do so, you can type:
+Your main configuration directory for this ensemble is in `config_files/mali`. To create a run speed test, it is best to duplicate this directory first, e.g., by:
 
-`fab localhost flee_ensemble:mali,simulation_period=300,N=10`
+`cp -r (FabFlee Location)/config_files/mali config_files/mali_runspeed_test`
+
+Next, you should create a directory named `SWEEP` inside this directory, e.g. through
+`mkdir (FabFlee Location)/config_files/mali/SWEEP`
+
+Inside this SWEEP directory, you can then provide modified input files for each particular run instance by creating a subdirectory for it.
+
+For instance, to create a run instance with a maximum run speed of 200, we can create a subdirectory called `200`, and create a simsetting.csv file in it with the following contents:
+`"MaxMoveSpeed",200`
+
+You can then create similar directories with inputs that have a run speed of 100, or 400. Or if you're too lazy to do that, just copy the contents of `(FabFlee Location)/config_files/mali/example_sweepdir` to `(FabFlee Location)/config_files/mali/SWEEP`. 
+
+To run the ensemble, you can type:
+
+`fab localhost flee_ensemble:mali_runspeed_test,simulation_period=300`
 
 You can copy back any results from completed runs using:
 `fab localhost fetch_results`
