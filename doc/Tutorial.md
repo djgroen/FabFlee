@@ -78,7 +78,7 @@ You can copy back any results from completed runs using:
 
 And you can plot the simulation output using:
 
-`fab localhost plot_uq_output:flee_mali_localhost_16,out`
+`fab localhost plot_uq_output:mali_localhost_16,out`
 
 Not that this last command is slightly different here, as with `plot_uq_output` you analyse an ensemble, rather than output from a single run :).
 
