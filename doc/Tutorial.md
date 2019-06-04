@@ -27,7 +27,7 @@ We will assume that you will install FabSim3 in a directory called <Flare Home>.
 
 ### Installing FabSim3 and FabFlee
 
-For installation instructions, see http://www.github.com/djgroen/FabSim3/INSTALL
+For installation instructions, see https://github.com/djgroen/FabSim3/blob/master/INSTALL.md
 
 Once you have installed FabSim3, you can install FabFlee by typing:
 
