@@ -143,8 +143,8 @@ To run a coupled simulation with basic UQ, and basically repeat steps 1-3 in one
 ### Running the coupled simulation on a supercomputer
 
 `fab eagle flee_conflict_forecast:mali,N=20,simulation_period=300`
-
-1. run `fab eagle fetch_results` to copy back results from `eagle` machine, The results will then be in a directory inside `(FabSim Home)/results` which is most likely called `mali_eagle_16`
+1. run `fab eagle job_stat_update` to check if you jobs are finished or not
+2. run `fab eagle fetch_results` to copy back results from `eagle` machine, The results will then be in a directory inside `(FabSim Home)/results` which is most likely called `mali_eagle_16`
 2. run `fab localhost plot_uq_output:mali_eagle_16,out` to generate plots
 
 
@@ -157,9 +157,9 @@ To run a coupled simulation with basic UQ, and basically repeat steps 1-3 in one
 ### Running an ensemble simulation on a supercomputer using Pilot Jobs and QCG Broker
 
 `fab qcg flee_ensemble:mali,N=20,simulation_period=300,PilotJob=true`
-
-1. run `fab qcg fetch_results` to copy back results from `qcg` machine, The results will then be in a directory inside `(FabSim Home)/results` which is most likely called `mali_qcg_16`
-2. run `fab localhost plot_uq_output:mali_qcg_16,out` to generate plots
+1. run `fab qcg job_stat_update` to check if you jobs are finished or not
+2. run `fab qcg fetch_results` to copy back results from `qcg` machine, The results will then be in a directory inside `(FabSim Home)/results` which is most likely called `mali_qcg_16`
+3. run `fab localhost plot_uq_output:mali_qcg_16,out` to generate plots
 
 # Acknowledgements
 
