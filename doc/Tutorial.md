@@ -56,6 +56,8 @@ To run a single population displacement validation test, using this model, simpl
 
 `fab localhost flee:mali,simulation_period=300`
 
+_NOTE: Please ensure that you reside within the FabSim3 installation directory (or a subdirectory of it), whenever you run any `fab` commands._
+
 You can copy back any results from completed runs using:
 `fab localhost fetch_results`
 
