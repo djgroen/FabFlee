@@ -99,7 +99,7 @@ To run an ensemble of Flare simulations, generating different conflict evolution
 
 `fab localhost flare_ensemble:mali,N=10,simulation_period=300,out_dir=flare-out-scratch`
 
-This generates a range of CSV files, which you can find in `(FabFlee Home)/flare-results/flare-out-scratch`.
+This generates a range of CSV files, which you can find in `(FabFlee Home)/results-flare/flare-out-scratch`.
 
 ### Step 2: Convert Flare output to Flee input
 
