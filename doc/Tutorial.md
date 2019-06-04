@@ -73,17 +73,17 @@ Now you may want to run multiple simulations, to see to what extent the definiti
 
 Your main configuration directory for this ensemble is in `config_files/mali`. To create a run speed test, it is best to duplicate this directory first, e.g., by:
 
-`cp -r (FabFlee Location)/config_files/mali config_files/mali_runspeed_test`
+`cp -r (FabFlee Location)/config_files/mali (FabFlee Location)/config_files/mali_runspeed_test`
 
 Next, you should create a directory named `SWEEP` inside this directory, e.g. through
-`mkdir (FabFlee Location)/config_files/mali/SWEEP`
+`mkdir (FabFlee Location)/config_files/mali_runspeed_test/SWEEP`
 
 Inside this SWEEP directory, you can then provide modified input files for each particular run instance by creating a subdirectory for it.
 
 For instance, to create a run instance with a maximum run speed of 200, we can create a subdirectory called `200`, and create a simsetting.csv file in it with the following contents:
 `"MaxMoveSpeed",200`
 
-You can then create similar directories with inputs that have a run speed of 100, or 400. Or if you're too lazy to do that, just copy the contents of `(FabFlee Location)/config_files/mali/example_sweepdir` to `(FabFlee Location)/config_files/mali/SWEEP`. 
+You can then create similar directories with inputs that have a run speed of 100, or 400. Or if you're too lazy to do that, just copy the contents of `(FabFlee Location)/config_files/mali/example_sweepdir` to `(FabFlee Location)/config_files/mali_runspeed_test/SWEEP`. 
 
 To run the ensemble, you can type:
 
@@ -94,7 +94,7 @@ You can copy back any results from completed runs using:
 
 And you can plot the simulation output using:
 
-`fab localhost plot_uq_output:mali_localhost_16,out`
+`fab localhost plot_uq_output:mali_runspeed_test_localhost_16,out`
 
 Not that this last command is slightly different here, as with `plot_uq_output` you analyse an ensemble, rather than output from a single run :).
 
