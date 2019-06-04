@@ -125,7 +125,7 @@ You can copy back any results from runs using:
 The results will then be in a directory inside `(FabSim Home)/results` which is most likely called `mali_localhost_16`.
 
 Assuming this name, you can then run the following command to generate plots:
-`fab localhost plot_uq_output:flee_mali_localhost_16,out`
+`fab localhost plot_uq_output:mali_localhost_16,out`
 
 And you can inspect the plots by examining the `out` subdirectory of your results directory.
 
