@@ -51,7 +51,7 @@ In this section we will show you how you can run different types of migration si
 
 ## Executing single-model migration simulations
 
-FabFlee comes with a range of sample simulation domains. For instance a basic model for the 2012 Mali conflict can be found in `config_files/mali`.
+FabFlee comes with a range of sample simulation domains. For instance a basic model for the 2012 Mali conflict can be found in `(FabSim Home)/plugins/FabFlee/config_files/mali`.
 
 To run a single population displacement validation test, using this model, simply type:
 
