@@ -43,7 +43,7 @@ Once you have installed the required dependencies, you will need to take a few s
 2. Open `machines_user.yml`
 3. Under the section `default:`, please add the following lines:
   a. flee_location=(Flee Home) #NOTE: please replace (Flee Home) with your actual install directory.
-  b. flare_location=(Flare Home) #NOTE: please replace (Flee Home) with your actual install directory.
+  b. flare_location=(Flare Home) #NOTE: please replace (Flare Home) with your actual install directory.
 
 # Forced migration simulations
 
