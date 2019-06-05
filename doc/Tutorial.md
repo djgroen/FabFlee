@@ -96,7 +96,7 @@ And you can plot the simulation output using:
 
 `fab localhost plot_uq_output:mali_runspeed_test_localhost_16,out`
 
-Not that this last command is slightly different here, as with `plot_uq_output` you analyse an ensemble, rather than output from a single run :).
+As a reminder: we use `plot_output` to visualize outputs of a single run, and `plot_uq_output` to collate and visualize results from an ensemble :).
 
 
 ## Executing coupled migration simulations
