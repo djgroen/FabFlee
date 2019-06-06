@@ -49,8 +49,8 @@ Once you have installed the required dependencies, you will need to take a few s
 3. Under the section `default:`, please add the following lines:
    <br/> a. flee_location=(Flee Home) 
    <br/> _NOTE: Please replace (Flee Home) with your actual install directory._
-   <p> b. flare_location=(Flare Home)
    
+   <br/> b. flare_location=(Flare Home)
    <br/> _NOTE: Please replace (Flare Home) with your actual install directory._
 
 
