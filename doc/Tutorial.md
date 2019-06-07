@@ -75,11 +75,16 @@ In this section we will show you how you can run different types of migration si
 
 ## Executing single-model migration simulations
 
-FabFlee comes with a range of sample simulation domains. For instance, a basic model for the 2012 Mali conflict can be found in`(FabSim Home)/plugins/FabFlee/config_files/mali`.
+FabFlee comes with a range of sample simulation domains. 
 
-1. To run a single population displacement validation test, using this model, simply type:
+1. To run a single population displacement validation test, simply type:
 ```
-fab localhost flee:mali,simulation_period=300
+fab localhost flee:<conflict_name>,simulation_period=<number>
+```
+
+For instance, a basic model for the 2012 Mali conflict can be found in`(FabSim Home)/plugins/FabFlee/config_files/mali`.
+```
+fab localhost flee:mali,simulation_period=50
 ```
 
 _NOTE: Please ensure that you reside within the FabSim3 installation directory (or a subdirectory of it), whenever you run any `fab` commands._
@@ -117,7 +122,7 @@ mkdir (FabFlee Location)/config_files/mali_runspeed_test/SWEEP
 
 Inside this SWEEP directory, you can then provide modified input files for each particular run instance by creating a subdirectory for it.
 
-<br/> For instance, to create a run instance with a maximum run speed of 200, we can create a subdirectory called `200`, and create a simsetting.csv file in it with the following contents:`"MaxMoveSpeed",200`
+<br/> For instance, to create a run instance with a maximum run speed of 200km/day, we can create a subdirectory called `200`, and create a simsetting.csv file in it with the following contents:`"MaxMoveSpeed",200`
 
 To illustrate **simsetting.csv** file:
 
