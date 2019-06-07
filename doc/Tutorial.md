@@ -21,7 +21,7 @@ Below you can find installation instructions for each of these packages.
 
 ### Installing Flee
 
-To install Flee on your local workstation, you need to clone the repository:
+To install Flee on your local workstation, you need to clone the Flee repository:
 ``` 
 git clone https://github.com/djgroen/flee-release.git
 ```
@@ -31,7 +31,7 @@ We will assume that you will install Flee in a directory called (Flee Home), e.g
 
 ### Installing Flare
 
-To install Flare on your local workstation, you need to clone the repository:
+To install Flare on your local workstation, you need to clone the Flare repository:
 ```
 git clone https://github.com/djgroen/flare-release.git
 ```
