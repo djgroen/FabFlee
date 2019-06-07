@@ -17,7 +17,7 @@ To perform this tutorial, you will require
    * FabSim3
    * The FabFlee plugin
 
-Below you can find installation instructions for each of these tools.
+Below you can find installation instructions for each of these packages.
 
 ### Installing Flee
 
@@ -25,7 +25,7 @@ To install Flee on your local workstation, you need to clone the repository:
 ``` 
 git clone https://github.com/djgroen/flee-release.git
 ```
-<br/> For installation instructions, see http://www.github.com/djgroen/flee-release
+For installation instructions, see http://www.github.com/djgroen/flee-release
 
 We will assume that you will install Flee in a directory called (Flee Home), e.g. `~/flee-release/`
 
@@ -35,7 +35,7 @@ To install Flare on your local workstation, you need to clone the repository:
 ```
 git clone https://github.com/djgroen/flare-release.git
 ```
-<br/> For installation instructions, see http://www.github.com/djgroen/flare-release
+For installation instructions, see http://www.github.com/djgroen/flare-release
 
 We will assume that you will install Flare in a directory called (Flare Home), e.g. `~/flare-release/`.
 
