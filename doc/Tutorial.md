@@ -1,44 +1,59 @@
 # FLEE coupled UQ tutorial
 
-In this tutorial we will explain how you can combine a simple stochastic conflict evolution model (Flare) with an agent-based migration model (Flee), perform a set of runs based on different conflict evolutions, and visualize the migrant arrivals with confidence intervals.
+In this tutorial we will explain how you can combine a simple stochastic conflict evolution model (Flare) with an agent-based migration model (Flee), perform a set of runs based on different conflict evolutions, and visualize the migrant arrivals with confidence intervals. We combine these two models with FabSim3, which is an integrated test infrastructure and more flexible customisation options using a plugin system, and create the FabFlee plugin. It provides more systematic, quick, simple and time efficient refinement of forced migration models. 
 
 ## 1. Prerequisites
 
-To perform this tutorial you will require a Linux environment, and the following software packages:
-* Flee
-* Flare
-* FabSim3
-* The FabFlee plugin
+To perform this tutorial, you will require 
+* Linux environment
+* Python3
+* Python libraries
+   * numpy (see https://www.numpy.org)
+   * pandas (see https://pandas.pydata.org)
+   * matplotlib (see https://matplotlib.org)
+* The following software packages:
+   * Flee
+   * Flare
+   * FabSim3
+   * The FabFlee plugin
 
 Below you can find installation instructions for each of these tools.
 
 ### Installing Flee
 
-For this tutorial, you will need to install Flee on your local workstation.
+To install Flee on your local workstation, you need to clone the repository:
+``` 
+git clone https://github.com/djgroen/flee-release.git
+```
 <br/> For installation instructions, see http://www.github.com/djgroen/flee-release
 
-We will assume that you will install Flee in a directory called (Flee Home).
+We will assume that you will install Flee in a directory called (Flee Home), e.g. `~/flee-release/`
 
 ### Installing Flare
 
-For this tutorial, you will also need to install Flare on your local workstation.
+To install Flare on your local workstation, you need to clone the repository:
+```
+git clone https://github.com/djgroen/flare-release.git
+```
 <br/> For installation instructions, see http://www.github.com/djgroen/flare-release
 
-We will assume that you will install Flare in a directory called (Flare Home).
+We will assume that you will install Flare in a directory called (Flare Home), e.g. `~/flare-release/`.
 
 ### Installing FabSim3 and FabFlee
 
-For installation instructions, see https://github.com/djgroen/FabSim3/blob/master/INSTALL.md
+To install FabSim3, you need to install dependencies and clone the FabSim3 repositories.
+For detailed installation instructions, see https://github.com/djgroen/FabSim3/blob/master/INSTALL.md
 
-We will assume that you will install FabSim3 in a directory called (FabSim Home).
+We will assume that you will install FabSim3 in a directory called (FabSim3 Home), e.g. `~/FabSim3/`.
 
-_NOTE: Please make sure, both `machines.yml` and `machines_user.yml` are configured correctly based on the installation guide._
+_NOTE: Please make sure both `machines.yml` and `machines_user.yml` are configured correctly based on the installation guide._
 
 
 Once you have installed FabSim3, you can install FabFlee by typing:
 ```
 fab localhost install_plugin:FabFlee
 ```
+The FabFlee plugin will appear in `~/FabSim3/plugins/FabFlee`.
 
 
 ## 2. Configuration
