@@ -60,12 +60,12 @@ Once you have installed the required dependencies, you will need to take a few s
 1. Go to `(FabSim Home)/deploy`
 2. Open `machines_user.yml`
 3. Under the section `default:`, please add the following lines:
-   <br/> a. flee_location=(Flee Home) 
+   <br/> a. `  flee_location=(Flee Home)`
    <br/> _NOTE: Please replace (Flee Home) with your actual install directory._
-   <br/> b. flare_location=(Flare Home)
+   <br/> b. `  flare_location=(Flare Home)`
    <br/> _NOTE: Please replace (Flare Home) with your actual install directory._
-
-
+   
+   
 
 # Forced migration simulations
 
@@ -213,6 +213,8 @@ fab localhost flee_conflict_forecast:mali,N=2,simulation_period=50
 
 
 # Going the next mile (optional content)
+
+These advanced tasks are intended for those who have access to the Eagle supercomputer, and who would like to try some of the more advanced features of FabSim3.
 
 ### Running the coupled simulation on a supercomputer
 ```
