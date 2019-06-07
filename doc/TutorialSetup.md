@@ -66,4 +66,6 @@ Once you have installed the required dependencies, you will need to take a few s
    <br/> b. `  flare_location=(Flare Home)`
    <br/> _NOTE: Please replace (Flare Home) with your actual install directory._
    
-   
+ ## 3. Main tutorial
+ 
+ Once you have completed these tasks, you can do the main tutorial at https://github.com/djgroen/FabFlee/blob/master/doc/Tutorial.md
