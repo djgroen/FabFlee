@@ -82,7 +82,8 @@ FabFlee comes with a range of sample simulation domains.
 fab localhost flee:<conflict_name>,simulation_period=<number>
 ```
 
-For instance, a basic model for the 2012 Mali conflict can be found in`(FabSim Home)/plugins/FabFlee/config_files/mali`.
+For instance, a basic model for the 2012 Mali conflict can be found in
+`(FabSim Home)/plugins/FabFlee/config_files/mali`.
 ```
 fab localhost flee:mali,simulation_period=50
 ```
@@ -135,7 +136,7 @@ You can then create similar directories with inputs that have a run speed of 100
 
 To run the ensemble, you can type:
 ```
-fab localhost flee_ensemble:mali_runspeed_test,simulation_period=300
+fab localhost flee_ensemble:mali_runspeed_test,simulation_period=50
 ```
 
 ### Step 4: Analyze the output
@@ -167,7 +168,7 @@ The workflow you will test out here involves the following:
 
 To run an ensemble of Flare simulations, generating different conflict evolutions, one can simply type:
 ```
-fab localhost flare_ensemble:mali,N=10,simulation_period=300,out_dir=flare-out-scratch
+fab localhost flare_ensemble:mali,N=10,simulation_period=50,out_dir=flare-out-scratch
 ```
 This generates a range of CSV files, which you can find in `(FabFlee Home)/results-flare/flare-out-scratch`.
 
@@ -185,7 +186,7 @@ This generates a SWEEP directory in `(FabFlee Home)/config_files/mali`, which in
 
 To then run a Flee ensemble over all the different configurations, simply type:
 ```
-fab localhost flee_ensemble:mali,simulation_period=300
+fab localhost flee_ensemble:mali,simulation_period=50
 ```
 Note that for Flee ensembles there is no need to specify the parameter `N`. It simply launches one run for every subdirectory in the `SWEEP` folder.
 
@@ -207,7 +208,7 @@ And you can inspect the plots by examining the `out` subdirectory of your result
 
 To run a coupled simulation with basic UQ, and basically repeat steps 1-3 in one go, just type:
 ```
-fab localhost flee_conflict_forecast:mali,N=2,simulation_period=300
+fab localhost flee_conflict_forecast:mali,N=2,simulation_period=50
 ```
 
 
@@ -217,7 +218,7 @@ fab localhost flee_conflict_forecast:mali,N=2,simulation_period=300
 
 ### Running the coupled simulation on a supercomputer
 ```
-fab eagle flee_conflict_forecast:mali,N=20,simulation_period=300
+fab eagle flee_conflict_forecast:mali,N=20,simulation_period=50
 ```
 1. Run `fab eagle job_stat_update` to check if you jobs are finished or not
 2. Run `fab eagle fetch_results` to copy back results from `eagle` machine. The results will then be in a directory inside `(FabSim Home)/results`, which is most likely called `mali_eagle_16`
@@ -227,14 +228,14 @@ fab eagle flee_conflict_forecast:mali,N=20,simulation_period=300
 <!---
 ### Running an ensemble simulation on a supercomputer using Pilot Jobs
 ```
-fab qcg flee_ensemble:mali,N=20,simulation_period=300,PilotJob=true
+fab qcg flee_ensemble:mali,N=20,simulation_period=50,PilotJob=true
 ```
 -->
 
 ### Running an ensemble simulation on a supercomputer using Pilot Jobs and QCG Broker
 
 ```
-fab qcg flee_ensemble:mali,N=20,simulation_period=300,PilotJob=true
+fab qcg flee_ensemble:mali,N=20,simulation_period=50,PilotJob=true
 ```
 1. Run `fab qcg job_stat_update` to check if you jobs are finished or not
 2. Run `fab qcg fetch_results` to copy back results from `qcg` machine. The results will then be in a directory inside `(FabSim Home)/results`, which is most likely called `mali_qcg_16`
