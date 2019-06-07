@@ -61,7 +61,7 @@ mkdir (FabFlee Location)/config_files/mali_runspeed_test/SWEEP
 
 Inside this SWEEP directory, you can then provide modified input files for each particular run instance by creating a subdirectory for it.
 
-<br/> For instance, to create a run instance with a maximum run speed of 200km/day, we can create a subdirectory called `200`, and create a simsetting.csv file in it with the following contents:`"MaxMoveSpeed",200`
+<br/> For instance, to create a run instance with a maximum movement speed of 200km/day for people escaping conflict, we can create a subdirectory called `200`, and create a simsetting.csv file in it with the following contents:`"MaxMoveSpeed",200`
 
 To illustrate **simsetting.csv** file:
 
@@ -74,7 +74,7 @@ You can then create similar directories with inputs that have a run speed of 100
 
 To run the ensemble, you can type:
 ```
-fab localhost flee_ensemble:mali_runspeed_test,simulation_period=50
+fab localhost flee_ensemble:mali_movespeed_test,simulation_period=50
 ```
 
 ### Step 4: Analyze the output
@@ -83,13 +83,17 @@ You can copy back any results from completed runs using:
 ```
 fab localhost fetch_results
 ```
-The results will then be in a directory inside `(FabSim Home)/results` which is most likely called `mali_runspeed_test_localhost_16`.
+The results will then be in a directory inside `(FabSim Home)/results` which is most likely called `mali_movespeed_test_localhost_16`.
 
 And you can plot the simulation output using:
 ```
-fab localhost plot_uq_output:mali_runspeed_test_localhost_16,out
+fab localhost plot_uq_output:mali_movespeed_test_localhost_16,out
 ```
 As a reminder: we use `plot_output` to visualize outputs of a single run, and `plot_uq_output` to collate and visualize results from an ensemble.
+
+As output you will get a range of files in the `out` subfolder of your results directory. For example, the image `Niamey-4_V2.png`, which visualizes migrant arrivals in Niamey with 95% confidence intervals based on the move speed, might look like this:
+
+![Arrivals with CI based on movespeed](https://raw.githubusercontent.com/djgroen/FabFlee/master/doc/Niamey-4_V2.png)
 
 
 ## 2.3 Executing coupled migration simulations
