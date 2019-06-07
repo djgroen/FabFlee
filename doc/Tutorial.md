@@ -5,7 +5,7 @@ In this tutorial we will explain how you can combine a simple stochastic conflic
 
 # 1. Setup
 
-See TutorialSetup.md for details on how to download, install and configure the software required for this tutorial.
+See https://github.com/djgroen/FabFlee/edit/master/doc/TutorialSetup.md for details on how to download, install and configure the software required for this tutorial.
 
 # 2. Forced migration simulations
 
