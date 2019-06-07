@@ -21,29 +21,27 @@ Below you can find installation instructions for each of these packages.
 
 ### Installing Flee
 
-To install Flee on your local workstation, you need to clone the Flee repository:
+To install Flee on your local workstation, you need to clone the Flee repository (see http://www.github.com/djgroen/flee-release):
 ``` 
 git clone https://github.com/djgroen/flee-release.git
 ```
-For installation instructions, see http://www.github.com/djgroen/flee-release
-
 We will assume that you will install Flee in a directory called (Flee Home), e.g. `~/flee-release/`
 
 ### Installing Flare
 
-To install Flare on your local workstation, you need to clone the Flare repository:
+To install Flare on your local workstation, you need to clone the Flare repository (see http://www.github.com/djgroen/flare-release):
 ```
 git clone https://github.com/djgroen/flare-release.git
 ```
-For installation instructions, see http://www.github.com/djgroen/flare-release
-
 We will assume that you will install Flare in a directory called (Flare Home), e.g. `~/flare-release/`.
 
 ### Installing FabSim3 and FabFlee
 
-To install FabSim3, you need to install dependencies and clone the FabSim3 repositories.
-For detailed installation instructions, see https://github.com/djgroen/FabSim3/blob/master/INSTALL.md
-
+To install FabSim3, you need to install dependencies and clone the FabSim3 repository.
+<br/> For detailed installation instructions, see https://github.com/djgroen/FabSim3/blob/master/INSTALL.md
+```
+git clone https://github.com/djgroen/FabSim3.git
+```
 We will assume that you will install FabSim3 in a directory called (FabSim3 Home), e.g. `~/FabSim3/`.
 
 _NOTE: Please make sure both `machines.yml` and `machines_user.yml` are configured correctly based on the installation guide._
