@@ -1,4 +1,4 @@
-FLEE coupled UQ tutorial
+FabFLEE coupled UQ tutorial
 =====
 
 In this tutorial we will explain how you can combine a simple stochastic conflict evolution model (Flare) with an agent-based migration model (Flee), perform a set of runs based on different conflict evolutions, and visualize the migrant arrivals with confidence intervals. We combine these two models with FabSim3, which is an integrated test infrastructure and more flexible customisation options using a plugin system. This creates the FabFlee plugin that provides more systematic, quick, simple and time efficient refinement of forced migration models. 
