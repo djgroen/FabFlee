@@ -76,7 +76,7 @@ def couple_flare_to_flee(config, flare_out="flare-out-scratch"):
 
 
 @task
-def flee_conflict_forecast(config, **args):
+def flee_conflict_forecast(config, simulation_period, **args):
     """
     Run Flare ensemble, convert output to Flee ensemble input,
     run Flee ensemble.
@@ -86,7 +86,7 @@ def flee_conflict_forecast(config, **args):
 
     local("rm -rf %s/flare-results/flare-out-scratch/*" %
           (get_plugin_path("FabFlee")))
-    flare_ensemble(config, env.simulation_period, env.N, "flare-out-scratch")
+    flare_ensemble(config, simulation_period, env.N, "flare-out-scratch")
 
     couple_flare_to_flee(config, flare_out="flare-out-scratch")
 
@@ -95,17 +95,18 @@ def flee_conflict_forecast(config, **args):
     # local("cp -r %s/results-flare/flare-out-scratch/* %s/SWEEP/"
     # % (get_plugin_path("FabFlee"), config_dir))
 
-    flee_ensemble(config, **args)
+    flee_ensemble(config, simulation_period, **args)
 
 
 @task
-def flee(config, **args):
+def flee(config, simulation_period, **args):
     """ Submit a Flee job to the remote queue.
     The job results will be stored with a name pattern as
     defined in the environment,
     e.g. car-abcd1234-localhost-4
     config :
         config directory to use for the simulation script, e.g. config=car2014
+    simulation_period : length of the simulation in days.
     Keyword arguments:
             cores : number of compute cores to request
             wall_time : wall-time job limit
@@ -121,25 +122,25 @@ def flee(config, **args):
     print_local_environment()
     '''
 
-    update_environment(args)
+    update_environment(args, {"simulation_period": simulation_period})
     with_config(config)
     execute(put_configs, config)
     job(dict(script='flee', wall_time='0:15:0', memory='2G'), args)
 
 
 @task
-def flee_and_plot(config, **args):
+def flee_and_plot(config, simulation_period, **args):
     """
     Runs Flee and plots the output in a graph subdir
     """
-    update_environment(args)
+    update_environment(args, {"simulation_period": simulation_period})
     env.simulation_settings = "simsetting.csv"
-    flee(config, **args)
+    flee(config, simulation_period, **args)
     plot_output("%s" % (env.job_name), "graph")
 
 
 @task
-def pflee(config, **args):
+def pflee(config, simulation_period, **args):
     """ Submit a Pflee job to the remote queue.
     The job results will be stored with a name pattern as defined
     in the environment, e.g. car-abcd1234-localhost-4
@@ -158,14 +159,14 @@ def pflee(config, **args):
                         % (get_plugin_path("FabFlee"), config)})
     print_local_environment()
     '''
-    update_environment(args)
+    update_environment(args, {"simulation_period": simulation_period})
     with_config(config)
     execute(put_configs, config)
     job(dict(script='pflee', wall_time='0:15:0', memory='2G'), args)
 
 
 @task
-def food_flee(config, **args):
+def food_flee(config, simulation_period, **args):
     """ Submit a Flee job to the remote queue.
     The job results will be stored with a name pattern as defined
     in the environment, e.g. car-abcd1234-localhost-4
@@ -182,14 +183,14 @@ def food_flee(config, **args):
                         "%s/config_files/%s/source_data"
                         % (get_plugin_path("FabFlee"), config)})
     # print_local_environment()
-    update_environment(args)
+    update_environment(args, {"simulation_period": simulation_period})
     with_config(config)
     execute(put_configs, config)
     job(dict(script='flee_food', wall_time='0:15:0', memory='2G'), args)
 
 
 @task
-def flees(config, **args):
+def flees(config, simulation_period, **args):
     # Save relevant arguments to a Python or numpy list.
     print(args)
 
@@ -199,7 +200,7 @@ def flees(config, **args):
 
 
 @task
-def flee_ensemble(config="flee_test", script='flee', **args):
+def flee_ensemble(config, simulation_period, script='flee', **args):
     """
     Submits an ensemble of dummy jobs.
     One job is run for each file in <config_file_directory>/flee_test/SWEEP.
@@ -211,13 +212,14 @@ def flee_ensemble(config="flee_test", script='flee', **args):
     sweep_dir = path_to_config + "/SWEEP"
     env.script = script
     env.input_name_in_config = 'flee.txt'
+    env.simulation_period = simulation_period
 
     run_ensemble(config, sweep_dir, **args)
 
 
 @task
-def pflee_ensemble(config="flee_test", **args):
-    flee_ensemble(config=config, script='pflee', **args)
+def pflee_ensemble(config, simulation_period, **args):
+    flee_ensemble(config, simulation_period, script='pflee', **args)
 
 
 @task
