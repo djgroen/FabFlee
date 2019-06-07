@@ -1,77 +1,17 @@
-# FLEE coupled UQ tutorial
+FLEE coupled UQ tutorial
+=====
 
 In this tutorial we will explain how you can combine a simple stochastic conflict evolution model (Flare) with an agent-based migration model (Flee), perform a set of runs based on different conflict evolutions, and visualize the migrant arrivals with confidence intervals. We combine these two models with FabSim3, which is an integrated test infrastructure and more flexible customisation options using a plugin system. This creates the FabFlee plugin that provides more systematic, quick, simple and time efficient refinement of forced migration models. 
 
-## 1. Prerequisites
+# 1. Setup
 
-To perform this tutorial, you will require 
-* Linux environment
-* Python3
-* Python libraries
-   * numpy (see https://www.numpy.org)
-   * pandas (see https://pandas.pydata.org)
-   * matplotlib (see https://matplotlib.org)
-* The following software packages:
-   * Flee
-   * Flare
-   * FabSim3
-   * The FabFlee plugin
+See TutorialSetup.md for details on how to download, install and configure the software required for this tutorial.
 
-Below you can find installation instructions for each of these packages.
-
-### Installing Flee
-
-To install Flee on your local workstation, you need to clone the Flee repository (see http://www.github.com/djgroen/flee-release):
-``` 
-git clone https://github.com/djgroen/flee-release.git
-```
-We will assume that you will install Flee in a directory called (Flee Home), e.g. `~/flee-release/`
-
-### Installing Flare
-
-To install Flare on your local workstation, you need to clone the Flare repository (see http://www.github.com/djgroen/flare-release):
-```
-git clone https://github.com/djgroen/flare-release.git
-```
-We will assume that you will install Flare in a directory called (Flare Home), e.g. `~/flare-release/`.
-
-### Installing FabSim3 and FabFlee
-
-To install FabSim3, you need to install dependencies and clone the FabSim3 repository.
-<br/> For detailed installation instructions, see https://github.com/djgroen/FabSim3/blob/master/INSTALL.md
-```
-git clone https://github.com/djgroen/FabSim3.git
-```
-We will assume that you will install FabSim3 in a directory called (FabSim3 Home), e.g. `~/FabSim3/`.
-
-_NOTE: Please make sure both `machines.yml` and `machines_user.yml` are configured correctly based on the installation guide._
-
-
-Once you have installed FabSim3, you can install FabFlee by typing:
-```
-fab localhost install_plugin:FabFlee
-```
-The FabFlee plugin will appear in `~/FabSim3/plugins/FabFlee`.
-
-
-## 2. Configuration
-
-Once you have installed the required dependencies, you will need to take a few small configuration steps:
-1. Go to `(FabSim Home)/deploy`
-2. Open `machines_user.yml`
-3. Under the section `default:`, please add the following lines:
-   <br/> a. `  flee_location=(Flee Home)`
-   <br/> _NOTE: Please replace (Flee Home) with your actual install directory._
-   <br/> b. `  flare_location=(Flare Home)`
-   <br/> _NOTE: Please replace (Flare Home) with your actual install directory._
-   
-   
-
-# Forced migration simulations
+# 2. Forced migration simulations
 
 In this section we will show you how you can run different types of migration simulations. We first explain how you can do basic analysis using a single model, and then explain how you can perform a coupled application run that features very basic uncertainty quantification.
 
-## Executing single-model migration simulations
+## 2.1 Executing single-model migration simulations
 
 FabFlee comes with a range of sample simulation domains. 
 
@@ -101,7 +41,7 @@ This is a little redundant for runs on localhost, but essential if you run on an
 fab localhost plot_output:mali_localhost_16,out
 ```
 
-## Ensembles
+## 2.2 Ensembles
 
 Now you may want to run multiple simulations, to see to what extent the definition of the maximum run speed in Flee affect the overall results. To do so, you can create an ensemble definition.
 
@@ -152,7 +92,7 @@ fab localhost plot_uq_output:mali_runspeed_test_localhost_16,out
 As a reminder: we use `plot_output` to visualize outputs of a single run, and `plot_uq_output` to collate and visualize results from an ensemble.
 
 
-## Executing coupled migration simulations
+## 2.3 Executing coupled migration simulations
 
 Now a single simulation run is nice, but as this tutorial is part of a project on *multiscale* uncertainty quantification, the least we can offer is a simple UQ analysis using a coupled scenario.
 
@@ -212,7 +152,7 @@ fab localhost flee_conflict_forecast:mali,N=2,simulation_period=50
 
 
 
-# Going the next mile (optional content)
+# 3. Going the next mile (optional content for advanced users)
 
 These advanced tasks are intended for those who have access to the Eagle supercomputer, and who would like to try some of the more advanced features of FabSim3.
 
@@ -241,6 +181,6 @@ fab qcg flee_ensemble:mali,N=20,simulation_period=50,PilotJob=true
 2. Run `fab qcg fetch_results` to copy back results from `qcg` machine. The results will then be in a directory inside `(FabSim Home)/results`, which is most likely called `mali_qcg_16`
 3. Run `fab localhost plot_uq_output:mali_qcg_16,out` to generate plots
 
-# Acknowledgements
+# 4. Acknowledgements
 
 This work was supported by the VECMA and HiDALGO projects, which has received funding from the European Union Horizon 2020 research and innovation programme under grant agreement No 800925 and 824115.
