@@ -74,7 +74,7 @@ You can then create similar directories with inputs that have a run speed of 100
 
 To run the ensemble, you can type:
 ```
-fab localhost flee_ensemble:mali_movespeed_test,simulation_period=50
+fab localhost flee_ensemble:mali_runspeed_test,simulation_period=50
 ```
 
 ### Step 4: Analyze the output
@@ -83,11 +83,11 @@ You can copy back any results from completed runs using:
 ```
 fab localhost fetch_results
 ```
-The results will then be in a directory inside `(FabSim Home)/results` which is most likely called `mali_movespeed_test_localhost_16`.
+The results will then be in a directory inside `(FabSim Home)/results` which is most likely called `mali_runspeed_test_localhost_16`.
 
 And you can plot the simulation output using:
 ```
-fab localhost plot_uq_output:mali_movespeed_test_localhost_16,out
+fab localhost plot_uq_output:mali_runspeed_test_localhost_16,out
 ```
 As a reminder: we use `plot_output` to visualize outputs of a single run, and `plot_uq_output` to collate and visualize results from an ensemble.
 
