@@ -1,7 +1,9 @@
 FabFLEE coupled UQ tutorial
 =====
 
-In this tutorial we will explain how you can combine a simple stochastic conflict evolution model (Flare) with an agent-based migration model (Flee), perform a set of runs based on different conflict evolutions, and visualize the migrant arrivals with confidence intervals. The Flee agent-based migration model has been used in a *Scientific Reports* paper to make forecasts of forced migration in conflicts (https://www.nature.com/articles/s41598-017-13828-9), while the Flare model is still in a prototype stage.
+In this tutorial we will explain how you can combine a simple stochastic conflict evolution model (Flare) with an agent-based migration model (Flee), perform a set of runs based on different conflict evolutions, and visualize the migrant arrivals with confidence intervals. The Flee agent-based migration model has been used in a *Scientific Reports* paper to make forecasts of forced migration in conflicts (https://www.nature.com/articles/s41598-017-13828-9), while the Flare model is still in a prototype stage. The situation of interest we look into is the 2012 Northern Mali Conflict.
+
+![Graphical depiction of population movements in Mali. Background image is courtesy of Orionist (Wikimedia)](https://raw.githubusercontent.com/djgroen/FabFlee/master/doc/mali-arrows-border.png)
 
 We combine these two models using the FabSim3 automation toolkit (http://fabsim3.readthedocs.io), which features an integrated test infrastructure and a flexible plugin system. Specifically, we will showcase the FabFlee plugin which automates complex simulation workflows involving forced migration models. 
 
