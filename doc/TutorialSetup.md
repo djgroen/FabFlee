@@ -50,7 +50,7 @@ _NOTE: Please make sure both `machines.yml` and `machines_user.yml` are configur
 
 Once you have installed FabSim3, you can install FabFlee by typing:
 ```
-fab localhost install_plugin:FabFlee
+fabsim localhost install_plugin:FabFlee
 ```
 The FabFlee plugin will appear in `~/FabSim3/plugins/FabFlee`.
 
