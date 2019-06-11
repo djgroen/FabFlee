@@ -9,7 +9,7 @@ We combine these two models using the FabSim3 automation toolkit (http://fabsim3
 
 # 1. Setup
 
-Please refer to https://github.com/djgroen/FabFlee/edit/master/doc/TutorialSetup.md for details on how to download, install and configure the software required for this tutorial.
+Please refer to https://github.com/djgroen/FabFlee/blob/master/doc/TutorialSetup.md for details on how to download, install and configure the software required for this tutorial.
 
 # 2. Forced migration simulations
 
