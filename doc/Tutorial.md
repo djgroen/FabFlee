@@ -29,6 +29,7 @@ For instance, a basic model for the 2012 Mali conflict can be found in
 ```
 fabsim localhost flee:mali,simulation_period=50
 ```
+> _NOTE : regular runs have a `simulation_period` of 300 days, but we use a simulation period of 50 days to reduce the execution time of each simulation in this tutorial_
 
 2. You can copy back any results from completed runs using:
 ```
