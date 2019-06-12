@@ -171,7 +171,8 @@ fabsim localhost flee_conflict_forecast:mali,N=10,simulation_period=50
 
 These advanced tasks are intended for those who have access to the Eagle supercomputer, and who would like to try some of the more advanced features of FabSim3.
 
-Before, running any simulation on a remote supercomputer, there are several steps that need to be taken
+## Additional setup tasks for advanced use
+Before running any simulation on a remote supercomputer, you'll need to do the following:
 
 - Make sure the target remote machine is properly defined in `(FabSim Home)/deploy/machines.yml` 
 - Since that, in Flee, some python libraries such as `numpy` will be used for the job execution, in case of nonexistent of those packages, we recommended to install a _virtualenv_ on the target machine. It can be done by running
@@ -213,4 +214,3 @@ fabsim qcg flee_ensemble:mali,N=20,simulation_period=50,PilotJob=true
 # 4. Acknowledgements
 
 This work was supported by the VECMA and HiDALGO projects, which has received funding from the European Union Horizon 2020 research and innovation programme under grant agreement No 800925 and 824115.
->>>>>>> 7c7e26904f49b31f84ad95a7c86e2bfd759aef00
