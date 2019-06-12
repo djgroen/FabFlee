@@ -1,6 +1,12 @@
 cd $job_results
 $run_prefix
-export PYTHONPATH=$flee_location:$$PYTHONPATH
+
+if [ -z "$flee_location" ]
+then
+	echo "Please set $$flee_location in your deploy/machines_user.yml file."
+else
+	export PYTHONPATH=$flee_location:$$PYTHONPATH
+fi
 
 /usr/bin/env > env.log
 
