@@ -102,7 +102,7 @@ As a reminder: we use `plot_output` to visualize outputs of a single run, and `p
 
 As output you will get a range of files in the `out` subfolder of your results directory. For example, the image `Niamey-4_V2.png`, which visualizes migrant arrivals in Niamey with 95% confidence intervals based on the move speed, might look like this:
 
-![Arrivals with CI based on movespeed](https://raw.githubusercontent.com/djgroen/FabFlee/master/doc/Niamey-4_V2.png)
+![Arrivals with confidence interval based on movespeed](https://raw.githubusercontent.com/djgroen/FabFlee/master/doc/Niamey-4_V2.png)
 
 
 ## 2.3 Executing coupled migration simulations
@@ -153,7 +153,9 @@ Assuming this name, you can then run the following command to generate plots:
 ```
 fabsim localhost plot_uq_output:mali_localhost_16,out
 ```
-And you can inspect the plots by examining the `out` subdirectory of your results directory.
+And you can inspect the plots by examining the `out` subdirectory of your results directory. For instance, if you like again at `Niamey-4_V2.png`, it might look like this:
+
+![Arrivals with confidence interval based on conflict evolution](https://raw.githubusercontent.com/djgroen/FabFlee/master/doc/Niamey-4_V2-coupled.png)
 
 ### Step 1-3 in a one-liner
 
