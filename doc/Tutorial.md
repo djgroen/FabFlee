@@ -19,19 +19,6 @@ Please refer to https://github.com/djgroen/FabFlee/blob/master/doc/TutorialSetup
 
 # 2. Forced migration simulations
 
-<<<<<<< HEAD
-## Configuration
-
-
-
-## Executing the workflow.
-
-To run this workflow in one command, executing first Flare 20 times and then Flee 20 times, just use:
-`fab localhost flee_conflict_forecast:mali,simulation_period=50,N=5`
-
-The plot the aggregated output of the simulation ensemble, including confidence intervals, you can use:
-`fab localhost plot_uq_output:mali_localhost_16/RUNS,out`
-=======
 In this section we will show you how you can run different types of migration simulations. We first explain how you can do basic analysis using a single model, and then explain how you can perform a coupled application run that features very basic uncertainty quantification.
 
 ## 2.1 Executing single-model migration simulations
