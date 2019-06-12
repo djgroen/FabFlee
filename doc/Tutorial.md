@@ -153,9 +153,9 @@ Assuming this name, you can then run the following command to generate plots:
 ```
 fabsim localhost plot_uq_output:mali_localhost_16,out
 ```
-And you can inspect the plots by examining the `out` subdirectory of your results directory. For instance, if you like again at `Niamey-4_V2.png`, it might look like this:
+And you can inspect the plots by examining the `out` subdirectory of your results directory. For instance, if you look at `Bobo-Dioulasso-4_V2.png`, it might look like this:
 
-![Arrivals with confidence interval based on conflict evolution](https://raw.githubusercontent.com/djgroen/FabFlee/master/doc/Niamey-4_V2-coupled.png)
+![Arrivals in Bobo-Dioulasso with confidence interval based on conflict evolution](https://raw.githubusercontent.com/djgroen/FabFlee/master/doc/Bobo.png)
 
 ### Step 1-3 in a one-liner
 
