@@ -32,8 +32,8 @@ def flare_local(config, simulation_period, out_dir=""):
     flare_out_dir = "%s/results-flare/%s" % (get_plugin_path("FabFlee"), out_dir)
     config_dir = "%s/config_files/%s" % (get_plugin_path("FabFlee"), config)
 
-    local("mkdir -p %s" % flare_out_dir)
-    local("python3 %s/scripts/run_flare.py %s %s/input_csv %s/flare-out.csv" % (get_plugin_path("FabFlee"), simulation_period, config_dir, flare_out_dir))
+    local("mkdir -p %s/input_csv" % flare_out_dir)
+    local("python3 %s/scripts/run_flare.py %s %s/input_csv %s/input_csv/conflicts.csv" % (get_plugin_path("FabFlee"), simulation_period, config_dir, flare_out_dir))
 
 @task
 def flare_ensemble(config, simulation_period, N, out_dir):
