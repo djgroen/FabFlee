@@ -184,6 +184,19 @@ fabsim localhost flee_conflict_forecast:mali,N=10,simulation_period=50
 
 These advanced tasks are intended for those who have access to the Eagle supercomputer, and who would like to try some of the more advanced features of FabSim3.
 
+Before, running any simulation on a remote supercomputer, there are several steps that need to be taken
+
+- Make sure the target remote machine is properly defined in `(FabSim Home)/deploy/machines.yml` 
+- Since that, in Flee, some python libraries such as `numpy` will be used for the job execution, in case of nonexistent of those packages, we recommended to install a _virtualenv_ on the target machine. It can be done by running
+
+	> for QCG machine : `fab qcg install_app:QCG-PilotJob,virtual_env=True`
+	> For SLURM machine : `fab eagle install_app:QCG-PilotJob,virtual_env=True`
+	> 
+	> **NOTE** : the installation path (`virtual_env_path`) is set on `machines.yml` as one of parameters for the target remote machine
+	> 
+	> By installing this _virtualenv_, the [QCG Pilot](https://github.com/vecma-project/QCG-PilotJob) Job service will be also installed on the target remote machine
+
+
 ### Running the coupled simulation on a supercomputer
 ```
 fabsim eagle flee_conflict_forecast:mali,N=20,simulation_period=50
