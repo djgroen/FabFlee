@@ -161,7 +161,7 @@ And you can inspect the plots by examining the `out` subdirectory of your result
 
 To run a coupled simulation with basic UQ, and basically repeat steps 1-3 in one go, just type:
 ```
-fabsim localhost flee_conflict_forecast:mali,N=2,simulation_period=50
+fabsim localhost flee_conflict_forecast:mali,N=10,simulation_period=50
 ```
 
 
