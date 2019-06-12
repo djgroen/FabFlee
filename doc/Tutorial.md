@@ -190,6 +190,7 @@ Before, running any simulation on a remote supercomputer, there are several step
 - Since that, in Flee, some python libraries such as `numpy` will be used for the job execution, in case of nonexistent of those packages, we recommended to install a _virtualenv_ on the target machine. It can be done by running
 
 	> for QCG machine : `fab qcg install_app:QCG-PilotJob,virtual_env=True`
+	>
 	> For SLURM machine : `fab eagle install_app:QCG-PilotJob,virtual_env=True`
 	> 
 	> **NOTE** : the installation path (`virtual_env_path`) is set on `machines.yml` as one of parameters for the target remote machine
