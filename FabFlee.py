@@ -67,13 +67,14 @@ def couple_flare_to_flee(config, flare_out="flare-out-scratch"):
     a configuration for an ensemble run.
     """
     config_dir = "%s/config_files/%s" % (get_plugin_path("FabFlee"), config)
+    local("rm -rf %s/SWEEP" % (config_dir))
     local("mkdir -p %s/SWEEP" % (config_dir))
     local("cp -r %s/results-flare/%s/* %s/SWEEP/"
           % (get_plugin_path("FabFlee"), flare_out, config_dir))
 
 
 @task
-def flee_conflict_forecast(config, simulation_period, **args):
+def flee_conflict_forecast(config, simulation_period, N, **args):
     """
     Run Flare ensemble, convert output to Flee ensemble input,
     run Flee ensemble.
@@ -81,9 +82,9 @@ def flee_conflict_forecast(config, simulation_period, **args):
     """
     update_environment(args)
 
-    local("rm -rf %s/flare-results/flare-out-scratch/*" %
+    local("rm -rf %s/results-flare/flare-out-scratch/*" %
           (get_plugin_path("FabFlee")))
-    flare_ensemble(config, simulation_period, env.N, "flare-out-scratch")
+    flare_ensemble(config, simulation_period, N, "flare-out-scratch")
 
     couple_flare_to_flee(config, flare_out="flare-out-scratch")
 
