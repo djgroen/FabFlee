@@ -195,7 +195,7 @@ Before, running any simulation on a remote supercomputer, there are several step
 	> 
 	> **NOTE** : the installation path (`virtual_env_path`) is set on `machines.yml` as one of parameters for the target remote machine
 	> 
-	> By installing this _virtualenv_, the [QCG Pilot](https://github.com/vecma-project/QCG-PilotJob) Job service will be also installed on the target remote machine
+	> By installing this _virtualenv_ on the target remote machine, the [QCG Pilot](https://github.com/vecma-project/QCG-PilotJob) Job service will be also installed alongside with other required dependencies 
 
 
 ### Running the coupled simulation on a supercomputer
