@@ -9,6 +9,12 @@ We combine these two models using the FabSim3 automation toolkit (http://fabsim3
 
 # 1. Setup
 
+This tutorial uses a range of VECMAtk components, as shown in the Tube Map below.
+
+![Graphical depiction of the VECMAtk components used in the FabFlee tutorial](https://raw.githubusercontent.com/djgroen/FabFlee/master/doc/FabFleeMap.png)
+
+The basic tutorial relies primarily on FabSim3, and specifically on the FabFlee plugin of that toolkit. The advanced content in section 3, however, enables you to use several QCG tools as well.
+
 Please refer to https://github.com/djgroen/FabFlee/blob/master/doc/TutorialSetup.md for details on how to download, install and configure the software required for this tutorial.
 
 # 2. Forced migration simulations
@@ -159,7 +165,7 @@ fabsim localhost flee_conflict_forecast:mali,N=2,simulation_period=50
 
 
 
-# 3. Going the next mile (optional content for advanced users)
+# 3. Going the extra mile (content for advanced users)
 
 These advanced tasks are intended for those who have access to the Eagle supercomputer, and who would like to try some of the more advanced features of FabSim3.
 
