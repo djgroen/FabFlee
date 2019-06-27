@@ -11,4 +11,4 @@ Simply type `fab localhost install_plugin:FabFlee` anywhere inside your FabSim3 
 
 ## Working with FabFlee 
 
-The main tutorial for the VECMAtk release can be found in https://github.com/djgroen/FabFlee/doc/Tutorial.md. 
+The main tutorial for the VECMAtk release can be found in https://github.com/djgroen/FabFlee/blob/master/doc/Tutorial.md.
