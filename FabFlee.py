@@ -14,6 +14,17 @@ add_local_paths("FabFlee")
 # import conflicts
 
 
+@task 
+def sync_flee():
+    """
+    Synchronize the Flee version, so that the remote machine has the latest 
+    version from localhost.
+    """
+    rsync_project(
+                  local_dir=env.flee_location_local + '/',
+                  remote_dir=env.flee_location
+    )    
+
 @task
 def extract_conflict_file(config, simulation_period, **args):
     """
@@ -163,6 +174,16 @@ def pflee(config, simulation_period, **args):
     with_config(config)
     execute(put_configs, config)
     job(dict(script='pflee', wall_time='0:15:0', memory='2G'), args)
+
+@task 
+def pflee_test(config, **args)
+    """
+    Run a short parallel test with a particular config.
+    """
+    update_environment(args, {"simulation_period": 10})
+    with_config(config)
+    execute(put_configs, config)
+    job(dict(script='pflee_test', wall_time='0:15:0', memory='2G'), args)
 
 
 @task
