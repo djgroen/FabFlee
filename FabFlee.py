@@ -728,13 +728,35 @@ def validate_results(output_dir=""):
 
 
     with open("{}/{}/validation_results.yml".format(env.local_results, output_dir), 'r') as val_yaml:
-        validation_results = yaml.load(val_yaml)
+        validation_results = yaml.load(val_yaml, Loader=yaml.SafeLoader)
 
         #TODO: make a proper validation metric using a validation schema.
         print(validation_results["totals"]["Error (rescaled)"])
         return validation_results["totals"]["Error (rescaled)"]
 
     return -1.0
+
+
+@task
+def validate_flee(mode="serial"):
+    """
+    Runs all the validation test and returns all scores, as well as an average.
+    """
+    if mode=="parallel":
+        pflee_ensemble("validation", 300, cores=2)
+    else:
+        flee_ensemble("validation", 300, cores=1)
+    
+    fetch_results()
+    validation_scores = []
+    results_dir = "validation_localhost_1/RUNS"
+    print("{}/{}".format(env.local_results,results_dir))
+    for item in os.listdir("{}/{}".format(env.local_results,results_dir)):
+        if os.path.isdir(os.path.join(env.local_results, results_dir, item)):
+            validation_scores.append(validate_results(os.path.join(results_dir, item)))
+
+    print("AVERAGED VALIDATION SCORE: {}".format(np.mean(validation_scores)))
+
 
 @task
 # Syntax: fab localhost
