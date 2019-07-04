@@ -21,17 +21,17 @@ def date_to_sim_days(date):
 
 if __name__ == "__main__":
 
-  end_time = 604
-  last_physical_day = 604
+  end_time = 300
+  last_physical_day = 300
 
   if len(sys.argv)<4:
     print("Please run using: python3 run.py <your_csv_directory> <your_refugee_data_directory> <duration in days> <optional: simulation_settings.csv> > <output_directory>/<output_csv_filename>")
 
   input_csv_directory = sys.argv[1]
   validation_data_directory = sys.argv[2]
-  duration = int(sys.argv[3])
-  end_time = int(sys.argv[3])
-  last_physical_day = int(sys.argv[3])
+  if int(sys.argv[3]) > 0:
+    end_time = int(sys.argv[3])
+    last_physical_day = int(sys.argv[3])
 
   if len(sys.argv)==5:
     flee.SimulationSettings.SimulationSettings.ReadFromCSV(sys.argv[4])
