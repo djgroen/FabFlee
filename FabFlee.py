@@ -243,6 +243,14 @@ def flee_ensemble(config, simulation_period, script='flee', **args):
     env.input_name_in_config = 'flee.txt'
     env.simulation_period = simulation_period
 
+    if args.get("PilotJob", "False") == "True":
+
+        #specific workaround for Flee on Eagle.
+        cmds = ["pip install --upgrade pip",
+                    "python3 -m pip install numpy"]
+        for cmd in cmds:
+            env.run_prefix_commands.append(cmd)
+
     run_ensemble(config, sweep_dir, **args)
 
 
