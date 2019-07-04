@@ -708,6 +708,25 @@ def plot_output(output_dir="", graphs_dir=""):
              env.local_results, output_dir,
              env.local_results, output_dir, graphs_dir))
 
+@task
+# Syntax: fab localhost
+# validate_results:flee_conflict_name_localhost_16(,graphs_dir_name)
+def validate_results(output_dir=""):
+    """ Plot generated output results using plot-flee-output.py. """
+    local("python3 %s/extract-validation-results.py %s/%s > %s/%s/validation_results.yml"
+          % (env.flee_location,
+             env.local_results, output_dir, env.local_results, output_dir))
+
+
+
+    with open("{}/{}/validation_results.yml".format(env.local_results, output_dir), 'r') as val_yaml:
+        validation_results = yaml.load(val_yaml)
+
+        #TODO: make a proper validation metric using a validation schema.
+        print(validation_results["totals"]["Error (rescaled)"])
+        return validation_results["totals"]["Error (rescaled)"]
+
+    return -1.0
 
 @task
 # Syntax: fab localhost
