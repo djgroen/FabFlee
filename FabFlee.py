@@ -738,14 +738,14 @@ def validate_results(output_dir=""):
 
 
 @task
-def validate_flee(mode="serial"):
+def validate_flee(mode="serial", simulation_period=0):
     """
     Runs all the validation test and returns all scores, as well as an average.
     """
     if mode=="parallel":
-        pflee_ensemble("validation", 300, cores=2)
+        pflee_ensemble("validation", simulation_period, cores=3)
     else:
-        flee_ensemble("validation", 300, cores=1)
+        flee_ensemble("validation", simulation_period, cores=1)
     
     fetch_results()
     validation_scores = []

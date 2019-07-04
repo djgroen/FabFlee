@@ -1,4 +1,4 @@
-from flee import flee
+from flee import pflee as flee
 from datamanager import handle_refugee_data
 from datamanager import DataTable #DataTable.subtract_dates()
 from flee import InputGeography
@@ -82,7 +82,8 @@ if __name__ == "__main__":
 
   output_header_string += "Total error,refugees in camps (UNHCR),total refugees (simulation),raw UNHCR refugee count,refugees in camps (simulation),refugee_debt"
 
-  print(output_header_string)
+  if e.getRankN(0):
+      print(output_header_string)
 
   # Set up a mechanism to incorporate temporary decreases in refugees
   refugee_debt = 0
@@ -148,11 +149,9 @@ if __name__ == "__main__":
       output += ",%s,%s,%s" % (lm[camp_locations[i]].numAgents, loc_data[i], errors[i])
 
     if refugees_raw>0:
-      #output_string += ",%s,%s,%s,%s" % (float(np.sum(abs_errors))/float(refugees_raw), int(sum(loc_data)), e.numAgents(), refugees_raw)
-      output += ",%s,%s,%s,%s,%s,%s" % (float(np.sum(abs_errors))/float(refugees_raw), int(sum(loc_data)), e.numAgents(), refugees_raw, refugees_in_camps_sim, refugee_debt)
+        output += ",%s,%s,%s,%s,%s,%s" % (float(np.sum(abs_errors))/float(refugees_raw), int(sum(loc_data)), e.numAgents(), refugees_raw, refugees_in_camps_sim, refugee_debt)
     else:
-      output += ",0,0,0,0,0,0"
-      #output_string += ",0"
+        output += ",0,0,0,0,0,0"
 
-
-    print(output)
+    if e.getRankN(t):
+        print(output)

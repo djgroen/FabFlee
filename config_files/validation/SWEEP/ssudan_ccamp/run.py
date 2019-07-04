@@ -26,9 +26,9 @@ if __name__ == "__main__":
 
   input_csv_directory = sys.argv[1]
   validation_data_directory = sys.argv[2]
-  duration = int(sys.argv[3])
-  end_time = int(sys.argv[3])
-  last_physical_day = int(sys.argv[3])
+  if int(sys.argv[3]) > 0:
+    end_time = int(sys.argv[3])
+    last_physical_day = int(sys.argv[3])
 
   if len(sys.argv)==5:
     flee.SimulationSettings.SimulationSettings.ReadFromCSV(sys.argv[4])
