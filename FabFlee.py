@@ -13,27 +13,31 @@ add_local_paths("FabFlee")
 
 # import conflicts
 
-@task 
+
+@task
 def get_flee_location():
     """
     Print the $flee_location env variable for the target machine.
     """
     update_environment()
-    print(env.machine_name, env.flee_location)
+    print(env.machine_name, template(env.flee_location))
 
-@task 
+
+@task
 def sync_flee():
     """
-    Synchronize the Flee version, so that the remote machine has the latest 
+    Synchronize the Flee version, so that the remote machine has the latest
     version from localhost.
     """
     update_environment()
-    flee_location_local = user_config["localhost"].get("flee_location", user_config["default"].get("flee_location"))
+    flee_location_local = user_config["localhost"].get(
+        "flee_location", user_config["default"].get("flee_location"))
 
     rsync_project(
-                  local_dir=flee_location_local + '/',
-                  remote_dir=env.flee_location
-    )    
+        local_dir=flee_location_local + '/',
+        remote_dir=template(env.flee_location)
+    )
+
 
 @task
 def extract_conflict_file(config, simulation_period, **args):
@@ -64,7 +68,8 @@ def flare_local(config, simulation_period, out_dir=""):
     config_dir = "%s/config_files/%s" % (get_plugin_path("FabFlee"), config)
 
     local("mkdir -p %s/input_csv" % flare_out_dir)
-    local("python3 %s/scripts/run_flare.py %s %s/input_csv %s/input_csv/conflicts.csv" % (get_plugin_path("FabFlee"), simulation_period, config_dir, flare_out_dir))
+    local("python3 %s/scripts/run_flare.py %s %s/input_csv %s/input_csv/conflicts.csv" %
+          (get_plugin_path("FabFlee"), simulation_period, config_dir, flare_out_dir))
 
 
 @task
@@ -183,7 +188,8 @@ def pflee(config, simulation_period, **args):
     execute(put_configs, config)
     job(dict(script='pflee', wall_time='0:15:0', memory='2G'), args)
 
-@task 
+
+@task
 def pflee_test(config, **args):
     """
     Run a short parallel test with a particular config.
@@ -243,13 +249,15 @@ def flee_ensemble(config, simulation_period, script='flee', **args):
     env.input_name_in_config = 'flee.txt'
     env.simulation_period = simulation_period
 
+    '''
     if args.get("PilotJob", "False") == "True":
 
-        #specific workaround for Flee on Eagle.
+        # specific workaround for Flee on Eagle.
         cmds = ["pip install --upgrade pip",
-                    "python3 -m pip install numpy"]
+                "python3 -m pip install numpy"]
         for cmd in cmds:
             env.run_prefix_commands.append(cmd)
+    '''
 
     run_ensemble(config, sweep_dir, **args)
 
@@ -716,6 +724,7 @@ def plot_output(output_dir="", graphs_dir=""):
              env.local_results, output_dir,
              env.local_results, output_dir, graphs_dir))
 
+
 @task
 # Syntax: fab localhost
 # validate_results:flee_conflict_name_localhost_16(,graphs_dir_name)
@@ -725,12 +734,10 @@ def validate_results(output_dir=""):
           % (env.flee_location,
              env.local_results, output_dir, env.local_results, output_dir))
 
-
-
     with open("{}/{}/validation_results.yml".format(env.local_results, output_dir), 'r') as val_yaml:
         validation_results = yaml.load(val_yaml, Loader=yaml.SafeLoader)
 
-        #TODO: make a proper validation metric using a validation schema.
+        # TODO: make a proper validation metric using a validation schema.
         print(validation_results["totals"]["Error (rescaled)"])
         return validation_results["totals"]["Error (rescaled)"]
 
@@ -742,18 +749,19 @@ def validate_flee(mode="serial", simulation_period=0):
     """
     Runs all the validation test and returns all scores, as well as an average.
     """
-    if mode=="parallel":
+    if mode == "parallel":
         pflee_ensemble("validation", simulation_period, cores=3)
     else:
         flee_ensemble("validation", simulation_period, cores=1)
-    
+
     fetch_results()
     validation_scores = []
     results_dir = "validation_localhost_1/RUNS"
-    print("{}/{}".format(env.local_results,results_dir))
-    for item in os.listdir("{}/{}".format(env.local_results,results_dir)):
+    print("{}/{}".format(env.local_results, results_dir))
+    for item in os.listdir("{}/{}".format(env.local_results, results_dir)):
         if os.path.isdir(os.path.join(env.local_results, results_dir, item)):
-            validation_scores.append(validate_results(os.path.join(results_dir, item)))
+            validation_scores.append(validate_results(
+                os.path.join(results_dir, item)))
 
     print("AVERAGED VALIDATION SCORE: {}".format(np.mean(validation_scores)))
 
