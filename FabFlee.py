@@ -738,18 +738,25 @@ def validate_results(output_dir=""):
 
 
 @task
-def validate_flee(mode="serial", simulation_period=0):
+def validate_flee(mode="serial", simulation_period=0, cores=4, skip_runs=False):
     """
     Runs all the validation test and returns all scores, as well as an average.
     """
-    if mode=="parallel":
-        pflee_ensemble("validation", simulation_period, cores=3)
-    else:
-        flee_ensemble("validation", simulation_period, cores=1)
-    
+
+    if not skip_runs:
+        if mode=="parallel":
+            pflee_ensemble("validation", simulation_period, cores=cores)
+        else:
+            flee_ensemble("validation", simulation_period, cores=1)
+   
+    #if not run locally, wait for runs to complete
+    update_environment()
+    if env.host != "localhost":
+        wait_complete()
+
     fetch_results()
     validation_scores = []
-    results_dir = "validation_localhost_1/RUNS"
+    results_dir = template("${config}_${machine_name}_${cores}/RUNS")
     print("{}/{}".format(env.local_results,results_dir))
     for item in os.listdir("{}/{}".format(env.local_results,results_dir)):
         if os.path.isdir(os.path.join(env.local_results, results_dir, item)):
