@@ -755,10 +755,10 @@ def validate_flee_output(results_dir):
     print("{}/{}/RUNS".format(env.local_results,results_dir))
     for item in os.listdir("{}/{}/RUNS".format(env.local_results,results_dir)):
         print(item)
-        if os.path.isdir(os.path.join(env.local_results, results_dir, item)):
-            validation_scores.append(validate_results(os.path.join(results_dir, item)))
+        if os.path.isdir(os.path.join(env.local_results, results_dir, "RUNS", item)):
+            validation_scores.append(validate_results(os.path.join(results_dir, "RUNS", item)))
 
-    print(validation_scores)
+    print("scores:", validation_scores)
     print("AVERAGED VALIDATION SCORE: {}".format(np.mean(validation_scores)))
 
 @task
