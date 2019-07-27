@@ -721,6 +721,11 @@ def plot_output(output_dir="", graphs_dir=""):
 # validate_results:flee_conflict_name_localhost_16(,graphs_dir_name)
 def validate_results(output_dir=""):
     """ Plot generated output results using plot-flee-output.py. """
+
+    print("python3 %s/extract-validation-results.py %s/%s > %s/%s/validation_results.yml"
+          % (env.flee_location,
+             env.local_results, output_dir, env.local_results, output_dir))
+
     local("python3 %s/extract-validation-results.py %s/%s > %s/%s/validation_results.yml"
           % (env.flee_location,
              env.local_results, output_dir, env.local_results, output_dir))
@@ -736,6 +741,25 @@ def validate_results(output_dir=""):
 
     return -1.0
 
+
+@task
+def validate_flee_output(results_dir):
+    """
+    Goes through all the output directories and calculates the validation 
+    scores.
+    """
+
+    update_environment()
+
+    validation_scores = []
+    print("{}/{}/RUNS".format(env.local_results,results_dir))
+    for item in os.listdir("{}/{}/RUNS".format(env.local_results,results_dir)):
+        print(item)
+        if os.path.isdir(os.path.join(env.local_results, results_dir, item)):
+            validation_scores.append(validate_results(os.path.join(results_dir, item)))
+
+    print(validation_scores)
+    print("AVERAGED VALIDATION SCORE: {}".format(np.mean(validation_scores)))
 
 @task
 def validate_flee(mode="serial", simulation_period=0, cores=4, skip_runs=False):
@@ -755,14 +779,8 @@ def validate_flee(mode="serial", simulation_period=0, cores=4, skip_runs=False):
         wait_complete()
 
     fetch_results()
-    validation_scores = []
     results_dir = template("${config}_${machine_name}_${cores}/RUNS")
-    print("{}/{}".format(env.local_results,results_dir))
-    for item in os.listdir("{}/{}".format(env.local_results,results_dir)):
-        if os.path.isdir(os.path.join(env.local_results, results_dir, item)):
-            validation_scores.append(validate_results(os.path.join(results_dir, item)))
-
-    print("AVERAGED VALIDATION SCORE: {}".format(np.mean(validation_scores)))
+    validate_flee_output(results_dir)
 
 
 @task
