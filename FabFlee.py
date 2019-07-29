@@ -722,9 +722,9 @@ def plot_output(output_dir="", graphs_dir=""):
 def validate_results(output_dir=""):
     """ Plot generated output results using plot-flee-output.py. """
 
-    print("python3 %s/extract-validation-results.py %s/%s > %s/%s/validation_results.yml"
-          % (env.flee_location,
-             env.local_results, output_dir, env.local_results, output_dir))
+    #print("python3 %s/extract-validation-results.py %s/%s > %s/%s/validation_results.yml"
+    #      % (env.flee_location,
+    #         env.local_results, output_dir, env.local_results, output_dir))
 
     local("python3 %s/extract-validation-results.py %s/%s > %s/%s/validation_results.yml"
           % (env.flee_location,
@@ -736,7 +736,7 @@ def validate_results(output_dir=""):
         validation_results = yaml.load(val_yaml, Loader=yaml.SafeLoader)
 
         #TODO: make a proper validation metric using a validation schema.
-        print(validation_results["totals"]["Error (rescaled)"])
+        #print(validation_results["totals"]["Error (rescaled)"])
         return validation_results["totals"]["Error (rescaled)"]
 
     return -1.0
@@ -752,9 +752,7 @@ def validate_flee_output(results_dir):
     update_environment()
 
     validation_scores = []
-    print("{}/{}/RUNS".format(env.local_results,results_dir))
     for item in os.listdir("{}/{}/RUNS".format(env.local_results,results_dir)):
-        print(item)
         if os.path.isdir(os.path.join(env.local_results, results_dir, "RUNS", item)):
             validation_scores.append(validate_results(os.path.join(results_dir, "RUNS", item)))
 
