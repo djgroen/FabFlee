@@ -726,8 +726,10 @@ def validate_results(output_dir=""):
     #      % (env.flee_location,
     #         env.local_results, output_dir, env.local_results, output_dir))
 
+    flee_location_local = user_config["localhost"].get("flee_location", user_config["default"].get("flee_location"))
+
     local("python3 %s/extract-validation-results.py %s/%s > %s/%s/validation_results.yml"
-          % (env.flee_location,
+          % (flee_location_local,
              env.local_results, output_dir, env.local_results, output_dir))
 
 
@@ -774,10 +776,10 @@ def validate_flee(mode="serial", simulation_period=0, cores=4, skip_runs=False):
     #if not run locally, wait for runs to complete
     update_environment()
     if env.host != "localhost":
-        wait_complete()
+        wait_complete("")
 
     fetch_results()
-    results_dir = template("${config}_${machine_name}_${cores}/RUNS")
+    results_dir = template("${config}_${machine_name}_${cores}")
     validate_flee_output(results_dir)
 
 
