@@ -762,16 +762,16 @@ def validate_flee_output(results_dir):
     print("AVERAGED VALIDATION SCORE: {}".format(np.mean(validation_scores)))
 
 @task
-def validate_flee(mode="serial", simulation_period=0, cores=4, skip_runs=False):
+def validate_flee(mode="serial", simulation_period=0, cores=4, skip_runs=False, **args):
     """
     Runs all the validation test and returns all scores, as well as an average.
     """
 
     if not skip_runs:
         if mode=="parallel":
-            pflee_ensemble("validation", simulation_period, cores=cores)
+            pflee_ensemble("validation", simulation_period, cores=cores, **args)
         else:
-            flee_ensemble("validation", simulation_period, cores=1)
+            flee_ensemble("validation", simulation_period, cores=1, **args)
    
     #if not run locally, wait for runs to complete
     update_environment()
