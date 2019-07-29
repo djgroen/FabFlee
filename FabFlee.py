@@ -777,6 +777,9 @@ def validate_flee(mode="serial", simulation_period=0, cores=4, skip_runs=False, 
     update_environment()
     if env.host != "localhost":
         wait_complete("")
+    if skip_runs:
+        env.config = "validation"
+
 
     fetch_results()
     results_dir = template("${config}_${machine_name}_${cores}")
