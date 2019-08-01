@@ -8,6 +8,9 @@
 
 from base.fab import *
 
+# Import V&V primitives.
+import VVP.vvp as vvp
+
 # Add local script, blackbox and template path.
 add_local_paths("FabFlee")
 
@@ -716,25 +719,16 @@ def plot_output(output_dir="", graphs_dir=""):
              env.local_results, output_dir,
              env.local_results, output_dir, graphs_dir))
 
-@task
-# Syntax: fab localhost
-# validate_results:flee_conflict_name_localhost_16(,graphs_dir_name)
-def validate_results(output_dir=""):
-    """ Plot generated output results using plot-flee-output.py. """
-
-    #print("python3 %s/extract-validation-results.py %s/%s > %s/%s/validation_results.yml"
-    #      % (env.flee_location,
-    #         env.local_results, output_dir, env.local_results, output_dir))
+          
+def vvp_validate_results(output_dir=""):
+    """ Extract validation results (no dependencies on FabSim env). """
 
     flee_location_local = user_config["localhost"].get("flee_location", user_config["default"].get("flee_location"))
 
-    local("python3 %s/extract-validation-results.py %s/%s > %s/%s/validation_results.yml"
-          % (flee_location_local,
-             env.local_results, output_dir, env.local_results, output_dir))
+    local("python3 %s/extract-validation-results.py %s > %s/validation_results.yml"
+          % (flee_location_local, output_dir, output_dir))
 
-
-
-    with open("{}/{}/validation_results.yml".format(env.local_results, output_dir), 'r') as val_yaml:
+    with open("{}/validation_results.yml".format(output_dir), 'r') as val_yaml:
         validation_results = yaml.load(val_yaml, Loader=yaml.SafeLoader)
 
         #TODO: make a proper validation metric using a validation schema.
@@ -743,6 +737,12 @@ def validate_results(output_dir=""):
 
     return -1.0
 
+@task
+# Syntax: fabsim localhost
+# validate_results:flee_conflict_name_localhost_16
+def validate_results(output_dir):
+    return vvp_validate_results("{}/{}".format(env.local_results, output_dir))
+
 
 @task
 def validate_flee_output(results_dir):
@@ -750,16 +750,8 @@ def validate_flee_output(results_dir):
     Goes through all the output directories and calculates the validation 
     scores.
     """
+    vvp.validate_ensemble_output("{}/{}".format(env.local_results,results_dir), vvp_validate_results, np.mean)
 
-    update_environment()
-
-    validation_scores = []
-    for item in os.listdir("{}/{}/RUNS".format(env.local_results,results_dir)):
-        if os.path.isdir(os.path.join(env.local_results, results_dir, "RUNS", item)):
-            validation_scores.append(validate_results(os.path.join(results_dir, "RUNS", item)))
-
-    print("scores:", validation_scores)
-    print("AVERAGED VALIDATION SCORE: {}".format(np.mean(validation_scores)))
 
 @task
 def validate_flee(mode="serial", simulation_period=0, cores=4, skip_runs=False, **args):
