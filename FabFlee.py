@@ -750,7 +750,7 @@ def validate_flee_output(results_dir):
     Goes through all the output directories and calculates the validation 
     scores.
     """
-    vvp.validate_ensemble_output("{}/{}".format(env.local_results,results_dir), vvp_validate_results, np.mean)
+    vvp.validate_ensemble_output("{}/{}/RUNS".format(env.local_results,results_dir), vvp_validate_results, np.mean)
 
 
 @task
