@@ -733,16 +733,25 @@ def vvp_validate_results(output_dir=""):
 
         #TODO: make a proper validation metric using a validation schema.
         #print(validation_results["totals"]["Error (rescaled)"])
+        print("Validation {}: {}".format(output_dir.split("/")[-1], validation_results["totals"]["Error (rescaled)"]))
         return validation_results["totals"]["Error (rescaled)"]
 
+    print("error: vvp_validate_results failed on {}".format(output_dir))
     return -1.0
 
 @task
 # Syntax: fabsim localhost
 # validate_results:flee_conflict_name_localhost_16
 def validate_results(output_dir):
-    return vvp_validate_results("{}/{}".format(env.local_results, output_dir))
+    score = vvp_validate_results("{}/{}".format(env.local_results, output_dir))
+    print("Validation {}: {}".format(output_dir.split[-1]), score)
+    return score
 
+
+def make_vvp_mean(np_array):
+    mean_score = np.mean(np_array)
+    print("Mean score: {}".format(mean_score))
+    return mean_score
 
 @task
 def validate_flee_output(results_dir):
@@ -750,7 +759,7 @@ def validate_flee_output(results_dir):
     Goes through all the output directories and calculates the validation 
     scores.
     """
-    vvp.validate_ensemble_output("{}/{}/RUNS".format(env.local_results,results_dir), vvp_validate_results, np.mean)
+    vvp.ensemble_vvp("{}/{}/RUNS".format(env.local_results,results_dir), vvp_validate_results, make_vvp_mean)
 
 
 @task
