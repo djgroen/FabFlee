@@ -819,17 +819,11 @@ def compare_food(output_dir_1=""):
 
 
 @task
-# Syntax: fab localhost
-# test_variability:flee_conflict_name,simulation_period=number,replicas=number
 def test_variability(config, **args):
     """
-    Run a number of replicas for a specific conflict.
+    DEPRECATED: Run a number of replicas for a specific conflict.
     """
-
-    number_of_replicas = int(args["replicas"])
-    for i in range(0, number_of_replicas):
-        update_environment({"label": "%s" % i})
-        flee(config, **args)
+    print("This function is obsolete: please use 'fabsim <machine> flee:<config>,replicas=<number>,simulation_period=<number> instead.")
 
 
 @task
@@ -838,13 +832,9 @@ def test_variability(config, **args):
 #       flee_conflict_name,simulation_period=number,replicas=number
 def test_variability_food(config, **args):
     """
-    Run a number of replicas for a specific conflict.
+    DEPRECATED: Run a number of replicas for a specific conflict.
     """
-
-    number_of_replicas = int(args["replicas"])
-    for i in range(0, number_of_replicas):
-        update_environment({"label": "%s" % i})
-        food_flee(config, **args)
+    print("This function is obsolete: please use 'fabsim <machine> food_flee:<config>,replicas=<number>,simulation_period=<number> instead.")
 
 
 @task
