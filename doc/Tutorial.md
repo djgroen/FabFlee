@@ -107,8 +107,23 @@ As output you will get a range of files in the `out` subfolder of your results d
 
 ![Arrivals with confidence interval based on movespeed](https://raw.githubusercontent.com/djgroen/FabFlee/master/doc/Niamey-4_V2.png)
 
+## 2.3 Executing Flee simulations or ensembles with replicated instances.
 
-## 2.3 Executing coupled migration simulations
+Replicated instances, or *replicas*, are runs that have identical inputs. However, as the Flee code is stochastic, they will result in slightly different outputs.
+
+1. To run a single population displacement validation test with 5 replicas, simply type:
+```
+fabsim localhost flee:<conflict_name>,simulation_period=<number>,replicas=5
+```
+Note that the output of each replica becomes a subdirectory in the main `results` directory. Therefore, to do ensemble analysis you may have to first move the runs into a common subfolder.
+
+2. To run an ensemble population displacement validation test with 3 replicas per ensemble instance, simply type:
+```
+fabsim localhost flee_ensemble:mali_runspeed_test,simulation_period=50,replicas=3
+```
+You can analyze the output of this simulation in the same way that you would analyze an ensemble, as replicated instance outputs are in the `RUNS/` dir as well.
+
+## 2.4 Executing coupled migration simulations
 
 we ultimately wish to perform of coupled models, in context of multiscale uncertainty quantification. The relevant workflow comprises the following:
 
