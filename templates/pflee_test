@@ -1,0 +1,12 @@
+# This template is purely for executing parallel tests. 
+# To prevent this being misused for production runs, we restrict the
+# duration to 10 days. For production runs, please use
+# `fabsim <machine> pflee:<config>,simulation_period=<length>`
+
+cd $job_results
+$run_prefix
+export PYTHONPATH=$flee_location:$$PYTHONPATH
+
+/usr/bin/env > env.log
+
+$run_command $python3_command $flee_location/test_par.py -i . > out.csv
