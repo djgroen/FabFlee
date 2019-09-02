@@ -884,3 +884,4 @@ def test_sensitivity(config, **args):
 # Test Functions
 # from plugins.FabFlee.test_FabFlee import *
 from plugins.FabFlee.run_simulation_sets import *
+from plugins.FabFlee.run_flee_easyvvuq import *
