@@ -885,3 +885,4 @@ def test_sensitivity(config, **args):
 # from plugins.FabFlee.test_FabFlee import *
 from plugins.FabFlee.run_simulation_sets import *
 from plugins.FabFlee.run_flee_easyvvuq import *
+from plugins.FabFlee.run_perf_benchmarks import *
