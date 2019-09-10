@@ -187,6 +187,7 @@ def pflee(config, simulation_period, **args):
     execute(put_configs, config)
     job(dict(script='pflee', wall_time='0:15:0', memory='2G'), args)
 
+
 @task 
 def pflee_test(config, pmode="advanced", N="100000", **args):
     """
@@ -196,6 +197,11 @@ def pflee_test(config, pmode="advanced", N="100000", **args):
     with_config(config)
     execute(put_configs, config)
     job(dict(script='pflee_test', wall_time='0:15:0', memory='2G'), args)
+
+
+@task
+def pflee_report(results_key):
+    local("grep main {}/{}/perf.log".format(env.local_results,results_key))
 
 
 @task
