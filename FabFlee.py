@@ -90,7 +90,8 @@ def couple_flare_to_flee(config, flare_out="flare-out-scratch"):
     Converts Flare output and places it in a Flee input directory to create
     a configuration for an ensemble run.
     """
-    config_dir = "%s/config_files/%s" % (get_plugin_path("FabFlee"), config)
+    with_config(config)
+    config_dir = env.job_config_local 
     local("rm -rf %s/SWEEP" % (config_dir))
     local("mkdir -p %s/SWEEP" % (config_dir))
     local("cp -r %s/results-flare/%s/* %s/SWEEP/"
@@ -187,11 +188,11 @@ def pflee(config, simulation_period, **args):
     job(dict(script='pflee', wall_time='0:15:0', memory='2G'), args)
 
 @task 
-def pflee_test(config, **args):
+def pflee_test(config, pmode="advanced", N="100000", **args):
     """
     Run a short parallel test with a particular config.
     """
-    update_environment(args, {"simulation_period": 10})
+    update_environment(args, {"simulation_period": 10, "flee_parallel_mode": pmode, "flee_num_agents": int(N)})
     with_config(config)
     execute(put_configs, config)
     job(dict(script='pflee_test', wall_time='0:15:0', memory='2G'), args)
