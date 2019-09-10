@@ -10,6 +10,8 @@ from base.fab import *
 
 # Import V&V primitives.
 import VVP.vvp as vvp
+import glob
+import csv
 
 # Add local script, blackbox and template path.
 add_local_paths("FabFlee")
@@ -201,7 +203,15 @@ def pflee_test(config, pmode="advanced", N="100000", **args):
 
 @task
 def pflee_report(results_key):
-    local("grep main {}/{}/perf.log".format(env.local_results,results_key))
+    for item in glob.glob("{}/{}*/perf.log".format(env.local_results,results_key)):
+        print(item)
+        with open(item) as csvfile:
+            perf = csv.reader(csvfile)
+            for k,e in enumerate(perf):
+                if k == 1:
+                    print(float(e[1]))
+
+    #local("grep main {}/{}/perf.log".format(env.local_results,results_key))
 
 
 @task
