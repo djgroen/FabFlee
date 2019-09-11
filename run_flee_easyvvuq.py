@@ -37,7 +37,7 @@ def test_flee_easyvvuq(config, simulation_period, **args):
         target_filename='simsetting.csv')
     decoder = uq.decoders.SimpleCSV(target_filename=output_filename,
                                     output_columns=output_columns,
-                                    header=1)
+                                    header=0)
 
     # Add the Flee app
     my_campaign.add_app(name="flee",
@@ -47,7 +47,7 @@ def test_flee_easyvvuq(config, simulation_period, **args):
                         )
     
     # Create a collation element for this campaign
-    collater = uq.collate.AggregateSamples(average=False)
+    collater = uq.collate.AggregateSamples(average=True)
     my_campaign.set_collater(collater)
 
     # Create the sampler
@@ -85,7 +85,7 @@ def test_flee_easyvvuq(config, simulation_period, **args):
     my_campaign.apply_analysis(flee_analysis)
 
     results = my_campaign.get_last_analysis()
-
+    #print(results)
     # Save and reload campaign
     #state_file = tmp_dir + "flee_state.json"
     #my_campaign.save_state(state_file)
@@ -100,7 +100,6 @@ def test_flee_easyvvuq(config, simulation_period, **args):
     print(results['sobol_indices']['E'])
     print('=================================================')    
 
-    print(my_campaign.campaign_db.get_collated_dataframe())
 
     return results, flee_analysis
 

@@ -201,9 +201,21 @@ def pflee_test(config, pmode="advanced", N="100000", **args):
     job(dict(script='pflee_test', wall_time='0:15:0', memory='2G'), args)
 
 
+@task 
+def pflee_pmode_compare(config, cores, N="100000", **args):
+    """
+    Run a short parallel test with a particular config. 60 min limit per run.
+    """
+    for pmode in ["advanced","classic","adv-lolat","cl-hilat"]:  # maps to args in test_par.py
+        update_environment(args, {"simulation_period": 10, "flee_parallel_mode": pmode, "flee_num_agents": int(N)})
+        with_config(config)
+        execute(put_configs, config)
+        job(dict(script='pflee_test', wall_time='1:00:0', memory='2G', cores=cores, label=pmode), args)
+
+
 @task
 def pflee_report(results_key):
-    for item in glob.glob("{}/{}*/perf.log".format(env.local_results,results_key)):
+    for item in glob.glob("{}/*{}*/perf.log".format(env.local_results,results_key)):
         print(item)
         with open(item) as csvfile:
             perf = csv.reader(csvfile)
