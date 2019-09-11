@@ -1,7 +1,6 @@
-from easyvvuq.decoders import BaseDecoder
+# Preliminary file for a possible Flee Decoder. May not be necessary, so delete if obsolete.
 
-def file_len(fname):
-    
+from easyvvuq.decoders import BaseDecoder
 
 class FleeDecoder(BaseDecoder, decoder_name="flee_decoder"):
 

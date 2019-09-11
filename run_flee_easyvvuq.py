@@ -87,19 +87,11 @@ def test_flee_easyvvuq(config, simulation_period, **args):
     results = my_campaign.get_last_analysis()
 
     # Save and reload campaign
-    state_file = tmp_dir + "flee_state.json"
-    my_campaign.save_state(state_file)
-    new = uq.Campaign(state_file=state_file, work_dir=tmp_dir)
-    print(new)
+    #state_file = tmp_dir + "flee_state.json"
+    #my_campaign.save_state(state_file)
+    #new = uq.Campaign(state_file=state_file, work_dir=tmp_dir)
+    #print(new)
 
-    return results, flee_analysis
-
-if __name__ == "__main__":
-    
-    #home dir of this file    
-    HOME = os.path.abspath(os.path.dirname(__file__))
-
-    results, analysis = test_flee("/tmp/")
     mu = results['statistical_moments']['E']['mean']
     std = results['statistical_moments']['E']['std']
 
@@ -107,4 +99,8 @@ if __name__ == "__main__":
     print('Sobol indices:')
     print(results['sobol_indices']['E'])
     print('=================================================')    
+
+    print(my_campaign.campaign_db.get_collated_dataframe())
+
+    return results, flee_analysis
 
