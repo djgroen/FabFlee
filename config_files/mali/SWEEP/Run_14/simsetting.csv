@@ -1,0 +1,5 @@
+AwarenessLevel,1
+MaxMoveSpeed,200.0
+CampMoveChance,0.06952490101855342
+ConflictMoveChance,0.9375113402173237
+DefaultMoveChance,0.39700853038681466
