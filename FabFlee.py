@@ -93,7 +93,7 @@ def couple_flare_to_flee(config, flare_out="flare-out-scratch"):
     a configuration for an ensemble run.
     """
     with_config(config)
-    config_dir = env.job_config_local 
+    config_dir = env.job_config_path_local 
     local("rm -rf %s/SWEEP" % (config_dir))
     local("mkdir -p %s/SWEEP" % (config_dir))
     local("cp -r %s/results-flare/%s/* %s/SWEEP/"
