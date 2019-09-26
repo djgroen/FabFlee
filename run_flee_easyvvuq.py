@@ -59,7 +59,7 @@ def test_flee_easyvvuq(config, simulation_period, **args):
         }
 
     
-    my_sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=3)
+    my_sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=1)
 
     # Associate the sampler with the campaign
     my_campaign.set_sampler(my_sampler)
