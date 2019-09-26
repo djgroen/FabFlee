@@ -1,0 +1,84 @@
+name1,name2,distance,,distance by coordinate
+Bor,Makol_Cuei,30,,
+Makol_Cuei,Jalle,46,,
+Jalle,Panyagor,59,,
+Panyagor,Mabior_Canal,32,,
+Mabior_Canal,Duk_Faiwil,19,,
+Duk_Faiwil,Duk_Fadiat,29,,
+Duk_Faiwil,Pajut,35,,
+Mabior_Canal,Duk_Fadiat,46,,
+Duk_Fadiat,Yuai,117,,
+Yuai,Pieri,30,,
+Yuai,Pulchuol,31,,
+Pieri,Pulchuol,33,,
+Walgak,Waat,12,,
+Duk_Fadiat,Ayod,63,,
+Ayod,Waw,23,,
+Waw,Kaljak,148,,
+Waw,Ofyo,126,,
+Ofyo,Atar,17,,
+Ofyo,Malakal,37,,
+Kaljak,Atar,,walk,36km 
+Atar,Tonga,,swim + 45km,
+Atar,Owachi,,swim + 15km,
+Tonga,Wau_Shilluk,27,,
+Wau_Shilluk,Owachi,35,,
+Owachi,Awarajwok,15,,
+Awarajwok,Malakal,,swim + walk,6km
+Awarajwok,Kodok,77,,
+Kodok,Adaudo,18,,
+Malakal,Baleit,63,,
+Baleit,Gel_Achel,47,,
+Malakal,Padok,66,,
+Baleit,Padok,53,,
+Padok,Dentoang,81,,
+Adaudo,Khor_Adar,44,,
+Khor_Adar,Kaka,41,,
+Dentoang,Khor_Adar,,swim + walk,22
+Dentoang,Kaka,,swim + walk,43
+Dentoang,Malut,23,,
+Malut,El-galhak,79,,
+Kaka,Wadakona,136,,
+El-galhak,Renk,83,,
+Wadakona,Renk,,swim + walk,
+Malut,Maban,156,,16
+Maban,Liang,11,,
+Maban,Bunj,10,,
+Bunj,Doro,,walk,20
+Maban,Doro,,walk,26
+Renk,Doro,336,,
+Gel_Achel,Ketbek,118,,
+Ketbek,Burbiey,24,,
+Burbiey,Mayot,53,,
+Mayot,Multhiang,76,,
+Mayot,Maiwut,64,,
+Maiwut,Pagak,,walk,17
+Ketbek,Akobo,,walk,82
+Burbiey,Akobo,,walk or boat,63
+Waat,Akobo,114,,
+Gadiang,Akobo,135,,
+Gadiang,Kongettit,84,,
+Akobo,Kongettit,50,,
+Kongettit,Pibor,294,,
+Pajut,Yuai,,walk,28
+Pajut,Gadiang,,walk,57
+Yuai,Gadiang,,walk,59
+Waat,Pieri,,walk,22
+Puchuol,Walgak,,walk,31
+Neum,Nahr_Atiem,55,,
+Nahr_Atiem,Pibor,85,,
+Pibor,Pochalla,37,,
+Pochalla,Pentin,59,,
+Pentin,Raad,84,,
+Raad,Okugo,,walk,41
+Nahr_Atiem,Pugnido,109,,
+Pugnido,Pugnido_II,5,walk,
+Pagak,Wanke,5,walk,
+Pagak,Tierkidi,59,,
+Pagak,Kule,55,,
+Pagak,Nguenyyiel,69,,
+Burbiey,Kule,,walk or fly,115
+Burbiey,Tierkidi,,walk or fly,118
+Tierkidi,Nguenyyiel,8,,
+Tierkidi,Kule,11,,
+Tierkidi ,Jewi,62,,

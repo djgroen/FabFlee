@@ -13,13 +13,13 @@ def AddInitialRefugees(e, d, loc):
     e.addAgent(location=loc)
 
 def date_to_sim_days(date):
-  return DataTable.subtract_dates(date,"2010-01-01")
+  return DataTable.subtract_dates(date,"2012-02-29")
 
 
 if __name__ == "__main__":
 
-  end_time = 100
-  last_physical_day = 100
+  end_time = 300
+  last_physical_day = 300
 
   if len(sys.argv)<4:
     print("Please run using: python3 run.py <your_csv_directory> <your_refugee_data_directory> <duration in days> <optional: simulation_settings.csv> > <output_directory>/<output_csv_filename>")
@@ -47,17 +47,17 @@ if __name__ == "__main__":
 
   #print("Network data loaded")
 
-  d = handle_refugee_data.RefugeeTable(csvformat="generic", data_directory=validation_data_directory, start_date="2010-01-01", data_layout="data_layout.csv")
+  d = handle_refugee_data.RefugeeTable(csvformat="generic", data_directory=validation_data_directory, start_date="2012-02-29", data_layout="data_layout.csv")
 
-  output_header_string = "Day,"
+  output_header_string = "Day"
 
   camp_locations      = e.get_camp_names()
 
-  for l in camp_locations:
+  for l in e.locationNames:
     #AddInitialRefugees(e,d,lm[l])
-    output_header_string += "%s sim,%s data,%s error," % (lm[l].name, lm[l].name, lm[l].name)
+    output_header_string += ",%s" % (lm[l].name)
 
-  output_header_string += "Total error,refugees in camps (UNHCR),total refugees (simulation),raw UNHCR refugee count,refugees in camps (simulation),refugee_debt"
+  #output_header_string += "Total error,refugees in camps (UNHCR),total refugees (simulation),raw UNHCR refugee count,refugees in camps (simulation),refugee_debt"
 
   print(output_header_string)
 
@@ -104,7 +104,8 @@ if __name__ == "__main__":
     refugees_in_camps_sim = 0
     for c in camps:
       refugees_in_camps_sim += c.numAgents
-
+    
+    """
     # calculate errors
     j=0
     for i in camp_locations:
@@ -112,18 +113,21 @@ if __name__ == "__main__":
       abs_errors += [a.abs_error(lm[i].numAgents, loc_data[j])]
 
       j += 1
-
+    """
     output = "%s" % t
 
-    for i in range(0,len(errors)):
-      output += ",%s,%s,%s" % (lm[camp_locations[i]].numAgents, loc_data[i], errors[i])
 
+    for l in e.locations:
+      output += ",%s" % (l.numAgents)
+
+    """
     if refugees_raw>0:
       #output_string += ",%s,%s,%s,%s" % (float(np.sum(abs_errors))/float(refugees_raw), int(sum(loc_data)), e.numAgents(), refugees_raw)
       output += ",%s,%s,%s,%s,%s,%s" % (float(np.sum(abs_errors))/float(refugees_raw), int(sum(loc_data)), e.numAgents(), refugees_raw, refugees_in_camps_sim, refugee_debt)
     else:
       output += ",0,0,0,0,0,0"
       #output_string += ",0"
-
+    """
 
     print(output)
+
