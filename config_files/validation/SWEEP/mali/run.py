@@ -34,14 +34,14 @@ if __name__ == "__main__":
     last_physical_day = int(sys.argv[3])
 
   if len(sys.argv)==5:
-    flee.SimulationsSettings.ReadFromCSV(sys.argv[4])
-  flee.SimulationsSettings.FlareConflictInputFile = "%s/conflicts.csv" % input_csv_directory
+    flee.SimulationSettings.ReadFromCSV(sys.argv[4])
+  flee.SimulationSettings.FlareConflictInputFile = "%s/conflicts.csv" % input_csv_directory
 
   e = flee.Ecosystem()
 
   ig = InputGeography.InputGeography()
 
-  ig.ReadFlareConflictInputCSV(flee.SimulationsSettings.FlareConflictInputFile)
+  ig.ReadFlareConflictInputCSV(flee.SimulationSettings.FlareConflictInputFile)
 
   ig.ReadLocationsFromCSV("%s/locations.csv" % input_csv_directory)
 
