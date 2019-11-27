@@ -166,13 +166,11 @@ if __name__ == "__main__":
 
     #Lusenda camp open on the 30th of July 2015
     if t_data == date_to_sim_days("2015-07-30"): #Open Lusenda
-      locations[31].SetCampMoveChance()
-      locations[31].Camp=True
+      locations[31].SetCamp()
       e.linkUp("Bujumbura","Lusenda","53.0") #Only added when the refugee inflow starts at Lusenda, on 30-07-2015
 
     if t_data == date_to_sim_days("2015-08-10"):
-      locations[27].SetCampMoveChance()
-      locations[27].Camp=True
+      locations[27].SetCamp()
       e.remove_link("Nduta","Nyarugusu")
       e.linkUp("Nduta","Nyarugusu","150.0") #Re-add link, but without forced redirection
 
