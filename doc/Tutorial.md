@@ -1,14 +1,5 @@
-FabFLEE coupled UQ tutorial
+FabFlee coupled UQ tutorial for Multiscale Migration Prediction
 =====
-
-In this tutorial we will explain how you can combine a simple stochastic conflict evolution model (Flare) with an agent-based migration model (Flee), perform a set of runs based on different conflict evolutions, and visualize the migrant arrivals with confidence intervals. The Flee agent-based migration model has been used in a *Scientific Reports* paper to make forecasts of forced migration in conflicts (https://www.nature.com/articles/s41598-017-13828-9), while the Flare model is still in prototype stage. In this example, we modelled the 2012 Northern Mali conflict.
-
-![Graphical depiction of population movements in Mali. Background image is courtesy of Orionist (Wikimedia)](https://raw.githubusercontent.com/djgroen/FabFlee/master/doc/mali-arrows-border.png)
-
-<!---
-We combine these two models using the FabSim3 automation toolkit (http://fabsim3.readthedocs.io), which features an integrated test infrastructure and a flexible plugin system. Specifically, we will showcase the FabFlee plugin which automates complex simulation workflows involving forced migration models. 
--->
-The [FabSim3](https://fabsim3.readthedocs.io/) features an integrated test infrastructure and flexible plugin system. In this tutorial, we showcase the FabFlee Plugin, which automates complex simulation workflows involving forced migration model. We explain how you can combine a simple stochastic conflict evolution model namely the 2012 Northern Mali Conflict
 
 # 1. Setup
 
@@ -16,25 +7,29 @@ This tutorial uses a range of VECMAtk components, as shown in the Tube Map below
 
 ![Graphical depiction of the VECMAtk components used in the FabFlee tutorial](https://raw.githubusercontent.com/djgroen/FabFlee/master/doc/FabFleeMap.png)
 
-The basic tutorial relies primarily on FabSim3, and specifically on the FabFlee plugin of that toolkit. The advanced content in section 3, however, enables you to use several QCG tools as well.
-
+The basic tutorial relies primarily on [FabSim3](https://fabsim3.readthedocs.io/) that features an integrated test infrastructure and flexible plugin system. Specifically, we showcase the FabFlee plugin, which automates complex simulation workflows involving Multiscale Migration Prediction. 
 Please refer to https://github.com/djgroen/FabFlee/blob/master/doc/TutorialSetup.md for details on how to download, install and configure the software required for this tutorial.
 
-# 2. Forced migration simulations
+# 2. Multiscale migration simulations
 
-In this section we will show you how you can run different types of migration simulations. We first explain how you can do basic analysis using a single model, and then explain how you can perform a coupled application run that features basic uncertainty quantification.
+In this section, we will show you how you can run different types of migration simulations. We first explain how you can do basic analysis using a single model, and then explain how you can perform a coupled application run that features basic uncertainty quantification. 
+
+We will also explain how you can combine a simple stochastic conflict evolution model [Flare](https://github.com/djgroen/flare-release.git) with an agent-based migration model [FLEE](https://github.com/djgroen/flee-release.git), perform a set of runs based on different conflict evolutions, and visualize the migrant arrivals with confidence intervals. The FLEE agent-based migration model has been used in a *Scientific Reports* paper to make forecasts of forced migration in conflicts (https://www.nature.com/articles/s41598-017-13828-9), while the Flare model is still in prototype stage. 
+
+We use the 2012 Northern Mali Conflict as a simulation instance. Please refer to https://github.com/djgroen/FabFlee/blob/master/doc/TutorialConstruct.md for details on how to construct these simulation instances.   
+
+![Graphical depiction of population movements in Mali. Background image is courtesy of Orionist (Wikimedia)](https://raw.githubusercontent.com/djgroen/FabFlee/master/doc/mali-arrows-border.png)
 
 ## 2.1 Executing single-model migration simulations
 
 FabFlee comes with a range of sample simulation domains. 
-
 1. To run a single population displacement validation test, simply type:
 ```
 fabsim localhost flee:<conflict_name>,simulation_period=<number>
 ```
 
 For instance, a basic model for the 2012 Mali conflict can be found in
-`(FabSim Home)/plugins/FabFlee/config_files/mali`.
+`(FabSim3 Home)/plugins/FabFlee/config_files/mali`.
 ```
 fabsim localhost flee:mali,simulation_period=50
 ```
@@ -44,7 +39,7 @@ fabsim localhost flee:mali,simulation_period=50
 ```
 fabsim localhost fetch_results
 ```
-The results will then be in a directory inside `(FabSim Home)/results`, which is most likely called `mali_localhost_16`.
+The results will then be in a directory inside `(FabSim3 Home)/results`, which is most likely called `mali_localhost_16`.
 
 This is a little redundant for runs on localhost, but essential if you run on any remote machines, so it is good to get into this habit.
 
@@ -95,7 +90,7 @@ You can copy back any results from completed runs using:
 ```
 fabsim localhost fetch_results
 ```
-The results will then be in a directory inside `(FabSim Home)/results` which is most likely called `mali_runspeed_test_localhost_16`.
+The results will then be in a directory inside `(FabSim3 Home)/results` which is most likely called `mali_runspeed_test_localhost_16`.
 
 And you can plot the simulation output using:
 ```
@@ -164,7 +159,7 @@ You can copy back any results from runs using:
 ```
 fabsim localhost fetch_results
 ```
-The results will then be in a directory inside `(FabSim Home)/results` which is most likely called `mali_localhost_16`.
+The results will then be in a directory inside `(FabSim3 Home)/results` which is most likely called `mali_localhost_16`.
 
 Assuming this name, you can then run the following command to generate plots:
 ```
@@ -181,53 +176,6 @@ To run a coupled simulation with basic UQ, and basically repeat steps 1-3 in one
 fabsim localhost flee_conflict_forecast:mali,N=10,simulation_period=50
 ```
 
-
-
-
-# 3. Going the extra mile (content for advanced users)
-
-These advanced tasks are intended for those who have access to the Eagle supercomputer, and who would like to try some of the more advanced features of FabSim3.
-
-## Additional setup tasks for advanced use
-Before running any simulation on a remote supercomputer, you'll need to do the following:
-
-- Make sure the target remote machine is properly defined in `(FabSim Home)/deploy/machines.yml` 
-- Since that, in Flee, some python libraries such as `numpy` will be used for the job execution, in case of nonexistent of those packages, we recommended to install a _virtualenv_ on the target machine. It can be done by running
-
-	> for QCG machine : `fab qcg install_app:QCG-PilotJob,virtual_env=True`
-	>
-	> For SLURM machine : `fab eagle install_app:QCG-PilotJob,virtual_env=True`
-	> 
-	> **NOTE** : the installation path (`virtual_env_path`) is set on `machines.yml` as one of parameters for the target remote machine
-	> 
-	> By installing this _virtualenv_ on the target remote machine, the [QCG Pilot](https://github.com/vecma-project/QCG-PilotJob) Job service will be also installed alongside with other required dependencies 
-
-
-### Running the coupled simulation on a supercomputer
-```
-fabsim eagle flee_conflict_forecast:mali,N=20,simulation_period=50
-```
-1. Run `fabsim eagle job_stat_update` to check if you jobs are finished or not
-2. Run `fabsim eagle fetch_results` to copy back results from `eagle` machine. The results will then be in a directory inside `(FabSim Home)/results`, which is most likely called `mali_eagle_16`
-3. Run `fabsim localhost plot_uq_output:mali_eagle_16,out` to generate plots
-
-
-<!---
-### Running an ensemble simulation on a supercomputer using Pilot Jobs
-```
-fabsim qcg flee_ensemble:mali,N=20,simulation_period=50,PilotJob=true
-```
--->
-
-### Running an ensemble simulation on a supercomputer using Pilot Jobs and QCG Broker
-
-```
-fabsim qcg flee_ensemble:mali,N=20,simulation_period=50,PilotJob=true
-```
-1. Run `fabsim qcg job_stat_update` to check if you jobs are finished or not
-2. Run `fabsim qcg fetch_results` to copy back results from `qcg` machine. The results will then be in a directory inside `(FabSim Home)/results`, which is most likely called `mali_qcg_16`
-3. Run `fabsim localhost plot_uq_output:mali_qcg_16,out` to generate plots
-
-# 4. Acknowledgements
+# 3. Acknowledgements
 
 This work was supported by the VECMA and HiDALGO projects, which have received funding from the European Union Horizon 2020 research and innovation programme under grant agreements No 800925 and 824115.
