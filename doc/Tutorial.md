@@ -16,7 +16,7 @@ In this section, we will show you how you can run different types of migration s
 
 We will also explain how you can combine a simple stochastic conflict evolution model [Flare](https://github.com/djgroen/flare-release.git) with an agent-based migration model [FLEE](https://github.com/djgroen/flee-release.git), perform a set of runs based on different conflict evolutions, and visualize the migrant arrivals with confidence intervals. The FLEE agent-based migration model has been used in a *Scientific Reports* paper to make forecasts of forced migration in conflicts (https://www.nature.com/articles/s41598-017-13828-9), while the Flare model is still in prototype stage. 
 
-We use the 2012 Northern Mali Conflict as a simulation instance. Please refer to https://github.com/djgroen/FabFlee/blob/master/doc/TutorialConstruct.md for details on how to construct these simulation instances.   
+We use the 2012 Northern Mali Conflict as a simulation instance. Please refer to https://github.com/djgroen/FabFlee/blob/master/doc/TutorialConstuct.md for details on how to construct these simulation instances.   
 
 ![Graphical depiction of population movements in Mali. Background image is courtesy of Orionist (Wikimedia)](https://raw.githubusercontent.com/djgroen/FabFlee/master/doc/mali-arrows-border.png)
 
