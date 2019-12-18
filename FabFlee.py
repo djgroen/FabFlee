@@ -798,7 +798,7 @@ def validate_flee(mode="serial", simulation_period=0, cores=4, skip_runs=False, 
     """
 
     if not skip_runs:
-        if mode=="parallel":
+        if mode.lower()=="parallel":
             pflee_ensemble("validation", simulation_period, cores=cores, **args)
         else:
             flee_ensemble("validation", simulation_period, cores=1, **args)
