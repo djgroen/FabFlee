@@ -5,36 +5,74 @@ import chaospy as cp
 import numpy as np
 import easyvvuq as uq
 import matplotlib.pyplot as plt
-import os
-import time
 import sys
 # authors: Derek Groen, Diana Suleimenova, Wouter Edeling.
 
-@task
-def test_flee_easyvvuq(config, simulation_period, **args):
-    tmp_dir = '/tmp/'
 
-    my_campaign = uq.Campaign(name='flee', work_dir=tmp_dir)
+class custom_redirection(object):
 
+    def __init__(self, *files):
+        self.files = files
+
+    def write(self, obj):
+        for f in self.files:
+            f.write(obj)
+            f.flush()  # If you want the output to be visible immediately
+
+    def flush(self):
+        for f in self.files:
+            f.flush()
+
+tmp_dir = '/tmp/'
+output_columns = ["Total error"]
+
+
+def init_flee_campaign():
+
+    flee_campaign = uq.Campaign(name='flee', work_dir=tmp_dir)
 
     params = {
-      "awareness_level": {"type": "integer", "min": 0, "max":2, "default":1},
-      "max_move_speed": {"type": "float", "min": 0.0, "max":40000.0, "default":200.0},
-      "camp_move_chance": {"type": "float", "min": 0.0, "max":1.0, "default":0.001},
-      "conflict_move_chance": {"type": "float", "min": 0.0, "max":1.0, "default":1.0},
-      "default_move_chance": {"type": "float", "min": 0.0, "max":1.0, "default":0.3},
-      "out_file": {
+        "awareness_level": {
+            "type": "integer",
+            "min": 0, "max": 2,
+            "default": 1
+        },
+        "max_move_speed": {
+            "type": "integer",
+            "min": 0.0, "max": 40000,
+            "default": 200
+        },
+        "camp_move_chance": {
+            "type": "float",
+            "min": 0.0, "max": 1.0,
+            "default": 0.001
+        },
+        "conflict_move_chance": {
+            "type": "float",
+            "min": 0.0,
+            "max": 1.0,
+            "default": 1.0
+        },
+        "default_move_chance": {
+            "type": "float",
+            "min": 0.0,
+            "max": 1.0,
+            "default": 0.3
+        },
+        "out_file": {
             "type": "string",
-            "default": "out.csv"}}
+            "default": "out.csv"
+        }
+    }
 
     output_filename = params["out_file"]["default"]
-    output_columns = ["Total_error"]
-
     # Create an encoder, decoder and collation element for PCE test app
     encoder = uq.encoders.GenericEncoder(
-        template_fname= get_plugin_path("FabFlee") + '/templates/simsetting.template',
+        template_fname=get_plugin_path("FabFlee") +
+        '/templates/simsetting.template',
         delimiter='$',
-        target_filename='simsetting.csv')
+        target_filename='simsetting.csv'
+    )
     decoder = uq.decoders.SimpleCSV(target_filename=output_filename,
                                     output_columns=output_columns,
                                     header=0)
@@ -43,79 +81,116 @@ def test_flee_easyvvuq(config, simulation_period, **args):
     collater = uq.collate.AggregateSamples(average=True)
 
     # Add the Flee app
-    my_campaign.add_app(name="flee",
-                        params=params,
-                        encoder=encoder,
-                        decoder=decoder,
-                        collater=collater)
-    
+    flee_campaign.add_app(name="flee",
+                          params=params,
+                          encoder=encoder,
+                          decoder=decoder,
+                          collater=collater)
+
     # Create the sampler
-    # Awareness_level is an integer, which does not work with SCSampler (only with RandomSampler at the moment for which need to specify draw_samples number)
+    # Awareness_level is an integer, which does not work with SCSampler (only
+    # with RandomSampler at the moment for which need to specify draw_samples
+    # number)
     vary = {
-        #"max_move_speed": cp.Uniform(20, 500),
+        # "max_move_speed": cp.Uniform(20, 500),
         "camp_move_chance": cp.Uniform(0.0001, 1.0),
         "conflict_move_chance": cp.Uniform(0.1, 1.0),
-        #"default_move_chance": cp.Uniform(0.1, 1.0)
-        }
+        # "default_move_chance": cp.Uniform(0.1, 1.0)
+    }
 
-    
-    my_sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=3)
-
+    my_sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=1)
     # Associate the sampler with the campaign
-    my_campaign.set_sampler(my_sampler)
+    flee_campaign.set_sampler(my_sampler)
 
     # Will draw all (of the finite set of samples)
-    my_campaign.draw_samples()
+    flee_campaign.draw_samples()
 
-    my_campaign.populate_runs_dir()
+    flee_campaign.populate_runs_dir()
 
-    campaign2ensemble(config, campaign_dir=my_campaign.campaign_dir)
+    flee_campaign.save_state(tmp_dir + "flee_easyvvuq_state.json")
+
+    return flee_campaign
+
+
+@task
+def run_flee_easyvvuq(config, simulation_period, **args):
+
+    flee_campaign = init_flee_campaign()
+
+    campaign2ensemble(config, campaign_dir=flee_campaign.campaign_dir)
     flee_ensemble(config, simulation_period, **args)
-    fetch_results()
-    #TODO: do we need to explicitly point to local_results here?
-    # Rewrite ensemble2campaign perhaps?
-
-    ensemble2campaign("{}/{}".format(env.local_results,template(env.job_name_template)), campaign_dir=my_campaign.campaign_dir)
 
 
-    # use code below when not running on localhost.
-    #while job_stat(period="all"):
-    #time.sleep(10)
- 
-    my_campaign.collate()
-    
-    print(my_campaign.get_collation_result())
+@task
+def test_flee_easyvvuq(config, **args):
 
+    # print(type(config))
+    # exit()
+    # make sure you run fetch_results() command before this using this function
+    # update_environment(args)
+    with_config(config)
+
+    #hamid_campaign = uq.Campaign(state_file=tmp_dir + 'easyvvuqd10ksvds.json')
+
+    flee_campaign = uq.Campaign(
+        state_file=tmp_dir + "flee_easyvvuq_state.json",
+        work_dir=tmp_dir
+    )
+
+    # pprint(vars(flee_campaign))
+    print(env.local_results)
+    print(template(env.job_name_template))
+    # print(flee_campaign.campaign_dir)
+    # exit()
+
+    ensemble2campaign(
+        "{}/{}".format(env.local_results, template(env.job_name_template)),
+        campaign_dir=flee_campaign.campaign_dir
+    )
+
+    flee_campaign.collate()
+
+    collation_result = flee_campaign.get_collation_result()
+    print(collation_result)
+    collation_result.to_csv(env.local_results + '/' +
+                            template(env.job_name_template) +
+                            '/collation_result.csv',
+                            index=False
+                            )
 
     # Post-processing analysis
-    flee_analysis = uq.analysis.SCAnalysis(sampler=my_sampler, qoi_cols=output_columns)
+    flee_analysis = uq.analysis.SCAnalysis(
+        sampler=flee_campaign._active_sampler,
+        qoi_cols=output_columns
+    )
 
-    my_campaign.apply_analysis(flee_analysis)
+    flee_campaign.apply_analysis(flee_analysis)
 
-    results = my_campaign.get_last_analysis()
-    #print(results)
-    # Save and reload campaign
-    #state_file = tmp_dir + "flee_state.json"
-    #my_campaign.save_state(state_file)
-    #new = uq.Campaign(state_file=state_file, work_dir=tmp_dir)
-    #print(new)
+    results = flee_campaign.get_last_analysis()
 
-    print(flee_analysis.samples)
-    mu = results['statistical_moments']['Total_error']['mean']
-    std = results['statistical_moments']['Total_error']['std']
+    mu = results['statistical_moments']['Total error']['mean']
+    std = results['statistical_moments']['Total error']['std']
 
-    print(mu)
-    print(std)
+    flee_analysis_add_file = env.local_results + '/' + \
+        template(env.job_name_template) + '/flee_analysis.txt'
 
-    print('=================================================')    
-    print('Sobol indices:')
-    #print all indices
-    print(results['sobols']['Total_error'])
-    #print 1st order indices
-    print(results['sobols_first']['Total_error'])
-    print('=================================================')    
+    original = sys.stdout
+    with open(flee_analysis_add_file, 'w') as file:
+        sys.stdout = custom_redirection(sys.stdout, file)
+
+        print(flee_analysis.samples)
+        print('mean Total error = %f' % (mu))
+        print('std Total error = %f' % (std))
+        print('=================================================')
+        print('Sobol indices:')
+        # print all indices
+        print(results['sobols']['Total error'])
+        # print 1st order indices
+        print(results['sobols_first']['Total error'])
+        print('=================================================')
+
+    sys.stdout = original
 
     flee_analysis.plot_grid()
 
-    return results, flee_analysis
-
+    # return results, flee_analysis
