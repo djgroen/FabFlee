@@ -40,8 +40,8 @@ def init_flee_campaign():
             "default": 1
         },
         "max_move_speed": {
-            "type": "integer",
-            "min": 0.0, "max": 40000,
+            "type": "float",
+            "min": 20.0, "max": 40000,
             "default": 200
         },
         "camp_move_chance": {
@@ -94,13 +94,13 @@ def init_flee_campaign():
     # with RandomSampler at the moment for which need to specify draw_samples
     # number)
     vary = {
-        # "max_move_speed": cp.Uniform(20, 500),
+        "max_move_speed": cp.Uniform(20, 500),
         "camp_move_chance": cp.Uniform(0.0001, 1.0),
         "conflict_move_chance": cp.Uniform(0.1, 1.0),
-        # "default_move_chance": cp.Uniform(0.1, 1.0)
+        "default_move_chance": cp.Uniform(0.1, 1.0)
     }
 
-    my_sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=1)
+    my_sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=3)
     # Associate the sampler with the campaign
     flee_campaign.set_sampler(my_sampler)
 
@@ -192,8 +192,9 @@ def test_flee_easyvvuq(configs, ** args):
             campaign_dir=flee_campaign.campaign_dir
         )
 
+        
         flee_campaign.collate()
-
+        continue
         collation_result = flee_campaign.get_collation_result()
         print(collation_result)
         collation_result.to_csv(env.local_results + '/' +
