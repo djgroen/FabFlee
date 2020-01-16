@@ -41,7 +41,7 @@ if __name__ == "__main__":
 
   ig = InputGeography.InputGeography()
 
-  ig.ReadFlareConflictInputCSV(flee.SimulationSettings.SimulationSettings.FlareConflictInputFile)
+  ig.ReadFlareConflictInputCSV(flee.SimulationSettings.FlareConflictInputFile)
 
   ig.ReadLocationsFromCSV("%s/locations.csv" % input_csv_directory)
 
@@ -80,7 +80,7 @@ if __name__ == "__main__":
           AddInitialRefugees(e,d,lm[l])
       output_header_string += "%s sim,%s data,%s error," % (lm[l].name, lm[l].name, lm[l].name)
 
-  output_header_string += "Total_error,refugees_in_camps_(UNHCR),total refugees (simulation),raw UNHCR refugee count,refugees in camps (simulation),refugee_debt"
+  output_header_string += "Total error,refugees in camps_(UNHCR),total refugees (simulation),raw UNHCR refugee count,refugees in camps (simulation),refugee_debt"
 
   print(output_header_string)
 
