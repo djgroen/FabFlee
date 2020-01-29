@@ -275,6 +275,9 @@ def flee_ensemble(config, simulation_period, script='flee', **args):
     env.input_name_in_config = 'flee.txt'
     env.simulation_period = simulation_period
 
+    if hasattr(env, 'NoEnvScript'):
+        del env['NoEnvScript']
+    
     if args.get("PilotJob", "False") == "True":
 
         #specific workaround for Flee on Eagle.
