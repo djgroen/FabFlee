@@ -5,7 +5,10 @@ import chaospy as cp
 import numpy as np
 import easyvvuq as uq
 import matplotlib.pyplot as plt
+import pandas
+from pandas import DataFrame
 import sys
+import os
 from pprint import pprint
 import json
 # authors: Derek Groen, Diana Suleimenova, Wouter Edeling.
@@ -31,6 +34,9 @@ output_columns = ["Total error"]
 
 def init_flee_campaign():
 
+    if not os.path.exists(tmp_dir):
+        os.makedirs(tmp_dir)
+
     flee_campaign = uq.Campaign(name='flee', work_dir=tmp_dir)
 
     params = {
@@ -41,7 +47,7 @@ def init_flee_campaign():
         },
         "max_move_speed": {
             "type": "float",
-            "min": 20.0, "max": 40000,
+            "min": 0.0, "max": 40000,
             "default": 200
         },
         "camp_move_chance": {
@@ -109,6 +115,14 @@ def init_flee_campaign():
 
     flee_campaign.populate_runs_dir()
 
+    # copy copy database file into flee_campaign directory
+    campaign_db_file = flee_campaign.db_location.split(tmp_dir)[1]
+    local("cp %s %s" % (os.path.join(tmp_dir, campaign_db_file),
+                        os.path.join(flee_campaign.campaign_dir,
+                                     campaign_db_file)
+                        )
+          )
+
     return flee_campaign
 
 
@@ -116,8 +130,8 @@ def init_flee_campaign():
 def run_flee_easyvvuq(configs, simulation_periods=None, **args):
     """
     to run multiple conflict country, you can use :
-        fab <remote_machine> run_flee_easyvvuq:'conflict1';conflict2'
-        fab <remote_machine> run_flee_easyvvuq:'conflict1';conflict2', simulation_periods='10;60'
+        fab <remote_machine> run_flee_easyvvuq:'mali;ssudan_ccamp'
+        fab <remote_machine> run_flee_easyvvuq:'mali;ssudan_ccamp', simulation_periods='10;60'
 
     simulation_periods parameter is optional
     Note : the number of elements in configs list should be same as simulation_periods
@@ -140,36 +154,62 @@ def run_flee_easyvvuq(configs, simulation_periods=None, **args):
 
     # run once and used for all conflicts
     flee_campaign = init_flee_campaign()
-    flee_campaign.save_state(tmp_dir + "tmp.json")
+    # flee_campaign.save_state(tmp_dir + "tmp.json")
 
+    flee_campaign.save_state(os.path.join(
+        flee_campaign.campaign_dir, "flee_easyvvuq_state.json"))
+
+    '''
     campaign_db_name = flee_campaign.db_location.split(tmp_dir)[1]
+    campaign_dir = flee_campaign._campaign_dir
     with open(tmp_dir + "tmp.json", "r") as infile:
         flee_campaign_json = json.load(infile)
+    '''
 
     for config, simulation_period in zip(configs, simulation_periods):
         campaign2ensemble(config, campaign_dir=flee_campaign.campaign_dir)
 
+        '''
+        config_path = find_config_file_path(
+            config, ExceptWhenNotFound=False) + '/'
+
+        # copy campaign dir to config folder
+        local("cp -r %s %s" % (tmp_dir + flee_campaign._campaign_dir,
+                               config_path + campaign_dir + '/'
+                               )
+              )
+
         # copy database file
         campaign_new_db_name = campaign_db_name.replace(
             ".db", "_" + config + ".db")
+
         local("cp %s %s" % (tmp_dir + campaign_db_name,
-                            tmp_dir + campaign_new_db_name
+                            config_path + campaign_dir + '/' + campaign_new_db_name
                             )
               )
+
         # change database location file name in json file
-        flee_campaign_json['db_location'] = flee_campaign.db_location.replace(
-            ".db", "_" + config + ".db")
+        flee_campaign_json['db_location'] = flee_campaign_json[
+            'db_location'].replace(tmp_dir, config_path + campaign_dir + '/')
+        flee_campaign_json['db_location'] = flee_campaign_json[
+            'db_location'].replace(".db", "_" + config + ".db")
+
         # save json file
-        with open(
-                find_config_file_path(config, ExceptWhenNotFound=False) +
-                "/SWEEP/" + "flee_easyvvuq_state.json", "w"
-        ) as outfile:
+        with open(config_path + "flee_easyvvuq_state.json", "w") as outfile:
             json.dump(flee_campaign_json, outfile, indent=4)
+        '''
 
         if simulation_period == -1:
             flee_ensemble(config, **args)
         else:
             flee_ensemble(config, simulation_period, **args)
+
+        # copy EasyVVUQ folders into results
+        with_config(config)
+        name = template(env.job_name_template)
+        local_dir = os.path.join(env.results_path, name)
+        remote_dir = os.path.join(flee_campaign.campaign_dir)
+        rsync_project(local_dir + '/', remote_dir)
 
 
 @task
@@ -181,20 +221,50 @@ def test_flee_easyvvuq(configs, ** args):
         with_config(config)
         # update_environment(args)
 
-        flee_campaign = uq.Campaign(
-            state_file=find_config_file_path(config, ExceptWhenNotFound=False) +
-            "/SWEEP/" + "flee_easyvvuq_state.json",
-            work_dir=tmp_dir
-        )
+        state_file = None
+        work_dir = os.path.join(
+            env.local_results, template(env.job_name_template))
+        # walk through all files in results_dir
+        for root, dirs, files in os.walk(work_dir):
+            dirs[:] = [d for d in dirs if d not in set(['RUNS'])]
+            if ("flee_easyvvuq_state.json" in files):
+                state_file = os.path.join(root, "flee_easyvvuq_state.json")
+                state_folder = os.path.basename(root)
+                break
+
+        # read json file
+        with open(state_file, "r") as infile:
+            json_data = json.load(infile)
+        # change database location file name in json file
+        json_data['db_location'] = json_data['db_location'].replace(
+            tmp_dir, os.path.join(work_dir, state_folder) + '/')
+        # save json file
+        with open(state_file, "w") as outfile:
+            json.dump(json_data, outfile, indent=4)
+
+        flee_campaign = uq.Campaign(state_file=state_file, work_dir=work_dir)
+
+        with flee_campaign.campaign_db.engine.connect() as con:
+            sql_cmd = "UPDATE run "
+            sql_cmd += "SET run_dir = '%s/'||run_name" % (
+                os.path.join(work_dir, state_folder, 'runs'))
+            result = con.execute(sql_cmd)
+
+            sql_cmd = "UPDATE campaign_info "
+            sql_cmd += "SET campaign_dir='%s' , runs_dir='%s'" % (
+                os.path.join(work_dir, state_folder),
+                os.path.join(work_dir, state_folder, 'runs')
+            )
+            result = con.execute(sql_cmd)
+            result.close()
 
         ensemble2campaign(
             "{}/{}".format(env.local_results, template(env.job_name_template)),
             campaign_dir=flee_campaign.campaign_dir
         )
 
-        
         flee_campaign.collate()
-        continue
+
         collation_result = flee_campaign.get_collation_result()
         print(collation_result)
         collation_result.to_csv(env.local_results + '/' +
