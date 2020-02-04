@@ -211,7 +211,49 @@ def run_flee_easyvvuq(configs, simulation_periods=None, **args):
         remote_dir = os.path.join(flee_campaign.campaign_dir)
         rsync_project(local_dir + '/', remote_dir)
 
+def plot_grid(flee_analysis, keys):
 
+    # find index of input keys in sampler.var
+    if isinstance(keys, str):
+        keys = [keys]
+    key_indexs = []
+    for key_value in keys:
+        key_indexs.append(
+            list(flee_analysis.sampler.vary.get_keys()).index(key_value))
+
+    print(flee_analysis.sampler.vary.get_keys())
+    print(key_indexs)
+    print(len(key_indexs))
+
+    if len(key_indexs) == 1:
+        fig = plt.figure()
+        ax = fig.add_subplot(111, xlabel='RUNs number', ylabel=keys[0])
+        print(flee_analysis.xi_d[:, key_indexs[0]])
+        ax.plot(flee_analysis.xi_d[:, key_indexs[0]], 'ro'
+                )
+
+    if len(key_indexs) == 2:
+        fig = plt.figure()
+        ax = fig.add_subplot(111, xlabel=keys[0], ylabel=keys[1])
+        ax.plot(flee_analysis.xi_d[:, key_indexs[0]],
+                flee_analysis.xi_d[:, key_indexs[1]],
+                'ro'
+                )
+    elif len(key_indexs) == 3:
+        from mpl_toolkits.mplot3d import Axes3D
+        fig = plt.figure()
+        ax = fig.add_subplot(111, projection='3d', xlabel=keys[0],
+                             ylabel=keys[1], zlabel=keys[2])
+        ax.scatter(flee_analysis.xi_d[:, key_indexs[0]],
+                   flee_analysis.xi_d[:, key_indexs[1]],
+                   flee_analysis.xi_d[:, key_indexs[2]]
+                   )
+    else:
+        print('Will only plot for N = 2 or N = 3.')
+
+    plt.tight_layout()
+    plt.show()
+    
 @task
 def test_flee_easyvvuq(configs, ** args):
     # make sure you run fetch_results() command before this using this function
@@ -306,6 +348,9 @@ def test_flee_easyvvuq(configs, ** args):
 
         sys.stdout = original
 
-        flee_analysis.plot_grid()
+        # flee_analysis.plot_grid()
+        plot_grid(flee_analysis, ['camp_move_chance',
+                                  'conflict_move_chance',
+                                  'default_move_chance'])
 
     # return results, flee_analysis
