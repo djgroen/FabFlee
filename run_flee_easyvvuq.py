@@ -163,45 +163,8 @@ def run_flee_easyvvuq(configs, simulation_periods=None, mode='parallel', ** args
     flee_campaign.save_state(os.path.join(
         flee_campaign.campaign_dir, "flee_easyvvuq_state.json"))
 
-    '''
-    campaign_db_name = flee_campaign.db_location.split(tmp_dir)[1]
-    campaign_dir = flee_campaign._campaign_dir
-    with open(tmp_dir + "tmp.json", "r") as infile:
-        flee_campaign_json = json.load(infile)
-    '''
-
     for config, simulation_period in zip(configs, simulation_periods):
         campaign2ensemble(config, campaign_dir=flee_campaign.campaign_dir)
-
-        '''
-        config_path = find_config_file_path(
-            config, ExceptWhenNotFound=False) + '/'
-
-        # copy campaign dir to config folder
-        local("cp -r %s %s" % (tmp_dir + flee_campaign._campaign_dir,
-                               config_path + campaign_dir + '/'
-                               )
-              )
-
-        # copy database file
-        campaign_new_db_name = campaign_db_name.replace(
-            ".db", "_" + config + ".db")
-
-        local("cp %s %s" % (tmp_dir + campaign_db_name,
-                            config_path + campaign_dir + '/' + campaign_new_db_name
-                            )
-              )
-
-        # change database location file name in json file
-        flee_campaign_json['db_location'] = flee_campaign_json[
-            'db_location'].replace(tmp_dir, config_path + campaign_dir + '/')
-        flee_campaign_json['db_location'] = flee_campaign_json[
-            'db_location'].replace(".db", "_" + config + ".db")
-
-        # save json file
-        with open(config_path + "flee_easyvvuq_state.json", "w") as outfile:
-            json.dump(flee_campaign_json, outfile, indent=4)
-        '''
 
         if simulation_period == -1:
             flee_ensemble(config, script=flee_script, **args)
