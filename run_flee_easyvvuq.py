@@ -127,7 +127,7 @@ def init_flee_campaign():
 
 
 @task
-def run_flee_easyvvuq(configs, simulation_periods=None, **args):
+def run_flee_easyvvuq(configs, simulation_periods=None, mode='parallel', ** args):
     """
     to run multiple conflict country, you can use :
         fab <remote_machine> run_flee_easyvvuq:'mali;ssudan_ccamp'
@@ -152,6 +152,10 @@ def run_flee_easyvvuq(configs, simulation_periods=None, **args):
         print("number of conflict countries is NOT equal to simulation_periods")
         exit()
 
+    if mode == 'serial':
+        flee_script = 'flee'
+    else:
+        flee_script = 'pflee'
     # run once and used for all conflicts
     flee_campaign = init_flee_campaign()
     # flee_campaign.save_state(tmp_dir + "tmp.json")
@@ -200,9 +204,10 @@ def run_flee_easyvvuq(configs, simulation_periods=None, **args):
         '''
 
         if simulation_period == -1:
-            flee_ensemble(config, **args)
+            flee_ensemble(config, script=flee_script, **args)
         else:
-            flee_ensemble(config, simulation_period, **args)
+            flee_ensemble(config, simulation_period,
+                          script=flee_script, **args)
 
         # copy EasyVVUQ folders into results
         with_config(config)
@@ -210,6 +215,7 @@ def run_flee_easyvvuq(configs, simulation_periods=None, **args):
         local_dir = os.path.join(env.results_path, name)
         remote_dir = os.path.join(flee_campaign.campaign_dir)
         rsync_project(local_dir + '/', remote_dir)
+
 
 def plot_grid(flee_analysis, keys):
 
@@ -253,7 +259,8 @@ def plot_grid(flee_analysis, keys):
 
     plt.tight_layout()
     plt.show()
-    
+
+
 @task
 def test_flee_easyvvuq(configs, ** args):
     # make sure you run fetch_results() command before this using this function
