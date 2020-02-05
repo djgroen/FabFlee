@@ -275,6 +275,9 @@ def flee_ensemble(config, simulation_period, script='flee', **args):
     env.input_name_in_config = 'flee.txt'
     env.simulation_period = simulation_period
 
+    if hasattr(env, 'NoEnvScript'):
+        del env['NoEnvScript']
+    
     if args.get("PilotJob", "False") == "True":
 
         #specific workaround for Flee on Eagle.
@@ -798,7 +801,7 @@ def validate_flee(mode="serial", simulation_period=0, cores=4, skip_runs=False, 
     """
 
     if not skip_runs:
-        if mode=="parallel":
+        if mode.lower()=="parallel":
             pflee_ensemble("validation", simulation_period, cores=cores, **args)
         else:
             flee_ensemble("validation", simulation_period, cores=1, **args)
@@ -913,5 +916,8 @@ def test_sensitivity(config, **args):
 # Test Functions
 # from plugins.FabFlee.test_FabFlee import *
 from plugins.FabFlee.run_simulation_sets import *
-from plugins.FabFlee.run_flee_easyvvuq import *
-from plugins.FabFlee.run_perf_benchmarks import *
+try:
+    from plugins.FabFlee.run_flee_easyvvuq import *
+    from plugins.FabFlee.run_perf_benchmarks import *
+except ImportError:
+    pass
