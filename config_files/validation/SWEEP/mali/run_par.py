@@ -55,21 +55,7 @@ if __name__ == "__main__":
 
   d = handle_refugee_data.RefugeeTable(csvformat="generic", data_directory=validation_data_directory, start_date=start_date, data_layout="data_layout.csv")
 
-  d.correctLevel1Registrations("Fassala-Mbera","2012-12-31")
-  d.correctLevel1Registrations("Mentao","2012-10-03") # no capacity correction, as pop increases after correction.
-  d.correctLevel1Registrations("Abala","2012-12-21")
-  d.correctLevel1Registrations("Mangaize","2012-12-21")
-  d.correctLevel1Registrations("Tabareybarey","2012-12-21")
-
-  #d.correctLevel1Registrations("Tierkidi","2014-08-08")
-  #d.correctLevel1Registrations("Pugnido","2015-06-26")
-  #d.correctLevel1Registrations("Jewi","2015-07-31")
-  #d.correctLevel1Registrations("Kule","2014-09-12")
-  #d.correctLevel1Registrations("Kakuma","2014-06-26")
-  #d.correctLevel1Registrations("Khartoum","2014-04-27")
-  #d.correctLevel1Registrations("West_Kordofan","2015-08-05")
-  #d.correctLevel1Registrations("Rhino","2014-05-21")
-  #d.correctLevel1Registrations("Kiryandongo","2014-05-27")
+  d.ReadL1Corrections("%s/registration_corrections.csv" % input_csv_directory)
 
   output_header_string = "Day,"
 
@@ -83,7 +69,7 @@ if __name__ == "__main__":
   output_header_string += "Total error,refugees in camps (UNHCR),total refugees (simulation),raw UNHCR refugee count,refugees in camps (simulation),refugee_debt"
 
   if e.getRankN(0):
-      print(output_header_string)
+    print(output_header_string)
 
   # Set up a mechanism to incorporate temporary decreases in refugees
   refugee_debt = 0
@@ -149,9 +135,9 @@ if __name__ == "__main__":
       output += ",%s,%s,%s" % (lm[camp_locations[i]].numAgents, loc_data[i], errors[i])
 
     if refugees_raw>0:
-        output += ",%s,%s,%s,%s,%s,%s" % (float(np.sum(abs_errors))/float(refugees_raw), int(sum(loc_data)), e.numAgents(), refugees_raw, refugees_in_camps_sim, refugee_debt)
+      output += ",%s,%s,%s,%s,%s,%s" % (float(np.sum(abs_errors))/float(refugees_raw), int(sum(loc_data)), e.numAgents(), refugees_raw, refugees_in_camps_sim, refugee_debt)
     else:
-        output += ",0,0,0,0,0,0"
+      output += ",0,0,0,0,0,0"
 
     if e.getRankN(t):
-        print(output)
+      print(output)

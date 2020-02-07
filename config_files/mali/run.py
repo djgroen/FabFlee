@@ -1,5 +1,5 @@
 from flee import flee
-from datamanager import handle_refugee_data
+from datamanager import handle_refugee_data,read_period
 from datamanager import DataTable #DataTable.subtract_dates()
 from flee import InputGeography
 import numpy as np
@@ -12,26 +12,19 @@ def AddInitialRefugees(e, d, loc):
   for i in range(0, num_refugees):
     e.addAgent(location=loc)
 
-start_date = "2012-02-29"
 insert_day0_refugees_in_camps = True
-
-def date_to_sim_days(date):
-  return DataTable.subtract_dates(date,start_date)
-
 
 if __name__ == "__main__":
 
-  end_time = 604
-  last_physical_day = 604
+  start_date,end_time = read_period.read_conflict_period("{}/conflict_period.csv".format(sys.argv[1]))
 
   if len(sys.argv)<4:
     print("Please run using: python3 run.py <your_csv_directory> <your_refugee_data_directory> <duration in days> <optional: simulation_settings.csv> > <output_directory>/<output_csv_filename>")
 
   input_csv_directory = sys.argv[1]
   validation_data_directory = sys.argv[2]
-  duration = int(sys.argv[3])
-  end_time = int(sys.argv[3])
-  last_physical_day = int(sys.argv[3])
+  if int(sys.argv[3]) > 0:
+    end_time = int(sys.argv[3])
 
   if len(sys.argv)==5:
     flee.SimulationSettings.ReadFromCSV(sys.argv[4])
@@ -51,25 +44,9 @@ if __name__ == "__main__":
 
   e,lm = ig.StoreInputGeographyInEcosystem(e)
 
-  #print("Network data loaded")
-
   d = handle_refugee_data.RefugeeTable(csvformat="generic", data_directory=validation_data_directory, start_date=start_date, data_layout="data_layout.csv")
 
-  d.correctLevel1Registrations("Fassala-Mbera","2012-12-31")
-  d.correctLevel1Registrations("Mentao","2012-10-03") # no capacity correction, as pop increases after correction.
-  d.correctLevel1Registrations("Abala","2012-12-21")
-  d.correctLevel1Registrations("Mangaize","2012-12-21")
-  d.correctLevel1Registrations("Tabareybarey","2012-12-21")
-
-  #d.correctLevel1Registrations("Tierkidi","2014-08-08")
-  #d.correctLevel1Registrations("Pugnido","2015-06-26")
-  #d.correctLevel1Registrations("Jewi","2015-07-31")
-  #d.correctLevel1Registrations("Kule","2014-09-12")
-  #d.correctLevel1Registrations("Kakuma","2014-06-26")
-  #d.correctLevel1Registrations("Khartoum","2014-04-27")
-  #d.correctLevel1Registrations("West_Kordofan","2015-08-05")
-  #d.correctLevel1Registrations("Rhino","2014-05-21")
-  #d.correctLevel1Registrations("Kiryandongo","2014-05-27")
+  d.ReadL1Corrections("%s/registration_corrections.csv" % input_csv_directory)
 
   output_header_string = "Day,"
 
@@ -80,7 +57,7 @@ if __name__ == "__main__":
           AddInitialRefugees(e,d,lm[l])
       output_header_string += "%s sim,%s data,%s error," % (lm[l].name, lm[l].name, lm[l].name)
 
-  output_header_string += "Total error,refugees in camps_(UNHCR),total refugees (simulation),raw UNHCR refugee count,refugees in camps (simulation),refugee_debt"
+  output_header_string += "Total error,refugees in camps (UNHCR),total refugees (simulation),raw UNHCR refugee count,refugees in camps (simulation),refugee_debt"
 
   print(output_header_string)
 
@@ -148,11 +125,8 @@ if __name__ == "__main__":
       output += ",%s,%s,%s" % (lm[camp_locations[i]].numAgents, loc_data[i], errors[i])
 
     if refugees_raw>0:
-      #output_string += ",%s,%s,%s,%s" % (float(np.sum(abs_errors))/float(refugees_raw), int(sum(loc_data)), e.numAgents(), refugees_raw)
       output += ",%s,%s,%s,%s,%s,%s" % (float(np.sum(abs_errors))/float(refugees_raw), int(sum(loc_data)), e.numAgents(), refugees_raw, refugees_in_camps_sim, refugee_debt)
     else:
       output += ",0,0,0,0,0,0"
-      #output_string += ",0"
-
 
     print(output)

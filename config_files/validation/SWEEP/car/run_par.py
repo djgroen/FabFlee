@@ -55,6 +55,8 @@ if __name__ == "__main__":
 
   d = handle_refugee_data.RefugeeTable(csvformat="generic", data_directory=validation_data_directory, start_date=start_date, data_layout="data_layout.csv")
 
+  d.ReadL1Corrections("%s/registration_corrections.csv" % input_csv_directory)
+
   output_header_string = "Day,"
 
   camp_locations      = e.get_camp_names()
@@ -133,11 +135,9 @@ if __name__ == "__main__":
       output += ",%s,%s,%s" % (lm[camp_locations[i]].numAgents, loc_data[i], errors[i])
 
     if refugees_raw>0:
-      #output_string += ",%s,%s,%s,%s" % (float(np.sum(abs_errors))/float(refugees_raw), int(sum(loc_data)), e.numAgents(), refugees_raw)
       output += ",%s,%s,%s,%s,%s,%s" % (float(np.sum(abs_errors))/float(refugees_raw), int(sum(loc_data)), e.numAgents(), refugees_raw, refugees_in_camps_sim, refugee_debt)
     else:
       output += ",0,0,0,0,0,0"
-      #output_string += ",0"
 
     if e.getRankN(t):
       print(output)
