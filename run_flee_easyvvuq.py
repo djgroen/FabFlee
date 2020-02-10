@@ -101,9 +101,9 @@ def init_flee_campaign():
     # number)
     vary = {
         "max_move_speed": cp.Uniform(20, 500),
-        "camp_move_chance": cp.Uniform(0.0001, 1.0),
-        "conflict_move_chance": cp.Uniform(0.1, 1.0),
-        "default_move_chance": cp.Uniform(0.1, 1.0)
+        #"camp_move_chance": cp.Uniform(0.0001, 1.0),
+        #"conflict_move_chance": cp.Uniform(0.1, 1.0),
+        #"default_move_chance": cp.Uniform(0.1, 1.0)
     }
 
     my_sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=3)
