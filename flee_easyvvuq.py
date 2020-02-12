@@ -225,7 +225,7 @@ def plot_grid(flee_analysis, keys):
 
 
 @task
-def test_flee_easyvvuq(configs, ** args):
+def analyse_flee_easyvvuq(configs, ** args):
     # make sure you run fetch_results() command before this using this function
 
     configs = configs.split(';')
