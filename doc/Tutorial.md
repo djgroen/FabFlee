@@ -75,7 +75,7 @@ To illustrate **simsetting.csv** file:
 |MaxMoveSpeed |200 |
 |-------------|----|
 
-You can then create similar directories with inputs that have a run speed of 100, or 400. Or if you're too lazy to do that, just copy the contents of `(FabFlee Location)/config_files/mali/example_sweepdir` to `(FabFlee Location)/config_files/mali_runspeed_test/SWEEP`. 
+You can then create similar directories with inputs that have a run speed of 100, or 400. Or if you're too lazy to do that, just copy the contents of `(FabFlee Location)/config_files/validation/SWEEP/mali/example_sweepdir` to `(FabFlee Location)/config_files/mali_runspeed_test/SWEEP`. 
 
 ### Step 3: Run an ensemble of run speed tests
 
