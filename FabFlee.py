@@ -803,13 +803,17 @@ def validate_flee_output(results_dir):
 
 
 @task
-def validate_flee(mode="serial", simulation_period=0, cores=4, skip_runs=False, label="", AwarenessLevel=1, **args):
+def validate_flee(simulation_period=0, cores=4, skip_runs=False, label="", AwarenessLevel=1, **args):
     """
     Runs all the validation test and returns all scores, as well as an average.
     """
     if len(label)>0:
       print("adding label: ",label)
       env.job_name_template += "_{}".format(label)
+
+    mode="serial"
+    if int(cores)>1:
+      mode="parallel"
 
     if not skip_runs:
         if mode.lower()=="parallel":
