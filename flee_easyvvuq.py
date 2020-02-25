@@ -248,8 +248,9 @@ def analyse_flee_easyvvuq(configs, ** args):
         with open(state_file, "r") as infile:
             json_data = json.load(infile)
         # change database location file name in json file
-        json_data['db_location'] = json_data['db_location'].replace(
-            tmp_dir, os.path.join(work_dir, state_folder) + '/')
+        json_data['db_location'] = "sqlite:///" + \
+            os.path.join(work_dir, state_folder, json_data[
+                         'db_location'].split("/")[-1])        
         # save json file
         with open(state_file, "w") as outfile:
             json.dump(json_data, outfile, indent=4)
