@@ -255,13 +255,21 @@ def analyse_flee_easyvvuq(configs, ** args):
         with open(state_file, "w") as outfile:
             json.dump(json_data, outfile, indent=4)
 
-        flee_campaign = uq.Campaign(state_file=state_file, work_dir=work_dir)
+        # updating db file
+        from sqlalchemy import create_engine
+        engine = create_engine(json_data['db_location'])
+        with engine.connect() as con:
+            sql_cmd = "UPDATE app "
+            sql_cmd += "SET input_encoder = JSON_SET(input_encoder,'$.state.template_fname','%s')" % (
+                os.path.join(env.localplugins['FabFlee'], 'templates/simsetting.template'))
+            result = con.execute(sql_cmd)
+            result.close()
 
-        with flee_campaign.campaign_db.engine.connect() as con:
             sql_cmd = "UPDATE run "
             sql_cmd += "SET run_dir = '%s/'||run_name" % (
                 os.path.join(work_dir, state_folder, 'runs'))
             result = con.execute(sql_cmd)
+            result.close()
 
             sql_cmd = "UPDATE campaign_info "
             sql_cmd += "SET campaign_dir='%s' , runs_dir='%s'" % (
@@ -270,7 +278,9 @@ def analyse_flee_easyvvuq(configs, ** args):
             )
             result = con.execute(sql_cmd)
             result.close()
-
+            
+        flee_campaign = uq.Campaign(state_file=state_file, work_dir=work_dir)
+    
         ensemble2campaign(
             "{}/{}".format(env.local_results, template(env.job_name_template)),
             campaign_dir=flee_campaign.campaign_dir
