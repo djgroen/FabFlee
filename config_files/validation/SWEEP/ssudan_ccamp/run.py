@@ -130,3 +130,4 @@ if __name__ == "__main__":
       output += ",0,0,0,0,0,0"
 
     print(output)
+

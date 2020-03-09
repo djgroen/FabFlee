@@ -12,7 +12,7 @@ def AddInitialRefugees(e, d, loc):
   for i in range(0, num_refugees):
     e.addAgent(location=loc)
 
-insert_day0_refugees_in_camps = False
+insert_day0_refugees_in_camps = True
 
 if __name__ == "__main__":
 
@@ -132,3 +132,4 @@ if __name__ == "__main__":
 
     if e.getRankN(t):
         print(output)
+

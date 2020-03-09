@@ -132,3 +132,4 @@ if __name__ == "__main__":
 
     if e.getRankN(t):
         print(output)
+
