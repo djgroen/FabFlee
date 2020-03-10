@@ -277,16 +277,12 @@ def flee_ensemble(config, simulation_period, script='flee', label="",  **args):
 
     if hasattr(env, 'NoEnvScript'):
         del env['NoEnvScript']
-<<<<<<< HEAD
-        
-=======
     
     #Re-add support for labels, which are overwritten by runensemble.
     if len(label)>0:
       print("adding label: ",label)
       env.job_name_template += "_{}".format(label)
 
->>>>>>> cb216be42a2e64be61f5de54cb4a74c0871fea30
     if args.get("PilotJob", "False") == "True":
         
         #specific workaround for Flee on Eagle.
