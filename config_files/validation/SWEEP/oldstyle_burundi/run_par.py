@@ -146,7 +146,7 @@ if __name__ == "__main__":
     list_of_cities = "%s,%s" % (list_of_cities, l.name)
 
   if e.getRankN(0):
-    print("Day,Mahama sim,Mahama data,Mahama error,Nduta sim,Nduta data,Nduta error,Nyarugusu sim,Nyarugusu data,Nyarugusu error,Nakivale sim,Nakivale data,Nakivale error,Lusenda sim,Lusenda data,Lusenda error,Total error,refugees in camps (UNHCR),total refugees (simulation),raw UNHCR refugee count,retrofitted time,refugees in camps (simulation),refugee_debt,Total error (retrofitted)")
+    print("Day,Mahama sim,Mahama data,Mahama error,Nduta sim,Nduta data,Nduta error,Nyarugusu sim,Nyarugusu data,Nyarugusu error,Nakivale sim,Nakivale data,Nakivale error,Lusenda sim,Lusenda data,Lusenda error,Total error,refugees in camps (UNHCR),total refugees (simulation),raw UNHCR refugee count,refugees in camps (simulation),refugee_debt")
 
 
   #Set up a mechanism to incorporate temporary decreases in refugees
@@ -157,21 +157,17 @@ if __name__ == "__main__":
   e.add_conflict_zone("Bujumbura")
 
 
-  t_retrofitted = 0
-
   for t in range(0,end_time):
 
     t_data = t
 
     #Lusenda camp open on the 30th of July 2015
     if t_data == date_to_sim_days("2015-07-30"): #Open Lusenda
-      locations[31].SetCampMoveChance()
-      locations[31].Camp=True
+      locations[31].SetCamp()
       e.linkUp("Bujumbura","Lusenda","53.0") #Only added when the refugee inflow starts at Lusenda, on 30-07-2015
 
     if t_data == date_to_sim_days("2015-08-10"):
-      locations[27].SetCampMoveChance()
-      locations[27].Camp=True
+      locations[27].SetCamp()
       e.remove_link("Nduta","Nyarugusu")
       e.linkUp("Nduta","Nyarugusu","150.0") #Re-add link, but without forced redirection
 
@@ -231,26 +227,15 @@ if __name__ == "__main__":
       camps += [locations[i]]
     camp_names = ["Mahama", "Nduta", "Nyarugusu", "Nakivale", "Lusenda"]
 
-    camp_pops_retrofitted = []
-    errors_retrofitted = []
-    abs_errors_retrofitted = []
-
-    # calculate retrofitted time.
     refugees_in_camps_sim = 0
     for c in camps:
       refugees_in_camps_sim += c.numAgents
-    t_retrofitted = d.retrofit_time_to_refugee_count(refugees_in_camps_sim, camp_names)
 
     # calculate errors
     for i in range(0,len(camp_locations)):
       camp_number = camp_locations[i]
       errors += [a.rel_error(locations[camp_number].numAgents, loc_data[i])]
       abs_errors += [a.abs_error(locations[camp_number].numAgents, loc_data[i])]
-
-      # errors when using retrofitted time stepping.
-      camp_pops_retrofitted += [d.get_field(camp_names[i], t_retrofitted, FullInterpolation=True)]
-      errors_retrofitted += [a.rel_error(camps[i].numAgents, camp_pops_retrofitted[-1])]
-      abs_errors_retrofitted += [a.abs_error(camps[i].numAgents, camp_pops_retrofitted[-1])]
 
     output = "%s" % t
 
@@ -261,7 +246,7 @@ if __name__ == "__main__":
 
     if refugees_raw>0:
       #output_string += ",%s,%s,%s,%s" % (float(np.sum(abs_errors))/float(refugees_raw), int(sum(loc_data)), e.numAgents(), refugees_raw)
-      output += ",%s,%s,%s,%s,%s,%s,%s,%s" % (float(np.sum(abs_errors))/float(refugees_raw), int(sum(loc_data)), e.numAgents(), refugees_raw, t_retrofitted, refugees_in_camps_sim, refugee_debt, float(np.sum(abs_errors_retrofitted))/float(refugees_raw))
+      output += ",%s,%s,%s,%s,%s,%s" % (float(np.sum(abs_errors))/float(refugees_raw), int(sum(loc_data)), e.numAgents(), refugees_raw, refugees_in_camps_sim, refugee_debt)
     else:
       output += ",0,0,0,0,0,0,0"
       #output_string += ",0"

@@ -261,7 +261,7 @@ def flees(config, simulation_period, **args):
 
 
 @task
-def flee_ensemble(config, simulation_period, script='flee', **args):
+def flee_ensemble(config, simulation_period, script='flee', label="",  **args):
     """
     Submits an ensemble of dummy jobs.
     One job is run for each file in <config_file_directory>/flee_test/SWEEP.
@@ -277,7 +277,16 @@ def flee_ensemble(config, simulation_period, script='flee', **args):
 
     if hasattr(env, 'NoEnvScript'):
         del env['NoEnvScript']
+<<<<<<< HEAD
         
+=======
+    
+    #Re-add support for labels, which are overwritten by runensemble.
+    if len(label)>0:
+      print("adding label: ",label)
+      env.job_name_template += "_{}".format(label)
+
+>>>>>>> cb216be42a2e64be61f5de54cb4a74c0871fea30
     if args.get("PilotJob", "False") == "True":
         
         #specific workaround for Flee on Eagle.
@@ -285,6 +294,12 @@ def flee_ensemble(config, simulation_period, script='flee', **args):
                     "python3 -m pip install numpy"]
         for cmd in cmds:
             env.run_prefix_commands.append(cmd)
+
+    #if len(args.get("AwarenessLevel", "")) > 0:
+    #    cmd = ["echo \"AwarenessLevel,{}\" >> simsetting.csv".format(args.get("AwarenessLevel"))]
+    #    print(cmd)
+    #    env.run_prefix_commands = env.run_prefix_commands.append(cmd)
+    #    print(env.run_prefix_commands)
 
     run_ensemble(config, sweep_dir, **args)
 
@@ -795,10 +810,17 @@ def validate_flee_output(results_dir):
 
 
 @task
-def validate_flee(mode="serial", simulation_period=0, cores=4, skip_runs=False, **args):
+def validate_flee(simulation_period=0, cores=4, skip_runs=False, label="", AwarenessLevel=1, **args):
     """
     Runs all the validation test and returns all scores, as well as an average.
     """
+    if len(label)>0:
+      print("adding label: ",label)
+      env.job_name_template += "_{}".format(label)
+
+    mode="serial"
+    if int(cores)>1:
+      mode="parallel"
 
     if not skip_runs:
         if mode.lower()=="parallel":
@@ -815,7 +837,8 @@ def validate_flee(mode="serial", simulation_period=0, cores=4, skip_runs=False, 
 
 
     fetch_results()
-    results_dir = template("${config}_${machine_name}_${cores}")
+
+    results_dir = template(env.job_name_template)
     validate_flee_output(results_dir)
 
 
