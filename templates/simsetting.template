@@ -3,3 +3,5 @@ MaxMoveSpeed,$max_move_speed
 CampMoveChance,$camp_move_chance
 ConflictMoveChance,$conflict_move_chance
 DefaultMoveChance,$default_move_chance
+CampWeight,$camp_weight
+ConflictWeight,$conflict_weight

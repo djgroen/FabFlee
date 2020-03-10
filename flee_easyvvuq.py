@@ -67,6 +67,18 @@ def init_flee_campaign():
             "max": 1.0,
             "default": 0.3
         },
+        "camp_weight": {
+            "type": "float",
+            "min": 1.0,
+            "max": 10.0,
+            "default": 2.0
+        },
+        "conflict_weight": {
+            "type": "float",
+            "min": 0.1,
+            "max": 1.0,
+            "default": 0.25
+        },
         "out_file": {
             "type": "string",
             "default": "out.csv"
@@ -101,9 +113,11 @@ def init_flee_campaign():
     # number)
     vary = {
         "max_move_speed": cp.Uniform(20, 500),
-        #"camp_move_chance": cp.Uniform(0.0001, 1.0),
-        #"conflict_move_chance": cp.Uniform(0.1, 1.0),
-        #"default_move_chance": cp.Uniform(0.1, 1.0)
+        "camp_move_chance": cp.Uniform(0.0, 0.1),
+        "conflict_move_chance": cp.Uniform(0.1, 1.0),
+        "default_move_chance": cp.Uniform(0.1, 1.0),
+        "camp_weight": cp.Uniform(1.0, 10.0),
+        "conflict_weight": cp.Uniform(0.1, 1.0)
     }
 
     my_sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=3)
@@ -141,6 +155,7 @@ def run_flee_easyvvuq(configs, simulation_periods=None, mode='parallel', ** args
         simulation_periods(mali) = 60
         simulation_periods(ssudan_ccamp) = default value in run.py
     """
+
     configs = configs.split(';')
     if simulation_periods is None:
         simulation_periods = [-1 for _ in range(len(configs))]
