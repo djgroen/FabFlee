@@ -1,5 +1,5 @@
 from flee import flee
-from datamanager import handle_refugee_data
+from datamanager import handle_refugee_data,read_period
 from datamanager import DataTable #DataTable.subtract_dates()
 from flee import InputGeography
 import numpy as np
@@ -12,17 +12,11 @@ def AddInitialRefugees(e, d, loc):
   for i in range(0, num_refugees):
     e.addAgent(location=loc)
 
-start_date = "2013-12-01"
 insert_day0_refugees_in_camps = True
-
-def date_to_sim_days(date):
-  return DataTable.subtract_dates(date,start_date)
-
 
 if __name__ == "__main__":
 
-  end_time = 820
-  last_physical_day = 820
+  start_date,end_time = read_period.read_conflict_period("{}/conflict_period.csv".format(sys.argv[1]))
 
   if len(sys.argv)<4:
     print("Please run using: python3 run.py <your_csv_directory> <your_refugee_data_directory> <duration in days> <optional: simulation_settings.csv> > <output_directory>/<output_csv_filename>")
@@ -31,17 +25,16 @@ if __name__ == "__main__":
   validation_data_directory = sys.argv[2]
   if int(sys.argv[3]) > 0:
     end_time = int(sys.argv[3])
-    last_physical_day = int(sys.argv[3])
 
   if len(sys.argv)==5:
-    flee.SimulationSettings.SimulationSettings.ReadFromCSV(sys.argv[4])
-  flee.SimulationSettings.SimulationSettings.FlareConflictInputFile = "%s/conflicts.csv" % input_csv_directory
+    flee.SimulationSettings.ReadFromCSV(sys.argv[4])
+  flee.SimulationSettings.FlareConflictInputFile = "%s/conflicts.csv" % input_csv_directory
 
   e = flee.Ecosystem()
 
   ig = InputGeography.InputGeography()
 
-  ig.ReadFlareConflictInputCSV(flee.SimulationSettings.SimulationSettings.FlareConflictInputFile)
+  ig.ReadFlareConflictInputCSV(flee.SimulationSettings.FlareConflictInputFile)
 
   ig.ReadLocationsFromCSV("%s/locations.csv" % input_csv_directory)
 
@@ -51,9 +44,9 @@ if __name__ == "__main__":
 
   e,lm = ig.StoreInputGeographyInEcosystem(e)
 
-  #print("Network data loaded")
-
   d = handle_refugee_data.RefugeeTable(csvformat="generic", data_directory=validation_data_directory, start_date=start_date, data_layout="data_layout.csv")
+
+  d.ReadL1Corrections("%s/registration_corrections.csv" % input_csv_directory)
 
   output_header_string = "Day,"
 
@@ -132,11 +125,9 @@ if __name__ == "__main__":
       output += ",%s,%s,%s" % (lm[camp_locations[i]].numAgents, loc_data[i], errors[i])
 
     if refugees_raw>0:
-      #output_string += ",%s,%s,%s,%s" % (float(np.sum(abs_errors))/float(refugees_raw), int(sum(loc_data)), e.numAgents(), refugees_raw)
       output += ",%s,%s,%s,%s,%s,%s" % (float(np.sum(abs_errors))/float(refugees_raw), int(sum(loc_data)), e.numAgents(), refugees_raw, refugees_in_camps_sim, refugee_debt)
     else:
       output += ",0,0,0,0,0,0"
-      #output_string += ",0"
-
 
     print(output)
+
