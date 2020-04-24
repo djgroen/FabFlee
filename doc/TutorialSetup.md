@@ -65,9 +65,9 @@ Once you have installed the required dependencies, you will need to take a few s
 1. Go to `(FabSim Home)/deploy`
 2. Open `machines_user.yml`
 3. Under the section `default:`, please add the following lines:
-   <br/> a. `  flee_location=(FLEE Home)`
+   <br/> a. `  flee_location: (FLEE Home)`
    <br/> _NOTE: Please replace (FLEE Home) with your actual install directory._
-   <br/> b. `  flare_location=(Flare Home)`
+   <br/> b. `  flare_location: (Flare Home)`
    <br/> _NOTE: Please replace (Flare Home) with your actual install directory._
    
  ## 3. Main tutorial
