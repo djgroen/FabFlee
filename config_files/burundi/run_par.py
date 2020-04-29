@@ -1,4 +1,4 @@
-from flee import flee
+from flee import pflee as flee
 from datamanager import handle_refugee_data
 from datamanager import DataTable
 import numpy as np
@@ -145,9 +145,8 @@ if __name__ == "__main__":
   for l in locations:
     list_of_cities = "%s,%s" % (list_of_cities, l.name)
 
-  #print(list_of_cities)
-  #print("Time, campname")
-  print("Day,Mahama sim,Mahama data,Mahama error,Nduta sim,Nduta data,Nduta error,Nyarugusu sim,Nyarugusu data,Nyarugusu error,Nakivale sim,Nakivale data,Nakivale error,Lusenda sim,Lusenda data,Lusenda error,Total error,refugees in camps (UNHCR),total refugees (simulation),raw UNHCR refugee count,refugees in camps (simulation),refugee_debt")
+  if e.getRankN(0):
+    print("Day,Mahama sim,Mahama data,Mahama error,Nduta sim,Nduta data,Nduta error,Nyarugusu sim,Nyarugusu data,Nyarugusu error,Nakivale sim,Nakivale data,Nakivale error,Lusenda sim,Lusenda data,Lusenda error,Total error,refugees in camps (UNHCR),total refugees (simulation),raw UNHCR refugee count,refugees in camps (simulation),refugee_debt")
 
 
   #Set up a mechanism to incorporate temporary decreases in refugees
@@ -252,6 +251,6 @@ if __name__ == "__main__":
       output += ",0,0,0,0,0,0,0"
       #output_string += ",0"
 
-
-    print(output)
+    if e.getRankN(t):
+      print(output)
 
