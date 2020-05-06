@@ -1,0 +1,16 @@
+cd $job_results
+$run_prefix
+export PYTHONPATH=$flee_location:$$PYTHONPATH
+
+/usr/bin/env > env.log
+
+muscle_manager macro_micro.ymmsl &
+
+python run_couple.py --submodel macro --coupling_type $coupling_type --muscle-instance=macro --input_csv_directory input_csv &
+python run_couple.py --submodel micro --coupling_type $coupling_type --muscle-instance=micro --input_csv_directory input_csv &
+
+touch muscle3_manager.log
+tail -f muscle3_manager.log --pid=$${manager_pid}
+
+wait
+
