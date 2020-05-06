@@ -5,7 +5,7 @@ export PYTHONPATH=$flee_location:$$PYTHONPATH
 /usr/bin/env > env.log
 
 
-python run_couple.py --submodel macro --coupling_type $coupling_type --input_csv_directory input_csv &
-python run_couple.py --submodel micro --coupling_type $coupling_type --input_csv_directory input_csv &
+python run_couple.py --submodel macro --coupling_type $coupling_type --end_time $simulation_period --input_csv_directory input_csv &
+python run_couple.py --submodel micro --coupling_type $coupling_type --end_time $simulation_period --input_csv_directory input_csv &
 
 wait
