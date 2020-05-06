@@ -152,6 +152,37 @@ def flee(config, simulation_period, **args):
     execute(put_configs, config)
     job(dict(script='flee', wall_time='0:15:0', memory='2G'), args)
 
+@task
+def cflee(config, simulation_period, coupling_type, **args):
+    """ Submit a cflee (coupling flee) job to the remote queue.
+    The job results will be stored with a name pattern as defined
+    Required Keyword arguments:
+        config :
+            config directory to use for the simulation script, 
+            e.g. config=mscalecity
+        coupling_type :
+            the coupling model, currently two models are implemented :
+            (1) file couping, and (2) muscle3
+            acceptable input set : file / muscle3
+    Example:
+        fab cflee:mscalecity,simulation_period=10,coupling_type=file
+        fab cflee:mscalecity,simulation_period=10,coupling_type=muscle3
+    """
+
+    update_environment(args, {"simulation_period": simulation_period,
+                              "coupling_type": coupling_type}
+                       )
+    if coupling_type == 'file':
+        script = 'flee_file_coupling'
+        label = 'file_coupling'
+    elif coupling_type == 'muscle3':
+        script = 'flee_muscle3_coupling'
+        label = 'muscle3_coupling'
+
+    with_config(config)
+    execute(put_configs, config)
+    job(dict(script=script, wall_time='0:15:0', memory='2G', label=label), args)
+        
 
 @task
 def flee_and_plot(config, simulation_period, **args):
