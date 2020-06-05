@@ -113,7 +113,7 @@ fab <remote_machine_name> run_flee_easyvvuq:‘country1(;countryN)’,simulation
 fab <remote_machine_name> fetch_results
 ```     
 
-3. To analyse results, simply run
+3. To analyse results, simply run:
 ```
 fab localhost analyse_flee_easyvvuq:‘country1(;countryN)’
 ```
@@ -130,7 +130,7 @@ To install virtual environment on the remote machine alongside with QCG-PilotJob
 ```
 fab <remote machine name> install_app:QCG-PilotJob,virtual_env=True
 ```
-To execute easyvvuq for migration prediction using Pilot Job, run
+To execute easyvvuq for migration prediction using Pilot Job, run:
 ```
 fab <remote machine name> run_flee_easyvvuq:‘country1(;countryN)’(,simulation_periods=‘day1(;dayN)’),PilotJob=True
 ```
