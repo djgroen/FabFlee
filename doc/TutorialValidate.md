@@ -8,7 +8,7 @@ To showcase on migration simulations, we use `validate_flee_output` function in 
 
 ## Ensemble Validation of a single conflict instance
 
-1.  To check existing output directory, simply run
+1.  To check the existing output directory, simply run
     ```
     cd (FabSim3 Home)/results
     ls
@@ -24,7 +24,7 @@ To showcase on migration simulations, we use `validate_flee_output` function in 
     fab <remote machine name> validate_flee_output:<conflict name>_<remote machine name>_<number> 
     ```
     
-    For instance, to validate the Mali conflict instance,simply type
+    For instance, to validate the Mali conflict instance, simply type
     ```
     fab localhost validate_flee_output:mali_localhost_16
     ```
@@ -36,7 +36,7 @@ To showcase on migration simulations, we use `validate_flee_output` function in 
     
 ## Ensemble Validation of multiple conflict instances
 
-1.  To check existing output directory, simply run
+1.  To check the existing output directory, simply run
     ```
     cd (FabSim3 Home)/results
     ls
