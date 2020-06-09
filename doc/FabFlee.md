@@ -3,14 +3,14 @@
 
 ## Preface
 
-In this tutorial, you will get a step-by-step guidance on the usage of several VECMAtk components to simulate multiscale migration simulations, as well as perform uncertainty quantification calculations within a local and HPC execution environment. In this tutorial you will learn about the following VECMA software components and how these components are used in multiscale migration prediction application as shown in the Tube Map below:
+In this tutorial, you will get step-by-step guidance on the usage of several VECMAtk components to simulate multiscale migration simulations, as well as perform uncertainty quantification calculations within a local and HPC execution environment. In this tutorial you will learn about the following VECMA software components and how these components are used in multiscale migration prediction application as shown in the Tube Map below:
 
 ![Graphical depiction of the VECMAtk components used in the FabFlee tutorial](https://raw.githubusercontent.com/djgroen/FabFlee/master/doc/FabFleeMap.png)
 
--   [FabSim3](https://fabsim3.readthedocs.io/) - an automation toolkit that features an integrated test infrastructure and flexible plugin system. 
+-   [FabSim3](https://fabsim3.readthedocs.io/) - an automation toolkit that features an integrated test infrastructure and a flexible plugin system. 
 -   [EasyVVUQ](https://easyvvuq.readthedocs.io/en/latest/) - a Python3 library that aims to facilitate verification, validation and uncertainty quantification,
 -   [QCG Pilot Job](https://wiki.vecma.eu/qcg-pilotjobs) - a Pilot Job system that allows to execute many subordinate jobs in a single scheduling system allocation,
--   [EasyVVUQ-QCGPJ](https://easyvvuq-qcgpj.readthedocs.io/en/plugin/index.html) - a lightweight integration code that simplifies usage of EasyVVUQ with a QCG Pilot Job execution engine
+-   [EasyVVUQ-QCGPJ](https://easyvvuq-qcgpj.readthedocs.io/en/plugin/index.html) - a lightweight integration code that simplifies the usage of EasyVVUQ with a QCG Pilot Job execution engine
     
     
 ## Contents
@@ -26,11 +26,11 @@ In this tutorial, you will get a step-by-step guidance on the usage of several V
 
 
 ## Multiscale migration simulations
-FabFlee is a FabSim3 toolkit plugin for multiscale migration simulations which automates complex simulation workflows. In this tutorial, we demonstrate different types of migration simulations. We explain how you can do basic analysis with an agent-based migration model [FLEE](https://github.com/djgroen/flee.git) using a single model. This tutorial also demonstrates how you can combine Flee with a simple stochastic conflict evolution model [Flare](https://github.com/djgroen/flare-release.git) to perform a set of runs based on different conflict evolutions, and visualize the migrant arrivals with confidence intervals. The FLEE agent-based migration model has been used in a *Scientific Reports* paper to make forecasts of forced migration in conflicts (https://www.nature.com/articles/s41598-017-13828-9), while the Flare model is still in prototype stage. In addition, we explain how you can perform a coupled application run that features basic uncertainty quantification of input parameters in the Flee algorithm using EasyVVUQ and QCG Pilot Job. 
+FabFlee is a FabSim3 toolkit plugin for multiscale migration simulations which automates complex simulation workflows. In this tutorial, we demonstrate different types of migration simulations. We explain how you can do basic analysis with an agent-based migration model [FLEE](https://github.com/djgroen/flee.git) using a single model. This tutorial also demonstrates how you can combine Flee with a simple stochastic conflict evolution model [Flare](https://github.com/djgroen/flare-release.git) to perform a set of runs based on different conflict evolutions, and visualize the migrant arrivals with confidence intervals. The FLEE agent-based migration model has been used in a *Scientific Reports* paper to make forecasts of forced migration in conflicts (https://www.nature.com/articles/s41598-017-13828-9), while the Flare model is still in the prototype stage. In addition, we explain how you can perform a coupled application run that features basic uncertainty quantification of input parameters in the Flee algorithm using EasyVVUQ and QCG Pilot Job. 
 
 We use the 2012 Northern Mali Conflict as a simulation instance. Please refer to https://flee.readthedocs.io/en/latest/construction.html for details on how to construct these simulation instances.   
 
-![Graphical depiction of population movements in Mali. Background image is courtesy of Orionist (Wikimedia)](https://raw.githubusercontent.com/djgroen/FabFlee/master/doc/mali-arrows-border.png)
+![Graphical depiction of population movements in Mali. The background image is courtesy of Orionist (Wikimedia)](https://raw.githubusercontent.com/djgroen/FabFlee/master/doc/mali-arrows-border.png)
 
 
 ## Installation
@@ -60,14 +60,14 @@ To perform this tutorial the following software packages are required:
  
 ## Execution of migration simulations
 
-There are 4 different ways to execute multiscle migration simulations in FabFlee:
+There are 4 different ways to execute multiscale migration simulations in FabFlee:
 
 1. Single-model execution
 2. Ensemble execution
 3. Replica execution
 4. Coupled execution
 
-Each method has its unique purpose. The single-model execution can be easily performed on a laptop and instantly provide an overview to users. The ensemble execution may be useful for those who run multiple simulation instances simultaneously. The replica execution could be an interesting option for those who run simulations at once with identical inputs for analysis. The coupled execution can couple migration simulation with conflict evolution models in context of multiscale uncertainty quantification (UQ).
+Each method has its unique purpose. The single-model execution can be easily performed on a laptop and instantly provide an overview to users. The ensemble execution may be useful for those who run multiple simulation instances simultaneously. The replica execution could be an interesting option for those who run simulations at once with identical inputs for analysis. The coupled execution can couple migration simulation with conflict evolution models in the context of multiscale uncertainty quantification (UQ).
 
 In the next subsections, the step-by-step instructions are presented for each method of execution. The eventual choice of method should be based on the user’s preferences and requirements.
 
@@ -85,7 +85,7 @@ FabFlee comes with a range of sample simulation domains.
     ```
     fabsim localhost flee:mali,simulation_period=50
     ```
-    > NOTE: Regular runs have a `simulation_period` of 300 days, but we use a simulation period of 50 days to reduce the execution time of each simulation in this tutorial
+    > NOTE: Regular runs have a `simulation_period` of 300 days, but we use a simulation period of 50 days to reduce the execution time of each simulation in this tutorial.
 
 2.  You can copy back any results from completed runs using:
     ```
@@ -139,7 +139,7 @@ To see to what extent the definition of the maximum run speed in Flee affects th
     ```
     As a reminder: we use `plot_output` to visualize outputs of a single run, and `plot_uq_output` to collate and visualize results from an ensemble.
 
-    As output you will get a range of files in the `out` subfolder of your results directory. For example, the image `Niamey-4_V2.png`, which visualizes migrant arrivals in Niamey with 95% confidence intervals based on the move speed, might look like this:
+    As output, you will get a range of files in the `out` subfolder of your results directory. For example, the image `Niamey-4_V2.png`, which visualizes migrant arrivals in Niamey with 95% confidence intervals based on the move speed, might look like this:
 
     ![Arrivals with confidence interval based on movespeed](https://raw.githubusercontent.com/djgroen/FabFlee/master/doc/Niamey-4_V2.png)
 
@@ -163,7 +163,7 @@ You can analyze the output of this simulation in the same way that you would ana
 
 ### Execution of coupled migration simulations
 
-To perform of coupled models, in context of multiscale uncertainty quantification (UQ), the relevant workflow comprises the following:
+To perform execution of coupled models, in the context of multiscale uncertainty quantification (UQ), the relevant workflow comprises the following:
 
 1.  Run an ensemble of simple conflict evolution (Flare) simulations in the context of Mali, generating different conflict  evolutions, simply type:
     ```
@@ -226,7 +226,7 @@ For SLURM machine:
 fab <remote machine name> install_app:QCG-PilotJob,virtual_env=True
 ```
 
-> NOTE: The installation path (`virtual_env_path`) is set on `machines.yml` as one of parameters for the target remote machine
+> NOTE: The installation path (`virtual_env_path`) is set on `machines.yml` as one of the parameters for the target remote machine.
 
 By installing this _virtualenv_ on the target remote machine, the [QCG Pilot](https://github.com/vecma-project/QCG-PilotJob) Job service will be also installed alongside with other required dependencies 
 
@@ -237,7 +237,7 @@ By installing this _virtualenv_ on the target remote machine, the [QCG Pilot](ht
     ```
     fabsim qcg flee_ensemble:mali,N=20,simulation_period=50,PilotJob=true
     ```
-2.  To check if you jobs are finished or not, simply type
+2.  To check if your jobs are finished or not, simply type
     ```
     fabsim qcg job_stat_update
     ```
@@ -258,7 +258,7 @@ By installing this _virtualenv_ on the target remote machine, the [QCG Pilot](ht
     ```
     fabsim <remote machine name> flee_conflict_forecast:mali,N=20,simulation_period=50
     ```
-2.  To check if you jobs are finished or not, simply type
+2.  To check if your jobs are finished or not, simply type
     ```
     fabsim <remote machine name> job_stat_update
     ```
@@ -282,7 +282,7 @@ The aim is to sample simulation input parameters and understand how identified a
 To perform sensitivity analysis on input parameters, use ``~/FabSim3/plugins/FabFlee/flee_easyvvuq.py`` script, which has two main functions:
 
 - run_flee_easyvvuq allows to run SA for parameter exploration
-- analyse_flee_easyvvuq provides analysis of obtained results.
+- analyse_flee_easyvvuq provides an analysis of the obtained results.
 
 There are six main input parameters in multiscale migration prediction, such as max_move_speed, conflict_move_chance, camp_move_chance, default_move_chance, camp_weight and conflict_weight, to analyse using Sobol's method and stochastic collocation.
 
@@ -345,7 +345,7 @@ my_sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=3)
 
 ### Run EasyVVUQ analysis on a localhost
 
-1.  To execute sensitivy analysis on a localhost, simply run:
+1.  To execute sensitivity analysis on localhost, simply run:
     ```
     fab localhost run_flee_easyvvuq:‘country1(;countryN)’,simulation_periods=‘day1(;dayN)’
     ```
@@ -376,14 +376,14 @@ my_sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=3)
     ```
     fab localhost analyse_flee_easyvvuq:‘country1(;countryN)’
     ```
-    > NOTE: Analysis of the obtained results are performed on a localhost.
+    > NOTE: Analysis of the obtained results are performed on localhost.
 
 
 ### Run EasyVVUQ analysis on a remote machine using QCG-Pilot Job
 
 For QCG-PilotJob installation, see https://github.com/vecma-project/QCG-PilotJob/blob/master/INSTALL.txt 
 
-Note: If QCG-PJ is installed in the target remote machine, by using PilotJob=True, the native QCG-PilotJob will be lunched for execution. Otherwise you require to install the QCG-PilotJob service in a VirtualEnv in the target machine, and then PilotJob=True option will load QCG-PJ services from VirtualEnv. 
+Note: If QCG-PJ is installed in the target remote machine, by using PilotJob=True, the native QCG-PilotJob will be launched for execution. Otherwise you require to install the QCG-PilotJob service in a VirtualEnv in the target machine, and then PilotJob=True option will load QCG-PJ services from VirtualEnv. 
 
 
 1.  To execute EasyVVUQ for migration prediction using Pilot Job, run:
@@ -400,7 +400,7 @@ Note: If QCG-PJ is installed in the target remote machine, by using PilotJob=Tru
     ```
     fab localhost analyse_flee_easyvvuq:‘country1(;countryN)’
     ```
-    > NOTE: Analysis of the obtained results are performed on a localhost.
+    > NOTE: Analysis of the obtained results are performed on localhost.
 
 
 ### The execution of sensitivity analysis using a conflict scenario
