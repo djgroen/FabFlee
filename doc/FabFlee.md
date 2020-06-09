@@ -23,7 +23,7 @@ In this tutorial, you will get step-by-step guidance on the usage of several VEC
     + [Execution of coupled migration simulations](#execution-of-coupled-migration-simulations)
   * [Execution on a supercomputer](#execution-on-a-supercomputer)
   * [Sensitivity analysis of parameters using EasyVVUQ](#sensitivity-analysis-of-parameters-using-easyvvuq)
-
+  * [Acknowledgements](#acknowledgements)
 
 ## Multiscale migration simulations
 FabFlee is a FabSim3 toolkit plugin for multiscale migration simulations which automates complex simulation workflows. In this tutorial, we demonstrate different types of migration simulations. We explain how you can do basic analysis with an agent-based migration model [FLEE](https://github.com/djgroen/flee.git) using a single model. This tutorial also demonstrates how you can combine Flee with a simple stochastic conflict evolution model [Flare](https://github.com/djgroen/flare-release.git) to perform a set of runs based on different conflict evolutions, and visualize the migrant arrivals with confidence intervals. The FLEE agent-based migration model has been used in a *Scientific Reports* paper to make forecasts of forced migration in conflicts (https://www.nature.com/articles/s41598-017-13828-9), while the Flare model is still in the prototype stage. In addition, we explain how you can perform a coupled application run that features basic uncertainty quantification of input parameters in the Flee algorithm using EasyVVUQ and QCG Pilot Job. 
@@ -418,5 +418,7 @@ fab localhost/<remote machine name> run_flee_easyvvuq:‘mali;burundi’,simulat
 fab localhost/<remote machine name> fetch_results
 fab localhost analyse_flee_easyvvuq:mali,burundi
 ```
+## Acknowledgements
 
+This work was supported by the VECMA and HiDALGO projects, which have received funding from the European Union Horizon 2020 research and innovation programme under grant agreements No 800925 and 824115.
 
