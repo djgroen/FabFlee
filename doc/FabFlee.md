@@ -50,7 +50,7 @@ To perform this tutorial the following software packages are required:
     fabsim localhost install_plugin:FabFlee
     ```
     Once you have installed The FabFlee plugin, which will appear in `~/FabSim3/plugins/FabFlee`, you need to take a few small configuration steps:
-    - Go to `(FabSim Home)/deploy`
+    - Go to `(FabSim3 Home)/deploy`
     - Open `machines_user.yml`
     - Under the section **default:** please add the following lines:
       <br/> `flee_location: (FLEE Home)` 
@@ -150,7 +150,7 @@ Replicated instances, or *replicas*, are runs that have identical inputs. Howeve
 
 To run a single population displacement validation test with 5 replicas, simply type:
 ```
-fabsim localhost flee:<conflict_name>,simulation_period=<number>,replicas=5
+fabsim localhost flee:<conflict_name>,simulation_period=<number>,replicas=<number>
 ```
 > NOTE: The output of each replica becomes a subdirectory in the main `results` directory. Therefore, to do ensemble analysis you may have to first move the runs into a common subfolder.
 
@@ -213,7 +213,7 @@ These advanced tasks are intended for those who have access to the Eagle superco
 
 ### Setup tasks for advanced use
 Before running any simulation on a remote supercomputer, you'll need to do the following:
-- Make sure the target remote machine is properly defined in `(FabSim Home)/deploy/machines.yml` (see https://fabsim3.readthedocs.io/en/latest/remotemachineconfig.html#qcg-pilot-job-manager)
+- Make sure the target remote machine is properly defined in `(FabSim3 Home)/deploy/machines.yml` (see https://fabsim3.readthedocs.io/en/latest/remotemachineconfig.html#qcg-pilot-job-manager)
 - Since that, in Flee, some python libraries such as `numpy` will be used for the job execution, in case of nonexistent of those packages, we recommended to install a *_virtualenv_* on the target machine. It can be done by running
 
 For QCG machine:
@@ -245,7 +245,7 @@ By installing this _virtualenv_ on the target remote machine, the [QCG Pilot](ht
     ```
     fabsim qcg fetch_results
     ``` 
-    The results will then be in a directory inside `(FabSim Home)/results`, which is most likely called `mali_eagle_16`
+    The results will then be in a directory inside `(FabSim3 Home)/results`, which is most likely called `mali_eagle_16`
     
 4.  To generate plots for the obtained output, simply run 
     ```
@@ -266,7 +266,7 @@ By installing this _virtualenv_ on the target remote machine, the [QCG Pilot](ht
     ```
     fabsim <remote machine name> fetch_results
     ``` 
-    The results will then be in a directory inside `(FabSim Home)/results`, which is most likely called `mali_eagle_16`
+    The results will then be in a directory inside `(FabSim3 Home)/results`, which is most likely called `mali_eagle_16`
     
 4.  To generate plots for the obtained output, simply run 
     ```
@@ -367,7 +367,7 @@ my_sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=3)
     fab <remote_machine_name> run_flee_easyvvuq:‘country1(;countryN)’,simulation_periods=‘day1(;dayN)’
     ```
 
-2.  Run the following command to copy back results from the remote machine. The results will then be in a directory inside ``(FabSim Home)/results``, which is most likely called <conflict_name>_<remote_machine_name>_<number> (e.g. mali_eagle_vecma_16):
+2.  Run the following command to copy back results from the remote machine. The results will then be in a directory inside ``(FabSim3 Home)/results``, which is most likely called <conflict_name>_<remote_machine_name>_<number> (e.g. mali_eagle_vecma_16):
     ```
     fab <remote_machine_name> fetch_results
     ```     
@@ -391,7 +391,7 @@ Note: If QCG-PJ is installed in the target remote machine, by using PilotJob=Tru
     fab <remote machine name> run_flee_easyvvuq:‘country1(;countryN)’(,simulation_periods=‘day1(;dayN)’),PilotJob=True
     ```
 
-2.  Run the following command to copy back results from the remote machine. The results will then be in a directory inside ``(FabSim Home)/results``, which is most likely called <conflict_name>_<remote_machine_name>_<number> (e.g. mali_eagle_vecma_16):
+2.  Run the following command to copy back results from the remote machine. The results will then be in a directory inside ``(FabSim3 Home)/results``, which is most likely called <conflict_name>_<remote_machine_name>_<number> (e.g. mali_eagle_vecma_16):
     ```
     fab <remote machine name> fetch_results
     ```
