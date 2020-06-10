@@ -10,7 +10,7 @@ In this tutorial, you will get step-by-step guidance on the usage of several VEC
 -   [FabSim3](https://fabsim3.readthedocs.io/) - an automation toolkit that features an integrated test infrastructure and a flexible plugin system. 
 -   [EasyVVUQ](https://easyvvuq.readthedocs.io/en/latest/) - a Python3 library that aims to facilitate verification, validation and uncertainty quantification,
 -   [QCG Pilot Job](https://wiki.vecma.eu/qcg-pilotjobs) - a Pilot Job system that allows to execute many subordinate jobs in a single scheduling system allocation,
--   [EasyVVUQ-QCGPJ](https://easyvvuq-qcgpj.readthedocs.io/en/plugin/index.html) - a lightweight integration code that simplifies the usage of EasyVVUQ with a QCG Pilot Job execution engine
+
     
     
 ## Contents
