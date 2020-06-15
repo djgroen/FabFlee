@@ -113,7 +113,7 @@ def init_flee_campaign():
                           collater=collater)
 
     # Create the sampler
-    # Awareness_level is an integer, which does not work with SCSampler (only
+    # Awareness_level is an integer, which does not work with PCESampler (only
     # with RandomSampler at the moment for which need to specify draw_samples
     # number)
     vary = {
@@ -126,7 +126,7 @@ def init_flee_campaign():
         "conflict_weight": cp.Uniform(0.1, 1.0)
     }
 
-    my_sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=3)
+    my_sampler = uq.sampling.PCESampler(vary=vary, polynomial_order=3)
     # Associate the sampler with the campaign
     flee_campaign.set_sampler(my_sampler)
 
@@ -318,7 +318,7 @@ def analyse_flee_easyvvuq(configs, ** args):
                                 )
 
         # Post-processing analysis
-        flee_analysis = uq.analysis.SCAnalysis(
+        flee_analysis = uq.analysis.PCEAnalysis(
             sampler=flee_campaign._active_sampler,
             qoi_cols=output_columns
         )
