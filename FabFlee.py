@@ -17,7 +17,9 @@ import csv
 add_local_paths("FabFlee")
 
 # Import conflicts
-@task 
+
+
+@task
 def get_flee_location():
     """
     Print the $flee_location env variable for the target machine.
@@ -25,19 +27,22 @@ def get_flee_location():
     update_environment()
     print(env.machine_name, env.flee_location)
 
-@task 
+
+@task
 def sync_flee():
     """
-    Synchronize the Flee version, so that the remote machine has the latest 
+    Synchronize the Flee version, so that the remote machine has the latest
     version from localhost.
     """
     update_environment()
-    flee_location_local = user_config["localhost"].get("flee_location", user_config["default"].get("flee_location"))
+    flee_location_local = user_config["localhost"].get(
+        "flee_location", user_config["default"].get("flee_location"))
 
     rsync_project(
-                  local_dir=flee_location_local + '/',
-                  remote_dir=env.flee_location
-    )    
+        local_dir=flee_location_local + '/',
+        remote_dir=env.flee_location
+    )
+
 
 @task
 def extract_conflict_file(config, simulation_period, **args):
@@ -52,6 +57,7 @@ def extract_conflict_file(config, simulation_period, **args):
              simulation_period,
              config_dir,
              config_dir))
+
 
 @task
 def flee(config, simulation_period, **args):
@@ -82,6 +88,7 @@ def flee(config, simulation_period, **args):
     execute(put_configs, config)
     job(dict(script='flee', wall_time='0:15:0', memory='2G'), args)
 
+
 @task
 def flees(config, simulation_period, **args):
     # Save relevant arguments to a Python or numpy list.
@@ -90,6 +97,7 @@ def flees(config, simulation_period, **args):
     # Generate config directories, copying from the config provided,
     # and adding a different generated test.csv in each directory.
     # Run the flee() a number of times.
+
 
 @task
 def flee_ensemble(config, simulation_period, script='flee', label="",  **args):
@@ -108,28 +116,13 @@ def flee_ensemble(config, simulation_period, script='flee', label="",  **args):
 
     if hasattr(env, 'NoEnvScript'):
         del env['NoEnvScript']
-    
-    #Re-add support for labels, which are overwritten by runensemble.
-    if len(label)>0:
-      print("adding label: ",label)
-      env.job_name_template += "_{}".format(label)
 
-    if args.get("PilotJob", "False") == "True":
-        
-        #specific workaround for Flee on Eagle.
-        cmds = ["pip install --upgrade pip",
-                    "python3 -m pip install numpy"]
-        for cmd in cmds:
-            env.run_prefix_commands.append(cmd)
-
-    #if len(args.get("AwarenessLevel", "")) > 0:
-    #    cmd = ["echo \"AwarenessLevel,{}\" >> simsetting.csv".format(args.get("AwarenessLevel"))]
-    #    print(cmd)
-    #    env.run_prefix_commands = env.run_prefix_commands.append(cmd)
-    #    print(env.run_prefix_commands)
+    # Re-add support for labels, which are overwritten by runensemble.
+    if len(label) > 0:
+        print("adding label: ", label)
+        env.job_name_template += "_{}".format(label)
 
     run_ensemble(config, sweep_dir, **args)
-
 
 
 # Flare execution tasks
@@ -147,7 +140,9 @@ def flare_local(config, simulation_period, out_dir=""):
     config_dir = "%s/config_files/%s" % (get_plugin_path("FabFlee"), config)
 
     local("mkdir -p %s/input_csv" % flare_out_dir)
-    local("python3 %s/scripts/run_flare.py %s %s/input_csv %s/input_csv/conflicts.csv" % (get_plugin_path("FabFlee"), simulation_period, config_dir, flare_out_dir))
+    local("python3 %s/scripts/run_flare.py %s %s/input_csv %s/input_csv/conflicts.csv" %
+          (get_plugin_path("FabFlee"), simulation_period, config_dir, flare_out_dir))
+
 
 @task
 def flare_ensemble(config, simulation_period, N, out_dir):
@@ -162,6 +157,7 @@ def flare_ensemble(config, simulation_period, N, out_dir):
         instance_out_dir = "%s/%s" % (out_dir, i)
         flare_local(config, simulation_period, instance_out_dir)
 
+
 @task
 def couple_flare_to_flee(config, flare_out="flare-out-scratch"):
     """
@@ -169,11 +165,12 @@ def couple_flare_to_flee(config, flare_out="flare-out-scratch"):
     a configuration for an ensemble run.
     """
     with_config(config)
-    config_dir = env.job_config_path_local 
+    config_dir = env.job_config_path_local
     local("rm -rf %s/SWEEP" % (config_dir))
     local("mkdir -p %s/SWEEP" % (config_dir))
     local("cp -r %s/results-flare/%s/* %s/SWEEP/"
           % (get_plugin_path("FabFlee"), flare_out, config_dir))
+
 
 @task
 def flee_conflict_forecast(config, simulation_period, N, **args):
@@ -224,38 +221,45 @@ def pflee(config, simulation_period, **args):
     execute(put_configs, config)
     job(dict(script='pflee', wall_time='0:15:0', memory='2G'), args)
 
-@task 
+
+@task
 def pflee_test(config, pmode="advanced", N="100000", **args):
     """
     Run a short parallel test with a particular config.
     """
-    update_environment(args, {"simulation_period": 10, "flee_parallel_mode": pmode, "flee_num_agents": int(N)})
+    update_environment(args, {"simulation_period": 10,
+                              "flee_parallel_mode": pmode, "flee_num_agents": int(N)})
     with_config(config)
     execute(put_configs, config)
     job(dict(script='pflee_test', wall_time='0:15:0', memory='2G'), args)
 
-@task 
+
+@task
 def pflee_pmode_compare(config, cores, N="100000", **args):
     """
     Run a short parallel test with a particular config. 60 min limit per run.
     """
-    for pmode in ["advanced","classic","adv-lolat","cl-hilat"]:  # maps to args in test_par.py
-        update_environment(args, {"simulation_period": 10, "flee_parallel_mode": pmode, "flee_num_agents": int(N)})
+    for pmode in ["advanced", "classic", "adv-lolat", "cl-hilat"]:  # maps to args in test_par.py
+        update_environment(args, {
+                           "simulation_period": 10, "flee_parallel_mode": pmode, "flee_num_agents": int(N)})
         with_config(config)
         execute(put_configs, config)
-        job(dict(script='pflee_test', wall_time='1:00:0', memory='2G', cores=cores, label=pmode), args)
+        job(dict(script='pflee_test', wall_time='1:00:0',
+                 memory='2G', cores=cores, label=pmode), args)
+
 
 @task
 def pflee_report(results_key):
-    for item in glob.glob("{}/*{}*/perf.log".format(env.local_results,results_key)):
+    for item in glob.glob("{}/*{}*/perf.log".format(env.local_results, results_key)):
         print(item)
         with open(item) as csvfile:
             perf = csv.reader(csvfile)
-            for k,e in enumerate(perf):
+            for k, e in enumerate(perf):
                 if k == 1:
                     print(float(e[1]))
 
-    #local("grep main {}/{}/perf.log".format(env.local_results,results_key))
+    # local("grep main {}/{}/perf.log".format(env.local_results,results_key))
+
 
 @task
 def pflee_ensemble(config, simulation_period, **args):
@@ -285,6 +289,7 @@ def food_flee(config, simulation_period, **args):
     with_config(config)
     execute(put_configs, config)
     job(dict(script='flee_food', wall_time='0:15:0', memory='2G'), args)
+
 
 @task
 # Syntax: fab localhost compare_food:food_flee_conflict_name_localhost_16
@@ -317,6 +322,7 @@ def plot_output(output_dir="", graphs_dir=""):
              env.local_results, output_dir,
              env.local_results, output_dir, graphs_dir))
 
+
 @task
 def flee_and_plot(config, simulation_period, **args):
     """
@@ -326,6 +332,7 @@ def flee_and_plot(config, simulation_period, **args):
     env.simulation_settings = "simsetting.csv"
     flee(config, simulation_period, **args)
     plot_output("%s" % (env.job_name), "graph")
+
 
 @task
 # Syntax: fab localhost
@@ -337,13 +344,14 @@ def plot_uq_output(output_dir="", graphs_dir=""):
           % (env.flee_location,
              env.local_results, output_dir,
              env.local_results, output_dir, graphs_dir))
-    
 
-# Validation tasks      
+
+# Validation tasks
 def vvp_validate_results(output_dir=""):
     """ Extract validation results (no dependencies on FabSim env). """
 
-    flee_location_local = user_config["localhost"].get("flee_location", user_config["default"].get("flee_location"))
+    flee_location_local = user_config["localhost"].get(
+        "flee_location", user_config["default"].get("flee_location"))
 
     local("python3 %s/extract-validation-results.py %s > %s/validation_results.yml"
           % (flee_location_local, output_dir, output_dir))
@@ -351,13 +359,15 @@ def vvp_validate_results(output_dir=""):
     with open("{}/validation_results.yml".format(output_dir), 'r') as val_yaml:
         validation_results = yaml.load(val_yaml, Loader=yaml.SafeLoader)
 
-        #TODO: make a proper validation metric using a validation schema.
-        #print(validation_results["totals"]["Error (rescaled)"])
-        print("Validation {}: {}".format(output_dir.split("/")[-1], validation_results["totals"]["Error (rescaled)"]))
+        # TODO: make a proper validation metric using a validation schema.
+        # print(validation_results["totals"]["Error (rescaled)"])
+        print("Validation {}: {}".format(output_dir.split("/")
+                                         [-1], validation_results["totals"]["Error (rescaled)"]))
         return validation_results["totals"]["Error (rescaled)"]
 
     print("error: vvp_validate_results failed on {}".format(output_dir))
     return -1.0
+
 
 @task
 # Syntax: fabsim localhost
@@ -367,10 +377,12 @@ def validate_results(output_dir):
     print("Validation {}: {}".format(output_dir.split[-1]), score)
     return score
 
+
 def make_vvp_mean(np_array):
     mean_score = np.mean(np_array)
     print("Mean score: {}".format(mean_score))
     return mean_score
+
 
 @task
 def validate_flee_output(results_dir):
@@ -378,7 +390,8 @@ def validate_flee_output(results_dir):
     Goes through all the output directories and calculates the validation 
     scores.
     """
-    vvp.ensemble_vvp("{}/{}/RUNS".format(env.local_results,results_dir), vvp_validate_results, make_vvp_mean)
+    vvp.ensemble_vvp("{}/{}/RUNS".format(env.local_results,
+                                         results_dir), vvp_validate_results, make_vvp_mean)
 
 
 @task
@@ -386,27 +399,27 @@ def validate_flee(simulation_period=0, cores=4, skip_runs=False, label="", Aware
     """
     Runs all the validation test and returns all scores, as well as an average.
     """
-    if len(label)>0:
-      print("adding label: ",label)
-      env.job_name_template += "_{}".format(label)
+    if len(label) > 0:
+        print("adding label: ", label)
+        env.job_name_template += "_{}".format(label)
 
-    mode="serial"
-    if int(cores)>1:
-      mode="parallel"
+    mode = "serial"
+    if int(cores) > 1:
+        mode = "parallel"
 
     if not skip_runs:
-        if mode.lower()=="parallel":
-            pflee_ensemble("validation", simulation_period, cores=cores, **args)
+        if mode.lower() == "parallel":
+            pflee_ensemble("validation", simulation_period,
+                           cores=cores, **args)
         else:
             flee_ensemble("validation", simulation_period, cores=1, **args)
-   
-    #if not run locally, wait for runs to complete
+
+    # if not run locally, wait for runs to complete
     update_environment()
     if env.host != "localhost":
         wait_complete("")
     if skip_runs:
         env.config = "validation"
-
 
     fetch_results()
 
@@ -422,6 +435,7 @@ def test_variability(config, **args):
     """
     print("This function is obsolete: please use 'fabsim <machine> flee:<config>,replicas=<number>,simulation_period=<number> instead.")
 
+
 @task
 # Syntax: fab localhost
 # test_variability_food:
@@ -431,6 +445,7 @@ def test_variability_food(config, **args):
     DEPRECATED: Run a number of replicas for a specific conflict.
     """
     print("This function is obsolete: please use 'fabsim <machine> food_flee:<config>,replicas=<number>,simulation_period=<number> instead.")
+
 
 @task
 # Syntax: fab localhost
@@ -518,6 +533,7 @@ def load_conflict(conflict_name):
               % (get_plugin_path("FabFlee")), "a") as myfile:
         myfile.write("fab localhost load_conflict:%s\n" % conflict_name)
 
+
 @task
 def instantiate(conflict_name):
     # Syntax: fab localhost instantiate:conflict_name
@@ -571,6 +587,7 @@ def instantiate(conflict_name):
           % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"),
              conflict_name))
 
+
 @task
 def clear_active_conflict():     # Syntax: fab localhost clear_active_conflict
     """ Delete all content in the active conflict directory. """
@@ -621,6 +638,7 @@ def change_capacities(**capacities):
                              % (get_plugin_path("FabFlee")), "w"))
     writer.writerows(lines)
 
+
 @task
 def find_capacity(csv_name):
     # Syntax: fab localhost find_capacity:csv_name
@@ -634,6 +652,7 @@ def find_capacity(csv_name):
                     % (get_plugin_path("FabFlee"), csv_name)).readlines()
     print(max(((i, int(l.split(',')[1])) for i, l in enumerate(
         csv_file)), key=lambda t: t[1])[1])
+
 
 @task
 # Syntax: fab localhost add_camp:camp_name,region,country(,lat,lon)
@@ -667,6 +686,7 @@ def add_camp(camp_name, region=" ", country=" ", lat=0.0, lon=0.0):
         writer.writerow(add_camp)
     print(add_camp)
 
+
 @task
 def add_new_link(name1, name2, distance):
     """  Add a new link between locations to routes.csv. """
@@ -697,6 +717,7 @@ def add_new_link(name1, name2, distance):
         writer = csv.writer(new_csv)
         writer.writerow(add_new_link)
     print(add_new_link)
+
 
 @task
 # Syntax: fab localhost delete_location:location_name
@@ -732,6 +753,7 @@ def delete_location(location_name):
               % (location_name))
         return
 
+
 @task
 # Syntax: fab localhost change_distance:name1,name2,distance
 def change_distance(source, destination, distance):
@@ -761,6 +783,7 @@ def change_distance(source, destination, distance):
     writer = csv.writer(open("%s/conflict_data/active_conflict/routes.csv"
                              % (get_plugin_path("FabFlee")), "w"))
     writer.writerows(lines)
+
 
 @task
 # Syntax: fab localhost
@@ -802,6 +825,7 @@ def close_camp(camp_name, country, closure_start=0, closure_end=-1):
     writer = csv.writer(open("%s/conflict_data/active_conflict/closures.csv"
                              % (get_plugin_path("FabFlee")), "w"))
     writer.writerows(lines)
+
 
 @task
 # Syntax: fab localhost
@@ -854,6 +878,7 @@ def close_border(country1, country2, closure_start=0, closure_end=-1):
     writer = csv.writer(open("%s/conflict_data/active_conflict/closures.csv"
                              % (get_plugin_path("FabFlee")), "w"))
     writer.writerows(lines)
+
 
 @task
 def redirect(source, destination):
@@ -918,7 +943,16 @@ def redirect(source, destination):
 # from plugins.FabFlee.test_FabFlee import *
 from plugins.FabFlee.run_simulation_sets import *
 try:
-    from plugins.FabFlee.flee_easyvvuq import *
+    # from plugins.FabFlee.flee_easyvvuq import *
+    from plugins.FabFlee.flee_easyvvuq_SCSampler import flee_init_SC
+    from plugins.FabFlee.flee_easyvvuq_SCSampler import flee_analyse_SC
+    from plugins.FabFlee.flee_easyvvuq_PCESampler import flee_init_PCE
+    from plugins.FabFlee.flee_easyvvuq_PCESampler import flee_analyse_PCE
+    from plugins.FabFlee.flee_easyvvuq_adaptive import flee_adapt_init
+    from plugins.FabFlee.flee_easyvvuq_adaptive import flee_adapt_analyse
+    from plugins.FabFlee.flee_easyvvuq_adaptive import flee_adapt_look_ahead
+    from plugins.FabFlee.flee_easyvvuq_adaptive import flee_adapt_dimension
+
     from plugins.FabFlee.run_perf_benchmarks import *
 except ImportError:
     pass
