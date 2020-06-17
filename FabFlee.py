@@ -476,6 +476,37 @@ def test_sensitivity(config, **args):
     # 4. Analyse output and report sensitivity
 
 
+# ACLED data extraction task
+@task
+# Syntax: fabsim localhost process_acled:country,start_date=dd-mm-yyyy,filter=[earliest,fatalities]
+def process_acled(**kwargs):
+    """
+    Process .csv files sourced from acleddata.com to a <locations.csv> format
+    Syntax:
+        fabsim localhost process_acled:
+        country (e.g ssudan, mali),
+        start_date - "dd-mm-yyyy (date to calculate conflict_date from),
+        filter:[earliest,fatalities]
+        **earliest keeps the first occurence of each admin2,
+        fatalities keeps admin2 with the highest fatalities.
+    """
+
+    if kwargs is not None:
+        local("python3 %s/scripts/acled2locations.py %s %s %s %s %s"
+             %(get_plugin_path("FabFlee"),
+               get_plugin_path("FabFlee"),
+               kwargs.get("country",""),
+               kwargs.get("start_date",""),
+               kwargs.get("filter",""), kwargs.get('path',"")))
+    else:
+        local("python3 %s/scripts/acled2locations.py %s %s %s %s"
+              % (get_plugin_path("FabFlee"),
+                 get_plugin_path("FabFlee"),
+                 kwargs.get("country",""),
+                 kwargs.get("start_date",""),
+                 kwargs.get("filter","")))
+
+
 # FabFlee execution tasks
 @task
 def load_conflict(conflict_name):
