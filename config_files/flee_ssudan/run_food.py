@@ -4,7 +4,7 @@ from datamanager import DataTable #DataTable.subtract_dates()
 from flee import InputGeography_food as InputGeography
 import numpy as np
 import pandas as pd
-import post-processing.analysis as a
+import post_processing.analysis as a
 import sys
 
 def AddInitialRefugees(e, d, loc):
