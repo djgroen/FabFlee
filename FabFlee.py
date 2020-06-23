@@ -353,7 +353,7 @@ def vvp_validate_results(output_dir=""):
     flee_location_local = user_config["localhost"].get(
         "flee_location", user_config["default"].get("flee_location"))
 
-    local("python3 %s/extract-validation-results.py %s > %s/validation_results.yml"
+    local("python3 %s/post-processing/extract-validation-results.py %s > %s/validation_results.yml"
           % (flee_location_local, output_dir, output_dir))
 
     with open("{}/validation_results.yml".format(output_dir), 'r') as val_yaml:
@@ -425,7 +425,6 @@ def validate_flee(simulation_period=0, cores=4, skip_runs=False, label="", Aware
 
     results_dir = template(env.job_name_template)
     validate_flee_output(results_dir)
-
 
 # Variability and sensitivity testing tasks
 @task
