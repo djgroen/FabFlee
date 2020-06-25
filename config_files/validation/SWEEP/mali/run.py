@@ -1,9 +1,9 @@
 from flee import flee
-from datamanager import handle_refugee_data,read_period
-from datamanager import DataTable #DataTable.subtract_dates()
+from flee.datamanager import handle_refugee_data,read_period
+from flee.datamanager import DataTable #DataTable.subtract_dates()
 from flee import InputGeography
 import numpy as np
-import post_processing.analysis as a
+import flee.postprocessing.analysis as a
 import sys
 
 def AddInitialRefugees(e, d, loc):

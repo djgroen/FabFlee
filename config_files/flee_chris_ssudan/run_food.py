@@ -1,10 +1,10 @@
 from flee import food_flee as flee 	#use food_flee instead of flee to account for food modifications but call it flee so nothing else has to change in the code
-from datamanager import handle_refugee_data
-from datamanager import DataTable #DataTable.subtract_dates()
+from flee.datamanager import handle_refugee_data
+from flee.datamanager import DataTable #DataTable.subtract_dates()
 from flee import InputGeography_food as InputGeography
 import numpy as np
 import pandas as pd
-import post_processing.analysis as a
+import flee.postprocessing.analysis as a
 import sys
 
 def AddInitialRefugees(e, d, loc):

@@ -101,7 +101,7 @@ def flee_init_SC(config, simulation_period=-1, mode='parallel', ** args):
     # parameters to vary
     vary = {
         "max_move_speed": cp.Uniform(100, 500),
-        #"max_walk_speed": cp.Uniform(10, 100),
+        "max_walk_speed": cp.Uniform(10, 100),
         #"camp_move_chance": cp.Uniform(0.0, 0.1),
         #"conflict_move_chance": cp.Uniform(0.1, 1.0),
         #"default_move_chance": cp.Uniform(0.1, 1.0),

@@ -1,9 +1,9 @@
 from flee import food_flee
-from datamanager import handle_refugee_data
-from datamanager import DataTable #DataTable.subtract_dates()
+from flee.datamanager import handle_refugee_data
+from flee.datamanager import DataTable #DataTable.subtract_dates()
 from flee import InputGeography
 import numpy as np
-import post_processing.analysis as a
+import flee.postprocessing.analysis as a
 import sys
 
 def AddInitialRefugees(e, d, loc):
@@ -31,7 +31,7 @@ if __name__ == "__main__":
   last_physical_day = int(sys.argv[3])
 
   if len(sys.argv)==5:
-    flee.SimulationSettings.SimulationSettings.ReadFromCSV(sys.argv[4])
+    flee.SimulationSettings.ReadFromCSV(sys.argv[4])
 
   e = flee.Ecosystem()
 
