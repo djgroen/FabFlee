@@ -317,10 +317,21 @@ def compare_food(output_dir_1=""):
 def plot_output(output_dir="", graphs_dir=""):
     """ Plot generated output results using plot-flee-output.py. """
     local("mkdir -p %s/%s/%s" % (env.local_results, output_dir, graphs_dir))
+
+    # import plot_flee_output.py from env.flee_location
+    # when we have pip flee installation option, this part should be changed
+    sys.path.insert(0, env.flee_location)
+    from flee.postprocessing.plot_flee_output import plot_flee_output
+    plot_flee_output(
+        os.path.join(env.local_results, output_dir),
+        os.path.join(env.local_results, output_dir, graphs_dir)
+    )
+    '''
     local("python3 %s/plot-flee-output.py %s/%s %s/%s/%s"
           % (env.flee_location,
              env.local_results, output_dir,
              env.local_results, output_dir, graphs_dir))
+    '''
 
 
 @task
@@ -340,13 +351,25 @@ def flee_and_plot(config, simulation_period, **args):
 def plot_uq_output(output_dir="", graphs_dir=""):
     """ Plot generated output results using plot-flee-output.py. """
     local("mkdir -p %s/%s/%s" % (env.local_results, output_dir, graphs_dir))
+
+    # import plot_flee_uq_output.py from env.flee_location
+    # when we have pip flee installation option, this part should be changed
+    sys.path.insert(0, env.flee_location)
+    from flee.postprocessing.plot_flee_uq_output import plot_flee_uq_output
+    plot_flee_uq_output(
+        os.path.join(env.local_results, output_dir),
+        os.path.join(env.local_results, output_dir, graphs_dir)
+    )
+    '''
     local("python3 %s/plot-flee-uq-output.py %s/%s %s/%s/%s"
           % (env.flee_location,
              env.local_results, output_dir,
              env.local_results, output_dir, graphs_dir))
-
+    '''
 
 # Validation tasks
+
+
 def vvp_validate_results(output_dir=""):
     """ Extract validation results (no dependencies on FabSim env). """
 
@@ -427,6 +450,8 @@ def validate_flee(simulation_period=0, cores=4, skip_runs=False, label="", Aware
     validate_flee_output(results_dir)
 
 # Variability and sensitivity testing tasks
+
+
 @task
 def test_variability(config, **args):
     """
@@ -492,7 +517,8 @@ def test_sensitivity(config, **args):
 
 # ACLED data extraction task
 @task
-# Syntax: fabsim localhost process_acled:country,start_date=dd-mm-yyyy,filter=[earliest,fatalities]
+# Syntax: fabsim localhost
+# process_acled:country,start_date=dd-mm-yyyy,filter=[earliest,fatalities]
 def process_acled(**kwargs):
     """
     Process .csv files sourced from acleddata.com to a <locations.csv> format
@@ -507,18 +533,18 @@ def process_acled(**kwargs):
 
     if kwargs is not None:
         local("python3 %s/scripts/acled2locations.py %s %s %s %s %s"
-             %(get_plugin_path("FabFlee"),
-               get_plugin_path("FabFlee"),
-               kwargs.get("country",""),
-               kwargs.get("start_date",""),
-               kwargs.get("filter",""), kwargs.get('path',"")))
+              % (get_plugin_path("FabFlee"),
+                 get_plugin_path("FabFlee"),
+                 kwargs.get("country", ""),
+                 kwargs.get("start_date", ""),
+                 kwargs.get("filter", ""), kwargs.get('path', "")))
     else:
         local("python3 %s/scripts/acled2locations.py %s %s %s %s"
               % (get_plugin_path("FabFlee"),
                  get_plugin_path("FabFlee"),
-                 kwargs.get("country",""),
-                 kwargs.get("start_date",""),
-                 kwargs.get("filter","")))
+                 kwargs.get("country", ""),
+                 kwargs.get("start_date", ""),
+                 kwargs.get("filter", "")))
 
 
 # FabFlee execution tasks
