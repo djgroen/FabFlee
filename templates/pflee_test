@@ -9,4 +9,4 @@ export PYTHONPATH=$flee_location:$$PYTHONPATH
 
 /usr/bin/env > env.log
 
-$run_command $python3_command $flee_location/test_par.py -i . -p $flee_parallel_mode -N $flee_num_agents > out.csv
+$run_command $python3_command $flee_location/flee_benchmark_tests/test_par.py -i . -p $flee_parallel_mode -N $flee_num_agents > out.csv
