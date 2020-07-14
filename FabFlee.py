@@ -100,7 +100,7 @@ def flees(config, simulation_period, **args):
 
 
 @task
-def flee_ensemble(config, simulation_period, script='flee', label="",  **args):
+def flee_ensemble(config, simulation_period, script='flee', label="", **args):
     """
     Submits an ensemble of dummy jobs.
     One job is run for each file in <config_file_directory>/flee_test/SWEEP.
@@ -320,7 +320,9 @@ def plot_output(output_dir="", graphs_dir=""):
 
     # import plot_flee_output.py from env.flee_location
     # when we have pip flee installation option, this part should be changed
-    sys.path.insert(0, env.flee_location)
+    for p in env.flee_location.split(":"):
+        sys.path.insert(0, p)
+
     from flee.postprocessing.plot_flee_output import plot_flee_output
     plot_flee_output(
         os.path.join(env.local_results, output_dir),
@@ -354,7 +356,9 @@ def plot_uq_output(output_dir="", graphs_dir=""):
 
     # import plot_flee_uq_output.py from env.flee_location
     # when we have pip flee installation option, this part should be changed
-    sys.path.insert(0, env.flee_location)
+    for p in env.flee_location.split(":"):
+        sys.path.insert(0, p)
+
     from flee.postprocessing.plot_flee_uq_output import plot_flee_uq_output
     plot_flee_uq_output(
         os.path.join(env.local_results, output_dir),
