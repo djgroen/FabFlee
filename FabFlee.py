@@ -12,13 +12,15 @@ from base.fab import *
 import VVP.vvp as vvp
 import glob
 import csv
-
+import os
+from shutil import copyfile, rmtree, move
 # Add local script, blackbox and template path.
 add_local_paths("FabFlee")
 
 # import conflicts
 
-@task 
+
+@task
 def get_flee_location():
     """
     Print the $flee_location env variable for the target machine.
@@ -26,19 +28,22 @@ def get_flee_location():
     update_environment()
     print(env.machine_name, env.flee_location)
 
-@task 
+
+@task
 def sync_flee():
     """
     Synchronize the Flee version, so that the remote machine has the latest 
     version from localhost.
     """
     update_environment()
-    flee_location_local = user_config["localhost"].get("flee_location", user_config["default"].get("flee_location"))
+    flee_location_local = user_config["localhost"].get(
+        "flee_location", user_config["default"].get("flee_location"))
 
     rsync_project(
-                  local_dir=flee_location_local + '/',
-                  remote_dir=env.flee_location
-    )    
+        local_dir=flee_location_local + '/',
+        remote_dir=env.flee_location
+    )
+
 
 @task
 def extract_conflict_file(config, simulation_period, **args):
@@ -56,7 +61,7 @@ def extract_conflict_file(config, simulation_period, **args):
 
 
 @task
-def flare_local(config, simulation_period, out_dir=""):
+def flare_local(config, simulation_period, out_dir="", file_suffix=""):
     """
     Run an instance of Flare on the local host.
     """
@@ -69,11 +74,13 @@ def flare_local(config, simulation_period, out_dir=""):
     config_dir = "%s/config_files/%s" % (get_plugin_path("FabFlee"), config)
 
     local("mkdir -p %s/input_csv" % flare_out_dir)
-    local("python3 %s/scripts/run_flare.py %s %s/input_csv %s/input_csv/conflicts.csv" % (get_plugin_path("FabFlee"), simulation_period, config_dir, flare_out_dir))
+
+    local("python3 %s/scripts/run_flare.py %s %s/input_csv %s/input_csv/conflicts%s.csv %s" %
+          (get_plugin_path("FabFlee"), simulation_period, config_dir, flare_out_dir, file_suffix, file_suffix))
 
 
 @task
-def flare_ensemble(config, simulation_period, N, out_dir):
+def flare_ensemble(config, simulation_period, N, out_dir, file_suffix=""):
     """
     Run an ensemble of flare instances locally.
     config: configuration directory.
@@ -83,7 +90,8 @@ def flare_ensemble(config, simulation_period, N, out_dir):
     """
     for i in range(0, int(N)):
         instance_out_dir = "%s/%s" % (out_dir, i)
-        flare_local(config, simulation_period, instance_out_dir)
+        flare_local(config, simulation_period,
+                    instance_out_dir, file_suffix=file_suffix)
 
 
 @task
@@ -93,7 +101,7 @@ def couple_flare_to_flee(config, flare_out="flare-out-scratch"):
     a configuration for an ensemble run.
     """
     with_config(config)
-    config_dir = env.job_config_path_local 
+    config_dir = env.job_config_path_local
     local("rm -rf %s/SWEEP" % (config_dir))
     local("mkdir -p %s/SWEEP" % (config_dir))
     local("cp -r %s/results-flare/%s/* %s/SWEEP/"
@@ -152,8 +160,11 @@ def flee(config, simulation_period, **args):
     execute(put_configs, config)
     job(dict(script='flee', wall_time='0:15:0', memory='2G'), args)
 
+
 @task
-def cflee(config, simulation_period, coupling_type, **args):
+def cflee(config, coupling_type="file", weather_coupling="False",
+          num_workers="1", worker_cores="1",
+          job_wall_time="00:12:00", ** args):
     """ Submit a cflee (coupling flee) job to the remote queue.
     The job results will be stored with a name pattern as defined
     Required Keyword arguments:
@@ -165,24 +176,92 @@ def cflee(config, simulation_period, coupling_type, **args):
             (1) file couping, and (2) muscle3
             acceptable input set : file / muscle3
     Example:
-        fab cflee:mscalecity,simulation_period=10,coupling_type=file
-        fab cflee:mscalecity,simulation_period=10,coupling_type=muscle3
+        fab eagle_vecma cflee:mscalecity,coupling_type=file,weather_coupling=True,num_workers=2,worker_cores=2,TestOnly=True
+
+        fab eagle_vecma cflee:mscalecity,coupling_type=file,weather_coupling=True,num_workers=10,worker_cores=4
+
     """
 
-    update_environment(args, {"simulation_period": simulation_period,
-                              "coupling_type": coupling_type}
+    update_environment(args, {"coupling_type": coupling_type,
+                              "weather_coupling": weather_coupling.lower(),
+                              "num_workers": num_workers,
+                              "worker_cores": worker_cores,
+                              "job_wall_time": job_wall_time
+                              }
                        )
+
+    env.cores = int(num_workers) * int(worker_cores) * 2
+
     if coupling_type == 'file':
         script = 'flee_file_coupling'
         label = 'file_coupling'
     elif coupling_type == 'muscle3':
         script = 'flee_muscle3_coupling'
         label = 'muscle3_coupling'
-
     with_config(config)
     execute(put_configs, config)
-    job(dict(script=script, wall_time='0:15:0', memory='2G', label=label), args)
-        
+
+    job(dict(script=script, memory='24G', label=label), args)
+
+
+@task
+def cflee_ensemble(config, coupling_type="file", weather_coupling="False",
+                   num_workers="1", worker_cores="1",
+                   N="1", simulation_period="425",
+                   job_wall_time="00:12:00", ** args):
+    """
+    Example:
+        fab eagle_vecma cflee_ensemble:mscalecity,coupling_type=file,weather_coupling=True,num_workers=2,worker_cores=2,N=3,TestOnly=True
+
+        fab eagle_vecma cflee_ensemble:mscalecity,coupling_type=file,weather_coupling=True,num_workers=10,worker_cores=4,N=3
+    """
+
+    update_environment(args, {"coupling_type": coupling_type,
+                              "weather_coupling": weather_coupling.lower(),
+                              "num_workers": num_workers,
+                              "worker_cores": worker_cores,
+                              "job_wall_time": job_wall_time,
+                              "simulation_period": simulation_period
+                              }
+                       )
+    env.cores = int(num_workers) * int(worker_cores) * 2
+
+    if coupling_type == 'file':
+        script = 'flee_file_coupling'
+        label = 'file_coupling'
+    elif coupling_type == 'muscle3':
+        script = 'flee_muscle3_coupling'
+        label = 'muscle3_coupling'
+    with_config(config)
+
+    # clean config SWEEP dir if exists
+    config_sweep_dir = env.job_config_path_local + "/SWEEP"
+    if os.path.exists(config_sweep_dir):
+        rmtree(config_sweep_dir)
+
+    # clean flare SWEEP dir if exists
+    flare_sweep_dir = "%s/results-flare/%s" % (
+        get_plugin_path("FabFlee"), "SWEEP")
+    if os.path.exists(flare_sweep_dir):
+        rmtree(flare_sweep_dir)
+
+    # run flare
+    for file_suffix in ['-0', '-1']:
+        flare_ensemble(config, simulation_period=simulation_period,
+                       N=N, out_dir="SWEEP", file_suffix=file_suffix)
+
+    # move flare SWEEP dir to config folder
+    move(flare_sweep_dir, config_sweep_dir)
+
+    execute(put_configs, config)
+
+    # submit ensambe jobs
+    path_to_config = find_config_file_path(config)
+    sweep_dir = path_to_config + "/SWEEP"
+    env.script = script
+    env.label = label
+    run_ensemble(config, sweep_dir, **args)
+
 
 @task
 def flee_and_plot(config, simulation_period, **args):
@@ -221,36 +300,39 @@ def pflee(config, simulation_period, **args):
     job(dict(script='pflee', wall_time='0:15:0', memory='2G'), args)
 
 
-@task 
+@task
 def pflee_test(config, pmode="advanced", N="100000", **args):
     """
     Run a short parallel test with a particular config.
     """
-    update_environment(args, {"simulation_period": 10, "flee_parallel_mode": pmode, "flee_num_agents": int(N)})
+    update_environment(args, {"simulation_period": 10,
+                              "flee_parallel_mode": pmode, "flee_num_agents": int(N)})
     with_config(config)
     execute(put_configs, config)
     job(dict(script='pflee_test', wall_time='0:15:0', memory='2G'), args)
 
 
-@task 
+@task
 def pflee_pmode_compare(config, cores, N="100000", **args):
     """
     Run a short parallel test with a particular config. 60 min limit per run.
     """
-    for pmode in ["advanced","classic","adv-lolat","cl-hilat"]:  # maps to args in test_par.py
-        update_environment(args, {"simulation_period": 10, "flee_parallel_mode": pmode, "flee_num_agents": int(N)})
+    for pmode in ["advanced", "classic", "adv-lolat", "cl-hilat"]:  # maps to args in test_par.py
+        update_environment(args, {
+                           "simulation_period": 10, "flee_parallel_mode": pmode, "flee_num_agents": int(N)})
         with_config(config)
         execute(put_configs, config)
-        job(dict(script='pflee_test', wall_time='1:00:0', memory='2G', cores=cores, label=pmode), args)
+        job(dict(script='pflee_test', wall_time='1:00:0',
+                 memory='2G', cores=cores, label=pmode), args)
 
 
 @task
 def pflee_report(results_key):
-    for item in glob.glob("{}/*{}*/perf.log".format(env.local_results,results_key)):
+    for item in glob.glob("{}/*{}*/perf.log".format(env.local_results, results_key)):
         print(item)
         with open(item) as csvfile:
             perf = csv.reader(csvfile)
-            for k,e in enumerate(perf):
+            for k, e in enumerate(perf):
                 if k == 1:
                     print(float(e[1]))
 
@@ -292,7 +374,7 @@ def flees(config, simulation_period, **args):
 
 
 @task
-def flee_ensemble(config, simulation_period, script='flee', label="",  **args):
+def flee_ensemble(config, simulation_period, script='flee', label="", **args):
     """
     Submits an ensemble of dummy jobs.
     One job is run for each file in <config_file_directory>/flee_test/SWEEP.
@@ -308,21 +390,21 @@ def flee_ensemble(config, simulation_period, script='flee', label="",  **args):
 
     if hasattr(env, 'NoEnvScript'):
         del env['NoEnvScript']
-    
-    #Re-add support for labels, which are overwritten by runensemble.
-    if len(label)>0:
-      print("adding label: ",label)
-      env.job_name_template += "_{}".format(label)
+
+    # Re-add support for labels, which are overwritten by runensemble.
+    if len(label) > 0:
+        print("adding label: ", label)
+        env.job_name_template += "_{}".format(label)
 
     if args.get("PilotJob", "False") == "True":
-        
-        #specific workaround for Flee on Eagle.
+
+        # specific workaround for Flee on Eagle.
         cmds = ["pip install --upgrade pip",
-                    "python3 -m pip install numpy"]
+                "python3 -m pip install numpy"]
         for cmd in cmds:
             env.run_prefix_commands.append(cmd)
 
-    #if len(args.get("AwarenessLevel", "")) > 0:
+    # if len(args.get("AwarenessLevel", "")) > 0:
     #    cmd = ["echo \"AwarenessLevel,{}\" >> simsetting.csv".format(args.get("AwarenessLevel"))]
     #    print(cmd)
     #    env.run_prefix_commands = env.run_prefix_commands.append(cmd)
@@ -793,11 +875,12 @@ def plot_output(output_dir="", graphs_dir=""):
              env.local_results, output_dir,
              env.local_results, output_dir, graphs_dir))
 
-          
+
 def vvp_validate_results(output_dir=""):
     """ Extract validation results (no dependencies on FabSim env). """
 
-    flee_location_local = user_config["localhost"].get("flee_location", user_config["default"].get("flee_location"))
+    flee_location_local = user_config["localhost"].get(
+        "flee_location", user_config["default"].get("flee_location"))
 
     local("python3 %s/extract-validation-results.py %s > %s/validation_results.yml"
           % (flee_location_local, output_dir, output_dir))
@@ -805,13 +888,15 @@ def vvp_validate_results(output_dir=""):
     with open("{}/validation_results.yml".format(output_dir), 'r') as val_yaml:
         validation_results = yaml.load(val_yaml, Loader=yaml.SafeLoader)
 
-        #TODO: make a proper validation metric using a validation schema.
+        # TODO: make a proper validation metric using a validation schema.
         #print(validation_results["totals"]["Error (rescaled)"])
-        print("Validation {}: {}".format(output_dir.split("/")[-1], validation_results["totals"]["Error (rescaled)"]))
+        print("Validation {}: {}".format(output_dir.split("/")
+                                         [-1], validation_results["totals"]["Error (rescaled)"]))
         return validation_results["totals"]["Error (rescaled)"]
 
     print("error: vvp_validate_results failed on {}".format(output_dir))
     return -1.0
+
 
 @task
 # Syntax: fabsim localhost
@@ -827,13 +912,15 @@ def make_vvp_mean(np_array):
     print("Mean score: {}".format(mean_score))
     return mean_score
 
+
 @task
 def validate_flee_output(results_dir):
     """
     Goes through all the output directories and calculates the validation 
     scores.
     """
-    vvp.ensemble_vvp("{}/{}/RUNS".format(env.local_results,results_dir), vvp_validate_results, make_vvp_mean)
+    vvp.ensemble_vvp("{}/{}/RUNS".format(env.local_results,
+                                         results_dir), vvp_validate_results, make_vvp_mean)
 
 
 @task
@@ -841,27 +928,27 @@ def validate_flee(simulation_period=0, cores=4, skip_runs=False, label="", Aware
     """
     Runs all the validation test and returns all scores, as well as an average.
     """
-    if len(label)>0:
-      print("adding label: ",label)
-      env.job_name_template += "_{}".format(label)
+    if len(label) > 0:
+        print("adding label: ", label)
+        env.job_name_template += "_{}".format(label)
 
-    mode="serial"
-    if int(cores)>1:
-      mode="parallel"
+    mode = "serial"
+    if int(cores) > 1:
+        mode = "parallel"
 
     if not skip_runs:
-        if mode.lower()=="parallel":
-            pflee_ensemble("validation", simulation_period, cores=cores, **args)
+        if mode.lower() == "parallel":
+            pflee_ensemble("validation", simulation_period,
+                           cores=cores, **args)
         else:
             flee_ensemble("validation", simulation_period, cores=1, **args)
-   
-    #if not run locally, wait for runs to complete
+
+    # if not run locally, wait for runs to complete
     update_environment()
     if env.host != "localhost":
         wait_complete("")
     if skip_runs:
         env.config = "validation"
-
 
     fetch_results()
 
