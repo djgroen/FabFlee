@@ -5,7 +5,61 @@ export PYTHONPATH=$flee_location:$$PYTHONPATH
 /usr/bin/env > env.log
 
 
-python run_couple.py --submodel macro --coupling_type $coupling_type --end_time $simulation_period --input_csv_directory input_csv &
-python run_couple.py --submodel micro --coupling_type $coupling_type --end_time $simulation_period --input_csv_directory input_csv &
+#-------------------------------------------------------
+#		Install missing python packages
+#------------------------------------------------------- 
 
-wait
+declare -a Pypackage=("qcg" "pandas")
+declare -a Pippackage=("qcg-pilotjob" "pandas")
+
+len=$${#Pypackage[@]}
+for (( i=0; i<$${len}; i++ ));
+do
+	Pyname=$${Pypackage[$$i]}
+	Pipcmd=$${Pippackage[$$i]}
+	if python -c "import pkgutil; exit(not pkgutil.find_loader('$$Pyname'))"; then
+	    echo $$Pyname' found'
+	else
+	    echo $$Pyname' not found'
+	    pip3 install --user $$Pipcmd
+	fi
+done
+
+#-------------------------------------------------------
+#		to save PJ tasks log outputs
+#------------------------------------------------------- 
+if [ -d log_task ]; then
+  rm -rf log_task
+fi
+mkdir -p log_task
+
+
+#-------------------------------------------------------
+#             clean output directory
+#-------------------------------------------------------
+
+if [ "$weather_coupling" = "true" ];
+then
+  rm -rf out/weather/$coupling_type/*
+  mkdir -p out/weather/$coupling_type/coupled
+  mkdir -p out/weather/$coupling_type/macro
+  mkdir -p out/weather/$coupling_type/micro
+  mkdir -p out/weather/$coupling_type/log_exchange_data
+  mkdir -p out/weather/$coupling_type/plot_exchange_data
+else
+  rm -rf out/$coupling_type/*
+  mkdir -p out/$coupling_type/coupled
+  mkdir -p out/$coupling_type/macro
+  mkdir -p out/$coupling_type/micro
+  mkdir -p out/$coupling_type/log_exchange_data
+  mkdir -p out/$coupling_type/plot_exchange_data
+fi
+
+
+#-------------------------------------------------------
+#		run PJ job
+#------------------------------------------------------- 
+
+python PJ.py --COUPLING_TYPE=$coupling_type --WEATHER_COUPLING=$weather_coupling --NUM_WORKERS=$num_workers  --WORKER_CORES=$worker_cores
+
+
