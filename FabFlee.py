@@ -7,12 +7,12 @@
 # This file contains FabSim definitions specific to fabFlee.
 
 from base.fab import *
-
 # Import V&V primitives.
 import VVP.vvp as vvp
 import glob
 import csv
-
+import os
+from shutil import copyfile, rmtree, move
 # Add local script, blackbox and template path.
 add_local_paths("FabFlee")
 
@@ -125,9 +125,8 @@ def flee_ensemble(config, simulation_period, script='flee', label="", **args):
     run_ensemble(config, sweep_dir, **args)
 
 
-# Flare execution tasks
 @task
-def flare_local(config, simulation_period, out_dir=""):
+def flare_local(config, simulation_period, out_dir="", file_suffix=""):
     """
     Run an instance of Flare on the local host.
     """
@@ -140,12 +139,13 @@ def flare_local(config, simulation_period, out_dir=""):
     config_dir = "%s/config_files/%s" % (get_plugin_path("FabFlee"), config)
 
     local("mkdir -p %s/input_csv" % flare_out_dir)
-    local("python3 %s/scripts/run_flare.py %s %s/input_csv %s/input_csv/conflicts.csv" %
-          (get_plugin_path("FabFlee"), simulation_period, config_dir, flare_out_dir))
+
+    local("python3 %s/scripts/run_flare.py %s %s/input_csv %s/input_csv/conflicts%s.csv %s" %
+          (get_plugin_path("FabFlee"), simulation_period, config_dir, flare_out_dir, file_suffix, file_suffix))
 
 
 @task
-def flare_ensemble(config, simulation_period, N, out_dir):
+def flare_ensemble(config, simulation_period, N, out_dir, file_suffix=""):
     """
     Run an ensemble of flare instances locally.
     config: configuration directory.
@@ -155,7 +155,8 @@ def flare_ensemble(config, simulation_period, N, out_dir):
     """
     for i in range(0, int(N)):
         instance_out_dir = "%s/%s" % (out_dir, i)
-        flare_local(config, simulation_period, instance_out_dir)
+        flare_local(config, simulation_period,
+                    instance_out_dir, file_suffix=file_suffix)
 
 
 @task
@@ -334,6 +335,108 @@ def plot_output(output_dir="", graphs_dir=""):
              env.local_results, output_dir,
              env.local_results, output_dir, graphs_dir))
     '''
+
+
+@task
+def cflee(config, coupling_type="file", weather_coupling="False",
+          num_workers="1", worker_cores="1",
+          job_wall_time="00:12:00", ** args):
+    """ Submit a cflee (coupling flee) job to the remote queue.
+    The job results will be stored with a name pattern as defined
+    Required Keyword arguments:
+        config :
+            config directory to use for the simulation script, 
+            e.g. config=mscalecity
+        coupling_type :
+            the coupling model, currently two models are implemented :
+            (1) file couping, and (2) muscle3
+            acceptable input set : file / muscle3
+    Example:
+        fab eagle_vecma cflee:mscalecity,coupling_type=file,weather_coupling=True,num_workers=2,worker_cores=2,TestOnly=True
+
+        fab eagle_vecma cflee:mscalecity,coupling_type=file,weather_coupling=True,num_workers=10,worker_cores=4
+
+    """
+
+    update_environment(args, {"coupling_type": coupling_type,
+                              "weather_coupling": weather_coupling.lower(),
+                              "num_workers": num_workers,
+                              "worker_cores": worker_cores,
+                              "job_wall_time": job_wall_time
+                              }
+                       )
+
+    env.cores = int(num_workers) * int(worker_cores) * 2
+
+    if coupling_type == 'file':
+        script = 'flee_file_coupling'
+        label = 'file_coupling'
+    elif coupling_type == 'muscle3':
+        script = 'flee_muscle3_coupling'
+        label = 'muscle3_coupling'
+    with_config(config)
+    execute(put_configs, config)
+
+    job(dict(script=script, memory='24G', label=label), args)
+
+
+@task
+def cflee_ensemble(config, coupling_type="file", weather_coupling="False",
+                   num_workers="1", worker_cores="1",
+                   N="1", simulation_period="425",
+                   job_wall_time="00:12:00", ** args):
+    """
+    Example:
+        fab eagle_vecma cflee_ensemble:mscalecity,coupling_type=file,weather_coupling=True,num_workers=2,worker_cores=2,N=3,TestOnly=True
+
+        fab eagle_vecma cflee_ensemble:mscalecity,coupling_type=file,weather_coupling=True,num_workers=10,worker_cores=4,N=3
+    """
+
+    update_environment(args, {"coupling_type": coupling_type,
+                              "weather_coupling": weather_coupling.lower(),
+                              "num_workers": num_workers,
+                              "worker_cores": worker_cores,
+                              "job_wall_time": job_wall_time,
+                              "simulation_period": simulation_period
+                              }
+                       )
+    env.cores = int(num_workers) * int(worker_cores) * 2
+
+    if coupling_type == 'file':
+        script = 'flee_file_coupling'
+        label = 'file_coupling'
+    elif coupling_type == 'muscle3':
+        script = 'flee_muscle3_coupling'
+        label = 'muscle3_coupling'
+    with_config(config)
+
+    # clean config SWEEP dir if exists
+    config_sweep_dir = env.job_config_path_local + "/SWEEP"
+    if os.path.exists(config_sweep_dir):
+        rmtree(config_sweep_dir)
+
+    # clean flare SWEEP dir if exists
+    flare_sweep_dir = "%s/results-flare/%s" % (
+        get_plugin_path("FabFlee"), "SWEEP")
+    if os.path.exists(flare_sweep_dir):
+        rmtree(flare_sweep_dir)
+
+    # run flare
+    for file_suffix in ['-0', '-1']:
+        flare_ensemble(config, simulation_period=simulation_period,
+                       N=N, out_dir="SWEEP", file_suffix=file_suffix)
+
+    # move flare SWEEP dir to config folder
+    move(flare_sweep_dir, config_sweep_dir)
+
+    execute(put_configs, config)
+
+    # submit ensambe jobs
+    path_to_config = find_config_file_path(config)
+    sweep_dir = path_to_config + "/SWEEP"
+    env.script = script
+    env.label = label
+    run_ensemble(config, sweep_dir, **args)
 
 
 @task
