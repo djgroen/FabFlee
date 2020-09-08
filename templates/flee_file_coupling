@@ -9,15 +9,15 @@ export PYTHONPATH=$flee_location:$$PYTHONPATH
 #		Install missing python packages
 #------------------------------------------------------- 
 
-declare -a Pypackage=("qcg" "pandas")
-declare -a Pippackage=("qcg-pilotjob" "pandas")
+declare -a Pypackage=("qcg" "pandas" "seaborn" "matplotlib")
+declare -a Pippackage=("qcg-pilotjob" "pandas" "seaborn" "matplotlib")
 
 len=$${#Pypackage[@]}
 for (( i=0; i<$${len}; i++ ));
 do
 	Pyname=$${Pypackage[$$i]}
 	Pipcmd=$${Pippackage[$$i]}
-	if python -c "import pkgutil; exit(not pkgutil.find_loader('$$Pyname'))"; then
+	if python3 -c "import pkgutil; exit(not pkgutil.find_loader('$$Pyname'))"; then
 	    echo $$Pyname' found'
 	else
 	    echo $$Pyname' not found'
@@ -60,6 +60,6 @@ fi
 #		run PJ job
 #------------------------------------------------------- 
 
-python PJ.py --COUPLING_TYPE=$coupling_type --WEATHER_COUPLING=$weather_coupling --NUM_WORKERS=$num_workers  --WORKER_CORES=$worker_cores
+python3 PJ.py --COUPLING_TYPE=$coupling_type --WEATHER_COUPLING=$weather_coupling --NUM_WORKERS=$num_workers  --WORKER_CORES=$worker_cores
 
 
