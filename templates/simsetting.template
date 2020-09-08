@@ -1,5 +1,6 @@
 AwarenessLevel,$awareness_level
 MaxMoveSpeed,$max_move_speed
+MaxWalkSpeed,$max_walk_speed
 CampMoveChance,$camp_move_chance
 ConflictMoveChance,$conflict_move_chance
 DefaultMoveChance,$default_move_chance

@@ -1,8 +1,8 @@
 from flee import flee
-from datamanager import handle_refugee_data
-from datamanager import DataTable
+from flee.datamanager import handle_refugee_data
+from flee.datamanager import DataTable
 import numpy as np
-import outputanalysis.analysis as a
+import flee.postprocessing.analysis as a
 import sys
 
 """
