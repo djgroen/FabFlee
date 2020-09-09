@@ -1,4 +1,4 @@
-from flee import food_flee
+from flee import food_flee as flee
 from flee.datamanager import handle_refugee_data
 from flee.datamanager import DataTable #DataTable.subtract_dates()
 from flee import InputGeography
