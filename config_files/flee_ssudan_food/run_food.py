@@ -31,7 +31,7 @@ if __name__ == "__main__":
   last_physical_day = int(sys.argv[3])
 
   if len(sys.argv)==5:
-    flee.SimulationSettings.SimulationSettings.ReadFromCSV(sys.argv[4])
+    flee.SimulationSettings.ReadFromCSV(sys.argv[4])
 
   e = flee.Ecosystem()
 
