@@ -24,11 +24,11 @@ Below you can find installation instructions for each of these packages.
 
 ### Installing FLEE
 
-To install FLEE on your local workstation, you need to clone the FLEE repository (see http://www.github.com/djgroen/flee-release):
+To install FLEE on your local workstation, you need to clone the FLEE repository (see http://www.github.com/djgroen/flee):
 ``` 
-git clone https://github.com/djgroen/flee-release.git
+git clone https://github.com/djgroen/flee.git
 ```
-We will assume that you will install FLEE in a directory called (FLEE Home), e.g. `~/flee-release/`
+We will assume that you will install FLEE in a directory called (FLEE Home), e.g. `~/flee/`
 
 ### Installing Flare
 
