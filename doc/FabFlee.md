@@ -218,15 +218,15 @@ Before running any simulation on a remote supercomputer, you'll need to do the f
 
 For QCG machine:
 ```
-fab qcg install_app:QCG-PilotJob,virtual_env=True
+fab qcg install_app:QCG-PilotJob,venv=True
 ```
 
 For SLURM machine: 
 ```
-fab <remote machine name> install_app:QCG-PilotJob,virtual_env=True
+fab <remote machine name> install_app:QCG-PilotJob,venv=True
 ```
 
-> NOTE: The installation path (`virtual_env_path`) is set on `machines.yml` as one of the parameters for the target remote machine.
+> NOTE: The installation path (`venv_path`) is set on `machines.yml` as one of the parameters for the target remote machine.
 
 By installing this _virtualenv_ on the target remote machine, the [QCG Pilot](https://github.com/vecma-project/QCG-PilotJob) Job service will be also installed alongside with other required dependencies 
 
@@ -235,7 +235,7 @@ By installing this _virtualenv_ on the target remote machine, the [QCG Pilot](ht
 
 1.  To run an ensemble of simulation using QCG Broker for the Mali simulation instance, simply run
     ```
-    fabsim qcg flee_ensemble:mali,N=20,simulation_period=50,PilotJob=true
+    fabsim qcg flee_ensemble:mali,N=20,simulation_period=50,PJ=true
     ```
 2.  To check if your jobs are finished or not, simply type
     ```
@@ -388,7 +388,7 @@ Note: If QCG-PJ is installed in the target remote machine, by using PilotJob=Tru
 
 1.  To execute EasyVVUQ for migration prediction using Pilot Job, run:
     ```
-    fab <remote machine name> run_flee_easyvvuq:‘country1(;countryN)’(,simulation_periods=‘day1(;dayN)’),PilotJob=True
+    fab <remote machine name> run_flee_easyvvuq:‘country1(;countryN)’(,simulation_periods=‘day1(;dayN)’),PJ=True
     ```
 
 2.  Run the following command to copy back results from the remote machine. The results will then be in a directory inside ``(FabSim3 Home)/results``, which is most likely called <conflict_name>_<remote_machine_name>_<number> (e.g. mali_eagle_vecma_16):
