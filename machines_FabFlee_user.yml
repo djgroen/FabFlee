@@ -20,12 +20,12 @@ eagle_vecma:
   partition_name: "fast"
 
   # for submitting job with PilotJob
-  PJ_size : "40"
+  PJ_size : "4"
   PJ_wall_time : "0-3:00:00"
 
   # required modules for Flee
   modules:
     # list of modules to be loaded on remote machine
-    loaded: ["python/3.7.3", "openmpi/4.0.0_gcc620", "hamid"]
+    loaded: ["python/3.7.3", "openmpi/4.0.0_gcc620"]
     # list of modules to be unloaded on remote machine
     unloaded: ["python"]
