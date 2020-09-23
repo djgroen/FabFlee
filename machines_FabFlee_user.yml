@@ -1,0 +1,31 @@
+# This is the user personal configuration for job submission and execution for FabFlee plugin
+# All given variable here will be override machine settings loaded from (a) FabSim3/deploy/machines.yml and (b) FabSim3/deploy/machines_user.yml 
+# 
+# Here, you can find some examples for pre-defined remote machines
+# All env variable can be modified here and will overwrite setting in machines.yml and machines_user.yml
+
+localhost:
+  # location of flee in your local PC
+  flee_location: "<...>"
+
+eagle_vecma:
+  # location of flee in the remote machine
+  flee_location: "<...>"
+
+  cores: 1
+  # format days-hours:minutes:seconds
+  job_wall_time : "0-1:00:00"
+
+  # list of available partitions : sinfo --Format=partition
+  partition_name: "fast"
+
+  # for submitting job with PilotJob
+  PJ_size : "40"
+  PJ_wall_time : "0-3:00:00"
+
+  # required modules for Flee
+  modules:
+    # list of modules to be loaded on remote machine
+    loaded: ["python/3.7.3", "openmpi/4.0.0_gcc620", "hamid"]
+    # list of modules to be unloaded on remote machine
+    unloaded: ["python"]
