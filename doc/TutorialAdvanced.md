@@ -29,14 +29,14 @@ fabsim eagle flee_conflict_forecast:mali,N=20,simulation_period=50
 <!---
 ### Running an ensemble simulation on a supercomputer using Pilot Jobs
 ```
-fabsim qcg flee_ensemble:mali,N=20,simulation_period=50,PilotJob=true
+fabsim qcg flee_ensemble:mali,N=20,simulation_period=50,PJ=true
 ```
 -->
 
 # Running an ensemble simulation on a supercomputer using Pilot Jobs and QCG Broker
 
 ```
-fabsim qcg flee_ensemble:mali,N=20,simulation_period=50,PilotJob=true
+fabsim qcg flee_ensemble:mali,N=20,simulation_period=50,PJ=true
 ```
 1. Run `fabsim qcg job_stat_update` to check if you jobs are finished or not
 2. Run `fabsim qcg fetch_results` to copy back results from `qcg` machine. The results will then be in a directory inside `(FabSim Home)/results`, which is most likely called `mali_qcg_16`
