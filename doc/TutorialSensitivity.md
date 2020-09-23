@@ -149,7 +149,7 @@ Note: Analysis of the obtained results can be also performed on a localhost.
 
 For QCG-PilotJob installation, see https://github.com/vecma-project/QCG-PilotJob/blob/master/INSTALL.txt 
 
-.. note:: if QCG-PJ is installed in the target remote machine, by using PJ=True, the native QCG-PilotJob will be lunched for execution. Otherwise you require to install the QCG-PilotJob service in a VirtualEnv in the target machine, and then PJ=True option will load QCG-PilotJob services from VirtualEnv. 
+.. note:: if QCG-PJ is installed in the target remote machine, by using PJ=True, the native QCG-PilotJob will be lunched for execution. Otherwise you require to install the QCG-PilotJob service in a virtual environment (venv) in the target machine, and then PJ=True option will load QCG-PilotJob services from venv. 
 
 To install virtual environment on the remote machine alongside with QCG-PilotJob, just run: 
 
