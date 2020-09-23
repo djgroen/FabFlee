@@ -214,7 +214,7 @@ These advanced tasks are intended for those who have access to the Eagle superco
 ### Setup tasks for advanced use
 Before running any simulation on a remote supercomputer, you'll need to do the following:
 - Make sure the target remote machine is properly defined in `(FabSim3 Home)/deploy/machines.yml` (see https://fabsim3.readthedocs.io/en/latest/remotemachineconfig.html#qcg-pilot-job-manager)
-- Since that, in Flee, some python libraries such as `numpy` will be used for the job execution, in case of nonexistent of those packages, we recommended to install a *_virtualenv_* on the target machine. It can be done by running
+- Since that, in Flee, some python libraries such as `numpy` will be used for the job execution, in case of nonexistent of those packages, we recommended to install a virtual environment (venv) on the target machine. It can be done by running
 
 For QCG machine:
 ```
@@ -228,7 +228,7 @@ fab <remote machine name> install_app:QCG-PilotJob,venv=True
 
 > NOTE: The installation path (`virtual_env_path`) is set on `machines.yml` as one of the parameters for the target remote machine.
 
-By installing this _virtualenv_ on the target remote machine, the [QCG Pilot](https://github.com/vecma-project/QCG-PilotJob) Job service will be also installed alongside with other required dependencies 
+By installing this _venv_ on the target remote machine, the [QCG Pilot](https://github.com/vecma-project/QCG-PilotJob) Job service will be also installed alongside with other required dependencies. 
 
 
 ### Running an ensemble simulation on a supercomputer using QCG Broker and Pilot Jobs
@@ -383,7 +383,7 @@ my_sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=3)
 
 For QCG-PilotJob installation, see https://github.com/vecma-project/QCG-PilotJob/blob/master/INSTALL.txt 
 
-Note: If QCG-PJ is installed in the target remote machine, by using PJ=True, the native QCG-PilotJob will be launched for execution. Otherwise you require to install the QCG-PilotJob service in a VirtualEnv in the target machine, and then PJ=True option will load QCG-PJ services from VirtualEnv. 
+Note: If QCG-PJ is installed in the target remote machine, by using PJ=True, the native QCG-PilotJob will be launched for execution. Otherwise you require to install the QCG-PilotJob service in a virtual environment (venv) in the target machine, and then PJ=True option will load QCG-PJ services from venv. 
 
 
 1.  To execute EasyVVUQ for migration prediction using Pilot Job, run:
