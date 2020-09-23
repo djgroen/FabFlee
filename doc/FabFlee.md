@@ -226,7 +226,7 @@ For SLURM machine:
 fab <remote machine name> install_app:QCG-PilotJob,venv=True
 ```
 
-> NOTE: The installation path (`venv_path`) is set on `machines.yml` as one of the parameters for the target remote machine.
+> NOTE: The installation path (`virtual_env_path`) is set on `machines.yml` as one of the parameters for the target remote machine.
 
 By installing this _virtualenv_ on the target remote machine, the [QCG Pilot](https://github.com/vecma-project/QCG-PilotJob) Job service will be also installed alongside with other required dependencies 
 
