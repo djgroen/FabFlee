@@ -383,7 +383,7 @@ my_sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=3)
 
 For QCG-PilotJob installation, see https://github.com/vecma-project/QCG-PilotJob/blob/master/INSTALL.txt 
 
-Note: If QCG-PJ is installed in the target remote machine, by using PilotJob=True, the native QCG-PilotJob will be launched for execution. Otherwise you require to install the QCG-PilotJob service in a VirtualEnv in the target machine, and then PilotJob=True option will load QCG-PJ services from VirtualEnv. 
+Note: If QCG-PJ is installed in the target remote machine, by using PJ=True, the native QCG-PilotJob will be launched for execution. Otherwise you require to install the QCG-PilotJob service in a VirtualEnv in the target machine, and then PJ=True option will load QCG-PJ services from VirtualEnv. 
 
 
 1.  To execute EasyVVUQ for migration prediction using Pilot Job, run:
