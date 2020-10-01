@@ -34,6 +34,7 @@ def sync_flee():
     Synchronize the Flee version, so that the remote machine has the latest
     version from localhost.
     """
+    load_plugin_machine_vars(config)
     update_environment()
     flee_location_local = user_config["localhost"].get(
         "flee_location", user_config["default"].get("flee_location"))
@@ -82,7 +83,7 @@ def flee(config, simulation_period, **args):
                         % (get_plugin_path("FabFlee"), config)})
     print_local_environment()
     '''
-
+    load_plugin_machine_vars(config)
     update_environment(args, {"simulation_period": simulation_period})
     with_config(config)
     execute(put_configs, config)
@@ -105,6 +106,7 @@ def flee_ensemble(config, simulation_period, script='flee', label="", **args):
     Submits an ensemble of dummy jobs.
     One job is run for each file in <config_file_directory>/flee_test/SWEEP.
     """
+    load_plugin_machine_vars(config)
     update_environment(args)
 
     path_to_config = find_config_file_path(config)
@@ -180,6 +182,7 @@ def flee_conflict_forecast(config, simulation_period, N, **args):
     run Flee ensemble.
     (visualize Flee output with uncertainty).
     """
+    load_plugin_machine_vars(config)
     update_environment(args)
 
     local("rm -rf %s/results-flare/flare-out-scratch/*" %
@@ -217,6 +220,7 @@ def pflee(config, simulation_period, **args):
                         % (get_plugin_path("FabFlee"), config)})
     print_local_environment()
     '''
+    load_plugin_machine_vars(config)
     update_environment(args, {"simulation_period": simulation_period})
     with_config(config)
     execute(put_configs, config)
@@ -228,6 +232,7 @@ def pflee_test(config, pmode="advanced", N="100000", **args):
     """
     Run a short parallel test with a particular config.
     """
+    load_plugin_machine_vars(config)
     update_environment(args, {"simulation_period": 10,
                               "flee_parallel_mode": pmode, "flee_num_agents": int(N)})
     with_config(config)
@@ -240,6 +245,7 @@ def pflee_pmode_compare(config, cores, N="100000", **args):
     """
     Run a short parallel test with a particular config. 60 min limit per run.
     """
+    load_plugin_machine_vars(config)
     for pmode in ["advanced", "classic", "adv-lolat", "cl-hilat"]:  # maps to args in test_par.py
         update_environment(args, {
                            "simulation_period": 10, "flee_parallel_mode": pmode, "flee_num_agents": int(N)})
@@ -280,6 +286,7 @@ def food_flee(config, simulation_period, **args):
             wall_time : wall-time job limit
             memory : memory per node
     """
+    load_plugin_machine_vars(config)
     update_environment({"input_directory": "%s/config_files/%s/input_csv"
                         % (get_plugin_path("FabFlee"), config),
                         "validation_data_directory":
@@ -357,7 +364,7 @@ def cflee(config, coupling_type="file", weather_coupling="False",
         fab eagle_vecma cflee:mscalecity,coupling_type=file,weather_coupling=True,num_workers=10,worker_cores=4
 
     """
-
+    load_plugin_machine_vars(config)
     update_environment(args, {"coupling_type": coupling_type,
                               "weather_coupling": weather_coupling.lower(),
                               "num_workers": num_workers,
@@ -391,7 +398,7 @@ def cflee_ensemble(config, coupling_type="file", weather_coupling="False",
 
         fab eagle_vecma cflee_ensemble:mscalecity,coupling_type=file,weather_coupling=True,num_workers=10,worker_cores=4,N=3
     """
-
+    load_plugin_machine_vars(config)
     update_environment(args, {"coupling_type": coupling_type,
                               "weather_coupling": weather_coupling.lower(),
                               "num_workers": num_workers,
@@ -444,6 +451,7 @@ def flee_and_plot(config, simulation_period, **args):
     """
     Runs Flee and plots the output in a graph subdir
     """
+    load_plugin_machine_vars(config)
     update_environment(args, {"simulation_period": simulation_period})
     env.simulation_settings = "simsetting.csv"
     flee(config, simulation_period, **args)
