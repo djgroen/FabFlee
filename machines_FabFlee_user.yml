@@ -3,6 +3,16 @@
 # 
 # Here, you can find some examples for pre-defined remote machines
 # All env variable can be modified here and will overwrite setting in machines.yml and machines_user.yml
+default:
+
+
+# required modules for Flee
+flee_modules: &FLEE_MODULES
+  # list of modules to be loaded on remote machine
+  loaded: ["python/3.7.3", "openmpi/4.0.0_gcc620"]
+  # list of modules to be unloaded on remote machine
+  unloaded: ["python"]
+
 
 localhost:
   # location of flee in your local PC
@@ -11,21 +21,31 @@ localhost:
 eagle_vecma:
   # location of flee in the remote machine
   flee_location: "<...>"
-
+  # cores=1 for sequential flee runs, cores>1 for parallel pflee runs
   cores: 1
   # format days-hours:minutes:seconds
-  job_wall_time : "0-1:00:00"
-
+  job_wall_time : "0-0:10:00"
   # list of available partitions : sinfo --Format=partition
   partition_name: "fast"
-
   # for submitting job with PilotJob
-  PJ_size : "4"
-  PJ_wall_time : "0-3:00:00"
+  PJ_size : "2"
+  PJ_wall_time : "0-0:10:00"
 
   # required modules for Flee
-  modules:
-    # list of modules to be loaded on remote machine
-    loaded: ["python/3.7.3", "openmpi/4.0.0_gcc620"]
-    # list of modules to be unloaded on remote machine
-    unloaded: ["python"]
+  modules: *FLEE_MODULES
+
+
+eagle_hidalgo:
+  flee_location: "<...>"
+  # cores=1 for sequential flee runs, cores>1 for parallel pflee runs
+  cores: 1
+  # format days-hours:minutes:seconds
+  job_wall_time : "0-0:10:00"
+  # list of available partitions : sinfo --Format=partition
+  partition_name: "fast"
+  # for submitting job with PilotJob
+  PJ_size : "2"
+  PJ_wall_time : "0-0:10:00"
+
+  # required modules for Flee
+  modules: *FLEE_MODULES
