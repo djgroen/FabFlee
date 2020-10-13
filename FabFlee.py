@@ -106,8 +106,11 @@ def flee_ensemble(config, simulation_period, script='flee', label="", **args):
     Submits an ensemble of dummy jobs.
     One job is run for each file in <config_file_directory>/flee_test/SWEEP.
     """
+    print("1env.PJ_size =" + env.PJ_size)
     load_plugin_machine_vars(config)
+    print("2env.PJ_size =" + env.PJ_size)
     update_environment(args)
+    print("3env.PJ_size =" + env.PJ_size)
 
     path_to_config = find_config_file_path(config)
     print("local config file path at: %s" % path_to_config)
@@ -661,6 +664,31 @@ def process_acled(**kwargs):
                  kwargs.get("start_date", ""),
                  kwargs.get("filter", "")))
 
+
+@task
+def add_population(config, PL="100", CL="100", **args):
+    load_plugin_machine_vars(config)
+    # update_environment(args, {"simulation_period": simulation_period})
+    with_config(config)
+    if env.machine_name != 'localhost':
+        print("Error : This task should only executed on your localhost")
+        print("Please re-run is again with :")
+        print("\t fab localhost add_population:%s" % (config))
+        exit()
+    env.cityGraph_POPULATION_LIMIT = PL
+    env.cityGraph_CITIES_LIMIT = CL
+    local("python %s --cityGraph_location %s --API_KEY %s --POPULATION_LIMIT %s --CITIES_LIMIT %s --config_location %s --config_name %s"
+          % (os.path.join(env.localplugins["FabFlee"],
+                          "scripts",
+                          "population2locations.py"),
+             env.cityGraph_location,
+             env.cityGraph_API_KEY,
+             env.cityGraph_POPULATION_LIMIT,
+             env.cityGraph_CITIES_LIMIT,
+             env.job_config_path_local,
+             config
+             )
+          )
 
 # FabFlee execution tasks
 @task

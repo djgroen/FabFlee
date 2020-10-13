@@ -16,11 +16,22 @@ flee_modules: &FLEE_MODULES
 
 localhost:
   # location of flee in your local PC
-  flee_location: "<...>"
+  flee_location: "~/Codes/flee"
+
+  # location of City Graph application,
+  # you can download it from 
+  # https://github.com/qusaizakir/CityGraph/releases
+  cityGraph_location: "~/Codes/citygraph"
+  cityGraph_API_KEY: "5b3ce3597851110001cf62481fe17f28d29945ecb2ca9d2f51f12738"
+  cityGraph_CountryCodesList: "https://raw.githubusercontent.com/qusaizakir/CityGraph/master/listofcountrycodes.csv"
+  cityGraph_COUNTRY_CODE: ""
+  cityGraph_POPULATION_LIMIT: ""
+  cityGraph_CITIES_LIMIT: ""
+
 
 eagle_vecma:
   # location of flee in the remote machine
-  flee_location: "<...>"
+  flee_location: "~/Codes/flee"
   # cores=1 for sequential flee runs, cores>1 for parallel pflee runs
   cores: 1
   # format days-hours:minutes:seconds
@@ -36,7 +47,7 @@ eagle_vecma:
 
 
 eagle_hidalgo:
-  flee_location: "<...>"
+  flee_location: "~/Codes/flee"
   # cores=1 for sequential flee runs, cores>1 for parallel pflee runs
   cores: 1
   # format days-hours:minutes:seconds
@@ -44,7 +55,7 @@ eagle_hidalgo:
   # list of available partitions : sinfo --Format=partition
   partition_name: "fast"
   # for submitting job with PilotJob
-  PJ_size : "2"
+  PJ_size : "3"
   PJ_wall_time : "0-0:10:00"
 
   # required modules for Flee
