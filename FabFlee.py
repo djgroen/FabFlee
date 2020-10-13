@@ -106,7 +106,7 @@ def flee_ensemble(config, simulation_period, script='flee', label="", **args):
     Submits an ensemble of dummy jobs.
     One job is run for each file in <config_file_directory>/flee_test/SWEEP.
     """
-    print("1env.PJ_size =" + env.PJ_size)
+  
     load_plugin_machine_vars(config)
     print("2env.PJ_size =" + env.PJ_size)
     update_environment(args)
@@ -635,9 +635,8 @@ def test_sensitivity(config, **args):
 
 # ACLED data extraction task
 @task
-# Syntax: fabsim localhost
-# process_acled:country,start_date=dd-mm-yyyy,filter=[earliest,fatalities]
-def process_acled(**kwargs):
+# Syntax: fabsim localhost process_acled:country,start_date=dd-mm-yyyy,filter=[earliest,fatalities]
+def process_acled(country,start_date,filter,admin_level):
     """
     Process .csv files sourced from acleddata.com to a <locations.csv> format
     Syntax:
@@ -647,22 +646,16 @@ def process_acled(**kwargs):
         filter:[earliest,fatalities]
         **earliest keeps the first occurence of each admin2,
         fatalities keeps admin2 with the highest fatalities.
+        admin_level: is how high the admin level you want to apply the filter to
+        i.e location, admin2, admin1
     """
-
-    if kwargs is not None:
-        local("python3 %s/scripts/acled2locations.py %s %s %s %s %s"
-              % (get_plugin_path("FabFlee"),
-                 get_plugin_path("FabFlee"),
-                 kwargs.get("country", ""),
-                 kwargs.get("start_date", ""),
-                 kwargs.get("filter", ""), kwargs.get('path', "")))
-    else:
-        local("python3 %s/scripts/acled2locations.py %s %s %s %s"
-              % (get_plugin_path("FabFlee"),
-                 get_plugin_path("FabFlee"),
-                 kwargs.get("country", ""),
-                 kwargs.get("start_date", ""),
-                 kwargs.get("filter", "")))
+    local("python3 %s/scripts/acled2locations.py %s %s %s %s %s"
+         %(get_plugin_path("FabFlee"),
+           get_plugin_path("FabFlee"),
+           country,
+           start_date,
+           filter,
+           admin_level))
 
 
 @task

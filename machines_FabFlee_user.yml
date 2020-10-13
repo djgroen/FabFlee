@@ -23,7 +23,6 @@ localhost:
   # https://github.com/qusaizakir/CityGraph/releases
   cityGraph_location: "~/Codes/citygraph"
   cityGraph_API_KEY: "5b3ce3597851110001cf62481fe17f28d29945ecb2ca9d2f51f12738"
-  cityGraph_CountryCodesList: "https://raw.githubusercontent.com/qusaizakir/CityGraph/master/listofcountrycodes.csv"
   cityGraph_COUNTRY_CODE: ""
   cityGraph_POPULATION_LIMIT: ""
   cityGraph_CITIES_LIMIT: ""
