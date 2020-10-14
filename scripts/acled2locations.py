@@ -98,11 +98,11 @@ def main(fab_flee_loc,country, start_date,filter,admin_level):
         print("Runtime error: Filter value must be earliest or fatalities")
     # Exporting CSV to locations.csv
     output_df = df[['location', 'admin1', 'country', 'latitude', 'longitude', 'conflict_date']]
-    output_df.rename(columns={'location': 'name', 'admin1': 'reigon'}, inplace=True)
+    output_df.rename(columns={'location': '#name', 'admin1': 'region'}, inplace=True)
     output_df["location_type"] = "conflict_zone"
     output_df["population"] = "null"
     output_file = os.path.join(fab_flee_loc, "config_files",
-                              country,
+                              country, "input_csv",
                               "locations.csv")
 
     try:
@@ -110,7 +110,7 @@ def main(fab_flee_loc,country, start_date,filter,admin_level):
     except FileExistsError:
         print("File Already exists, saving as new_locations.csv")
         output_file = os.path.join(fab_flee_loc, "config_files",
-                                   country,
+                                   country, "input_csv",
                                    "new_locations.csv")
         output_df.to_csv(output_file, index=False, mode='x')
 
