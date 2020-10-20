@@ -20,6 +20,7 @@ add_local_paths("FabFlee")
 
 
 @task
+@load_plugin_env_vars("FabFlee")
 def get_flee_location():
     """
     Print the $flee_location env variable for the target machine.
@@ -29,12 +30,12 @@ def get_flee_location():
 
 
 @task
+@load_plugin_env_vars("FabFlee")
 def sync_flee():
     """
     Synchronize the Flee version, so that the remote machine has the latest
     version from localhost.
     """
-    load_plugin_machine_vars(config)
     update_environment()
     flee_location_local = user_config["localhost"].get(
         "flee_location", user_config["default"].get("flee_location"))
@@ -61,6 +62,7 @@ def extract_conflict_file(config, simulation_period, **args):
 
 
 @task
+@load_plugin_env_vars("FabFlee")
 def flee(config, simulation_period, **args):
     """ Submit a Flee job to the remote queue.
     The job results will be stored with a name pattern as
@@ -101,16 +103,13 @@ def flees(config, simulation_period, **args):
 
 
 @task
+@load_plugin_env_vars("FabFlee")
 def flee_ensemble(config, simulation_period, script='flee', label="", **args):
     """
     Submits an ensemble of dummy jobs.
     One job is run for each file in <config_file_directory>/flee_test/SWEEP.
     """
-  
-    load_plugin_machine_vars(config)
-    print("2env.PJ_size =" + env.PJ_size)
     update_environment(args)
-    print("3env.PJ_size =" + env.PJ_size)
 
     path_to_config = find_config_file_path(config)
     print("local config file path at: %s" % path_to_config)
@@ -131,6 +130,7 @@ def flee_ensemble(config, simulation_period, script='flee', label="", **args):
 
 
 @task
+@load_plugin_env_vars("FabFlee")
 def flare_local(config, simulation_period, out_dir="", file_suffix=""):
     """
     Run an instance of Flare on the local host.
@@ -150,6 +150,7 @@ def flare_local(config, simulation_period, out_dir="", file_suffix=""):
 
 
 @task
+@load_plugin_env_vars("FabFlee")
 def flare_ensemble(config, simulation_period, N, out_dir, file_suffix=""):
     """
     Run an ensemble of flare instances locally.
@@ -165,6 +166,7 @@ def flare_ensemble(config, simulation_period, N, out_dir, file_suffix=""):
 
 
 @task
+@load_plugin_env_vars("FabFlee")
 def couple_flare_to_flee(config, flare_out="flare-out-scratch"):
     """
     Converts Flare output and places it in a Flee input directory to create
@@ -179,13 +181,13 @@ def couple_flare_to_flee(config, flare_out="flare-out-scratch"):
 
 
 @task
+@load_plugin_env_vars("FabFlee")
 def flee_conflict_forecast(config, simulation_period, N, **args):
     """
     Run Flare ensemble, convert output to Flee ensemble input,
     run Flee ensemble.
     (visualize Flee output with uncertainty).
     """
-    load_plugin_machine_vars(config)
     update_environment(args)
 
     local("rm -rf %s/results-flare/flare-out-scratch/*" %
@@ -204,6 +206,7 @@ def flee_conflict_forecast(config, simulation_period, N, **args):
 
 # Flee parallelisation tasks
 @task
+@load_plugin_env_vars("FabFlee")
 def pflee(config, simulation_period, **args):
     """ Submit a Pflee job to the remote queue.
     The job results will be stored with a name pattern as defined
@@ -223,7 +226,6 @@ def pflee(config, simulation_period, **args):
                         % (get_plugin_path("FabFlee"), config)})
     print_local_environment()
     '''
-    load_plugin_machine_vars(config)
     update_environment(args, {"simulation_period": simulation_period})
     with_config(config)
     execute(put_configs, config)
@@ -231,11 +233,11 @@ def pflee(config, simulation_period, **args):
 
 
 @task
+@load_plugin_env_vars("FabFlee")
 def pflee_test(config, pmode="advanced", N="100000", **args):
     """
     Run a short parallel test with a particular config.
     """
-    load_plugin_machine_vars(config)
     update_environment(args, {"simulation_period": 10,
                               "flee_parallel_mode": pmode, "flee_num_agents": int(N)})
     with_config(config)
@@ -244,11 +246,11 @@ def pflee_test(config, pmode="advanced", N="100000", **args):
 
 
 @task
+@load_plugin_env_vars("FabFlee")
 def pflee_pmode_compare(config, cores, N="100000", **args):
     """
     Run a short parallel test with a particular config. 60 min limit per run.
     """
-    load_plugin_machine_vars(config)
     for pmode in ["advanced", "classic", "adv-lolat", "cl-hilat"]:  # maps to args in test_par.py
         update_environment(args, {
                            "simulation_period": 10, "flee_parallel_mode": pmode, "flee_num_agents": int(N)})
@@ -259,6 +261,7 @@ def pflee_pmode_compare(config, cores, N="100000", **args):
 
 
 @task
+@load_plugin_env_vars("FabFlee")
 def pflee_report(results_key):
     for item in glob.glob("{}/*{}*/perf.log".format(env.local_results, results_key)):
         print(item)
@@ -272,12 +275,14 @@ def pflee_report(results_key):
 
 
 @task
+@load_plugin_env_vars("FabFlee")
 def pflee_ensemble(config, simulation_period, **args):
     flee_ensemble(config, simulation_period, script='pflee', **args)
 
 
 # Coupling Flee and food security tasks
 @task
+@load_plugin_env_vars("FabFlee")
 def food_flee(config, simulation_period, **args):
     """ Submit a Flee job to the remote queue.
     The job results will be stored with a name pattern as defined
@@ -289,7 +294,6 @@ def food_flee(config, simulation_period, **args):
             wall_time : wall-time job limit
             memory : memory per node
     """
-    load_plugin_machine_vars(config)
     update_environment({"input_directory": "%s/config_files/%s/input_csv"
                         % (get_plugin_path("FabFlee"), config),
                         "validation_data_directory":
@@ -303,6 +307,7 @@ def food_flee(config, simulation_period, **args):
 
 
 @task
+@load_plugin_env_vars("FabFlee")
 # Syntax: fab localhost compare_food:food_flee_conflict_name_localhost_16
 def compare_food(output_dir_1=""):
     """
@@ -323,6 +328,7 @@ def compare_food(output_dir_1=""):
 
 # Post-processing tasks
 @task
+@load_plugin_env_vars("FabFlee")
 # Syntax: fab localhost
 # plot_output:flee_conflict_name_localhost_16(,graphs_dir_name)
 def plot_output(output_dir="", graphs_dir=""):
@@ -348,6 +354,7 @@ def plot_output(output_dir="", graphs_dir=""):
 
 
 @task
+@load_plugin_env_vars("FabFlee")
 def cflee(config, coupling_type="file", weather_coupling="False",
           num_workers="1", worker_cores="1",
           job_wall_time="00:12:00", ** args):
@@ -367,7 +374,6 @@ def cflee(config, coupling_type="file", weather_coupling="False",
         fab eagle_vecma cflee:mscalecity,coupling_type=file,weather_coupling=True,num_workers=10,worker_cores=4
 
     """
-    load_plugin_machine_vars(config)
     update_environment(args, {"coupling_type": coupling_type,
                               "weather_coupling": weather_coupling.lower(),
                               "num_workers": num_workers,
@@ -391,6 +397,7 @@ def cflee(config, coupling_type="file", weather_coupling="False",
 
 
 @task
+@load_plugin_env_vars("FabFlee")
 def cflee_ensemble(config, coupling_type="file", weather_coupling="False",
                    num_workers="1", worker_cores="1",
                    N="1", simulation_period="425",
@@ -401,7 +408,6 @@ def cflee_ensemble(config, coupling_type="file", weather_coupling="False",
 
         fab eagle_vecma cflee_ensemble:mscalecity,coupling_type=file,weather_coupling=True,num_workers=10,worker_cores=4,N=3
     """
-    load_plugin_machine_vars(config)
     update_environment(args, {"coupling_type": coupling_type,
                               "weather_coupling": weather_coupling.lower(),
                               "num_workers": num_workers,
@@ -450,18 +456,19 @@ def cflee_ensemble(config, coupling_type="file", weather_coupling="False",
 
 
 @task
+@load_plugin_env_vars("FabFlee")
 def flee_and_plot(config, simulation_period, **args):
     """
     Runs Flee and plots the output in a graph subdir
     """
-    load_plugin_machine_vars(config)
-    update_environment(args, {"simulation_period": simulation_period})
+    # update_environment(args, {"simulation_period": simulation_period})
     env.simulation_settings = "simsetting.csv"
     flee(config, simulation_period, **args)
     plot_output("%s" % (env.job_name), "graph")
 
 
 @task
+@load_plugin_env_vars("FabFlee")
 # Syntax: fab localhost
 # plot_uq_output:flee_conflict_name_localhost_16(,graphs_dir_name)
 def plot_uq_output(output_dir="", graphs_dir=""):
@@ -511,6 +518,7 @@ def vvp_validate_results(output_dir=""):
 
 
 @task
+@load_plugin_env_vars("FabFlee")
 # Syntax: fabsim localhost
 # validate_results:flee_conflict_name_localhost_16
 def validate_results(output_dir):
@@ -526,6 +534,7 @@ def make_vvp_mean(np_array):
 
 
 @task
+@load_plugin_env_vars("FabFlee")
 def validate_flee_output(results_dir):
     """
     Goes through all the output directories and calculates the validation 
@@ -635,8 +644,9 @@ def test_sensitivity(config, **args):
 
 # ACLED data extraction task
 @task
-# Syntax: fabsim localhost process_acled:country,start_date=dd-mm-yyyy,filter=[earliest,fatalities]
-def process_acled(country,start_date,filter,admin_level):
+# Syntax: fabsim localhost
+# process_acled:country,start_date=dd-mm-yyyy,filter=[earliest,fatalities]
+def process_acled(country, start_date, filter, admin_level):
     """
     Process .csv files sourced from acleddata.com to a <locations.csv> format
     Syntax:
@@ -650,15 +660,16 @@ def process_acled(country,start_date,filter,admin_level):
         i.e location, admin2, admin1
     """
     local("python3 %s/scripts/acled2locations.py %s %s %s %s %s"
-         %(get_plugin_path("FabFlee"),
-           get_plugin_path("FabFlee"),
-           country,
-           start_date,
-           filter,
-           admin_level))
+          % (get_plugin_path("FabFlee"),
+             get_plugin_path("FabFlee"),
+             country,
+             start_date,
+             filter,
+             admin_level))
 
 
 @task
+@load_plugin_env_vars("FabFlee")
 def add_population(config, PL="100", CL="100", **args):
     load_plugin_machine_vars(config)
     # update_environment(args, {"simulation_period": simulation_period})
@@ -684,6 +695,8 @@ def add_population(config, PL="100", CL="100", **args):
           )
 
 # FabFlee execution tasks
+
+
 @task
 def load_conflict(conflict_name):
     # Syntax: fab localhost load_conflict:conflict_name

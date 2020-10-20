@@ -3,6 +3,7 @@ import pandas as pd
 from pprint import pprint
 import subprocess
 import os
+import math
 
 
 def run_City_Graph_app(cityGraph_location,
@@ -69,19 +70,39 @@ if __name__ == '__main__':
         os.path.join(cityGraph_location,
                      "%s_locations.csv" % (COUNTRY_CODE))
     )
+
     citygraph_location_csv = citygraph_location_csv.rename(
         columns={'name': '#name'})
 
-    merged_location_csv = pd.merge(
-        config_location_csv[['#name', 'region', 'country', 'latitude',
-                             'longitude', 'conflict_date', 'location_type']],
-        citygraph_location_csv[['#name', 'population']],
-        on=['#name', '#name'],
-        how='left'
-    )
-    merged_location_csv.to_csv(
+    merged_csv = config_location_csv
+    for index, config_location_row in merged_csv.iterrows():
+        location_name = config_location_row['#name']
+        population_size = config_location_row['population']
+        citygraph_loc_row = citygraph_location_csv.loc[
+            citygraph_location_csv['#name'] == location_name]
+        if citygraph_loc_row is not None and \
+                isinstance(citygraph_loc_row, pd.DataFrame) and \
+                not citygraph_loc_row.empty:
+            new_population_size = citygraph_loc_row['population']
+            '''
+            if locations.csv has population number == 0 and 
+                matches names in BI_locations.csv then 
+                    replace with number in BI_location.csv 
+            if locations.csv has population number for location > 0  and 
+                name matches then 
+                    DO NOT replace with BI_locations.csv
+            if it doesn't have population count in BI_location (names do not match) then 
+                leave it as it is in locations.csv            
+            '''
+
+            if (math.isnan(population_size) or population_size == 0):
+                merged_csv.at[index, 'population'] = new_population_size
+                print("population_size for = %s updated : %f -> %f"
+                      % (location_name, population_size, new_population_size))
+
+    merged_csv.to_csv(
         os.path.join(config_location,
                      "input_csv",
-                     "locations.csv"),
+                     "locations_pop.csv"),
         index=False
     )
