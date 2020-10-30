@@ -85,7 +85,6 @@ def flee(config, simulation_period, **args):
                         % (get_plugin_path("FabFlee"), config)})
     print_local_environment()
     '''
-    load_plugin_machine_vars(config)
     update_environment(args, {"simulation_period": simulation_period})
     with_config(config)
     execute(put_configs, config)
@@ -671,7 +670,6 @@ def process_acled(country, start_date, filter, admin_level):
 @task
 @load_plugin_env_vars("FabFlee")
 def add_population(config, PL="100", CL="100", **args):
-    load_plugin_machine_vars(config)
     # update_environment(args, {"simulation_period": simulation_period})
     with_config(config)
     if env.machine_name != 'localhost':
