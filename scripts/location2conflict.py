@@ -32,7 +32,7 @@ if __name__ == "__main__":
         output = "%s" % t
 
         for l in ig.locations:
-            print(l)
+            # print(l)
             if l[4] == "conflict_zone":
                 confl_date = int(l[5])
                 if confl_date <= t:

@@ -47,21 +47,6 @@ def sync_flee():
 
 
 @task
-def extract_conflict_file(config, simulation_period, **args):
-    """
-    Travels to the input_csv directory of a specific config and extracts
-    a conflict progression CSV file from locations.csv.
-    """
-    config_dir = "%s/config_files/%s" % (get_plugin_path("FabFlee"), config)
-    local("python3 %s/scripts/location2conflict.py %s \
-            %s/input_csv/locations.csv %s/input_csv/conflicts.csv"
-          % (get_plugin_path("FabFlee"),
-             simulation_period,
-             config_dir,
-             config_dir))
-
-
-@task
 @load_plugin_env_vars("FabFlee")
 def flee(config, simulation_period, **args):
     """ Submit a Flee job to the remote queue.
@@ -642,10 +627,47 @@ def test_sensitivity(config, **args):
     # 4. Analyse output and report sensitivity
 
 
+@task
+@load_plugin_env_vars("FabFlee")
+# Syntax: fabsim localhost new_conflict:<config_name>
+def new_conflict(config, **args):
+    local(template("mkdir -p %s/config_files/%s"
+                   % (get_plugin_path("FabFlee"), config)))
+  
+    local(template("mkdir -p %s/config_files/%s/input_csv"
+                   % (get_plugin_path("FabFlee"), config)))
+
+    local(template("mkdir -p %s/config_files/%s/source_data"
+                   % (get_plugin_path("FabFlee"), config)))
+
+    local(template("cp %s/flee/config_template/run.py \
+        %s/config_files/%s")
+          % (env.flee_location, get_plugin_path("FabFlee"), config))
+
+    local(template("cp %s/flee/config_template/run_par.py \
+        %s/config_files/%s")
+          % (env.flee_location, get_plugin_path("FabFlee"), config))
+
+    local(template("cp %s/flee/config_template/simsetting.csv \
+        %s/config_files/%s")
+          % (env.flee_location, get_plugin_path("FabFlee"), config))
+
+    local(template("cp %s/flee/config_template/input_csv/conflict_period.csv \
+        %s/config_files/%s/input_csv")
+          % (env.flee_location, get_plugin_path("FabFlee"), config))
+
+    local(template("cp %s/flee/config_template/input_csv/closures.csv \
+        %s/config_files/%s/input_csv")
+          % (env.flee_location, get_plugin_path("FabFlee"), config))
+
+    local(template("cp %s/flee/config_template/input_csv/registration_corrections.csv \
+        %s/config_files/%s/input_csv")
+          % (env.flee_location, get_plugin_path("FabFlee"), config))
+
+
 # ACLED data extraction task
 @task
-# Syntax: fabsim localhost
-# process_acled:country,start_date=dd-mm-yyyy,filter=[earliest,fatalities]
+# Syntax: fabsim localhost process_acled:<config_name>,start_date=dd-mm-yyyy,filter=[earliest,fatalities]
 def process_acled(country, start_date, filter, admin_level):
     """
     Process .csv files sourced from acleddata.com to a <locations.csv> format
@@ -667,11 +689,26 @@ def process_acled(country, start_date, filter, admin_level):
              filter,
              admin_level))
 
+@task
+# Syntax: fabsim localhost extract_conflict_file:<country_name>,simulation_period=<number>
+def extract_conflict_file(config, simulation_period, **args):
+    """
+    Travels to the input_csv directory of a specific config and extracts
+    a conflict progression CSV file from locations.csv.
+    """
+    config_dir = "%s/config_files/%s" % (get_plugin_path("FabFlee"), config)
+    local("python3 %s/scripts/location2conflict.py %s \
+            %s/input_csv/locations.csv %s/input_csv/conflicts.csv"
+          % (get_plugin_path("FabFlee"),
+             simulation_period,
+             config_dir,
+             config_dir))
+
 
 @task
 @load_plugin_env_vars("FabFlee")
+# Syntax: fabsim localhost add_population:<config_name>
 def add_population(config, PL="100", CL="100", **args):
-    load_plugin_machine_vars(config)
     # update_environment(args, {"simulation_period": simulation_period})
     with_config(config)
     if env.machine_name != 'localhost':
