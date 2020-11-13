@@ -485,7 +485,7 @@ def vvp_validate_results(output_dir=""):
     flee_location_local = user_config["localhost"].get(
         "flee_location", user_config["default"].get("flee_location"))
 
-    local("python3 %s/post-processing/extract-validation-results.py %s > %s/validation_results.yml"
+    local("python3 %s/flee/postprocessing/extract-validation-results.py %s > %s/validation_results.yml"
           % (flee_location_local, output_dir, output_dir))
 
     with open("{}/validation_results.yml".format(output_dir), 'r') as val_yaml:
@@ -632,7 +632,7 @@ def test_sensitivity(config, **args):
 def new_conflict(config, **args):
     local(template("mkdir -p %s/config_files/%s"
                    % (get_plugin_path("FabFlee"), config)))
-  
+
     local(template("mkdir -p %s/config_files/%s/input_csv"
                    % (get_plugin_path("FabFlee"), config)))
 
@@ -665,8 +665,9 @@ def new_conflict(config, **args):
 
 
 # ACLED data extraction task
+# Syntax: fabsim localhost
+# process_acled:country,start_date=dd-mm-yyyy,filter=[earliest,fatalities]
 @task
-# Syntax: fabsim localhost process_acled:<config_name>,start_date=dd-mm-yyyy,filter=[earliest,fatalities]
 def process_acled(country, start_date, filter, admin_level):
     """
     Process .csv files sourced from acleddata.com to a <locations.csv> format
@@ -688,8 +689,10 @@ def process_acled(country, start_date, filter, admin_level):
              filter,
              admin_level))
 
+
 @task
-# Syntax: fabsim localhost extract_conflict_file:<country_name>,simulation_period=<number>
+# Syntax: fabsim localhost
+# extract_conflict_file:<country_name>,simulation_period=<number>
 def extract_conflict_file(config, simulation_period, **args):
     """
     Travels to the input_csv directory of a specific config and extracts
