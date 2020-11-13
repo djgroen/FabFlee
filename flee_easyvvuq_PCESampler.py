@@ -43,7 +43,7 @@ class custom_redirection(object):
 
 
 @task
-def flee_init_PCE(config, simulation_period=-1, mode='parallel', ** args):
+def flee_init_PCE(config, simulation_period=-1, mode='serial', ** args):
     '''
     ============================================================================
 
@@ -98,21 +98,29 @@ def flee_init_PCE(config, simulation_period=-1, mode='parallel', ** args):
                           decoder=decoder,
                           collater=collater)
 
+    # loading user input sampler yaml file
+    user_sampler_yaml_file = os.path.join(os.path.dirname(__file__),
+                                          "sampler_input_parameters.yml")
+    sampler_args = yaml.load(open(user_sampler_yaml_file),
+                             Loader=yaml.SafeLoader
+                             )
+
     # parameters to vary
-    vary = {
-        "max_move_speed": cp.Uniform(100, 500),
-        "max_walk_speed": cp.Uniform(10, 100),
-        #"camp_move_chance": cp.Uniform(0.0, 0.1),
-        #"conflict_move_chance": cp.Uniform(0.1, 1.0),
-        #"default_move_chance": cp.Uniform(0.1, 1.0),
-        #"camp_weight": cp.Uniform(1.0, 10.0),
-        #"conflict_weight": cp.Uniform(0.1, 1.0)
-    }
+    vary = {}
+    for param in sampler_args['selected_parameters']:
+        lower_value = sampler_args['parameters'][param]['cp_uniform'][0]
+        upper_value = sampler_args['parameters'][param]['cp_uniform'][1]
+        vary.update({param: cp.Uniform(lower_value, upper_value)})
 
     # create PCESampler
-    sampler = uq.sampling.PCESampler(vary=vary,
-                                     polynomial_order=1
-                                     )
+    sampler = uq.sampling.PCESampler(
+        vary=vary,
+        polynomial_order=sampler_args['polynomial_order'],
+        rule=sampler_args['quadrature_rule'],
+        sparse=sampler_args['sparse'],
+        growth=sampler_args['growth'],
+        regression=sampler_args['regression']
+    )
 
     # Associate the sampler with the campaign
     campaign.set_sampler(sampler)
@@ -142,6 +150,9 @@ def flee_init_PCE(config, simulation_period=-1, mode='parallel', ** args):
         )
     print("Done")
     print('=' * 20)
+    print("Number of folders in SWEEP dir : ")
+    with hide('running', 'warnings'), settings(warn_only=True):
+        local("ls %s | wc -l" % (os.path.join(sweep_dir)))
 
     if mode == 'serial':
         flee_script = 'flee'
@@ -251,8 +262,8 @@ def flee_analyse_PCE(config, ** args):
         fig = plt.figure()
         ax = fig.add_subplot(111,
                              xlabel="days", ylabel=output_column)
-        mean = results["statistical_moments"][output_column]["mean"]
-        std = results["statistical_moments"][output_column]["std"]
+        mean = results.raw_data["statistical_moments"][output_column]["mean"]
+        std = results.raw_data["statistical_moments"][output_column]["std"]
         ax.plot(mean)
         ax.plot(mean + std, '--r')
         ax.plot(mean - std, '--r')
@@ -281,9 +292,9 @@ def flee_analyse_PCE(config, ** args):
             print('=================================================')
 
             print('percentiles:')
-            print(results['percentiles'][output_column])
+            print(results.raw_data['percentiles'][output_column])
             print('sobols_first:')
-            print(results['sobols_first'][output_column])
+            print(results.raw_data['sobols_first'][output_column])
             print('=================================================')
 
         sys.stdout = original

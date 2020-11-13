@@ -43,7 +43,7 @@ class custom_redirection(object):
 
 
 @task
-def flee_init_SC(config, simulation_period=-1, mode='parallel', ** args):
+def flee_init_SC(config, simulation_period=-1, mode='serial', ** args):
     '''
     ============================================================================
 
@@ -98,21 +98,30 @@ def flee_init_SC(config, simulation_period=-1, mode='parallel', ** args):
                           decoder=decoder,
                           collater=collater)
 
+    # loading user input sampler yaml file
+    user_sampler_yaml_file = os.path.join(os.path.dirname(__file__),
+                                          "sampler_input_parameters.yml")
+    sampler_args = yaml.load(open(user_sampler_yaml_file),
+                             Loader=yaml.SafeLoader
+                             )
+
     # parameters to vary
-    vary = {
-        "max_move_speed": cp.Uniform(100, 500),
-        "max_walk_speed": cp.Uniform(10, 100),
-        #"camp_move_chance": cp.Uniform(0.0, 0.1),
-        #"conflict_move_chance": cp.Uniform(0.1, 1.0),
-        #"default_move_chance": cp.Uniform(0.1, 1.0),
-        #"camp_weight": cp.Uniform(1.0, 10.0),
-        #"conflict_weight": cp.Uniform(0.1, 1.0)
-    }
+    vary = {}
+    for param in sampler_args['selected_parameters']:
+        lower_value = sampler_args['parameters'][param]['cp_uniform'][0]
+        upper_value = sampler_args['parameters'][param]['cp_uniform'][1]
+        vary.update({param: cp.Uniform(lower_value, upper_value)})
 
     # create SCSampler
-    sampler = uq.sampling.SCSampler(vary=vary,
-                                    polynomial_order=1,
-                                    quadrature_rule="G")
+    sampler = uq.sampling.SCSampler(
+        vary=vary,
+        polynomial_order=sampler_args['polynomial_order'],
+        quadrature_rule=sampler_args['quadrature_rule'],
+        sparse=sampler_args['sparse'],
+        growth=sampler_args['growth'],
+        midpoint_level1=sampler_args['midpoint_level1'],
+        dimension_adaptive=sampler_args['dimension_adaptive']
+    )
 
     # Associate the sampler with the campaign
     campaign.set_sampler(sampler)
@@ -254,8 +263,8 @@ def flee_analyse_SC(config, ** args):
         fig = plt.figure()
         ax = fig.add_subplot(111,
                              xlabel="days", ylabel=output_column)
-        mean = results["statistical_moments"][output_column]["mean"]
-        std = results["statistical_moments"][output_column]["std"]
+        mean = results.raw_data["statistical_moments"][output_column]["mean"]
+        std = results.raw_data["statistical_moments"][output_column]["std"]
         ax.plot(mean)
         ax.plot(mean + std, '--r')
         ax.plot(mean - std, '--r')
@@ -284,9 +293,9 @@ def flee_analyse_SC(config, ** args):
             print('=================================================')
             print('Sobol indices:')
             # print all indices
-            print(results['sobols']['Total error'])
+            print(results.raw_data['sobols']['Total error'])
             # print 1st order indices
-            print(results['sobols_first']['Total error'])
+            print(results.raw_data['sobols_first']['Total error'])
             print('=================================================')
 
         sys.stdout = original

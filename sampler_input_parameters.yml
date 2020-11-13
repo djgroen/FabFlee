@@ -1,0 +1,64 @@
+parameters:
+    # <parameter_name:>
+    #   cp_uniform: [<lower value>,<upper value>] 
+    max_move_speed:
+        cp_uniform: [100, 500]
+    max_walk_speed:
+        cp_uniform: [10, 100]
+    camp_move_chance:
+        cp_uniform: [0.0, 0.1]
+    conflict_move_chance:
+        cp_uniform: [0.1, 1.0]
+    default_move_chance:
+        cp_uniform: [0.1, 1.0]
+    camp_weight:
+        cp_uniform: [1.0, 10.0]
+    conflict_weight:
+        cp_uniform: [0.1, 1.0]
+
+
+
+selected_parameters: ["max_move_speed",
+                      "max_walk_speed"
+                    ]
+
+polynomial_order: 2
+
+# quadrature_rule : char
+#     The quadrature method, default is Gaussian "G".
+#     "G" -> Gaussian , "C" -> Clenshaw_Curtis
+quadrature_rule: "G"
+
+# sparse : bool
+#             If True use sparse grid instead of normal tensor product grid,
+#             default is False
+sparse: False
+
+# growth: bool
+#     Sets the growth rule to exponential for Clenshaw Curtis quadrature,
+#     which makes it nested, and therefore more efficient for sparse grids.
+#     Default is False.
+growth: False
+
+# midpoint_level1: bool,  ----- ONLY FOR SCSampler ------
+#     determines how many points the 1st level of a sparse grid will have.
+#     If midpoint_level1 = True, order 0 quadrature will be generated
+midpoint_level1: False
+
+# dimension_adaptive: bool, ----- ONLY FOR SCSampler ------
+#     determines wether to use an insotropic sparse grid, or to adapt
+#     the levels in the sparse grid based on a hierachical error measure
+dimension_adaptive: False
+
+# regression: bool, ----- ONLY FOR PCESampler ------
+#    If True, regression variante (point collecation) will be used,
+#    otherwise projection variante (pseud-spectral) will be used.
+#    Default value is False.
+regression: False
+
+
+# ------- NOTE ------------
+# if you set quadrature_rule="C", then you need to make sure
+#     sparse=True
+#     growth=True
+#     midpoint_level1=True
