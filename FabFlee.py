@@ -1219,6 +1219,11 @@ try:
     from plugins.FabFlee.flee_SA import flee_init_SA
     from plugins.FabFlee.flee_SA import flee_analyse_SA
 
+    # loads vvp tasks
+    from plugins.FabFlee.flee_vvp import flee_init_vvp_LoR
+    from plugins.FabFlee.flee_vvp import flee_analyse_vvp_LoR
+    from plugins.FabFlee.flee_vvp import flee_run_vvp_LoR
+
     from plugins.FabFlee.run_perf_benchmarks import *
 except ImportError:
     pass
