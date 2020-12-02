@@ -129,8 +129,11 @@ def flare_local(config, simulation_period, out_dir="", file_suffix=""):
 
     local("mkdir -p %s/input_csv" % flare_out_dir)
 
-    local("python3 %s/scripts/run_flare.py %s %s/input_csv %s/input_csv/conflicts%s.csv %s" %
-          (get_plugin_path("FabFlee"), simulation_period, config_dir, flare_out_dir, file_suffix, file_suffix))
+    local("python3 %s/scripts/run_flare.py %s %s/input_csv "
+          " %s/input_csv/conflicts%s.csv %s" %
+          (get_plugin_path("FabFlee"), simulation_period, config_dir,
+           flare_out_dir, file_suffix, file_suffix)
+          )
 
 
 @task
@@ -223,7 +226,10 @@ def pflee_test(config, pmode="advanced", N="100000", **args):
     Run a short parallel test with a particular config.
     """
     update_environment(args, {"simulation_period": 10,
-                              "flee_parallel_mode": pmode, "flee_num_agents": int(N)})
+                              "flee_parallel_mode": pmode,
+                              "flee_num_agents": int(N)
+                              }
+                       )
     with_config(config)
     execute(put_configs, config)
     job(dict(script='pflee_test', wall_time='0:15:0', memory='2G'), args)
@@ -235,9 +241,13 @@ def pflee_pmode_compare(config, cores, N="100000", **args):
     """
     Run a short parallel test with a particular config. 60 min limit per run.
     """
-    for pmode in ["advanced", "classic", "adv-lolat", "cl-hilat"]:  # maps to args in test_par.py
-        update_environment(args, {
-                           "simulation_period": 10, "flee_parallel_mode": pmode, "flee_num_agents": int(N)})
+    # maps to args in test_par.py
+    for pmode in ["advanced", "classic", "adv-lolat", "cl-hilat"]:
+        update_environment(args, {"simulation_period": 10,
+                                  "flee_parallel_mode": pmode,
+                                  "flee_num_agents": int(N)
+                                  }
+                           )
         with_config(config)
         execute(put_configs, config)
         job(dict(script='pflee_test', wall_time='1:00:0',
@@ -247,7 +257,8 @@ def pflee_pmode_compare(config, cores, N="100000", **args):
 @task
 @load_plugin_env_vars("FabFlee")
 def pflee_report(results_key):
-    for item in glob.glob("{}/*{}*/perf.log".format(env.local_results, results_key)):
+    for item in glob.glob("{}/*{}*/perf.log".format(env.local_results,
+                                                    results_key)):
         print(item)
         with open(item) as csvfile:
             perf = csv.reader(csvfile)
@@ -346,16 +357,18 @@ def cflee(config, coupling_type="file", weather_coupling="False",
     The job results will be stored with a name pattern as defined
     Required Keyword arguments:
         config :
-            config directory to use for the simulation script, 
+            config directory to use for the simulation script,
             e.g. config=mscalecity
         coupling_type :
             the coupling model, currently two models are implemented :
             (1) file couping, and (2) muscle3
             acceptable input set : file / muscle3
     Example:
-        fab eagle_vecma cflee:mscalecity,coupling_type=file,weather_coupling=True,num_workers=2,worker_cores=2,TestOnly=True
+        fab eagle_vecma cflee:mscalecity,coupling_type=file,
+        weather_coupling=True,num_workers=2,worker_cores=2,TestOnly=True
 
-        fab eagle_vecma cflee:mscalecity,coupling_type=file,weather_coupling=True,num_workers=10,worker_cores=4
+        fab eagle_vecma cflee:mscalecity,coupling_type=file,
+        weather_coupling=True,num_workers=10,worker_cores=4
 
     """
     update_environment(args, {"coupling_type": coupling_type,
@@ -388,9 +401,11 @@ def cflee_ensemble(config, coupling_type="file", weather_coupling="False",
                    job_wall_time="00:12:00", ** args):
     """
     Example:
-        fab eagle_vecma cflee_ensemble:mscalecity,coupling_type=file,weather_coupling=True,num_workers=2,worker_cores=2,N=3,TestOnly=True
+        fab eagle_vecma cflee_ensemble:mscalecity,coupling_type=file,
+        weather_coupling=True,num_workers=2,worker_cores=2,N=3,TestOnly=True
 
-        fab eagle_vecma cflee_ensemble:mscalecity,coupling_type=file,weather_coupling=True,num_workers=10,worker_cores=4,N=3
+        fab eagle_vecma cflee_ensemble:mscalecity,coupling_type=file,
+        weather_coupling=True,num_workers=10,worker_cores=4,N=3
     """
     update_environment(args, {"coupling_type": coupling_type,
                               "weather_coupling": weather_coupling.lower(),
@@ -485,7 +500,8 @@ def vvp_validate_results(output_dir=""):
     flee_location_local = user_config["localhost"].get(
         "flee_location", user_config["default"].get("flee_location"))
 
-    local("python3 %s/flee/postprocessing/extract-validation-results.py %s > %s/validation_results.yml"
+    local("python3 %s/flee/postprocessing/extract-validation-results.py %s "
+          "> %s/validation_results.yml"
           % (flee_location_local, output_dir, output_dir))
 
     with open("{}/validation_results.yml".format(output_dir), 'r') as val_yaml:
@@ -493,8 +509,9 @@ def vvp_validate_results(output_dir=""):
 
         # TODO: make a proper validation metric using a validation schema.
         # print(validation_results["totals"]["Error (rescaled)"])
-        print("Validation {}: {}".format(output_dir.split("/")
-                                         [-1], validation_results["totals"]["Error (rescaled)"]))
+        print("Validation {}: {}".format(output_dir.split("/")[-1],
+                                         validation_results["totals"][
+                                         "Error (rescaled)"]))
         return validation_results["totals"]["Error (rescaled)"]
 
     print("error: vvp_validate_results failed on {}".format(output_dir))
@@ -521,15 +538,17 @@ def make_vvp_mean(np_array):
 @load_plugin_env_vars("FabFlee")
 def validate_flee_output(results_dir):
     """
-    Goes through all the output directories and calculates the validation 
+    Goes through all the output directories and calculates the validation
     scores.
     """
-    vvp.ensemble_vvp("{}/{}/RUNS".format(env.local_results,
-                                         results_dir), vvp_validate_results, make_vvp_mean)
+    vvp.ensemble_vvp("{}/{}/RUNS".format(env.local_results, results_dir),
+                     vvp_validate_results,
+                     make_vvp_mean)
 
 
 @task
-def validate_flee(simulation_period=0, cores=4, skip_runs=False, label="", AwarenessLevel=1, **args):
+def validate_flee(simulation_period=0, cores=4, skip_runs=False, label="",
+                  AwarenessLevel=1, **args):
     """
     Runs all the validation test and returns all scores, as well as an average.
     """
@@ -568,7 +587,9 @@ def test_variability(config, **args):
     """
     DEPRECATED: Run a number of replicas for a specific conflict.
     """
-    print("This function is obsolete: please use 'fabsim <machine> flee:<config>,replicas=<number>,simulation_period=<number> instead.")
+    print("This function is obsolete: please use "
+          "'fabsim <machine> flee:<config>,replicas=<number>,"
+          "simulation_period=<number> instead.")
 
 
 @task
@@ -579,7 +600,9 @@ def test_variability_food(config, **args):
     """
     DEPRECATED: Run a number of replicas for a specific conflict.
     """
-    print("This function is obsolete: please use 'fabsim <machine> food_flee:<config>,replicas=<number>,simulation_period=<number> instead.")
+    print("This function is obsolete: please use "
+          "'fabsim <machine> food_flee:<config>,replicas=<number>,"
+          "simulation_period=<number> instead.")
 
 
 @task
@@ -651,16 +674,17 @@ def new_conflict(config, **args):
         %s/config_files/%s")
           % (env.flee_location, get_plugin_path("FabFlee"), config))
 
-    local(template("cp %s/flee/config_template/input_csv/conflict_period.csv \
-        %s/config_files/%s/input_csv")
+    local(template("cp %s/flee/config_template/input_csv/conflict_period.csv "
+                   "%s/config_files/%s/input_csv")
           % (env.flee_location, get_plugin_path("FabFlee"), config))
 
-    local(template("cp %s/flee/config_template/input_csv/closures.csv \
-        %s/config_files/%s/input_csv")
+    local(template("cp %s/flee/config_template/input_csv/closures.csv "
+                   "%s/config_files/%s/input_csv")
           % (env.flee_location, get_plugin_path("FabFlee"), config))
 
-    local(template("cp %s/flee/config_template/input_csv/registration_corrections.csv \
-        %s/config_files/%s/input_csv")
+    local(template("cp %s/flee/config_template/input_csv/"
+                   "registration_corrections.csv "
+                   "%s/config_files/%s/input_csv")
           % (env.flee_location, get_plugin_path("FabFlee"), config))
 
 
@@ -678,8 +702,8 @@ def process_acled(country, start_date, filter, admin_level):
         filter:[earliest,fatalities]
         **earliest keeps the first occurence of each admin2,
         fatalities keeps admin2 with the highest fatalities.
-        admin_level: is how high the admin level you want to apply the filter to
-        i.e location, admin2, admin1
+        admin_level: is how high the admin level you want to apply the filter
+        to i.e location, admin2, admin1
     """
     local("python3 %s/scripts/acled2locations.py %s %s %s %s %s"
           % (get_plugin_path("FabFlee"),
@@ -720,7 +744,9 @@ def add_population(config, PL="100", CL="100", **args):
         exit()
     env.cityGraph_POPULATION_LIMIT = PL
     env.cityGraph_CITIES_LIMIT = CL
-    local("python %s --cityGraph_location %s --API_KEY %s --POPULATION_LIMIT %s --CITIES_LIMIT %s --config_location %s --config_name %s"
+    local("python %s --cityGraph_location %s --API_KEY %s "
+          "--POPULATION_LIMIT %s --CITIES_LIMIT %s "
+          "--config_location %s --config_name %s"
           % (os.path.join(env.localplugins["FabFlee"],
                           "scripts",
                           "population2locations.py"),
@@ -1185,9 +1211,10 @@ def redirect(source, destination):
 
 # Test Functions
 # from plugins.FabFlee.test_FabFlee import *
-from plugins.FabFlee.run_simulation_sets import *
+
 try:
-    # from plugins.FabFlee.flee_easyvvuq import *
+    from plugins.FabFlee.run_simulation_sets import *
+
     from plugins.FabFlee.flee_easyvvuq_SCSampler import flee_init_SC
     from plugins.FabFlee.flee_easyvvuq_SCSampler import flee_analyse_SC
     from plugins.FabFlee.flee_easyvvuq_PCESampler import flee_init_PCE
