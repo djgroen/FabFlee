@@ -1,28 +1,57 @@
-parameters:
+vary_parameters_range:
     # <parameter_name:>
-    #   cp_uniform: [<lower value>,<upper value>] 
+    #   range: [<lower value>,<upper value>] 
     max_move_speed:
-        cp_uniform: [100, 500]
+        range: [100, 500]
     max_walk_speed:
-        cp_uniform: [10, 100]
+        range: [10, 100]
     camp_move_chance:
-        cp_uniform: [0.0, 0.1]
+        range: [0.0, 0.1]
     conflict_move_chance:
-        cp_uniform: [0.1, 1.0]
+        range: [0.1, 1.0]
     default_move_chance:
-        cp_uniform: [0.1, 1.0]
+        range: [0.1, 1.0]
     camp_weight:
-        cp_uniform: [1.0, 10.0]
+        range: [1.0, 10.0]
     conflict_weight:
-        cp_uniform: [0.1, 1.0]
+        range: [0.1, 1.0]
 
 
-
-selected_parameters: ["max_move_speed",
+selected_vary_parameters: ["max_move_speed",
                       "max_walk_speed"
                     ]
 
+distribution_type: "Uniform" # Uniform, DiscreteUniform
+
 polynomial_order: 2
+
+
+# template file should be available in FabFlee/templates folder
+encoder_template_fname : "simsetting.template"
+encoder_delimiter: "$"
+encoder_target_filename: "simsetting.csv"
+
+decoder_output_column: "Total error"
+
+# sampler_name: str
+#   Samplers in the context of EasyVVUQ are classes that generate
+#   sequences of parameter dictionaries.
+#   available sampler: [SCSampler,PCESampler]
+#
+#   SCSampler: Stochastic Collocation sampler
+#   PCESampler : Polynomial Chaos Expansion
+#   
+#   ---------------------------------------------------------------
+#   TODO : add other available easyvvuq sampler to the code
+#   LHCSampler : Latin hypercube sampling
+#   BasicSweep :
+#   MultiSampler : Expects one or more samplers
+#   ReplicaSampler:
+#   QMCSampler : Quasi Monte Carlo sampler
+#   MCSampler: Monte Carlo sampler
+#   RandomSampler : 
+sampler_name: "SCSampler"
+
 
 # quadrature_rule : char
 #     The quadrature method, default is Gaussian "G".

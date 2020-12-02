@@ -1215,14 +1215,9 @@ def redirect(source, destination):
 try:
     from plugins.FabFlee.run_simulation_sets import *
 
-    from plugins.FabFlee.flee_easyvvuq_SCSampler import flee_init_SC
-    from plugins.FabFlee.flee_easyvvuq_SCSampler import flee_analyse_SC
-    from plugins.FabFlee.flee_easyvvuq_PCESampler import flee_init_PCE
-    from plugins.FabFlee.flee_easyvvuq_PCESampler import flee_analyse_PCE
-    from plugins.FabFlee.flee_easyvvuq_adaptive import flee_adapt_init
-    from plugins.FabFlee.flee_easyvvuq_adaptive import flee_adapt_analyse
-    from plugins.FabFlee.flee_easyvvuq_adaptive import flee_adapt_look_ahead
-    from plugins.FabFlee.flee_easyvvuq_adaptive import flee_adapt_dimension
+    # loads Sensitivity analysis tasks
+    from plugins.FabFlee.flee_SA import flee_init_SA
+    from plugins.FabFlee.flee_SA import flee_analyse_SA
 
     from plugins.FabFlee.run_perf_benchmarks import *
 except ImportError:
