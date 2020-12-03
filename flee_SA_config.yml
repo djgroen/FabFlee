@@ -18,8 +18,8 @@ vary_parameters_range:
 
 
 selected_vary_parameters: ["max_move_speed",
-                      "max_walk_speed"
-                    ]
+                          "max_walk_speed"
+                          ]
 
 distribution_type: "Uniform" # Uniform, DiscreteUniform
 
