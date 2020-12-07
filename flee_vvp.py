@@ -428,7 +428,7 @@ def plot_convergence(scores, plot_file_path):
     # ...                                       #
     # vary_param_n: {<sobol_func_name>:<value>} #
     #############################################
-
+    xticks = []
     ref_sobols_value = scores[last_item_key]['value']
 
     results = {}
@@ -436,6 +436,8 @@ def plot_convergence(scores, plot_file_path):
     compare_res = {}
     for run_dir in scores:
         polynomial_order = scores[run_dir]['order']
+        num_runs = scores[run_dir]['runs']
+        xticks.append('PO=%d\nruns=%d' % (polynomial_order, num_runs))
         results['polynomial_order'].append(polynomial_order)
         poly_key = 'polynomial_order %d' % (polynomial_order)
         compare_res.update({poly_key: {}})
@@ -456,15 +458,18 @@ def plot_convergence(scores, plot_file_path):
 
     params = list(results.keys())
     params.remove('polynomial_order')
-    fig = plt.figure()
-    ax = fig.add_subplot(111, xlabel="polynomial order",
-                         ylabel="sobol indices",
-                         title="convergence")
+
+    fig, ax = plt.subplots()
+    ax.set_xlabel('Polynomial Order')
+    ax.set_ylabel('sobol indices')
+    # fig.suptitle('convergence', fontsize=10, fontweight='bold')
+    ax.set_title('convergence', fontsize=10, fontweight='bold')
+
     X = range(len(results['polynomial_order']))
     for param in params:
         ax.plot(X, results[param], label=param)
 
-    plt.xticks(X, results['polynomial_order'])
+    plt.xticks(X, xticks)
     plt.tight_layout()
     plt.legend(loc='best')
     convergence_plot_file_name = 'vvp_QoI_convergence.png'
