@@ -236,32 +236,42 @@ def flee_analyse_vvp_LoR(config):
         # SCSampler  : array([...])          |
         # PCESampler : array([[...]])        |
         # ------------------------------------
+        fig_desc = 'polynomial_order = %d ,num_runs = %d' % (
+            polynomial_order, campaign.campaign_db.get_num_runs())
+        props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
+
+        fig, ax = plt.subplots()
+        ax.set_xlabel('days')
+        ax.set_ylabel("velocity %s" % (output_column))
+        fig.suptitle("code mean +/- standard deviation\n",
+                     fontsize=10, fontweight='bold')
+        ax.set_title(fig_desc, fontsize=8, loc='center',
+                     fontweight='bold', bbox=props)
         mean = results.describe()[output_column]['mean'].ravel()
         std = results.describe()[output_column]['std'].ravel()
         X = range(len(mean))
-        fig = plt.figure()
-        ax = fig.add_subplot(111, xlabel="days",
-                             ylabel="velocity %s" % (output_column),
-                             title="code mean +/- standard deviation")
         ax.plot(X, mean, 'b-', label='mean')
         ax.plot(X, mean - std, '--r', label='+1 std-dev')
         ax.plot(X, mean + std, '--r')
         ax.fill_between(X, mean - std, mean + std, color='r', alpha=0.2)
-        plt.tight_layout()
+        # plt.tight_layout()
         plt.legend(loc='best')
         plot_file_name = 'plot_statistical_moments[%s]' % (output_column)
         plt.savefig(os.path.join(campaign_work_dir, plot_file_name),
                     dpi=400)
+
         ###################################
         #        Plot sobols_first        #
         ###################################
-        fig = plt.figure()
-        ax = fig.add_subplot(111, xlabel="days",
-                             ylabel="Sobol indices",
-                             title="First order Sobol index")
-        ax.set_title("First order Sobol index [output column = %s]"
+        fig, ax = plt.subplots()
+        ax.set_xlabel('days')
+        ax.set_ylabel('Sobol indices')
+        fig.suptitle("First order Sobol index [output column = %s]\n"
                      % (output_column),
-                     fontsize=10, fontweight='bold', loc='center')
+                     fontsize=10, fontweight='bold')
+        ax.set_title(fig_desc, fontsize=8, loc='center',
+                     fontweight='bold', bbox=props)
+
         sobols_first = results.raw_data["sobols_first"][output_column]
         param_i = 0
         for v in sobols_first:
@@ -275,7 +285,7 @@ def flee_analyse_vvp_LoR(config):
             param_i = param_i + 1
 
         plt.legend(loc='best')
-        plt.tight_layout()
+        # plt.tight_layout()
         plot_file_name = 'plot_sobols_first[%s]' % (output_column)
         plt.savefig(os.path.join(campaign_work_dir, plot_file_name),
                     dpi=400)
@@ -369,14 +379,15 @@ def flee_analyse_vvp_LoR(config):
             "rsync -pthrz "
             "--include='/*/' "
             "--include='sobols.yml' "
+            "--include='*.png' "
             "--exclude='*' "
             "{}  {} ".format(campaign_work_dir, sobol_work_dir)
         )
         print("Done ...\n")
 
     #####################################################
-    # Check the convergence of the SC Sobols indices	#
-    # with polynomial refinement 						#
+    # Check the convergence of the SC Sobols indices    #
+    # with polynomial refinement                        #
     #####################################################
     ensemble_vvp_LoR(results_dirs_PATH=sobol_work_dir,
                      load_QoIs_function=load_QoIs_function,
