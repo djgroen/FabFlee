@@ -507,6 +507,7 @@ def load_QoIs_function(result_dir):
     data_file_name = os.path.join(result_dir, 'sobols.yml')
     sobols_data = yaml.load(open(data_file_name), Loader=yaml.SafeLoader)
     polynomial_order = sobols_data['campaign_info']['polynomial_order']
+    num_runs = sobols_data['campaign_info']['num_runs']
     del sobols_data['campaign_info']
 
     # sobols_first_mean or sobols_first_gmean
@@ -521,7 +522,7 @@ def load_QoIs_function(result_dir):
                     key: sobols_data[param][key]
                 })
 
-    return QoIs_values, polynomial_order
+    return QoIs_values, polynomial_order, num_runs
 
 
 def load_vvp_campaign_config():
