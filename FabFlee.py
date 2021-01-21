@@ -94,7 +94,7 @@ def flee_ensemble(config, simulation_period, script='flee', label="", **args):
     One job is run for each file in <config_file_directory>/flee_test/SWEEP.
     """
     update_environment(args)
-
+    with_config(config)
     path_to_config = find_config_file_path(config)
     print("local config file path at: %s" % path_to_config)
     sweep_dir = path_to_config + "/SWEEP"
