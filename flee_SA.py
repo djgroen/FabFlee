@@ -202,8 +202,8 @@ def flee_analyse_SA(config, sampler_name=None, ** args):
     ###################################
     #    Plot statistical_moments     #
     ###################################
-    mean = results.describe()[output_column]['mean'].ravel()
-    std = results.describe()[output_column]['std'].ravel()
+    mean = results.describe()[output_column].loc[['mean']].values.ravel()
+    std = results.describe()[output_column].loc[['std']].values.ravel()
     X = range(len(mean))
     fig = plt.figure()
     ax = fig.add_subplot(111, xlabel="days",
