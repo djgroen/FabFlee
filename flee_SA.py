@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import pandas
 from pandas import DataFrame
 from scipy.stats.mstats import gmean
+import scipy.stats as st
 import sys
 import os
 import math
@@ -16,6 +17,323 @@ import json
 from plugins.FabFlee.FabFlee import *
 
 # authors: Hamid Arabnejad, Diana Suleimenova, Wouter Edeling, Derek Groen
+
+
+@task
+@load_plugin_env_vars("FabFlee")
+def flee_run_mcmc(config, simulation_period, mode='serial',
+                  ** args):
+    """
+    ==========================================================================
+
+    fab <remote_machine> flee_run_mcmc:<conflict_name>,simulation_period=<N>
+
+
+    example:
+
+        fab localhost flee_run_mcmc:mali,simulation_period=100
+
+    Note : currently, we only support localhost execution
+    ==========================================================================
+    """
+    if env['machine_name'] != 'localhost':
+        raise RuntimeError("\ncurrently, only localhost is supported for "
+                           "executing mcmc sampler.\n")
+        exit()
+    print('Start EasyVVUQ-MCMC ...')
+
+    work_dir = os.path.join(os.path.dirname(__file__))
+
+    update_environment()
+    with_config(config)
+
+    #############################################
+    # load flee SA configuration from yml file #
+    #############################################
+    campaign_config = load_SA_campaign_config()
+    MCMCSampler_setting = campaign_config['MCMCSampler_setting']
+
+    campaign_name = 'flee_MCMC'
+    campaign_work_dir = os.path.join(get_plugin_path('FabFlee'), campaign_name)
+
+    ######################################
+    # delete campaign_work_dir is exists #
+    ######################################
+    if os.path.exists(campaign_work_dir):
+        rmtree(campaign_work_dir)
+    os.makedirs(campaign_work_dir)
+
+    ###########################
+    # Set up a fresh campaign #
+    ###########################
+    db_location = "sqlite:///" + campaign_work_dir + "/campaign.db"
+    campaign = uq.Campaign(name=campaign_name,
+                           db_location=db_location,
+                           work_dir=campaign_work_dir)
+
+    #################################
+    # Create an encoder and decoder #
+    #################################
+    campaign_config['decoder_output_column'] = 'Total error distribution'
+    encoder = uq.encoders.GenericEncoder(
+        template_fname=os.path.join(get_plugin_path('FabFlee'),
+                                    'templates',
+                                    campaign_config['encoder_template_fname']
+                                    ),
+        delimiter=campaign_config['encoder_delimiter'],
+        target_filename=campaign_config['encoder_target_filename']
+    )
+
+    decoder = uq.decoders.SimpleCSV(
+        target_filename=campaign_config['params']['out_file']['default'],
+        output_columns=[campaign_config['decoder_output_column']]
+    )
+
+    ##########################
+    # Add chain_id to params #
+    ##########################
+    campaign_config['params'].update({
+        "chain_id": {"type": "integer", "default": 0}
+    })
+
+    ################################
+    # Add the flee-SA-Sampler app #
+    ################################
+    campaign.add_app(name=campaign_name,
+                     params=campaign_config['params'],
+                     encoder=encoder,
+                     decoder=decoder)
+
+    ######################
+    # parameters to vary #
+    ######################
+    vary_init = MCMCSampler_setting['vary_init']
+    n_chains = None
+    # Extra checking : To make sure all vary parameters has same array length
+    for param_name, init_list in vary_init.items():
+        if n_chains is None:
+            n_chains = len(init_list)
+        elif len(init_list) != n_chains:
+            raise ValueError(
+                "\nMake sure all parameters has same array length "
+                "of initial values. Please check:"
+                "\n\nMCMCSampler_setting:\n\t...\n\tvary_init:\n\t\t..."
+                "\n\t\t%s : [...]"
+                "\n\nin flee_SA_config.yml file" % (param_name))
+            exit()
+
+    ##########################################################
+    # A function of one argument X (dictionary) that returns #
+    # the proposal distribution conditional on  the X        #
+    ##########################################################
+    def distribution_func(x, b=1, var_names=vary_init.keys()):
+        return cp.J(
+            *(cp.Normal(x[var], b) for var in var_names)
+        )
+
+    output_column = campaign_config['decoder_output_column']
+    sampler = uq.sampling.MCMCSampler(vary_init,
+                                      distribution_func,
+                                      output_column,
+                                      n_chains=n_chains
+                                      )
+    ###########################################
+    # Associate the sampler with the campaign #
+    ###########################################
+    campaign.set_sampler(sampler)
+
+    #############################
+    # Run EasyVVUQ MCMC sampler #
+    #############################
+    path_to_config = find_config_file_path(config)
+    config_sweep_dir = os.path.join(path_to_config, 'SWEEP')
+
+    if 'replicas_number' in MCMCSampler_setting:
+        env.replicas = MCMCSampler_setting['replicas_number']
+    else:
+        env.replicas = 1
+
+    for iter in range(MCMCSampler_setting['iteration_number']):
+        ############################
+        # Populate run directories #
+        ############################
+        campaign.draw_samples()
+        runs_id = campaign.populate_runs_dir()
+        print("runs_id : [%s]" % (','.join(runs_id)))
+
+        ##################################################################
+        # copy generated run folders to SWEEP directory in config folder #
+        ##################################################################
+        print("Copying new generated runs [%s] to config SWEEP folder ..." % (
+            ','.join(runs_id))
+        )
+        with hide('output', 'running'):
+            local("rm -rf %s/*" % (config_sweep_dir))
+            # campaign2ensemble copies all run_ids, we don't need it here,
+            # only new run_id generated at this step should be copied
+            for run_id in runs_id:
+                local("cp -r %s %s" % (os.path.join(campaign.work_dir,
+                                                    campaign.campaign_dir,
+                                                    'runs',
+                                                    run_id
+                                                    ),
+                                       os.path.join(config_sweep_dir,
+                                                    run_id
+                                                    )
+                                       )
+                      )
+        print('Done ...')
+
+        ##########################################
+        # submit ensemble jobs to remote machine #
+        ##########################################
+        job_label = campaign._campaign_dir
+        if mode == 'serial':
+            flee_script = 'flee'
+        else:
+            flee_script = 'pflee'
+
+        env.script = flee_script
+        env.simulation_period = simulation_period
+        env.job_desc = "_mcmc"
+        env.prevent_results_overwrite = 'delete'
+
+        #########################################
+        # runs to be executed in this iteration #
+        #########################################
+        # TODO: This should be returned by run_ensemble function.
+        #       make sure run_ensemble
+        #       returns the submit jobs folder name (not the full PATH)
+        #       For now, they can be generated manually
+        submited_runs_id = ["%s_%d" % (run_id, rep + 1)
+                            for run_id in runs_id
+                            for rep in range(env.replicas)
+                            ]
+
+        run_ensemble(config, config_sweep_dir, **args)
+
+        #######################################################################
+        # fetching results from remote machine                                #
+        #     - here, instead of checking job scheduler, every time_step      #
+        #       per each step, we fetch results and check if all the required #
+        #       output files are available, which means all jobs are          #
+        #       finished correctly                                            #
+        #######################################################################
+        job_folder_name = template(env.job_name_template)
+        print(job_folder_name)
+
+        time_step = 5  # minutes
+        time_step_passed = 0
+
+        while True:
+            print("Fetching results from remote machine ...")
+            with hide('output', 'running'), settings(warn_only=True):
+                fetch_results(regex=job_folder_name)
+            print("Done\n")
+
+            unfinished_jobs = []
+            for run_id in submited_runs_id:
+                file_to_check = os.path.join(
+                    env.local_results,
+                    job_folder_name,
+                    'RUNS',
+                    run_id,
+                    campaign_config['params']['out_file']['default']
+                )
+                print('file_to_check = %s' % (file_to_check))
+                if not os.path.isfile(file_to_check):
+                    unfinished_jobs.append(file_to_check)
+
+            print("number of unfinished_jobs = %d" % (len(unfinished_jobs)))
+            # print(unfinished_jobs)
+
+            # wait for next round check
+            if len(unfinished_jobs) == 0:
+                break
+            else:
+                sleep(time_step * 60)
+            time_step_passed += time_step
+
+        print('Fetched all results from remote machine ...')
+
+        #####################################################
+        # Goes through all the submited_runs_id directories #
+        # and calculates the validation scores              #
+        #####################################################
+        for run_id in runs_id:
+            items = ["%s_%d" % (run_id, rep + 1)
+                     for rep in range(env.replicas)]
+            results_dir = "{}/{}/RUNS".format(env.local_results,
+                                              job_folder_name)
+
+            ensemble_vvp_results = vvp.ensemble_vvp(results_dir,
+                                                    vvp_validate_results,
+                                                    best_fit_distribution,
+                                                    items=items
+                                                    )
+
+            print(">-" * 50)
+            pprint(ensemble_vvp_results)
+            print("<-" * 50)
+            (_, run_id_data), *_ = ensemble_vvp_results.items()
+            #######################################
+            # Generate out.csv for each MCMC run #
+            #######################################
+            output_csv = os.path.join(campaign_work_dir,
+                                      campaign._campaign_dir,
+                                      'runs',
+                                      run_id,
+                                      'out.csv')
+            dist_name = run_id_data['scores_aggregation']['dist_name']
+            Total_error_distribution = run_id_data[
+                'scores_aggregation']['value']
+            # campaign_config['decoder_output_column']
+            csv_headers = ['dist_name', 'Total error distribution']
+
+            with open(output_csv, 'w') as csv_file:
+                writer = csv.DictWriter(csv_file, fieldnames=csv_headers)
+                writer.writeheader()
+                writer.writerow({
+                    'dist_name': dist_name,
+                    'Total error distribution': Total_error_distribution
+                })
+
+        #####################################################################
+        # Combine the output from all runs associated with the current app #
+        #####################################################################
+        print('Run campaign.collate()')
+        campaign.collate()
+        ########################################################
+        # Performs the MCMC sampling procedure on the campaign #
+        ########################################################
+        print('Run sampler.update()')
+        sampler.update(campaign)
+
+
+def best_fit_distribution(data, **kwargs):
+    dist_names = ['gamma', 'beta', 'rayleigh', 'norm',
+                  'pareto', 'laplace', 'uniform']
+    data = np.array(data)
+    distributions = []
+    # Maximum Likelihood Estimation (MLE)
+    mles = []
+    for dist_name in dist_names:
+        dist = getattr(st, dist_name)
+        distributions.append(dist)
+        pars = dist.fit(data)
+        mle = dist.nnlf(pars, data)
+        mles.append(mle)
+
+    results = [(distribution.name, mle)for distribution, mle in
+               zip(distributions, mles)]
+    best_fit = sorted(zip(distributions, mles), key=lambda d: d[1])[0]
+
+    print("input data = ")
+    print(data)
+    print('Best fit reached using {}, MLE value: {}'.format(
+        best_fit[0].name, best_fit[1]))
+
+    return {'dist_name': best_fit[0].name, 'value': best_fit[1]}
 
 
 @task

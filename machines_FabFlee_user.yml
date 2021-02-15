@@ -16,7 +16,7 @@ flee_modules: &FLEE_MODULES
 
 localhost:
   # location of flee in your local PC
-  flee_location: "~/Codes/flee"
+  flee_location: "<PATH_TO_FLEE>"
 
   # location of City Graph application,
   # you can download it from 
@@ -30,7 +30,7 @@ localhost:
 
 eagle_vecma:
   # location of flee in the remote machine
-  flee_location: "~/Codes/flee"
+  flee_location: "<PATH_TO_FLEE>"
   # cores=1 for sequential flee runs, cores>1 for parallel pflee runs
   cores: 1
   # format days-hours:minutes:seconds
@@ -46,7 +46,7 @@ eagle_vecma:
 
 
 eagle_hidalgo:
-  flee_location: "~/Codes/flee"
+  flee_location: "<PATH_TO_FLEE>"
   # cores=1 for sequential flee runs, cores>1 for parallel pflee runs
   cores: 1
   # format days-hours:minutes:seconds

@@ -494,7 +494,7 @@ def plot_uq_output(output_dir="", graphs_dir=""):
 # Validation tasks
 
 
-def vvp_validate_results(output_dir=""):
+def vvp_validate_results(output_dir="", **kwargs):
     """ Extract validation results (no dependencies on FabSim env). """
 
     flee_location_local = user_config["localhost"].get(
@@ -528,7 +528,7 @@ def validate_results(output_dir):
     return score
 
 
-def make_vvp_mean(np_array):
+def make_vvp_mean(np_array, **kwargs):
     mean_score = np.mean(np_array)
     print("Mean score: {}".format(mean_score))
     return mean_score
@@ -1218,6 +1218,7 @@ try:
     # loads Sensitivity analysis tasks
     from plugins.FabFlee.flee_SA import flee_init_SA
     from plugins.FabFlee.flee_SA import flee_analyse_SA
+    from plugins.FabFlee.flee_SA import flee_run_mcmc
 
     # loads vvp tasks
     from plugins.FabFlee.flee_vvp import flee_init_vvp_LoR
