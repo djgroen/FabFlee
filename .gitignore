@@ -102,3 +102,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+*flee_vvp_LoR*/
+*flee_SA*/
+*flee_MCMC*/
