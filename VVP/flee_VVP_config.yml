@@ -23,7 +23,7 @@ distribution_type: "Uniform" # Uniform, DiscreteUniform
 
 polynomial_order_range:
   start: 1
-  end: 7
+  end: 3
   step: 1
 
 # template file should be available in FabFlee/templates folder
@@ -50,7 +50,7 @@ decoder_output_column: "Total error"
 #   QMCSampler : Quasi Monte Carlo sampler
 #   MCSampler: Monte Carlo sampler
 #   RandomSampler : 
-sampler_name: "SCSampler"
+sampler_name: "PCESampler"
 
 
 # quadrature_rule : char

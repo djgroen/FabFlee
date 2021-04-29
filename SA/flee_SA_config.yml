@@ -93,14 +93,3 @@ regression: False
 #     midpoint_level1=True
 
 
-# -----------------------------------------------------#
-# These are specefic setting for EasyVVUQ MCMC Sampler #
-# -----------------------------------------------------#
-MCMCSampler_setting:
-    iteration_number: 4
-    replicas_number: 5
-    # Initial values for each input parameter, 
-    vary_init: 
-        # Please make sure all parameters has same array length
-        conflict_move_chance: [0.3, 0.6] # range: [0.1, 1.0]
-        camp_move_chance: [0.2, 0.4] # range: [0.0, 0.1]

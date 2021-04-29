@@ -48,26 +48,38 @@ def flee_init_vvp_LoR(config, simulation_period, mode='serial', **args):
     #############################################
     # load flee vvp configuration from yml file #
     #############################################
-    vvp_campaign_config = load_vvp_campaign_config()
+    flee_VVP_config_file = os.path.join(
+        get_plugin_path("FabFlee"),
+        "VVP",
+        "flee_VVP_config.yml"
+    )
+    VVP_campaign_config = load_VVP_campaign_config(flee_VVP_config_file)
 
     polynomial_order_range = range(
-        vvp_campaign_config['polynomial_order_range']['start'],
-        vvp_campaign_config['polynomial_order_range']['end'],
-        vvp_campaign_config['polynomial_order_range']['step']
+        VVP_campaign_config["polynomial_order_range"]["start"],
+        VVP_campaign_config["polynomial_order_range"]["end"],
+        VVP_campaign_config["polynomial_order_range"]["step"]
     )
-    sampler_name = vvp_campaign_config['sampler_name']
+    sampler_name = VVP_campaign_config["sampler_name"]
 
     for polynomial_order in polynomial_order_range:
-        campaign_name = 'flee_vvp_LoR_%s_po%d_' % (
-            sampler_name, polynomial_order)
-        campaign_work_dir = os.path.join(get_plugin_path('FabFlee'),
-                                         'flee_vvp_LoR_%s' % (sampler_name),
-                                         'campaign_po%d' % (polynomial_order)
-                                         )
-        runs_dir, campaign_dir = init_vvp_campaign(campaign_name,
-                                                   vvp_campaign_config,
-                                                   polynomial_order,
-                                                   campaign_work_dir)
+        campaign_name = "flee_vvp_LoR_{}_po{}_".format(
+            sampler_name,
+            polynomial_order
+        )
+        campaign_work_dir = os.path.join(
+            get_plugin_path("FabFlee"),
+            "VVP",
+            "flee_vvp_LoR_{}".format(sampler_name),
+            "campaign_po{}".format(polynomial_order)
+        )
+
+        runs_dir, campaign_dir = init_VVP_campaign(
+            campaign_name=campaign_name,
+            campaign_config=VVP_campaign_config,
+            polynomial_order=polynomial_order,
+            campaign_work_dir=campaign_work_dir
+        )
 
         #############################################################
         # copy the EasyVVUQ campaign run set TO config SWEEP folder #
@@ -77,26 +89,31 @@ def flee_init_vvp_LoR(config, simulation_period, mode='serial', **args):
         ############################################################
         # set job_desc to avoid overwriting with previous vvp jobs #
         ############################################################
-        env.job_desc = "_vvp_LoR_%s_po%d" % (sampler_name, polynomial_order)
-        env.prevent_results_overwrite = 'delete'
+        env.job_desc = "_vvp_LoR_{}_po{}".format(
+            sampler_name,
+            polynomial_order
+        )
+        env.prevent_results_overwrite = "delete"
         with_config(config)
         execute(put_configs, config)
 
         ##################################################
         # prepare env variable to submit an ensemble job #
         ##################################################
-        if mode == 'serial':
-            flee_script = 'flee'
+        if mode == "serial":
+            flee_script = "flee"
         else:
-            flee_script = 'pflee'
+            flee_script = "pflee"
 
         ##########################################
         # submit ensemble jobs to remote machine #
         ##########################################
-        flee_ensemble(config,
-                      simulation_period,
-                      script=flee_script,
-                      **args)
+        flee_ensemble(
+            config,
+            simulation_period,
+            script=flee_script,
+            **args
+        )
 
 
 @task
@@ -113,21 +130,29 @@ def flee_analyse_vvp_LoR(config):
     #############################################
     # load flee vvp configuration from yml file #
     #############################################
-    vvp_campaign_config = load_vvp_campaign_config()
+    flee_VVP_config_file = os.path.join(
+        get_plugin_path("FabFlee"),
+        "VVP",
+        "flee_VVP_config.yml"
+    )
+    VVP_campaign_config = load_VVP_campaign_config(flee_VVP_config_file)
 
     polynomial_order_range = range(
-        vvp_campaign_config['polynomial_order_range']['start'],
-        vvp_campaign_config['polynomial_order_range']['end'],
-        vvp_campaign_config['polynomial_order_range']['step']
+        VVP_campaign_config["polynomial_order_range"]["start"],
+        VVP_campaign_config["polynomial_order_range"]["end"],
+        VVP_campaign_config["polynomial_order_range"]["step"]
     )
-    sampler_name = vvp_campaign_config['sampler_name']
+    sampler_name = VVP_campaign_config["sampler_name"]
 
     ###########################################
     # set a default dir to save results sobol #
     ###########################################
-    sobol_work_dir = os.path.join(get_plugin_path('FabFlee'),
-                                  'flee_vvp_LoR_%s' % (sampler_name),
-                                  'sobol')
+    sobol_work_dir = os.path.join(
+        get_plugin_path("FabFlee"),
+        "VVP",
+        "flee_vvp_LoR_{}".format(sampler_name),
+        "sobol"
+    )
 
     ###################################
     # delete sobol_work_dir is exists #
@@ -137,36 +162,44 @@ def flee_analyse_vvp_LoR(config):
     os.makedirs(sobol_work_dir)
 
     for polynomial_order in polynomial_order_range:
-        campaign_work_dir = os.path.join(get_plugin_path('FabFlee'),
-                                         'flee_vvp_LoR_%s' % (sampler_name),
-                                         'campaign_po%d' % (polynomial_order)
-                                         )
+        campaign_name = "flee_vvp_LoR_{}_po{}_".format(
+            sampler_name,
+            polynomial_order
+        )
+
+        campaign_work_dir = os.path.join(
+            get_plugin_path("FabFlee"),
+            "VVP",
+            "flee_vvp_LoR_{}".format(sampler_name),
+            "campaign_po{}".format(polynomial_order)
+        )
         load_campaign_files(campaign_work_dir)
 
         ###################
         # reload Campaign #
         ###################
-        campaign = uq.Campaign(state_file=os.path.join(campaign_work_dir,
-                                                       'campaign_state.json'),
-                               work_dir=campaign_work_dir
-                               )
-        print('===========================================')
-        print('Reloaded campaign', campaign._campaign_dir)
-        print('===========================================')
+        db_location = "sqlite:///" + campaign_work_dir + "/campaign.db"
+        campaign = uq.Campaign(name=campaign_name, db_location=db_location)
+        print("===========================================")
+        print("Reloaded campaign {}".format(campaign_name))
+        print("===========================================")
 
         sampler = campaign.get_active_sampler()
-        campaign.set_sampler(sampler)
+        campaign.set_sampler(sampler, update=True)
 
         ####################################################
         # fetch results from remote machine                #
         # here, we ONLY fetch the required results folders #
         ####################################################
-        env.job_desc = "_vvp_LoR_%s_po%d" % (sampler_name, polynomial_order)
+        env.job_desc = "_vvp_LoR_{}_po{}".format(
+            sampler_name,
+            polynomial_order
+        )
         with_config(config)
 
         job_folder_name = template(env.job_name_template)
         print("fetching results from remote machine ...")
-        with hide('output', 'running', 'warnings'), settings(warn_only=True):
+        with hide("output", "running", "warnings"), settings(warn_only=True):
             fetch_results(regex=job_folder_name)
         print("Done\n")
 
@@ -174,8 +207,8 @@ def flee_analyse_vvp_LoR(config):
         # copy ONLY the required output files for analyse,  #
         # i.e., EasyVVUQ.decoders.target_filename           #
         #####################################################
-        target_filename = vvp_campaign_config['params']['out_file']['default']
-        src = os.path.join(env.local_results, job_folder_name, 'RUNS')
+        output_filename = VVP_campaign_config["params"]["out_file"]["default"]
+        src = os.path.join(env.local_results, job_folder_name, "RUNS")
         des = campaign.campaign_db.runs_dir()
         print("Syncing output_dir ...")
         # with hide('output', 'running', 'warnings'), settings(warn_only=True):
@@ -184,79 +217,121 @@ def flee_analyse_vvp_LoR(config):
             "--include='/*/' "
             "--include='{}' "
             "--exclude='*' "
-            "{}/  {} ".format(target_filename, src, des)
+            "{}/  {} ".format(output_filename, src, des)
         )
         print("Done ...\n")
+
+        #################################
+        # Create a decoder #
+        #################################
+        output_column = VVP_campaign_config["decoder_output_column"]
+        decoder = uq.decoders.SimpleCSV(
+            target_filename=output_filename,
+            output_columns=[output_column]
+        )
+
+        #####################
+        # execute collate() #
+        #####################
+        actions = uq.actions.Actions(
+            uq.actions.Decode(decoder)
+        )
+        campaign.replace_actions(campaign_name, actions)
+        campaign.execute().collate()
+        collation_result = campaign.get_collation_result()
 
         ##################################################
         # save dataframe containing all collated results #
         ##################################################
-        campaign.collate()
-        collation_result = campaign.get_collation_result()
-        collation_result.to_csv(os.path.join(campaign_work_dir,
-                                             'collation_result.csv'
-                                             ),
-                                index=False
-                                )
-        collation_result.to_pickle(os.path.join(campaign_work_dir,
-                                                'collation_result.pickle'
-                                                ))
+        collation_result.to_csv(
+            os.path.join(campaign_work_dir, "collation_result.csv"),
+            index=False
+        )
+        collation_result.to_pickle(
+            os.path.join(campaign_work_dir, "collation_result.pickle")
+        )
+
         ###################################
         #    Post-processing analysis     #
         ###################################
-        output_column = vvp_campaign_config['decoder_output_column']
 
-        if sampler_name == 'SCSampler':
+        if sampler_name == "SCSampler":
             analysis = uq.analysis.SCAnalysis(
                 sampler=campaign._active_sampler,
-                qoi_cols=[output_column])
-        elif sampler_name == 'PCESampler':
+                qoi_cols=[output_column]
+            )
+        elif sampler_name == "PCESampler":
             analysis = uq.analysis.PCEAnalysis(
                 sampler=campaign._active_sampler,
-                qoi_cols=[output_column])
+                qoi_cols=[output_column]
+            )
 
         campaign.apply_analysis(analysis)
         results = campaign.get_last_analysis()
-        #########################################################
-        # save everything, campaign, sampler and analysis state #
-        #########################################################
-        campaign.save_state(os.path.join(campaign_work_dir,
-                                         "campaign_state.json"))
-        '''
-        sampler.save_state(os.path.join(campaign_work_dir,
-                                        "campaign_sampler.pickle"))
-        analysis.save_state(os.path.join(campaign_work_dir,
-                                         "campaign_analysis.pickle"))
-        '''
+
+        ###################
+        #    Plotting     #
+        ###################
+        fig_desc = "polynomial_order = {}, num_runs = {}, sampler = {}".format(
+            polynomial_order,
+            campaign.campaign_db.get_num_runs(),
+            sampler_name
+        )
+        props = dict(boxstyle="round", facecolor="wheat", alpha=0.5)
+
+        ########################
+        #    Plot raw data     #
+        ########################
+        output_files = glob.glob(
+            os.path.join(campaign_work_dir + "/**/%s" % (output_filename)),
+            recursive=True
+        )
+
+        fig, ax = plt.subplots()
+        ax.set_xlabel("days")
+        ax.set_ylabel(output_column)
+        fig.suptitle(
+            "RAW data : column {}\n".format(output_column),
+            fontsize=10, fontweight="bold", loc="center"
+        )
+        ax.set_title(
+            fig_desc, fontsize=8, loc="center",
+            fontweight="bold", bbox=props
+        )
+        for output_file in output_files:
+            total_errors = pd.read_csv(output_file)[
+                output_column].values.tolist()
+            ax.plot(total_errors)
+
+        plot_file_name = "raw[{}]".format(output_column)
+        plt.savefig(os.path.join(campaign_work_dir, plot_file_name),
+                    dpi=400)
+
         ###################################
         #    Plot statistical_moments     #
         ###################################
-        # ------------------------------------
-        # here I use ravel to fix this issue |
-        # SCSampler  : array([...])          |
-        # PCESampler : array([[...]])        |
-        # ------------------------------------
-        fig_desc = 'polynomial_order = %d ,num_runs = %d' % (
-            polynomial_order, campaign.campaign_db.get_num_runs())
-        props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
-
         fig, ax = plt.subplots()
-        ax.set_xlabel('days')
-        ax.set_ylabel("velocity %s" % (output_column))
-        fig.suptitle("code mean +/- standard deviation\n",
-                     fontsize=10, fontweight='bold')
-        ax.set_title(fig_desc, fontsize=8, loc='center',
-                     fontweight='bold', bbox=props)
-        mean = results.describe()[output_column]['mean'].ravel()
-        std = results.describe()[output_column]['std'].ravel()
+        ax.set_xlabel("days")
+        ax.set_ylabel("velocity {}".format(output_column))
+        fig.suptitle(
+            "code mean +/- standard deviation\n",
+            fontsize=10, fontweight="bold", loc="center"
+        )
+        ax.set_title(
+            fig_desc, fontsize=8, loc="center",
+            fontweight="bold", bbox=props
+        )
+
+        mean = results.describe(output_column, "mean")
+        std = results.describe(output_column, "std")
         X = range(len(mean))
-        ax.plot(X, mean, 'b-', label='mean')
-        ax.plot(X, mean - std, '--r', label='+1 std-dev')
-        ax.plot(X, mean + std, '--r')
-        ax.fill_between(X, mean - std, mean + std, color='r', alpha=0.2)
+        ax.plot(X, mean, "b-", label="mean")
+        ax.plot(X, mean - std, "--r", label="+1 std-dev")
+        ax.plot(X, mean + std, "--r")
+        ax.fill_between(X, mean - std, mean + std, color="r", alpha=0.2)
         # plt.tight_layout()
-        plt.legend(loc='best')
-        plot_file_name = 'plot_statistical_moments[%s]' % (output_column)
+        plt.legend(loc="best")
+        plot_file_name = "plot_statistical_moments[{}]".format(output_column)
         plt.savefig(os.path.join(campaign_work_dir, plot_file_name),
                     dpi=400)
 
@@ -264,13 +339,17 @@ def flee_analyse_vvp_LoR(config):
         #        Plot sobols_first        #
         ###################################
         fig, ax = plt.subplots()
-        ax.set_xlabel('days')
-        ax.set_ylabel('Sobol indices')
-        fig.suptitle("First order Sobol index [output column = %s]\n"
-                     % (output_column),
-                     fontsize=10, fontweight='bold')
-        ax.set_title(fig_desc, fontsize=8, loc='center',
-                     fontweight='bold', bbox=props)
+        ax.set_xlabel("days")
+        ax.set_ylabel("Sobol indices")
+        fig.suptitle(
+            "First order Sobol index [output column = {}]\n".format(
+                output_column),
+            fontsize=10, fontweight="bold"
+        )
+        ax.set_title(
+            fig_desc, fontsize=8, loc='center',
+            fontweight='bold', bbox=props
+        )
 
         sobols_first = results.raw_data["sobols_first"][output_column]
         param_i = 0
@@ -303,25 +382,25 @@ def flee_analyse_vvp_LoR(config):
             'num_runs': campaign.campaign_db.get_num_runs(),
             'output_column': S(output_column),
             'polynomial_order': polynomial_order,
-            'sampler': S(vvp_campaign_config['sampler_name']),
-            'distribution_type': S(vvp_campaign_config['distribution_type']),
-            'sparse': S(vvp_campaign_config['sparse']),
-            'growth': S(vvp_campaign_config['growth'])
+            'sampler': S(VVP_campaign_config['sampler_name']),
+            'distribution_type': S(VVP_campaign_config['distribution_type']),
+            'sparse': S(VVP_campaign_config['sparse']),
+            'growth': S(VVP_campaign_config['growth'])
         })
         if sampler_name == 'SCSampler':
             yml_results['campaign_info'].update({
-                'quadrature_rule': S(vvp_campaign_config['quadrature_rule']),
-                'midpoint_level1': S(vvp_campaign_config['midpoint_level1']),
-                'dimension_adaptive': S(vvp_campaign_config
+                'quadrature_rule': S(VVP_campaign_config['quadrature_rule']),
+                'midpoint_level1': S(VVP_campaign_config['midpoint_level1']),
+                'dimension_adaptive': S(VVP_campaign_config
                                         ['dimension_adaptive'])
             })
         elif sampler_name == 'PCESampler':
             yml_results['campaign_info'].update({
-                'rule': S(SA_campaign_config['quadrature_rule']),
+                'rule': S(VVP_campaign_config['quadrature_rule']),
             })
 
         ROUND_NDIGITS = 4
-        for param in vvp_campaign_config['selected_vary_parameters']:
+        for param in VVP_campaign_config['selected_vary_parameters']:
             # I used CommentedMap for adding comments
             yml_results[param] = ruamel.yaml.comments.CommentedMap()
             # yml_results.update({param: {}})
@@ -389,11 +468,12 @@ def flee_analyse_vvp_LoR(config):
     # Check the convergence of the SC Sobols indices    #
     # with polynomial refinement                        #
     #####################################################
-    ensemble_vvp_LoR(results_dirs_PATH=sobol_work_dir,
-                     load_QoIs_function=load_QoIs_function,
-                     aggregation_function=plot_convergence,
-                     plot_file_path=sobol_work_dir
-                     )
+    ensemble_vvp_LoR(
+        results_dirs_PATH=sobol_work_dir,
+        load_QoIs_function=load_QoIs_function,
+        aggregation_function=plot_convergence,
+        plot_file_path=sobol_work_dir
+    )
 
 
 def plot_convergence(scores, plot_file_path):
@@ -429,23 +509,23 @@ def plot_convergence(scores, plot_file_path):
     # vary_param_n: {<sobol_func_name>:<value>} #
     #############################################
     xticks = []
-    ref_sobols_value = scores[last_item_key]['value']
+    ref_sobols_value = scores[last_item_key]["value"]
 
     results = {}
-    results.update({'polynomial_order': []})
+    results.update({"polynomial_order": []})
     compare_res = {}
     for run_dir in scores:
-        polynomial_order = scores[run_dir]['order']
-        num_runs = scores[run_dir]['runs']
-        xticks.append('PO=%d\nruns=%d' % (polynomial_order, num_runs))
-        results['polynomial_order'].append(polynomial_order)
-        poly_key = 'polynomial_order %d' % (polynomial_order)
+        polynomial_order = scores[run_dir]["order"]
+        num_runs = scores[run_dir]["runs"]
+        xticks.append("PO={}\nruns={}".format(polynomial_order, num_runs))
+        results["polynomial_order"].append(polynomial_order)
+        poly_key = "polynomial_order {}".format(polynomial_order)
         compare_res.update({poly_key: {}})
-        for param in scores[run_dir]['value']:
+        for param in scores[run_dir]["value"]:
             if param not in results:
                 results.update({param: []})
-            sb_func_name = list(scores[run_dir]['value'][param].keys())[0]
-            sb = scores[run_dir]['value'][param][sb_func_name]
+            sb_func_name = list(scores[run_dir]["value"][param].keys())[0]
+            sb = scores[run_dir]["value"][param][sb_func_name]
             results[param].append(sb)
 
     #############################################
@@ -457,28 +537,28 @@ def plot_convergence(scores, plot_file_path):
     #############################################
 
     params = list(results.keys())
-    params.remove('polynomial_order')
+    params.remove("polynomial_order")
 
     fig, ax = plt.subplots()
-    ax.set_xlabel('Polynomial Order')
-    ax.set_ylabel('sobol indices')
-    # fig.suptitle('convergence', fontsize=10, fontweight='bold')
-    ax.set_title('convergence', fontsize=10, fontweight='bold')
+    ax.set_xlabel("Polynomial Order")
+    ax.set_ylabel("sobol indices")
+    ax.set_title("convergence", fontsize=10, fontweight="bold")
 
-    X = range(len(results['polynomial_order']))
+    X = range(len(results["polynomial_order"]))
     for param in params:
         ax.plot(X, results[param], label=param)
 
     plt.xticks(X, xticks)
     plt.tight_layout()
-    plt.legend(loc='best')
-    convergence_plot_file_name = 'vvp_QoI_convergence.png'
+    plt.legend(loc="best")
+    convergence_plot_file_name = "vvp_QoI_convergence.png"
     plt.savefig(os.path.join(plot_file_path, convergence_plot_file_name),
                 dpi=400)
-    print('=' * 50)
-    print('The convergence plot generated ...')
+
+    print("=" * 50)
+    print("The convergence plot generated ...")
     print(os.path.join(plot_file_path, convergence_plot_file_name))
-    print('=' * 50)
+    print("=" * 50)
 
 
 def load_QoIs_function(result_dir):
@@ -509,14 +589,14 @@ def load_QoIs_function(result_dir):
     vary_param_N:
         score: <value>
     """
-    data_file_name = os.path.join(result_dir, 'sobols.yml')
+    data_file_name = os.path.join(result_dir, "sobols.yml")
     sobols_data = yaml.load(open(data_file_name), Loader=yaml.SafeLoader)
-    polynomial_order = sobols_data['campaign_info']['polynomial_order']
-    num_runs = sobols_data['campaign_info']['num_runs']
-    del sobols_data['campaign_info']
+    polynomial_order = sobols_data["campaign_info"]["polynomial_order"]
+    num_runs = sobols_data["campaign_info"]["num_runs"]
+    del sobols_data["campaign_info"]
 
     # sobols_first_mean or sobols_first_gmean
-    score_column_name = 'sobols_first_mean'
+    score_column_name = "sobols_first_mean"
 
     QoIs_values = {}
     for param in sobols_data:
@@ -530,31 +610,35 @@ def load_QoIs_function(result_dir):
     return QoIs_values, polynomial_order, num_runs
 
 
-def load_vvp_campaign_config():
+def load_VVP_campaign_config(flee_VVP_config_file):
 
-    flee_vvp_yml_PATH = os.path.join(get_plugin_path('FabFlee'),
-                                     'flee_vvp_config.yml')
-    vvp_campaign_config = yaml.load(open(flee_vvp_yml_PATH),
-                                    Loader=yaml.SafeLoader
-                                    )
+    VVP_campaign_config = yaml.load(
+        open(flee_VVP_config_file),
+        Loader=yaml.SafeLoader
+    )
     #####################################################
     # load parameter space for the easyvvuq sampler app #
     #####################################################
-    sampler_params_json_PATH = os.path.join(get_plugin_path('FabFlee'),
-                                            'templates',
-                                            'params.json'
-                                            )
+    sampler_params_json_PATH = os.path.join(
+        get_plugin_path("FabFlee"),
+        "templates",
+        "params.json"
+    )
     sampler_params = json.load(open(sampler_params_json_PATH))
 
     #####################################################
-    # add loaded campaign params to vvp_campaign_config #
+    # add loaded campaign params to VVP_campaign_config #
     #####################################################
-    vvp_campaign_config.update({'params': sampler_params})
+    VVP_campaign_config.update(
+        {
+            "params": sampler_params
+        }
+    )
 
-    return vvp_campaign_config
+    return VVP_campaign_config
 
 
-def init_vvp_campaign(campaign_name, campaign_config,
+def init_VVP_campaign(campaign_name, campaign_config,
                       polynomial_order, campaign_work_dir):
 
     ######################################
@@ -564,73 +648,78 @@ def init_vvp_campaign(campaign_name, campaign_config,
         rmtree(campaign_work_dir)
     os.makedirs(campaign_work_dir)
 
+    #####################
+    # Create an encoder #
+    #####################
+    encoder = uq.encoders.GenericEncoder(
+        template_fname=os.path.join(get_plugin_path("FabFlee"),
+                                    "templates",
+                                    campaign_config["encoder_template_fname"]
+                                    ),
+        delimiter=campaign_config["encoder_delimiter"],
+        target_filename=campaign_config["encoder_target_filename"]
+    )
+
     ###########################
     # Set up a fresh campaign #
     ###########################
     db_location = "sqlite:///" + campaign_work_dir + "/campaign.db"
-    campaign = uq.Campaign(name=campaign_name,
-                           db_location=db_location,
-                           work_dir=campaign_work_dir)
 
-    #################################
-    # Create an encoder and decoder #
-    #################################
-    encoder = uq.encoders.GenericEncoder(
-        template_fname=os.path.join(get_plugin_path('FabFlee'),
-                                    'templates',
-                                    campaign_config['encoder_template_fname']
-                                    ),
-        delimiter=campaign_config['encoder_delimiter'],
-        target_filename=campaign_config['encoder_target_filename']
+    actions = uq.actions.Actions(
+        uq.actions.CreateRunDirectory(root=campaign_work_dir, flatten=True),
+        uq.actions.Encode(encoder),
     )
 
-    decoder = uq.decoders.SimpleCSV(
-        target_filename=campaign_config['params']['out_file']['default'],
-        output_columns=[campaign_config['decoder_output_column']]
+    campaign = uq.Campaign(
+        name=campaign_name,
+        db_location=db_location,
+        work_dir=campaign_work_dir
     )
 
     ################################
     # Add the flee-vvp-Sampler app #
     ################################
-    campaign.add_app(name=campaign_name,
-                     params=campaign_config['params'],
-                     encoder=encoder,
-                     decoder=decoder)
+    campaign.add_app(
+        name=campaign_name,
+        params=campaign_config["params"],
+        actions=actions
+    )
 
     ######################
     # parameters to vary #
     ######################
     vary = {}
-    for param in campaign_config['selected_vary_parameters']:
+    for param in campaign_config["selected_vary_parameters"]:
         lower_value = campaign_config[
-            'vary_parameters_range'][param]['range'][0]
+            "vary_parameters_range"][param]["range"][0]
         upper_value = campaign_config[
-            'vary_parameters_range'][param]['range'][1]
-        if campaign_config['distribution_type'] == 'DiscreteUniform':
+            "vary_parameters_range"][param]["range"][1]
+        if campaign_config["distribution_type"] == "DiscreteUniform":
             vary.update({param: cp.DiscreteUniform(lower_value, upper_value)})
-        elif campaign_config['distribution_type'] == 'Uniform':
+        elif campaign_config["distribution_type"] == "Uniform":
             vary.update({param: cp.Uniform(lower_value, upper_value)})
 
     ####################
     # create Sampler #
     ####################
-    if campaign_config['sampler_name'] == 'SCSampler':
+    sampler_name = campaign_config["sampler_name"]
+    if sampler_name == "SCSampler":
         sampler = uq.sampling.SCSampler(
             vary=vary,
             polynomial_order=polynomial_order,
-            quadrature_rule=campaign_config['quadrature_rule'],
-            growth=campaign_config['growth'],
-            sparse=campaign_config['sparse'],
-            midpoint_level1=campaign_config['midpoint_level1'],
-            dimension_adaptive=campaign_config['dimension_adaptive']
+            quadrature_rule=campaign_config["quadrature_rule"],
+            growth=campaign_config["growth"],
+            sparse=campaign_config["sparse"],
+            midpoint_level1=campaign_config["midpoint_level1"],
+            dimension_adaptive=campaign_config["dimension_adaptive"]
         )
-    elif campaign_config['sampler_name'] == 'PCESampler':
+    elif sampler_name == "PCESampler":
         sampler = uq.sampling.PCESampler(
             vary=vary,
             polynomial_order=polynomial_order,
-            rule=campaign_config['quadrature_rule'],
-            sparse=campaign_config['sparse'],
-            growth=campaign_config['growth']
+            rule=campaign_config["quadrature_rule"],
+            sparse=campaign_config["sparse"],
+            growth=campaign_config["growth"]
         )
     # TODO:	add other sampler here
 
@@ -642,41 +731,42 @@ def init_vvp_campaign(campaign_name, campaign_config,
     #########################################
     # draw all of the finite set of samples #
     #########################################
-    campaign.draw_samples()
-    run_ids = campaign.populate_runs_dir()
+    campaign.execute().collate()
 
-    ###################################
-    # save campaign and sampler state #
-    ###################################
-    campaign.save_state(os.path.join(campaign_work_dir,
-                                     "campaign_state.json"
-                                     )
-                        )
+    #########################################
+    # extract generated runs id by campaign #
+    #########################################
+    runs_dir = []
+    for _, run_info in campaign.campaign_db.runs(
+            status=uq.constants.Status.NEW
+    ):
+        runs_dir.append(run_info["run_name"])
 
-    print("=" * 50)
-    print("With user's specified parameters for sampler")
-    print("init_vvp_campaign generates %d runs" % (len(run_ids)))
-    print("in %s" % (campaign_work_dir))
-    print("=" * 50)
+    campaign_dir = campaign.campaign_db.campaign_dir()
 
     ######################################################
     # backup campaign files, i.e, *.db, *.json, *.pickle #
     ######################################################
     backup_campaign_files(campaign.work_dir)
 
-    runs_dir = campaign.campaign_db.runs_dir()
-    campaign_dir = campaign.campaign_db.campaign_dir()
+    print("=" * 50)
+    print("With user's specified parameters for {}".format(sampler_name))
+    print("campaign name : {}".format(campaign_name))
+    print("number of generated runs : {}".format(len(runs_dir)))
+    print("campaign dir : {}".format(campaign_work_dir))
+    print("=" * 50)
+
     return runs_dir, campaign_dir
 
 
 def backup_campaign_files(campaign_work_dir):
-    backup_dir = os.path.join(campaign_work_dir, 'backup')
+    backup_dir = os.path.join(campaign_work_dir, "backup")
     # delete backup folder
     if os.path.exists(backup_dir):
         rmtree(backup_dir)
     os.mkdir(backup_dir)
 
-    with hide('output', 'running', 'warnings'), settings(warn_only=True):
+    with hide("output", "running", "warnings"), settings(warn_only=True):
         local(
             "rsync -av -m -v \
             --include='*.db' \
@@ -688,8 +778,8 @@ def backup_campaign_files(campaign_work_dir):
 
 
 def load_campaign_files(campaign_work_dir):
-    backup_dir = os.path.join(campaign_work_dir, 'backup')
-    with hide('output', 'running', 'warnings'), settings(warn_only=True):
+    backup_dir = os.path.join(campaign_work_dir, "backup")
+    with hide("output", "running", "warnings"), settings(warn_only=True):
         local(
             "rsync -av -m -v \
             --include='*.db' \

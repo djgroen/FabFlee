@@ -1215,15 +1215,14 @@ def redirect(source, destination):
 try:
     from plugins.FabFlee.run_simulation_sets import *
 
-    # loads Sensitivity analysis tasks
-    from plugins.FabFlee.flee_SA import flee_init_SA
-    from plugins.FabFlee.flee_SA import flee_analyse_SA
-    from plugins.FabFlee.flee_SA import flee_run_mcmc
+    # loads Sensitivity analysis (SA) tasks
+    from plugins.FabFlee.SA.flee_SA import flee_init_SA
+    from plugins.FabFlee.SA.flee_SA import flee_analyse_SA
 
-    # loads vvp tasks
-    from plugins.FabFlee.flee_vvp import flee_init_vvp_LoR
-    from plugins.FabFlee.flee_vvp import flee_analyse_vvp_LoR
-    from plugins.FabFlee.flee_vvp import flee_run_vvp_LoR
+    # # loads Validation and Verification Patterns (VVP) tasks
+    from plugins.FabFlee.VVP.flee_vvp import flee_init_vvp_LoR
+    from plugins.FabFlee.VVP.flee_vvp import flee_analyse_vvp_LoR
+    from plugins.FabFlee.VVP.flee_vvp import flee_run_vvp_LoR
 
     from plugins.FabFlee.run_perf_benchmarks import *
 except ImportError:
