@@ -292,7 +292,7 @@ def flee_analyse_vvp_LoR(config):
         ax.set_ylabel(output_column)
         fig.suptitle(
             "RAW data : column {}\n".format(output_column),
-            fontsize=10, fontweight="bold", loc="center"
+            fontsize=10, fontweight="bold"
         )
         ax.set_title(
             fig_desc, fontsize=8, loc="center",
@@ -315,7 +315,7 @@ def flee_analyse_vvp_LoR(config):
         ax.set_ylabel("velocity {}".format(output_column))
         fig.suptitle(
             "code mean +/- standard deviation\n",
-            fontsize=10, fontweight="bold", loc="center"
+            fontsize=10, fontweight="bold"
         )
         ax.set_title(
             fig_desc, fontsize=8, loc="center",
