@@ -1222,7 +1222,9 @@ try:
     # # loads Validation and Verification Patterns (VVP) tasks
     from plugins.FabFlee.VVP.flee_vvp import flee_init_vvp_LoR
     from plugins.FabFlee.VVP.flee_vvp import flee_analyse_vvp_LoR
-    from plugins.FabFlee.VVP.flee_vvp import flee_run_vvp_LoR
+
+    from plugins.FabFlee.VVP.flee_vvp import flee_init_vvp_QoI
+    from plugins.FabFlee.VVP.flee_vvp import flee_analyse_vvp_QoI
 
     from plugins.FabFlee.run_perf_benchmarks import *
 except ImportError:

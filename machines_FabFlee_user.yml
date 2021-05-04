@@ -4,7 +4,7 @@
 # Here, you can find some examples for pre-defined remote machines
 # All env variable can be modified here and will overwrite setting in machines.yml and machines_user.yml
 default:
-
+  UNHCR_uncertainty: False
 
 # required modules for Flee
 flee_modules: &FLEE_MODULES

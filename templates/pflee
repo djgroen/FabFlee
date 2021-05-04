@@ -5,3 +5,9 @@ export PYTHONPATH=$flee_location:$$PYTHONPATH
 /usr/bin/env > env.log
 
 $run_command python3 run_par.py input_csv source_data $simulation_period simsetting.csv > out.csv
+
+run_UNHCR_uncertainty="$UNHCR_uncertainty"
+if [[ "$${run_UNHCR_uncertainty,,}" == "true" ]]
+then
+	$run_command python3 run_UNHCR_uncertainty.py input_csv source_data $simulation_period simsetting.csv > out_uncertainty.csv
+fi

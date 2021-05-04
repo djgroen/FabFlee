@@ -24,6 +24,91 @@ import matplotlib.pyplot as plt
 from scipy.stats.mstats import gmean
 from plugins.FabFlee.FabFlee import *
 from VVP.vvp import ensemble_vvp_LoR
+from VVP.vvp import ensemble_vvp_QoI
+
+
+@task
+@load_plugin_env_vars("FabFlee")
+def flee_init_vvp_QoI(config, simulation_period, mode='serial', **args):
+    """
+    Quantity of Interest (QoI) extracts a distribution of QoIs from the
+    simulations runs (using the decoder+analysis). Apply a similarity measure
+    to quantify the similarity between the QoI distributions from the
+    simulation, and from the validation data
+
+    flee_init_vvp_QoI will submit a series of ensemble job
+        for each ensemble job, different polynomial_order used to
+        generated an EasyVVUQ campaign run set
+
+    usage example:
+        fab localhost flee_init_vvp_QoI:mali,simulation_period=10
+        fab training_hidalgo flee_init_vvp_QoI:mali,simulation_period=10
+
+    """
+    update_environment()
+
+    #############################################
+    # load flee vvp configuration from yml file #
+    #############################################
+    flee_VVP_config_file = os.path.join(
+        get_plugin_path("FabFlee"),
+        "VVP",
+        "flee_VVP_config.yml"
+    )
+    VVP_campaign_config = load_VVP_campaign_config(flee_VVP_config_file)
+
+    polynomial_order = VVP_campaign_config["polynomial_order"]
+    sampler_name = VVP_campaign_config["sampler_name"]
+
+    campaign_name = "flee_VVP_{}".format(sampler_name)
+
+    campaign_work_dir = os.path.join(
+        get_plugin_path("FabFlee"),
+        "VVP",
+        "flee_vvp_QoI_{}_PO{}".format(sampler_name, polynomial_order),
+    )
+
+    runs_dir, campaign_dir = init_VVP_campaign(
+        campaign_name=campaign_name,
+        campaign_config=VVP_campaign_config,
+        polynomial_order=polynomial_order,
+        campaign_work_dir=campaign_work_dir
+    )
+
+    #############################################################
+    # copy the EasyVVUQ campaign run set TO config SWEEP folder #
+    #############################################################
+    campaign2ensemble(config, campaign_dir)
+
+    ###########################################################
+    # set job_desc to avoid overwriting with previous SA jobs #
+    ###########################################################
+    env.job_desc = "_vvp_QoI_{}_PO{}".format(
+        sampler_name,
+        polynomial_order
+    )
+    env.prevent_results_overwrite = "delete"
+    with_config(config)
+    execute(put_configs, config)
+
+    ##################################################
+    # prepare env variable to submit an ensemble job #
+    ##################################################
+    if mode == "serial":
+        flee_script = "flee"
+    else:
+        flee_script = "pflee"
+
+    ##########################################
+    # submit ensemble jobs to remote machine #
+    ##########################################
+    flee_ensemble(
+        config,
+        simulation_period,
+        script=flee_script,
+        UNHCR_uncertainty="True",
+        **args
+    )
 
 
 @task
@@ -114,6 +199,196 @@ def flee_init_vvp_LoR(config, simulation_period, mode='serial', **args):
             script=flee_script,
             **args
         )
+
+
+@task
+@load_plugin_env_vars("FabFlee")
+def flee_analyse_vvp_QoI(config):
+    """
+    flee_analyse_vvp_LoR will analysis the output of each vvp ensemble series
+
+    usage example:
+        fab localhost flee_analyse_vvp_QoI:mali
+        fab training_hidalgo flee_analyse_vvp_QoI:mali
+    """
+    update_environment()
+    #############################################
+    # load flee vvp configuration from yml file #
+    #############################################
+    flee_VVP_config_file = os.path.join(
+        get_plugin_path("FabFlee"),
+        "VVP",
+        "flee_VVP_config.yml"
+    )
+    VVP_campaign_config = load_VVP_campaign_config(flee_VVP_config_file)
+    polynomial_order = VVP_campaign_config["polynomial_order"]
+    sampler_name = VVP_campaign_config["sampler_name"]
+    campaign_name = "flee_VVP_{}".format(sampler_name)
+
+    ###########################################
+    # set a default dir to save results sobol #
+    ###########################################
+    campaign_work_dir = os.path.join(
+        get_plugin_path("FabFlee"),
+        "VVP",
+        "flee_vvp_QoI_{}_PO{}".format(sampler_name, polynomial_order),
+    )
+
+    ###################
+    # reload Campaign #
+    ###################
+    load_campaign_files(campaign_work_dir)
+    db_location = "sqlite:///" + campaign_work_dir + "/campaign.db"
+    campaign = uq.Campaign(name=campaign_name, db_location=db_location)
+    print("===========================================")
+    print("Reloaded campaign {}".format(campaign_name))
+    print("===========================================")
+
+    sampler = campaign.get_active_sampler()
+    campaign.set_sampler(sampler, update=True)
+
+    ####################################################
+    # fetch results from remote machine                #
+    # here, we ONLY fetch the required results folders #
+    ####################################################
+    env.job_desc = "_vvp_QoI_{}_PO{}".format(
+        sampler_name,
+        polynomial_order
+    )
+    with_config(config)
+
+    job_folder_name = template(env.job_name_template)
+    print("fetching results from remote machine ...")
+    with hide("output", "running", "warnings"), settings(warn_only=True):
+        fetch_results(regex=job_folder_name)
+    print("Done\n")
+
+    #####################################################
+    # copy ONLY the required output files for analyse,  #
+    # i.e., EasyVVUQ.decoders.target_filename           #
+    #####################################################
+    src = os.path.join(env.local_results, job_folder_name, "RUNS")
+    des = campaign.campaign_db.runs_dir()
+    print("Syncing output_dir ...")
+    # with hide('output', 'running', 'warnings'), settings(warn_only=True):
+    local(
+        "rsync -pthrz "
+        "--include='/*/' "
+        "--include='out_uncertainty.csv' "
+        "--include='out.csv' "
+        "--exclude='*' "
+        "{}/  {} ".format(src, des)
+    )
+    print("Done ...\n")
+
+    #########################
+    # find output csv files #
+    #########################
+    out_csv_files = glob.glob(des + '/**/out.csv', recursive=True)
+    uncertainty_csv_files = glob.glob(des + '/**/out_uncertainty.csv',
+                                      recursive=True)
+
+    ###########################################################
+    # take the number of refugees number by day per each camp #
+    ###########################################################
+    pd_out_csv = []
+    for csv_file in out_csv_files:
+        pd_csv = pd.read_csv(csv_file)
+        pd_csv = pd_csv.drop(
+            [column_name
+             for column_name in pd_csv.columns.values
+             if " sim" not in column_name and column_name != "Day"
+             ],
+            1
+        )
+        pd_out_csv.append(pd_csv)
+
+    pd_uncertainty_csv = []
+    for csv_file in uncertainty_csv_files:
+        pd_csv = pd.read_csv(csv_file)
+        pd_csv = pd_csv.drop(
+            [column_name
+             for column_name in pd_csv.columns.values
+             if " sim" not in column_name and column_name != "Day"
+             ],
+            1
+        )
+        pd_uncertainty_csv.append(pd_csv)
+
+    QoIs = [column_name
+            for column_name in list(pd_out_csv[0].columns.values)
+            if column_name != "Day"
+            ]
+    agg_input = {column_name: lambda x: list(x) for column_name in QoIs}
+
+    pd_out_csv = pd.concat(pd_out_csv, axis=0,
+                           ignore_index=True
+                           ).groupby(['Day']).agg(agg_input)
+
+    pd_uncertainty_csv = pd.concat(pd_uncertainty_csv, axis=0,
+                                   ignore_index=True
+                                   ).groupby(['Day']).agg(agg_input)
+
+    results = {}
+    for QoI in QoIs:
+        print("QoI = {}".format(QoI))
+        sim_result = pd_out_csv[QoI].tolist()
+        uncertainty_result = pd_uncertainty_csv[QoI].tolist()
+
+        res = ensemble_vvp_QoI(sim_result, uncertainty_result, QoI)
+
+        for key, value in res.items():
+            if key not in results:
+                results.update({key: {}})
+            results[key].update(value)
+
+    with open(os.path.join(campaign_work_dir, "results.json"), "w") as f:
+        f.write(json.dumps(results))
+
+    for similarity_measure_name, data in results.items():
+        # print(data)
+        print("=" * 50)
+        print("=" * 50)
+        print("=" * 50)
+        print("similarity_measure_name = {}".format(similarity_measure_name))
+        print("locations name : {}".format(data.keys()))
+
+        # find the number of rows and columns for subplots
+        size = len(data.keys())
+        cols = round(math.sqrt(size))
+        rows = cols
+        while rows * cols < size:
+            rows += 1
+
+        fig, ax_arr = plt.subplots(rows, cols, figsize=(8, 5))
+        fig.suptitle(
+            'similarity measure : {}'.format(similarity_measure_name),
+            fontsize=15
+        )
+        max_y = -float("inf")
+        ax_arr = ax_arr.reshape(-1)
+        for i, (location_name, values) in enumerate(data.items()):
+            print("location_name = {} max(values) = {}".format(
+                location_name, max(values))
+            )
+
+            ax_arr[i].plot(values)
+            ax_arr[i].set_xlim([1, len(values)])
+            ax_arr[i].set_title(
+                location_name, fontsize=10, fontweight='bold', loc='center'
+            )
+        for j in range(i + 1, rows * cols):
+            ax_arr[j].axis('off')
+
+        mng = plt.get_current_fig_manager()
+        mng.window.showMaximized()
+
+        fig.tight_layout()
+        plot_file_name = "vvp_QoI_{}.png".format(similarity_measure_name)
+        plt.savefig(os.path.join(campaign_work_dir, plot_file_name),
+                    dpi=400)
+
+    # plt.show()
 
 
 @task

@@ -20,7 +20,10 @@ selected_vary_parameters: ["max_move_speed", "max_walk_speed"]
 
 distribution_type: "Uniform" # Uniform, DiscreteUniform
 
+# this will be used in case of calling VVP_QoI
+polynomial_order: 2
 
+# this will be used in case of calling VVP_LoR
 polynomial_order_range:
   start: 1
   end: 3
