@@ -160,7 +160,7 @@ def flee_analyse_SA(config, sampler_name=None, ** args):
     job_folder_name = template(env.job_name_template)
     print("fetching results from remote machine ...")
     with hide("output", "running", "warnings"), settings(warn_only=True):
-        fetch_results(regex=job_folder_name)
+        fetch_results(regex=job_folder_name, files="out.csv")
     print("Done\n")
 
     #####################################################
