@@ -520,6 +520,48 @@ def vvp_validate_results(output_dir="", **kwargs):
 
 @task
 @load_plugin_env_vars("FabFlee")
+# fab localhost
+# flee_optmization:output_dir=conflict1_camp1_town3_pop20000_MaxMoveSpeed360_localhost_16
+def flee_optmization(output_dir):
+    """
+    fab localhost flee_optmization:output_dir=<folder output name in results
+                                                folder"
+
+    """
+    flee_location_local = env.flee_location
+    print("flee_location_local = {}\n".format(flee_location_local))
+    # find the agents.out files
+
+    agents_out_files = glob.glob(
+        "{}".format(
+            os.path.join(env.local_results, output_dir, "agents.out.*")
+        )
+    )
+
+    # import required optimization functions from
+    # flee/postprocessing/optimization.py
+    optimization_file_PATH = os.path.join(
+        flee_location_local, "postprocessing", "optimization.py"
+    )
+    sys.path.append(flee_location_local)
+    import flee.postprocessing.optimization as opt
+    camp_name = "Z"
+    for filename in agents_out_files:
+        avg_distance_travelled = opt.avg_distance(
+            file_path=filename, camp_name=camp_name
+        )
+        print(
+            "Input file {}\n\tavg distance travelled for agents "
+            "to camp name {} = {}".format(
+                os.path.basename(filename),
+                camp_name,
+                avg_distance_travelled
+            )
+        )
+
+
+@task
+@load_plugin_env_vars("FabFlee")
 # Syntax: fabsim localhost
 # validate_results:flee_conflict_name_localhost_16
 def validate_results(output_dir):
