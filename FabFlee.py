@@ -547,7 +547,7 @@ def flee_optmization(output_dir):
     sys.path.append(flee_location_local)
     import flee.postprocessing.optimization as opt
     camp_name = "Z"
-    # calculate Camp population
+    # calculate Camp population, obj#2
     df = pd.read_csv(
         os.path.join(env.local_results, output_dir, "out.csv")
     )
@@ -556,7 +556,7 @@ def flee_optmization(output_dir):
         camp_name, sim_camp_population)
     )
 
-    # calculate camp capacity , obj#2
+    # calculate camp capacity
     df = pd.read_csv(
         os.path.join(
             env.local_results, output_dir, "input_csv", "locations.csv"
