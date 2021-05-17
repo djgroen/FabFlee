@@ -60,12 +60,14 @@ def flee_init_vvp_QoI(config, simulation_period, mode='serial', **args):
     polynomial_order = VVP_campaign_config["polynomial_order"]
     sampler_name = VVP_campaign_config["sampler_name"]
 
-    campaign_name = "flee_VVP_{}".format(sampler_name)
+    campaign_name = "flee_VVP_{}_{}".format(sampler_name, config)
 
     campaign_work_dir = os.path.join(
         get_plugin_path("FabFlee"),
         "VVP",
-        "flee_vvp_QoI_{}_PO{}".format(sampler_name, polynomial_order),
+        "flee_vvp_QoI_{}_PO{}_{}".format(
+            sampler_name, polynomial_order, config
+        ),
     )
 
     runs_dir, campaign_dir = init_VVP_campaign(
@@ -148,14 +150,15 @@ def flee_init_vvp_LoR(config, simulation_period, mode='serial', **args):
     sampler_name = VVP_campaign_config["sampler_name"]
 
     for polynomial_order in polynomial_order_range:
-        campaign_name = "flee_vvp_LoR_{}_po{}_".format(
+        campaign_name = "flee_vvp_LoR_{}_po{}_{}_".format(
             sampler_name,
-            polynomial_order
+            polynomial_order,
+            config
         )
         campaign_work_dir = os.path.join(
             get_plugin_path("FabFlee"),
             "VVP",
-            "flee_vvp_LoR_{}".format(sampler_name),
+            "flee_vvp_LoR_{}_{}".format(sampler_name, config),
             "campaign_po{}".format(polynomial_order)
         )
 
@@ -223,7 +226,7 @@ def flee_analyse_vvp_QoI(config):
     VVP_campaign_config = load_VVP_campaign_config(flee_VVP_config_file)
     polynomial_order = VVP_campaign_config["polynomial_order"]
     sampler_name = VVP_campaign_config["sampler_name"]
-    campaign_name = "flee_VVP_{}".format(sampler_name)
+    campaign_name = "flee_VVP_{}_{}".format(sampler_name, config)
 
     ###########################################
     # set a default dir to save results sobol #
@@ -231,7 +234,9 @@ def flee_analyse_vvp_QoI(config):
     campaign_work_dir = os.path.join(
         get_plugin_path("FabFlee"),
         "VVP",
-        "flee_vvp_QoI_{}_PO{}".format(sampler_name, polynomial_order),
+        "flee_vvp_QoI_{}_PO{}_{}".format(
+            sampler_name, polynomial_order, config
+        ),
     )
 
     ###################
@@ -425,7 +430,7 @@ def flee_analyse_vvp_LoR(config):
     sobol_work_dir = os.path.join(
         get_plugin_path("FabFlee"),
         "VVP",
-        "flee_vvp_LoR_{}".format(sampler_name),
+        "flee_vvp_LoR_{}_{}".format(sampler_name, config),
         "sobol"
     )
 
@@ -437,15 +442,16 @@ def flee_analyse_vvp_LoR(config):
     os.makedirs(sobol_work_dir)
 
     for polynomial_order in polynomial_order_range:
-        campaign_name = "flee_vvp_LoR_{}_po{}_".format(
+        campaign_name = "flee_vvp_LoR_{}_po{}_{}_".format(
             sampler_name,
-            polynomial_order
+            polynomial_order,
+            config
         )
 
         campaign_work_dir = os.path.join(
             get_plugin_path("FabFlee"),
             "VVP",
-            "flee_vvp_LoR_{}".format(sampler_name),
+            "flee_vvp_LoR_{}_{}".format(sampler_name, config),
             "campaign_po{}".format(polynomial_order)
         )
         load_campaign_files(campaign_work_dir)

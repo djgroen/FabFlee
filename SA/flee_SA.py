@@ -50,12 +50,12 @@ def flee_init_SA(config, simulation_period=-1, mode="serial",
     if sampler_name is None:
         sampler_name = SA_campaign_config["sampler_name"]
 
-    campaign_name = "flee_SA_{}".format(sampler_name)
+    campaign_name = "flee_SA_{}_{}".format(sampler_name, config)
 
     campaign_work_dir = os.path.join(
         get_plugin_path("FabFlee"),
         "SA",
-        "flee_SA_{}".format(sampler_name)
+        "flee_SA_{}_{}".format(sampler_name, config)
     )
 
     runs_dir, campaign_dir = init_SA_campaign(
@@ -128,12 +128,12 @@ def flee_analyse_SA(config, sampler_name=None, ** args):
     if sampler_name is None:
         sampler_name = SA_campaign_config["sampler_name"]
 
-    campaign_name = "flee_SA_{}".format(sampler_name)
+    campaign_name = "flee_SA_{}_{}".format(sampler_name, config)
 
     campaign_work_dir = os.path.join(
         get_plugin_path("FabFlee"),
         "SA",
-        "flee_SA_{}".format(sampler_name)
+        "flee_SA_{}_{}".format(sampler_name, config)
     )
 
     load_campaign_files(campaign_work_dir)
