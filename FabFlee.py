@@ -12,6 +12,7 @@ import VVP.vvp as vvp
 import glob
 import csv
 import os
+import pandas as pd
 from shutil import copyfile, rmtree, move
 # Add local script, blackbox and template path.
 add_local_paths("FabFlee")
@@ -516,6 +517,75 @@ def vvp_validate_results(output_dir="", **kwargs):
 
     print("error: vvp_validate_results failed on {}".format(output_dir))
     return -1.0
+
+
+@task
+@load_plugin_env_vars("FabFlee")
+# fab localhost
+# flee_optmization:output_dir=conflict1_camp1_town3_pop20000_MaxMoveSpeed360_localhost_16
+def flee_optmization(output_dir):
+    """
+    fab localhost flee_optmization:output_dir=<folder output name in results
+                                                folder"
+
+    """
+    flee_location_local = env.flee_location
+    print("flee_location_local = {}\n".format(flee_location_local))
+    # find the agents.out files
+
+    agents_out_files = glob.glob(
+        "{}".format(
+            os.path.join(env.local_results, output_dir, "agents.out.*")
+        )
+    )
+
+    # import required optimization functions from
+    # flee/postprocessing/optimization.py
+    optimization_file_PATH = os.path.join(
+        flee_location_local, "postprocessing", "optimization.py"
+    )
+    sys.path.append(flee_location_local)
+    import flee.postprocessing.optimization as opt
+    camp_name = "Z"
+    # calculate Camp population, obj#2
+    df = pd.read_csv(
+        os.path.join(env.local_results, output_dir, "out.csv")
+    )
+    sim_camp_population = df["{} sim".format(camp_name)].iloc[-1]
+    print("sim camp {} population = {}\n".format(
+        camp_name, sim_camp_population)
+    )
+
+    # calculate camp capacity
+    df = pd.read_csv(
+        os.path.join(
+            env.local_results, output_dir, "input_csv", "locations.csv"
+        )
+    )
+    camp_population = df[df["#name"] == camp_name]["population"].values[0]
+    print("max camp {} population = {}\n".format(
+        camp_name, camp_population)
+    )
+
+    # calculate remain camp capacity , obj#3
+    remain_camp_capacity = camp_population - sim_camp_population
+    print("remain camp {} capacity = {}\n".format(
+        camp_name, remain_camp_capacity)
+    )
+
+    # obj#1
+    for filename in agents_out_files:
+        avg_distance_travelled = opt.avg_distance(
+            file_path=filename, camp_name=camp_name
+        )
+        print(
+            "Input file {}\n\tavg distance travelled for agents "
+            "to camp name {} = {}".format(
+                os.path.basename(filename),
+                camp_name,
+                avg_distance_travelled
+            )
+        )
 
 
 @task
@@ -1215,15 +1285,16 @@ def redirect(source, destination):
 try:
     from plugins.FabFlee.run_simulation_sets import *
 
-    # loads Sensitivity analysis tasks
-    from plugins.FabFlee.flee_SA import flee_init_SA
-    from plugins.FabFlee.flee_SA import flee_analyse_SA
-    from plugins.FabFlee.flee_SA import flee_run_mcmc
+    # loads Sensitivity analysis (SA) tasks
+    from plugins.FabFlee.SA.flee_SA import flee_init_SA
+    from plugins.FabFlee.SA.flee_SA import flee_analyse_SA
 
-    # loads vvp tasks
-    from plugins.FabFlee.flee_vvp import flee_init_vvp_LoR
-    from plugins.FabFlee.flee_vvp import flee_analyse_vvp_LoR
-    from plugins.FabFlee.flee_vvp import flee_run_vvp_LoR
+    # # loads Validation and Verification Patterns (VVP) tasks
+    from plugins.FabFlee.VVP.flee_vvp import flee_init_vvp_LoR
+    from plugins.FabFlee.VVP.flee_vvp import flee_analyse_vvp_LoR
+
+    from plugins.FabFlee.VVP.flee_vvp import flee_init_vvp_QoI
+    from plugins.FabFlee.VVP.flee_vvp import flee_analyse_vvp_QoI
 
     from plugins.FabFlee.run_perf_benchmarks import *
 except ImportError:
