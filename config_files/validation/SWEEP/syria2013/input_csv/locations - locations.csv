@@ -1,0 +1,82 @@
+name,reigon,country,latitude,longitude,location_type,conflict_date,population
+Al-Kubar,Deir-ez-Zor,Syria,35.7734,39.785,conflict_zone,374,4320
+Adra,Rural Damascus,Syria,33.6044,36.5158,conflict_zone,367,20559
+Baiji,Sala al-Din,Iraq,34.9292,43.4888,conflict_zone,1,200000
+Haftanin,Dahuk,Iraq,37.3128,43.0203,conflict_zone,72,1000
+Al Bab,Aleppo,Syria,36.3697,37.5149,conflict_zone,368,165000
+Quamishli,Al-Hasakeh,Syria,37.0447,41.2262,conflict_zone,383,184231
+Khan Shaykun,Idleb,Syria,35.4437,36.6504,conflict_zone,368,34371
+Qarah Tabah,Diyala,Iraq,34.4328,44.9348,conflict_zone,1,2235
+Dar'a,Dar'a,Syria,32.6241,36.1049,conflict_zone,367,1027000
+Tal Elsamen Dahham,Ar-Raqqa,Syria,36.2272,38.9734,conflict_zone,368,2530
+Al Qayyarah,Ninewa,Iraq,35.7993,43.2945,conflict_zone,3,15000
+Kerbala,Kerbala,Iraq,32.5979,44.0165,conflict_zone,184,690100
+Burj Elqasab,Lattakia,Syria,35.5971,35.7847,conflict_zone,386,4902
+Makhmur,Erbil,Iraq,35.7728,43.5897,conflict_zone,36,23828
+Kirkuk,Kirkuk,Iraq,35.4681,44.3922,conflict_zone,19,1598000
+Al Gharraf,Thi-Qar,Iraq,31.2986,46.2419,conflict_zone,51,390000
+Quneitra,Quneitra,Syria,33.1242,35.8264,conflict_zone,392,5000
+Shahba,As-Sweida,Syria,32.8545,36.627,conflict_zone,387,14784
+Arbain,Hama,Syria,35.3533,36.5582,conflict_zone,373,1400
+Tadmor,Homs,Syria,34.5656,38.2877,conflict_zone,368,76000
+Damascus,Damascus,Syria,33.5172,36.2767,conflict_zone,374,1754000
+Baghdad - Al Rashid,Baghdad,Iraq,33.2362,44.3428,conflict_zone,4,3000000
+Shamiya,Qadissiya,Iraq,31.9626,44.6008,conflict_zone,79,400000
+Basrah,Basrah,Iraq,30.533,47.7975,conflict_zone,232,1327000
+Sulaymaniyah,Sulaymaniyah,Iraq,35.565,45.4329,conflict_zone,68,800000
+Ramadi,Anbar,Iraq,33.4206,43.3078,conflict_zone,1,223500
+Amara,Missan,Iraq,31.8356,47.1448,conflict_zone,385,511542
+Tall al Ubayd,Babylon,Iraq,32.4657,44.6302,conflict_zone,145,455700
+Najaf,Najaf,Iraq,32.0259,44.3462,conflict_zone,759,1390000
+Kut,Wassit,Iraq,32.5056,45.8247,conflict_zone,192,315162
+Yayladagi,,Turkey,35.906796,36.055205,camp,,3746
+Altinozu,,Turkey,36.11595,36.251113,camp,,8062
+Apaydin,,Turkey,36.234836,36.352445,camp,,5229
+Oncupinar,,Turkey,36.644949,37.082526,camp,,15735
+Elbeyli,,Turkey,36.70367,37.342219,camp,,20341
+Karkamis,,Turkey,36.875556,38.028333,camp,,6605
+Akcakale,,Turkey,36.752316,38.953031,camp,,31598
+Ceylanpinar,,Turkey,36.819116,39.927556,camp,,21176
+Midyat,,Turkey,37.413227,41.39371,camp,,3373
+Nizip,,Turkey,37.04688,37.895327,camp,,10033
+Suruc,,Turkey,37.046434,38.484,camp,,31480
+Harran,,Turkey,36.872732,38.932106,camp,,13761
+Islahiye,,Turkey,36.984233,36.618633,camp,,17433
+Cevdetiye,,Turkey,37.135933,36.205545,camp,,7304
+Saricam,,Turkey,37.042758,35.490131,camp,,555
+Beydagi,,Turkey,38.334043,38.312293,camp,,10227
+Zaatari,,Jordan,32.293578,36.327833,camp,,80000
+Emirati Jordanian Camp,,Jordan,32.033417,36.447408,camp,,4000
+Azraq,,Jordan,31.907262,36.577616,camp,,36000
+Domiz,,Iraq,36.78109,42.881187,camp,,39000
+Gawilan,,Iraq,36.338419,43.614146,camp,,8124
+Akre settlement,,Iraq,36.734528,43.881029,camp,,1178
+Darashakran,,Iraq,36.399888,44.335031,camp,,12387
+Kawergosk,,Iraq,36.348496,43.814758,camp,,9090
+Qushtapa,,Iraq,35.983664,44.037598,camp,,7716
+Basirma,,Iraq,36.498261,44.341498,camp,,3487
+Arbat,,Iraq,35.41541,45.603394,camp,,8111
+Al-Obaidi,,Iraq,34.417309,41.219072,camp,,1500
+Aleppo,,Syria,36.205245,37.158878,town,,"1,916,781"
+Al Bab,,Syria,36.368968,37.513883,town,,165000
+Manbji,,Syria,36.525905,37.947266,town,,700000
+Jarabulus,,Syria,36.819391,38.010901,town,,11570
+Azaz,,Syria,36.584397,37.044289,town,,31623
+Idlib,,Syria,35.930925,36.634023,town,,165000
+Tal al Abyad,,Syria,36.689447,38.945675,town,,44671
+Al Hasakah,,Syria,36.504888,40.740457,town,,251570
+Al Qamishli,,Syria,37.047372,41.22941,town,,232095
+Damascus,,Syria,33.511977,36.300054,town,,2700000
+Daraa,,Syria,32.627331,36.107517,town,,1027000
+As Suwayda,,Syria,32.706357,36.569302,town,,370000
+A'zaz,,Syria,36.584948,37.045577,town,,31623
+Mosul,,Iraq,36.349165,43.158331,town,,1361800
+Dohuk,,Iraq,36.86148,42.985639,town,,34900
+Zakhu,,Iraq,37.153002,42.681409,town,,212000
+Rutba,,Iraq,33.038941,40.282359,town,,28400
+Qa'im,,Iraq,34.317262,41.160235,town,,74100
+Basrah,,Iraq,30.546054,47.749694,town,,1340800
+Baghdad,,Iraq,33.314677,44.371641,town,,6719500
+Tikrit,,Iraq,34.596033,43.680367,town,,109000
+Erbil,,Iraq,36.190057,44.006056,town,,879000
+Kirkuk,,Iraq,35.464288,44.377216,town,,972300
