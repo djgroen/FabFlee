@@ -617,6 +617,7 @@ def validate_flee_output(results_dir):
 
 
 @task
+@load_plugin_env_vars("FabFlee")
 def validate_flee(simulation_period=0, cores=4, skip_runs=False, label="",
                   AwarenessLevel=1, **args):
     """
