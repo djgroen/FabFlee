@@ -1,4 +1,8 @@
-from base.fab import *
+try:
+    from fabsim.base.fab import *
+except ImportError:
+    from base.fab import *
+
 import chaospy as cp
 import numpy as np
 import easyvvuq as uq

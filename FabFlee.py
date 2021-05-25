@@ -6,7 +6,16 @@
 #
 # This file contains FabSim definitions specific to fabFlee.
 
-from base.fab import *
+try:
+    from fabsim.base.fab import *
+except ImportError:
+    from base.fab import *
+
+try:
+    import fabsim.VVP.vvp as vvp
+except ImportError:
+    import VVP.vvp as vvp
+
 # Import V&V primitives.
 import VVP.vvp as vvp
 import glob

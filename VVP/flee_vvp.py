@@ -7,7 +7,11 @@
 #
 # author: Hamid Arabnejad
 #
-from base.fab import *
+try:
+    from fabsim.base.fab import *
+except ImportError:
+    from base.fab import *
+
 from pprint import pprint
 import yaml
 import ruamel.yaml
@@ -23,8 +27,13 @@ import pickle
 import matplotlib.pyplot as plt
 from scipy.stats.mstats import gmean
 from plugins.FabFlee.FabFlee import *
-from VVP.vvp import ensemble_vvp_LoR
-from VVP.vvp import ensemble_vvp_QoI
+
+try:
+    from fabsim.VVP.vvp import ensemble_vvp_LoR
+    from fabsim.VVP.vvp import ensemble_vvp_QoI
+except ImportError:
+    from VVP.vvp import ensemble_vvp_LoR
+    from VVP.vvp import ensemble_vvp_QoI
 
 
 @task
