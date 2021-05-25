@@ -1,3 +1,4 @@
 MaxMoveSpeed,40
 AwarenessLevel,1
-DefaultMoveChance,0.02
+DefaultMoveChance,0.01
+PopulationScaledownFactor,100

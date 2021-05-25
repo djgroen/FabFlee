@@ -348,6 +348,25 @@ def plot_output(output_dir="", graphs_dir=""):
              env.local_results, output_dir, graphs_dir))
     '''
 
+@task
+@load_plugin_env_vars("FabFlee")
+# Syntax: fab localhost
+# plot_forecast:flee_conflict_name_localhost_16(,graphs_dir_name)
+def plot_forecast(output_dir="", graphs_dir=""):
+    """ Plot generated output results using plot-flee-forecast.py. """
+    local("mkdir -p %s/%s/%s" % (env.local_results, output_dir, graphs_dir))
+
+    # import plot_flee_forecast.py from env.flee_location
+    # when we have pip flee installation option, this part should be changed
+    for p in env.flee_location.split(":"):
+        sys.path.insert(0, p)
+
+    from flee.postprocessing.plot_flee_forecast import plot_flee_forecast
+    plot_flee_forecast(
+        os.path.join(env.local_results, output_dir),
+        os.path.join(env.local_results, output_dir, graphs_dir)
+    )
+
 
 @task
 @load_plugin_env_vars("FabFlee")
