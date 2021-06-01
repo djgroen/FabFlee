@@ -10,14 +10,13 @@ try:
     from fabsim.base.fab import *
 except ImportError:
     from base.fab import *
-
+    
+# Import V&V primitives.
 try:
     import fabsim.VVP.vvp as vvp
 except ImportError:
     import VVP.vvp as vvp
 
-# Import V&V primitives.
-import VVP.vvp as vvp
 import glob
 import csv
 import os
