@@ -71,8 +71,8 @@ if __name__ == "__main__":
     ig.AddNewConflictZones(e,t)
 
     # Determine number of new refugees to insert into the system.
-    new_refs = d.get_daily_difference(t, FullInterpolation=True) - refugee_debt
-    refugees_raw += d.get_daily_difference(t, FullInterpolation=True)
+    new_refs = d.get_daily_difference(t, FullInterpolation=True, SumFromCamps=True) - refugee_debt
+    refugees_raw += d.get_daily_difference(t, FullInterpolation=True, SumFromCamps=True)
 
     #Refugees are pre-placed in Mali, so set new_refs to 0 on Day 0.
     if insert_day0_refugees_in_camps:  

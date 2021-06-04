@@ -1,0 +1,41 @@
+#name,region,country,lat,lon,location_type,conflict_date,population
+Aba,Abia,Nigeria,5.1066,7.3667,conflict_zone,66,559900
+Abakpa Nike,Enugu,Nigeria,6.5183,7.5234,conflict_zone,800,326900
+Abinsi,Benue,Nigeria,7.7573,8.7521,conflict_zone,45,36500
+Akokwa,Imo,Nigeria,5.9088,7.1106,conflict_zone,165,215100
+Ankpa,Kogi,Nigeria,7.3706,7.6253,conflict_zone,236,359300
+Bali,Taraba,Nigeria,7.8667,10.9667,conflict_zone,139,282000
+Billiri,Gombe,Nigeria,9.8647,11.2253,conflict_zone,133,279100
+Biu,Borno,Nigeria,10.6129,12.1946,conflict_zone,4,246900
+Burra,Bauchi,Nigeria,11.0162,8.9024,conflict_zone,747,542300
+Cameroon,Cameron,Cameroon,10.5613,13.8563,camp,,115700
+Chad,Chad,Chad,13.227,14.356,camp,,16300
+Daraga,Zamfara,Nigeria,11.5841,5.9771,conflict_zone,19,403700
+Dawakin Kudu,Kano,Nigeria,11.8351,8.5976,conflict_zone,257,409500
+Doka,Kaduna,Nigeria,10.5417,7.4297,conflict_zone,329,3931300
+Ehor,Edo,Nigeria,6.6156,5.9838,conflict_zone,336,15000
+Etiam-Etoi,Akwa Ibom,Nigeria,5.0046,7.9549,conflict_zone,319,192700
+Frupa,Bayelsa,Nigeria,4.5991,5.6512,conflict_zone,71,105900
+Funtua,Katsina,Nigeria,11.5233,7.3081,conflict_zone,226,303900
+Gombi,Adamawa,Nigeria,10.1614,12.7399,conflict_zone,13,197500
+Gulani,Yobe,Nigeria,10.7239,11.6897,conflict_zone,5,146900
+Hawan Kibu,Plateau,Nigeria,9.541,8.6467,conflict_zone,231,268700
+Ibafo,Ogun,Nigeria,6.7424,3.4219,conflict_zone,50,75000
+Ibrede,Delta,Nigeria,5.5585,6.3909,conflict_zone,35,197700
+Ido Ekiti,Ekiti,Nigeria,7.8452,5.1831,conflict_zone,228,427700
+Idu,Federal Capital Territory,Nigeria,9.0667,7.35,conflict_zone,302,2400000
+Ife-Ife,Osun,Nigeria,7.4667,4.5667,conflict_zone,373,230300
+Iggi,Jigawa,Nigeria,11.4556,9.2642,conflict_zone,1283,107700
+Inyima,Cross River,Nigeria,5.9203,8.2127,conflict_zone,46,19500
+Izi,Ebonyi,Nigeria,6.5042,8.3995,conflict_zone,258,168300
+Kosofe,Lagos,Nigeria,6.601,3.409,conflict_zone,2,964300
+Niger,Diffa,Niger,13.6253,12.5066,camp,,172000
+Obi,Nasarawa,Nigeria,8.3667,8.7667,conflict_zone,45,201100
+Ogbere,Oyo,Nigeria,7.3258,3.9403,conflict_zone,266,150000
+Ogu-Ikpele,Anambra,Nigeria,5.7285,6.642,conflict_zone,323,295500
+Okitipupa,Ondo,Nigeria,6.5048,4.7839,conflict_zone,321,316100
+Okobe,Rivers,Nigeria,5.0623,6.5416,conflict_zone,70,194600
+Paiko,Niger,Nigeria,9.4333,6.6333,conflict_zone,133,222200
+Ruawuri,Sokoto,Nigeria,13.7117,4.9649,conflict_zone,683,3634
+Share,Kwara,Nigeria,8.8167,4.9833,conflict_zone,155,18700
+Zuru,Kebbi,Nigeria,11.4241,5.2288,conflict_zone,48,225400
