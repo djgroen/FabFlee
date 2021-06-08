@@ -11,13 +11,12 @@ try:
 except ImportError:
     from base.fab import *
 
+# Import V&V primitives.
 try:
     import fabsim.VVP.vvp as vvp
 except ImportError:
     import VVP.vvp as vvp
 
-# Import V&V primitives.
-import VVP.vvp as vvp
 import glob
 import csv
 import os
@@ -357,6 +356,7 @@ def plot_output(output_dir="", graphs_dir=""):
              env.local_results, output_dir, graphs_dir))
     '''
 
+
 @task
 @load_plugin_env_vars("FabFlee")
 # Syntax: fab localhost
@@ -369,10 +369,10 @@ def plot_forecast(output_dir="", graphs_dir="", region_names=""):
     for p in env.flee_location.split(":"):
         sys.path.insert(0, p)
     from flee.postprocessing.plot_flee_forecast import plot_flee_forecast
-    region_names = region_names.split(';')    
+    region_names = region_names.split(';')
     plot_flee_forecast(
-        input_dir = os.path.join(env.local_results, output_dir),
-        region_names = region_names
+        input_dir=os.path.join(env.local_results, output_dir),
+        region_names=region_names
     )
 
 
@@ -548,71 +548,49 @@ def vvp_validate_results(output_dir="", **kwargs):
 
 @task
 @load_plugin_env_vars("FabFlee")
-# fab localhost
-# flee_optmization:output_dir=conflict1_camp1_town3_pop20000_MaxMoveSpeed360_localhost_16
-def flee_optmization(output_dir):
+def flee_MOO(config, simulation_period=273, cores=1, **args):
     """
-    fab localhost flee_optmization:output_dir=<folder output name in results
-                                                folder"
-
+    fab localhost flee_MOO:moo_f1_c1_t3
     """
-    flee_location_local = env.flee_location
-    print("flee_location_local = {}\n".format(flee_location_local))
-    # find the agents.out files
+    if not isinstance(cores, int):
+        cores = int(cores)
 
-    agents_out_files = glob.glob(
-        "{}".format(
-            os.path.join(env.local_results, output_dir, "agents.out.*")
-        )
+    update_environment(
+        args,
+        {"cores": cores, "simulation_period": simulation_period}
     )
 
-    # import required optimization functions from
-    # flee/postprocessing/optimization.py
-    optimization_file_PATH = os.path.join(
-        flee_location_local, "postprocessing", "optimization.py"
-    )
-    sys.path.append(flee_location_local)
-    import flee.postprocessing.optimization as opt
-    camp_name = "Z"
-    # calculate Camp population, obj#2
-    df = pd.read_csv(
-        os.path.join(env.local_results, output_dir, "out.csv")
-    )
-    sim_camp_population = df["{} sim".format(camp_name)].iloc[-1]
-    print("sim camp {} population = {}\n".format(
-        camp_name, sim_camp_population)
-    )
+    if cores > 1:
+        env.flee_mode = "parallel"
+    else:
+        env.flee_mode = "serial"
+    # set env flag to clear the previous execution folder in case of exists
+    env.prevent_results_overwrite = "delete"
+    with_config(config)
 
-    # calculate camp capacity
-    df = pd.read_csv(
-        os.path.join(
-            env.local_results, output_dir, "input_csv", "locations.csv"
-        )
+    ###########################################################################
+    # MOO_setting.yaml contains the required setting for executing MOO code,  #
+    # so, to be available on the remote machine, we temporally copy           #
+    # MOO_setting.yaml file to the target config folder in                    #
+    # FabFLee/config_files directory.                                         #
+    # later, after execute(put_configs,..), we delete it from config folder   #
+    # --------------                                                          #
+    # Note :                                                                  #
+    #       Hamid: I think this is better solution instead of opening another #
+    #       ssh connection to remote machine for transferring only            #
+    #       a single file                                                     #
+    ###########################################################################
+    copyfile(
+        src=os.path.join(get_plugin_path("FabFlee"), "MOO_setting.yaml"),
+        dst=os.path.join(env.job_config_path_local, "MOO_setting.yaml")
     )
-    camp_population = df[df["#name"] == camp_name]["population"].values[0]
-    print("max camp {} population = {}\n".format(
-        camp_name, camp_population)
-    )
+    execute(put_configs, config)
+    # now, we delete MOO_setting.yaml file from local config folder in
+    # FabFLee/config_files directory
+    os.remove(os.path.join(env.job_config_path_local, "MOO_setting.yaml"))
 
-    # calculate remain camp capacity , obj#3
-    remain_camp_capacity = camp_population - sim_camp_population
-    print("remain camp {} capacity = {}\n".format(
-        camp_name, remain_camp_capacity)
-    )
-
-    # obj#1
-    for filename in agents_out_files:
-        avg_distance_travelled = opt.avg_distance(
-            file_path=filename, camp_name=camp_name
-        )
-        print(
-            "Input file {}\n\tavg distance travelled for agents "
-            "to camp name {} = {}".format(
-                os.path.basename(filename),
-                camp_name,
-                avg_distance_travelled
-            )
-        )
+    script = "moo_flee"
+    job(dict(script=script))
 
 
 @task
