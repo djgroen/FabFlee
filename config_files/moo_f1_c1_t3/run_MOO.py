@@ -326,6 +326,15 @@ class FLEE_MOO_Problem(Problem):
             os.chdir(dest_SWEEP_dir)
             MOO_log(msg="execute : {}".format(flee_exec_cmd))
             os.system(flee_exec_cmd)
+
+            # clean the SWEEP dir after simulation finished
+            clean_cmd = "find . -type f ! \( -name 'out.csv' " \
+                "-o -name 'routes.csv' -o -name 'agents.out.*' " \
+                "-o -name 'locations.csv' \) -exec rm -rf {} \; ;" \
+                "rm -rf source_data"
+            os.system(clean_cmd)
+
+            # back to root simulation job dir
             os.chdir(self.work_dir)
 
         # Step 3: Calculate objective values
@@ -383,7 +392,7 @@ if __name__ == "__main__":
     execution_mode = args.execution_mode
     simulation_period = args.simulation_period
     cores = args.cores
-    EXEC_LOG_FILE = args.exec_log_file
+    EXEC_LOG_FILE = os.path.join(work_dir, args.exec_log_file)
 
     MOO_log(msg="run_MOO input args : {}".format(args))
 
