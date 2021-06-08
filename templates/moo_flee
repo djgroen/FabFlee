@@ -26,7 +26,7 @@ if python -c 'import pkgutil; exit(not pkgutil.find_loader("pymoo"))'; then
     echo "pymoo found" >> $$EXEC_LOG_FILE
 else
     echo "pandas not found" >> $$EXEC_LOG_FILE
-    pip install --user pymoo
+    pip3 install --user pymoo
 fi
 
 ###################
@@ -38,8 +38,5 @@ fi
 mkdir SWEEP
 
 
-
-
 python run_MOO.py --execution_mode=$flee_mode --simulation_period=$simulation_period --exec_log_file=$$EXEC_LOG_FILE --cores=$cores
-
 
