@@ -25,9 +25,18 @@ echo "Start FLEE MOO execution at: " $$NOW > $$EXEC_LOG_FILE
 if python -c 'import pkgutil; exit(not pkgutil.find_loader("pymoo"))'; then
     echo "pymoo found" >> $$EXEC_LOG_FILE
 else
-    echo "pandas not found" >> $$EXEC_LOG_FILE
+    echo "pymoo not found" >> $$EXEC_LOG_FILE
     pip3 install --user pymoo
 fi
+
+# in some cases, yaml package is not installed by default
+if python -c 'import pkgutil; exit(not pkgutil.find_loader("yaml"))'; then
+    echo "pyyaml found" >> $$EXEC_LOG_FILE
+else
+    echo "pyyaml not found" >> $$EXEC_LOG_FILE
+    pip3 install --user pyyaml
+fi
+
 
 ###################
 # clear SWEEP dir #
