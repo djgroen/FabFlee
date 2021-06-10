@@ -312,7 +312,7 @@ class FLEE_MOO_Problem(Problem):
                         self.simulation_period)
             elif self.execution_mode.lower() == "parallel":
                 flee_exec_cmd = "mpirun -np {} " \
-                    "python3 run.py input_csv source_data " \
+                    "python3 run_par.py input_csv source_data " \
                     "{} simsetting.csv > out.csv".format(
                         self.cores,
                         self.simulation_period)
