@@ -70,17 +70,20 @@ class FLEE_MOO_Problem(Problem):
         self.simulation_period = simulation_period
         self.cores = cores
 
-    def avg_distance(self, file_path, camp_name):
-        df = pd.read_csv(file_path)
+    def avg_distance(self, agents_out_files, camp_name):
+
+        df_array = [pd.read_csv(filename, index_col=None, header=0)
+                    for filename in agents_out_files]
+
+        df = pd.concat(df_array, axis=0, ignore_index=True)
+
         # filter rwos for agent location == camp_name
         df = df[(df["agent location"] == camp_name) &
                 (df["distance_moved_this_timestep"] > 0)
                 ]
-        df.to_csv(
-            os.path.join(os.path.dirname(file_path),
-                         "df_{}.csv".format(os.path.basename(
-                             file_path).replace(".", "_"))
-                         ),
+
+        df.to_csv(os.path.join(
+            os.path.dirname(agents_out_files[0]), "df_agents.out.csv"),
             sep=",",
             mode="w",
             index=False,
@@ -200,19 +203,18 @@ class FLEE_MOO_Problem(Problem):
         )
 
         # obj#1
-        for filename in agents_out_files:
-            avg_distance_travelled = self.avg_distance(
-                file_path=filename, camp_name=camp_name
+        avg_distance_travelled = self.avg_distance(
+            agents_out_files=agents_out_files, camp_name=camp_name
+        )
+        MOO_log(
+            msg="\tInput file : {}"
+            "\n\t\tavg distance travelled for agents "
+            "to camp name {} = {}".format(
+                [os.path.basename(filename) for filename in agents_out_files],
+                camp_name,
+                avg_distance_travelled
             )
-            MOO_log(
-                msg="\tInput file {}"
-                    "\n\t\tavg distance travelled for agents "
-                    "to camp name {} = {}".format(
-                        os.path.basename(filename),
-                        camp_name,
-                        avg_distance_travelled
-                    )
-            )
+        )
 
         # calculate camp capacity , obj#2
         df = pd.read_csv(os.path.join(run_dir, "input_csv", "locations.csv"))
