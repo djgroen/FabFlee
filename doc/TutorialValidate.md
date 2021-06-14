@@ -15,22 +15,22 @@ To showcase on migration simulations, we use `validate_flee_output` function in 
     ```
     In `(FabSim3 Home)/results`, an output directory for a conflict scenario should be present from previous executions, which is most likely called `<conflict name>_localhost_16` or `<conflict name>_<remote machine name>_<number>` (e.g. mali_localhost_16 or mali_eagle_vecma_4). This conflict output directory should have multiple run directories in `RUNS`, as `Run_1`, `Run_2` and so on.
     
-2.  To run validation on these output directories of a single conflict with multiple instances, simply go to the FabFlee directory and run
+2.  To run validation on these output directories of a single conflict with multiple instances, simply run
     ```
-    fab localhost validate_flee_output:<conflict name>_localhost_16 
+    fab localhost validate_flee:<conflict name>,replicas 
     ```    
-    or
+    or you can choose to run Flee yourself, and then use the following command:
     ```
-    fab <remote machine name> validate_flee_output:<conflict name>_<remote machine name>_<number> 
+    fab <remote machine name> validate_flee_output:<output_directory_name, e.g. syria2013_localhost_16> 
     ```
     
-    For instance, to validate the Mali conflict instance, simply type
+    For instance, to validate the output of runs using the Mali conflict instance, simply type
     ```
     fab localhost validate_flee_output:mali_localhost_16
     ```
     or
     ```
-    fab eagle_vecma validate_flee_output:mali_eagle_vecme_4 
+    fab eagle_vecma validate_flee_output:mali_eagle_vecma_4 
     ```
 
 ## Ensemble Validation of a single conflict instance with replicas
@@ -38,7 +38,7 @@ To showcase on migration simulations, we use `validate_flee_output` function in 
     ```
     fabsim localhost flee:<conflict_name>,simulation_period=<number>,replicas=<number>
     ```
-    or 
+    or if you use a remote resource:
     ```
     fabsim <remote machine name> flee:<conflict_name>,simulation_period=<number>,replicas=<number>
     ```
@@ -46,22 +46,17 @@ To showcase on migration simulations, we use `validate_flee_output` function in 
     
     For instance, there are `mali_localhost_16_replica_1` and `mali_localhost_16_replica_2` output directories, which are placed inside `mali/RUNS` for ensemble validation.      
     
-2. To run validation on these output directories of a single instance with replica instances, simply go to the FabFlee directory and run
+2. To run validation on these output directories of a single instance with replica instances, simply run
     ```
-    fab localhost validate_flee_output:<conflict name>
-    ```    
-    or
+    fab localhost validate_flee_output:<base_results_directory_name, e.g. syria2013_eagle_16>
     ```
-    fab <remote machine name> validate_flee_output:<conflict name>
-    ```
+
     
-    For instance, to validate the Mali conflict instance, simply type
+    For instance, to validate the Mali conflict instance run on the localhost using 4 cores, simply type
     ```
-    fab localhost validate_flee_output:mali
+    fab localhost validate_flee_output:mali_localhost_4
     ```
-    or
-    ```
-    fab eagle_vecma validate_flee_output:mali
+
     
 ## Ensemble Validation of multiple conflict instances
 
@@ -74,15 +69,15 @@ To showcase on migration simulations, we use `validate_flee_output` function in 
     
 2.  To run validation on these output directories of multiple conflict instances, simply go to the FabFlee directory and run
     ```
-    fab localhost validate_flee_output:validation_localhost_16 
+    fab localhost validate_flee
     ```
     or
     ```
-    fab <remote machine name> validate_flee_output:validation_<remote machine name>_<number> 
+    fab <remote machine name> validate_flee
     ```
     
     For instance, to validate multiple conflict instances in the validation directory. simply execute
     ```
-    fab eagle_vecma validate_flee_output:validation_eagle_vecme_4 
+    fab eagle_vecma validate_flee
     ```
 
