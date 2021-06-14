@@ -7,6 +7,7 @@ import pandas as pd
 import csv
 import random
 import glob
+from statistics import mean
 from pprint import pprint, pformat
 
 
@@ -192,7 +193,12 @@ class FLEE_MOO_Problem(Problem):
         # calculate Camp population
         df = pd.read_csv(os.path.join(run_dir, "out.csv"))
 
-        sim_camp_population = df["{} sim".format(camp_name)].iloc[-1]
+        sim_camp_population_last_day = df["{} sim".format(camp_name)].iloc[-1]
+        sim_camp_population = df["{} sim".format(camp_name)].tolist()
+
+        MOO_log(msg="\tsim camp {} population of the last day = {}".format(
+            camp_name, sim_camp_population_last_day)
+        )
         MOO_log(msg="\tsim camp {} population = {}".format(
             camp_name, sim_camp_population)
         )
@@ -223,14 +229,16 @@ class FLEE_MOO_Problem(Problem):
             camp_name, camp_population)
         )
 
-        # calculate remain camp capacity , obj#3
-        remain_camp_capacity = camp_population - sim_camp_population
+        # calculate average remain camp capacity over simulation days, obj#3
+        remain_camp_capacity = mean(
+            [camp_population - i for i in sim_camp_population]
+        )
         MOO_log(msg="\tremain camp {} capacity = {}".format(
             camp_name, remain_camp_capacity)
         )
 
         # return values  [obj#1, obj#2, obj#3]
-        return [avg_distance_travelled, sim_camp_population,
+        return [avg_distance_travelled, sim_camp_population_last_day,
                 remain_camp_capacity]
 
     def _evaluate(self, population, out, *args, **kwargs):
