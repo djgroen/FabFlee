@@ -1,16 +1,19 @@
-Ensemble Output Validation of Multiscale Migration Prediction
+Ensemble Output Validation (VVP3) of Multiscale Migration Prediction Simulations
 ======
 
-This tutorial explains a validation pattern, namely ensemble output validation, given an ensemble of output directories. 
-It has a sample testing function on each directory, and prints the outputs to screen, and uses an aggregation function to combine all outputs into a compound metric.
+In this tutorial we showcase the ensemble output validation pattern, or VVP3. VVP3 is a pattern that allows users to execute multiple simulations, and perform a streamlined validation procedure across the results of all these simulations.
 
-To showcase on migration simulations, we use `validate_flee_output` function in FabFlee for a single conflict instance or various conflict instances with replica or ensemble runs.
+Our VVP3 implementation applies a sample testing function on each directory, and prints the outputs to screen. It then uses an aggregation function to combine all outputs into a compound metric.
+
+As an example application of VVP3, we developed a `validate_flee` and a `validate_flee_output` function in FabFlee, which apply the VVP to sets of forced migration simulaitons. The VVP can be applied to one or more simulations, and supports the use of a single input configuration (or conflict situation in the context of these models), as well as a range of different input configurations.
 
 Throughout the tutorial we use the `fab` command, but it is also possible to use the `fabsim` command if you have set your paths correctly. The latter command will give clearer error reporting when you mistype your instruction.
 
 ## Ensemble Validation of a single conflict with multiple instances
 
-1.  To execute multiple instances of a single conflict scenario, simply run the `flee_ensemble` function as follows  
+In this first step, we will demonstrate the use of VVP3 with a forecast simulation of a conflict in Ethiopia. In the `config_files/ethiopia` directory we created an ensemble of configurations, where each configuration differs in the way that the conflict (hypothetically) progresses. All these configurations can be found in `config_files/ethiopia/SWEEP`.
+
+1.  In general, to execute multiple instances of a single conflict scenario, you'll need to run the `flee_ensemble` function as follows:  
     ```
     fab localhost flee_ensemble:<conflict_name>,simulation_period=<number>
     ```
@@ -18,9 +21,9 @@ Throughout the tutorial we use the `fab` command, but it is also possible to use
     ```
     fab <remote machine name> flee_ensemble:<conflict_name>,simulation_period=<number>
     ```
-    > NOTE : A conflict scenario in the `config_files` should contain `SWEEP` directory with other instances for execution. 
+    > NOTE : Any conflict scenario in the `config_files` run with `flee_ensemble` should contain a `SWEEP` directory with different configurations for each instance. 
 
-    For instance, to execute ensemble simulations for the Ethiopia conflict, simply type
+    For instance, to execute ensemble simulations for the Ethiopia conflict, simply type:
     ```
     fab localhost flee_ensemble:ethiopia,simulation_period=147
     ```
@@ -29,18 +32,18 @@ Throughout the tutorial we use the `fab` command, but it is also possible to use
     fab eagle_vecma flee_ensemble:ethiopia,simulation_period=147
     ```
     
-2.  Copy back any results from completed runs using:
+2.  You can then copy back any results from completed runs using:
     ```
     fab localhost fetch_results
     ```
-    To check the executed output directory, simply run
+    To check the executed output directory, simply run:
     ```
     cd (FabSim3 Home)/results
     ls
     ```
     In `(FabSim3 Home)/results`, an output directory for a conflict scenario should be present from previous execution, which is most likely called `<conflict name>_localhost_16` or `<conflict name>_<remote machine name>_<number>` (e.g. ethiopia_localhost_16 or ethiopia_eagle_vecma_4). This conflict output directory should have multiple run directories in `RUNS`. 
 
-3.  To run validation on these output directories of a single conflict with multiple instances, simply go to the FabFlee directory and run
+3.  To run validation on these output directories of a single conflict with multiple instances, simply go to the FabFlee directory and run:
     ```
     fab localhost validate_flee_output:<conflict name>_localhost_16 
     ```    
@@ -49,7 +52,7 @@ Throughout the tutorial we use the `fab` command, but it is also possible to use
     fab <remote machine name> validate_flee_output:<conflict name>_<remote machine name>_<number of cores used> 
     ```
     
-    For instance, to validate the Ethiopia conflict instance, simply type
+    For instance, to validate the Ethiopia conflict instance, simply type:
     ```
     fab localhost validate_flee_output:ethiopia_localhost_16
     ```
@@ -73,7 +76,7 @@ Throughout the tutorial we use the `fab` command, but it is also possible to use
     ```
     fab <remote machine name> flee:<conflict_name>,simulation_period=<number>,replicas=<number>
     ```
-    For instance, to execute replica simulations for the Mali conflict, simply type
+    For instance, to execute replica simulations for the Mali conflict, simply type:
     ```
     fab localhost flee:mali,simulation_period=300,replicas=2
     ```
