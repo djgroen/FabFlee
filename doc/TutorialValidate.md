@@ -6,15 +6,17 @@ It has a sample testing function on each directory, and prints the outputs to sc
 
 To showcase on migration simulations, we use `validate_flee_output` function in FabFlee for a single conflict instance or various conflict instances with replica or ensemble runs.
 
+Throughout the tutorial we use the `fab` command, but it is also possible to use the `fabsim` command if you have set your paths correctly. The latter command will give clearer error reporting when you mistype your instruction.
+
 ## Ensemble Validation of a single conflict with multiple instances
 
 1.  To execute multiple instances of a single conflict scenario, simply run the `flee_ensemble` function as follows  
     ```
-    fabsim localhost flee_ensemble:<conflict_name>,simulation_period=<number>
+    fab localhost flee_ensemble:<conflict_name>,simulation_period=<number>
     ```
     or 
     ```
-    fabsim <remote machine name> flee_ensemble:<conflict_name>,simulation_period=<number>
+    fab <remote machine name> flee_ensemble:<conflict_name>,simulation_period=<number>
     ```
     > NOTE : A conflict scenario in the `config_files` should contain `SWEEP` directory with other instances for execution. 
 
@@ -29,7 +31,7 @@ To showcase on migration simulations, we use `validate_flee_output` function in 
     
 2.  Copy back any results from completed runs using:
     ```
-    fabsim localhost fetch_results
+    fab localhost fetch_results
     ```
     To check the executed output directory, simply run
     ```
@@ -60,11 +62,11 @@ To showcase on migration simulations, we use `validate_flee_output` function in 
 
 1.  To account for stochastic effects in the model, run simulations by specifying multiple replicas:
     ```
-    fabsim localhost flee:<conflict_name>,simulation_period=<number>,replicas=<number>
+    fab localhost flee:<conflict_name>,simulation_period=<number>,replicas=<number>
     ```
     or 
     ```
-    fabsim <remote machine name> flee:<conflict_name>,simulation_period=<number>,replicas=<number>
+    fab <remote machine name> flee:<conflict_name>,simulation_period=<number>,replicas=<number>
     ```
     For instance, to execute replica simulations for the Mali conflict, simply type
     ```
@@ -77,7 +79,7 @@ To showcase on migration simulations, we use `validate_flee_output` function in 
     
 2.  Copy back any results from completed runs using:
     ```
-    fabsim localhost fetch_results
+    fab localhost fetch_results
     ```
     It will copy output directory of a conflict instance with multiple replicas to `(FabSim3 Home)/results`, which are most likely called `<conflict name>_localhost_16_replica_<number>` or `<conflict name>_<remote machine name>_<number>_replica_<number>` (e.g. `mali_localhost_16_replica_1` or `mali_eagle_vecma_4_replica_2`). 
     
@@ -106,11 +108,11 @@ To showcase on migration simulations, we use `validate_flee_output` function in 
 
 To execute multiple conflict scenarios, simply run the `validate_flee` function as follows  
 ```
-fabsim localhost validate_flee
+fab localhost validate_flee
 ```
 or 
 ```
-fabsim <remote machine name> validate_flee
+fab <remote machine name> validate_flee
 ```
 which executes multiple simulations in `FabFlee/config_files/validation/SWEEP` containing `burundi2015`, `car2013` and other conflict instances.
     
