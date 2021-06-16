@@ -60,6 +60,8 @@ Throughout the tutorial we use the `fab` command, but it is also possible to use
     
     You should then see output similar to the picture below:
     !["Example output"](vvp3-example.png)
+    
+    Here, the mean score indicates the averaged relative difference between the camp arrival numbers in the simulation versus those observed by UNHCR. The average is performed across all simulations in the ensemble. A value of 1.0 indicates that the forecast is 50% wrong, while a value of 0.0 indicates that the forecast is entirely correct.
 
 ## Ensemble Validation of a single conflict instance with replicas
 
