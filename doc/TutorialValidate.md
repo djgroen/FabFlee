@@ -68,7 +68,9 @@ In this first step, we will demonstrate the use of VVP3 with a forecast simulati
 
 ## Ensemble Validation of a single conflict instance with replicas
 
-1.  To account for stochastic effects in the model, run simulations by specifying multiple replicas:
+Like many other simulation codes out there, Flee is a non-deterministic code which means that results can vary from run to run. To help account for the uncertainty introduced by non-deterministic elements in the code, we can runs multiple identical copies (or *replicas*) of each individual simulation in our ensemble. Doing so is fairly straightforward, and you can do it as follows:
+
+1.  To run simulations by specifying multiple replicas, you can use a function in this format:
     ```
     fab localhost flee:<conflict_name>,simulation_period=<number>,replicas=<number>
     ```
@@ -76,7 +78,7 @@ In this first step, we will demonstrate the use of VVP3 with a forecast simulati
     ```
     fab <remote machine name> flee:<conflict_name>,simulation_period=<number>,replicas=<number>
     ```
-    For instance, to execute replica simulations for the Mali conflict, simply type:
+    For instance, to execute an ensemble simulations for the Mali conflict with two replicase, you can type:
     ```
     fab localhost flee:mali,simulation_period=300,replicas=2
     ```
@@ -85,13 +87,13 @@ In this first step, we will demonstrate the use of VVP3 with a forecast simulati
     fab eagle_vecma flee:mali,simulation_period=300,replicas=2
     ```
     
-2.  Copy back any results from completed runs using:
+2.  Next, copy back any results from completed runs using:
     ```
     fab localhost fetch_results
     ```
-    It will copy output directory of a conflict instance with multiple replicas to `(FabSim3 Home)/results`, which are most likely called `<conflict name>_localhost_16_replica_<number>` or `<conflict name>_<remote machine name>_<number>_replica_<number>` (e.g. `mali_localhost_16_replica_1` or `mali_eagle_vecma_4_replica_2`). 
+    This will copy the output directory of a conflict instance with multiple replicas to `(FabSim3 Home)/results`, which are most likely called `<conflict name>_localhost_16_replica_<number>` or `<conflict name>_<remote machine name>_<number>_replica_<number>` (e.g. `mali_localhost_16_replica_1` or `mali_eagle_vecma_4_replica_2`). 
     
-3.  To run ensemble validation for these replica instances, make directory with subdirectory `<conflict_name>/RUNS` in `(FabSim3 Home)/results` and place replica runs inside. This will provide average over all those replicas for each conflict instance. 
+3.  To run an ensemble validation for these replica instances, make a directory with subdirectory `<conflict_name>/RUNS` in `(FabSim3 Home)/results` and place replica runs inside. This will provide average over all those replicas for each conflict instance. 
     
     For instance, there are `mali_localhost_16_replica_1` and `mali_localhost_16_replica_2` output directories, which are placed inside `mali/RUNS` for ensemble validation.      
     
