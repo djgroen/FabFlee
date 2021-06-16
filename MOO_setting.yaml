@@ -3,10 +3,9 @@
 # list of available algorithms :
 # - https://github.com/msu-coinlab/pymoo/tree/master/pymoo/algorithms
 # - https://www.pymoo.org/algorithms/index.html
-alg_name: "NSGA2"
-
-#  algorithm input arguments
-pop_size: 4
+# NOTE : implemented algorithms are:
+# ["NSGA2", "NSGA3", "MOEAD"]
+alg_name: "NSGA3"
 
 # sampling function
 # - https://pymoo.org/operators/index.html#Sampling
@@ -28,6 +27,32 @@ mutation_func: "real_pm"
 mutation_func_args:
   real_pm:
     eta: 20
+
+
+# the reference directions functions and their inputs.
+ref_dir_func:
+  das-dennis:
+    n_partitions: 12
+
+  energy:
+    n_points: 100
+    seed: 1
+
+# specific algorithm input arguments
+alg_specific_args:
+  NSGA2:
+    pop_size: 4
+  MOEAD:
+    ref_dir_name: "das-dennis"
+    n_neighbors: 20
+    decomposition: "tchebi"
+    prob_neighbor_mating: 0.9
+    pop_size: 4
+  NSGA3:
+    ref_dir_name: "energy"
+    pop_size: 4
+
+
 
 
 # Minimize input arguments

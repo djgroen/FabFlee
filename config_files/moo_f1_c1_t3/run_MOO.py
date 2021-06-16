@@ -13,7 +13,10 @@ from pprint import pprint, pformat
 
 from pymoo.util.misc import stack
 from pymoo.algorithms.nsga2 import NSGA2
-from pymoo.factory import get_sampling, get_crossover, get_mutation
+from pymoo.algorithms.nsga3 import NSGA3
+from pymoo.algorithms.moead import MOEAD
+from pymoo.factory import get_sampling, get_crossover, get_mutation, \
+    get_problem, get_reference_directions
 from pymoo.optimize import minimize
 from pymoo.visualization.scatter import Scatter
 from pymoo.model.problem import Problem
@@ -410,19 +413,135 @@ if __name__ == "__main__":
     MOO_CONFIG = read_MOO_setting_yaml()
     MOO_log(msg="MOO_CONFIG =\n{}".format(pformat(MOO_CONFIG)))
 
+    problem = FLEE_MOO_Problem(
+        execution_mode=execution_mode,
+        simulation_period=simulation_period,
+        cores=cores,
+    )
+
     algorithm = None
 
-    if MOO_CONFIG["alg_name"] == "NSGA2":
-        crossover_func = MOO_CONFIG["crossover_func"]
-        crossover_func_args = MOO_CONFIG["crossover_func_args"][crossover_func]
-        mutation_func = MOO_CONFIG["mutation_func"]
-        mutation_func_args = MOO_CONFIG["mutation_func_args"][mutation_func]
+    alg_name = MOO_CONFIG["alg_name"]
+
+    crossover_func = MOO_CONFIG["crossover_func"]
+    crossover_func_args = MOO_CONFIG["crossover_func_args"][crossover_func]
+
+    mutation_func = MOO_CONFIG["mutation_func"]
+    mutation_func_args = MOO_CONFIG["mutation_func_args"][mutation_func]
+
+    alg_specific_args = MOO_CONFIG["alg_specific_args"][alg_name]
+
+    try:
+        ref_dir_func = alg_specific_args["ref_dir_name"]
+        ref_dir_func_args = MOO_CONFIG["ref_dir_func"][ref_dir_func]
+        ref_dir_func_args.update({"n_dim": problem.n_obj})
+    except KeyError as e:
+        # DO NOT raise any Exception if the alg_name does not require
+        # any input reference direction function
+        pass
+    except Exception as e:
+        print(e)
+        sys.exit()
+
+    if alg_name == "NSGA2":
+        sampling_func = MOO_CONFIG["sampling_func"]
+        pop_size = alg_specific_args["pop_size"]
+        #################
+        # set algorithm #
+        #################
         algorithm = NSGA2(
-            pop_size=MOO_CONFIG["pop_size"],
-            sampling=get_sampling(MOO_CONFIG["sampling_func"]),
+            pop_size=pop_size,
+            sampling=get_sampling(sampling_func),
             crossover=get_crossover(crossover_func, **crossover_func_args),
             mutation=get_mutation(mutation_func, **mutation_func_args),
             eliminate_duplicates=True
+        )
+        #####################
+        # algorithm logging #
+        #####################
+        MOO_log(
+            msg="algorithm = {}(\n"
+            "pop_size={},\n"
+            "sampling=get_sampling({}),\n"
+            "crossover=get_crossover({},{}),\n"
+            "mutation=get_mutation({},{}),\n"
+            "eliminate_duplicates=True\n"
+            ")".format(
+                alg_name,
+                pop_size,
+                sampling_func,
+                crossover_func, crossover_func_args,
+                mutation_func, mutation_func_args,
+            )
+        )
+
+    elif alg_name == "MOEAD":
+        alg_specific_args = MOO_CONFIG["alg_specific_args"]["MOEAD"]
+        n_neighbors = alg_specific_args["n_neighbors"]
+        decomposition = alg_specific_args["decomposition"]
+        prob_neighbor_mating = alg_specific_args["prob_neighbor_mating"]
+        #################
+        # set algorithm #
+        #################
+        algorithm = MOEAD(
+            ref_dirs=get_reference_directions(ref_dir_func,
+                                              **ref_dir_func_args),
+            n_neighbors=n_neighbors,
+            decomposition=decomposition,
+            prob_neighbor_mating=prob_neighbor_mating,
+            crossover=get_crossover(crossover_func, **crossover_func_args),
+            mutation=get_mutation(mutation_func, **mutation_func_args),
+        )
+        #####################
+        # algorithm logging #
+        #####################
+        MOO_log(
+            msg="algorithm = {}(\n"
+            "ref_dirs = get_reference_directions({},{}),\n"
+            "n_neighbors = {}\n"
+            "decomposition = {}\n"
+            "prob_neighbor_mating = {}\n"
+            "crossover=get_crossover({},{}),\n"
+            "mutation=get_mutation({},{}),\n"
+            ")".format(
+                alg_name,
+                ref_dir_func, ref_dir_func_args,
+                n_neighbors,
+                decomposition,
+                prob_neighbor_mating,
+                crossover_func, crossover_func_args,
+                mutation_func, mutation_func_args,
+            )
+        )
+
+    elif alg_name == "NSGA3":
+        pop_size = alg_specific_args["pop_size"]
+        #################
+        # set algorithm #
+        #################
+        algorithm = NSGA3(
+            pop_size=pop_size,
+            ref_dirs=get_reference_directions(ref_dir_func,
+                                              **ref_dir_func_args),
+            crossover=get_crossover(crossover_func, **crossover_func_args),
+            mutation=get_mutation(mutation_func, **mutation_func_args),
+        )
+        #####################
+        # algorithm logging #
+        #####################
+        MOO_log(
+            msg="algorithm = {}(\n"
+            "pop_size = {}\n`"
+            "ref_dirs = get_reference_directions({},{}),\n"
+            "crossover=get_crossover({},{}),\n"
+            "mutation=get_mutation({},{}),\n"
+            ")".format(
+                alg_name,
+                pop_size,
+                ref_dir_func, ref_dir_func_args,
+                crossover_func, crossover_func_args,
+                mutation_func, mutation_func_args,
+            )
         )
 
     if algorithm is None:
@@ -435,12 +554,6 @@ if __name__ == "__main__":
     # convert dict {'n_gen': 2}} to tuple ('n_gen', 2)
     termination = list(MOO_CONFIG["termination"].items())[0]
     MOO_log(msg="termination = {}".format(termination))
-
-    problem = FLEE_MOO_Problem(
-        execution_mode=execution_mode,
-        simulation_period=simulation_period,
-        cores=cores,
-    )
 
     res = minimize(
         problem=problem,

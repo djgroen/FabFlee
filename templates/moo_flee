@@ -47,5 +47,5 @@ fi
 mkdir SWEEP
 
 
-python3 run_MOO.py --execution_mode=$flee_mode --simulation_period=$simulation_period --exec_log_file=$$EXEC_LOG_FILE --cores=$cores
+python3 run_MOO.py --execution_mode=$flee_mode --simulation_period=$simulation_period --exec_log_file=$$EXEC_LOG_FILE --cores=$cores 2>&1 | tee execution_log.txt
 
