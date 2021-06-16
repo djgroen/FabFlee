@@ -57,6 +57,9 @@ Throughout the tutorial we use the `fab` command, but it is also possible to use
     ```
     fab eagle_vecma validate_flee_output:ethiopia_eagle_vecma_4 
     ```
+    
+    You should then see output similar to the picture below:
+    !["Example output"](vvp3-example.png)
 
 ## Ensemble Validation of a single conflict instance with replicas
 
