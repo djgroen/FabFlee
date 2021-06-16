@@ -44,7 +44,7 @@ To showcase on migration simulations, we use `validate_flee_output` function in 
     ```    
     or
     ```
-    fab <remote machine name> validate_flee_output:<conflict name>_<remote machine name>_<number> 
+    fab <remote machine name> validate_flee_output:<conflict name>_<remote machine name>_<number of cores used> 
     ```
     
     For instance, to validate the Ethiopia conflict instance, simply type
@@ -53,7 +53,7 @@ To showcase on migration simulations, we use `validate_flee_output` function in 
     ```
     or
     ```
-    fab eagle_vecma validate_flee_output:ethiopia_eagle_vecme_4 
+    fab eagle_vecma validate_flee_output:ethiopia_eagle_vecma_4 
     ```
 
 ## Ensemble Validation of a single conflict instance with replicas
