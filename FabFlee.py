@@ -10,7 +10,7 @@ try:
     from fabsim.base.fab import *
 except ImportError:
     from base.fab import *
-    
+
 # Import V&V primitives.
 try:
     import fabsim.VVP.vvp as vvp
@@ -356,22 +356,37 @@ def plot_output(output_dir="", graphs_dir=""):
              env.local_results, output_dir, graphs_dir))
     '''
 
+
 @task
 @load_plugin_env_vars("FabFlee")
 # Syntax: fab localhost
 # plot_forecast:flee_conflict_name_localhost_16(,graphs_dir_name)
-def plot_forecast(output_dir="", graphs_dir="", region_names=""):
+def plot_forecast(output_dir="", region_names=""):
     """ Plot generated output results using plot-flee-forecast.py. """
-    local("mkdir -p %s/%s/%s" % (env.local_results, output_dir, graphs_dir))
     # import plot_flee_forecast.py from env.flee_location
     # when we have pip flee installation option, this part should be changed
     for p in env.flee_location.split(":"):
         sys.path.insert(0, p)
     from flee.postprocessing.plot_flee_forecast import plot_flee_forecast
-    region_names = region_names.split(';')    
+
+    region_names = []
+    if len(region_names) > 0:
+        region_names = region_names.split(';')
+
+    input_dir = os.path.join(env.local_results, output_dir)
+    if len(region_names) == 0:
+        # find all region names
+        data_dir = os.path.join(input_dir, "RUNS")
+        dir_names = os.listdir(data_dir)
+        for dir_names in os.listdir(data_dir):
+            region_name = dir_names.rsplit('_', 1)[0]
+            if region_name not in region_names:
+                region_names.append(region_name)
+        region_names.sort()
+
     plot_flee_forecast(
-        input_dir = os.path.join(env.local_results, output_dir),
-        region_names = region_names
+        input_dir=input_dir,
+        region_names=region_names
     )
 
 
