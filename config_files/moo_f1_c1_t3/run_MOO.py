@@ -225,6 +225,12 @@ class FLEE_MOO_Problem(Problem):
             )
         )
 
+        # clean agents.out files to reduce the disk space usage
+        os.system(
+            "rm {}".format(os.path.join(
+                os.path.dirname(agents_out_files[0]), "agents.out.*"))
+        )
+
         # calculate camp capacity , obj#2
         df = pd.read_csv(os.path.join(run_dir, "input_csv", "locations.csv"))
         camp_population = df[df["#name"] == camp_name]["population"].values[0]
