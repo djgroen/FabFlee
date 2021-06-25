@@ -13,7 +13,10 @@ fi
 python3 run.py input_csv source_data $simulation_period simsetting.csv > out.csv
 
 run_UNHCR_uncertainty="$UNHCR_uncertainty"
-if [[ "$${run_UNHCR_uncertainty,,}" == "true" ]]
+# covert to lowercase
+run_UNHCR_uncertainty=$$(echo "$$run_UNHCR_uncertainty" | tr "[:upper:]" "[:lower:]")
+
+if [ "$$run_UNHCR_uncertainty" = "true" ]
 then
 	python3 run_UNHCR_uncertainty.py input_csv source_data $simulation_period simsetting.csv > out_uncertainty.csv
 fi
