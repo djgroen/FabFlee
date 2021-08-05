@@ -22,7 +22,8 @@ echo "Start FLEE MOO execution at: " $$NOW > $$EXEC_LOG_FILE
 # check if pymoo is installed or not,        #
 # if not, install it with --user flag option #
 ##############################################
-if python -c 'import pkgutil; exit(not pkgutil.find_loader("pymoo"))'; then
+check=$(python -c 'import pkgutil; print(1 if pkgutil.find_loader("pymoo") else 0)')
+if [ $check -eq 1 ]; then
     echo "pymoo found" >> $$EXEC_LOG_FILE
 else
     echo "pymoo not found" >> $$EXEC_LOG_FILE
@@ -30,7 +31,8 @@ else
 fi
 
 # in some cases, yaml package is not installed by default
-if python -c 'import pkgutil; exit(not pkgutil.find_loader("yaml"))'; then
+check=$(python -c 'import pkgutil; print(1 if pkgutil.find_loader("yaml") else 0)')
+if [ $check -eq 1 ]; then
     echo "pyyaml found" >> $$EXEC_LOG_FILE
 else
     echo "pyyaml not found" >> $$EXEC_LOG_FILE
