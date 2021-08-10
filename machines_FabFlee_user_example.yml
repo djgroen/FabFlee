@@ -9,7 +9,8 @@ default:
 # required modules for Flee
 flee_modules: &FLEE_MODULES
   # list of modules to be loaded on remote machine
-  loaded: ["python/3.7.3", "openmpi/4.0.0_gcc620"]
+  # loaded: ["python/3.7.3", "openmpi/4.0.0_gcc620"]
+  loaded: ["python/3.7.10_gcc930"]
   # list of modules to be unloaded on remote machine
   unloaded: ["python"]
 
@@ -59,3 +60,5 @@ eagle_hidalgo:
 
   # required modules for Flee
   modules: *FLEE_MODULES
+
+  py_pkg: ["pymoo", "PyYAML", "pandas"]
