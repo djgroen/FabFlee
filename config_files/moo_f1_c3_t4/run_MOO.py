@@ -402,7 +402,7 @@ class FLEE_MOO_Problem(Problem):
 
         # clean the SWEEP dir after simulation finished
         clean_cmd = "find . -type f ! \( -name 'out.csv' " \
-            "-o -name 'routes.csv' -o -name 'agents.out.*' " \
+            "-o -name 'routes.csv' " \
             "-o -name 'flee_exec_cmd.sh' "\
             "-o -name '*.stdout' "\
             "-o -name '*.stderr' "\
