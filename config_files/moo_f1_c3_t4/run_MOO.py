@@ -229,6 +229,15 @@ class FLEE_MOO_Problem(Problem):
             )
         )
 
+        # clean agents.out files to reduce the disk space usage
+        clean_agents_cmd = "rm {}".format(os.path.join(
+            os.path.dirname(agents_out_files[0]), "agents.out.*"))
+
+        subprocess.check_output(
+            clean_agents_cmd,
+            shell=True,
+        )
+
         # calculate camp capacity , obj#2
         df = pd.read_csv(os.path.join(run_dir, "input_csv", "locations.csv"))
         camp_population = df[df["#name"] == camp_name]["population"].values[0]
@@ -402,7 +411,7 @@ class FLEE_MOO_Problem(Problem):
 
         # clean the SWEEP dir after simulation finished
         clean_cmd = "find . -type f ! \( -name 'out.csv' " \
-            "-o -name 'routes.csv' " \
+            "-o -name 'routes.csv' -o -name 'agents.out.*' " \
             "-o -name 'flee_exec_cmd.sh' "\
             "-o -name '*.stdout' "\
             "-o -name '*.stderr' "\
