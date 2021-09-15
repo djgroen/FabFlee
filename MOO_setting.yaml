@@ -45,7 +45,6 @@ alg_specific_args:
   MOEAD:
     ref_dir_name: "das-dennis"
     n_neighbors: 20
-    decomposition: "tchebi"
     prob_neighbor_mating: 0.9
     pop_size: 4
   NSGA3:

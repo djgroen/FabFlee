@@ -599,7 +599,6 @@ if __name__ == "__main__":
     elif alg_name == "MOEAD":
         alg_specific_args = MOO_CONFIG["alg_specific_args"]["MOEAD"]
         n_neighbors = alg_specific_args["n_neighbors"]
-        decomposition = alg_specific_args["decomposition"]
         prob_neighbor_mating = alg_specific_args["prob_neighbor_mating"]
         #################
         # set algorithm #
@@ -608,7 +607,6 @@ if __name__ == "__main__":
             ref_dirs=get_reference_directions(ref_dir_func,
                                               **ref_dir_func_args),
             n_neighbors=n_neighbors,
-            decomposition=decomposition,
             prob_neighbor_mating=prob_neighbor_mating,
             crossover=get_crossover(crossover_func, **crossover_func_args),
             mutation=get_mutation(mutation_func, **mutation_func_args),
@@ -620,7 +618,6 @@ if __name__ == "__main__":
             msg="algorithm = {}(\n"
             "ref_dirs = get_reference_directions({},{}),\n"
             "n_neighbors = {}\n"
-            "decomposition = {}\n"
             "prob_neighbor_mating = {}\n"
             "crossover=get_crossover({},{}),\n"
             "mutation=get_mutation({},{}),\n"
@@ -628,7 +625,6 @@ if __name__ == "__main__":
                 alg_name,
                 ref_dir_func, ref_dir_func_args,
                 n_neighbors,
-                decomposition,
                 prob_neighbor_mating,
                 crossover_func, crossover_func_args,
                 mutation_func, mutation_func_args,
