@@ -13,10 +13,9 @@ from statistics import mean
 from pprint import pprint, pformat
 
 
-from pymoo.util.misc import stack
-from pymoo.algorithms.nsga2 import NSGA2
-from pymoo.algorithms.nsga3 import NSGA3
-from pymoo.algorithms.moead import MOEAD
+from pymoo.algorithms.moo.nsga2 import NSGA2
+from pymoo.algorithms.moo.nsga3 import NSGA3
+from pymoo.algorithms.moo.moead import MOEAD
 from pymoo.factory import get_sampling, get_crossover, get_mutation, \
     get_problem, get_reference_directions
 from pymoo.optimize import minimize
