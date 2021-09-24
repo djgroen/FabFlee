@@ -1,5 +1,6 @@
 #name1,name2,distance,forced_redirection,link_type
 Akobo,Nahr_Atiem,75,0,walk
+Akobo,Kule,140,0,drive
 Awarajwok,Tonga,5,0,drive
 Awarajwok,Kodok,77,0,drive
 Ayod,Waw,23,0,drive
@@ -47,6 +48,7 @@ Ofyo,Atar,17,0,drive
 Owachi,Awarajwok,15,0,drive
 Padok,Dentoang,81,0,drive
 Pagak,Wanke,5,0,walk
+Pagak,Jewi,120,0,drive
 Pagak,Tierkidi,59,0,drive
 Pagak,Kule,55,0,drive
 Pagak,Nguenyyiel,69,0,drive
@@ -59,11 +61,13 @@ Pentin,Raad,84,0,drive
 Pibor,Pochalla,37,0,drive
 Pieri,Pulchuol,33,0,drive
 Pochalla,Pentin,59,0,drive
+Pugnido,Pugnido_II,5,0,walk
 Pulchuol,Walgak,31,0,walk
 Raad,Okugo,41,0,walk
 Renk,Doro,336,0,drive
 Tierkidi,Nguenyyiel,8,0,drive
 Tierkidi,Kule,11,0,drive
+Tierkidi,Jewi,62,0,drive
 Tonga,Malakal,2,0,crossing
 Walgak,Waat,12,0,drive
 Walgak,Akobo,126,0,drive
@@ -73,3 +77,10 @@ Waw,Kaljak,148,0,drive
 Yuai,Gadiang,59,0,walk
 Yuai,Pieri,30,0,drive
 Yuai,Pulchuol,31,0,drive
+Wanke,Jewi,115,0,drive
+Wanke,Nguenyyiel,64,0,drive
+Pugnido,Jewi,50,0,drive
+Pugnido_II,Jewi,45,0,drive
+Burbiey,Nguenyyiel,100,0,drive
+Pochalla,Jewi,150,0,drive
+Burbiey,Jewi,180,0,drive
