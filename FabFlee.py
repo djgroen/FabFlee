@@ -406,10 +406,10 @@ def cflee(config, coupling_type="file", weather_coupling="False",
             (1) file couping, and (2) muscle3
             acceptable input set : file / muscle3
     Example:
-        fab eagle_vecma cflee:mscalecity,coupling_type=file,
-        weather_coupling=True,num_workers=2,worker_cores=2,TestOnly=True
+        fabsim eagle_hidalgo cflee:ssudan-mscale-test,coupling_type=file,
+        weather_coupling=False,num_workers=2,worker_cores=2,TestOnly=True
 
-        fab eagle_vecma cflee:mscalecity,coupling_type=file,
+        fabsim eagle_hidalgo cflee:ssudan-mscale-test,coupling_type=file,
         weather_coupling=True,num_workers=10,worker_cores=4
 
     """
@@ -422,13 +422,15 @@ def cflee(config, coupling_type="file", weather_coupling="False",
                        )
 
     env.cores = int(num_workers) * int(worker_cores) * 2
-
+    env.py_pkg = ["qcg-pilotjob", "pandas", "seaborn", "matplotlib", "jinja2"]
     if coupling_type == 'file':
         script = 'flee_file_coupling'
         label = 'file_coupling'
     elif coupling_type == 'muscle3':
         script = 'flee_muscle3_coupling'
         label = 'muscle3_coupling'
+        env.py_pkg.append("muscle")
+
     with_config(config)
     execute(put_configs, config)
 
