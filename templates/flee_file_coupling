@@ -17,8 +17,8 @@ mkdir -p log_task
 #-------------------------------------------------------
 #             clean output directory
 #-------------------------------------------------------
-
-if [ "$weather_coupling" = "true" ];
+weather_coupling=$weather_coupling
+if [ "$$weather_coupling" = "true" ];
 then
   rm -rf out/weather/$coupling_type/*
   mkdir -p out/weather/$coupling_type/coupled
