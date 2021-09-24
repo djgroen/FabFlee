@@ -6,26 +6,6 @@ export PYTHONPATH=$flee_location:$$PYTHONPATH
 
 
 #-------------------------------------------------------
-#		Install missing python packages
-#------------------------------------------------------- 
-
-declare -a Pypackage=("qcg" "pandas" "seaborn" "matplotlib")
-declare -a Pippackage=("qcg-pilotjob" "pandas" "seaborn" "matplotlib")
-
-len=$${#Pypackage[@]}
-for (( i=0; i<$${len}; i++ ));
-do
-	Pyname=$${Pypackage[$$i]}
-	Pipcmd=$${Pippackage[$$i]}
-	if python3 -c "import pkgutil; exit(not pkgutil.find_loader('$$Pyname'))"; then
-	    echo $$Pyname' found'
-	else
-	    echo $$Pyname' not found'
-	    pip3 install --user $$Pipcmd
-	fi
-done
-
-#-------------------------------------------------------
 #		to save PJ tasks log outputs
 #------------------------------------------------------- 
 if [ -d log_task ]; then
