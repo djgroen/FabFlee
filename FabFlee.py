@@ -428,13 +428,14 @@ def cflee(config, coupling_type="file", weather_coupling="False",
     env.py_pkg = ["qcg-pilotjob", "pandas", "seaborn", "matplotlib", "jinja2"]
     if coupling_type == 'file':
         script = 'flee_file_coupling'
-        label = 'file_coupling'
     elif coupling_type == 'muscle3':
         env.cores += 2
         script = 'flee_muscle3_coupling'
-        label = 'muscle3_coupling'
         env.py_pkg.append("muscle3")
 
+    label = "coupling_{}_weather_{}".format(
+        coupling_type, weather_coupling.lower()
+    )
     with_config(config)
     execute(put_configs, config)
 
