@@ -409,6 +409,9 @@ def cflee(config, coupling_type="file", weather_coupling="False",
         fabsim eagle_hidalgo cflee:ssudan-mscale-test,coupling_type=file,
         weather_coupling=False,num_workers=2,worker_cores=2,TestOnly=True
 
+        fabsim eagle_hidalgo cflee:ssudan-mscale-test,coupling_type=muscle3,
+        weather_coupling=False,num_workers=2,worker_cores=2,TestOnly=True
+
         fabsim eagle_hidalgo cflee:ssudan-mscale-test,coupling_type=file,
         weather_coupling=True,num_workers=10,worker_cores=4
 
@@ -427,9 +430,10 @@ def cflee(config, coupling_type="file", weather_coupling="False",
         script = 'flee_file_coupling'
         label = 'file_coupling'
     elif coupling_type == 'muscle3':
+        env.cores += 2
         script = 'flee_muscle3_coupling'
         label = 'muscle3_coupling'
-        env.py_pkg.append("muscle")
+        env.py_pkg.append("muscle3")
 
     with_config(config)
     execute(put_configs, config)
