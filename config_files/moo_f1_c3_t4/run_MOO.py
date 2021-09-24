@@ -20,7 +20,7 @@ from pymoo.factory import get_sampling, get_crossover, get_mutation, \
     get_problem, get_reference_directions
 from pymoo.optimize import minimize
 from pymoo.visualization.scatter import Scatter
-from pymoo.model.problem import Problem
+from pymoo.core.problem import Problem
 from pymoo.factory import get_performance_indicator
 
 
