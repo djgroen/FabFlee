@@ -393,7 +393,7 @@ def plot_forecast(output_dir="", region_names=""):
 @task
 @load_plugin_env_vars("FabFlee")
 def cflee(config, coupling_type="file", weather_coupling="False",
-          num_workers="1", worker_cores="1",
+          num_instances="1", instance_cores="1",
           job_wall_time="00:12:00", ** args):
     """ Submit a cflee (coupling flee) job to the remote queue.
     The job results will be stored with a name pattern as defined
@@ -407,30 +407,30 @@ def cflee(config, coupling_type="file", weather_coupling="False",
             acceptable input set : file / muscle3
     Example:
         fabsim eagle_hidalgo cflee:ssudan-mscale-test,coupling_type=file,
-        weather_coupling=False,num_workers=2,worker_cores=2,TestOnly=True
+        weather_coupling=False,num_instances=2,instance_cores=2,TestOnly=True
 
         fabsim eagle_hidalgo cflee:ssudan-mscale-test,coupling_type=muscle3,
-        weather_coupling=False,num_workers=2,worker_cores=2,TestOnly=True
+        weather_coupling=False,num_instances=2,instance_cores=2,TestOnly=True
 
         fabsim eagle_hidalgo cflee:ssudan-mscale-test,coupling_type=file,
-        weather_coupling=True,num_workers=10,worker_cores=4
+        weather_coupling=True,num_instances=10,instance_cores=4
 
     """
-    update_environment(args, {"coupling_type": coupling_type,
+    update_environment(args, {"coupling_type": coupling_type.lower(),
                               "weather_coupling": weather_coupling.lower(),
-                              "num_workers": num_workers,
-                              "worker_cores": worker_cores,
+                              "num_instances": num_instances,
+                              "instance_cores": instance_cores,
                               "job_wall_time": job_wall_time
                               }
                        )
 
-    env.cores = int(num_workers) * int(worker_cores) * 2
+    env.cores = int(num_instances) * int(instance_cores) * 2
     env.py_pkg = ["qcg-pilotjob", "pandas", "seaborn", "matplotlib", "jinja2"]
-    if coupling_type == 'file':
-        script = 'flee_file_coupling'
-    elif coupling_type == 'muscle3':
+    if coupling_type == "file":
+        script = "flee_file_coupling"
+    elif coupling_type == "muscle3":
         env.cores += 2
-        script = 'flee_muscle3_coupling'
+        script = "flee_muscle3_coupling"
         env.py_pkg.append("muscle3")
 
     label = "coupling_{}_weather_{}".format(
@@ -439,7 +439,7 @@ def cflee(config, coupling_type="file", weather_coupling="False",
     with_config(config)
     execute(put_configs, config)
 
-    job(dict(script=script, memory='24G', label=label), args)
+    job(dict(script=script, memory="24G", label=label), args)
 
 
 @task
