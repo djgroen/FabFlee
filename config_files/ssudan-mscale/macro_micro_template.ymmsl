@@ -1,16 +1,16 @@
 ymmsl_version: v0.1
 
 model:
-  name: mscalecity_test
-  compute_elements:
+  name: ssudan-mscale
+  components:
     micro_manager: micro_manager
     macro_manager: macro_manager
     macro:
       implementation: macro
-      multiplicity: NUM_WORKERS
+      multiplicity: NUM_INSTANCES
     micro:
       implementation: micro
-      multiplicity: NUM_WORKERS
+      multiplicity: NUM_INSTANCES
   conduits:
     micro.out : micro_manager.in
     micro_manager.out : macro.in
