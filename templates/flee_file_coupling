@@ -40,6 +40,14 @@ fi
 #		run PJ job
 #------------------------------------------------------- 
 
-python3 PJ.py --COUPLING_TYPE=$coupling_type --WEATHER_COUPLING=$weather_coupling --NUM_WORKERS=$num_workers  --WORKER_CORES=$worker_cores
+start_time="$$(date -u +%s.%N)"
+
+python3 PJ.py --COUPLING_TYPE=$coupling_type --WEATHER_COUPLING=$weather_coupling --NUM_INSTANCES=$num_instances  --INSTANCE_CORES=$instance_cores
+
+
+end_time="$$(date -u +%s.%N)"
+elapsed="$$(bc <<<"$$end_time-$$start_time")"
+
+echo -e "\n\nTotal Executing Time = $$elapsed seconds\n"  > job_execution_time.txt
 
 
