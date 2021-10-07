@@ -23,6 +23,7 @@ from pymoo.visualization.scatter import Scatter
 from pymoo.core.problem import Problem
 from pymoo.factory import get_performance_indicator
 
+from moo_algs.bce_moead import BCEMOEAD
 
 work_dir = os.path.dirname(os.path.abspath(__file__))
 EXEC_LOG_FILE = None
@@ -196,7 +197,7 @@ class FLEE_MOO_Problem(Problem):
                 "run_dir = {} camp_name = {}".format(run_dir, camp_name)
                 )
 
-        # calculate Camp population
+        # calculate camp population, obj#2
         df = pd.read_csv(os.path.join(run_dir, "out.csv"))
 
         sim_camp_population_last_day = df["{} sim".format(camp_name)].iloc[-1]
@@ -237,7 +238,7 @@ class FLEE_MOO_Problem(Problem):
             shell=True,
         )
 
-        # calculate camp capacity , obj#2
+        # calculate camp capacity
         df = pd.read_csv(os.path.join(run_dir, "input_csv", "locations.csv"))
         camp_population = df[df["#name"] == camp_name]["population"].values[0]
         MOO_log(msg="\tmax camp {} population = {}".format(
@@ -490,7 +491,8 @@ class FLEE_MOO_Problem(Problem):
         f2 = -objectives["Objective #2"].values
         MOO_log(msg="\tf2: {}".format(f2))
 
-        # objective 3: minimize camp capacity – camp population.
+        # objective 3: minimize the average remain camp capacity
+        # over simulation days
         f3 = objectives["Objective #3"].values
         MOO_log(msg="\tf3: {}".format(f3))
 
@@ -631,6 +633,40 @@ if __name__ == "__main__":
             )
         )
 
+    elif alg_name == "BCE-MOEA":
+        alg_specific_args = MOO_CONFIG["alg_specific_args"]["BCE-MOEA"]
+        n_neighbors = alg_specific_args["n_neighbors"]
+        prob_neighbor_mating = alg_specific_args["prob_neighbor_mating"]
+        #################
+        # set algorithm #
+        #################
+        algorithm = BCEMOEAD(
+            ref_dirs=get_reference_directions(ref_dir_func,
+                                              **ref_dir_func_args),
+            n_neighbors=n_neighbors,
+            prob_neighbor_mating=prob_neighbor_mating,
+            crossover=get_crossover(crossover_func, **crossover_func_args),
+            mutation=get_mutation(mutation_func, **mutation_func_args),
+        )
+        #####################
+        # algorithm logging #
+        #####################
+        MOO_log(
+            msg="algorithm = {}(\n"
+            "ref_dirs = get_reference_directions({},{}),\n"
+            "n_neighbors = {}\n"
+            "prob_neighbor_mating = {}\n"
+            "crossover=get_crossover({},{}),\n"
+            "mutation=get_mutation({},{}),\n"
+            ")".format(
+                alg_name,
+                ref_dir_func, ref_dir_func_args,
+                n_neighbors,
+                prob_neighbor_mating,
+                crossover_func, crossover_func_args,
+                mutation_func, mutation_func_args,
+            )
+        )
     elif alg_name == "NSGA3":
         pop_size = alg_specific_args["pop_size"]
         #################

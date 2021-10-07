@@ -4,8 +4,8 @@
 # - https://github.com/msu-coinlab/pymoo/tree/master/pymoo/algorithms
 # - https://www.pymoo.org/algorithms/index.html
 # NOTE : implemented algorithms are:
-# ["NSGA2", "NSGA3", "MOEAD"]
-alg_name: "NSGA3"
+# ["NSGA2", "NSGA3", "MOEAD", "BCE-MOEA"]
+alg_name: "BCE-MOEA"
 
 # sampling function
 # - https://pymoo.org/operators/index.html#Sampling
@@ -49,6 +49,11 @@ alg_specific_args:
     pop_size: 4
   NSGA3:
     ref_dir_name: "energy"
+    pop_size: 4
+  BCE-MOEA:
+    ref_dir_name: "das-dennis"
+    n_neighbors: 20
+    prob_neighbor_mating: 0.9
     pop_size: 4
 
 
