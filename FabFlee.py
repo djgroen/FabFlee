@@ -122,27 +122,75 @@ def flee_ensemble(config, simulation_period, script='flee', label="", **args):
     run_ensemble(config, sweep_dir, **args)
 
 
+def load_module_from_path(moduleName, PATH_to_module):
+    import importlib
+
+    try:
+        importlib.import_module(moduleName)
+        print("module {} is already in the PYTHONPATH "
+              "and correctly loaded ".format(moduleName)
+              )
+    except ModuleNotFoundError:
+        # add module PATH to PYTHONPATH
+        sys.path.insert(0, PATH_to_module)
+        try:
+            # check again to see if the input moduleName can be loaded from
+            # PATH_to_module or not
+            importlib.import_module(moduleName)
+            print("module {} loaded correctly form {} ".format(
+                moduleName, env.flare_location)
+            )
+        except ModuleNotFoundError:
+            raise ValueError(
+                "The input PATH = {} for {} is not VALID!".format(
+                    env.flare_location, moduleName)
+            )
+            sys.exit()
+    except Exception as exception:
+        print('Error: ', exception)
+        sys.exit()
+
+
 @task
 @load_plugin_env_vars("FabFlee")
 def flare_local(config, simulation_period, out_dir="", file_suffix=""):
     """
     Run an instance of Flare on the local host.
     """
+    for str_path in sys.path:
+        if "flee" in str_path or "flare" in str_path:
+            print("flare_local : {}".format(str_path))
+    print("\n")
+
+    load_module_from_path(
+        moduleName="flare", PATH_to_module=env.flare_location
+    )
+    load_module_from_path(
+        moduleName="flee", PATH_to_module=env.flee_location
+    )
 
     if len(out_dir) == 0:
-        out_dir = "%s_single" % (config)
+        out_dir = "{}_single".format(config)
 
-    flare_out_dir = "%s/results-flare/%s" % (
-        get_plugin_path("FabFlee"), out_dir)
-    config_dir = "%s/config_files/%s" % (get_plugin_path("FabFlee"), config)
+    flare_out_dir = "{}/results-flare/{}".format(
+        get_plugin_path("FabFlee"), out_dir
+    )
+    config_dir = "{}/config_files/{}".format(
+        get_plugin_path("FabFlee"), config
+    )
 
-    local("mkdir -p %s/input_csv" % flare_out_dir)
+    local("mkdir -p {}/input_csv".format(flare_out_dir))
 
-    local("python3 %s/scripts/run_flare.py %s %s/input_csv "
-          " %s/input_csv/conflicts%s.csv %s" %
-          (get_plugin_path("FabFlee"), simulation_period, config_dir,
-           flare_out_dir, file_suffix, file_suffix)
-          )
+    # load run_flare function from script directory
+    from .scripts.run_flare import run_flare
+
+    run_flare(
+        config_dir="{}/input_csv".format(config_dir),
+        flare_out_dir="{}/input_csv/conflicts{}.csv".format(
+            flare_out_dir, file_suffix),
+        simulation_period=int(simulation_period),
+        file_suffix=file_suffix
+    )
 
 
 @task
@@ -813,26 +861,36 @@ def new_conflict(config, **args):
 # Syntax: fabsim localhost
 # process_acled:country,start_date=dd-mm-yyyy,filter=[earliest,fatalities]
 @task
-def process_acled(country, start_date, filter, admin_level):
+def process_acled(country, start_date, filter_opt, admin_level):
     """
     Process .csv files sourced from acleddata.com to a <locations.csv> format
     Syntax:
         fabsim localhost process_acled:
         country (e.g ssudan, mali),
         start_date - "dd-mm-yyyy (date to calculate conflict_date from),
-        filter:[earliest,fatalities]
+        filter_opt:[earliest,fatalities]
         **earliest keeps the first occurence of each admin2,
         fatalities keeps admin2 with the highest fatalities.
-        admin_level: is how high the admin level you want to apply the filter
-        to i.e location, admin2, admin1
+        admin_level: is how high the admin level you want to apply the
+        filter_opt to i.e location, admin2, admin1
     """
-    local("python3 %s/scripts/acled2locations.py %s %s %s %s %s"
-          % (get_plugin_path("FabFlee"),
-             get_plugin_path("FabFlee"),
-             country,
-             start_date,
-             filter,
-             admin_level))
+    from .scripts.acled2locations import acled2locations
+
+    acled2locations(
+        fab_flee_loc=get_plugin_path("FabFlee"),
+        country=country,
+        start_date=start_date,
+        filter=filter_opt,
+        admin_level=admin_level
+    )
+
+    # local("python3 %s/scripts/acled2locations.py %s %s %s %s %s"
+    #       % (get_plugin_path("FabFlee"),
+    #          get_plugin_path("FabFlee"),
+    #          country,
+    #          start_date,
+    #          filter_opt,
+    #          admin_level))
 
 
 @task
@@ -843,13 +901,23 @@ def extract_conflict_file(config, simulation_period, **args):
     Travels to the input_csv directory of a specific config and extracts
     a conflict progression CSV file from locations.csv.
     """
-    config_dir = "%s/config_files/%s" % (get_plugin_path("FabFlee"), config)
-    local("python3 %s/scripts/location2conflict.py %s \
-            %s/input_csv/locations.csv %s/input_csv/conflicts.csv"
-          % (get_plugin_path("FabFlee"),
-             simulation_period,
-             config_dir,
-             config_dir))
+    # config_dir = "%s/config_files/%s" % (get_plugin_path("FabFlee"), config)
+    # local("python3 %s/scripts/location2conflict.py %s \
+    #         %s/input_csv/locations.csv %s/input_csv/conflicts.csv"
+    #       % (get_plugin_path("FabFlee"),
+    #          simulation_period,
+    #          config_dir,
+    #          config_dir))
+
+    config_dir = os.path.join(
+        get_plugin_path("FabFlee"), "config_files", config
+    )
+    from .scripts.location2conflict import location2conflict
+    location2conflict(
+        simulation_period=simulation_period,
+        input_file=os.path.join(config_dir, "input_csv", "locations.csv"),
+        output_file=os.path.join(config_dir, "input_csv", "conflicts.csv"),
+    )
 
 
 @task
