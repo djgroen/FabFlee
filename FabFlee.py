@@ -157,10 +157,6 @@ def flare_local(config, simulation_period, out_dir="", file_suffix=""):
     """
     Run an instance of Flare on the local host.
     """
-    for str_path in sys.path:
-        if "flee" in str_path or "flare" in str_path:
-            print("flare_local : {}".format(str_path))
-    print("\n")
 
     load_module_from_path(
         moduleName="flare", PATH_to_module=env.flare_location
