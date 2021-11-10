@@ -163,8 +163,7 @@ def flee_analyse_SA(config, sampler_name=None, ** args):
 
     job_folder_name = template(env.job_name_template)
     print("fetching results from remote machine ...")
-    with hide("output", "running", "warnings"), settings(warn_only=True):
-        fetch_results(regex=job_folder_name, files="out.csv")
+    fetch_results(regex=job_folder_name, files="out.csv")
     print("Done\n")
 
     #####################################################
@@ -175,7 +174,6 @@ def flee_analyse_SA(config, sampler_name=None, ** args):
     src = os.path.join(env.local_results, job_folder_name, "RUNS")
     des = campaign.campaign_db.runs_dir()
     print("Syncing output_dir ...")
-    # with hide("output", "running", "warnings"), settings(warn_only=True):
     local(
         "rsync -pthrz "
         "--include='/*/' "
@@ -557,25 +555,23 @@ def backup_campaign_files(campaign_work_dir):
         rmtree(backup_dir)
     os.mkdir(backup_dir)
 
-    with hide("output", "running", "warnings"), settings(warn_only=True):
-        local(
-            "rsync -av -m -v \
+    local(
+        "rsync -av -m -v \
             --include='*.db' \
             --include='*.pickle' \
             --include='*.json' \
             --exclude='*' \
             {}/  {} ".format(campaign_work_dir, backup_dir)
-        )
+    )
 
 
 def load_campaign_files(campaign_work_dir):
     backup_dir = os.path.join(campaign_work_dir, "backup")
-    with hide("output", "running", "warnings"), settings(warn_only=True):
-        local(
-            "rsync -av -m -v \
+    local(
+        "rsync -av -m -v \
             --include='*.db' \
             --include='*.pickle' \
             --include='*.json' \
             --exclude='*' \
             {}/  {} ".format(backup_dir, campaign_work_dir)
-        )
+    )
