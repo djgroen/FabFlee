@@ -4,6 +4,7 @@ export PYTHONPATH=$flee_location:$$PYTHONPATH
 export PATH=~/.local/bin/:$$PATH
 /usr/bin/env > env.log
 
+export FLEE_TYPE_CHECK=$FLEE_TYPE_CHECK
 
 #-------------------------------------------------------
 #             set global variables

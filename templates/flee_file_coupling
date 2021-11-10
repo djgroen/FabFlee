@@ -2,6 +2,8 @@ cd $job_results
 $run_prefix
 export PYTHONPATH=$flee_location:$$PYTHONPATH
 
+export FLEE_TYPE_CHECK=$FLEE_TYPE_CHECK
+
 /usr/bin/env > env.log
 
 

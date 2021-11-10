@@ -1,6 +1,8 @@
 cd $job_results
 $run_prefix
 
+export FLEE_TYPE_CHECK=$FLEE_TYPE_CHECK
+
 if [ -z "$flee_location" ]
 then
 	echo "Please set $$flee_location in your deploy/machines_user.yml file."

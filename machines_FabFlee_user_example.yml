@@ -5,7 +5,7 @@
 # All env variable can be modified here and will overwrite setting in machines.yml and machines_user.yml
 default:
   UNHCR_uncertainty: False
-
+  FLEE_TYPE_CHECK: False
 # required modules for Flee
 flee_modules: &FLEE_MODULES
   # list of modules to be loaded on remote machine
