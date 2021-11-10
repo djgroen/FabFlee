@@ -129,7 +129,7 @@ dmypy.json
 .pyre/
 
 # ignore SWEEP folders
-#**/SWEEP/*
+**/SWEEP/*
 # ignore generated folder by facs_easyvvuq_SCSampler.py
 *_easyvvuq_*/*
 *flee_SA_*/
