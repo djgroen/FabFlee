@@ -910,7 +910,7 @@ def extract_conflict_file(config, simulation_period, **args):
     )
     from .scripts.location2conflict import location2conflict
     location2conflict(
-        simulation_period=simulation_period,
+        simulation_period=int(simulation_period),
         input_file=os.path.join(config_dir, "input_csv", "locations.csv"),
         output_file=os.path.join(config_dir, "input_csv", "conflicts.csv"),
     )
