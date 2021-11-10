@@ -18,7 +18,7 @@ def location2conflict(simulation_period, input_file, output_file):
     output_header_string += "\n"
     file.write(output_header_string)
 
-    for t in range(0, end_time):
+    for t in range(0, simulation_period):
 
         output = "%s" % t
 
