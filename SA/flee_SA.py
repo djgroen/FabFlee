@@ -48,7 +48,9 @@ def flee_init_SA(config, simulation_period=-1, mode="serial",
         "SA",
         "flee_SA_config.yml"
     )
-    SA_campaign_config = load_SA_campaign_config(flee_SA_config_file)
+    SA_campaign_config = load_SA_campaign_config(
+        plugin_name="FabFlee", SA_config_file=flee_SA_config_file
+    )
 
     polynomial_order = SA_campaign_config["polynomial_order"]
     if sampler_name is None:
@@ -63,6 +65,7 @@ def flee_init_SA(config, simulation_period=-1, mode="serial",
     )
 
     runs_dir, campaign_dir = init_SA_campaign(
+        plugin_name="FabFlee",
         campaign_name=campaign_name,
         campaign_config=SA_campaign_config,
         polynomial_order=polynomial_order,
@@ -126,7 +129,9 @@ def flee_analyse_SA(config, sampler_name=None, ** args):
         "SA",
         "flee_SA_config.yml"
     )
-    SA_campaign_config = load_SA_campaign_config(flee_SA_config_file)
+    SA_campaign_config = load_SA_campaign_config(
+        plugin_name="FabFlee", SA_config_file=flee_SA_config_file
+    )
 
     polynomial_order = SA_campaign_config["polynomial_order"]
     if sampler_name is None:
@@ -396,7 +401,7 @@ def flee_analyse_SA(config, sampler_name=None, ** args):
         yaml.dump(yml_results, outfile)
 
 
-def init_SA_campaign(campaign_name, campaign_config,
+def init_SA_campaign(plugin_name, campaign_name, campaign_config,
                      polynomial_order, campaign_work_dir):
 
     ######################################
@@ -410,7 +415,7 @@ def init_SA_campaign(campaign_name, campaign_config,
     # Create an encoder #
     #####################
     encoder = uq.encoders.GenericEncoder(
-        template_fname=os.path.join(get_plugin_path("FabFlee"),
+        template_fname=os.path.join(get_plugin_path(plugin_name),
                                     "templates",
                                     campaign_config["encoder_template_fname"]
                                     ),
@@ -442,7 +447,7 @@ def init_SA_campaign(campaign_name, campaign_config,
     )
 
     ################################
-    # Add the flee-SA-Sampler app #
+    # Add the SA-Sampler app #
     ################################
     campaign.add_app(
         name=campaign_name,
@@ -526,15 +531,15 @@ def init_SA_campaign(campaign_name, campaign_config,
     return runs_dir, campaign_dir
 
 
-def load_SA_campaign_config(flee_SA_config_file):
+def load_SA_campaign_config(plugin_name, SA_config_file):
     SA_campaign_config = yaml.load(
-        open(flee_SA_config_file),
+        open(SA_config_file),
         Loader=yaml.SafeLoader
     )
     #####################################################
     # load parameter space for the easyvvuq sampler app #
     #####################################################
-    sampler_params_json_PATH = os.path.join(get_plugin_path("FabFlee"),
+    sampler_params_json_PATH = os.path.join(get_plugin_path(plugin_name),
                                             "templates",
                                             "params.json"
                                             )
