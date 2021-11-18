@@ -1399,18 +1399,55 @@ def redirect(source, destination):
 
 try:
     from plugins.FabFlee.run_simulation_sets import *
+except:
+    exc_type, exc_value, exc_traceback = sys.exc_info()
+    print("Error: failed to import settings module run_simulation_sets")
+    pprint(exc_type)
+    pprint(exc_value)
+    import traceback
+    traceback.print_tb(exc_traceback)
+    print("The FabFlee run_simulation_sets functionalities are not imported as a result.")
+    pass
 
+try:
     # loads Sensitivity analysis (SA) tasks
     from plugins.FabFlee.SA.flee_SA import flee_init_SA
     from plugins.FabFlee.SA.flee_SA import flee_analyse_SA
+except:
+    exc_type, exc_value, exc_traceback = sys.exc_info()
+    print("Error: failed to import settings module flee_SA")
+    pprint(exc_type)
+    pprint(exc_value)
+    import traceback
+    traceback.print_tb(exc_traceback)
+    print("The FabFlee flee_SA functionalities are not imported as a result.")
+    pass
 
+try:
     # # loads Validation and Verification Patterns (VVP) tasks
     from plugins.FabFlee.VVP.flee_vvp import flee_init_vvp_LoR
     from plugins.FabFlee.VVP.flee_vvp import flee_analyse_vvp_LoR
 
     from plugins.FabFlee.VVP.flee_vvp import flee_init_vvp_QoI
     from plugins.FabFlee.VVP.flee_vvp import flee_analyse_vvp_QoI
+except:
+    exc_type, exc_value, exc_traceback = sys.exc_info()
+    print("Error: failed to import settings module flee_vvp")
+    pprint(exc_type)
+    pprint(exc_value)
+    import traceback
+    traceback.print_tb(exc_traceback)
+    print("The FabFlee flee_vvp functionalities are not imported as a result.")
+    pass
 
+try:
     from plugins.FabFlee.run_perf_benchmarks import *
-except ImportError:
+except:
+    exc_type, exc_value, exc_traceback = sys.exc_info()
+    print("Error: failed to import settings module run_perf_benchmarks")
+    pprint(exc_type)
+    pprint(exc_value)
+    import traceback
+    traceback.print_tb(exc_traceback)
+    print("The FabFlee run_perf_benchmarks functionalities are not imported as a result.")
     pass
