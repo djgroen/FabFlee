@@ -1,4 +1,4 @@
-#name,region,country,lat,lon,location_type,conflict_date,population
+#name,region,country,latitude,longitude,location_type,conflict_date,population
 Aba,Abia,Nigeria,5.1066,7.3667,conflict_zone,66,559900
 Abakpa Nike,Enugu,Nigeria,6.5183,7.5234,conflict_zone,800,326900
 Abinsi,Benue,Nigeria,7.7573,8.7521,conflict_zone,45,36500

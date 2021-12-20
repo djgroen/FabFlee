@@ -1,4 +1,4 @@
-#name,region,country,lat,lon,location_type,conflict_date,population
+#name,region,country,latitude,longitude,location_type,conflict_date,population
 Pugnido_II,Gambela,Ethiopia,7.7181,34.2154,camp,,310
 Gel_Achel,Upper_Nile,South_Sudan,9.09,32.4,conflict_zone,330,1870
 Pugnido,Gambela,Ethiopia,7.6825,34.1843,camp,,1890

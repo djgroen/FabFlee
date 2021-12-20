@@ -1,4 +1,4 @@
-#name,region,country,lat,lon,location_type,conflict_date,population
+#name,region,country,latitude,longitude,location_type,conflict_date,population
 0_0,0,0,0,0,camp,0,10000000
 0_1,1,-1,0,1,camp,0,10000000
 0_2,2,-2,0,2,camp,0,10000000

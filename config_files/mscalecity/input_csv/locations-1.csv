@@ -1,4 +1,4 @@
-#name,region,country,lat,lon,location_type,conflict_date,population
+#name,region,country,latitude,longitude,location_type,conflict_date,population
 Kule,Gambela,Ethiopia,8.2793,34.2076,camp,,52624
 Nguenyyiel,Gambela,Ethiopia,8.2955,34.2763,camp,,54296
 Okugo,Gambela,Ethiopia,6.4879,35.1365,camp,,12353

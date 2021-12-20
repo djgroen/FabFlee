@@ -1,4 +1,4 @@
-#name,region,country,lat,lon,location_type,conflict_date,population
+#name,region,country,latitude,longitude,location_type,conflict_date,population
 Adjumani,Nile,Uganda,3.373,31.804,camp,,93000
 East_Darfur,East_Darfur,Sudan,11.077,26.844,camp,,62000
 Haut-Uele,Haut-Uele,DRC,4.647,27.485,camp,,15000

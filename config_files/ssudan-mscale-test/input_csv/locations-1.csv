@@ -1,4 +1,4 @@
-#name,region,country,lat,lon,location_type,conflict_date,population
+#name,region,country,latitude,longitude,location_type,conflict_date,population
 Jewi,Gambela,Ethiopia,8.1332,34.6557,camp,,972
 Kule,Gambela,Ethiopia,8.2793,34.2076,camp,,392
 Nguenyyiel,Gambela,Ethiopia,8.2955,34.2763,camp,,5429

@@ -1,4 +1,4 @@
-#name,region,country,lat,lon,location_type,conflict_date,population
+#name,region,country,latitude,longitude,location_type,conflict_date,population
 Domiz,,Iraq,,,camp,,
 Al-Obaidi,,Iraq,,,camp,,
 Kawergosk,,Iraq,,,camp,,

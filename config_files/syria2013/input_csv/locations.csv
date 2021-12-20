@@ -1,4 +1,4 @@
-#name,region,country,lat,lon,location_type,conflict_date,population
+#name,region,country,latitude,longitude,location_type,conflict_date,population
 Iraq,Iraq,Iraq,36.78109,42.881187,camp,,195215
 Jordan,Kordan,Jordan,32.293578,36.327833,camp,,581814
 Lebanon,Lebanon,Lebanon,33.698,35.923,camp,,1016892

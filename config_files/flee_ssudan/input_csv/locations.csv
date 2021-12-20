@@ -1,4 +1,4 @@
-#name,region,country,lat,lon,location_type,conflict_date,population
+#name,region,country,latitude,longitude,location_type,conflict_date,population
 Juba,Central_Equatoria,South_Sudan,4.86086,31.61782,conflict_zone,0,368436
 Mongalla,Central_Equatoria,South_Sudan,5.14619,34.46927,conflict_zone,20,51323
 Mayom,Unity,South_Sudan,9.22,29.17,conflict_zone,24,120715

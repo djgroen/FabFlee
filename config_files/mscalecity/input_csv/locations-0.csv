@@ -1,4 +1,4 @@
-#name,region,country,lat,lon,location_type,conflict_date,population
+#name,region,country,latitude,longitude,location_type,conflict_date,population
 Juba,Central_Equatoria,South_Sudan,4.83776,31.603165,conflict_zone,0,525953
 Ikotos,Eastern_Equatoria,South_Sudan,4.0765,33.1185,conflict_zone,40,129620
 Kapoeta_South,Eastern_Equatoria,South_Sudan,4.7762,33.5829,conflict_zone,78,122651
