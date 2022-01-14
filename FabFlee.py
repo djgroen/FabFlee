@@ -20,6 +20,7 @@ except ImportError:
 import glob
 import csv
 import os
+import numpy as np
 import pandas as pd
 from shutil import copyfile, rmtree, move
 # Add local script, blackbox and template path.
