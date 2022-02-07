@@ -15,7 +15,7 @@ flee_modules: &FLEE_MODULES
 
 
 localhost:
-  FLEE_TYPE_CHECK: True
+  FLEE_TYPE_CHECK: False
   # location of flee in your local PC
   flee_location: "<PATH_TO_FLEE>"
 
