@@ -594,9 +594,9 @@ def vvp_validate_results(output_dir="", **kwargs):
     flee_location_local = user_config["localhost"].get(
         "flee_location", user_config["default"].get("flee_location"))
 
-    local("export FLEE_TYPE_CHECK=False; python3 %s/flee/postprocessing/extract-validation-results.py %s "
+    local("export PYTHONPATH=%s:${PYTHONPATH}; export FLEE_TYPE_CHECK=False; python3 %s/flee/postprocessing/extract-validation-results.py %s "
           "> %s/validation_results.yml"
-          % (flee_location_local, output_dir, output_dir))
+          % (flee_location_local, flee_location_local, output_dir, output_dir))
 
     with open("{}/validation_results.yml".format(output_dir), 'r') as val_yaml:
         validation_results = yaml.load(val_yaml, Loader=yaml.SafeLoader)
