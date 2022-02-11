@@ -103,16 +103,16 @@ Like many other simulation codes out there, Flee is a non-deterministic code whi
     ```    
     or
     ```
-    fab <remote machine name> validate_flee_output:<conflict name>
+    fab <remote machine name> validate_flee_output:<results_directory_name>
     ```
     
-    For instance, to validate the Mali conflict instance, simply type
+    For instance, to validate your Mali conflict instance run on localhost, simply type
     ```
-    fab localhost validate_flee_output:mali
+    fab localhost validate_flee_output:validation_localhost_4
     ```
     or
     ```
-    fab eagle_vecma validate_flee_output:mali
+    fab localhost validate_flee_output:validation_eagle_4
     
 ## Ensemble Validation of multiple conflict instances
 
