@@ -1,5 +1,5 @@
-from flee import flee
-from flee.datamanager import handle_refugee_data, read_period
+from flee import pflee as flee
+from flee.datamanager import handle_refugee_data,read_period
 from flee.datamanager import DataTable #DataTable.subtract_dates()
 from flee import InputGeography
 import numpy as np
@@ -44,7 +44,7 @@ if __name__ == "__main__":
 
   e,lm = ig.StoreInputGeographyInEcosystem(e)
 
-  d = handle_refugee_data.RefugeeTable(csvformat="generic", data_directory=validation_data_directory, start_date=start_date, data_layout="data_layout.csv")
+  d = handle_refugee_data.RefugeeTable(csvformat="generic", data_directory=validation_data_directory, start_date=start_date, data_layout="data_layout.csv", population_scaledown_factor=flee.SimulationSettings.PopulationScaledownFactor)
 
   d.ReadL1Corrections("%s/registration_corrections.csv" % input_csv_directory)
 
@@ -59,7 +59,8 @@ if __name__ == "__main__":
 
   output_header_string += "Total error,refugees in camps (UNHCR),total refugees (simulation),raw UNHCR refugee count,refugees in camps (simulation),refugee_debt"
 
-  print(output_header_string)
+  if e.getRankN(0):
+      print(output_header_string)
 
   # Set up a mechanism to incorporate temporary decreases in refugees
   refugee_debt = 0
@@ -71,8 +72,8 @@ if __name__ == "__main__":
     ig.AddNewConflictZones(e,t)
 
     # Determine number of new refugees to insert into the system.
-    new_refs = d.get_daily_difference(t, FullInterpolation=True, SumFromCamps=True) - refugee_debt
-    refugees_raw += d.get_daily_difference(t, FullInterpolation=True, SumFromCamps=True)
+    new_refs = d.get_daily_difference(t, FullInterpolation=True) - refugee_debt
+    refugees_raw += d.get_daily_difference(t, FullInterpolation=True)
 
     #Refugees are pre-placed in Mali, so set new_refs to 0 on Day 0.
     if insert_day0_refugees_in_camps:  
@@ -91,8 +92,6 @@ if __name__ == "__main__":
       e.addAgent(e.pick_conflict_location())
 
     e.refresh_conflict_weights()
-    
-    #print(new_refs)
     t_data = t
 
     e.enact_border_closures(t)
@@ -131,4 +130,6 @@ if __name__ == "__main__":
     else:
       output += ",0,0,0,0,0,0"
 
-    print(output)
+    if e.getRankN(t):
+        print(output)
+
