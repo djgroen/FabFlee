@@ -1,0 +1,145 @@
+#name,region,country,lat,lon,location_type,conflict_date,population
+Anbar,Anbar,Iraq,34.1891,41.2411,camp,,1407
+Dahuk,Dahuk,Iraq,36.8752,43.0027,camp,,35000
+Erbil,Erbil,Iraq,36.1897,44.0083,camp,,100000
+Sulaymaniyah,Sulaymaniyah,Iraq,35.5487,45.4311,camp,,23500
+Akre,Dahuk,Iraq,36.73543659,43.87958938,camp,,1200
+Arbat,Sulaymaniyah,Iraq,35.224999,45.362791,camp,,9500
+Basirma,Erbil,Iraq,36.4833,44.3667,camp,,3500
+Darashakran,Erbil,Iraq,36.4654,43.8883,camp,,12513
+Domiz1,Dahuk,Iraq,36.78232231,42.89142378,camp,,35000
+Domiz2,Dahuk,Iraq,36.78232231,42.89142378,camp,,11000
+Gawilan,Dahuk,Iraq,36.3384,43.6158,camp,,10300
+Kawergosk,Erbil,Iraq,36.3460809,43.8112815,camp,,9600
+Qushtapa,Erbil,Iraq,35.9838,44.0367,camp,,8500
+Ajlun,Ajlun,Jordan,32.322,35.7578,camp,,7166
+Amman,Amman,Jordan,31.9335,35.9253,camp,,200000
+Balqa,Balqa,Jordan,32,35.6667,camp,,20000
+Irbid,Irbid,Jordan,32.5607,35.8333,camp,,142000
+Maan,Maan,Jordan,30.2211,35.7385,camp,,8500
+Mafraq,Mafraq,Jordan,32.3213,36.2096,camp,,86500
+Zarqa,Zarqa,Jordan,32.0803,36.0599,camp,,97292
+Azraq,Zarqa,Jordan,31.9054,36.5809,camp,,54500
+Emirati,Zarqa,Jordan,32.031278,36.449528,camp,,7500
+Zaatari,Mafraq,Jordan,32.295667,36.32375,camp,,8200
+Cevdetiye,Cevdetiye,Turkey,37.139,36.2121,camp,,14595
+Akcakale,Sanliurfa,Turkey,36.7258,38.96,camp,,31801
+Altizonu,Hatay,Turkey,36.1066,36.234,camp,,8356
+Apaydin,Hatay,Turkey,36.2299,36.36,camp,,5229
+Beydagi,Malatya,Turkey,38.377,38.121,camp,,10259
+Ceylanpinar,Sanliurfa,Turkey,36.8102,39.9316,camp,,22192
+Elbeyli_Besiriye,Kilis,Turkey,36.6668,37.467,camp,,20986
+Harran,Sanliurfa,Turkey,36.8679,38.9359,camp,,14042
+Islahiye,Gaziantep,Turkey,36.9858,36.6253,camp,,18108
+Karkamis,Gaziantep,Turkey,36.8491,37.9977,camp,,8863
+Merkez_A,Adiyaman,Turkey,37.7471,38.2738,camp,,10162
+Merkez_K,Kahramanmaras,Turkey,37.5608,36.9751,camp,,18579
+Midyat,Mardin,Turkey,37.408,41.4005,camp,,3517
+Nizip_1,Gaziantep,Turkey,37.0555,37.8985,camp,,10099
+Nizip_2,Gaziantep,Turkey,37.0555,37.8985,camp,,4521
+Oncupinar,Kilis,Turkey,36.6454,37.081,camp,,16036
+Saricam,Adana,Turkey,37.0501,35.4888,camp,,27750
+Suruc,Sanliurfa,Turkey,37.0367,38.4936,camp,,31852
+Viransehir,Sanliurfa,Turkey,36.9268,40.0268,camp,,15552
+Yayladagi,Hatay,Turkey,35.9029,36.0571,camp,,6447
+Guvecci,Hatay,Turkey,35.8574,36.1482,camp,,3003
+Tartous,Tartous,Syria,34.887,35.893,conflict_zone,0,115769
+Tadmor,Homs,Syria,34.566,38.288,conflict_zone,1,55062
+Al_Bab,Aleppo,Syria,36.37,37.515,conflict_zone,1,63069
+Ar_Raqqa,Ar Raqqa,Syria,36.227,38.973,conflict_zone,1,300000
+Duma,Rural Damascus,Syria,33.516,36.49,conflict_zone,1,110983
+Az_Zabdani,Rural Damascus,Syria,33.615,36.182,conflict_zone,1,26285
+Harim,Idleb,Syria,36.187,36.724,conflict_zone,2,21934
+Ath_Thawrah,Ar Raqqa,Syria,36.013,38.545,conflict_zone,3,69425
+As_Suqaylabiyah,Hama,Syria,35.434,36.45,conflict_zone,3,17313
+Deir_ez_Zor,Deir ez Zor,Syria,35.332,40.146,conflict_zone,4,271800
+Jablah,Lattakia,Syria,35.364,35.931,conflict_zone,4,80000
+Rural_Damascus,Rural Damascus,Syria,33.604,36.198,conflict_zone,4,837804
+Tell_Abiad,Ar Raqqa,Syria,36.484,39.392,conflict_zone,5,14825
+An_Nabk,Rural Damascus,Syria,34.069,36.542,conflict_zone,5,32548
+Al_Qutayfah,Rural Damascus,Syria,33.856,37.01,conflict_zone,5,26671
+Dara,Dara,Syria,32.783,35.935,conflict_zone,6,97969
+Azaz,Aleppo,Syria,36.585,37.043,conflict_zone,6,31623
+Jebel_Saman,Aleppo,Syria,36.206,37.152,conflict_zone,7,2181061
+Izra,Dara,Syria,32.973,36.335,conflict_zone,7,19158
+Hama,Hama,Syria,35.134,36.761,conflict_zone,8,312994
+Al_Mara,Idleb,Syria,35.708,36.805,conflict_zone,9,58008
+Idleb,Idleb,Syria,35.861,36.806,conflict_zone,10,165000
+As_Safira,Aleppo,Syria,35.91,37.372,conflict_zone,11,106382
+Muhradah,Hama,Syria,35.247,36.574,conflict_zone,11,17578
+Damascus,Damascus,Syria,33.49,36.268,conflict_zone,12,2079000
+Menbij,Aleppo,Syria,35.97,38.028,conflict_zone,12,99497
+Al_Mayadin,Deir ez Zor,Syria,35.025,40.428,conflict_zone,13,44028
+Ariha,Idleb,Syria,35.782,36.623,conflict_zone,13,39501
+Quamishli,Al Hasakeh,Syria,37.045,41.226,conflict_zone,16,184231
+Homs,Homs,Syria,34.546,37.697,conflict_zone,18,775404
+Jisr_Ash_Shugur,Idleb,Syria,35.841,36.224,conflict_zone,18,44322
+Lattakia,Lattakia,Syria,35.597,35.785,conflict_zone,19,383786
+Al_Makhrim,Homs,Syria,34.835,37.324,conflict_zone,19,6202
+Shahba,As Sweida,Syria,32.855,36.627,conflict_zone,20,14784
+Al_Hasakeh,Al Hasakeh,Syria,36.053,40.727,conflict_zone,20,188160
+Abu_Kamal,Deir ez Zor,Syria,34.721,40.755,conflict_zone,22,42510
+Tall_Kalakh,Homs,Syria,34.796,36.267,conflict_zone,23,18412
+Al_Malikeyyeh,Al Hasakeh,Syria,37.097,41.815,conflict_zone,23,26311
+As_Salamiyeh,Hama,Syria,35.264,37.374,conflict_zone,25,66724
+Ar_Rastan,Homs,Syria,34.924,36.731,conflict_zone,29,39834
+Quneitra,Quneitra,Syria,33.158,35.887,conflict_zone,30,4318
+Qatana,Rural Damascus,Syria,33.311,35.979,conflict_zone,41,33996
+As_Sweida,As Sweida,Syria,32.707,36.568,conflict_zone,43,138822
+Al_Haffa,Lattakia,Syria,35.756,36.177,conflict_zone,44,23347
+Ras_Al_Ain,Al Hasakeh,Syria,36.849,40.075,conflict_zone,49,29347
+Ain_Al_Arab,Aleppo,Syria,36.722,38.257,conflict_zone,64,44821
+As_Sanamayn,Dara,Syria,33.062,36.076,conflict_zone,87,26268
+Al_Qusayr,Homs,Syria,34.624,36.578,conflict_zone,124,29818
+Jarablus,Aleppo,Syria,36.815,38.01,conflict_zone,134,11570
+Darayya,Rural Damascus,Syria,33.458,36.303,conflict_zone,154,131501
+At_Tall,Rural Damascus,Syria,33.641,36.299,conflict_zone,161,44597
+Yabroud,Rural Damascus,Syria,33.968,36.659,conflict_zone,201,25891
+Salkhad,As Sweida,Syria,32.424,36.623,conflict_zone,212,15000
+Masyaf,Hama,Syria,34.91,36.453,conflict_zone,217,22508
+Afrin,Aleppo,Syria,36.812,36.742,conflict_zone,385,36562
+Banyas,Tartous,Syria,35.198,35.963,conflict_zone,624,43000
+Al_Fiq,Quneitra,Syria,32.859,35.871,conflict_zone,1215,2800
+Jdaydet_Artooz,Rural Damascus,Syria,33.444715,36.166487,town,,
+Hashemeyeh,Maan,Jordan,30.524145,35.798557,town,,
+Hasa,Al Tafilah,Jordan,30.827455,35.974411,town,,
+Al_Qatrana,Al Karak,Jordan,31.250688,36.04662,town,,
+Daba,Amman,Jordan,31.614105,35.999213,town,,
+Khalkhalah,As Sweida,Syria,33.074252,36.53683,town,,
+Al_Qutayfah2,Rural Damascus,Syria,33.744572,36.590117,town,,
+Qarah,Rural Damascus,Syria,34.153635,36.749276,town,,
+Hassla,Homs,Syria,34.410288,36.752629,town,,
+Khunayfis,Homs,Syria,34.22501,37.797729,town,,
+Al_Quaryatayn,Homs,Syria,34.232256,37.230768,town,,
+Al_Furqlus,Homs,Syria,34.59586,37.086167,town,,
+Al_Musherefa,Homs,Syria,34.828601,36.866746,town,,
+Salamiyah,Hama,Syria,35.01411,37.047441,town,,
+Masyaf2,Hama,Syria,35.069095,36.342863,town,,
+Nahr_Al_Bared,Hama,Syria,35.283601,36.344361,town,,
+Idleb2,Idleb,Syria,35.936587,36.635649,town,,
+Haram,Idleb,Syria,36.21188,36.518901,town,,
+Zerbeh,Aleppo,Syria,36.070975,36.970604,town,,
+Abu_Adh_Dhuhur,Hama,Syria,35.739067,37.048135,town,,
+Ithriyah,Hama,Syria,35.372099,37.782057,town,,
+Al_Ghamamiz,Raqqa,Syria,35.845066,38.197609,town,,
+Dayr_Hafir,Aleppo,Syria,36.156416,37.708271,town,,
+Rahjan,Hama,Syria,35.407196,37.429774,town,,
+Jindires,Aleppo,Syria,36.395868,36.688398,town,,
+Rajo,Aleppo,Syria,36.670347,36.666017,town,,
+Ceyhan,Adana,Turkey,37.052272,35.806638,town,,
+Nudagi,Gaziantep,Turkey,37.177211,36.740581,town,,
+Gaziantep,Gaziantep,Turkey,37.081194,37.417249,town,,
+Kuyulu,Adiyaman,Turkey,37.505118,38.221038,town,,
+Golbasi,Adiyaman,Turkey,37.783134,37.640701,town,,
+As_Sukhnah,Homs,Syria,34.887613,38.871131,town,,
+Resafa,Homs,Syria,35.631922,38.755328,town,,
+Madan,Homs,Syria,35.748981,39.612111,town,,
+Hasibah,Al Hasakeh,Syria,35.66121,40.722806,town,,
+Khunayzir,Al Hasakeh,Syria,36.154978,40.114612,town,,
+Tasliburc,Mardin,Turkey,37.227416,41.33236,town,,
+Magarakoy,Sirnak,Turkey,37.273813,41.566356,town,,
+Kirkuk,Kirkuk,Iraq,35.467948,44.374066,town,,
+Haditha,Al Anbar,Iraq,34.127201,42.382023,town,,
+Baiji,Saladin,Iraq,35.018923,43.453844,town,,
+Al_Hasakah,Al Hasakeh,Syria,36.527249,40.742207,town,,
+Zakho,Dahuk,Iraq,37.136923,42.674964,town,,
