@@ -1,0 +1,67 @@
+# Setting file for pymoo: Multi-objective Optimization in Python
+
+# list of available algorithms :
+# - https://github.com/msu-coinlab/pymoo/tree/master/pymoo/algorithms
+# - https://www.pymoo.org/algorithms/index.html
+# NOTE : implemented algorithms are:
+# ["NSGA2", "NSGA3", "MOEAD", "BCE-MOEAD"]
+alg_name: "NSGA2"
+
+# sampling function
+# - https://pymoo.org/operators/index.html#Sampling
+sampling_func: "real_random"  # int_lhs or real_random
+
+
+# crossover function
+# - https://pymoo.org/operators/index.html#Crossover
+crossover_func: "real_sbx" # int_sbx or real_sbx
+crossover_func_args:
+  real_sbx: # int_sbx or real_sbx
+    prob: 1
+    eta: 20 # 3 or 20
+
+
+# mutation function
+# - https://pymoo.org/operators/index.html#Mutation
+mutation_func: "real_pm" # int_pm or real_pm
+mutation_func_args:
+  real_pm: # int_pm or real_pm
+    eta: 20 # 3 or 20
+
+
+# the reference directions functions and their inputs.
+ref_dir_func:
+  das-dennis:
+    n_partitions: 12
+
+  energy:
+    n_points: 4
+    seed: 1
+
+# specific algorithm input arguments
+alg_specific_args:
+  NSGA2:
+    pop_size: 4
+  MOEAD:
+    ref_dir_name: "energy"  # das-dennis or energy
+    n_neighbors: 2
+    prob_neighbor_mating: 0.9
+    pop_size: 4
+  NSGA3:
+    ref_dir_name: "energy"
+    pop_size: 4
+  BCE-MOEAD:
+    ref_dir_name: "energy"  # das-dennis or energy
+    n_neighbors: 2
+    prob_neighbor_mating: 0.9
+    pop_size: 4
+
+
+
+
+# Minimize input arguments
+# - https://pymoo.org/interface/minimize.html
+copy_algorithm: True
+copy_termination: True
+termination:
+  n_gen: 2
