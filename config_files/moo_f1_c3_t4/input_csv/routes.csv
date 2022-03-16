@@ -1,0 +1,13 @@
+#name1,name2,distance,forced_redirection
+A,B,50,0
+A,C,58,0
+A,D,128,0
+B,C,81,0
+B,E,106,0
+C,F,103,0
+C,G,121,0
+D,E,200,0
+D,G,200,0
+E,F,200,0
+F,G,200,0
+F,Z,200,0

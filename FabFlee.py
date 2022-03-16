@@ -614,6 +614,53 @@ def vvp_validate_results(output_dir="", **kwargs):
 
 @task
 @load_plugin_env_vars("FabFlee")
+def flee_MOO(config, simulation_period=60, cores=1, **args):
+    """
+    fabsim localhost flee_MOO:moo_f1_c1_t3
+    """
+    if not isinstance(cores, int):
+        cores = int(cores)
+
+    update_environment(
+        args,
+        {"cores": cores, "simulation_period": simulation_period}
+    )
+
+    if cores > 1:
+        env.flee_mode = "parallel"
+    else:
+        env.flee_mode = "serial"
+    # set env flag to clear the previous execution folder in case of exists
+    env.prevent_results_overwrite = "delete"
+    with_config(config)
+
+    ###########################################################################
+    # MOO_setting.yaml contains the required setting for executing MOO code,  #
+    # so, to be available on the remote machine, we temporally copy           #
+    # MOO_setting.yaml file to the target config folder in                    #
+    # FabFLee/config_files directory.                                         #
+    # later, after execute(put_configs,..), we delete it from config folder   #
+    # --------------                                                          #
+    # Note :                                                                  #
+    #       Hamid: I think this is better solution instead of opening another #
+    #       ssh connection to remote machine for transferring only            #
+    #       a single file                                                     #
+    ###########################################################################
+    copyfile(
+        src=os.path.join(get_plugin_path("FabFlee"), "MOO_setting.yaml"),
+        dst=os.path.join(env.job_config_path_local, "MOO_setting.yaml")
+    )
+    execute(put_configs, config)
+    # now, we delete MOO_setting.yaml file from local config folder in
+    # FabFLee/config_files directory
+    os.remove(os.path.join(env.job_config_path_local, "MOO_setting.yaml"))
+
+    script = "moo_flee"
+    job(dict(script=script))
+
+
+@task
+@load_plugin_env_vars("FabFlee")
 # fab localhost
 # flee_optmization:output_dir=conflict1_camp1_town3_pop20000_MaxMoveSpeed360_localhost_16
 def flee_optmization(output_dir):
