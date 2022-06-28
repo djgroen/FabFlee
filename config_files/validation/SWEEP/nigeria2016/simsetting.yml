@@ -5,4 +5,5 @@ log_levels:
 spawn_rules:
   take_from_population: False
 move_rules:
-optimisations: 
+optimisations:
+  hasten: 20.0 
