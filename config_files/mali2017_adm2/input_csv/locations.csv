@@ -1,0 +1,143 @@
+#name,region,country,latitude,longitude,location_type,conflict_date,population
+Bobo-Dioulasso,Hauts-Bassins,Burkina_Faso,11.183333,-4.283333,camp,,523
+Mentao,Sahel,Burkina_Faso,13.9509909,-1.68572098,camp,,7067
+Goudoubo,Sahel,Burkina_Faso,14.1565,0.051833,camp,,11121
+Ouagadougou ,Centre,Burkina_Faso,12.364808,-1.543855,camp,,1372
+Soum,Sahel,Burkina_Faso,14.26601,-1.28374,camp,,4696
+Oudalan,Sahel,Burkina_Faso,14.623187,-0.313033,camp,,8923
+Mbera,Hodh Ech Chargui,Mauritania,15.55359,-5.5142,camp,,65487
+Out of camp,Hodh Ech Chargui,Mauritania,15.689018,-5.668884,camp,,1397
+Abala,Tillaberi,Niger,14.936944,3.433611,camp,,16327
+Mangaize,Tillaberi,Niger,14.684443,1.952133075,camp,,9420
+Niamey,Tillaberi,Niger,13.511667,2.125278,camp,,4482
+Tabareybarey,Tillaberi,Niger,14.736289,0.92495,camp,,11441
+Ouallam,Tillaberi,Niger,14.31383,2.088861,camp,,5726
+Intikane,Tahoua,Niger,15.59819,4.72784,camp,,20637
+Ayorou,Tillaberi,Niger,14.734186,0.916781,camp,,9959
+Bamako,Bamako,Mali,12.639167,-8.002778,conflict_zone,20,1810366
+Gao,Gao,Mali,16.27091,-0.04021,conflict_zone,60,542304
+Kidal,Kidal,Mali,18.444305,1.401523,conflict_zone,0,67739
+Menaka,Menaka,Mali,15.9037,2.4214,conflict_zone,80,54456
+Tombouctou,Tombouctou,Mali,16.78026,-3.00159,conflict_zone,0,674793
+Mopti,Mopti,Mali,14.495833,-4.198611,conflict_zone,0,2036209
+Kayes,Kayes,Mali,13.277,-9.649,conflict_zone,148,1993615
+Koulikoro,Koulikoro,Mali,12.267,-7.927,conflict_zone,238,2422108
+Segou,Segou,Mali,14.733,-6.122,conflict_zone,38,2338349
+Sikasso,Sikasso,Mali,11.3158,-5.6966,conflict_zone,6,2643179
+Aglal,Tombouctou,Mali,16.6178,-2.6822,conflict_zone,245,
+Ahina,Gao,Mali,16.4992,0.6531,conflict_zone,262,
+Akabar,Gao,Mali,15.3717,2.0319,conflict_zone,280,
+Akeloz,Gao,Mali,15.5084,3.4835,conflict_zone,330,
+Almoustarat,Gao,Mali,17.37,0.09,conflict_zone,17,
+Amalaoulaou,Gao,Mali,15.4024,1.297,conflict_zone,143,
+Amassine,Kidal,Mali,17.9628,0.5806,conflict_zone,56,
+Anakila,Mopti,Mali,14.5733,-3.0653,conflict_zone,331,
+Anderamboukane,Gao,Mali,15.4275,3.0175,conflict_zone,1,
+Ansongo,Gao,Mali,15.6597,0.5022,conflict_zone,42,32709
+Araouane,Tombouctou,Mali,18.9048,-3.5265,conflict_zone,302,300
+Bamako,Bamako,Mali,12.65,-8,conflict_zone,236,1809106
+Bamba,Gao,Mali,17.035,-1.4016,conflict_zone,19,28524
+Bambara-Maounde,Tombouctou,Mali,15.8521,-2.786,conflict_zone,177,16864
+Bandiagara,Mopti,Mali,14.3493,-3.6102,conflict_zone,301,25564
+Benena,Segou,Mali,13.12,-4.3652,conflict_zone,38,14748
+Ber,Tombouctou,Mali,16.8349,-2.5319,conflict_zone,260,9536
+Bintagoungou,Tombouctou,Mali,16.7377,-3.7308,conflict_zone,17,4004
+Bla,Segou,Mali,13.297,-5.6414,conflict_zone,158,61338
+Bombou,Mopti,Mali,14.4347,-3.2323,conflict_zone,339,
+Bondo,Mopti,Mali,14.1333,-3.0063,conflict_zone,264,15872
+Boni,Mopti,Mali,15.0766,-2.2198,conflict_zone,22,
+Boughessa,Kidal,Mali,20.02,2.2611,conflict_zone,259,3401
+Boulikessi,Mopti,Mali,14.7953,-1.3181,conflict_zone,353,983
+Boundjiguire,Koulikoro,Mali,14.8841,-6.8435,conflict_zone,133,
+Bourem,Gao,Mali,16.955,-0.3486,conflict_zone,156,27564
+Bourem-Inaly,Tombouctou,Mali,16.6883,-2.8528,conflict_zone,266,12336
+Dangatene,Mopti,Mali,14.2333,-2.9725,conflict_zone,347,
+Diabata,Tombouctou,Mali,15.6022,-5.1267,conflict_zone,75,
+Diafarabe,Mopti,Mali,14.1409,-5.0169,conflict_zone,22,15748
+Dialloube,Mopti,Mali,15.0191,-4.2324,conflict_zone,281,31483
+Dioungani,Mopti,Mali,14.3156,-2.7403,conflict_zone,16,32418
+Djenne,Mopti,Mali,13.904,-4.56,conflict_zone,70,32944
+Douentza,Mopti,Mali,14.9951,-2.9517,conflict_zone,75,28005
+Dyero,Segou,Mali,12.8292,-6.4965,conflict_zone,145,
+Fati Fati,Gao,Mali,15.2434,0.8764,conflict_zone,37,
+Gao,Gao,Mali,16.2717,-0.0447,conflict_zone,7,86633
+Gawa,Mopti,Mali,14.4138,-2.965,conflict_zone,12,
+Gossi,Tombouctou,Mali,15.8196,-1.2911,conflict_zone,61,25521
+Gouma,Segou,Mali,13.6123,-5.8886,conflict_zone,239,
+Goumba,Segou,Mali,13.9321,-5.0911,conflict_zone,365,
+Gourti,Mopti,Mali,14.2713,-2.8262,conflict_zone,293,
+Hombori,Mopti,Mali,15.279,-1.7004,conflict_zone,16,23099
+I-n-Abelbel,Tombouctou,Mali,16.1975,-1.9283,conflict_zone,387,
+I-n-Deliman,Gao,Mali,16.1506,1.4277,conflict_zone,112,
+I-n-Kakane,Gao,Mali,15.9001,1.2625,conflict_zone,364,
+I-n-Tamede,Gao,Mali,16.2108,0.8136,conflict_zone,261,
+Igharghar,Kidal,Mali,19.8336,0.8683,conflict_zone,262,
+Imenas,Gao,Mali,16.3061,0.7175,conflict_zone,109,
+In Kadagotan,Gao,Mali,15.5502,2.7787,conflict_zone,39,
+In Kadeouene,Gao,Mali,16.3567,2.1581,conflict_zone,319,
+In Khalil,Kidal,Mali,21.1901,1.043,conflict_zone,142,
+In Nazour,Gao,Mali,15.862,2.1074,conflict_zone,356,
+Infoukaretane,Gao,Mali,15.7037,2.4403,conflict_zone,369,
+Intachdayt,Kidal,Mali,18.8146,0.9338,conflict_zone,36,
+Kadial,Mopti,Mali,14.652,-4.4391,conflict_zone,374,
+Karakindje,Mopti,Mali,14.4111,-2.9051,conflict_zone,377,
+Ke-Macina,Segou,Mali,13.9641,-5.3579,conflict_zone,325,36170
+Kidal,Kidal,Mali,18.44,1.41,conflict_zone,7,25617
+Kona,Mopti,Mali,14.9462,-3.8931,conflict_zone,277,36767
+Koro,Mopti,Mali,14.0778,-3.0832,conflict_zone,49,62681
+Kouakourou,Mopti,Mali,14.2223,-4.4959,conflict_zone,105,
+Koumaga,Mopti,Mali,13.9852,-4.3992,conflict_zone,392,
+Labbezanga,Gao,Mali,14.9563,0.696,conflict_zone,132,
+Lere,Tombouctou,Mali,15.7118,-4.9118,conflict_zone,52,16072
+Mamba,Mopti,Mali,14.0777,-4.9844,conflict_zone,339,
+Mandiakuy,Segou,Mali,13.0179,-4.466,conflict_zone,248,15949
+Markala,Segou,Mali,13.6739,-6.075,conflict_zone,225,45961
+Mbeba,Mopti,Mali,14.9361,-3.7191,conflict_zone,159,
+Menaka,Gao,Mali,15.9182,2.4022,conflict_zone,35,20702
+Mondoro,Mopti,Mali,14.6762,-1.9513,conflict_zone,100,42631
+Moniekana,Mopti,Mali,14.6769,-1.6689,conflict_zone,367,
+Mougna,Mopti,Mali,13.884,-4.82,conflict_zone,43,
+Mourdiah,Koulikoro,Mali,14.4727,-7.4671,conflict_zone,192,
+Nampala,Segou,Mali,15.2797,-5.5534,conflict_zone,193,11052
+Naye,Mopti,Mali,14.4291,-3.0361,conflict_zone,380,
+Niafounke,Tombouctou,Mali,15.9322,-3.9906,conflict_zone,198,
+Niangassagou,Mopti,Mali,14.6527,-1.7781,conflict_zone,366,
+Niono,Segou,Mali,14.2526,-5.993,conflict_zone,204,91554
+Nouhoun-Bozo,Mopti,Mali,14.1678,-4.8937,conflict_zone,285,
+Ntillit,Gao,Mali,15.5461,-0.4606,conflict_zone,392,22100
+Ouenkoro,Mopti,Mali,13.3821,-3.8308,conflict_zone,80,18123
+Ouo,Mopti,Mali,14.1013,-3.7846,conflict_zone,85,
+Poromani,Mopti,Mali,13.8345,-4.3755,conflict_zone,318,
+San,Segou,Mali,13.2887,-4.8875,conflict_zone,244,68067
+Sangha,Mopti,Mali,14.464,-3.3085,conflict_zone,368,32513
+Serma,Mopti,Mali,14.86,-2.2642,conflict_zone,1,
+Sevare,Mopti,Mali,14.5297,-4.0922,conflict_zone,394,40000
+Somadougou,Mopti,Mali,14.2846,-4.0647,conflict_zone,292,
+Soumpi,Tombouctou,Mali,15.8436,-4.3255,conflict_zone,146,16590
+Tabankort,Gao,Mali,17.9808,-0.1022,conflict_zone,74,
+Tabrichat,Kidal,Mali,20.1994,1.1283,conflict_zone,115,
+Tagari,Mopti,Mali,13.8526,-3.2299,conflict_zone,373,
+Tagourou,Mopti,Mali,14.3486,-3.1817,conflict_zone,372,
+Tahalt,Kidal,Mali,18.8253,0.8261,conflict_zone,36,
+Talataye,Gao,Mali,16.5333,1.5167,conflict_zone,248,13907
+Tamalat,Gao,Mali,15.797,3.7095,conflict_zone,117,
+Tamkoutat,Gao,Mali,16.4032,0.9921,conflict_zone,78,
+Taraterit,Gao,Mali,15.8597,1.9566,conflict_zone,282,
+Tessit,Gao,Mali,15.2238,0.2925,conflict_zone,47,6717
+Ti Samet,Gao,Mali,15.1728,1.0229,conflict_zone,106,
+Timbuktu,Tombouctou,Mali,16.7705,-3.0056,conflict_zone,41,54453
+Tin Aicha,Tombouctou,Mali,16.777,-4.019,conflict_zone,325,3940
+Tin Bidene,Kidal,Mali,18.8,1.95,conflict_zone,145,
+Tin Zaouaten,Kidal,Mali,19.9625,2.8575,conflict_zone,259,4157
+Tina,Mopti,Mali,14.6402,-4.6769,conflict_zone,324,
+Toguere-Koumbe,Mopti,Mali,14.9169,-4.5948,conflict_zone,383,
+Tondo Erkokoni,Mopti,Mali,14.2579,-2.5728,conflict_zone,356,
+Tonka,Tombouctou,Mali,16.1289,-3.7478,conflict_zone,83,53438
+Toubakoro,Koulikoro,Mali,13.8755,-7.1812,conflict_zone,238,14239
+Wa,Segou,Mali,13.6933,-4.4005,conflict_zone,145,
+Wo-Ouro,Mopti,Mali,14.0841,-3.7961,conflict_zone,39,
+Yirimandio,Bamako,Mali,12.608,-7.9119,conflict_zone,18,
+Yoro,Mopti,Mali,14.2793,-2.1354,conflict_zone,383,10535
+Youwarou,Mopti,Mali,15.3684,-4.2628,conflict_zone,239,233046
+Zambougou,Segou,Mali,13.1651,-6.5182,conflict_zone,306,
+Zouera,Tombouctou,Mali,16.8425,-3.8559,conflict_zone,375,

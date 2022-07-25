@@ -1,0 +1,32 @@
+cd $job_results
+$run_prefix
+
+if [ -z "$flee_location" ]
+then
+	echo "Please set $$flee_location in your deploy/machines_user.yml file."
+else
+	export PYTHONPATH=$flee_location:$$PYTHONPATH
+fi
+
+/usr/bin/env > env.log
+
+
+###########################
+# create MOO logging file #
+###########################
+EXEC_LOG_FILE="log_MOO.txt"
+NOW=$$(date +"[%F] [%H:%M:%S]")
+echo "Start FLEE MOO execution at: " $$NOW > $$EXEC_LOG_FILE
+
+
+###################
+# clear SWEEP dir #
+###################
+if [ -d "SWEEP" ]; then 
+	rm -rf SWEEP; 
+fi
+mkdir SWEEP
+
+
+python3 run_MOO.py --execution_mode=$flee_mode --simulation_period=$simulation_period --exec_log_file=$$EXEC_LOG_FILE --cores=$cores 2>&1 | tee execution_log.txt
+
