@@ -1,10 +1,12 @@
 from flee import flee
-from flee.datamanager import handle_refugee_data,read_period
+from flee.datamanager import handle_refugee_data, read_period
 from flee.datamanager import DataTable #DataTable.subtract_dates()
 from flee import InputGeography
 import numpy as np
 import flee.postprocessing.analysis as a
 import sys
+
+from datetime import datetime,timedelta
 
 def AddInitialRefugees(e, d, loc):
   """ Add the initial refugees to a location, using the location name"""
@@ -48,7 +50,7 @@ if __name__ == "__main__":
 
   d.ReadL1Corrections("%s/registration_corrections.csv" % input_csv_directory)
 
-  output_header_string = "Day,"
+  output_header_string = "Day,Date,"
 
   camp_locations      = e.get_camp_names()
 
@@ -71,8 +73,8 @@ if __name__ == "__main__":
     ig.AddNewConflictZones(e,t)
 
     # Determine number of new refugees to insert into the system.
-    new_refs = d.get_daily_difference(t, FullInterpolation=True) - refugee_debt
-    refugees_raw += d.get_daily_difference(t, FullInterpolation=True)
+    new_refs = d.get_daily_difference(t, FullInterpolation=True, SumFromCamps=False) - refugee_debt
+    refugees_raw += d.get_daily_difference(t, FullInterpolation=True, SumFromCamps=False)
 
     #Refugees are pre-placed in Mali, so set new_refs to 0 on Day 0.
     if insert_day0_refugees_in_camps:  
@@ -119,7 +121,8 @@ if __name__ == "__main__":
 
       j += 1
 
-    output = "%s" % t
+    date = datetime.strptime(start_date, "%Y-%m-%d") + timedelta(days=t)
+    output = "%s,%s" % (t, date)
 
     for i in range(0,len(errors)):
       output += ",%s,%s,%s" % (lm[camp_locations[i]].numAgents, loc_data[i], errors[i])
@@ -130,4 +133,3 @@ if __name__ == "__main__":
       output += ",0,0,0,0,0,0"
 
     print(output)
-
