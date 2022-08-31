@@ -5,4 +5,5 @@ log_levels:
   conflict: 0
 
 optimisations:
+  # Set to 100 to scale down the population by 100 and increase the execution time.
   hasten: 1
