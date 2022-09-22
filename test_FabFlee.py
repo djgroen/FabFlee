@@ -5,14 +5,23 @@
 #
 # This file contains FabSim definitions specific to FabFlee.
 
-from base.fab import *
-from plugins.FabFlee.FabFlee import *
+try:
+    from fabsim.base.fab import *
+except ImportError:
+    from base.fab import *
+
+try:
+    from fabsim.plugins.FabFlee.FabFlee import *
+except ImportError:
+    from plugins.FabFlee.FabFlee import *
 
 
 # Add local script, blackbox and template path.
 add_local_paths("FabFlee")
 
 ## TEST FUNCTIONS
+
+env.fabflee_root = "{}/plugins/FabFlee".format(env.localroot)
 
 def pr_utest(test_name, test_outcome_bool):
   # print result of unit tests.
@@ -27,18 +36,18 @@ def pr_utest(test_name, test_outcome_bool):
 def test_load_conflict():    # fab localhost test_load_conflict
   # write a function that tests whether this worked! It should return FALSE when it doesn't, TRUE when it does.
 
-  os.system("rm -rf %s/conflict_data/active_conflict" % (env.localroot))
+  os.system("rm -rf %s/conflict_data/active_conflict" % (env.fabflee_root))
   load_conflict("ABC")
 
   # True if active_conflict exists and False if it does not
-  test_result = os.path.exists("%s/conflict_data/active_conflict/" % (env.localroot))
+  test_result = os.path.exists("%s/conflict_data/active_conflict/" % (env.fabflee_root))
 
   pr_utest("test_load_conflict-active_conflict_exists",test_result)
 
 
   # True if locations.csv in ABC is identical to locations.csv in active_conflict folder.
   import filecmp
-  test_result = filecmp.cmp("%s/conflict_data/ABC/locations.csv" % (env.localroot), "%s/conflict_data/active_conflict/locations.csv" % (env.localroot))
+  test_result = filecmp.cmp("%s/conflict_data/ABC/locations.csv" % (env.fabflee_root), "%s/conflict_data/active_conflict/locations.csv" % (env.fabflee_root))
 
   pr_utest("test_load_conflict-match_csv_files",test_result)
 
@@ -47,13 +56,13 @@ def test_load_conflict():    # fab localhost test_load_conflict
 def test_change_capacities():    # fab localhost test_change_capacities
   # write a function that tests whether this worked! It should return FALSE when it doesn't, TRUE when it does.
 
-  os.system("rm -rf %s/conflict_data/active_conflict" % (env.localroot))
+  os.system("rm -rf %s/conflict_data/active_conflict" % (env.fabflee_root))
   load_conflict("ABC")
 
   change_capacities(Z="10")
 
   import csv
-  r = csv.reader(open("%s/conflict_data/active_conflict/locations.csv" % (env.localroot), "r"))
+  r = csv.reader(open("%s/conflict_data/active_conflict/locations.csv" % (env.fabflee_root), "r"))
   lines = [l for l in r]
   test_result = False
 
@@ -69,14 +78,14 @@ def test_change_capacities():    # fab localhost test_change_capacities
 def test_add_camp():    # fab localhost test_add_camp
   # write a function that tests whether this worked! It should return FALSE when it doesn't, TRUE when it does.
 
-  os.system("rm -rf %s/conflict_data/active_conflict" % (env.localroot))
+  os.system("rm -rf %s/conflict_data/active_conflict" % (env.fabflee_root))
   load_conflict("ABC")
 
   add_camp("Y","YY","YYY","0.00001","1.00000")
 
   # count the number of lines to see if the extra line has been added.
   import csv
-  r = open("%s/conflict_data/active_conflict/locations.csv" % (env.localroot), "r")
+  r = open("%s/conflict_data/active_conflict/locations.csv" % (env.fabflee_root), "r")
   row_count = sum(1 for row in r)
   if row_count == 6:
     test_result = True
@@ -99,13 +108,13 @@ def test_add_camp():    # fab localhost test_add_camp
 def test_delete_location():      # fab localhost test_delete_location
   # write a function that tests whether this worked! It should return FALSE when it doesn't, TRUE when it does.
 
-  os.system("rm -rf %s/conflict_data/active_conflict" % (env.localroot))
+  os.system("rm -rf %s/conflict_data/active_conflict" % (env.fabflee_root))
   load_conflict("ABC")
 
   delete_location("C")
 
   import csv
-  r = csv.reader(open("%s/conflict_data/active_conflict/locations.csv" % (env.localroot), "r"))
+  r = csv.reader(open("%s/conflict_data/active_conflict/locations.csv" % (env.fabflee_root), "r"))
   lines = [l for l in r]
   test_result = False
 
@@ -120,13 +129,13 @@ def test_delete_location():      # fab localhost test_delete_location
 def test_close_camp():			    # fab localhost test_close_camp
   # write a function that tests whether this worked! It should return FALSE when it doesn't, TRUE when it does.
 
-  os.system("rm -rf %s/conflict_data/active_conflict" % (env.localroot))
+  os.system("rm -rf %s/conflict_data/active_conflict" % (env.fabflee_root))
   load_conflict("ABC")
 
   close_camp("Z","ZZZ")
 
   import csv
-  r = open("%s/conflict_data/active_conflict/closures.csv" % (env.localroot), "r")
+  r = open("%s/conflict_data/active_conflict/closures.csv" % (env.fabflee_root), "r")
   test_result = False
 
   for row in r:
@@ -140,13 +149,13 @@ def test_close_camp():			    # fab localhost test_close_camp
 def test_close_border():                   # fab localhost test_close_border
   # write a function that tests whether this worked! It should return FALSE when it doesn't, TRUE when it does.
 
-  os.system("rm -rf %s/conflict_data/active_conflict" % (env.localroot))
+  os.system("rm -rf %s/conflict_data/active_conflict" % (env.fabflee_root))
   load_conflict("ABC")
 
   close_border("ABC","ZZZ")
 
   import csv
-  r = open("%s/conflict_data/active_conflict/closures.csv" % (env.localroot), "r")
+  r = open("%s/conflict_data/active_conflict/closures.csv" % (env.fabflee_root), "r")
   test_result = False
 
   for row in r:
@@ -160,13 +169,13 @@ def test_close_border():                   # fab localhost test_close_border
 def test_redirect():		    # fab localhost test_redirect
   # write a function that tests whether this worked! It should return FALSE when it doesn't, TRUE when it does.
 
-  os.system("rm -rf %s/conflict_data/active_conflict" % (env.localroot))
+  os.system("rm -rf %s/conflict_data/active_conflict" % (env.fabflee_root))
   load_conflict("ABC")
 
   redirect("Y","Z")
 
   import csv
-  r = csv.reader(open("%s/conflict_data/active_conflict/locations.csv" % (env.localroot), "r"))
+  r = csv.reader(open("%s/conflict_data/active_conflict/locations.csv" % (env.fabflee_root), "r"))
   lines = [l for l in r]
   test_result = False
 
@@ -178,7 +187,7 @@ def test_redirect():		    # fab localhost test_redirect
   pr_utest("test_redirect-check_location_type",test_result)
 
 
-  r = csv.reader(open("%s/conflict_data/active_conflict/routes.csv" % (env.localroot), "r"))
+  r = csv.reader(open("%s/conflict_data/active_conflict/routes.csv" % (env.fabflee_root), "r"))
   lines = [l for l in r]
   test_result = False
 
@@ -195,7 +204,7 @@ def test_clear_active_conflict():     # fab localhost test_clear_active_conflict
   # write a function that tests whether this worked! It should return FALSE when it doesn't, TRUE when it does.
 
   #True if active_conflict exists and False if it does not
-  if os.path.exists("%s/conflict_data/active_conflict/" % (env.localroot)):
+  if os.path.exists("%s/conflict_data/active_conflict/" % (env.fabflee_root)):
     print("test_clear_active_conflict: True")
     return True
   else:
