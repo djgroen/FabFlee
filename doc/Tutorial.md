@@ -98,6 +98,12 @@ fabsim localhost plot_uq_output:mali_runspeed_test_localhost_16,out
 ```
 As a reminder: we use `plot_output` to visualize outputs of a single run, and `plot_uq_output` to collate and visualize results from an ensemble.
 
+Besides, if you want to compare different runs of a same cinflict scenario, you can run the simulation output comparison script using:
+```
+fabsim localhost flee_compare:<model#1>,<model#2>,...,<model#n>
+```
+The above command only compares runs of the same conflict scenario, with the same conflict dates and at the same geographical administrative level.
+
 As output you will get a range of files in the `out` subfolder of your results directory. For example, the image `Niamey-4_V2.png`, which visualizes migrant arrivals in Niamey with 95% confidence intervals based on the move speed, might look like this:
 
 ![Arrivals with confidence interval based on movespeed](https://raw.githubusercontent.com/djgroen/FabFlee/master/doc/Niamey-4_V2.png)
