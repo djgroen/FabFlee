@@ -401,6 +401,24 @@ def plot_output(output_dir="", graphs_dir=""):
              env.local_results, output_dir, graphs_dir))
     '''
 
+    
+@task
+@load_plugin_env_vars("FabFlee")
+# Syntax: fab localhost flee_compare:<model#1>,<model#2>,...,,model#n>
+def flee_compare(*models,output_dir=""):
+    """
+    Compare results of flee simulations for a conflict scenario.
+    """
+    output_dir = models[0].partition("_")[0]
+
+    local("mkdir -p %s/%s_comparison" % (env.results_path, output_dir))
+
+    output_dir = "%s/%s_comparison" % (env.local_results, output_dir)
+
+    from flee.postprocessing.plot_flee_compare import plot_flee_compare
+    plot_flee_compare(*models,data_dir=env.local_results,output_dir=output_dir)
+    
+
 
 @task
 @load_plugin_env_vars("FabFlee")

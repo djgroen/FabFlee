@@ -47,6 +47,11 @@ This is a little redundant for runs on localhost, but essential if you run on an
 ```
 fabsim localhost plot_output:mali_localhost_16,out
 ```
+Besides, if you want to compare different runs of a same cinflict scenario, you can run the simulation output comparison script using:
+```
+fabsim localhost flee_compare:<model#1>,<model#2>,...,<model#n>
+```
+The above command only compares runs of the same conflict scenario, with the same conflict dates and at the same geographical administrative level.
 
 ## 2.2 Ensembles
 
