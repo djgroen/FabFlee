@@ -13,8 +13,12 @@ import sys
 
 @task
 def plot_flee_links(config):
-    floc = "/home/csstddg/FabSim3/results/mali_localhost_4/input_csv/locations.csv"
-    flink = "/home/csstddg/FabSim3/results/mali_localhost_4/input_csv/routes.csv"
+    with_config(config)
+
+    #print(env)
+
+    floc = "{}/input_csv/locations.csv".format(env.job_config_path_local)
+    flink = "{}/input_csv/routes.csv".format(env.job_config_path_local)
 
     lats = []
     lons = []
@@ -38,8 +42,9 @@ def plot_flee_links(config):
         visible=False, resolution=50,
         showcountries=True, countrycolor="RebeccaPurple"
     )
-    fig.update_layout(height=300, margin={"r":0,"t":0,"l":0,"b":0})
+    fig.update_layout(height=800, margin={"r":0,"t":0,"l":0,"b":0})
     fig.show()
+
 
 if __name__ == "__main__":
     pass
