@@ -1420,6 +1420,21 @@ except:
     print("The FabFlee flee_SA functionalities are not imported as a result.")
     pass
 
+
+try:
+    # loads Automated Visualisation tasks
+    from plugins.FabFlee.vis.flee_geo import *
+except:
+    exc_type, exc_value, exc_traceback = sys.exc_info()
+    print("Error: failed to import settings module flee_vis")
+    pprint(exc_type)
+    pprint(exc_value)
+    import traceback
+    traceback.print_tb(exc_traceback)
+    print("The FabFlee flee_vis functionalities are not imported as a result.")
+    pass
+
+
 try:
     # # loads Validation and Verification Patterns (VVP) tasks
     from plugins.FabFlee.VVP.flee_vvp import flee_init_vvp_LoR
