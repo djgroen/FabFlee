@@ -33,6 +33,7 @@ def plot_flee_links(config):
     ig.ReadLinksFromCSV(flink)
 
     ll = ig.MakeLocationList()
+    print(ll)
 
     for l in ig.links:
         lats = np.append(lats, [ ll[l[0]][0], ll[l[1]][0], None])
@@ -40,12 +41,42 @@ def plot_flee_links(config):
         names = np.append(names, ["","",None])
         
     fig = px.line_geo(lat=lats,lon=lons)
+
+    loclons = []
+    loclats = []
+    locnames = []
+
+    for k in ll:
+        locnames = np.append(locnames, [k])
+        loclats = np.append(loclats,[ll[k][0]])
+        loclons = np.append(loclons,[ll[k][1]])
+
+    fig.add_scattergeo(
+            name = "(location)",
+            lon = loclons,
+            lat = loclats,
+            hovertext = locnames,
+        )
+
+    fig.update_traces(marker_size=12, selector=dict(type='scattergeo'))
+
     fig.update_geos(fitbounds="locations")
     fig.update_geos(
         visible=False, resolution=50,
         showcountries=True, countrycolor="RebeccaPurple"
     )
-    fig.update_layout(height=800, margin={"r":0,"t":0,"l":0,"b":0})
+    fig.update_layout(
+        height=800,
+        title="Location graph",
+        xaxis_title="Longitude",
+        yaxis_title="Latitude",
+        font=dict(
+            family="Courier New, monospace",
+            size=32,
+            color="Black"
+            )
+        )
+
     fig.show()
 
 
