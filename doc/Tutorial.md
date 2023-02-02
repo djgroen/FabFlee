@@ -25,13 +25,13 @@ We use the 2012 Northern Mali Conflict as a simulation instance. Please refer to
 FabFlee comes with a range of sample simulation domains. 
 1. To run a single population displacement validation test, simply type:
 ```
-fabsim localhost flee:<conflict_name>,simulation_period=<number>
+fabsim localhost sflee:<conflict_name>,simulation_period=<number>
 ```
 
 For instance, a basic model for the 2012 Mali conflict can be found in
 `(FabSim3 Home)/plugins/FabFlee/config_files/mali`.
 ```
-fabsim localhost flee:mali,simulation_period=50
+fabsim localhost sflee:mali2012,simulation_period=50
 ```
 > _NOTE : regular runs have a `simulation_period` of 300 days, but we use a simulation period of 50 days to reduce the execution time of each simulation in this tutorial_
 
@@ -113,7 +113,7 @@ Replicated instances, or *replicas*, are runs that have identical inputs. Howeve
 
 To run a single population displacement validation test with 5 replicas, simply type:
 ```
-fabsim localhost flee:<conflict_name>,simulation_period=<number>,replicas=5
+fabsim localhost sflee:<conflict_name>,simulation_period=<number>,replicas=5
 ```
 Note that the output of each replica becomes a subdirectory in the main `results` directory. Therefore, to do ensemble analysis you may have to first move the runs into a common subfolder.
 
