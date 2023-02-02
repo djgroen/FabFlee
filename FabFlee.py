@@ -41,6 +41,28 @@ def get_flee_location():
 
 @task
 @load_plugin_env_vars("FabFlee")
+def sflee(config, simulation_period, **args):
+    """ Submit a Flee job to the remote queue.
+    The job results will be stored with a name pattern as
+    defined in the environment,
+    e.g. car-abcd1234-localhost-4
+    config :
+        config directory to use for the simulation script, e.g. config=car2014
+    simulation_period : length of the simulation in days.
+    Keyword arguments:
+            cores : number of compute cores to request
+            wall_time : wall-time job limit
+            memory : memory per node
+    """
+    update_environment(args, {"simulation_period": simulation_period})
+    with_config(config)
+    execute(put_configs, config)
+    job(dict(script='pflee', cores=1, wall_time='0:15:0', memory='2G'), args)
+
+
+
+@task
+@load_plugin_env_vars("FabFlee")
 def sync_flee():
     """
     Synchronize the Flee version, so that the remote machine has the latest
@@ -54,36 +76,6 @@ def sync_flee():
         local_dir=flee_location_local + '/',
         remote_dir=env.flee_location
     )
-
-
-@task
-@load_plugin_env_vars("FabFlee")
-def flee(config, simulation_period, **args):
-    """ Submit a Flee job to the remote queue.
-    The job results will be stored with a name pattern as
-    defined in the environment,
-    e.g. car-abcd1234-localhost-4
-    config :
-        config directory to use for the simulation script, e.g. config=car2014
-    simulation_period : length of the simulation in days.
-    Keyword arguments:
-            cores : number of compute cores to request
-            wall_time : wall-time job limit
-            memory : memory per node
-    """
-
-    '''
-    update_environment({"input_directory": "%s/config_files/%s/input_csv"
-                        % (get_plugin_path("FabFlee"), config),
-                        "validation_data_directory":
-                        "%s/config_files/%s/source_data"
-                        % (get_plugin_path("FabFlee"), config)})
-    print_local_environment()
-    '''
-    update_environment(args, {"simulation_period": simulation_period})
-    with_config(config)
-    execute(put_configs, config)
-    job(dict(script='flee', wall_time='0:15:0', memory='2G'), args)
 
 
 @task
