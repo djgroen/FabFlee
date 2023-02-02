@@ -97,8 +97,11 @@ FabFlee comes with a range of sample simulation domains.
     ```
     fabsim localhost plot_output:mali_localhost_16,out
     ```
-
-
+    Besides, if you want to compare different runs of a same cinflict scenario, you can run the simulation output comparison script using:
+    ```
+    fabsim localhost flee_compare:<model#1>,<model#2>,...,<model#n>
+    ```
+    
 ### Ensemble execution of migration simulations
 
 To see to what extent the definition of the maximum run speed in Flee affects the overall results, simply run multiple simulations. To do so, you can create an ensemble definition.
