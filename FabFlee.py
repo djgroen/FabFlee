@@ -865,7 +865,7 @@ def process_acled(country, start_date, filter_opt, admin_level):
         fab_flee_loc=get_plugin_path("FabFlee"),
         country=country,
         start_date=start_date,
-        filter=filter_opt,
+        filter_opt=filter_opt,
         admin_level=admin_level
     )
 
