@@ -13,7 +13,7 @@ def location2conflict(simulation_period, input_file, output_file):
     output_header_string = "#Day,"
 
     for l in ig.locations:
-        output_header_string += " %s," % (l[0])
+        output_header_string += "%s," % (l[0])
 
     output_header_string += "\n"
     file.write(output_header_string)
@@ -24,14 +24,14 @@ def location2conflict(simulation_period, input_file, output_file):
 
         for l in ig.locations:
             # print(l)
-            if l[4] == "conflict_zone":
-                confl_date = int(l[5])
+            if l[5] == "conflict_zone":
+                confl_date = int(l[6])
                 if confl_date <= t:
-                    output += ", 1"
+                    output += ",1"
                 else:
-                    output += ", 0"
+                    output += ",0"
             else:
-                output += ", 0"
+                output += ",0"
 
         output += "\n"
         file.write(output)
