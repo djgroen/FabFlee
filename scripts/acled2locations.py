@@ -29,7 +29,7 @@ def between_date(d1, d2):
     date1 = datetime(int(d1list[2]), int(d1list[1]), int(d1list[0]))
     date2 = datetime(int(d2list[2]), int(d2list[1]), int(d2list[0]))
 
-    return abs((date1 - date2).days) + 1  # Maybe add +1
+    return abs((date1 - date2).days) + 0  # Maybe add +1
 
 
 def date_verify(date):
