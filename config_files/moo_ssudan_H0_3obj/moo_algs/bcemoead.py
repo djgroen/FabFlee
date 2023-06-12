@@ -17,14 +17,19 @@ import numpy as np
 from scipy.spatial.distance import cdist
 
 from pymoo.algorithms.base.genetic import GeneticAlgorithm
+from pymoo.core.algorithm import LoopwiseAlgorithm
+
+
 from pymoo.core.duplicate import DefaultDuplicateElimination
 from pymoo.core.population import Population
 from pymoo.core.selection import Selection
+from pymoo.core.variable import Real, get
 from pymoo.docs import parse_doc_string
-from pymoo.operators.crossover.sbx import SimulatedBinaryCrossover
-from pymoo.operators.mutation.pm import PolynomialMutation
+from pymoo.operators.crossover.sbx import SBX
+from pymoo.operators.mutation.pm import PM
 from pymoo.operators.sampling.rnd import FloatRandomSampling
-from pymoo.util.display import MultiObjectiveDisplay
+from pymoo.util.display.multi import MultiObjectiveOutput
+from pymoo.util.reference_direction import default_ref_dirs
 
 import math
 from pymoo.util.nds.non_dominated_sorting import NonDominatedSorting
@@ -32,6 +37,8 @@ from pymoo.util.dominator import Dominator
 from pymoo.core.individual import Individual
 # modified Tchebycheff approach
 from moo_algs.tchebicheff import Tchebicheff2
+from copy import deepcopy
+import random
 
 
 def normalize_pop(pop):
@@ -59,14 +66,23 @@ def normalize_bothpop(pc_pop, npc_pop):
     PCObj = pc_pop.get("F")
     NPCObj = npc_pop.get("F")
 
+#    print("PCObj: \n", PCObj)
+#    print("NPCObj: \n", NPCObj)
+
     pc_size = PCObj.shape[0]
     npc_size = NPCObj.shape[0]
     nobj = PCObj.shape[1]
 
+#    print("pc_size = ", pc_size)
+#    print("npc_size = ", npc_size)
+#    print("nobj = ", nobj)
+
     fmax = np.max(PCObj, axis=0)   # max of each column
     fmin = np.min(PCObj, axis=0)
 
+
     for i in range(nobj):
+
         if fmax[i] == fmin[i]:
             for row in PCObj:
                 row[i] = 0.0
@@ -82,6 +98,7 @@ def normalize_bothpop(pc_pop, npc_pop):
 
     pc_pop.set("F", PCObj)
     npc_pop.set("F", NPCObj)
+
 
     return pc_pop, npc_pop
 
@@ -114,6 +131,7 @@ def update_PCpop(pc_pop, off):
     pc_objs = pc_pop.get("F")
     off_objs = off.get("F")
     n = pc_objs.shape[0]
+    m = pc_objs.shape[1]
 
     del_ind = []
 
@@ -122,24 +140,29 @@ def update_PCpop(pc_pop, off):
         if flag == 1:
             # off dominates pc_pop[i]
             del_ind.append(i)
-            break
 
         elif flag == -1:
             # pc_pop[i] dominates off
+            #print("\n\nreturn origial PC population")
             return pc_pop
         else:
             # flag == 0
             # off and pc_pop[i] are nondominated
-            break
+            #print("\n  nondominated")
+            continue
 
+
+    #print("\ndel_ind: ", del_ind)
     if len(del_ind) > 0:
         pc_index = np.arange(n)
         # Delete element at index positions given by the list 'del_ind'
         pc_index = np.delete(pc_index, del_ind)
         pc_pop = pc_pop[pc_index.tolist()]
 
+    #print("\nAfter deleting dominated individuals, new pc_pop: \n", pc_pop)
     pc_pop = Population.merge(pc_pop, off)
-
+    #print("\noff: \n", off)
+    #print("\nAfter adding off, new pc_pop: \n", pc_pop)
     return pc_pop
 
 
@@ -166,7 +189,7 @@ def update_NPCpop(npc_pop, off, ideal_point, ref_dirs, decomp):
 
 def maintain_PCpop(PCPop, pc_capacity):
 
-    pc_pop = PCPop.copy(deep=True)
+    pc_pop = deepcopy(PCPop)
     # Normalise the PC poulation
     pc_pop = normalize_pop(pc_pop)
 
@@ -243,104 +266,112 @@ def maintain_PCpop(PCPop, pc_capacity):
 
 class NeighborhoodSelection(Selection):
 
-    def __init__(self, neighbors, prob=1.0) -> None:
+    def __init__(self, prob=1.0) -> None:
         super().__init__()
-        self.neighbors = neighbors
-        self.prob = prob
+        self.prob = Real(prob, bounds=(0.0, 1.0))
 
-    def _do(self, pop, n_select, n_parents, k=None, **kwargs):
-        if k is None:
-            k = np.random.permutation(len(pop))[:n_select]
-        assert len(k) == n_select
-
-        N = self.neighbors
+    def _do(self, problem, pop, n_select, n_parents, neighbors=None, **kwargs):
+        assert n_select == len(neighbors)
         P = np.full((n_select, n_parents), -1)
 
-        for i, j in enumerate(k):
+        prob = get(self.prob, size=n_select)
 
-            if np.random.random() < self.prob:
-                P[i] = np.random.choice(N[j], n_parents, replace=False)
+        for k in range(n_select):
+            if np.random.random() < prob[k]:
+                P[k] = np.random.choice(neighbors[k], n_parents, replace=False)
             else:
-                P[i] = np.random.permutation(len(pop))[:n_parents]
+                P[k] = np.random.permutation(len(pop))[:n_parents]
 
         return P
+
 
 
 # =========================================================================================================
 # Implementation
 # =========================================================================================================
 
-class BCEMOEAD(GeneticAlgorithm):
+class BCEMOEAD(LoopwiseAlgorithm, GeneticAlgorithm):
 
     def __init__(self,
-                 ref_dirs,
+                 ref_dirs=None,
                  n_neighbors=20,
                  decomposition=Tchebicheff2(),
-                 prob_neighbor_mating=0.9,
+                 prob_neighbor_mating=0.9, # selection probability from the neighborhood in MOEA/D
                  sampling=FloatRandomSampling(),
-                 crossover=SimulatedBinaryCrossover(prob=1.0, eta=20),
-                 mutation=PolynomialMutation(prob=None, eta=20),
-                 display=MultiObjectiveDisplay(),
+                 crossover=SBX(prob=1.0, eta=20),
+                 mutation=PM(prob_var=None, eta=20),
+                 output=MultiObjectiveOutput(),
                  **kwargs):
-        """
-        Parameters
-        ----------
-        ref_dirs
-        n_neighbors
-        decomposition
-        prob_neighbor_mating
-        display
-        kwargs
-        """
 
+        # reference directions used for MOEAD
         self.ref_dirs = ref_dirs
+
+        # the decomposition metric used
+        self.decomp = decomposition
+
+        # the number of neighbors considered during mating
+        self.n_neighbors = n_neighbors
+
+        self.prob_neighbor_mating = prob_neighbor_mating
+        self.neighbors = None
+
         self.pc_capacity = len(ref_dirs)
         self.pc_pop = Population.new()
         self.npc_pop = Population.new()
-        self.n_neighbors = min(len(ref_dirs), n_neighbors)
-        self.prob_neighbor_mating = prob_neighbor_mating
-        self.decomp = decomposition
 
-        # initialise the neighborhood of subproblems based on the distances of weight vectors
-        self.neighbors = np.argsort(cdist(
-            self.ref_dirs, self.ref_dirs), axis=1, kind='quicksort')[:, :self.n_neighbors]
+        self.selection = NeighborhoodSelection(prob=prob_neighbor_mating)
 
-        self.selection = NeighborhoodSelection(
-            self.neighbors, prob=prob_neighbor_mating)
+        super().__init__(pop_size=len(ref_dirs),
+                         sampling=sampling,
+                         crossover=crossover,
+                         mutation=mutation,
+                         prob_neighbor_mating=prob_neighbor_mating,
+                         eliminate_duplicates=DefaultDuplicateElimination(),
+                         output=output,
+                         advance_after_initialization=False,
+                         **kwargs)
 
-        super().__init__(pop_size=len(ref_dirs), sampling=sampling, crossover=crossover, mutation=mutation,
-                         eliminate_duplicates=DefaultDuplicateElimination(), display=display,
-                         advance_after_initialization=False, **kwargs)
+
 
     def _setup(self, problem, **kwargs):
-        assert not problem.has_constraints(
-        ), "This implementation of BCE_MOEAD does not support any constraints."
+        assert not problem.has_constraints(), "This implementation of MOEAD does not support any constraints."
+
+        # if no reference directions have been provided get them and override the population size and other settings
+        if self.ref_dirs is None:
+            self.ref_dirs = default_ref_dirs(problem.n_obj)
+        self.pop_size = len(self.ref_dirs)
+
+        # neighbours includes the entry by itself intentionally for the survival method
+        self.neighbors = np.argsort(cdist(self.ref_dirs, self.ref_dirs), axis=1, kind='quicksort')[:, :self.n_neighbors]
+
+        # if the decomposition is not set yet, set the default
+        if self.decomp is None:
+            self.decomp = default_decomp(problem)
+
+
 
     def _initialize_advance(self, infills=None, **kwargs):
         super()._initialize_advance(infills, **kwargs)
         self.ideal = np.min(self.pop.get("F"), axis=0)
 
         # retrieve the current population
-        self.npc_pop = self.pop.copy(deep=True)
+        self.npc_pop = deepcopy(self.pop)
 
         # get the objective space values and objects
         npc_objs = self.npc_pop.get("F")
 
         fronts, rank = NonDominatedSorting().do(npc_objs, return_rank=True)
-        front_0_index = fronts[0]
+        front_0_indexes = fronts[0]
 
         # put the nondominated individuals of the NPC population into the PC population
-        self.pc_pop = self.npc_pop[front_0_index].copy(deep=True)
+        self.pc_pop = deepcopy(self.npc_pop[front_0_indexes])
 
-    def _infill(self):
-        # MOEA\D inherits from genetic algorithm but does not implement the infill/advance interface
-        pass
 
-    def _advance(self, **kwargs):
+    def _next(self):
         repair, crossover, mutation = self.repair, self.mating.crossover, self.mating.mutation
 
-        pc_pop = self.pc_pop.copy(deep=True)
-        npc_pop = self.npc_pop.copy(deep=True)
+        pc_pop = deepcopy(self.pc_pop)
+        npc_pop = deepcopy(self.npc_pop)
 
         ##############################################################
         # PC evolving
@@ -353,6 +384,7 @@ class BCEMOEAD(GeneticAlgorithm):
         NPCObj = npc_pop.get("F")
         pc_size = PCObj.shape[0]
         npc_size = NPCObj.shape[0]
+
 
         ######################################################
         # Calculate the Euclidean distance among individuals
@@ -391,6 +423,7 @@ class BCEMOEAD(GeneticAlgorithm):
         promising_index = np.nonzero(count <= 1)
         promising_index = np.asarray(promising_index).flatten()
 
+
         # Record total number of promising individuals in PC for exploration
         promising_num = len(promising_index)
 
@@ -404,20 +437,21 @@ class BCEMOEAD(GeneticAlgorithm):
         if promising_num > 0:
             for i in range(promising_num):
                 if original_size > 1:
-                    parents = Population.new(2)
+                    parents = Population.empty(size=2)
 
                     # The explored individual is considered as one parent
                     parents[0] = pc_pop[promising_index[i]]
 
                     # The remaining parent will be selected randomly from the PC population
-                    rnd = np.random.permutation(pc_size)
+                    rnd1 = np.random.permutation(pc_size)
 
-                    for j in rnd:
+                    for j in rnd1:
                         if j != promising_index[i]:
                             parents[1] = pc_pop[j]
                             break
 
                     index = np.array([0, 1])
+
                     parents_shape = index[None, :]
 
                     # do recombination and create an offspring
@@ -437,39 +471,36 @@ class BCEMOEAD(GeneticAlgorithm):
                 self.pc_pop = update_PCpop(self.pc_pop, off)
 
                 # update the ideal point
-                self.ideal = np.min(
-                    np.vstack([self.ideal, off.get("F")]), axis=0)
+                self.ideal = np.min(np.vstack([self.ideal, off.get("F")]), axis=0)
 
                 # update at most one solution in NPC population
-                self.npc_pop = update_NPCpop(self.npc_pop, off, self.ideal,
-                                             self.ref_dirs, self.decomp)
+                self.npc_pop = update_NPCpop(self.npc_pop, off, self.ideal, self.ref_dirs, self.decomp)
+
 
         ########################################################
         # NPC evolution based on MOEA/D
         ########################################################
 
-        # iterate for each member of the population in random order
-        for i in np.random.permutation(len(self.npc_pop)):
-            # get the parents using the neighborhood selection
-            P = self.selection.do(
-                self.npc_pop, 1, self.mating.crossover.n_parents, k=[i])
+        for k in np.random.permutation(len(self.npc_pop)):
 
-            # perform a mating using the default operators (recombination & mutation) - if more than one offspring just pick the first
+            P = self.selection.do(self.problem, self.npc_pop, 1, self.mating.crossover.n_parents, neighbors=[self.neighbors[k]])
+
+            # perform a mating using the default operators - if more than one offspring just pick the first
             off = self.mating.do(self.problem, self.npc_pop, 1, parents=P)[0]
 
-            off = Population.create(off)
-
             # evaluate the offspring
-            self.evaluator.eval(self.problem, off, algorithm=self)
+            off = yield off
 
             # update the PC population by the offspring
+            off = Population.create(off)
+
             self.pc_pop = update_PCpop(self.pc_pop, off)
 
             # update the ideal point
             self.ideal = np.min(np.vstack([self.ideal, off.get("F")]), axis=0)
 
             # now actually do the replacement of the individual is better
-            self.npc_pop = self._replace(i, off)
+            self.npc_pop = self._replace(k, off)
 
         ########################################################
         # population maintenance operation in the PC evolution
@@ -497,9 +528,11 @@ class BCEMOEAD(GeneticAlgorithm):
             if len(self.pc_pop) > self.pc_capacity:
                 self.pc_pop = maintain_PCpop(self.pc_pop, self.pc_capacity)
 
-        self.pop = self.pc_pop.copy(deep=True)
+        self.pop  = deepcopy(self.pc_pop)
 
     def _replace(self, i, off):
+
+        ## update the best solutions of neighboring subproblems ##
 
         npc_pop = self.npc_pop
 

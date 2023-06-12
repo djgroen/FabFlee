@@ -16,19 +16,22 @@ import geopandas
 from shapely.geometry import Point
 from math import sin, cos, atan2, sqrt, pi
 
-from pymoo.algorithms.moo.nsga2 import NSGA2
-from pymoo.algorithms.moo.nsga3 import NSGA3
-from pymoo.algorithms.moo.moead import MOEAD, ParallelMOEAD
-from pymoo.factory import get_sampling, get_crossover, get_mutation, \
-    get_problem, get_reference_directions
-from pymoo.optimize import minimize
-from pymoo.visualization.scatter import Scatter
 from pymoo.core.problem import Problem
-from pymoo.factory import get_performance_indicator
+from pymoo.optimize import minimize
+from pymoo.algorithms.moo.nsga2 import NSGA2
+from pymoo.algorithms.moo.spea2 import SPEA2
+from pymoo.algorithms.moo.nsga3 import NSGA3
+from pymoo.algorithms.moo.moead import MOEAD
+from moo_algs.bcemoead import BCEMOEAD
 
-from moo_algs.bce_moead import BCEMOEAD
+from pymoo.util.ref_dirs import get_reference_directions
+from pymoo.operators.crossover.sbx import SBX
+from pymoo.operators.mutation.pm import PM
+from pymoo.operators.sampling.rnd import FloatRandomSampling
+
 import time
 from datetime import timedelta
+from flee.SimulationSettings import fetchss
 
 
 work_dir = os.path.dirname(os.path.abspath(__file__))
@@ -74,7 +77,7 @@ class FLEE_MOO_Problem(Problem):
     def __init__(self, execution_mode, simulation_period, cores,
                  work_dir=work_dir):
 
-        # TODO: add input vraibles to MOO_setting.yaml file
+        # TODO: add input varibles to MOO_setting.yaml file
         super().__init__(n_var=1,
                          n_obj=5,
                          xl=np.array([0]),  #
@@ -92,8 +95,8 @@ class FLEE_MOO_Problem(Problem):
 
         df = pd.concat(df_array, axis=0, ignore_index=True)
 
-        # filter rows for agent location == camp_name
-        df = df[(df["agent location"] == camp_name) &
+        # filter rows for current_location == camp_name
+        df = df[(df["current_location"] == camp_name) &
                 (df["distance_moved_this_timestep"] > 0)
                 ]
 
@@ -107,8 +110,6 @@ class FLEE_MOO_Problem(Problem):
 
         return df["distance_travelled"].mean()
 
-
-# --------------------------------------------------------------------------
     def change_route_to_camp(self, csv_name):
         """
         Change the location that connect to the camp
@@ -189,10 +190,8 @@ class FLEE_MOO_Problem(Problem):
                 self.cnt_SWEEP_dir += 1
                 MOO_log(msg="\t{}".format("-" * 30))
 
-    # --------------------------------------------------------------------------
-
-    def flee_optmization(self, run_dir, camp_name):
-        MOO_log(msg="\n[flee_optmization] called for "
+    def flee_optimization(self, run_dir, camp_name):
+        MOO_log(msg="\n[flee_optimization] called for "
                 "run_dir = {} camp_name = {}".format(run_dir, camp_name)
                 )
 
@@ -238,7 +237,17 @@ class FLEE_MOO_Problem(Problem):
         )
 
         # calculate camp capacity
-        PopulationScaledownFactor = 100
+        ymlfile = os.path.join(
+            self.work_dir, "simsetting.yml"
+        )
+        # print("YAML file:", ymlfile, file=sys.stderr)
+        with open(ymlfile) as f:
+            dp = yaml.safe_load(f)
+
+        dpo = fetchss(dp, "optimisations", None)
+        PopulationScaledownFactor = int(fetchss(dpo,"hasten",1))
+        # print("PopulationScaledownFactor = ", PopulationScaledownFactor)
+
         df = pd.read_csv(os.path.join(run_dir, "input_csv", "locations.csv"))
         camp_population = df[df["#name"] == camp_name]["population"].values[0]
         camp_population = camp_population/PopulationScaledownFactor
@@ -269,8 +278,6 @@ class FLEE_MOO_Problem(Problem):
         # return values  [obj#1, obj#2, obj#3, obj#4, obj#5]
         return [avg_distance_travelled, sim_camp_population_last_day,
                 remain_camp_capacity, camp_ipc, camp_accessibility]
-
-#------------------------------------start-----------------------------------
 
     def run_simulation_with_PJ(self, sh_jobs_scripts):
         """
@@ -339,7 +346,6 @@ class FLEE_MOO_Problem(Problem):
                 )
                 sys.exit(0)
 
-#-------------------------------------end------------------------------------
 
     def _evaluate(self, x, out, *args, **kwargs):
         """
@@ -349,8 +355,6 @@ class FLEE_MOO_Problem(Problem):
         After doing the necessary calculations, the objective values must be
         added to the dictionary, out, with the key F.
         """
-
-# ---------------------------------start--------------------------------
 
         # read accessible_camp_ipc.csv
         df = pd.read_csv("accessible_camp_ipc.csv")
@@ -403,8 +407,6 @@ class FLEE_MOO_Problem(Problem):
             writer.writerows(selected_camps)
 
 
-# ------------------------------end-----------------------------------
-
         # count the number of run folder in SWEEP dir
         sweep_dir = os.path.join(self.work_dir, "SWEEP")
 
@@ -421,7 +423,7 @@ class FLEE_MOO_Problem(Problem):
         # list of files and folders to be included
         sel_files_folders = ["**input_csv/***", "**source_data/***",
                              "run.py",
-                             "run_par.py", "simsetting.csv"
+                             "run_par.py", "simsetting.yml"
                              ]
         # Note: be careful with rync command arguments
         rync_cmd = " ".join([
@@ -434,12 +436,12 @@ class FLEE_MOO_Problem(Problem):
         # set the execution command for flee simulation
         if self.execution_mode.lower() == "serial":
             flee_exec_cmd = "python3 run.py input_csv source_data " \
-                "{} simsetting.csv > out.csv".format(
+                "{} simsetting.yml > out.csv".format(
                     self.simulation_period)
         elif self.execution_mode.lower() == "parallel":
             flee_exec_cmd = "mpirun -np {} " \
                 "python3 run_par.py input_csv source_data " \
-                "{} simsetting.csv > out.csv".format(
+                "{} simsetting.yml > out.csv".format(
                     self.cores,
                     self.simulation_period)
         else:
@@ -512,7 +514,7 @@ class FLEE_MOO_Problem(Problem):
         # Calculate objective values and save the data in objectives.csv file
         for i in range(cnt_SWEEP_dir_before, self.cnt_SWEEP_dir):
             dest_SWEEP_dir = os.path.join("SWEEP", str(i + 1))
-            row = self.flee_optmization(run_dir=dest_SWEEP_dir, camp_name="Z")
+            row = self.flee_optimization(run_dir=dest_SWEEP_dir, camp_name="Z")
             with open("objectives.csv", "a", newline="") as file:
                 writer = csv.writer(file)
                 writer.writerow(row)
@@ -598,12 +600,6 @@ if __name__ == "__main__":
 
     alg_name = MOO_CONFIG["alg_name"]
 
-    crossover_func = MOO_CONFIG["crossover_func"]
-    crossover_func_args = MOO_CONFIG["crossover_func_args"][crossover_func]
-
-    mutation_func = MOO_CONFIG["mutation_func"]
-    mutation_func_args = MOO_CONFIG["mutation_func_args"][mutation_func]
-
     alg_specific_args = MOO_CONFIG["alg_specific_args"][alg_name]
 
     try:
@@ -618,17 +614,17 @@ if __name__ == "__main__":
         print(e)
         sys.exit()
 
+
     if alg_name == "NSGA2":
-        sampling_func = MOO_CONFIG["sampling_func"]
         pop_size = alg_specific_args["pop_size"]
         #################
         # set algorithm #
         #################
         algorithm = NSGA2(
             pop_size=pop_size,
-            sampling=get_sampling(sampling_func),
-            crossover=get_crossover(crossover_func, **crossover_func_args),
-            mutation=get_mutation(mutation_func, **mutation_func_args),
+            sampling=FloatRandomSampling(),
+            crossover=SBX(prob=1, eta=20),
+            mutation=PM(eta=20),
             eliminate_duplicates=True
         )
         #####################
@@ -637,16 +633,63 @@ if __name__ == "__main__":
         MOO_log(
             msg="algorithm = {}(\n"
             "pop_size={},\n"
-            "sampling=get_sampling({}),\n"
-            "crossover=get_crossover({},{}),\n"
-            "mutation=get_mutation({},{}),\n"
             "eliminate_duplicates=True\n"
             ")".format(
                 alg_name,
+                pop_size
+            )
+        )
+
+
+    elif alg_name == "SPEA2":
+        pop_size = alg_specific_args["pop_size"]
+        #################
+        # set algorithm #
+        #################
+        algorithm = SPEA2(
+            pop_size=pop_size,
+            sampling=FloatRandomSampling(),
+            crossover=SBX(prob=1, eta=20),
+            mutation=PM(eta=20),
+            eliminate_duplicates=True
+        )
+        #####################
+        # algorithm logging #
+        #####################
+        MOO_log(
+            msg="algorithm = {}(\n"
+            "pop_size={},\n"
+            "eliminate_duplicates=True\n"
+            ")".format(
+                alg_name,
+                pop_size
+            )
+        )
+
+
+    elif alg_name == "NSGA3":
+        pop_size = alg_specific_args["pop_size"]
+        #################
+        # set algorithm #
+        #################
+        algorithm = NSGA3(
+            pop_size=pop_size,
+            ref_dirs=get_reference_directions(ref_dir_func,
+                                              **ref_dir_func_args),
+            crossover=SBX(prob=1, eta=20),
+            mutation=PM(eta=20),
+        )
+        #####################
+        # algorithm logging #
+        #####################
+        MOO_log(
+            msg="algorithm = {}(\n"
+            "pop_size = {}\n"
+            "ref_dirs = get_reference_directions({},{}),\n"
+            ")".format(
+                alg_name,
                 pop_size,
-                sampling_func,
-                crossover_func, crossover_func_args,
-                mutation_func, mutation_func_args,
+                ref_dir_func, ref_dir_func_args
             )
         )
 
@@ -663,8 +706,8 @@ if __name__ == "__main__":
                                               **ref_dir_func_args),
             n_neighbors=n_neighbors,
             prob_neighbor_mating=prob_neighbor_mating,
-            crossover=get_crossover(crossover_func, **crossover_func_args),
-            mutation=get_mutation(mutation_func, **mutation_func_args),
+            crossover=SBX(prob=1, eta=20),
+            mutation=PM(eta=20),
         )
         #####################
         # algorithm logging #
@@ -674,15 +717,11 @@ if __name__ == "__main__":
             "ref_dirs = get_reference_directions({},{}),\n"
             "n_neighbors = {}\n"
             "prob_neighbor_mating = {}\n"
-            "crossover=get_crossover({},{}),\n"
-            "mutation=get_mutation({},{}),\n"
             ")".format(
                 alg_name,
                 ref_dir_func, ref_dir_func_args,
                 n_neighbors,
-                prob_neighbor_mating,
-                crossover_func, crossover_func_args,
-                mutation_func, mutation_func_args,
+                prob_neighbor_mating
             )
         )
 
@@ -699,8 +738,8 @@ if __name__ == "__main__":
                                               **ref_dir_func_args),
             n_neighbors=n_neighbors,
             prob_neighbor_mating=prob_neighbor_mating,
-            crossover=get_crossover(crossover_func, **crossover_func_args),
-            mutation=get_mutation(mutation_func, **mutation_func_args),
+            crossover=SBX(prob=1, eta=20),
+            mutation=PM(eta=20),
         )
         #####################
         # algorithm logging #
@@ -710,48 +749,14 @@ if __name__ == "__main__":
             "ref_dirs = get_reference_directions({},{}),\n"
             "n_neighbors = {}\n"
             "prob_neighbor_mating = {}\n"
-            "crossover=get_crossover({},{}),\n"
-            "mutation=get_mutation({},{}),\n"
             ")".format(
                 alg_name,
                 ref_dir_func, ref_dir_func_args,
                 n_neighbors,
-                prob_neighbor_mating,
-                crossover_func, crossover_func_args,
-                mutation_func, mutation_func_args,
+                prob_neighbor_mating
             )
         )
 
-
-    elif alg_name == "NSGA3":
-        pop_size = alg_specific_args["pop_size"]
-        #################
-        # set algorithm #
-        #################
-        algorithm = NSGA3(
-            pop_size=pop_size,
-            ref_dirs=get_reference_directions(ref_dir_func,
-                                              **ref_dir_func_args),
-            crossover=get_crossover(crossover_func, **crossover_func_args),
-            mutation=get_mutation(mutation_func, **mutation_func_args),
-        )
-        #####################
-        # algorithm logging #
-        #####################
-        MOO_log(
-            msg="algorithm = {}(\n"
-            "pop_size = {}\n`"
-            "ref_dirs = get_reference_directions({},{}),\n"
-            "crossover=get_crossover({},{}),\n"
-            "mutation=get_mutation({},{}),\n"
-            ")".format(
-                alg_name,
-                pop_size,
-                ref_dir_func, ref_dir_func_args,
-                crossover_func, crossover_func_args,
-                mutation_func, mutation_func_args,
-            )
-        )
 
     if algorithm is None:
         raise RuntimeError(
