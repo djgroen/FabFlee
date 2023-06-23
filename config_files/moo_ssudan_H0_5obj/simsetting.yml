@@ -1,0 +1,11 @@
+log_levels:
+  agent: 1
+  camp: 0
+  init: 0
+spawn_rules:
+  take_from_population: False
+move_rules:
+  camp_movechance: 0
+  awareness_level: 1
+optimisations:
+  hasten: 100

@@ -1,172 +1,117 @@
 from flee import pflee as flee
+from flee import spawning
 from flee.datamanager import handle_refugee_data, read_period
-from flee.datamanager import DataTable  # DataTable.subtract_dates()
+from flee.datamanager import DataTable #DataTable.subtract_dates()
 from flee import InputGeography
 import numpy as np
 import flee.postprocessing.analysis as a
 import sys
-import os
+from flee.SimulationSettings import SimulationSettings
 
-
-def AddInitialRefugees(e, d, loc):
-    """ Add the initial refugees to a location, using the location name"""
-    num_refugees = int(d.get_field(loc.name, 0, FullInterpolation=True))
-    for i in range(0, num_refugees):
-        e.addAgent(location=loc)
-
-
-insert_day0_refugees_in_camps = True
-
+from datetime import datetime, timedelta
 
 if __name__ == "__main__":
 
-    start_date, end_time = read_period.read_conflict_period(
-        "{}/conflict_period.csv".format(sys.argv[1]))
+  start_date,end_time = read_period.read_conflict_period("{}/conflict_period.csv".format(sys.argv[1]))
 
-    if len(sys.argv) < 4:
-        print("Please run using: python3 run.py <your_csv_directory> "
-              "<your_refugee_data_directory> <duration in days> "
-              "<optional: simulation_settings.csv> > "
-              "<output_directory>/<output_csv_filename>")
+  if len(sys.argv)<4:
+    print("Please run using: python3 run.py <your_csv_directory> <your_refugee_data_directory> <duration in days> <optional: simsettings.yml> > <output_directory>/<output_csv_filename>")
 
-    input_csv_directory = sys.argv[1]
-    validation_data_directory = sys.argv[2]
-    if int(sys.argv[3]) > 0:
-        end_time = int(sys.argv[3])
+  input_csv_directory = sys.argv[1]
+  validation_data_directory = sys.argv[2]
+  if int(sys.argv[3]) > 0:
+    end_time = int(sys.argv[3])
 
-    if len(sys.argv) == 5:
-        flee.SimulationSettings.ReadFromCSV(sys.argv[4])
-    flee.SimulationSettings.FlareConflictInputFile = os.path.join(
-        input_csv_directory, "conflicts.csv"
-    )
+  if len(sys.argv)==5:
+    flee.SimulationSettings.ReadFromYML(sys.argv[4])
+  else:
+    flee.SimulationSettings.ReadFromYML("simsetting.yml")
 
-    e = flee.Ecosystem()
+  flee.SimulationSettings.FlareConflictInputFile = "%s/conflicts.csv" % input_csv_directory
 
-    ig = InputGeography.InputGeography()
+  e = flee.Ecosystem()
 
-    ig.ReadFlareConflictInputCSV(
-        flee.SimulationSettings.FlareConflictInputFile)
+  ig = InputGeography.InputGeography()
 
-    ig.ReadLocationsFromCSV(os.path.join(input_csv_directory, "locations.csv"))
+  ig.ReadFlareConflictInputCSV(flee.SimulationSettings.FlareConflictInputFile)
 
-    ig.ReadLinksFromCSV(os.path.join(input_csv_directory, "routes.csv"))
+  ig.ReadLocationsFromCSV("%s/locations.csv" % input_csv_directory)
 
-    ig.ReadClosuresFromCSV(os.path.join(input_csv_directory, "closures.csv"))
+  ig.ReadLinksFromCSV("%s/routes.csv" % input_csv_directory)
 
-    e, lm = ig.StoreInputGeographyInEcosystem(e)
+  ig.ReadClosuresFromCSV("%s/closures.csv" % input_csv_directory)
 
-    d = handle_refugee_data.RefugeeTable(
-        csvformat="generic",
-        data_directory=validation_data_directory,
-        start_date=start_date,
-        data_layout="data_layout.csv"
-    )
+  e,lm = ig.StoreInputGeographyInEcosystem(e)
 
-    d.ReadL1Corrections(os.path.join(input_csv_directory,
-                                     "registration_corrections.csv"
-                                     )
-                        )
+  d = handle_refugee_data.RefugeeTable(csvformat="generic", data_directory=validation_data_directory, start_date=start_date, data_layout="data_layout.csv", population_scaledown_factor=SimulationSettings.optimisations["PopulationScaleDownFactor"])
 
-    output_header_string = "Day,"
+  d.ReadL1Corrections("%s/registration_corrections.csv" % input_csv_directory)
 
-    camp_locations = e.get_camp_names()
+  output_header_string = "Day,Date,"
 
-    for l in camp_locations:
-        if insert_day0_refugees_in_camps:
-            AddInitialRefugees(e, d, lm[l])
-        output_header_string += "{} sim,{} data,{} error,".format(
-            lm[l].name, lm[l].name, lm[l].name)
+  camp_locations      = e.get_camp_names()
 
-    output_header_string += (
-        "Total error,refugees in camps (UNHCR),"
-        "total refugees (simulation),raw UNHCR refugee count,"
-        "refugees in camps (simulation),refugee_debt"
-    )
+  for l in camp_locations:
+      spawning.add_initial_refugees(e,d,lm[l])
+      output_header_string += "%s sim,%s data,%s error," % (lm[l].name, lm[l].name, lm[l].name)
 
-    if e.getRankN(0):
-        print(output_header_string)
+  output_header_string += "Total error,refugees in camps (UNHCR),total refugees (simulation),raw UNHCR refugee count,refugees in camps (simulation),refugee_debt"
 
-    # Set up a mechanism to incorporate temporary decreases in refugees
-    refugee_debt = 0
-    # raw (interpolated) data from TOTAL UNHCR refugee count only.
-    refugees_raw = 0
+  if e.getRankN(0):
+      print(output_header_string)
 
-    for t in range(0, end_time):
+  # Set up a mechanism to incorporate temporary decreases in refugees
+  refugee_debt = 0
+  refugees_raw = 0 #raw (interpolated) data from TOTAL UNHCR refugee count only.
 
-        # if t>0:
-        ig.AddNewConflictZones(e, t)
+  for t in range(0,end_time):
 
-        # Determine number of new refugees to insert into the system.
-        new_refs = d.get_daily_difference(t, FullInterpolation=True) - refugee_debt
-        refugees_raw += d.get_daily_difference(t, FullInterpolation=True)
+    #if t>0:
+    ig.AddNewConflictZones(e,t)
 
-        # Refugees are pre-placed in Mali, so set new_refs to 0 on Day 0.
-        if insert_day0_refugees_in_camps:
-            if t == 0:
-                new_refs = 0
-                # refugees_raw = 0
+    new_refs,refugees_raw,refugee_debt = spawning.spawn_daily_displaced(e,t,d)
 
-        if new_refs < 0:
-            refugee_debt = -new_refs
-            new_refs = 0
-        elif refugee_debt > 0:
-            refugee_debt = 0
+    spawning.refresh_spawn_weights(e)
+    t_data = t
 
-        # Insert refugee agents
-        for i in range(0, new_refs):
-            e.addAgent(e.pick_conflict_location())
+    e.enact_border_closures(t)
+    e.evolve()
 
-        e.refresh_conflict_weights()
+    #Calculation of error terms
+    errors = []
+    abs_errors = []
+    loc_data = []
 
-        # print(new_refs)
-        t_data = t
+    camps = []
+    for i in camp_locations:
+      camps += [lm[i]]
+      loc_data += [d.get_field(i, t)]
 
-        e.enact_border_closures(t)
-        e.evolve()
+    # calculate retrofitted time.
+    refugees_in_camps_sim = 0
+    for c in camps:
+      refugees_in_camps_sim += c.numAgents
 
-        # Calculation of error terms
-        errors = []
-        abs_errors = []
-        loc_data = []
+    # calculate errors
+    j=0
+    for i in camp_locations:
+      errors += [a.rel_error(lm[i].numAgents, loc_data[j])]
+      abs_errors += [a.abs_error(lm[i].numAgents, loc_data[j])]
 
-        camps = []
-        for i in camp_locations:
-            camps += [lm[i]]
-            loc_data += [d.get_field(i, t)]
+      j += 1
 
-        # calculate retrofitted time.
-        refugees_in_camps_sim = 0
-        for c in camps:
-            refugees_in_camps_sim += c.numAgents
 
-        # calculate errors
-        j = 0
-        for i in camp_locations:
-            errors += [a.rel_error(lm[i].numAgents, loc_data[j])]
-            abs_errors += [a.abs_error(lm[i].numAgents, loc_data[j])]
+    date = datetime.strptime(start_date, "%Y-%m-%d") + timedelta(days=t)
+    output = "%s,%s" % (t, date.strftime("%Y-%m-%d"))
 
-            j += 1
+    for i in range(0,len(errors)):
+      output += ",%s,%s,%s" % (lm[camp_locations[i]].numAgents, loc_data[i], errors[i])
 
-        output = "%s" % t
+    if refugees_raw>0:
+      output += ",%s,%s,%s,%s,%s,%s" % (float(np.sum(abs_errors))/float(refugees_raw), int(sum(loc_data)), e.numAgents(), refugees_raw, refugees_in_camps_sim, refugee_debt)
+    else:
+      output += ",0,0,0,0,0,0"
 
-        for i in range(0, len(errors)):
-            output += ",{},{},{}".format(
-                lm[camp_locations[i]].numAgents,
-                loc_data[i],
-                errors[i]
-            )
+    if e.getRankN(t):
+        print(output)
 
-        if refugees_raw > 0:
-            output += ",{},{},{},{},{},{}".format(
-                float(np.sum(abs_errors)) / float(refugees_raw),
-                int(sum(loc_data)),
-                e.numAgents(),
-                refugees_raw,
-                refugees_in_camps_sim,
-                refugee_debt
-            )
-        else:
-            output += ",0,0,0,0,0,0"
-
-        if e.getRankN(t):
-            print(output)

@@ -1,7 +1,0 @@
-MaxMoveSpeed,360
-AwarenessLevel,1
-MaxCrossingSpeed,20
-MaxWalkSpeed,42
-AgentLogLevel,1
-CampMoveChance,0
-PopulationScaledownFactor, 100
