@@ -9,3 +9,4 @@ move_rules:
   camp_movechance: 0
   awareness_level: 1
 optimisations:
+  hasten: 100
