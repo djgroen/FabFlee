@@ -64,6 +64,21 @@ eagle_hidalgo:
   # required modules for Flee
   modules: *FLEE_MODULES
 
-  # required modules for Flee-based many-objective optimization algorithms
-  py_pkg: ["pymoo", "Cython", "PyYAML", "mpi4py", "pandas", "pyproj", "shapely", "Rtree", "geopandas", "Fiona"]
+
+archer2:
+  flee_location: "<PATH_TO_FLEE>"
+  username: "<your-username>"
+  manual_ssh: true
+  remote: archer2
+  budget: "<your-budget>"
+  project: "<your-project>"
+  job_wall_time: "01:00:00"
+  run_command: "srun -n $cores"
+  python3_command: "python3"
+  partition_name: "standard"
+  qos_name: "standard"
+
+
+
+
 

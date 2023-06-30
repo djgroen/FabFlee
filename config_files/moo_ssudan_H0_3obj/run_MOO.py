@@ -71,7 +71,7 @@ def read_MOO_setting_yaml():
 
 class FLEE_MOO_Problem(Problem):
 
-    def __init__(self, execution_mode, simulation_period, cores,
+    def __init__(self, execution_mode, parallel_command, simulation_period, cores,
                  work_dir=work_dir):
 
         # TODO: add input vraibles to MOO_setting.yaml file
@@ -82,6 +82,7 @@ class FLEE_MOO_Problem(Problem):
         self.work_dir = work_dir
         self.cnt_SWEEP_dir = 0
         self.execution_mode = execution_mode
+        self.parallel_command = parallel_command
         self.simulation_period = simulation_period
         self.cores = cores
 
@@ -449,10 +450,9 @@ class FLEE_MOO_Problem(Problem):
                 "{} simsetting.yml > out.csv".format(
                     self.simulation_period)
         elif self.execution_mode.lower() == "parallel":
-            flee_exec_cmd = "mpirun -np {} " \
-                "python3 run_par.py input_csv source_data " \
+            flee_exec_cmd = parallel_command + \
+                " python3 run_par.py input_csv source_data " \
                 "{} simsetting.yml > out.csv".format(
-                    self.cores,
                     self.simulation_period)
         else:
             raise RuntimeError(
@@ -556,17 +556,16 @@ if __name__ == "__main__":
     # Instantiate the parser
     parser = argparse.ArgumentParser()
     parser.add_argument("--execution_mode", action="store", default="serial")
-    parser.add_argument("--simulation_period", action="store", type=int,
-                        default="-1")
-    parser.add_argument("--exec_log_file", action="store",
-                        default="log_MOO.txt")
-
+    parser.add_argument("--parallel_command", action="store", default="mpirun -n $cores")
+    parser.add_argument("--simulation_period", action="store", type=int, default="-1")
+    parser.add_argument("--exec_log_file", action="store", default="log_MOO.txt")
     parser.add_argument("--cores", action="store", type=int, default="1")
     parser.add_argument("--USE_PJ", action="store", default="False")
 
     args = parser.parse_args()
 
     execution_mode = args.execution_mode
+    parallel_command = args.parallel_command
     simulation_period = args.simulation_period
     cores = args.cores
 
@@ -589,8 +588,9 @@ if __name__ == "__main__":
 
     problem = FLEE_MOO_Problem(
         execution_mode=execution_mode,
+        parallel_command = parallel_command,
         simulation_period=simulation_period,
-        cores=cores,
+        cores=cores
     )
 
     algorithm = None

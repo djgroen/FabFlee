@@ -4,6 +4,7 @@ log_levels:
   init: 0
 spawn_rules:
   take_from_population: False
+  conflict_spawn_decay: [1.0,1.0,1.0,0.5,0.1]
 move_rules:
   camp_movechance: 0
   awareness_level: 1

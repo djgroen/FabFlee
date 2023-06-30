@@ -7,7 +7,7 @@ pip install pymoo
 ## Dependencies
 MOO functionalities requires the following Python modules:
 * pymoo
-* pandas
+* pandas 
 * numpy
 * Cython
 * PyYAML
@@ -23,7 +23,7 @@ MOO functionalities requires the following Python modules:
 To perform MOO in FabFlee, we implement five well-known MOO algorithms based on pymoo, including NSGA-II, SPEA2, NSGA-III, MOEA/D, BCE-MOEA/D. In particular, the BCE-MOEA/D is developed as close as possible to the proposed version, while the others are imported from pymoo.
 
 ### Test problems
-In `~/FabSim3/results/plugins/FabFlee/config_files` folder, ten test problems regarding multiobjective camp location problems are constructed.
+In `~/FabSim3/plugins/FabFlee/config_files` folder, ten test problems regarding multiobjective camp location problems are constructed.
 
 | **Index** | **Test Problem** | **Number of Objectives** |
 |:----:|:----:|:------:|
@@ -48,35 +48,44 @@ The remaining test problems are five-objective optimization problems (**test pro
 ## Execution
 ### Parameter settings
 Before executing MOO in FabFlee, some algorithm parameters should be configured.
-1. In `~/FabSim3/results/plugins/FabFlee/MOO_setting.yaml`, you can select an MOO algorithm (e.g., set `alg_name: "NSGA2"` to represent NSGA-II algorithm), and set relevant parameters, e.g., population size `pop_size: 4` and the number of generations `n_gen: 2`.
+1. In `~/FabSim3/plugins/FabFlee/MOO_setting.yaml`, you can select an MOO algorithm (e.g., set `alg_name: "NSGA2"` to represent NSGA-II algorithm), and set relevant parameters, e.g., population size `pop_size: 4` and the number of generations `n_gen: 2`.
 
 2. In `~/<problem_name>/simsetting.yml`, you can change the parameter settings regarding conflict simulation for a test problem. More details regarding the simulation settings can be found here https://flee.readthedocs.io/en/master/Simulation_settings/. In particular, for **test problems 3-10**, we scale down the number of agents by setting the parameter `hasten: 100` to improve runtime performance.
 
 _NOTE_ : The **simsetting.yml** file includes default values for simulation setting parameters.
 
+### Preparation for remote execution on ARCHER2
+Create `machines_FabFlee_user.yml` located in `~/FabSim3/plugins/FabFlee` folder. Under the section localhost, please add the following lines: 
+```sh
+flee_location: "<PATH_TO_FLEE>"
+username: "<your-username>"
+budget: "<your-budget>"
+project: "<your-project>"
+```
+
 ### Optimization
 
-1. To run MOO for camp location problems in FabFlee, you can type:
-	```sh
-	fabsim localhost flee_MOO:<problem_name>,simulation_period=<number>,cores=<number>,job_desc="<description>"
-	```
-	or simply
-	```sh
-	fabsim localhost flee_MOO:<problem_name>,simulation_period=<number>
-	```
+1.  To submit and execute multiobjective optimization for an camp location problem, you can type:
 	
+ 	```sh
+	# to execute on localhost
+	fabsim localhost flee_MOO:<problem_name>,simulation_period=<number>,cores=<number>,job_desc="<description>"
+	# to execute on remote machine
+	fabsim archer2 flee_MOO:<problem_name>,simulation_period=<number>,cores=<number>,job_desc="<description>"
+	```
 	where
+
 - `problem_name` denotes the test problem to be optimized, 
 - `cores` represents the number of cores for execution (default value is 1),
 - `job_desc` stands for the description of a submitted job.
  
-3. Simply wait for it to finish or to cancel the job press Ctrl+C.
+3.  Simply wait for it to finish or to cancel the job press Ctrl+C.
 4.  After the job has finished, a message is printed indicating where the output data resides remotely.
 5.  You can fetch the remote data using:
 	```sh
 	fabsim localhost fetch_results
 	```
-	Local results are typically locations in the `~/FabSim3/results/` subdirectory, which are called in the format `<problem_name>_localhost_1_<description>`, e.g., `moo_ssudan_H0_5obj_localhost_1_nsga2`.
+	Local results are typically locations in the `~/FabSim3/results/` subdirectory, which are called in the format `<problem_name>_<machine_name>_<number_of_cores>_<description>`, e.g., `moo_ssudan_H0_5obj_localhost_1_nsga2`.
 
 
 Within this subdirectory,
