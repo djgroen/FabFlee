@@ -3,7 +3,7 @@ log_levels:
   camp: 0
   init: 0
 spawn_rules:
-  take_from_population: False
+  take_from_population: True
   conflict_spawn_decay: [1.0,1.0,1.0,0.5,0.1]
 move_rules:
   start_on_foot: True
