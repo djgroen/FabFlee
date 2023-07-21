@@ -1,15 +1,9 @@
 {
-  "awareness_level": {
-    "type": "integer",
-    "min": 0,
-    "max": 2,
-    "default": 1
-  },
   "max_move_speed": {
     "type": "float",
     "min": 0.0,
     "max": 40000,
-    "default": 200
+    "default": 360
   },
   "max_walk_speed": {
     "type": "float",
@@ -17,35 +11,53 @@
     "max": 40000,
     "default": 35
   },
-  "camp_move_chance": {
+  "max_crossing_speed": {
     "type": "float",
     "min": 0.0,
-    "max": 1.0,
-    "default": 0.001
+    "max": 40000,
+    "default": 20
   },
-  "conflict_move_chance": {
+  "foreign_weight": {
     "type": "float",
     "min": 0.0,
-    "max": 1.0,
+    "max": 10.0,
     "default": 1.0
-  },
-  "default_move_chance": {
-    "type": "float",
-    "min": 0.0,
-    "max": 1.0,
-    "default": 0.3
   },
   "camp_weight": {
     "type": "float",
-    "min": 1.0,
+    "min": 0.1,
     "max": 10.0,
-    "default": 2.0
+    "default": 1.0
   },
   "conflict_weight": {
     "type": "float",
     "min": 0.1,
     "max": 1.0,
     "default": 0.25
+  },
+  "conflict_movechance": {
+    "type": "float",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 1.0
+  },
+  "camp_movechance": {
+    "type": "float",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.001
+  },
+  "default_movechance": {
+    "type": "float",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.3
+  },
+  "idpcamp_movechance": {
+    "type": "float",
+    "min": 0.0,
+    "max": 1.0,
+    "default": 0.1
   },
   "out_file": {
     "type": "string",
