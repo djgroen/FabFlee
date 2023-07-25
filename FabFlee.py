@@ -675,13 +675,13 @@ def flee_MOO(config, simulation_period=60, cores=1, **args):
 # validate_results:flee_conflict_name_localhost_16
 def validate_results(output_dir):
     score = vvp_validate_results("{}/{}".format(env.local_results, output_dir))
-    print("Validation {}: {}".format(output_dir.split[-1]), score)
+    #print("Validation {}: {}".format(output_dir.split[-1]), score)
     return score
 
 
 def make_vvp_mean(np_array, **kwargs):
     mean_score = np.mean(np_array)
-    print("Mean score: {}".format(mean_score))
+    #print("Mean score: {}".format(mean_score))
     return mean_score
 
 
@@ -692,9 +692,21 @@ def validate_flee_output(results_dir):
     Goes through all the output directories and calculates the validation
     scores.
     """
-    vvp.ensemble_vvp("{}/{}/RUNS".format(env.local_results, results_dir),
+    full_results_dir = "{}/{}/RUNS".format(env.local_results, results_dir)
+    results = vvp.ensemble_vvp(full_results_dir,
                      vvp_validate_results,
                      make_vvp_mean)
+
+    vresults = results[full_results_dir]
+
+    # Printing step: perhaps someday someone can make this prettier?
+    print("\nVALIDATION SUMMARY:\n")
+    for i in range(0,len(vresults['names'])):
+        error = vresults['scores'][i] * 0.5
+        print(f"Conflict {vresults['names'][i]}, Ave. rel. diff.: {vresults['scores'][i]}, error: {error}")
+    print(f"Averaged score: {vresults['scores_aggregation']}")
+
+    return vresults
 
 
 @task
