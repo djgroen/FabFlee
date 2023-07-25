@@ -1,8 +1,12 @@
-AwarenessLevel,$awareness_level
-MaxMoveSpeed,$max_move_speed
-MaxWalkSpeed,$max_walk_speed
-CampMoveChance,$camp_move_chance
-ConflictMoveChance,$conflict_move_chance
-DefaultMoveChance,$default_move_chance
-CampWeight,$camp_weight
-ConflictWeight,$conflict_weight
+move_rules:
+  max_move_speed: $max_move_speed
+  max_walk_speed: $max_walk_speed
+  max_crossing_speed: $max_crossing_speed
+  foreign_weight: $foreign_weight
+  camp_weight: $camp_weight
+  conflict_weight: $conflict_weight
+  conflict_movechance: $conflict_movechance
+  camp_movechance: $camp_movechance
+  default_movechance: $default_movechance
+  idpcamp_movechance: $idpcamp_movechance
+

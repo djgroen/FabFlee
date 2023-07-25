@@ -1,0 +1,10 @@
+log_levels:
+  agent: 1
+  camp: 0
+  init: 0
+  conflict: 0
+  link: 1
+
+optimisations:
+  # Set to 100 to scale down the population by 100 and increase the execution time.
+  hasten: 1

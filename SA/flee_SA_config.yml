@@ -5,21 +5,24 @@ vary_parameters_range:
         range: [100, 500]
     max_walk_speed:
         range: [10, 100]
-    camp_move_chance:
-        range: [0.0, 0.1]
-    conflict_move_chance:
-        range: [0.1, 1.0]
-    default_move_chance:
-        range: [0.1, 1.0]
+    max_crossing_speed:
+        range: [10, 50]
+    foreign_weight:
+        range: [1.0, 10.0]
     camp_weight:
         range: [1.0, 10.0]
     conflict_weight:
         range: [0.1, 1.0]
+    conflict_movechance:
+        range: [0.1, 1.0] 
+    camp_movechance:
+        range: [0.0, 0.1]
+    default_movechance:
+        range: [0.1, 1.0]
+    idpcamp_movechance:
+        range: [0.1, 1.0]
 
-
-selected_vary_parameters: ["max_move_speed",
-                          "max_walk_speed"
-                          ]
+selected_vary_parameters: ["max_move_speed", "max_walk_speed"]
 
 distribution_type: "Uniform" # Uniform, DiscreteUniform
 
@@ -29,7 +32,7 @@ polynomial_order: 2
 # template file should be available in FabFlee/templates folder
 encoder_template_fname : "simsetting.template"
 encoder_delimiter: "$"
-encoder_target_filename: "simsetting.csv"
+encoder_target_filename: "simsetting.yml"
 
 decoder_output_column: "Total error"
 
