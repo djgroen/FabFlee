@@ -1,0 +1,35 @@
+#name,#name,country,latitude,longitude,location_type,conflict_date,population
+Damascus,Damascus,Syria,33.4923,36.3209,conflict_zone,5,1754000
+Lattakia,Lattakia,Syria,35.7796,35.9613,conflict_zone,0,1008000
+Ar Raqqa,Ar Raqqa,Syria,35.9428,39.0519,conflict_zone,0,944000
+Idleb,Idleb,Syria,35.6355,36.5311,conflict_zone,0,1501000
+Dara,Dara,Syria,32.831,36.1575,conflict_zone,0,1027000
+Aleppo,Aleppo,Syria,36.206,37.1524,conflict_zone,0,4868000
+Homs,Homs,Syria,34.5505,36.6133,conflict_zone,3,1803000
+Al-Hasakah,Al-Hasakeh,Syria,36.48935025,40.75381874,conflict_zone,3,1512000
+Deir ez Zor,Deir ez Zor,Syria,35.3539,40.1719,conflict_zone,4,1239000
+Hama,Hama,Syria,35.1337,36.7613,conflict_zone,4,1628000
+As Sweida,As Sweida,Syria,32.7068,36.568,conflict_zone,6,370000
+Tartous,Tartous,Syria,34.8756,36.2569,conflict_zone,17,797000
+Quneitra,Quneitra,Syria,33.1821,35.8908,conflict_zone,30,90000
+Kah,Solidarity,Turkey,36.31423552499093,36.70272754297891,camp,,300
+Nizip,Nizip,Turkey,37.10591747,37.91169872,camp,,38543
+Elbeyli,Gaziantep,Turkey,37.01372385,37.36162226,camp,,36076
+Osmaniye,Osmaniye,Turkey,37.1356665,36.20531421,camp,,7305
+Adana,Adana,Turkey,37.04271888,35.49010241,camp,,600
+Qamishli,Al Raj,Syria,37.05734700117003,41.22632993786046,camp,,3380
+Zaatari,Jordan,Jordan,32.31467158701086,36.31284318962619,camp,,80000
+Al-Mafraq,Abu Abdullah,Jordan,32.36371761404675,36.20733226419376,camp,,6000
+Zarqa,Qasr Al-Hallabat,Jordan,32.06849851318129,36.09524326433272,camp,,4500
+Jannine,Jannine,Lebanon,33.68002352,35.79336378,camp,,60000
+Beirut,Horsh,Lebanon,33.874636493727344,35.489341690154426,camp,,25000
+Minyara,Ibrahim,Lebanon,34.57852248,36.05781211,camp,,8000
+Kawrgosk,Kawergosk,Iraq,36.3505021529281,43.796207600230524,camp,,13646
+Kursi,Kursi,Iraq,36.7261676,41.84257144,camp,,11200
+Mazri,Mazri,Iraq,37.15245411,42.48568638,camp,,16000
+Khanik,Khanke,Iraq,36.81181892,42.77531295,camp,,16460
+Sharya,Sharya,Iraq,36.82508407,42.97460634,camp,,13277
+Bardarash,Rovia,Iraq,36.52985012,43.57640756,camp,,4010
+Khazir,Iraq,Iraq,36.46147364,43.55861242,camp,,30000
+Arbat,Arbat,Iraq,35.38143932,45.60633241,camp,,8000
+Baharka,Erbil,Iraq,36.4498001,43.99665615,camp,,10800
