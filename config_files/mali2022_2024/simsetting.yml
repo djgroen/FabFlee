@@ -1,6 +1,6 @@
 log_levels:
   agent: 1 
-  link: 1
+  link: 0
   camp: 0
   conflict: 0 
   init: 0 
