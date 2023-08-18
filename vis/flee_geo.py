@@ -10,6 +10,138 @@ import flee.InputGeography
 import numpy as np
 import sys
 
+import os
+import folium
+import pandas as pd
+from IPython.display import display, HTML
+from folium.plugins import MarkerCluster
+
+
+@task
+def plot_flee_agents_location(results_dir, day, age=None, gender=None, proc="0"):
+    """
+    Plots the movement of refugees by chosen time and demographic prompts using agents.out.0
+    """
+    file_path = "{}/{}/agents.out.{}".format(env.local_results, results_dir, proc)
+    
+    # Check if the file exists
+    if os.path.exists(file_path):
+        # Check if the file is empty
+        if os.path.getsize(file_path) == 0:
+            print(f"The {file_path} file is empty.")
+            exit()  # Exit the code
+    else:
+        print(f"The {file_path} file does not exist.")
+        exit()  # Exit the code
+    
+    # Initialize an empty list to store valid lines
+    valid_lines = []
+
+    # Read the CSV file line by line and filter valid lines
+    with open(file_path, 'r') as file:
+        for line in file:
+            columns = line.strip().split(',')
+            if len(columns) <= 14:  # Adjust the column count as needed 
+                valid_lines.append(line)
+            else:
+                print(f"Skipped line with {len(columns)} columns: {line}")
+
+    print("Number of valid lines:", len(valid_lines))
+                
+    # Read the valid lines into a DataFrame
+    from io import StringIO
+
+    # Specify the relevant column names
+    default_columns = ['#time', 'rank-agentid', 'current_location', 'gps_x', 'gps_y']  
+    header = valid_lines[0].split(',')
+
+    # Create a new df to store the columns
+    relevant_columns = default_columns.copy()
+
+    if 'age' in header:
+        relevant_columns.append('age')
+    else:
+        print("Age is not present in the data")
+
+    if 'gender' in header:
+        relevant_columns.append('gender')
+    else:
+        print("Gender is not present in the data")
+
+    print("Relevant columns before filtering:", relevant_columns)
+
+    # Filter out columns that are not present in the header
+    relevant_columns = [col for col in relevant_columns if col in header]
+
+    print("Relevant columns after filtering:", relevant_columns)
+
+    # Read in the csv relevant columns
+    df = pd.read_csv(StringIO('\n'.join(valid_lines)), usecols=relevant_columns)
+
+    # Rename the '#time' column to 'time'
+    df.rename(columns={'#time': 'time'}, inplace=True)
+
+    # Filter the data based on day, age, and gender
+    print("Filtering criteria:")
+    print("Day:", day)
+    print("Age:", age)
+    print("Gender:", gender)
+
+    if 'age' in df.columns and 'gender' in df.columns:
+        if age is not None and gender is not None:
+            filtered_df = df[(df['time'] == int(day)) & (df['age'] == int(age)) & (df['gender'] == gender)]
+        elif age is not None:
+            filtered_df = df[(df['time'] == int(day)) & (df['age'] == int(age))]
+        elif gender is not None:
+            filtered_df = df[(df['time'] == int(day)) & (df['gender'] == gender)]
+        else:
+            filtered_df = df[df['time'] == int(day)]
+    elif 'age' in df.columns:
+        if age is not None:
+            filtered_df = df[(df['time'] == int(day)) & (df['age'] == int(age))]
+        else:
+            filtered_df = df[df['time'] == int(day)]
+    elif 'gender' in df.columns:
+        if gender is not None:
+            filtered_df = df[(df['time'] == int(day)) & (df['gender'] == gender)]
+        else:
+            filtered_df = df[df['time'] == int(day)]
+    else:
+        filtered_df = df[df['time'] == int(day)]
+
+    # Check if any rows are left after filtering
+    if filtered_df.empty:
+        print("No matching agents found.")
+        return None
+
+    # Calculate the total number of agents per location
+    location_counts = filtered_df['current_location'].value_counts()
+    
+    print(location_counts)
+
+    # Create a Folium map centered at the first agent's coordinates
+    m = folium.Map(location=[filtered_df.iloc[0]['gps_x'], filtered_df.iloc[0]['gps_y']], zoom_start=5)
+    
+    # Add circle markers for each location with radius proportional to the agent count
+    for location, count in location_counts.items():
+        location_data = filtered_df[filtered_df['current_location'] == location].iloc[0]
+        folium.CircleMarker(
+            location=(location_data['gps_x'], location_data['gps_y']),
+            radius=count * 0.02,  # Adjust the scale factor as needed
+            popup=f"{count} agents in {location}",
+            color='blue',
+            fill=True,
+            fill_color='blue'
+        ).add_to(m)
+
+    output_dir = os.path.dirname(file_path)
+    output_file_name = f'plot_flee_agents_location_{results_dir}.html'
+    output_file_path = os.path.join(output_dir, output_file_name)
+    m.save(output_file_path)
+
+    print(f"Map has been saved in {output_dir} as {output_file_name}") 
+
+
 
 @task
 def plot_flee_links(config):
@@ -159,3 +291,4 @@ def plot_flee_agents(results_dir, proc="0", agentid="0"):
 
 if __name__ == "__main__":
     pass
+
