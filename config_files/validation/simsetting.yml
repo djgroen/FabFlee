@@ -10,5 +10,5 @@ move_rules:
   avoid_short_stints: True
   use_pop_for_loc_weight: True
   awareness_level: 1
-  weight_power: 3
+  weight_power: 1
 optimisations: 
