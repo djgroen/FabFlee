@@ -12,7 +12,7 @@ fi
 
 /usr/bin/env > env.log
 
-python3 $flee_location/runscripts/run.py input_csv source_data $simulation_period simsetting.yml > out.csv
+$python3_command $flee_location/runscripts/run.py input_csv source_data $simulation_period simsetting.yml > out.csv
 
 run_UNHCR_uncertainty="$UNHCR_uncertainty"
 # covert to lowercase
@@ -20,5 +20,5 @@ run_UNHCR_uncertainty=$$(echo "$$run_UNHCR_uncertainty" | tr "[:upper:]" "[:lowe
 
 if [ "$$run_UNHCR_uncertainty" = "true" ]
 then
-	python3 run_UNHCR_uncertainty.py input_csv source_data $simulation_period simsetting.csv > out_uncertainty.csv
+	$python3_command run_UNHCR_uncertainty.py input_csv source_data $simulation_period simsetting.csv > out_uncertainty.csv
 fi
