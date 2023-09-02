@@ -720,6 +720,8 @@ def validate_flee(simulation_period=0, cores=4, skip_runs=False, label="",
         print("adding label: ", label)
         env.job_name_template += "_{}".format(label)
 
+    clean_fabsim_dirs("validation")
+
     env.prevent_results_overwrite = "delete"
 
     mode = "serial"
