@@ -1,0 +1,13 @@
+log_levels:
+  agent: 0
+  camp: 0
+  init: 0
+  conflict: 0
+  link: 0
+spawn_rules:
+move_rules:
+  max_move_speed: 600.0
+  default_movechance: 0.8
+  start_on_foot: False
+optimisations:
+  hasten: 50
