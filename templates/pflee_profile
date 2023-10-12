@@ -12,7 +12,7 @@ fi
 
 /usr/bin/env > env.log
 
-time $python3_command $flee_location/runscripts/run.py input_csv source_data $simulation_period simsetting.yml > out.csv
+time $run_command $python3_command -m cProfile -o prof.log $flee_location/runscripts/run_par.py input_csv source_data $simulation_period simsetting.yml > out.csv
 
 run_UNHCR_uncertainty="$UNHCR_uncertainty"
 # covert to lowercase

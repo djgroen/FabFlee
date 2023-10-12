@@ -240,7 +240,7 @@ def flee_conflict_forecast(config, simulation_period, N, **args):
 # Flee parallelisation tasks
 @task
 @load_plugin_env_vars("FabFlee")
-def pflee(config, simulation_period, **args):
+def pflee(config, simulation_period, profile=False, **args):
     """ Submit a Pflee job to the remote queue.
     The job results will be stored with a name pattern as defined
     in the environment, e.g. car-abcd1234-localhost-4
@@ -262,7 +262,10 @@ def pflee(config, simulation_period, **args):
     update_environment(args, {"simulation_period": simulation_period})
     with_config(config)
     execute(put_configs, config)
-    job(dict(script='pflee', wall_time='0:15:0', memory='2G'), args)
+    if bool(profile) is True:
+        job(dict(script='pflee_profile', wall_time='0:30:0', memory='2G'), args)
+    else:
+        job(dict(script='pflee', wall_time='0:30:0', memory='2G'), args)
 
 
 @task
@@ -365,6 +368,18 @@ def compare_food(output_dir_1=""):
           % (env.flee_location,
              env.results_path, output_dir_1,
              env.results_path, output_dir_2))
+
+
+@task
+@load_plugin_env_vars("FabFlee")
+def plot_flee_profile(output_dir=""):
+    """
+        requires graphviz and gprof2dot modules, as well as eog
+    Syntax:
+        fab localhost plot_flee_profile:output_dir
+    """
+    local(f"gprof2dot --colour-nodes-by-selftime -f pstats {env.local_results}/{output_dir}/prof.log |     dot -Tpng -o {env.local_results}/{output_dir}/profile.png")
+    local(f"eog {env.local_results}/{output_dir}/profile.png")
 
 
 # Post-processing tasks
