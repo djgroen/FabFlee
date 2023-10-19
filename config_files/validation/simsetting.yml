@@ -8,5 +8,7 @@ spawn_rules:
 move_rules:
   start_on_foot: True
   avoid_short_stints: True
-  awareness_level: 2
+  use_pop_for_loc_weight: True
+  awareness_level: 1
+  weight_power: 1
 optimisations: 

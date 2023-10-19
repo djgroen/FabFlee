@@ -1,0 +1,21 @@
+#name,#name,country,latitude,longitude,location_type,conflict_date,population
+Gao,Gao,Mali,16.2788129,-0.0412392,conflict_zone,1,542304
+Segou,Segou,Mali,14.0492494,-5.991121102851542,conflict_zone,1,2338349
+Tombouctou,Timbuktu,Mali,16.7719091,-3.0087272,conflict_zone,1,674793
+Douentza,Mopti,Mali,15.015669684867866,-2.9505858623051404,conflict_zone,1,2036209
+Kayes,Kayes,Mali,13.8001844,-10.22455481493909,conflict_zone,4,1993615
+Sikasso,Sikasso,Mali,11.482629,-6.860785462633452,conflict_zone,8,2643179
+Koulikoro,Koulikoro,Mali,12.866372080,-7.5601090,conflict_zone,10,2422108
+Menaka,Menaka,Mali,15.915873142,2.3962853241,conflict_zone,33,54456
+Kidal,Kidal,Mali,18.446950, 1.40882475,conflict_zone,46,67739
+Bamako,Bamako,Mali,12.61326555,-7.984739136241295,conflict_zone,85,1810366
+Fassala,Fassala,Mauritania,15.5575511,-5.5190744,camp,,10000
+Mentao,Sahel,Burkina_Faso,13.954053,-1.674079,camp,,10000
+Dori,Burkina_Faso,Burkina_Faso,14.0327651,-0.0348286,camp,,11000
+Damba,Sahel,Burkina_Faso,14.10531866, -1.6292622,camp,,4000
+Djibo,Soum,Burkina_Faso,14.1023225,-1.6318243,camp,,1800
+Niamey,Niamey,Niger,13.524834,2.109823,camp,,35316
+Mangaize,Tillaberi,Niger,14.6832096,1.953911,camp,,6000
+Ayorou,Tillaberi,Niger,14.7334551,0.9194861,camp,,10781
+Tahoua,Tahoua,Niger,14.890739317890382,5.25983067510449,camp,,10000
+Abala,Tillaberi,Niger,14.930477567752535, 3.434601062638809,camp,,20156

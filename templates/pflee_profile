@@ -1,0 +1,24 @@
+cd $job_results
+$run_prefix
+
+export FLEE_TYPE_CHECK=$FLEE_TYPE_CHECK
+
+if [ -z "$flee_location" ]
+then
+	echo "Please set $$flee_location in your deploy/machines_user.yml file."
+else
+	export PYTHONPATH=$flee_location:$$PYTHONPATH
+fi
+
+/usr/bin/env > env.log
+
+time $run_command $python3_command -m cProfile -o prof.log $flee_location/runscripts/run_par.py input_csv source_data $simulation_period simsetting.yml > out.csv
+
+run_UNHCR_uncertainty="$UNHCR_uncertainty"
+# covert to lowercase
+run_UNHCR_uncertainty=$$(echo "$$run_UNHCR_uncertainty" | tr "[:upper:]" "[:lower:]")
+
+if [ "$$run_UNHCR_uncertainty" = "true" ]
+then
+	$python3_command run_UNHCR_uncertainty.py input_csv source_data $simulation_period simsetting.csv > out_uncertainty.csv
+fi

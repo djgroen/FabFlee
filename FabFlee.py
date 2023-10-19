@@ -262,7 +262,7 @@ def flee_conflict_forecast(config, simulation_period, N, **args):
 # Flee parallelisation tasks
 @task
 @load_plugin_env_vars("FabFlee")
-def pflee(config, simulation_period, **args):
+def pflee(config, simulation_period, profile=False, **args):
     """ Submit a Pflee job to the remote queue.
     The job results will be stored with a name pattern as defined
     in the environment, e.g. car-abcd1234-localhost-4
@@ -284,7 +284,10 @@ def pflee(config, simulation_period, **args):
     update_environment(args, {"simulation_period": simulation_period})
     with_config(config)
     execute(put_configs, config)
-    job(dict(script='pflee', wall_time='0:15:0', memory='2G'), args)
+    if bool(profile) is True:
+        job(dict(script='pflee_profile', wall_time='0:30:0', memory='2G'), args)
+    else:
+        job(dict(script='pflee', wall_time='0:30:0', memory='2G'), args)
 
 
 @task
@@ -387,6 +390,29 @@ def compare_food(output_dir_1=""):
           % (env.flee_location,
              env.results_path, output_dir_1,
              env.results_path, output_dir_2))
+
+
+@task
+@load_plugin_env_vars("FabFlee")
+def plot_flee_profile(output_dir="", profiler="gprof2dot"):
+    """
+    Requires graphviz and gprof2dot or snakeviz modules, as well as eog.
+    
+    Syntax:
+    fab localhost plot_flee_profile:output_dir,profiler
+    """
+    if profiler == "gprof2dot":
+        # Use gprof2dot to generate the profile visualization
+        local(f"gprof2dot --colour-nodes-by-selftime -f pstats {env.local_results}/{output_dir}/prof.log | dot -Tpng -o {env.local_results}/{output_dir}/profile.png")
+        
+        # Open the generated profile image with eog
+        local(f"eog {env.local_results}/{output_dir}/profile.png")
+    elif profiler == "snakeviz":
+        # Use snakeviz to visualize the profile
+        local(f"snakeviz {env.local_results}/{output_dir}/prof.log")
+        print(f"Snakeviz output saved as HTML: {env.local_results}/{output_dir}/profile.html")
+    else:
+        print("Invalid profiler choice. Please choose 'gprof2dot' or 'snakeviz'.")
 
 
 # Post-processing tasks
@@ -741,6 +767,8 @@ def validate_flee(simulation_period=0, cores=4, skip_runs=False, label="",
     if len(label) > 0:
         print("adding label: ", label)
         env.job_name_template += "_{}".format(label)
+
+    clean_fabsim_dirs("validation")
 
     env.prevent_results_overwrite = "delete"
 
