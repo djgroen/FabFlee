@@ -6,6 +6,18 @@
 #
 # This file contains FabSim definitions specific to fabFlee.
 
+class LazyCallable(object):
+  def __init__(self, name):
+    self.n, self.f = name, None
+  def __call__(self, *a, **k):
+    if self.f is None:
+      modn, funcn = self.n.rsplit('.', 1)
+      if modn not in sys.modules:
+        __import__(modn)
+      self.f = getattr(sys.modules[modn],
+                       funcn)
+    self.f(*a, **k)
+
 try:
     from fabsim.base.fab import *
 except ImportError:
@@ -86,6 +98,16 @@ def flees(config, simulation_period, **args):
     # Generate config directories, copying from the config provided,
     # and adding a different generated test.csv in each directory.
     # Run the flee() a number of times.
+
+@task
+def flee_verify_input(conflict,**args):
+    # imports the module from the given path
+    print("Validating input files for %s" %conflict)
+    conflict_dir = "%s/config_files/%s" % (
+        get_plugin_path("FabFlee"), conflict)
+    input_file_dir = os.path.join(conflict_dir, "input_csv")
+    fg = fab_guard.FabGuard(input_file_dir)
+    fg.verify()
 
 
 @task
@@ -1325,7 +1347,6 @@ def redirect(source, destination):
                              % (get_plugin_path("FabFlee")), "w"))
     writer.writerows(lines)
 
-
 # Test Functions
 # from plugins.FabFlee.test_FabFlee import *
 
@@ -1398,3 +1419,14 @@ except:
     traceback.print_tb(exc_traceback)
     print("The FabFlee run_perf_benchmarks functionalities are not imported as a result.")
     pass
+try:
+    import plugins.FabFlee.fab_guard.registry as registry
+    import plugins.FabFlee.fab_guard.fab_guard as fab_guard
+except:
+    exc_type, exc_value, exc_traceback = sys.exc_info()
+    pprint(exc_type)
+    pprint(exc_value)
+    import traceback
+    traceback.print_tb(exc_traceback)
+    print("Failed to import the libraries (Pandera, pande)")
+    print("The flee_verify_input functionality is not supported as a result")
