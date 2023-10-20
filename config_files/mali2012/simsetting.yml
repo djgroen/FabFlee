@@ -11,4 +11,5 @@ move_rules:
   camp_weight: 5.0
   awareness_level: 1
   capacity_buffer: 0.75
-optimisations: 
+optimisations:
+  hasten: 10 

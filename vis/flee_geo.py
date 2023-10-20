@@ -7,6 +7,7 @@ from plugins.FabFlee.FabFlee import *
 
 import plotly.express as px
 import flee.InputGeography
+from flee.SimulationSettings import SimulationSettings
 import numpy as np
 import sys
 
@@ -154,6 +155,7 @@ def plot_flee_links(config):
 
     floc = "{}/input_csv/locations.csv".format(env.job_config_path_local)
     flink = "{}/input_csv/routes.csv".format(env.job_config_path_local)
+    fssyml = "{}/input_csv/simsetting.yml".format(env.job_config_path_local)
 
     lats = []
     lons = []
