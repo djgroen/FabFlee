@@ -372,14 +372,25 @@ def compare_food(output_dir_1=""):
 
 @task
 @load_plugin_env_vars("FabFlee")
-def plot_flee_profile(output_dir=""):
+def plot_flee_profile(output_dir="", profiler="gprof2dot"):
     """
-        requires graphviz and gprof2dot modules, as well as eog
+    Requires graphviz and gprof2dot or snakeviz modules, as well as eog.
+    
     Syntax:
-        fab localhost plot_flee_profile:output_dir
+    fab localhost plot_flee_profile:output_dir,profiler
     """
-    local(f"gprof2dot --colour-nodes-by-selftime -f pstats {env.local_results}/{output_dir}/prof.log |     dot -Tpng -o {env.local_results}/{output_dir}/profile.png")
-    local(f"eog {env.local_results}/{output_dir}/profile.png")
+    if profiler == "gprof2dot":
+        # Use gprof2dot to generate the profile visualization
+        local(f"gprof2dot --colour-nodes-by-selftime -f pstats {env.local_results}/{output_dir}/prof.log | dot -Tpng -o {env.local_results}/{output_dir}/profile.png")
+        
+        # Open the generated profile image with eog
+        local(f"eog {env.local_results}/{output_dir}/profile.png")
+    elif profiler == "snakeviz":
+        # Use snakeviz to visualize the profile
+        local(f"snakeviz {env.local_results}/{output_dir}/prof.log")
+        print(f"Snakeviz output saved as HTML: {env.local_results}/{output_dir}/profile.html")
+    else:
+        print("Invalid profiler choice. Please choose 'gprof2dot' or 'snakeviz'.")
 
 
 # Post-processing tasks
