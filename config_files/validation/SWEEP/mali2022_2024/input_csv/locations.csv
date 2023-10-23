@@ -1,8 +1,8 @@
 #name,#name,country,latitude,longitude,location_type,conflict_date,population
-Gao,Gao,Mali,16.2788129,-0.0412392,conflict_zone,1,542304
-Segou,Segou,Mali,14.0492494,-5.991121102851542,conflict_zone,1,2338349
-Tombouctou,Timbuktu,Mali,16.7719091,-3.0087272,conflict_zone,1,674793
-Douentza,Mopti,Mali,15.015669684867866,-2.9505858623051404,conflict_zone,1,2036209
+Gao,Gao,Mali,16.2788129,-0.0412392,conflict_zone,0,542304
+Segou,Segou,Mali,14.0492494,-5.991121102851542,conflict_zone,0,2338349
+Tombouctou,Timbuktu,Mali,16.7719091,-3.0087272,conflict_zone,0,674793
+Douentza,Mopti,Mali,15.015669684867866,-2.9505858623051404,conflict_zone,0,2036209
 Kayes,Kayes,Mali,13.8001844,-10.22455481493909,conflict_zone,4,1993615
 Sikasso,Sikasso,Mali,11.482629,-6.860785462633452,conflict_zone,8,2643179
 Koulikoro,Koulikoro,Mali,12.866372080,-7.5601090,conflict_zone,10,2422108

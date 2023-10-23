@@ -1,5 +1,5 @@
 #name,region,country,latitude,longitude,location_type,conflict_date,population
-Adigrat,Tigray,Ethiopia,14.277,39.462,conflict_zone,1,95358
+Adigrat,Tigray,Ethiopia,14.277,39.462,conflict_zone,0,95358
 Midre_Genet,Tigray,Ethiopia,13.6944786,36.4734299,conflict_zone,2,10000
 Dansha,Tigray,Ethiopia,13.5663,36.973,conflict_zone,5,407560
 Humera,Tigray,Ethiopia,14.2652,36.585,conflict_zone,6,36074
