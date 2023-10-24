@@ -10,16 +10,16 @@ import plugins.FabFlee.fab_guard.config as config
 
 
 class LocationsScheme(pa.DataFrameModel):
-    name: Series[pa.String] = pa.Field(nullable=False, alias='#"name"')
-    #name: Series[pa.String] = pa.Field(nullable=False)
+    # name: Series[pa.String] = pa.Field(nullable=False, alias='#"name"')
+    name: Series[pa.String] = pa.Field(nullable=False)
     region: Series[pa.String] = pa.Field()
     country: Series[pa.String] = pa.Field()
     lat: Series[pa.Float] = pa.Field()
     lon: Series[pa.Float] = pa.Field()
     location_type: Series[pa.String] = pa.Field(
         isin = ["conflict_zone", "town","camp", "forwarding_hub", "marker", "idpcamp"])
-    conflict_date: Series[float] = pa.Field(nullable=True)
-    population: Series[float] = pa.Field(ge=0,nullable=True)
+    conflict_date: Series[float] = pa.Field(nullable=True, coerce=True)
+    population: Series[float] = pa.Field(ge=0,nullable=True,coerce=True)
 
     # Define column-level validation check, constraint applies to all values in a column
     @pa.check(name,element_wise=True)
@@ -27,7 +27,7 @@ class LocationsScheme(pa.DataFrameModel):
         # Load the content of the routes file in a dataframe
         dfr = fg.FabGuard.get_instance().load_file(config.routes)
         # Convert the content of the '#"name1"' column to a list
-        rnames = dfr['#"name1"'].tolist()
+        rnames = dfr["name1"].tolist()
         # Convert the content of the "name2"' column to a list
         rnames.extend(dfr["name2"].tolist())
         # Check if the name column is in the either name1 or name2 columns

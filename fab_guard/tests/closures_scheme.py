@@ -12,11 +12,12 @@ import plugins.FabFlee.fab_guard.config as config
 # Define a validation class for the closures.csv file
 class ClosuresScheme(pa.DataFrameModel):
     # Define simple constraints for all the columns
-    closure_type: Series[pa.String] = pa.Field(isin=["location", "country", "links"], alias='#closure_type')
+    closure_type: Series[pa.String] = pa.Field(
+        isin=["location", "country", "links", "camp", "idcamp"])
     name1: Series[pa.String] = pa.Field()
     name2: Series[pa.String] = pa.Field(nullable=True)
-    closure_start: Series[int] = pa.Field(nullable=True)
-    closure_end: Series[int] = pa.Field(nullable=True)
+    closure_start: Series[pa.Int64] = pa.Field(nullable=True,coerce=True)
+    closure_end: Series[pa.Int64] = pa.Field(nullable=True, coerce=True)
 
     @pa.dataframe_check()
     def closure_type_country(cls, df: pd.DataFrame) -> Series[bool]:
@@ -27,7 +28,7 @@ class ClosuresScheme(pa.DataFrameModel):
         loc_countries = dfl["country"].tolist()
 
         # Define a mask to check if the conditions are met
-        mask = ((df["#closure_type"] == "country")
+        mask = ((df["closure_type"] == "country")
                 & (~df["name1"].isin(loc_countries)
                 & (~df["name2"].isin(loc_countries))))
 

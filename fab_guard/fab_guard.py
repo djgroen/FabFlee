@@ -59,7 +59,13 @@ class FabGuard():
         if file in self.loaded_files:
             return self.loaded_files[file]
         else:
-            df = pd.read_csv(os.path.join(self.input_dir,file), **kwargss)
+            df = pd.read_csv(os.path.join(self.input_dir,file),**kwargss)
+            #if (df.iloc[1].str.startswith("#")):
+            first_column = df.columns[0]
+            if df.columns[0].startswith('#'):
+                # Remove the first character aand any trailing quotes from start and end
+                new_column_name = first_column.lstrip("#").lstrip('\"').rstrip('\"')
+                df = df.rename(columns={first_column: new_column_name})
             self.loaded_files[file]=df
         return df
 

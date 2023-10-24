@@ -1,4 +1,3 @@
-#closure_type,name1,name2,closure_start,closure_end
-remove_forced_redirection,Nduta,Nyarugusu,101,0
+#closure_type,name1,name2,closure_start,closure_end,remove_forced_redirection,Nduta,Nyarugusu,101,0
 camp,Nduta,,0,101
 camp,Lusenda,,0,90
