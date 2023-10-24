@@ -63,6 +63,7 @@ class FabGuard():
             self.loaded_files[file]=df
         return df
 
+    # Executes all files that are decorated with the fgcheck decorator
     def verify(self):
         for key in fgcheck.all:
             fgcheck.all[key](self)
@@ -75,6 +76,7 @@ class FabGuard():
             print(err.failure_cases)  # dataframe of schema errors
             # print(err.data)  # invalid dataframe
 
+    # Transposes a given dataframe
     def transpose(self, df):
         df = df.T
         # Set the first row as column headers and reset the index

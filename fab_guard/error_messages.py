@@ -25,3 +25,11 @@ class Errors:
               f"For rows where location_type is 'forwarding_hub', population should be >=0. \n"\
               f"Invalid rows: {invalid_input}"
         return err
+
+    @fg.log
+    def closures_type_country_err(invalid_input, file):
+        err = f"Invalid data for file {file}: \n" \
+                f"If closure_type is country,\n " \
+                f"then name1 and name1 should be in location.country.\n"\
+                f"Invalid rows: {invalid_input}"
+        return err
