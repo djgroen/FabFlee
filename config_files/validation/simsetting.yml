@@ -8,7 +8,7 @@ spawn_rules:
   sum_from_camps: True
   conflict_spawn_decay: [1.0,1.0,1.0,0.5,0.1]
   conflict_spawn_decay_interval: 30
-  empty_camps_on_day0: False
+  empty_camps_on_day0: True
 move_rules:
   max_move_speed: 400.0
   camp_weight: 1.0
