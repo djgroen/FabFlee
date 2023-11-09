@@ -1,4 +1,4 @@
-"#name","region","country","latitude","longitude","location_type","conflict_date","population","IPC"
+"#name","region","country","lat","lon","location_type","conflict_date","population","IPC"
 "Kidal","Kidal","Mali",18.444305,1.401523,"conflict_zone",0,25617,3
 "Timbuktu","Timbuktu","Mali",16.78026,-3.00159,"conflict_zone",0,54453,4
 "Niafounke","Timbuktu","Mali",15.9316,-3.9908,"conflict_zone",0,1000,4

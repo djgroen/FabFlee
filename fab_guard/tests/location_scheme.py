@@ -33,6 +33,30 @@ class LocationsScheme(pa.DataFrameModel):
         # Check if the name column is in the either name1 or name2 columns
         return name in rnames
 
+
+    # Coordinate validation check
+    @pa.dataframe_check()
+    def coords_are_real(cls,df: pd.DataFrame) -> Series[bool]:
+        mask = ((df["lat"] < 180.0) & (df["lat"] > -180.0)
+                & (df["lon"] < 180.0) & (df["lon"] > -180.0))
+
+        # Filter the DataFrame to keep only valid rows
+        if mask.any():  # Check if any rows meet the condition
+            raise ValueError(Errors.location_coord_err(df.index[mask], config.locations))
+        return ~mask
+        
+
+    # Coordinate validation check
+    @pa.dataframe_check()
+    def coords_not_on_null_island(cls,df: pd.DataFrame) -> Series[bool]:
+        mask = (abs(df["lat"]) > 0.001 | abs(df["lon"]) > 0.001)
+
+        # Filter the DataFrame to keep only valid rows
+        if mask.any():  # Check if any rows meet the condition
+            raise ValueError(Errors.location_coord_err(df.index[mask], config.locations))
+        return ~mask
+
+
     # Define another data-level validation check
     @pa.dataframe_check()
     def population_gt_0(cls,df: pd.DataFrame)->Series[bool]:
