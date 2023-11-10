@@ -1,0 +1,35 @@
+#name1,name2,distance,forced_redirection
+Damascus,Jannine,50.32,0
+Lattakia,Tartous,70.33,0
+Ar Raqqa,Deir ez Zor,123.81,0
+Idleb,Mazri,20.94,0
+Dara,Elbeyli,26.57,0
+Aleppo,Idleb,65.30,0
+Homs,Hama,44.69,0
+Al-Hasakah,Elbeyli,83.41,0
+Deir ez Zor,Ar Raqqa,123.81,0
+Hama,Homs,44.69,0
+As Sweida,Zaatari,73.97,0
+Tartous,Minyara,43.30,0
+Quneitra,Damascus,59.98,0
+Kah,Kursi,4289.03,0
+Nizip,Aleppo,106.31,0
+Elbeyli,Dara,26.57,0
+Osmaniye,Adana,82.72,0
+Adana,Osmaniye,82.72,0
+Qamishli,Dara,29.96,0
+Zaatari,Zarqa,33.79,0
+Al-Mafraq,Khazir,1254.53,0
+Zarqa,Zaatari,33.79,0
+Jannine,Beirut,39.10,0
+Beirut,Jannine,39.10,0
+Minyara,Tartous,43.30,0
+Kawrgosk,Baharka,21.47,0
+Kursi,Arbat,2708.15,0
+Mazri,Idleb,20.94,0
+Khanik,Baharka,160.69,0
+Sharya,Arbat,560.55,0
+Bardarash,Baharka,259.59,0
+Khazir,Al-Mafraq,1254.53,0
+Arbat,Sharya,560.55,0
+Baharka,Kawrgosk,21.47,0

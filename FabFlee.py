@@ -760,7 +760,7 @@ def validate_flee_output(results_dir):
 @task
 @load_plugin_env_vars("FabFlee")
 def validate_flee(simulation_period=0, cores=4, skip_runs=False, label="",
-                  AwarenessLevel=1, **args):
+                  validation_dir='validation', **args):
     """
     Runs all the validation test and returns all scores, as well as an average.
     """
@@ -768,27 +768,20 @@ def validate_flee(simulation_period=0, cores=4, skip_runs=False, label="",
         print("adding label: ", label)
         env.job_name_template += "_{}".format(label)
 
-    clean_fabsim_dirs("validation")
+    clean_fabsim_dirs(validation_dir)
 
     env.prevent_results_overwrite = "delete"
 
-    mode = "serial"
-    if int(cores) > 1:
-        mode = "parallel"
-
     if not skip_runs:
-        if mode.lower() == "parallel":
-            pflee_ensemble("validation", simulation_period,
+        pflee_ensemble(validation_dir, simulation_period,
                            cores=cores, **args)
-        else:
-            flee_ensemble("validation", simulation_period, cores=1, **args)
 
     # if not run locally, wait for runs to complete
     update_environment()
     if env.host != "localhost":
         wait_complete("")
     if skip_runs:
-        env.config = "validation"
+        env.config = validation_dir
 
     fetch_results()
 

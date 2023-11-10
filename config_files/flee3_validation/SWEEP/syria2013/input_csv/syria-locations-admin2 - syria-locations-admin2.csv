@@ -1,0 +1,172 @@
+name,reigon,country,latitude,longitude,conflict_date,location_type,population
+Ashara,Deir-ez-Zor,Syria,34.9174,40.5609,404,conflict_zone,10000
+Rankus,Rural Damascus,Syria,33.756,36.3906,490,conflict_zone,10000
+Samarra,Sala al-Din,Iraq,34.1959,43.8857,2,conflict_zone,10000
+Haftanin,Dahuk,Iraq,37.3128,43.0203,72,conflict_zone,1000
+Al Bab,Aleppo,Syria,36.3697,37.5149,368,conflict_zone,165000
+Shadadah,Al-Hasakeh,Syria,36.0534,40.7268,392,conflict_zone,10000
+Aleppo,Aleppo,Syria,36.206,37.1524,374,conflict_zone,10000
+Khan Shaykun,Idleb,Syria,35.4437,36.6504,368,conflict_zone,34371
+An Nada,Diyala,Iraq,33.8625,45.2874,104,conflict_zone,10000
+Al Azim,Diyala,Iraq,34.2754,44.5385,94,conflict_zone,10000
+Qirata,Dar'a,Syria,32.9491,36.2674,371,conflict_zone,10000
+Baiji,Sala al-Din,Iraq,34.9292,43.4888,1,conflict_zone,10000
+Ein Issa,Ar-Raqqa,Syria,36.3837,38.8628,404,conflict_zone,200000
+Al Qayyarah,Ninewa,Iraq,35.7993,43.2945,3,conflict_zone,690100
+Kerbala,Kerbala,Iraq,32.5979,44.0165,184,conflict_zone,10000
+Wadi Noran,Ninewa,Iraq,36.5014,43.2278,126,conflict_zone,10000
+Jabal al-Akrad,Lattakia,Syria,35.7558,36.1772,411,conflict_zone,10000
+Makhmur,Erbil,Iraq,35.7728,43.5897,36,conflict_zone,10000
+Shafa,Deir-ez-Zor,Syria,34.5734,40.9398,447,conflict_zone,23828
+Tal Elsamen Dahham,Ar-Raqqa,Syria,36.2272,38.9734,368,conflict_zone,2530
+Haweeja,Kirkuk,Iraq,35.3271,43.7694,21,conflict_zone,10000
+Qaryat al Mukhaysah,Diyala,Iraq,33.9056,44.7253,1,conflict_zone,10000
+Al-Kubar,Deir-ez-Zor,Syria,35.7734,39.785,374,conflict_zone,4320
+Darayya,Rural Damascus,Syria,33.457,36.2397,381,conflict_zone,10000
+Qaryat Tall Kusaybah,Sala al-Din,Iraq,34.6938,44.067,14,conflict_zone,10000
+Al Gharraf,Thi-Qar,Iraq,31.2986,46.2419,51,conflict_zone,390000
+Dibis,Kirkuk,Iraq,35.6748,44.0707,72,conflict_zone,10000
+Kirkuk,Kirkuk,Iraq,35.4681,44.3922,19,conflict_zone,1598000
+As-Sanamayn,Dar'a,Syria,33.0711,36.1833,388,conflict_zone,10000
+Quneitra,Quneitra,Syria,33.1242,35.8264,392,conflict_zone,5000
+Little Sweidiyeh,Ar-Raqqa,Syria,35.914,38.5703,372,conflict_zone,10000
+As-Sweida,As-Sweida,Syria,32.7068,36.568,410,conflict_zone,10000
+Al-Janabrah,Hama,Syria,35.4106,36.459,408,conflict_zone,10000
+Sadiya,Diyala,Iraq,34.1875,45.1175,66,conflict_zone,10000
+Kafr Batna,Rural Damascus,Syria,33.5126,36.3721,368,conflict_zone,10000
+Dar'a,Dar'a,Syria,32.6241,36.1049,367,conflict_zone,1027000
+Baquba,Diyala,Iraq,33.7466,44.6437,16,conflict_zone,10000
+Menbij,Aleppo,Syria,36.5258,37.951,390,conflict_zone,10000
+Jarablus,Aleppo,Syria,36.8145,38.0099,377,conflict_zone,10000
+Sarmin,Idleb,Syria,35.9037,36.7238,387,conflict_zone,10000
+Tadmor,Homs,Syria,34.5656,38.2877,368,conflict_zone,76000
+Damascus,Damascus,Syria,33.5172,36.2767,374,conflict_zone,1754000
+Tal 'Adah,Idleb,Syria,36.2524,36.8009,369,conflict_zone,10000
+Madain,Baghdad,Iraq,33.1009,44.5824,13,conflict_zone,10000
+At Tarmiyah,Baghdad,Iraq,33.6643,44.3737,67,conflict_zone,10000
+Ramliyah,Hama,Syria,35.0422,36.8772,374,conflict_zone,10000
+Julimrik,Erbil,Iraq,36.5893,44.4149,214,conflict_zone,10000
+Suran,Aleppo,Syria,36.5666,37.2139,386,conflict_zone,10000
+Ash-Shinafiyah,Qadissiya,Iraq,31.584,44.6473,1439,conflict_zone,10000
+Al Baaj,Ninewa,Iraq,36.0426,41.7163,257,conflict_zone,10000
+Afrin,Aleppo,Syria,36.5111,36.8655,505,conflict_zone,10000
+Al-Z'einiyeh,Idleb,Syria,35.8407,36.2243,385,conflict_zone,10000
+Abu Sakhr,Basrah,Iraq,30.8953,47.2908,1435,conflict_zone,10000
+Shahba,As-Sweida,Syria,32.8545,36.627,387,conflict_zone,14784
+Kalar,Sulaymaniyah,Iraq,34.6281,45.3185,1308,conflict_zone,10000
+Qaryat al Naimiyah,Anbar,Iraq,33.271,43.8319,1,conflict_zone,10000
+Jabal al-Zawiya,Idleb,Syria,35.7197,36.5418,387,conflict_zone,10000
+Burj Elqasab,Lattakia,Syria,35.5971,35.7847,386,conflict_zone,4902
+Adra,Rural Damascus,Syria,33.6044,36.5158,367,conflict_zone,20559
+Deir Fool,Homs,Syria,34.9242,36.8411,377,conflict_zone,10000
+Shirqat,Sala al-Din,Iraq,35.4973,43.2365,6,conflict_zone,10000
+Ras Al Ain,Al-Hasakeh,Syria,36.8494,40.0747,416,conflict_zone,10000
+Barzan,Erbil,Iraq,36.9274,44.0452,637,conflict_zone,10000
+Qarah Tabah,Diyala,Iraq,34.4328,44.9348,1,conflict_zone,2235
+Tabaqa,Al-Hasakeh,Syria,37.0458,42.1312,419,conflict_zone,10000
+Baghdad - 9 Nissan,Baghdad,Iraq,33.3409,44.4927,173,conflict_zone,10000
+Bashir,Kirkuk,Iraq,35.2422,44.2738,57,conflict_zone,10000
+An Nukhayb,Anbar,Iraq,32.0408,42.2552,5,conflict_zone,10000
+Khneifis,Hama,Syria,34.9513,36.9993,374,conflict_zone,10000
+Ramadi,Anbar,Iraq,33.4206,43.3078,1,conflict_zone,223500
+Amara,Missan,Iraq,31.8356,47.1448,385,conflict_zone,511542
+Tikrit,Sala al-Din,Iraq,34.6158,43.6786,12,conflict_zone,10000
+Quamishli,Al-Hasakeh,Syria,37.0447,41.2262,383,conflict_zone,184231
+Bughaz,Aleppo,Syria,36.7215,38.2566,431,conflict_zone,10000
+Baghdad - Sadr City,Baghdad,Iraq,33.3912,44.4575,600,conflict_zone,10000
+Baghdad - Rusafa,Baghdad,Iraq,33.3473,44.4116,1373,conflict_zone,10000
+Hamrin Mountains - Sala al-Din,Sala al-Din,Iraq,34.6248,44.4107,6,conflict_zone,10000
+Anah,Anbar,Iraq,34.2707,41.8123,158,conflict_zone,10000
+Al Baghdadi,Anbar,Iraq,33.8514,42.5487,3,conflict_zone,10000
+Khazraj,Sala al-Din,Iraq,34.0616,44.2583,120,conflict_zone,10000
+Al Ubaydi,Anbar,Iraq,34.42,41.2009,105,conflict_zone,10000
+Arbain,Hama,Syria,35.3533,36.5582,373,conflict_zone,1400
+Tall al Ubayd,Babylon,Iraq,32.4657,44.6302,145,conflict_zone,455700
+Haditha,Anbar,Iraq,34.13,42.3896,3,conflict_zone,10000
+Basrah,Basrah,Iraq,30.533,47.7975,232,conflict_zone,1327000
+Dujail,Sala al-Din,Iraq,33.8352,44.2528,482,conflict_zone,10000
+Bashiqah,Ninewa,Iraq,36.4474,43.3508,4,conflict_zone,10000
+Sinjar,Ninewa,Iraq,36.2955,41.8932,7,conflict_zone,10000
+Amadiya,Dahuk,Iraq,37.0921,43.4877,137,conflict_zone,10000
+Baghdad,Baghdad,Iraq,33.3248,44.4213,8,conflict_zone,10000
+Choman,Erbil,Iraq,36.6216,44.837,603,conflict_zone,10000
+Najaf,Najaf,Iraq,32.0259,44.3462,759,conflict_zone,1390000
+Baghdad - Mansour,Baghdad,Iraq,33.3158,44.3515,54,conflict_zone,10000
+Rabia,Ninewa,Iraq,36.8047,42.0889,96,conflict_zone,10000
+Abu Ghraib,Baghdad,Iraq,33.2919,44.0692,46,conflict_zone,10000
+Homs,Homs,Syria,34.73,36.7197,374,conflict_zone,10000
+Sulaymaniyah,Sulaymaniyah,Iraq,35.565,45.4329,68,conflict_zone,800000
+Musayab,Babylon,Iraq,32.7659,44.2808,543,conflict_zone,10000
+Ein Elfijeh,Rural Damascus,Syria,33.615,36.1818,368,conflict_zone,10000
+Jeb Ramleh,Hama,Syria,35.2092,36.4284,376,conflict_zone,10000
+Baghdad - Kadhimiya,Baghdad,Iraq,33.3805,44.3462,51,conflict_zone,10000
+Al Latifiyah,Baghdad,Iraq,33.0242,44.1785,13,conflict_zone,10000
+Wadi Al-Sakran,Erbil,Iraq,36.3543,44.5412,264,conflict_zone,10000
+Rifai,Thi-Qar,Iraq,31.7213,46.1102,866,conflict_zone,10000
+Dereluk,Dahuk,Iraq,37.056,43.6519,260,conflict_zone,10000
+Eastern Qalamoon,Rural Damascus,Syria,33.8068,36.7398,372,conflict_zone,10000
+Al Azim,Diyala,Iraq,34.2754,44.5385,487,conflict_zone,10000
+Um Elrumman,As-Sweida,Syria,32.4238,36.6232,579,conflict_zone,10000
+Baghdad - Karadah,Baghdad,Iraq,33.2982,44.4297,339,conflict_zone,10000
+Qurna,Basrah,Iraq,31.0167,47.4333,468,conflict_zone,10000
+Qalkhalu,Sulaymaniyah,Iraq,35.0847,44.6944,699,conflict_zone,10000
+Qarat Tabbah,Diyala,Iraq,34.4328,44.9348,664,conflict_zone,10000
+Khanaser,Aleppo,Syria,35.7839,37.4998,391,conflict_zone,10000
+Kanaker,Rural Damascus,Syria,33.2671,36.0986,391,conflict_zone,10000
+Qaryat az Zuhayrat,Diyala,Iraq,33.9503,44.7948,724,conflict_zone,10000
+Jeb Ej-Jarrah,Homs,Syria,34.8346,37.3238,386,conflict_zone,10000
+Wanah,Ninewa,Iraq,36.5321,42.7593,102,conflict_zone,10000
+Bardah Sabi,Erbil,Iraq,35.8923,44.3294,665,conflict_zone,10000
+Akashat,Anbar,Iraq,33.6691,39.9684,480,conflict_zone,10000
+Seyid Sadiq,Sulaymaniyah,Iraq,35.3528,45.8668,652,conflict_zone,10000
+Al Fuhaymi,Anbar,Iraq,34.2747,42.1581,646,conflict_zone,10000
+Kani Masi,Dahuk,Iraq,37.2267,43.4386,635,conflict_zone,10000
+Khams Tulul,Ninewa,Iraq,35.8586,42.2119,629,conflict_zone,10000
+Fadak Al Zahraa Tourist Restaurant,Thi-Qar,Iraq,31.1319,45.9944,623,conflict_zone,10000
+Suq Al-Shoyokh,Thi-Qar,Iraq,30.8909,46.4543,614,conflict_zone,10000
+Qalamoun,Rural Damascus,Syria,34.0686,36.5419,372,conflict_zone,10000
+Yabroud,Rural Damascus,Syria,33.9683,36.6594,568,conflict_zone,10000
+Al-Hartha,Basrah,Iraq,30.6934,47.7414,596,conflict_zone,10000
+Al-Madiana,Basrah,Iraq,30.941,47.2644,594,conflict_zone,10000
+Shomriyeh,Homs,Syria,34.6245,36.5775,491,conflict_zone,10000
+Ein Elbardeh,Homs,Syria,34.7959,36.2673,386,conflict_zone,10000
+Baghdad - Karkh,Baghdad,Iraq,33.3164,44.4039,310,conflict_zone,10000
+Baghdad - Al Rashid,Baghdad,Iraq,33.2362,44.3428,4,conflict_zone,3000000
+Hilla,Babylon,Iraq,32.4637,44.4196,191,conflict_zone,10000
+Jabal Hamrin,Wassit,Iraq,33.0594,46.1203,426,conflict_zone,10000
+Darbandihkan,Sulaymaniyah,Iraq,35.1862,45.6337,339,conflict_zone,10000
+Qaryat Baybukhat,Ninewa,Iraq,36.2743,43.1312,306,conflict_zone,10000
+Fasiliyah,Ninewa,Iraq,36.5126,43.2686,296,conflict_zone,10000
+Ain Al Tamur,Kerbala,Iraq,32.5695,43.4992,241,conflict_zone,10000
+Namaniya,Wassit,Iraq,32.5562,45.4129,192,conflict_zone,10000
+Kut,Wassit,Iraq,32.5056,45.8247,192,conflict_zone,315162
+Shamiya,Qadissiya,Iraq,31.9626,44.6008,79,conflict_zone,400000
+Dahuk,Dahuk,Iraq,36.8671,42.9884,88,conflict_zone,10000
+Yayladagi,,Turkey,35.906796,36.055205,,camp,3746
+Altinozu,,Turkey,36.11595,36.251113,,camp,8062
+Apaydin,,Turkey,36.234836,36.352445,,camp,5229
+Oncupinar,,Turkey,36.644949,37.082526,,camp,15735
+Elbeyli,,Turkey,36.70367,37.342219,,camp,20341
+Karkamis,,Turkey,36.875556,38.028333,,camp,6605
+Akcakale,,Turkey,36.752316,38.953031,,camp,31598
+Ceylanpinar,,Turkey,36.819116,39.927556,,camp,21176
+Midyat,,Turkey,37.413227,41.39371,,camp,3373
+Nizip,,Turkey,37.04688,37.895327,,camp,10033
+Suruc,,Turkey,37.046434,38.484,,camp,31480
+Harran,,Turkey,36.872732,38.932106,,camp,13761
+Islahiye,,Turkey,36.984233,36.618633,,camp,17433
+Cevdetiye,,Turkey,37.135933,36.205545,,camp,7304
+Saricam,,Turkey,37.042758,35.490131,,camp,555
+Beydagi,,Turkey,38.334043,38.312293,,camp,10227
+Zaatari,,Jordan,32.293578,36.327833,,camp,80000
+Emirati Jordanian Camp,,Jordan,32.033417,36.447408,,camp,4000
+Azraq,,Jordan,31.907262,36.577616,,camp,36000
+Domiz,,Iraq,36.78109,42.881187,,camp,39000
+Gawilan,,Iraq,36.338419,43.614146,,camp,8124
+Akre settlement,,Iraq,36.734528,43.881029,,camp,1178
+Darashakran,,Iraq,36.399888,44.335031,,camp,12387
+Kawergosk,,Iraq,36.348496,43.814758,,camp,9090
+Qushtapa,,Iraq,35.983664,44.037598,,camp,7716
+Basirma,,Iraq,36.498261,44.341498,,camp,3487
+Arbat,,Iraq,35.41541,45.603394,,camp,8111
+Al-Obaidi,,Iraq,34.417309,41.219072,,camp,1500
