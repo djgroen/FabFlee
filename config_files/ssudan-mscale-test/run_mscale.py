@@ -208,8 +208,8 @@ if __name__ == "__main__":
         os.path.join(data_dir, "coupled_locations.csv")
     )
 
-    start_date, end_time = read_period.read_conflict_period(
-        os.path.join(data_dir, "conflict_period.csv")
+    start_date, end_time = read_period.read_sim_period(
+        os.path.join(data_dir, "sim_period.csv")
     )
 
     submodel = args.submodel.lower()
@@ -286,8 +286,8 @@ if __name__ == "__main__":
         )
 
         weather_source_files["conflict_start_date"], _ = (
-            read_period.read_conflict_period(
-                os.path.join(data_dir, "conflict_period.csv")
+            read_period.read_sim_period(
+                os.path.join(data_dir, "sim_period.csv")
             )
         )
 

@@ -799,7 +799,7 @@ def new_conflict(config, **args):
         %s/config_files/%s")
           % (env.flee_location, get_plugin_path("FabFlee"), config))
 
-    local(template("cp %s/flee/config_template/input_csv/conflict_period.csv "
+    local(template("cp %s/flee/config_template/input_csv/sim_period.csv "
                    "%s/config_files/%s/input_csv")
           % (env.flee_location, get_plugin_path("FabFlee"), config))
 
