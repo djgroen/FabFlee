@@ -64,8 +64,14 @@ if 0 <= name_column_num < len(table.columns) and 0 <= second_column_num < len(ta
     # Select the "Name" column and the second column using the specified column numbers
     selected_columns = table.iloc[:, [name_column_num, second_column_num]]
 
+    # Convert the "population" column to numeric, handling non-numeric values as NaN
+    selected_columns.iloc[:, 1] = pd.to_numeric(selected_columns.iloc[:, 1], errors='coerce')
+
     # Drop rows with missing values in the selected columns
     selected_columns = selected_columns.dropna()
+
+    # Convert the "population" column back to integers
+    selected_columns.iloc[:, 1] = selected_columns.iloc[:, 1].astype(int)
 
     # Print the selected columns
     print("\n\nExtraxted Table:\n", selected_columns.to_string(index=False))
