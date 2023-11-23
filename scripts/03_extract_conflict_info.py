@@ -17,7 +17,7 @@ Usage:
 
 Command:
 Run the script using the following command:
-"python extract_conflict_info.py <country> <start_date> <end_date> <location_type> <added_conflict_days>"
+"python 03_extract_conflict_info.py <country> <start_date> <end_date> <location_type> <added_conflict_days>"
 
 - <country>: Name of the country or dataset (e.g., nigeria2016).
 - <start_date>: The starting date to consider when calculating conflict periods (e.g., "01-01-2016").
@@ -26,7 +26,7 @@ Run the script using the following command:
 - <added_conflict_days>: The number of days to add to the calculated conflict periods for estimating event periods.
 
 Example Usage:
-"python extract_conflict_info.py nigeria2016 01-01-2016 31-12-2016 admin2 7"
+"python 03_extract_conflict_info.py nigeria2016 01-01-2016 31-12-2016 admin2 7"
 '''
 
 import os
@@ -165,7 +165,11 @@ def extract_conflict_info(country, start_date, end_date, location_type, added_co
 
     print(results_df.to_string(index=False))
 
+    # Write the results dataframe to a CSV file
     results_df.to_csv(f'{country}/conflict_info.csv', index=False)
+
+    # Print a completion message
+    print(f'{country}/conflict_info.csv created. Please inspect the file for unwanted anomalies!')
 
 
 country = sys.argv[1]
