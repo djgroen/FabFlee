@@ -10,15 +10,14 @@ spawn_rules:
   conflict_spawn_decay_interval: 30
   empty_camps_on_day0: False
 move_rules:
-  max_move_speed: 400.0
-  awareness_level: 2
-  camp_weight: 1.0
-  softening: 36.0
-  default_movechance: 1.0
-  start_on_foot: False
+  max_move_speed: 360.0
+  camp_weight: 2.0
+  softening: 10.0
+  default_movechance: 0.5
+  start_on_foot: True
   avoid_short_stints: True
   capacity_scaling: 1.25
-  distance_power: 0.75
-  camp_movechance: 0.0005
+  distance_power: 1.00
+  camp_movechance: 0.001
 optimisations:
   hasten: 1
