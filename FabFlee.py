@@ -429,7 +429,7 @@ def flee_compare(*models,output_dir=""):
     """
     output_dir = models[0].partition("_")[0]
 
-    local("mkdir -p %s/%s_comparison" % (env.results_path, output_dir))
+    local("mkdir -p %s/%s_comparison" % (env.local_results, output_dir))
 
     output_dir = "%s/%s_comparison" % (env.local_results, output_dir)
 
