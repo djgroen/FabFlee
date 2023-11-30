@@ -18,8 +18,12 @@ def log(func):
         err_count += 1
         result = func(*args, **kwargs)
         log_message = f"Error #{err_count}: {func.__name__} returned {result}\n"
-
-        with open(config.log_file, "a+") as log_file:
+        config_dir = FabGuard.get_instance().input_dir
+        log_file = os.path.join(config_dir, '..', config.log_file)
+        if err_count==1:
+            print_msg = f"Read the full error messages from truncated errors in the log file:\n #{log_file}"
+            print(print_msg)
+        with open(log_file, "w+") as log_file:
             log_file.write(log_message)
             log_file.write("\n========================\n")
         return result

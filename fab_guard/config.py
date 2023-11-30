@@ -5,4 +5,4 @@ closures = "closures.csv"
 conflict_period = "conflict_period.csv"
 
 lazy = True
-log_file = "fab_guard/logs.txt"
+log_file = "input_validation_log.txt"
