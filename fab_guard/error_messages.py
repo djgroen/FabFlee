@@ -33,3 +33,10 @@ class Errors:
                 f"then name1 and name1 should be in location.country.\n"\
                 f"Invalid rows: {invalid_input}"
         return err
+
+
+    @fg.log
+    def location_coord_err(invalid_input, file):
+        err = f"Invalid location coordinates in file {file}: Coordinates point to Null Island or are not in range (-180.0,180,0). \n"\
+              f"Invalid rows: {invalid_input}"
+        return err
