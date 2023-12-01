@@ -129,14 +129,14 @@ sampler_name: "SCSampler"
 1. To execute sensitivy analysis on a localhost, simply run:
 
 ```
-fab localhost flee_init_SA:<conflict_name>,simulation_period=<number>
+fabsim localhost flee_init_SA:<conflict_name>,simulation_period=<number>
 ```
 * _NOTE_ : the required parameters for sensitivy analysis, such as _sampler name_ , _vary input parameters_, and _the number of polynomial order_, will be loaded from `flee_SA_config.yml` file.
 
 2. After the job has finished, the terminal becomes available again, and a message is printing indicating where the output data resides. Run the following command to copy back results from the remote machine and perform analysis. The results will then be in a directory inside `(FabSim Home)/results` and the obtained results can be analysed using 
 
 ```
-fab localhost flee_analyse_SA:<conflict_name>
+fabsim localhost flee_analyse_SA:<conflict_name>
 ```    
 
 
@@ -144,13 +144,13 @@ fab localhost flee_analyse_SA:<conflict_name>
 
 1. To execute sensitivy analysis on a remote machine, simply run:
 ```
-fab <remote_machine_name> flee_init_SA:<conflict_name>,simulation_period=<number>
+fabsim <remote_machine_name> flee_init_SA:<conflict_name>,simulation_period=<number>
 ```
 
 
 2. Run the following command to copy back results from the remote machine and perform analysis. The results will then be in a directory inside ``(FabSim Home)/results``, which is most likely called <conflict_name>_<remote_machine_name>_<number> (e.g. mali_eagle_vecma_16).
 ```
-fab <remote_machine_name> flee_analyse_SA:<conflict_name>
+fabsim <remote_machine_name> flee_analyse_SA:<conflict_name>
 ```
 * _Note_: Analysis of the obtained results can be also performed on a localhost.
 
@@ -164,20 +164,20 @@ For QCG-PilotJob installation, see https://github.com/vecma-project/QCG-PilotJob
 To install virtual environment on the remote machine alongside with QCG-PilotJob, just run: 
 
 ```
-fab <remote machine name> install_app:QCG-PilotJob,venv=True
+fabsim <remote machine name> install_app:QCG-PilotJob,venv=True
 ```
 
 To execute easyvvuq for migration prediction using Pilot Job, run
 
 ```
-fab <remote machine name> flee_init_SA:<conflict_name>,simulation_period=<number>,PJ=True
+fabsim <remote machine name> flee_init_SA:<conflict_name>,simulation_period=<number>,PJ=True
 ```
  
 
 2. Run the following command to copy back results from the remote machine and perform analysis. The results will then be in a directory inside ``(FabSim Home)/results``, which is most likely called <conflict_name>_<remote_machine_name>_<number> (e.g. mali_eagle_vecma_16).
 
 ```
-fab <remote_machine_name> flee_analyse_SA:<conflict_name>
+fabsim <remote_machine_name> flee_analyse_SA:<conflict_name>
 ```  
 * _Note_: Analysis of the obtained results can be also performed on a localhost.
 
@@ -186,6 +186,6 @@ fab <remote_machine_name> flee_analyse_SA:<conflict_name>
 
 The following commands demonstrate the execution of Mali conflict for sensitivity analysis: 
 ```
-fab localhost/vecma_eagle flee_init_SA:mali,simulation_period=100
-fab localhost/vecma_eagle flee_analyse_SA:mali
+fabsim localhost/vecma_eagle flee_init_SA:mali,simulation_period=100
+fabsim localhost/vecma_eagle flee_analyse_SA:mali
 ```

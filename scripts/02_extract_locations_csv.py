@@ -17,7 +17,7 @@ Usage:
 
 Command:
 Run the script using the following command:
-"python extract_locations.py <country> <start_date> <location_type> <fatalities_threshold> <conflict_threshold>"
+"python 02_extract_locations_csv.py <country> <start_date> <location_type> <fatalities_threshold> <conflict_threshold>"
 
 - <country>: Name of the country or dataset (e.g., nigeria2016).
 - <start_date>: The starting date to consider when calculating conflict periods (e.g., "01-01-2016").
@@ -26,15 +26,15 @@ Run the script using the following command:
 - <conflict_threshold>: Conflict period threshold for classifying locations.
 
 Example Usage:
-"python extract_locations.py nigeria2016 01-01-2016 admin1 0 100"
+"python 02_extract_locations_csv.py nigeria2016 01-01-2016 admin1 0 100"
 '''
 
 import os
 import sys
 from datetime import datetime
-
 import numpy as np
 import pandas as pd
+
 
 # Function to format a date string into "dd-mm-yyyy" format
 def date_format(in_date):
@@ -51,6 +51,7 @@ def date_format(in_date):
     out_date = split_date[0] + "-" + str(month_num) + "-" + str(year)
 
     return out_date
+
 
 # Function to convert month names to month numbers
 def month_convert(month_name):
@@ -80,6 +81,7 @@ def month_convert(month_name):
 
     return month_num
 
+
 # Function to calculate the number of days between two dates in "dd-mm-yyyy" format
 def between_date(d1, d2):
     d1list = d1.split("-")
@@ -89,12 +91,14 @@ def between_date(d1, d2):
 
     return abs((date1 - date2).days)
 
+
 # Function to drop rows in a DataFrame based on a condition
 def drop_rows(inputdata, columnname, dropparameter):
     removedrows = inputdata.index[inputdata[columnname] <= dropparameter].tolist()
     outputdata = inputdata.drop(removedrows)
 
     return outputdata
+
 
 # Function to filter a DataFrame by location based on column name
 def filter_by_location(inputdata, columnname):
@@ -117,8 +121,9 @@ def filter_by_location(inputdata, columnname):
 
     return outputdata
 
+
 # Main function to extract and process location data
-def extract_locations(country, start_date, location_type, fatalities_threshold, conflict_threshold):
+def extract_locations_csv(country, start_date, location_type, fatalities_threshold, conflict_threshold):
     # Get the current directory
     current_dir = os.getcwd()
 
@@ -196,7 +201,7 @@ def extract_locations(country, start_date, location_type, fatalities_threshold, 
 
     # Print the merged dataframe and a completion message
     print(merged_df.to_string(index=0))
-    print(f'{country}/locations.csv created. Please inspect the file for unwanted anomalies!')
+    print(f'{country}/locations.csv created. Please add refugee camps to the locations,csv file.')
 
 
 country = str(sys.argv[1])
@@ -205,4 +210,5 @@ location_type = str(sys.argv[3])
 fatalities_threshold = int(sys.argv[4])
 conflict_threshold = int(sys.argv[5])
 
-extract_locations(country, start_date, location_type, fatalities_threshold, conflict_threshold)
+
+extract_locations_csv(country, start_date, location_type, fatalities_threshold, conflict_threshold)
