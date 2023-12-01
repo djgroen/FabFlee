@@ -78,13 +78,30 @@ class FabGuard():
         for key in fgcheck.all:
             fgcheck.all[key](self)
 
+    def log_errors(self, failure_cases):
+        log_file_name = os.path.join(self.input_dir, '..', config.log_file)
+        with open(log_file_name, "w+") as log_file:
+            log_file.write("Timestamp: %s \n" % datetime.datetime.now())
+            for index, failure in enumerate(failure_cases['failure_case'], start=1):
+                func = failure_cases['check'][index-1]
+                log_message = f"Error #{index}: {func} returned the following error\n "
+                log_file.write(log_message)
+                log_file.write(failure)
+                log_file.write("\n========================\n")
+
     def register_for_test(self, scheme, input_file):
         df = self.load_file(input_file)
         try:
             scheme.validate(df, lazy=config.lazy)
         except pa.errors.SchemaErrors as err:
-            print(err.failure_cases)  # dataframe of schema errors
-            #print(err.data)  # invalid dataframe
+            print(str(err.failure_cases))  # dataframe of schema errors
+            self.log_errors(err.failure_cases)
+            #for index, failure in enumerate(err.failure_cases['failure_case'],start=1):
+                #print("Error number:%s"%index)
+                #log_errors(err.failure_cases)
+                #print(err.data)  # invalid dataframe
+
+
 
     # Transposes a given dataframe
     def transpose(self, df):
