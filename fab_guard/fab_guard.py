@@ -1,31 +1,36 @@
 import pandas as pd
 import pandera as pa
+import datetime
 from pandera import Column, Check, extensions, DataFrameSchema
 import os
 
 import plugins.FabFlee.fab_guard.config as config
-
-
 import functools
 
+err_count = 0
 # Decorator function
 def log(func):
-    err_count = 0  # Counter for function calls
-
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
-        nonlocal err_count
+        print("Starting count")
+        global err_count
         err_count += 1
         result = func(*args, **kwargs)
         log_message = f"Error #{err_count}: {func.__name__} returned {result}\n"
         config_dir = FabGuard.get_instance().input_dir
-        log_file = os.path.join(config_dir, '..', config.log_file)
+        log_file_name = os.path.join(config_dir, '..', config.log_file)
+        print(err_count)
         if err_count==1:
-            print_msg = f"Read the full error messages from truncated errors in the log file:\n #{log_file}"
+            print_msg = f"Read the full error messages from truncated errors in the log file:\n #{log_file_name}"
             print(print_msg)
-        with open(log_file, "w+") as log_file:
+            with open(log_file_name, "w+") as log_file:
+                log_file.write("Timestamp: %s \n" % datetime.datetime.now())
+                print("timestamp")
+        with open(log_file_name, "a+") as log_file:
+            print("error 1")
             log_file.write(log_message)
             log_file.write("\n========================\n")
+            print("error 2")
         return result
 
     return wrapper
