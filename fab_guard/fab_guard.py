@@ -12,25 +12,20 @@ err_count = 0
 def log(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
-        print("Starting count")
         global err_count
         err_count += 1
         result = func(*args, **kwargs)
         log_message = f"Error #{err_count}: {func.__name__} returned {result}\n"
         config_dir = FabGuard.get_instance().input_dir
         log_file_name = os.path.join(config_dir, '..', config.log_file)
-        print(err_count)
         if err_count==1:
             print_msg = f"Read the full error messages from truncated errors in the log file:\n #{log_file_name}"
             print(print_msg)
             with open(log_file_name, "w+") as log_file:
                 log_file.write("Timestamp: %s \n" % datetime.datetime.now())
-                print("timestamp")
         with open(log_file_name, "a+") as log_file:
-            print("error 1")
             log_file.write(log_message)
             log_file.write("\n========================\n")
-            print("error 2")
         return result
 
     return wrapper
@@ -89,7 +84,7 @@ class FabGuard():
             scheme.validate(df, lazy=config.lazy)
         except pa.errors.SchemaErrors as err:
             print(err.failure_cases)  # dataframe of schema errors
-            # print(err.data)  # invalid dataframe
+            #print(err.data)  # invalid dataframe
 
     # Transposes a given dataframe
     def transpose(self, df):

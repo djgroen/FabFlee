@@ -8,7 +8,6 @@ import plugins.FabFlee.fab_guard.fab_guard as fg
 from plugins.FabFlee.fab_guard.error_messages import Errors
 import plugins.FabFlee.fab_guard.config as config
 
-
 class LocationsScheme(pa.DataFrameModel):
     # name: Series[pa.String] = pa.Field(nullable=False, alias='#"name"')
     name: Series[pa.String] = pa.Field(nullable=False)

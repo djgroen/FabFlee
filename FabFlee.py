@@ -1449,5 +1449,5 @@ except:
     pprint(exc_value)
     import traceback
     traceback.print_tb(exc_traceback)
-    print("Failed to import the libraries (Pandera, pande)")
+    print("Failed to import the libraries (Pandera, panda)")
     print("The flee_verify_input functionality is not supported as a result")
