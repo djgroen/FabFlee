@@ -74,8 +74,12 @@ class FabGuard():
 
     def register_for_test(self, scheme, input_file):
         df = self.load_file(input_file)
+        for key, value in scheme.__dict__.items():
+            print(key, ":", value)
         if hasattr(scheme, 'with_dynamic_columns'):
-            scheme = scheme.with_dynamic_columns(df)
+            scheme = scheme.with_dynamic_columns_old(df)
+            for key, value in scheme.__dict__.items():
+                print(key, ":", value)
         try:
             scheme.validate(df, lazy=config.lazy)
         except pa.errors.SchemaErrors as err:
