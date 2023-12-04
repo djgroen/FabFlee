@@ -7,28 +7,7 @@ import os
 import plugins.FabFlee.fab_guard.config as config
 import functools
 
-err_count = 0
-# Decorator function
-def log(func):
-    @functools.wraps(func)
-    def wrapper(*args, **kwargs):
-        global err_count
-        err_count += 1
-        result = func(*args, **kwargs)
-        log_message = f"Error #{err_count}: {func.__name__} returned {result}\n"
-        config_dir = FabGuard.get_instance().input_dir
-        log_file_name = os.path.join(config_dir, '..', config.log_file)
-        if err_count==1:
-            print_msg = f"Read the full error messages from truncated errors in the log file:\n #{log_file_name}"
-            print(print_msg)
-            with open(log_file_name, "w+") as log_file:
-                log_file.write("Timestamp: %s \n" % datetime.datetime.now())
-        with open(log_file_name, "a+") as log_file:
-            log_file.write(log_message)
-            log_file.write("\n========================\n")
-        return result
-
-    return wrapper
+from pandera.typing import Series
 
 
 def makeRegistrar():
@@ -54,6 +33,11 @@ class FabGuard():
     def __init__(self, input_dir):
         self.input_dir = input_dir
         self.loaded_files = {}
+        self.log_file_name =  os.path.join(self.input_dir, '..', config.log_file)
+        with open(self.log_file_name, "w+") as log_file:
+            log_file.write("Timestamp: %s \n" % datetime.datetime.now())
+            log_file.write("\n========================\n")
+
 
     @staticmethod
     def get_instance():
@@ -78,24 +62,25 @@ class FabGuard():
         for key in fgcheck.all:
             fgcheck.all[key](self)
 
-    def log_errors(self, failure_cases):
-        log_file_name = os.path.join(self.input_dir, '..', config.log_file)
-        with open(log_file_name, "w+") as log_file:
-            log_file.write("Timestamp: %s \n" % datetime.datetime.now())
+    def log_errors(self, failure_cases, input_file):
+        with open(self.log_file_name, "a+") as log_file:
+            log_file.write(f"Errors for file:{input_file}\n")
             for index, failure in enumerate(failure_cases['failure_case'], start=1):
                 func = failure_cases['check'][index-1]
                 log_message = f"Error #{index}: {func} returned the following error\n "
                 log_file.write(log_message)
-                log_file.write(failure)
+                log_file.write(str(failure))
                 log_file.write("\n========================\n")
 
     def register_for_test(self, scheme, input_file):
         df = self.load_file(input_file)
+        if hasattr(scheme, 'with_dynamic_columns'):
+            scheme = scheme.with_dynamic_columns(df)
         try:
             scheme.validate(df, lazy=config.lazy)
         except pa.errors.SchemaErrors as err:
             print(str(err.failure_cases))  # dataframe of schema errors
-            self.log_errors(err.failure_cases)
+            self.log_errors(err.failure_cases, input_file)
             #for index, failure in enumerate(err.failure_cases['failure_case'],start=1):
                 #print("Error number:%s"%index)
                 #log_errors(err.failure_cases)

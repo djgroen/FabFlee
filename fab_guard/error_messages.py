@@ -34,3 +34,8 @@ class Errors:
         err = f"Invalid location coordinates in file {file}: Coordinates point to Null Island or are not in range (-180.0,180,0). \n"\
               f"Invalid rows: {invalid_input}"
         return err
+
+    def sum_of_columns_is_100(invalid_input, file):
+        err = f"Invalid sum {file}: The sum of all values in a columns should 100). \n"\
+              f"Invalid columns, sum: {invalid_input}"
+        return err
