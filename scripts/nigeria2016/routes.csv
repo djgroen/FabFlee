@@ -1,0 +1,25 @@
+name1,name2,distance,force_redirection
+Kaduna,Plateau,135.95,0
+Plateau,Federal Capital Territory,1380.72,0
+Federal Capital Territory,Niger,1075.46,0
+Niger,Kwara,1718.96,0
+Kwara,Ekiti,1075.15,0
+Ekiti,Oyo,1470.58,0
+Oyo,Edo,2765.05,0
+Edo,Kogi,716.28,0
+Kogi,Ebonyi,1809.35,0
+Ebonyi,Cross River,727.39,0
+Cross River,Imo,1016.52,0
+Imo,Rivers,463.63,0
+Rivers,Delta,460.69,0
+Delta,Bayelsa,942.06,0
+Bayelsa,Akwa Ibom,1351.4,0
+Akwa Ibom,Benue,3324.52,0
+Benue,Taraba,1509.25,0
+Taraba,Adamawa,2085.58,0
+Adamawa,Yobe,2383.03,0
+Yobe,Borno,2568.14,0
+Borno,Kano,5891.84,0
+Kano,Katsina,1326.66,0
+Katsina,Zamfara,909.49,0
+Zamfara,Kebbi,1611.84,0

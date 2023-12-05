@@ -27,6 +27,15 @@ import pandas as pd
 
 
 def extract_location_names(country, location_type):
+
+    # Check if the directory already exists
+    if not os.path.exists(country):
+        # Create the directory if it doesn't exist
+        os.makedirs(country)
+        print(f"Directory '{country}' created.")
+    else:
+        print(f"Directory '{country}' already exists.")
+
     # Get the current directory
     current_dir = os.getcwd()
 
