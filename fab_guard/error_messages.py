@@ -39,3 +39,7 @@ class Errors:
         err = f"Invalid sum {file}: The sum of all values in a columns should 100). \n"\
               f"Invalid columns, sum: {invalid_input}"
         return err
+    def sum_of_columns_is_1(invalid_input, file):
+        err = f"Invalid sum {file}: The sum of all values in a columns should 1). \n"\
+              f"Invalid columns, sum: {invalid_input}"
+        return err

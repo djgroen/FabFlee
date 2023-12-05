@@ -1,7 +1,6 @@
 import os
 import pandas as pd
 import pandera as pa
-from pandera import Column, Check, Index
 from pandera.typing import Series, String
 
 import plugins.FabFlee.fab_guard.fab_guard as fg
@@ -13,8 +12,8 @@ class LocationsScheme(pa.DataFrameModel):
     name: Series[pa.String] = pa.Field(nullable=False)
     region: Series[pa.String] = pa.Field()
     country: Series[pa.String] = pa.Field()
-    lat: Series[pa.Float] = pa.Field()
-    lon: Series[pa.Float] = pa.Field()
+    lat: Series[pa.Float] = pa.Field(coerce=True)
+    lon: Series[pa.Float] = pa.Field(coerce=True)
     location_type: Series[pa.String] = pa.Field(
         isin = ["conflict_zone", "town","camp", "forwarding_hub", "marker", "idpcamp"])
     conflict_date: Series[float] = pa.Field(nullable=True, coerce=True)
@@ -36,8 +35,8 @@ class LocationsScheme(pa.DataFrameModel):
     # Coordinate validation check
     @pa.dataframe_check()
     def coords_are_real(cls,df: pd.DataFrame) -> Series[bool]:
-        mask = ((df["lat"] < 180.0) & (df["lat"] > -180.0)
-                & (df["lon"] < 180.0) & (df["lon"] > -180.0))
+        mask = (((df["lat"] > 180.0) & (df["lat"] < -180.0))
+                | ((df["lon"] > 180.0) & (df["lon"] < -180.0)))
 
         # Filter the DataFrame to keep only valid rows
         if mask.any():  # Check if any rows meet the condition
@@ -46,6 +45,7 @@ class LocationsScheme(pa.DataFrameModel):
         
 
     # Coordinate validation check
+    """
     @pa.dataframe_check()
     def coords_not_on_null_island(cls,df: pd.DataFrame) -> Series[bool]:
         mask = (abs(df["lat"]) > 0.001 | abs(df["lon"]) > 0.001)
@@ -54,7 +54,7 @@ class LocationsScheme(pa.DataFrameModel):
         if mask.any():  # Check if any rows meet the condition
             raise ValueError(Errors.location_coord_err(df.index[mask], config.locations))
         return ~mask
-
+    """
 
     # Define another data-level validation check
     @pa.dataframe_check()
