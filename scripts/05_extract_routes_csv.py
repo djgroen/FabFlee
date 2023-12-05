@@ -1,23 +1,32 @@
 """
-Input: locations.csv
-Output: routes.csv
+Input: 
+- 'locations.csv': A CSV file containing geographical locations for a specific country or dataset. This file should include columns for 'name', 'latitude', and 'longitude' of each location.
+
+Output: 
+- 'routes.csv': A CSV file generated in the specified country's directory, containing the routes between locations. Each entry in the file includes the starting location ('name1'), the destination location ('name2'), the distance between these locations, and a placeholder for 'force_redirection'.
 
 Description:
-This script processes geographical location data to generate a set of routes between locations. It reads location data from the 'locations.csv' file, which includes location names and their corresponding latitude and longitude coordinates. For each location, the script finds its two nearest neighbors based on the Euclidean distance and creates routes to these neighbors. The script then generates a 'routes.csv' file, which contains these routes, including the names of the start and end locations and the calculated distances between them.
+This script, '05_extract_routes_csv.py', processes geographical location data to generate a set of routes between locations within a specified country or dataset. It uses a nearest neighbor approach, enhanced with the consideration of intermediate stops, to determine the most efficient routes based on Euclidean distance. 
 
-The script uses a simple Euclidean distance calculation for determining the proximity between locations. It iterates over each location, identifies its two closest neighboring locations, and then records these pairs as individual routes. This approach ensures each location is considered as a starting point for two routes, potentially creating a more interconnected network of routes.
+The script functions as follows:
+1. Reads location data from 'locations.csv' within a directory named after the specified country.
+2. For each location, it finds the nearest neighbor and considers possible intermediate stops to optimize the route.
+3. Records the routes, including the start and end locations and the calculated distances, in a 'routes.csv' file within the same country-specific directory.
 
 Usage:
-1. Prepare location data and save it as a CSV file ('locations.csv').
-2. Ensure the 'locations.csv' file includes columns for 'name', 'latitude', and 'longitude'.
-3. Run the script without any additional parameters.
+1. Prepare location data in 'locations.csv' with 'name', 'latitude', and 'longitude' columns.
+2. Place this file within a directory named after the country or dataset.
+3. Run the script with the country or dataset name as a command-line argument.
 
 Command:
-Run the script using the following command:
-"python 05_routes_csv.py <country>"
+Execute the script using the command:
+'python extract_routes_csv.py <country>'
+
+where <country> is the name of the country or dataset folder containing the 'locations.csv' file.
 
 Example Usage:
-"python 05_routes_csv.py nigeria2016"
+'python extract_routes_csv.py nigeria2016'
+This command will process location data in the 'nigeria2016' directory and generate the 'routes.csv' file with routes between locations in Nigeria for the year 2016.
 """
 
 import os 
