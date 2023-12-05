@@ -8,6 +8,8 @@ flood_level = "flood_level.csv"
 sim_period = "sim_period.csv"
 simsettings = "../simsetting.yml"
 demograohic_files_pattern = "demographics_*.csv"
+dflee_outer_key = "move_rules"
+dflee_inner_key = "max_flood_level"
 
 lazy = True
 log_file = "input_validation_log.txt"
