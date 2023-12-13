@@ -643,7 +643,7 @@ def vvp_validate_results(output_dir="", **kwargs):
         #                                 validation_results["totals"][
         #                                 "Error (rescaled)"]))
         label = output_dir.split("/")[-1].split("_")[0]
-        return [label,validation_results["totals"]["Error (rescaled)"]]
+        return [label,validation_results["totals"][f"Error ({env.flee_validation_mode})"]]
 
     print("Error: vvp_validate_results failed on {}".format(output_dir))
     return None
@@ -747,11 +747,12 @@ def make_vvp_mean(np_array, **kwargs):
 
 @task
 @load_plugin_env_vars("FabFlee")
-def validate_flee_output(results_dir):
+def validate_flee_output(results_dir, mode="rescaled"):
     """
     Goes through all the output directories and calculates the validation
     scores.
     """
+    env.flee_validation_mode = mode
     full_results_dir = "{}/{}/RUNS".format(env.local_results, results_dir)
     results = vvp.ensemble_vvp(full_results_dir,
                      vvp_validate_results,
@@ -764,10 +765,13 @@ def validate_flee_output(results_dir):
 
 @task
 @load_plugin_env_vars("FabFlee")
-def validate_flee(config='validation', simulation_period=0, cores=4, skip_runs=False, label="", **args):
+def validate_flee(config='validation', simulation_period=0, cores=4, skip_runs=False, label="", mode="rescaled", **args):
     """
-    Runs all the validation test and returns all scores, as well as an average.
+    Runs all the validation test and returns all scores + aggregate statistics
     """
+    
+    env.flee_validation_mode = mode
+
     if len(label) > 0:
         print("adding label: ", label)
         env.job_name_template += "_{}".format(label)
@@ -788,7 +792,7 @@ def validate_flee(config='validation', simulation_period=0, cores=4, skip_runs=F
     fetch_results()
 
     results_dir = template(env.job_name_template)
-    validate_flee_output(results_dir)
+    validate_flee_output(results_dir, mode)
 
 
 @task
