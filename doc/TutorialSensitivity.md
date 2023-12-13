@@ -69,8 +69,8 @@ In both of the sensitivity analysis scripts, we have all input parameters in ``(
   }
 }
 ``` 
-The configuration for  a SA can be found in ``(FabSim3 Home)/plugins/FabFlee/flee_SA_config.yml`` as follows:
- * _NOTE_ : here we only presented the most important config parameters to run a SA. The full list can be found in [flee_SA_config.yml](https://github.com/djgroen/FabFlee/blob/master/flee_SA_config.yml "flee_SA_config.yml").
+The configuration for SA can be found in ``(FabSim3 Home)/plugins/FabFlee/SA/flee_SA_config.yml`` as follows:
+ * _NOTE_ : here we only presented the most important config parameters to run a SA. The full list can be found in [flee_SA_config.yml](https://github.com/djgroen/FabFlee/blob/master/SA/flee_SA_config.yml "flee_SA_config.yml").
 ```yml
 vary_parameters_range:
     # <parameter_name:>
