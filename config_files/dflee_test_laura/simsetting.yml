@@ -28,4 +28,3 @@ move_rules:
     flood_forecaster_end_time: 5 #The forcast data only extends this many days into the simulation. Default value should be (simulation length - flood forecaster timesale).
     flood_forecaster_weights: [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.3, 0.1,0.3, 0.3, 0.1, 0.1, 0.1, 0.0, 0.0] # weights for each day the flood forecaster. 1 = max importance, 0.0 = no importance. First value is today. 
     flood_awareness_weights: [0.0,0.5,1.0] #low, medium, high awareness or ability to adaptat to flooding (0.0 = no awareness, 1.0 = high awareness)
-    #flood_awareness_type: "linear", "timescales", "severity" 

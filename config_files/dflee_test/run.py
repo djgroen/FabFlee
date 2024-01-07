@@ -27,6 +27,7 @@ if __name__ == "__main__":
     flee.SimulationSettings.ReadFromYML("simsetting.yml")
 
   flee.SimulationSettings.ConflictInputFile = "%s/conflicts.csv" % input_csv_directory
+  flee.SimulationSettings.FloodLevelInputFile = "%s/flood_level.csv" % input_csv_directory
 
   e = flee.Ecosystem()
 
