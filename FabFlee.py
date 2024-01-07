@@ -429,7 +429,7 @@ def flee_compare(*models,output_dir=""):
     """
     output_dir = models[0].partition("_")[0]
 
-    local("mkdir -p %s/%s_comparison" % (env.results_path, output_dir))
+    local("mkdir -p %s/%s_comparison" % (env.local_results, output_dir))
 
     output_dir = "%s/%s_comparison" % (env.local_results, output_dir)
 
@@ -639,13 +639,14 @@ def vvp_validate_results(output_dir="", **kwargs):
 
         # TODO: make a proper validation metric using a validation schema.
         # print(validation_results["totals"]["Error (rescaled)"])
-        print("Validation {}: {}".format(output_dir.split("/")[-1],
-                                         validation_results["totals"][
-                                         "Error (rescaled)"]))
-        return validation_results["totals"]["Error (rescaled)"]
+        #print("Validation {}: {}".format(output_dir.split("/")[-1],
+        #                                 validation_results["totals"][
+        #                                 "Error (rescaled)"]))
+        label = output_dir.split("/")[-1].split("_")[0]
+        return [label,validation_results["totals"][f"Error ({env.flee_validation_mode})"]]
 
-    print("error: vvp_validate_results failed on {}".format(output_dir))
-    return -1.0
+    print("Error: vvp_validate_results failed on {}".format(output_dir))
+    return None
 
 
 @task
@@ -706,18 +707,52 @@ def validate_results(output_dir):
 
 
 def make_vvp_mean(np_array, **kwargs):
-    mean_score = np.mean(np_array)
-    #print("Mean score: {}".format(mean_score))
+    #mean_score = np.mean(np_array)
+    # convert array to dict
+    vvp_dict = {}
+    for i in np_array:
+        if i[0] in vvp_dict:
+            vvp_dict[i[0]].append(i[1])
+        else:
+            vvp_dict[i[0]] = [i[1]]
+    mean_score = 0.0
+
+    means = []
+    print("\033[94m--------------------------------")
+    print("\033[94m Validation Summary")
+    print("--------------------------------\033[0m")
+
+
+    for l in vvp_dict.keys():
+        mean = np.mean(vvp_dict[l])
+        dmax = np.max(vvp_dict[l])
+        dmin = np.min(vvp_dict[l])
+        dstdev = np.std(vvp_dict[l])
+        d5 = np.percentile(vvp_dict[l], 5)
+        d25 = np.percentile(vvp_dict[l], 25)
+        d50 = np.percentile(vvp_dict[l], 50)
+        d75 = np.percentile(vvp_dict[l], 75)
+        d95 = np.percentile(vvp_dict[l], 95)
+        print(f"{l}:")
+        print(f"* mean: {mean}, min: {dmin}, max: {dmax}, stdev: {dstdev}, mean error: {mean/2.0}")
+        print(f"* 5%: {d5}, 25%: {d25}, 50%: {d50}, 75%: {d75}, 95%: {d95}")
+        means.append(mean)
+
+    mean_score = np.mean(means)
+    print(f"\033[93mAggregated statistics:")
+    print(f"* Mean score: {mean_score}")
+    print(f"* Mean error: {mean_score/2.0}\033[0m")
     return mean_score
 
 
 @task
 @load_plugin_env_vars("FabFlee")
-def validate_flee_output(results_dir):
+def validate_flee_output(results_dir, mode="rescaled"):
     """
     Goes through all the output directories and calculates the validation
     scores.
     """
+    env.flee_validation_mode = mode
     full_results_dir = "{}/{}/RUNS".format(env.local_results, results_dir)
     results = vvp.ensemble_vvp(full_results_dir,
                      vvp_validate_results,
@@ -725,53 +760,39 @@ def validate_flee_output(results_dir):
 
     vresults = results[full_results_dir]
 
-    # Printing step: perhaps someday someone can make this prettier?
-    print("\nVALIDATION SUMMARY:\n")
-    for i in range(0,len(vresults['names'])):
-        error = vresults['scores'][i] * 0.5
-        print(f"Conflict {vresults['names'][i]}, Ave. rel. diff.: {vresults['scores'][i]}, error: {error}")
-    print(f"Averaged score: {vresults['scores_aggregation']}")
-
     return vresults
 
 
 @task
 @load_plugin_env_vars("FabFlee")
-def validate_flee(simulation_period=0, cores=4, skip_runs=False, label="",
-                  AwarenessLevel=1, **args):
+def validate_flee(config='validation', simulation_period=0, cores=4, skip_runs=False, label="", mode="rescaled", **args):
     """
-    Runs all the validation test and returns all scores, as well as an average.
+    Runs all the validation test and returns all scores + aggregate statistics
     """
+    
+    env.flee_validation_mode = mode
+
     if len(label) > 0:
         print("adding label: ", label)
         env.job_name_template += "_{}".format(label)
 
-    clean_fabsim_dirs("validation")
+    clean_fabsim_dirs(config)
 
     env.prevent_results_overwrite = "delete"
 
-    mode = "serial"
-    if int(cores) > 1:
-        mode = "parallel"
-
     if not skip_runs:
-        if mode.lower() == "parallel":
-            pflee_ensemble("validation", simulation_period,
-                           cores=cores, **args)
-        else:
-            flee_ensemble("validation", simulation_period, cores=1, **args)
+        pflee_ensemble(config, simulation_period,
+                       cores=cores, **args)
 
     # if not run locally, wait for runs to complete
     update_environment()
     if env.host != "localhost":
         wait_complete("")
-    if skip_runs:
-        env.config = "validation"
 
     fetch_results()
 
     results_dir = template(env.job_name_template)
-    validate_flee_output(results_dir)
+    validate_flee_output(results_dir, mode)
 
 
 @task

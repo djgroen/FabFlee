@@ -1,0 +1,11 @@
+The following older camps are converted to towns in this simulation, because there are no arrivals there over the whole multi-year simulation period.
+- Mangaize
+- Niamey
+- Oudalan
+- Tabareybarey
+
+Soum is opened only after 1130 days, as there clearly are no entries before that.
+Ayorou is opened only after 1090 days, as there clearly are no entries before that.
+
+Start date is moved to 2018-01-01 because there are negative arrivals before that.
+Simulation period is shortened to 1230 days, because there are no arrivals after that.
