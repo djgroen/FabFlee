@@ -18,7 +18,7 @@ Run the script using the following command:
 - <location_type>: The type of location for which you want to extract names (e.g., "admin2" for administrative region level 2).
 
 Example Usage:
-"python 00_extract_location_names.py nigeria2016 admin2"
+"python 00_extract_ACLED_location_names.py nigeria2016 admin2"
 '''
 
 import os

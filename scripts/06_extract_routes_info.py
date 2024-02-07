@@ -19,7 +19,7 @@ Run the script using the following command:
 "python extract_routes_info.py <country>"
 
 Example Usage:
-"python extract_routes_info.py nigeria2016"
+"python 06_extract_routes_info.py nigeria2016"
 
 This will generate an interactive map for the 'nigeria2016' dataset, visualizing the locations and routes based on the corresponding CSV files in the 'nigeria2016' directory.
 """
@@ -43,13 +43,35 @@ def extract_routes_info(country):
 
     # Initialize a map and zoom_start to suit your dataset
     map_center = [locations_df['latitude'].mean(), locations_df['longitude'].mean()]
-    mymap = folium.Map(location=map_center, zoom_start=6)
+    mymap = folium.Map(location=map_center, zoom_start=6,tiles="cartodb positron") #default tiles="cartodb positron"
+    
+    #Add map styles as tile layers - select choice of tiles from control in top right corner
+    folium.TileLayer('openstreetmap').add_to(mymap)
+    folium.TileLayer('cartodb positron').add_to(mymap)
+    folium.TileLayer('cartodb dark_matter').add_to(mymap)
+    folium.LayerControl().add_to(mymap)
 
     # Add markers for each location
     for _, row in locations_df.iterrows():
+        icon = None  # Initialize an empty icon variable
+
+        if row['location_type'] == 'town':
+            icon = folium.Icon(color='darkpurple', icon='home')
+        elif row['location_type'] == 'camp':
+            icon = folium.Icon(color='green', icon='tent', prefix='fa')
+        elif row['location_type'] == 'flood_zone':
+            icon = folium.Icon(color='darkblue', icon='water', prefix='fa')
+        elif row['location_type'] == 'conflict_zone':
+            icon = folium.Icon(color='red', icon='person-rifle', prefix='fa')
+
+        # Use the selected icon or create a custom HTML icon only if no icon is set
+        if not icon:
+            icon = folium.DivIcon(html=f"""<div style="font-family: courier new; color: black">{row['name']}</div>""")
+
         folium.Marker(
             location=[row['latitude'], row['longitude']],
-            popup=row['name']
+            popup=row['name'],
+            icon=icon
         ).add_to(mymap)
 
     # Draw routes
@@ -59,7 +81,7 @@ def extract_routes_info(country):
         loc2 = locations_df[locations_df['name'] == row['name2']].iloc[0]
         folium.PolyLine(
             locations=[[loc1['latitude'], loc1['longitude']], [loc2['latitude'], loc2['longitude']]],
-            color='blue'
+            color='grey',
         ).add_to(mymap)
 
     # Save map to HTML file

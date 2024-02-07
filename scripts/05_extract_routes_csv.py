@@ -14,13 +14,13 @@ The script functions as follows:
 3. Records the routes, including the start and end locations and the calculated distances, in a 'routes.csv' file within the same country-specific directory.
 
 Usage:
-1. Prepare location data in 'locations.csv' with 'name', 'latitude', and 'longitude' columns.
+1. Prepare location data in 'locations.csv' with 'name', 'latitude', and 'longitude' columns. The format of the data and the first line of the file should be: name,country,latitude,longitude,location_type,conflict_period,population. Ensure there is no hash, no additional columns and no extra commas. 
 2. Place this file within a directory named after the country or dataset.
 3. Run the script with the country or dataset name as a command-line argument.
 
 Command:
 Execute the script using the command:
-'python extract_routes_csv.py <country>'
+'python 05_extract_routes_csv.py <country>'
 
 where <country> is the name of the country or dataset folder containing the 'locations.csv' file.
 
