@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 
 if __name__ == "__main__":
 
-  start_date,end_time = read_period.read_conflict_period("{}/conflict_period.csv".format(sys.argv[1]))
+  start_date,end_time = read_period.read_sim_period("{}/sim_period.csv".format(sys.argv[1]))
 
   if len(sys.argv)<4:
     print("Please run using: python3 run.py <your_csv_directory> <your_refugee_data_directory> <duration in days> <optional: simsettings.yml> > <output_directory>/<output_csv_filename>")
@@ -51,7 +51,7 @@ if __name__ == "__main__":
 
   output_header_string = "Day,Date,"
 
-  camp_locations      = e.get_camp_names()
+  camp_locations = e.get_camp_names()
 
   for l in camp_locations:
       spawning.add_initial_refugees(e,d,lm[l])

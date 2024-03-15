@@ -1,0 +1,86 @@
+#Day, Date, Event
+0, 2020-05-10
+1, 2020-05-11
+2, 2020-05-12, gloabl sims were predicting a major event in the bay of bengal. https://floodlist.com/asia/advanced-cyclone-forecasting-is-leading-to-early-action-and-its-saving-thousands-of-lives
+3, 2020-05-13
+4, 2020-05-14
+5, 2020-05-15, fishermen advised away from the bay until 18th. 
+6, 2020-05-16, cyclone formed/detected, assume no flood in all areas (flood_level=0) before this day
+7, 2020-05-17, Day A - 1 form each flood level to simulate rapid intensification reported. rapid intensivication, became extreme cyclonic storm. Some evacuations began in Odisha and West Bengal.
+8, 2020-05-18, Day A. assume flood levels seen on day A are present at the peak of the flood, when cylone tarts. 12:00 UTC peak cyclone intensity over bay of bengal. Bangladesj Cyclone Preparedness Program (CPP) issued highest danger signal 10 for the coastal districts of Satkhira, Khulna, Bagerhat, Jhalokathi, Pirojpur, Barguna, Patuakhali, Bhola, Barishal, Laxmipur, Chandpur, Noakhali, Feni, Chattogram, and their offshore islands and chars.
+9, 2020-05-19, Day A. weakened due to dry air and wind shear. Damaging effects began in Bangladesh prior to the landfall of Amphan as coastal water levels rose.
+10, 2020-05-20, Day A.  12:00 UTC landfall over west bengal. Assume camps are full at this point. 2.2 million people evacuated in Bangladesh. https://www.hindustantimes.com/india-news/as-cyclone-amphan-nears-4-2mn-evacuated-in-coastal-regions-of-india-b-desh/story-bpZ14tH5LNaaDNckvZknDK.html
+11, 2020-05-21, Day A. dissipated, well marked low pressure area
+12, 2020-05-22, Actual Day A data = assume this is peak flood levels
+13, 2020-05-23, Assume flood levels remain high, they could dissapate, little difference between day 12 and 18, so assume they remain high.
+14, 2020-05-24, same as 14
+15, 2020-05-25, same as 14
+16, 2020-05-26, same as 14
+17, 2020-05-27, same as 14
+18, 2020-05-28, Day B, data showing inundation still bad. 
+19, 2020-05-29, If the difference in flood levels between day 18 & 29 is 1 or less, assume flood levels remain at day 18 levels until day 28. Decline by 1 if difference is 2 or more in days preceeding day 28.
+20, 2020-05-30, same as 19
+21, 2020-05-31, same as 19
+22, 2020-06-01, same as 19
+23, 2020-06-02, same as 19
+24, 2020-06-03, same as 19
+25, 2020-06-04, same as 19
+26, 2020-06-05, same as 19
+27, 2020-06-06, same as 19
+28, 2020-06-07, Day C, data showing inundation still bad.
+29, 2020-06-08, same as 28
+30, 2020-06-09, same as 28
+31, 2020-06-10, end of simulation
+
+#Article: Figure 4: A Quantitative Framework for Analyzing Spatial Dynamics of Flood Events: A Case Study of Super Cyclone Amphan
+Location, Floodlevel, dayA, dayB, dayC
+Bagerhat 4,3,3
+Benapole 2,1,1
+Chaugachha 2,1,1
+Daulatpur 1,1,1
+Dumuria 2,2,1
+Fakirhat 1,1,1
+Jessore(Jashore) 2,1,1
+Jhikargacha 2,1,1
+Kalaroa 1,1,1
+Kalia 1,2,1
+Kaliganj 2,2,2
+Keshabpur 2,2,2
+Khulna 2,1,1
+Lohagara 1,2,1
+Manirampur 2,1,2
+Mongla 4,3,3
+Morrelganj 6,5,5
+Narail 1,2,1
+Noapara 2,2,2
+Phultala 1,1,1
+Satkhira 2,1,2
+Sharankhola 5,5,3
+
+Altformat:
+Bagerhat, Benapole, Chaugachha, Daulatpur, Dumuria, Fakirhat, Jessore(Jashore), Jhikargacha, Kalaroa, Kalia, Kaliganj, Keshabpur, Khulna, Lohagara, Manirampur, Mongla, Morrelganj, Narail, Noapara, Phultala, Satkhira, Sharankhola
+12,4,2,2,1,2,1,2,2,1,1,2,2,2,1,2,4,6,1,2,1,2,5
+18,3,1,1,1,2,1,1,1,1,2,2,2,1,2,1,3,5,2,2,1,1,5
+28,3,1,1,1,1,1,1,1,1,1,2,2,1,1,2,3,5,1,2,1,2,3
+BlankDay,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+
+
+Regugess
+
+Population of 3 affected divisions from citypopulation.de
+
+Khulna: 15687759
+Barisal: 8325666
+Chittagong: 28423019
+
+Total: = 52436444
+
+Population displaced by cyclone Amphan in Bangladesh: 2.2 million = 2200000
+
+Fraction of population displaced: 
+
+2200000/52436444 = 0.0419
+
+Percentage of population displaced: 4.19%
+
+IDPs in Bangladesh in Khulna Division: 4.19% of 15687759 = 657,000

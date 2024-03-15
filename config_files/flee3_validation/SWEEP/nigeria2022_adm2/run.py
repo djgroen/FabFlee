@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 
 if __name__ == "__main__":
 
-  start_date,end_time = read_period.read_conflict_period("{}/conflict_period.csv".format(sys.argv[1]))
+  start_date,end_time = read_period.read_sim_period("{}/sim_period.csv".format(sys.argv[1]))
 
   if len(sys.argv)<4:
     print("Please run using: python3 run.py <your_csv_directory> <your_refugee_data_directory> <duration in days> <optional: simsettings.yml> > <output_directory>/<output_csv_filename>")
@@ -26,7 +26,12 @@ if __name__ == "__main__":
   else:
     flee.SimulationSettings.ReadFromYML("simsetting.yml")
 
+<<<<<<< HEAD:config_files/dflee_test/run.py
+  flee.SimulationSettings.ConflictInputFile = "%s/conflicts.csv" % input_csv_directory
+  flee.SimulationSettings.FloodLevelInputFile = "%s/flood_level.csv" % input_csv_directory
+=======
   flee.SimulationSettings.FlareConflictInputFile = "%s/conflicts.csv" % input_csv_directory
+>>>>>>> origin/master:config_files/flee3_validation/SWEEP/nigeria2022_adm2/run.py
 
   e = flee.Ecosystem()
 

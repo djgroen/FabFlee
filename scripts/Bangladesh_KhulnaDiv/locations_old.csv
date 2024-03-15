@@ -1,0 +1,61 @@
+#name,region,country,lat,lon,location_type,conflict_date,population,
+Alamdanga,Khulna,Bangladesh,23.7656496, 88.9447428,town,,78372
+Bagerhat,Khulna,Bangladesh,22.6554781, 89.7941813,town,,49073
+Benapole,Khulna,Bangladesh,23.0446124, 88.9040591,town,,41608
+Bheramara,Khulna,Bangladesh,24.0202276, 88.9971604,town,,30747
+Chaugachha,Khulna,Bangladesh,23.2630,89.0204,town,,21422
+Chuadanga,Khulna,Bangladesh,23.6436608, 88.8464480,town,,128865
+Darshana(Damurhuda),Khulna,Bangladesh,23.5147,88.8023,town,,60768
+Daulatpur,Khulna,Bangladesh,22.8634,89.5167,town,,19446
+Dumuria,Khulna,Bangladesh,22.7895,89.4811,town,,19828
+Fakirhat,Khulna,Bangladesh,22.7753498, 89.7123646,town,,26981
+Gangni,Khulna,Bangladesh,23.8178712, 88.7497084,town,,30239
+Harinakundu,Khulna,Bangladesh,23.6488,89.0430,town,,28275
+Jessore(Jashore),Khulna,Bangladesh,23.1641,89.2065,town,,253019
+Jhenaidah(Jhenida),Khulna,Bangladesh,23.5446964, 89.1731943,town,,110541
+Jhikargacha,Khulna,Bangladesh,23.1029164, 89.1007153,town,,41439
+Jibannagar,Khulna,Bangladesh,23.4224068, 88.8213015,town,, 38152
+Kalaroa,Khulna,Bangladesh,22.8583,89.0394,town,, 29283
+Kalia,Khulna,Bangladesh,23.0448640, 89.6305234,town,,35744
+Kaliganj,Khulna,Bangladesh,22.4579331, 89.0287025,town,,45341
+Keshabpur,Khulna,Bangladesh,22.9069712, 89.2187094,town,,33780
+Khoksa,Khulna,Bangladesh,23.8033,89.2895,town,,22194
+Khulna,khulna,Bangladesh,22.8171664, 89.5637590,town,,1046341
+Kotchandpur,Khulna,Bangladesh,23.4075,89.0120,town,,33094
+Kumarkhali,Khulna,Bangladesh,23.8606,89.2407,town,,21914
+Kushtia, Khulna,Bangladesh,23.8987955, 89.1295536,town,,108423
+Lohagara,Khulna,Bangladesh,23.1809,89.6477,town,,25290
+Magura,Khulna,Bangladesh,23.4878,89.4284,town,,98355
+Maheshpur,Khulna,Bangladesh,23.3608,88.9174,town,,27670
+Manirampur,Khulna,Bangladesh,23.0260235, 89.2366229,town,,28138
+Meherpur,Khulna,Bangladesh,23.7751475, 88.6311437,town,,43133
+Mirpur,Khulna,Bangladesh,23.9363038, 88.9977640,town,,32802
+Mongla,Khulna,Bangladesh,22.4679228, 89.6040074,town,,39837
+Morrelganj,Khulna,Bangladesh,22.4499,89.8528,town,,27130
+Narail,Khulna,Bangladesh,23.1734,89.5004,town,,51318
+Noapara,Khulna,Bangladesh,23.0287940, 89.3968280,town,,85856
+Phultala,Khulna,Bangladesh,22.9735528, 89.4745659,town,,31581
+Satkhira,Khulna,Bangladesh,22.7166509, 89.0749857,town,,113322
+Shailkupa,Khulna,Bangladesh,23.6883293, 89.2540681,town,,35271
+Sharankhola,Khulna,Bangladesh,22.3128, 89.8482,town,,26971
+Bagerhat Sadar,Khulna,Bangladesh,22.6551,89.7662,camp,, 500
+Chitalmari,Khulna,Bangladesh,22.7904,89.8778,camp,, 11475
+Kachua,Khulna,Bangladesh,22.6527,89.8855,camp,, 825
+Mollahat,Khulna,Bangladesh,22.9266,89.8060,camp,, 1400
+Mongla,Khulna,Bangladesh,22.5305,89.5901,camp,, 48134
+Morrelganj,Khulna,Bangladesh,22.4499,89.8528,camp,, 24525
+Rampal,Khulna,Bangladesh,22.5838,89.6722,camp,,	10650
+Sarankhola,Khulna,Bangladesh,22.3128,89.8482,camp,,	41300
+Batiaghata,Khulna,Bangladesh,22.7264,89.5026,camp,,	5325
+Dacope,Khulna,Bangladesh,22.6012,89.5073,camp,,	34691
+Dumuria,Khulna,Bangladesh,22.7895,89.4811,camp,, 6525
+Koyra,Khulna,Bangladesh,22.3516,89.2859,camp,, 41225
+Paikgachha,Khulna,Bangladesh,22.5931,89.3168,camp,, 26700
+Rupsa,Khulna,Bangladesh,22.8005,89.5868,camp,, 1600
+Assasuni,Khulna,Bangladesh,22.5282,89.1468,camp,, 5310
+Debhata,Khulna,Bangladesh,22.5809,88.9892,camp,, 6125
+Kaliganj,Khulna,Bangladesh,23.4098,89.1373,camp,, 9390
+Satkhira Sadar,Khulna,Bangladesh,22.7185,89.0705,camp,, 14271
+Shyamnagar,Khulna,Bangladesh,22.3373,89.1086,camp,, 31875
+Tala,Khulna,Bangladesh,22.7508,89.2574,camp,, 1300
+
