@@ -29,7 +29,6 @@ def test_all_files(self):
     self.register_for_test(routes_scheme.RoutesScheme, config.routes)
     self.register_for_test(closures_scheme.ClosuresScheme, config.closures)
 
-
 def test_all_demographic_file(self):
     if is_dflee(self):
         full_path_pattern = os.path.join(self.input_dir, config.demograohic_files_pattern)
