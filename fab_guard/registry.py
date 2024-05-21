@@ -13,8 +13,8 @@ def is_dflee(self):
         setting = yaml.load(val_yaml, Loader=yaml.SafeLoader)
         # check if a simulation is for flooding
         dflee = (config.dflee_outer_key in setting) \
-            and (setting[config.dflee_outer_key] is not None) \
-            and (config.dflee_inner_key in setting[config.dflee_outer_key])
+                and (setting[config.dflee_outer_key] is not None) \
+                and (config.dflee_inner_key in setting[config.dflee_outer_key])
         return dflee
 
 
@@ -29,14 +29,13 @@ def test_all_files(self):
     self.register_for_test(routes_scheme.RoutesScheme, config.routes)
     self.register_for_test(closures_scheme.ClosuresScheme, config.closures)
 
+
 def test_all_demographic_file(self):
     if is_dflee(self):
         full_path_pattern = os.path.join(self.input_dir, config.demograohic_files_pattern)
         matching_files = glob.glob(full_path_pattern)
         for file in matching_files:
             self.register_for_test(demographic_scheme.DemographicScheme, file)
-
-#@fgcheck
-#def test_all_files(self):
-    #self.register_for_test(distr_age_schema.DistrAgeScheme, config.distr_age)
-
+# @fgcheck
+# def test_all_files(self):
+# self.register_for_test(distr_age_schema.DistrAgeScheme, config.distr_age)

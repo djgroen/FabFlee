@@ -44,7 +44,7 @@ class FloodLevelScheme(pa.DataFrameModel):
         length = get_sim_period_len()
         # Define constraints for all flood zone columns
         flood_level_field = pa.Field(coerce=True,
-                                     in_range={"min_value": 0, "max_value": 8})
+                                     in_range={"min_value": 0, "max_value": length})
         # Create constraint for the first column
         day_level_field = pa.Field(coerce=True,
                                      in_range={"min_value": 0, "max_value": 2})
