@@ -6,18 +6,6 @@
 #
 # This file contains FabSim definitions specific to fabFlee.
 
-class LazyCallable(object):
-  def __init__(self, name):
-    self.n, self.f = name, None
-  def __call__(self, *a, **k):
-    if self.f is None:
-      modn, funcn = self.n.rsplit('.', 1)
-      if modn not in sys.modules:
-        __import__(modn)
-      self.f = getattr(sys.modules[modn],
-                       funcn)
-    self.f(*a, **k)
-
 try:
     from fabsim.base.fab import *
 except ImportError:
@@ -99,6 +87,7 @@ def flees(config, simulation_period, **args):
     # and adding a different generated test.csv in each directory.
     # Run the flee() a number of times.
 
+
 @task
 def flee_verify_input(conflict,**args):
     # imports the module from the given path
@@ -108,7 +97,6 @@ def flee_verify_input(conflict,**args):
     input_file_dir = os.path.join(conflict_dir, "input_csv")
     fg = fab_guard.FabGuard(input_file_dir)
     fg.verify()
-
 
 @task
 @load_plugin_env_vars("FabFlee")
@@ -451,7 +439,7 @@ def flee_compare(*models,output_dir=""):
     """
     output_dir = models[0].partition("_")[0]
 
-    local("mkdir -p %s/%s_comparison" % (env.results_path, output_dir))
+    local("mkdir -p %s/%s_comparison" % (env.local_results, output_dir))
 
     output_dir = "%s/%s_comparison" % (env.local_results, output_dir)
 
@@ -759,8 +747,7 @@ def validate_flee_output(results_dir):
 
 @task
 @load_plugin_env_vars("FabFlee")
-def validate_flee(simulation_period=0, cores=4, skip_runs=False, label="",
-                  validation_dir='validation', **args):
+def validate_flee(config='validation', simulation_period=0, cores=4, skip_runs=False, label="", **args):
     """
     Runs all the validation test and returns all scores, as well as an average.
     """
@@ -768,20 +755,18 @@ def validate_flee(simulation_period=0, cores=4, skip_runs=False, label="",
         print("adding label: ", label)
         env.job_name_template += "_{}".format(label)
 
-    clean_fabsim_dirs(validation_dir)
+    clean_fabsim_dirs(config)
 
     env.prevent_results_overwrite = "delete"
 
     if not skip_runs:
-        pflee_ensemble(validation_dir, simulation_period,
-                           cores=cores, **args)
+        pflee_ensemble(config, simulation_period,
+                       cores=cores, **args)
 
     # if not run locally, wait for runs to complete
     update_environment()
     if env.host != "localhost":
         wait_complete("")
-    if skip_runs:
-        env.config = validation_dir
 
     fetch_results()
 
@@ -1368,6 +1353,7 @@ def redirect(source, destination):
                              % (get_plugin_path("FabFlee")), "w"))
     writer.writerows(lines)
 
+
 # Test Functions
 # from plugins.FabFlee.test_FabFlee import *
 
@@ -1427,6 +1413,18 @@ except:
     import traceback
     traceback.print_tb(exc_traceback)
     print("The FabFlee flee_vvp functionalities are not imported as a result.")
+    pass
+
+try:
+    from plugins.FabFlee.run_perf_benchmarks import *
+except:
+    exc_type, exc_value, exc_traceback = sys.exc_info()
+    print("Error: failed to import settings module run_perf_benchmarks")
+    pprint(exc_type)
+    pprint(exc_value)
+    import traceback
+    traceback.print_tb(exc_traceback)
+    print("The FabFlee run_perf_benchmarks functionalities are not imported as a result.")
     pass
 
 try:
