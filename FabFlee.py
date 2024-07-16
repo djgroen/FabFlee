@@ -274,7 +274,7 @@ def pflee_test(config, pmode="advanced", N="100000", **args):
     """
     Run a short parallel test with a particular config.
     """
-    update_environment(args, {"simulation_period": 10,
+    update_environment(args, {"simulation_period": 100,
                               "flee_parallel_mode": pmode,
                               "flee_num_agents": int(N)
                               }

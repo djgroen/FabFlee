@@ -167,6 +167,7 @@ def plot_flee_links(config):
     ig.ReadLinksFromCSV(flink)
 
     ll = ig.MakeLocationList()
+    cl = ig.MakeLocationColorsList()
     print(ll)
 
     for l in ig.links:
@@ -190,6 +191,7 @@ def plot_flee_links(config):
             lon = loclons,
             lat = loclats,
             hovertext = locnames,
+            marker={"color":cl}
         )
 
     fig.update_traces(marker_size=12, selector=dict(type='scattergeo'))

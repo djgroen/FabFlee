@@ -9,5 +9,6 @@ move_rules:
   max_move_speed: 600.0
   default_movechance: 0.8
   start_on_foot: False
+  awareness_level: 5
 optimisations:
-  hasten: 50
+  hasten: 1
