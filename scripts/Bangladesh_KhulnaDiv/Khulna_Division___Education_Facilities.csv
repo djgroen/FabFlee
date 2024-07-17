@@ -1,0 +1,1763 @@
+osm_id,osm_type,capacity,isced_level,amenity,name,longitude,latitude,geom_type
+"9579940157",nodes,,,school,Nirail,89.4572661,23.1266839,POINT
+"5340833621",nodes,,,school,Formys khana school,89.5347816,22.8727228,POINT
+"5339377686",nodes,,,school,,89.546763,22.877952,POINT
+"3577919819",nodes,,,school,Khanabari School,89.5037735,22.8971021,POINT
+"5342288811",nodes,,,school,,89.5216843,22.8954051,POINT
+"9704694571",nodes,,,college,Khulna Public College,89.533065,22.836805,POINT
+"6036271446",nodes,,,college,Sunderban Institute of Technology,89.5318488,22.8355086,POINT
+"6112309319",nodes,,,school,East Mohesshoripur Govt Primay School,89.3562806,22.4519562,POINT
+"9579940160",nodes,,,school,Govt Primary School,89.3909348,23.1034096,POINT
+"9587817370",nodes,,,school,Shimakhali High School,89.3177917,23.3254895,POINT
+"9587817371",nodes,,,school,Shimakhali Govt Primary School,89.3176223,23.3251005,POINT
+"9579940150",nodes,,,school,Shaikhati Govt Primary School,89.3917092,23.1163355,POINT
+"9696960406",nodes,,,school,Panchapalli Govt. Primary School,89.6458894,23.0254747,POINT
+"9584920080",nodes,,,school,Govt Primary School,89.6724538,22.9365502,POINT
+"5273696033",nodes,,,university,,89.5445073,22.876583,POINT
+"5273696034",nodes,,,university,,89.5443115,22.8767288,POINT
+"5273696035",nodes,,,university,,89.543716,22.8767806,POINT
+"5273669296",nodes,,,school,,89.539568,22.8772737,POINT
+"5273669383",nodes,,,college,,89.5445287,22.8710893,POINT
+"6112309427",nodes,,,school,79No Amtola Govt Primary School,89.3455678,22.4244774,POINT
+"6112309315",nodes,,,school,Vagba h.b high school,89.3492639,22.467498,POINT
+"6112891135",nodes,,,school,Daktarabad Bonrani Govt Primary School,89.3333799,22.4465236,POINT
+"6126028781",nodes,,,school,Khoria Government Primary School,89.3105569,22.3910264,POINT
+"6126028778",nodes,,,school,Mothmari Muhammadia (S.A.W) Hafizia Madrasah,89.3068796,22.3790178,POINT
+"6126028775",nodes,,,school,34 no Maharajpur Government Primary School,89.312472,22.359976,POINT
+"6126028773",nodes,,,school,Pratap Smoroni Secondary School,89.3233752,22.3536182,POINT
+"6330336420",nodes,,,college,koyra sorkari mohila college,89.2902821,22.3470344,POINT
+"6126029405",nodes,,,school,Muktijoddha Keramat Ali 1500 Primary School,89.2645222,22.3834176,POINT
+"6126029387",nodes,,,school,Alhaj Mozammel Hossain Darul Quran Hafezia Madrasa,89.2831863,22.398481,POINT
+"9521837435",nodes,,,,MALIKHALI B.B. ADARSHA JUNIOR GIRLS HIGH SCHOOL,89.3188828,22.410053,POINT
+"6112309429",nodes,,,school,Kalikapur choukuni hig school,89.3226349,22.4087373,POINT
+"2456439034",nodes,,,college,Bangobondhu Woman's College,89.5967475,24.1714834,POINT
+"10882687334",nodes,,,college,"Rajapur Degree College, Rajshahi - Pabna Hwy, Natore",89.1382395,24.1765166,POINT
+"9705442596",nodes,,,school,Shahid Hasan Foiz Girl's Hgih School,89.1323131,23.9286257,POINT
+"9586300353",nodes,,,school,Kastovanga High School,89.1141302,23.2927157,POINT
+"9521569708",nodes,,,,HENCHI BANGABANDHU HIGH SCHOOL,89.1930361,22.3087808,POINT
+"9516627305",nodes,,,school,Sundarban Secondary School,89.126153,22.2088943,POINT
+"9521024516",nodes,,,,Nakipur H.C. Pilot High School,89.1067556,22.3402072,POINT
+"9705617999",nodes,,,school,Chourhash Mukul Sangha Girls Secondary School,89.1106147,23.8909214,POINT
+"9705618007",nodes,,,school,Bharuapara Junior High School,89.1771667,23.8136558,POINT
+"9603778642",nodes,,,school,Barobazar Govt Primary School,89.1545039,23.3008739,POINT
+"9705513319",nodes,,,school,Mill Para Girl's High School,89.1480477,23.9001543,POINT
+"7452500685",nodes,,,,পিন্টু আহমেদ কেজি স্কুল,89.6325706,24.0779283,POINT
+"5863703234",nodes,,,school,Khayerbaria S.A.R. High School,89.5106467,24.047146,POINT
+"7419659676",nodes,,,,Bera Girls High School,89.6258405,24.0803082,POINT
+"7466741511",nodes,,,,Hatigara ZKM Madrasah,89.6275755,24.0765242,POINT
+"7466373458",nodes,,,,Millennium Star School,89.6137156,24.0765009,POINT
+"7466384895",nodes,,,,Talent Kinder Garden & High School,89.6194667,24.0789085,POINT
+"7462767923",nodes,,,,Bera Government B. B. Primary School,89.6183213,24.0839669,POINT
+"7416568609",nodes,,,college,Liaquat Ali Smriti School & College,89.4761515,23.6432229,POINT
+"2447822367",nodes,,,school,Baliakandi High School,89.5470473,23.6333427,POINT
+"9705354293",nodes,,,school,Sagarkandi Reaz Uddin High School,89.6024689,23.8536252,POINT
+"5626576993",nodes,,,school,Bhatiapara High School,89.7001022,23.2098528,POINT
+"9585744650",nodes,,,school,Gondho-Baria Ghoshi-Baria Govt. Primary School,89.6675078,23.080316,POINT
+"9705618008",nodes,,,school,Sankardia Secondary School,89.0216921,23.7421912,POINT
+"8999072478",nodes,,,college,Muksudpur Government College,89.8643259,23.3133012,POINT
+"3494316833",nodes,,,school,শশি ভূষন মাধ্যমিক বিদ্যালয়,89.519737,22.87808,POINT
+"9594405196",nodes,,,school,Govt Primary School,89.481481,22.962744,POINT
+"9522271284",nodes,,,,CHALNA BAZAR GOVT. GIRLS HIGH SCHOOL,89.5224189,22.6031733,POINT
+"6027830086",nodes,,,school,Sree Nagar Uttarpara Gov. Primary School,89.4917241,22.5193373,POINT
+"6036281158",nodes,,,school,UCEP-Mohsin Khulna Technical School,89.539864,22.8421112,POINT
+"5351310544",nodes,,,school,,89.5579907,22.8621551,POINT
+"9594405205",nodes,,,school,Govt Primary School,89.5731781,22.8301761,POINT
+"702560870",nodes,,,school,St. Joseph High School,89.5669517,22.8088003,POINT
+"9704694570",nodes,,,school,Khulna Model School,89.5344597,22.8366184,POINT
+"11038574235",nodes,,,school,Mohishkundi Govt Primary School,88.7629772,24.0489813,POINT
+"9705759530",nodes,,,school,Fatema Yusuf Junior Girls High School,88.7624899,24.0511704,POINT
+"11038581785",nodes,,,college,Mohishkundi College,88.7642532,24.0434059,POINT
+"9705203304",nodes,,,school,Debottar Pilot Girls High School,89.2216996,24.0874639,POINT
+"9705203302",nodes,,,school,Hazera Khatun Girls High School,89.2098459,24.0681322,POINT
+"9705203303",nodes,,,school,TEBUNIA WASIM PATSHALA,89.2070917,24.0695715,POINT
+"9705227506",nodes,,,school,Ashraf High School,89.3544416,24.0558134,POINT
+"9705227507",nodes,,,school,Durgapur Jr. High School,89.3486638,24.0541884,POINT
+"9705227505",nodes,,,school,Kaira Bari Bahu Mukhi High School,89.2735796,24.0791749,POINT
+"9705203294",nodes,,,school,Hamchiapur High School,89.2496281,24.0443784,POINT
+"9696960350",nodes,,,school,Bilbyaoch Madrasa,89.6523612,23.0542016,POINT
+"9696960355",nodes,,,school,Bilbyaoch Govt. Primary School,89.6468221,23.0538591,POINT
+"6588416799",nodes,,,college,GOVT. Lohagora Adarsha College,89.6534616,23.1919882,POINT
+"9585730626",nodes,,,school,Islampur Govt. Primary School,89.6592653,23.0592908,POINT
+"9692173176",nodes,,,college,Laxmipasha Adarsha Mohila College,89.647548,23.1806476,POINT
+"6126339596",nodes,,,,girls madrasa,89.4654357,22.6431304,POINT
+"9596434710",nodes,,,college,Paikgacha Degree College,89.3168572,22.5899612,POINT
+"6116328339",nodes,,,school,Sabila Khatun Aftedayi Madrasa,89.4135618,22.5670358,POINT
+"9596434706",nodes,,,school,Govt Primary School,89.3275331,22.5850307,POINT
+"5758264436",nodes,,,school,শ্রীকন্ঠপুর কে.আর নিম্ন মাধ্যমিক বিদ্যালয়,89.264142,22.5797669,POINT
+"5757125167",nodes,,,school,Sreekanthopur 32 no Govt Primary School,89.2645282,22.5793914,POINT
+"6088107408",nodes,,,school,Loudor Banishanta High School,89.5645098,22.4913502,POINT
+"6126745207",nodes,,,school,48 no Bedkashi Bena Pane Govt. Primary School,89.3340357,22.2570986,POINT
+"6127615594",nodes,,,school,51 no Govt. Primary School,89.3189241,22.2122121,POINT
+"6317296895",nodes,,,school,,89.3337478,22.2570544,POINT
+"5783957923",nodes,,,school,29 No Southkhali Govt Primary School,89.8316404,22.2342528,POINT
+"6127615595",nodes,,,school,Matiavanga Nurani Hafijia Madrasha.,89.3098797,22.2185782,POINT
+"6640185642",nodes,,,school,Bayergangi Primary School,88.6751796,23.302585,POINT
+"9586150767",nodes,,,school,Pathra Govt Primary School,88.8522872,23.278282,POINT
+"9586150765",nodes,,,school,Jaluli Govt Primary School,88.8463321,23.2536167,POINT
+"9586150763",nodes,,,college,Krishnapur Dakhil Madrasa,88.8886958,23.2502999,POINT
+"9586150762",nodes,,,college,Jadavpur College,88.8894249,23.2617586,POINT
+"5224120521",nodes,,,school,HELENCHA HIGH SCHOOL,88.8563499,23.1862439,POINT
+"9586150769",nodes,,,school,High School,88.898734,23.3509056,POINT
+"9586150779",nodes,,,school,High School,88.8531009,23.3668032,POINT
+"9586150778",nodes,,,school,Dakhil Madarasa,88.8378069,23.3718901,POINT
+"9586150776",nodes,,,school,High School,88.8261189,23.4190331,POINT
+"9586150775",nodes,,,school,Primary School,88.8663915,23.4096317,POINT
+"9586150773",nodes,,,school,High School,88.8989559,23.3943718,POINT
+"9590538019",nodes,,,school,Govt Primary School,88.9679239,23.2799917,POINT
+"9579031921",nodes,,,school,Sukpukuria High School,88.9416091,23.2552352,POINT
+"9586300339",nodes,,,school,Chakla Shwarupur Govt Primary School,89.0310868,23.3641187,POINT
+"9586300323",nodes,,,school,Govt Primary School,88.9688875,23.2649399,POINT
+"9579063808",nodes,,,school,Purapara Govt Primary School,88.946396,23.2729024,POINT
+"9579031919",nodes,,,school,Katgora High School,88.9497732,23.281416,POINT
+"9579031922",nodes,,,school,Sukpukuria Govt. Primary School,88.942032,23.2547198,POINT
+"9586150764",nodes,,,school,Jaluli High School,88.846192,23.2531275,POINT
+"2407518052",nodes,,,school,Mujibnagar High School,88.6036721,23.6650485,POINT
+"9586150784",nodes,,,school,Govt Primary School,88.9796369,23.3576751,POINT
+"9586296810",nodes,,,school,Govt Primary School,88.975445,23.3517401,POINT
+"9586150777",nodes,,,school,Primary School,88.8255579,23.4178542,POINT
+"9586150772",nodes,,,college,Jiaur Rahman College,88.9311218,23.3894091,POINT
+"9602997005",nodes,,,school,Govt Primary School,89.0116042,23.3977976,POINT
+"9586300330",nodes,,,school,Patibila High School,89.0294587,23.2955824,POINT
+"9592480867",nodes,,,school,Baghutia K.S. High School,89.7812614,23.9361664,POINT
+"9592480871",nodes,,,school,Khalshi Govt Primary School,89.8166548,23.9171807,POINT
+"9592480839",nodes,,,school,Salimabad Anower Khan Model Junior School,89.8117277,24.0502832,POINT
+"9592480836",nodes,,,school,Bekra Bisheshwar Memorial High School,89.8621128,24.053362,POINT
+"7076753529",nodes,,,school,Boyarghata School,88.9244455,22.821507,POINT
+"9595231142",nodes,,,school,Jograjpur Govt Primary School,89.0582802,22.7483251,POINT
+"9595231146",nodes,,,school,Satkhira Govt High School,89.0770596,22.7257795,POINT
+"9595231145",nodes,,,school,Kadamtala HIgh School,89.0675234,22.7302275,POINT
+"9595231148",nodes,,,school,Govt Primary School,89.084791,22.7370071,POINT
+"9595231141",nodes,,,school,Tuzulpur Govt Primary School,89.0365896,22.7930727,POINT
+"9595231124",nodes,,,school,Ilishpur Govt Primary School,88.9957501,22.9368559,POINT
+"9579051365",nodes,,,school,Govt Primary School,88.9673711,22.8849195,POINT
+"9579051370",nodes,,,school,Govt Primary School,88.994268,22.8283839,POINT
+"9579051374",nodes,,,school,Govt Primary School,88.9659232,22.7931026,POINT
+"6520442647",nodes,,,school,NIVEDITA NURSURY & K.G SCHOOL,88.653267,22.8354649,POINT
+"9597693102",nodes,,,school,Laxminathpur FP School,88.7945874,22.735706,POINT
+"9579051377",nodes,,,school,Govt Primary School,88.9464801,22.7567519,POINT
+"7417200548",nodes,,,school,A B C Kinder garden,89.5627705,22.8013924,POINT
+"10939002744",nodes,,,school,"Char Mohadiar Govt. Primary School, Lalpur Cluster, Pabna Rd, Natore",88.9937574,24.1697447,POINT
+"10939018048",nodes,,,kindergarten,পদ্মা কিন্ডারগার্টেন,89.0008929,24.1696023,POINT
+"10956821040",nodes,,,,Berilabari Dakhil Madrasha,88.8887667,24.1991912,POINT
+"10956819740",nodes,,,school,Chandipur High School,88.8663994,24.1992011,POINT
+"10939197223",nodes,,,,"Rojatus Sunnah Qaumi Madrasa Masjid, Pabna Rd, Lalpur, Natore",88.9524833,24.1821141,POINT
+"9696960405",nodes,,,school,Mirjapur Madrasa,89.6372715,23.0306548,POINT
+"3629345254",nodes,,,university,Govt. Brajalal College,89.5293317,22.8683373,POINT
+"9584920086",nodes,,,school,Degree College,89.484567,22.9420244,POINT
+"9594405192",nodes,,,school,Bajerdanga Govt Primary School,89.4491126,22.9835116,POINT
+"5428004211",nodes,,,college,Phultala M.M. College,89.4696119,22.97814,POINT
+"5340847416",nodes,,,school,,89.5411364,22.8748104,POINT
+"5351310543",nodes,,,school,,89.5580471,22.8625518,POINT
+"8940145844",nodes,,,school,Gonganandapur Secondary School,89.033173,23.1718154,POINT
+"9586424201",nodes,,,school,Kabilpur Govt Primary School,88.9974174,23.2098766,POINT
+"9586424200",nodes,,,school,Kabilpur High School,88.9974408,23.2100698,POINT
+"9590538017",nodes,,,school,Govt Primary School,88.9841401,23.252492,POINT
+"9590532213",nodes,,,school,Sarupdah Govt Primary School,88.9983606,23.2532439,POINT
+"9579063785",nodes,,,school,Andarkota High School,88.9987806,23.2774123,POINT
+"9579063789",nodes,,,school,Bunniltola Primary School,88.990286,23.3006189,POINT
+"9579063794",nodes,,,school,Chadpara Govt Primary School,88.9863507,23.3040686,POINT
+"9579063793",nodes,,,school,Chadpara High School,88.9858362,23.3043912,POINT
+"9579063784",nodes,,,school,Notunkuri Kintergarden,89.021203,23.2628601,POINT
+"9586424185",nodes,,,college,S Habibur Rahmand Degree College,89.0192299,23.250117,POINT
+"9586300329",nodes,,,school,Patibila Dakhil Madrasa,89.0236451,23.2771126,POINT
+"9603778632",nodes,,,school,Govt Primary School,89.1292702,23.1926701,POINT
+"9603778634",nodes,,,school,High School,89.1373772,23.2024882,POINT
+"9586300358",nodes,,,school,Solua Adarsha College,89.1063869,23.2376636,POINT
+"9586424187",nodes,,,school,Goribpur Govt Primary School,89.0465449,23.2347821,POINT
+"9586424188",nodes,,,school,Jahangirpur Govt Primary School,89.046951,23.2255031,POINT
+"9586424199",nodes,,,school,Fotepur Govt Primary School,89.0323269,23.2223104,POINT
+"9602996994",nodes,,,school,Narayan Pur Govt Primary School,89.0124552,23.3137641,POINT
+"9579063788",nodes,,,school,Hazrakhana Primary School,89.0044352,23.2882568,POINT
+"9602996992",nodes,,,school,Ambottala Dakhil Madrasa,89.0119506,23.2713637,POINT
+"9579063780",nodes,,,school,Kongsaripur Govt Primary School,89.0149382,23.2669028,POINT
+"9603778641",nodes,,,school,Govt Primary School,89.1577654,23.2963045,POINT
+"9603778639",nodes,,,school,Govt Primary School,89.1663933,23.2404817,POINT
+"9603778636",nodes,,,school,Govt Primary School,89.1445667,23.2165573,POINT
+"9603778637",nodes,,,school,Meherullah Govt Primary School,89.1590625,23.2098194,POINT
+"9586300341",nodes,,,school,Shishutola Govt Primary School,89.0342904,23.3681261,POINT
+"9603778652",nodes,,,school,High School Kotchadpur,89.0187414,23.4069652,POINT
+"9586300345",nodes,,,school,N K R High School,89.0358667,23.4043615,POINT
+"9586300344",nodes,,,school,Kotchadpur Pouro College,89.0285976,23.4054248,POINT
+"9602997004",nodes,,,school,Govt Primary School,89.0082767,23.3909874,POINT
+"9603778649",nodes,,,school,High School,89.0611675,23.3841677,POINT
+"9603778650",nodes,,,school,Govt Primary School,89.0608115,23.3843751,POINT
+"9602997006",nodes,,,school,Dakhil Madrasa,89.1076449,23.3980621,POINT
+"9602997008",nodes,,,college,Kaliganj College,89.1313332,23.4051506,POINT
+"9603778643",nodes,,,school,Govt Primary School,89.125812,23.3425959,POINT
+"9603778645",nodes,,,school,Govt Primary School,89.1126622,23.3698879,POINT
+"9603778646",nodes,,,school,High School,89.1129694,23.3703108,POINT
+"9603778644",nodes,,,school,Govt Primary School,89.1208257,23.346358,POINT
+"9586300336",nodes,,,school,Hakimpur Govt Primary School,89.0365476,23.3458871,POINT
+"9602997003",nodes,,,school,Sumon Drug House,89.0029654,23.3595718,POINT
+"9586300335",nodes,,,school,Govt Primary School,89.0338834,23.3396677,POINT
+"11063532305",nodes,,,school,,89.1575447,23.4862141,POINT
+"6357502745",nodes,,,school,Maktab Bivag,89.2938964,23.4785764,POINT
+"5417767575",nodes,,,school,,89.2938057,23.4783986,POINT
+"9587817368",nodes,,,school,Arpara Ideal High School,89.3711483,23.3747215,POINT
+"9587817362",nodes,,,college,Magura Polytechnic College,89.3931236,23.4836211,POINT
+"6148966716",nodes,,,school,,88.9671135,22.555248,POINT
+"6148966717",nodes,,,school,,88.96272,22.5570018,POINT
+"6148439007",nodes,,,school,,88.9628005,22.5381653,POINT
+"6148445727",nodes,,,school,,88.9396423,22.5493922,POINT
+"6148967358",nodes,,,school,,88.9557248,22.5637738,POINT
+"9579051376",nodes,,,school,Govt Primary School,88.9784053,22.7853304,POINT
+"9576105475",nodes,,,school,,88.9385465,22.9114092,POINT
+"6148966421",nodes,,,school,,88.9465678,22.5609204,POINT
+"9579051364",nodes,,,school,Govt Primary School,88.9535938,22.8968453,POINT
+"9579051373",nodes,,,school,Govt Primary School,88.9639698,22.8158564,POINT
+"9579051372",nodes,,,school,Govt Primary School,88.973324,22.8245442,POINT
+"9586424203",nodes,,,school,Pakshia High School,88.9732815,23.1762147,POINT
+"9602996990",nodes,,,school,Pukuria Govt Primary School,88.9325287,23.2149276,POINT
+"9586424208",nodes,,,school,Govt Primary School,88.9745447,23.2272135,POINT
+"9586424209",nodes,,,school,Govt Primary School,88.9629415,23.2361772,POINT
+"9579031925",nodes,,,school,Ballavpur High Scholl,88.9468952,23.2385687,POINT
+"9579031920",nodes,,,school,Dakhin Ramkrishnapur Govt. Primary School,88.9285749,23.2491343,POINT
+"9579063801",nodes,,,school,Govt Primary School Durgapur,88.9162733,23.2808605,POINT
+"9579063799",nodes,,,school,Nagarborni High School,88.9248478,23.2779703,POINT
+"9579063802",nodes,,,school,Borni Girl School,88.927963,23.2675596,POINT
+"8849978945",nodes,,,school,বর্ণি রামকৃষ্ণপুর মাধ্যমিক বিদ্যালয়,88.9267488,23.2582721,POINT
+"9579063804",nodes,,,school,Rajapur Govt Primary School,88.9072415,23.26034,POINT
+"9579063805",nodes,,,school,Rajapur High School,88.9079632,23.2599216,POINT
+"9586300321",nodes,,,school,Kintergarden School,88.9473081,23.2771275,POINT
+"9590478358",nodes,,,school,Mandarbaria Dakhil Madrasa,88.9546302,23.2909317,POINT
+"9579063795",nodes,,,school,Mandarbaria High School,88.9548063,23.2939089,POINT
+"9586296813",nodes,,,school,Bathangachi Govt Primary School,88.9446071,23.32005,POINT
+"9586296812",nodes,,,school,Bathangachi High School,88.9441753,23.3210445,POINT
+"9579063790",nodes,,,school,Jhawtola High School,88.9678513,23.3213321,POINT
+"9586296811",nodes,,,school,Belemath Dakhil Madarasa,88.9429733,23.337166,POINT
+"9586150785",nodes,,,school,Azampur High School,88.9685908,23.3561532,POINT
+"9586150782",nodes,,,school,Sundarpur High School,88.9749331,23.3701319,POINT
+"9586150783",nodes,,,school,Sundarpur Govt Primary School,88.9627727,23.3663725,POINT
+"9586150771",nodes,,,school,Valaipur Govt Primary School,88.9341673,23.3658043,POINT
+"9586150770",nodes,,,school,Valaipur High School,88.9344055,23.366503,POINT
+"6148966567",nodes,,,school,,88.9636508,22.5595531,POINT
+"6148966572",nodes,,,school,,88.9634067,22.5582527,POINT
+"6148966757",nodes,,,school,,88.9612395,22.553633,POINT
+"5711790857",nodes,,,school,Govt. Girls High School,89.7937193,22.6605454,POINT
+"5711225223",nodes,,,school,Bagerhat School,89.7905047,22.6472254,POINT
+"9696943776",nodes,,,school,Dhusohati Govt. Primary School,89.6731004,23.0351288,POINT
+"9647438559",nodes,,,school,Milejani Government Primary School,89.8775335,24.0922542,POINT
+"9587161770",nodes,,,school,Cilumpur madarasa,89.8984545,24.1663375,POINT
+"9587161769",nodes,,,school,Junaki Govt Primary  School,89.8638691,24.1570902,POINT
+"9592480835",nodes,,,school,Singdair High School,89.8689626,24.0489434,POINT
+"9592480863",nodes,,,school,Kakna High School,89.9142911,23.9520339,POINT
+"9592480851",nodes,,,school,Sonka Junior High School,89.9297806,24.0027049,POINT
+"9620396747",nodes,,,school,Sahabatpur South Government Primary School,89.8783891,24.0862535,POINT
+"9689328397",nodes,,,college,Nagarpur Govt. College,89.8751289,24.060619,POINT
+"9592480853",nodes,,,school,M. Borhan Uddin High School,89.9620085,24.0232419,POINT
+"9520934043",nodes,,,,মুন্সিগঞ্জ কাসেমিয়া এমদাদুল উলুম মাদ্রাসা মসজিদ,89.1518328,22.2693435,POINT
+"5876234417",nodes,,,school,South Rajapur High School and Shelter Center,89.7829342,22.2999315,POINT
+"5876234392",nodes,,,school,Chal rayenda government primary school,89.8298031,22.2649315,POINT
+"5777563338",nodes,,,school,25 No SB Tafalbari Govt Primary School,89.8158154,22.2626628,POINT
+"6114699191",nodes,,,school,Horihorpur Mahatpara Tri Community school,89.3269694,22.2702508,POINT
+"9521602155",nodes,,,,PORAKATLA DIPAYAN HIGH SCHOOL,89.2373824,22.2773253,POINT
+"9520896558",nodes,,,,Ranjannagar Tofajel Bidhapith,89.0863688,22.2948377,POINT
+"5835892027",nodes,,,school,Bokultola Gov. Primary School.,89.6902773,22.5171495,POINT
+"5835892080",nodes,,,school,Amratola Mass Education Center.,89.6597021,22.5119517,POINT
+"5835892106",nodes,,,school,Horendronath Mollik Srity Gov. Prymary School.,89.6412706,22.5215635,POINT
+"5972519822",nodes,,,school,Amratola Chopra High School.,89.6693051,22.5041916,POINT
+"6088107392",nodes,,,school,Purbo Khajuria Gov. Primary School,89.5544985,22.4598909,POINT
+"6088107388",nodes,,,school,Green Education Center,89.5588933,22.4446135,POINT
+"9522329681",nodes,,,,SONAR BANGLA  HIGH SCHOOL,89.5462098,22.5496204,POINT
+"9702430537",nodes,,,school,Bir Muktizoddha A Akbar Ali Marzi High School,89.6943647,23.6396532,POINT
+"7913489111",nodes,,,school,4 No Bhatiapara Govt. School,89.7000453,23.2090201,POINT
+"9594405197",nodes,,,school,Govt Priamry School,89.5170506,22.9235849,POINT
+"9524630241",nodes,,,school,Machain Govt. Primary School,89.8526766,23.776115,POINT
+"5153084632",nodes,,,,"BRAC Learning Centre, BLC Pabna",89.2275458,24.0308525,POINT
+"9705227510",nodes,,,school,,89.2570553,24.0003898,POINT
+"9705203293",nodes,,,school,Malonchi High School,89.268252,24.0290923,POINT
+"9705203295",nodes,,,school,Amjad Hossain High School,89.2297962,24.0245316,POINT
+"9705192974",nodes,,,school,Rainbow International School,89.2388366,24.0140919,POINT
+"9705192971",nodes,,,school,Pabna Town Girls High School,89.2352611,24.0050728,POINT
+"9705203291",nodes,,,school,Mohim Chandra Jubilee High School,89.2408927,24.0057986,POINT
+"9591980482",nodes,,,school,Shahid Khabiruzzaman High School,89.3705646,23.876382,POINT
+"9587817364",nodes,,,school,Goalpara Govt Primary School,89.2604156,23.5423085,POINT
+"9705227513",nodes,,,school,Koladi High School,89.3466678,23.9745886,POINT
+"9705293756",nodes,,,school,Harinathpur Sesdp Model High School,89.649947,23.9477483,POINT
+"5711761224",nodes,,,school,Bagerhat Govt. High School,89.7856231,22.6606939,POINT
+"5684000321",nodes,,,college,Bagerhat PC College,89.7840661,22.6647395,POINT
+"2406086339",nodes,,,school,Swarnakali High School,89.8246915,23.0044316,POINT
+"9595231135",nodes,,,school,Govt Primary School,89.0399262,22.8267989,POINT
+"9595231136",nodes,,,school,Govt Primary School,89.037776,22.8192463,POINT
+"9595231137",nodes,,,school,High School,89.0371616,22.819596,POINT
+"9590532212",nodes,,,school,Police Line High School,89.0677858,22.725536,POINT
+"6039679859",nodes,,,school,Jamela Mohila Madrasha,89.7804692,22.3511996,POINT
+"6126601790",nodes,,,school,111 no Hogolpati Govt Primary School,89.7825345,22.3512566,POINT
+"6039679875",nodes,,,school,Razapur Yeasin Memorial Govt Primary School,89.8011554,22.3724693,POINT
+"5783957877",nodes,,,school,Bokultola Govt Primary School Cum Cyclone Center,89.8179089,22.2442245,POINT
+"6112309340",nodes,,,school,South Mohesshoripur N.A.G.D. High School,89.3517959,22.4424344,POINT
+"9705227514",nodes,,,school,Fazilatunnessa  Girls High School,89.3554062,23.9721068,POINT
+"11038634243",nodes,,,school,WZPDCL High School,89.5533318,22.8145444,POINT
+"5350798618",nodes,,,school,,89.556191,22.8707112,POINT
+"9578996203",nodes,,,school,Sonapota High School,89.5568348,22.8118433,POINT
+"5343499520",nodes,,,school,,89.5616586,22.8868024,POINT
+"5343499621",nodes,,,school,,89.5613676,22.8867937,POINT
+"5343499518",nodes,,,school,,89.5617954,22.8863366,POINT
+"5343499516",nodes,,,school,,89.5617686,22.8866924,POINT
+"3318103028",nodes,,,college,Khulna Government M.M. City College,89.5627567,22.8094995,POINT
+"6116328333",nodes,,,school,Gorkhali Polli mongal Govt primary School,89.4179875,22.5850685,POINT
+"9586300354",nodes,,,school,Kastovanga Govt Primary School,89.1134861,23.2928132,POINT
+"9705759529",nodes,,,school,Mohis Kundi High School,88.7634464,24.0500948,POINT
+"9705759517",nodes,,,school,Adabaria High School,88.7981473,23.9840898,POINT
+"6116231647",nodes,,,school,Bujrugpur Hafizia Madrasha,89.9550904,22.1276617,POINT
+"6116231640",nodes,,,school,Primary School,89.9282897,22.1470159,POINT
+"6116231637",nodes,,,school,Mohila Madrasa,89.9348867,22.1456594,POINT
+"5789482179",nodes,,,school,Baniyakhali Registered Primary School(বানিখালি রেজিস্টার প্রাইমারী স্কুল),89.8299533,22.3684418,POINT
+"6126601792",nodes,,,school,Jamela Mohila Madrasha,89.7804692,22.3511996,POINT
+"6098405464",nodes,,,school,Razapur Yeasin Memorial Govt Primary School,89.8011554,22.3724693,POINT
+"5865432924",nodes,,,school,Saheber Metho Govt. Primary School,89.6957356,22.4538742,POINT
+"5865432919",nodes,,,school,Ismail Memorial Secondary School,89.6977995,22.4532068,POINT
+"5856952022",nodes,,,school,Baroikhali Sutalori Govt. Primary School,89.8360299,22.4576749,POINT
+"5876233975",nodes,,,school,Model High School Cam Cyclone Center,89.8523551,22.3126715,POINT
+"5871330400",nodes,,,school,Water filters near Rajeshwar Government Primary School,89.8433335,22.287307,POINT
+"5856949572",nodes,,,school,Manil Mia Girls Dakhil Madrasha,89.8453733,22.4646972,POINT
+"10882668184",nodes,,,school,"Shahid Kallol Government Primary School Playground, Rajshahi - Pabna Hwy, Natore",89.1335133,24.192663,POINT
+"10956804082",nodes,,,school,Chandipur Government Primary School,88.8662331,24.1984231,POINT
+"10939184568",nodes,,,school,বালিতিতা আদর্শ উচ্চ বিদ্যালয়,88.9499229,24.1837776,POINT
+"10956665655",nodes,,,school,"Manzil Pukur High School, Pabna Rd, Lalpur, Natore",88.9347571,24.1882628,POINT
+"4693178346",nodes,,,school,আবূল হোসেন উচ্চ বিদ্যালয়,89.0632853,24.1023053,POINT
+"9705613309",nodes,,,school,Lal Nagar Adarsha High School,88.9289331,23.9553035,POINT
+"9705759525",nodes,,,school,P.M. Ideal Girls High School,88.7627238,24.0125862,POINT
+"9705706616",nodes,,,school,D.G.T High School,88.7730764,23.981368,POINT
+"11042255774",nodes,,,school,Allardorga High School,88.9058156,24.0318143,POINT
+"9705759521",nodes,,,school,D.G.M. High School,88.8139622,24.0138404,POINT
+"9705706615",nodes,,,school,D.G.T Junior Girls High School,88.77365,23.9767182,POINT
+"9592480842",nodes,,,school,Salimabad Tebaria Govt Primary School,89.8126239,24.042214,POINT
+"9592480849",nodes,,,school,Al-Haz Ramjan Ali Memo. High School,89.9303507,24.0405832,POINT
+"9592480854",nodes,,,school,Dhighalia Govt. Primary School,89.9697117,24.0253435,POINT
+"9592480840",nodes,,,school,Salimabad Union Girls High School,89.8143769,24.049,POINT
+"9592480844",nodes,,,school,Gayhatta Shahid Shams Uddin Girls High School,89.8410193,24.0675721,POINT
+"9592480848",nodes,,,school,Nagarpur Mukti Judda Junior High School,89.8891901,24.0770436,POINT
+"9587161768",nodes,,,school,Deoli Govt Primary School,89.8792662,24.1519106,POINT
+"9592480834",nodes,,,school,Nagarpur Shahid Shamsul Hoque Pilot Girls High School,89.8736304,24.0514334,POINT
+"6317294589",nodes,,,school,,89.7822732,24.0076204,POINT
+"9642162226",nodes,,,school,যদুনাথ স্কুল এন্ড কলেজ,89.8781077,24.0599276,POINT
+"9592480837",nodes,,,school,Mamud Nagar High School,89.8898902,24.0478184,POINT
+"9592480846",nodes,,,school,K. M. M Mokaddas Ali Memo. Girls High School,89.87817,24.0878302,POINT
+"9592480847",nodes,,,school,Sahabatpur High School,89.8790901,24.0880538,POINT
+"9412215570",nodes,,,school,Dighalgram Netaji Vidyapith (H.S),88.6365229,22.8974996,POINT
+"10096634982",nodes,,,,Primary school,88.6324798,22.9369885,POINT
+"6515951948",nodes,,,school,HABRA HIGH SCHOOL(H.S),88.6571182,22.8396159,POINT
+"6515951949",nodes,,,school,HABRA GIRLS HIGH SCHOOL(H.S),88.6576508,22.8394885,POINT
+"9591980463",nodes,,,school,Goalundo Ideal High School,89.758435,23.7257795,POINT
+"2426555109",nodes,,,school,Dipshikha School,89.8190822,23.6001334,POINT
+"6088107387",nodes,,,school,Dongmari vojonkhali Gov. Primary School,89.5710692,22.4471396,POINT
+"5865433234",nodes,,,school,Pashcim mitthakhali Rudro MD. Shahidullah Govt. Primary School,89.645646,22.4869891,POINT
+"702560869",nodes,,,school,Primary Teachers Training Institute (PTI),89.5655253,22.8081327,POINT
+"9591980479",nodes,,,school,Bethulia Girls High School,89.6303745,23.7539665,POINT
+"9584920083",nodes,,,school,Govt Primary School,89.6672494,22.9093966,POINT
+"9584920077",nodes,,,school,Dhakhil Madarasa,89.6600285,22.9407131,POINT
+"9584920075",nodes,,,school,High School,89.6517805,22.9399697,POINT
+"9705354292",nodes,,,school,Dhalar Char High School,89.6599866,23.8458812,POINT
+"5876234419",nodes,,,school,Rasulpur Government Primary School No 74 is pucca,89.7852033,22.3149345,POINT
+"6130936794",nodes,,,school,Enatia Dakhil Madrasa,89.7898811,22.3814682,POINT
+"5856952290",nodes,,,school,South Poylatola Non_Goverment Primary School,89.7915119,22.4473776,POINT
+"5783609603",nodes,,,college,Muktijoddha Mofizul Haque Vocational College,89.8191494,22.3174704,POINT
+"5711208789",nodes,,,college,Khan Jahan Ali Degree College,89.7825681,22.6536767,POINT
+"5684000939",nodes,,,school,Bagerhat Govt. High School,89.7884998,22.6594613,POINT
+"5856952005",nodes,,,school,Uttor Sutaluri Secondary School,89.8209116,22.4733797,POINT
+"5856952015",nodes,,,school,114 No. S P Govt. Primary School,89.8293981,22.4668139,POINT
+"6087411565",nodes,,,school,"South Hogolpati Guatola Khotejan Primary School, 180 no",89.755522,22.4185118,POINT
+"10882737947",nodes,,,,"Rajapur Hafezia Madrasa, Gopalpur, Natore",89.1409702,24.1684169,POINT
+"5149030188",nodes,,,school,Nukali Government Primary School,89.5861501,24.1462332,POINT
+"8190047898",nodes,,,school,Bazar Pathshala GOVT. Primary School,89.6465311,23.7662871,POINT
+"9584920072",nodes,,,school,Barashat High School,89.6204123,22.9558882,POINT
+"9696960397",nodes,,,college,Govt. Shahid Abdus Salam College,89.6314685,23.0370331,POINT
+"9706366711",nodes,,,school,Madhupur Hodirannesa  Secondary School,89.1325939,23.7400667,POINT
+"9706366712",nodes,,,school,Luxmipur Hasan Bag Secondary Girls School,89.1187458,23.742779,POINT
+"9705613300",nodes,,,school,Khejurtola Patikabari Secondary School,89.0033504,23.7887637,POINT
+"9706366709",nodes,,,school,Alhaj A. Ghani Secondary School,89.0913714,23.7756961,POINT
+"9706366708",nodes,,,school,Jahudia   Bazar Secondary School,89.0661343,23.7726577,POINT
+"9706366707",nodes,,,school,Tailtupi High School,89.0684286,23.7693282,POINT
+"9706366713",nodes,,,school,Harinarayanpur Girl's High School,89.1392472,23.7545256,POINT
+"9706366714",nodes,,,school,Harinarayanpur M.L. High School,89.1406015,23.757989,POINT
+"9706366715",nodes,,,school,Mirpur High School,89.1871523,23.764024,POINT
+"9706383717",nodes,,,school,Kushli Basa Secondary School,89.1582138,23.7842518,POINT
+"4393756454",nodes,,,college,Tetul Shekh College,88.9340134,23.5915985,POINT
+"9603778651",nodes,,,school,Elangi Govt Primary School,89.0512651,23.4014682,POINT
+"9586300346",nodes,,,school,Elangi High School,89.0505674,23.4017796,POINT
+"9602997009",nodes,,,school,Kaliganj Hight School,89.1322679,23.4053349,POINT
+"4393644779",nodes,,,school,Kutubpur High School,88.9814171,23.5977629,POINT
+"2803903105",nodes,,,college,Jhenaidah Polytechnical Institute,89.1989764,23.541941,POINT
+"9595231134",nodes,,,school,Kolaroa Govt Primary School,89.0457985,22.8578211,POINT
+"9595231131",nodes,,,school,Govt Primary School,89.035728,22.8700095,POINT
+"9595231130",nodes,,,school,Brozbaksa Govt Primary School,89.0270638,22.8810428,POINT
+"9595231128",nodes,,,school,Govt Primary School,89.0206609,22.8957493,POINT
+"9595231126",nodes,,,school,Kazirhat Govt Primary School,89.0204288,22.906928,POINT
+"9595231125",nodes,,,school,Keralkata Govt Primary School,89.0065684,22.9247145,POINT
+"9578950497",nodes,,,school,Govt Primary School,89.0032616,22.9278731,POINT
+"9579051369",nodes,,,school,High School,88.9862122,22.850562,POINT
+"9579051368",nodes,,,school,Govt Primary School,88.9858314,22.8509674,POINT
+"4346990422",nodes,,,college,Bangabandhu Mohila College Ground,89.0355868,22.8602374,POINT
+"3722643692",nodes,,,school,SM School Play Ground,89.8780594,22.7864141,POINT
+"6038831114",nodes,,,school,Kolanagar High School,89.3907943,23.7621449,POINT
+"2429203402",nodes,,,college,Pangsha University College,89.421326,23.7901746,POINT
+"2429203591",nodes,,,school,Siddikia Madrasha,89.4215079,23.787979,POINT
+"9592024990",nodes,,,school,Pangsa Pilot Girls High School,89.4158393,23.7863768,POINT
+"9592024992",nodes,,,school,Pangsha George Pilot High School,89.4200318,23.7848106,POINT
+"2429202296",nodes,,,school,Pangsha George Pilot High School,89.422511,23.7888015,POINT
+"9592024999",nodes,,,school,Bongram Atarunnesa Junior Girls High School,89.3374066,23.7480583,POINT
+"9592024994",nodes,,,school,Nischinta Pur High School,89.3745966,23.7818742,POINT
+"9592024997",nodes,,,school,Sajuria Jehra Zarin High School,89.3427018,23.767564,POINT
+"7416568610",nodes,,,school,Narua Govt. Primary School,89.4758188,23.6433785,POINT
+"7416587864",nodes,,,college,Munsur Ali Degree College,89.4717014,23.6431302,POINT
+"9592025005",nodes,,,school,Lari Bari High School,89.4299493,23.6804076,POINT
+"9592025002",nodes,,,school,Kashba Majail A H High School,89.4063674,23.6869497,POINT
+"9592025000",nodes,,,school,Nadir Hossain Girls High School,89.3591595,23.708856,POINT
+"9579940155",nodes,,,school,Narail Govt High School,89.4935933,23.1588554,POINT
+"4644390539",nodes,,,school,Gobra Parbati Bidyapith,89.4978215,23.1120157,POINT
+"2431239843",nodes,,,school,Bagat Primary and High School,89.5913694,23.5278545,POINT
+"5153472829",nodes,,,school,Ujalpur High School,88.6261998,23.8153376,POINT
+"5155360235",nodes,,,school,Bhairab Girls High School,88.6211974,23.8057001,POINT
+"9705354299",nodes,,,school,Kamalpur High School,89.5399302,23.8611278,POINT
+"2407077350",nodes,,,school,Bamundi Government Primary School,88.8054504,23.8903021,POINT
+"9705613304",nodes,,,school,Kamalpur High School,88.8694734,23.9328414,POINT
+"9705354303",nodes,,,school,Satbaria High School,89.4414368,23.8861626,POINT
+"9705354295",nodes,,,school,Shahida Jalil Junior Girls High School,89.5308315,23.8393056,POINT
+"9705354297",nodes,,,school,Amena Khatun Junior Girls School,89.5118289,23.846963,POINT
+"9705706613",nodes,,,school,M.G.G.M. High School,88.828113,23.9347044,POINT
+"9705613302",nodes,,,school,G.T.C.P. High School,88.9248149,23.9226409,POINT
+"9705613303",nodes,,,school,Satar Para Secondary School,88.9078189,23.9244174,POINT
+"9705618001",nodes,,,school,Jagati High School,89.1012291,23.8925615,POINT
+"9584887627",nodes,,,school,"Protiti Biddaloy, Kushtia",89.113077,23.8943371,POINT
+"9705442597",nodes,,,school,Adarsha Madhamic Viddalay Kushtia,89.1078769,23.9175076,POINT
+"9705442593",nodes,,,school,কবি নজরুল একাডেমি,89.0879954,23.9324562,POINT
+"9705482202",nodes,,,school,Chand Sultana Girls High School,89.1354251,23.902385,POINT
+"9705482205",nodes,,,school,Shirajul Hoque Muslim High School,89.1309151,23.905058,POINT
+"9705618004",nodes,,,school,Swastipur Secondary School,89.0956808,23.8467265,POINT
+"9705618005",nodes,,,school,Belghoria Rahima Khatun Junior Girls School,89.1088953,23.8412082,POINT
+"9586424202",nodes,,,college,Pakshia Ideal College,88.9737392,23.1752616,POINT
+"9586424205",nodes,,,school,Govt Primary School,88.9886891,23.2338319,POINT
+"9586424207",nodes,,,school,Mashila Govt Primary School,88.9816,23.2376243,POINT
+"9586424206",nodes,,,school,Mashila High School,88.9819822,23.2378942,POINT
+"9579031924",nodes,,,school,Makapur Dakhil Madrasa,88.9526823,23.2444508,POINT
+"9602996989",nodes,,,school,Andulia Madrasa,88.9263472,23.2346658,POINT
+"9602996988",nodes,,,school,Andulia West Govt Primary School,88.9218476,23.2380488,POINT
+"9602996991",nodes,,,school,Dawlatpur Govt Primary School,88.9174135,23.2215606,POINT
+"9579063798",nodes,,,school,Nagarborni Madarasa,88.9266541,23.2772268,POINT
+"9579063800",nodes,,,school,Nagarborni Govt Primary School,88.9247015,23.2780948,POINT
+"9579063803",nodes,,,school,Borni Dhakil Madrasa,88.927205,23.2654537,POINT
+"9579063791",nodes,,,school,Fashtola Govt Primary School,88.9798303,23.3179619,POINT
+"9586424186",nodes,,,school,Mofiz er High School,89.0172744,23.249355,POINT
+"9579031918",nodes,,,college,Dr Saiful Islam College,88.953252,23.2842908,POINT
+"9586150781",nodes,,,school,Primary School,88.932666,23.3483933,POINT
+"9586150780",nodes,,,school,High School,88.9256377,23.3503227,POINT
+"9586300343",nodes,,,school,Pashpatila Govt Primary School,89.0238333,23.3857647,POINT
+"9586300342",nodes,,,school,Signboard Govt Primary School,89.0281877,23.3795433,POINT
+"9586300333",nodes,,,school,Govt Primary School,89.0295888,23.3130043,POINT
+"9586300328",nodes,,,school,Toriqul Islam Degree College,89.0242076,23.2750094,POINT
+"9586300350",nodes,,,school,Maruya Govt Primary School,89.0902007,23.2774279,POINT
+"9586300360",nodes,,,school,Shinghajhulai Govt Primary School,89.0635697,23.2455139,POINT
+"9586300361",nodes,,,school,Shinhajhuli High School,89.0633715,23.2451757,POINT
+"9586424190",nodes,,,school,Muktarpur High School,89.0523745,23.2069915,POINT
+"9586424191",nodes,,,school,Pashapole High School,89.0563224,23.2010036,POINT
+"9602996995",nodes,,,school,Narayan pur High School,89.01211,23.3134111,POINT
+"9602996993",nodes,,,school,Ambottala Govt Primary School,89.0109298,23.2782664,POINT
+"9586300326",nodes,,,school,Tengorpur Govt Primary School,89.0063718,23.2780588,POINT
+"9579063779",nodes,,,college,Mridha Para Mohila Collge,89.0161552,23.2664499,POINT
+"9602997002",nodes,,,school,BIddhadharpur Pharmacy,89.0029482,23.3596932,POINT
+"9603778631",nodes,,,school,Govt Primary School,89.1067249,23.2034336,POINT
+"9586300340",nodes,,,school,Shishutola High School,89.0346981,23.3677223,POINT
+"9576105474",nodes,,,school,Kolaroa Govt. Primary School,88.9290233,22.9142398,POINT
+"9595231129",nodes,,,school,Govt Primary School,89.026461,22.8834396,POINT
+"9578950496",nodes,,,school,B S H Singa Secondary School,88.9911746,22.9091164,POINT
+"9579051366",nodes,,,school,Govt Primary School,88.9732442,22.8782986,POINT
+"9579051363",nodes,,,school,Govt Primary School,88.945639,22.9012388,POINT
+"5404997026",nodes,,,school,Modhushikka Biddanikaton High School,89.2172702,22.9068677,POINT
+"9586150766",nodes,,,school,Pathra High School,88.8524824,23.2775836,POINT
+"9702385194",nodes,,,school,Jaldia Junior High School,89.691627,23.6170804,POINT
+"4663698590",nodes,,,school,,89.8088205,23.588257,POINT
+"4266834168",nodes,,,school,Char Bhatpara High School,89.6907899,23.1864193,POINT
+"5824240953",nodes,,,school,,89.914123,23.978566,POINT
+"9592480862",nodes,,,school,Taluk Nagar High School,89.8778348,23.9821805,POINT
+"9592480857",nodes,,,school,Daulatpur Pilot Girl High School,89.8315725,23.9697068,POINT
+"9592457850",nodes,,,school,Barangail Gopal Chandar High School,89.8832885,23.8478852,POINT
+"9586300356",nodes,,,school,Dogachia Dakhil Madrasa,89.1397795,23.2301556,POINT
+"9591980465",nodes,,,school,Goalanda Nazir Uddin Pilot Govt. High School,89.7576523,23.7195658,POINT
+"9591980467",nodes,,,school,Goalundo Shahid Smrity Govt Girls School,89.751363,23.7241348,POINT
+"9591980466",nodes,,,school,Shahaj Uddin Mondol Institute,89.766433,23.7115865,POINT
+"6126339762",nodes,,,kindergarten,anondo kirton school,89.49689,22.6371124,POINT
+"9592480864",nodes,,,school,Bishnupur G.M High School,89.817442,23.940614,POINT
+"9592480865",nodes,,,school,Bishnupur  Govt Primary School,89.816644,23.9403014,POINT
+"9592480868",nodes,,,school,Baghutia Govt Primary School,89.7807126,23.9367517,POINT
+"9592480869",nodes,,,school,Abudanga Bojlur Rahman High School,89.8166946,23.9174516,POINT
+"7820320142",nodes,,,,Kalia Polytechnic Institute,89.6453115,23.0411773,POINT
+"9602997001",nodes,,,school,Biddadharpur High School,89.0031935,23.362106,POINT
+"5237840574",nodes,,,school,Moheshpur Lab School,88.914524,23.3568053,POINT
+"9602996996",nodes,,,school,Govt Primary School,89.001292,23.3269486,POINT
+"9602996997",nodes,,,school,Govt Primary School,89.0033815,23.330267,POINT
+"9586300337",nodes,,,school,Hakimpur High School,89.036118,23.3460479,POINT
+"9586300338",nodes,,,school,Hakimpur Girl College,89.0384407,23.3503263,POINT
+"9579063792",nodes,,,college,GCB Adarsha College,88.9840122,23.3095072,POINT
+"9586150768",nodes,,,school,Govt Primary School,88.878569,23.3231327,POINT
+"4393661230",nodes,,,school,Boalia Primary School,88.9499238,23.5952353,POINT
+"4392999210",nodes,,,school,Sorojgonj High School,88.9373282,23.5894293,POINT
+"4393000807",nodes,,,school,Sojojgonj Primary School,88.9381608,23.590097,POINT
+"4393046756",nodes,,,school,Jugirhuda Abul Hossen Dakhil Madrasah,88.9336339,23.5846741,POINT
+"10312328509",nodes,,,school,,88.8834215,23.6602956,POINT
+"10234914618",nodes,,,school,বাংলা,88.8458961,23.6417298,POINT
+"9595231147",nodes,,,school,Gonomukhi High School,89.0781804,22.7270047,POINT
+"9595231143",nodes,,,school,Govt Primary School,89.0659897,22.7435768,POINT
+"9579051375",nodes,,,school,Govt Primary School,88.9692444,22.7898496,POINT
+"5038906479",nodes,,,school,Uttar Deara Akhayani Smriti Vidya Mandir,88.7888536,22.7234691,POINT
+"9031954472",nodes,,,school,Rajpur FP School,88.7670292,22.818093,POINT
+"9031199094",nodes,,,school,Ramchandrapur School,88.8343143,22.793141,POINT
+"9595231138",nodes,,,school,Jhawdanga Govt Primary School,89.0376303,22.8146079,POINT
+"9702455426",nodes,,,school,Kola Sadar Uddin High School,89.6711206,23.6493133,POINT
+"9702498968",nodes,,,school,Mulghar High School,89.6556385,23.6816979,POINT
+"7831115085",nodes,,,school,17 No Chitar Bazar Govt Primary School,89.7127497,23.4317416,POINT
+"5876234414",nodes,,,school,North Malia Rajapur Government Primary School,89.8041612,22.3083787,POINT
+"6126029386",nodes,,,school,Deyara Antabuinya Dakhil Madrasa,89.2889559,22.3976504,POINT
+"6126029385",nodes,,,school,Shymkhali Government Prinary School,89.291642,22.3953266,POINT
+"6126029408",nodes,,,school,Jaipur Dakhil Madrasa,89.2740118,22.3954891,POINT
+"6126029409",nodes,,,school,32 no. Jaipur sar: Primary school,89.2689988,22.4021177,POINT
+"6112309434",nodes,,,school,Dorigon Gilabari Govt Primary School,89.3528607,22.3976924,POINT
+"6112309430",nodes,,,school,Mohesshoripur Govt High School,89.3565193,22.3985777,POINT
+"6112309433",nodes,,,school,Mohesshoripur Govt Primary School And Cyclone Centre,89.353196,22.3978759,POINT
+"6126029388",nodes,,,school,Deyara Forkania Madrasa,89.2794433,22.3991903,POINT
+"6126028782",nodes,,,school,Shyamkhali Jamui Iman Islamia Madrasa and Orphanage,89.3118176,22.3965095,POINT
+"6116231641",nodes,,,school,Primary School,89.9219551,22.1324297,POINT
+"6116231642",nodes,,,school,Dinia Madrasa,89.9291213,22.1249782,POINT
+"6116231638",nodes,,,school,School Cum Cyclone Shelter And P.S.F,89.9182382,22.1538575,POINT
+"6116231639",nodes,,,college,School Cum Collage,89.9291414,22.1468146,POINT
+"9521601136",nodes,,,,CHINGRA KHALI MADHYAMIC VIDYANEKATON,89.1090447,22.3413929,POINT
+"9596434703",nodes,,,school,Gazi Para Govt Primary School,89.1677423,22.2130614,POINT
+"9596434702",nodes,,,school,Chunkuri Govt Primary School,89.1506605,22.2051894,POINT
+"9518899099",nodes,,,,Banasree Shiksha Niketan,89.1543924,22.2283213,POINT
+"9596434704",nodes,,,school,Harinagar Govt Primary School,89.1449975,22.237625,POINT
+"5257243110",nodes,,,school,Tripani Vidhapith High School,89.1504532,22.2561119,POINT
+"9576105473",nodes,,,school,,89.1288026,22.2410363,POINT
+"9520198075",nodes,,,,Burigoalini Forest Primary School,89.2385216,22.2496129,POINT
+"5783609606",nodes,,,school,Mukul Government Primary School,89.8642561,22.3622953,POINT
+"5789482174",nodes,,,school,65 no South Khantakata Government Primary School Shelter center,89.8704547,22.3352289,POINT
+"5789482173",nodes,,,school,North Khantakata Government Primary School,89.8683732,22.3311616,POINT
+"9696943771",nodes,,,school,Kalinagar Govt. Primary School,89.6717311,23.0205376,POINT
+"5756411744",nodes,,,,Bangabandhu Sheikh Mujibur Rahman Science and Technology University,89.8173761,22.9659381,POINT
+"6126029392",nodes,,,school,Haji Tasiruddin Hafezia Madrasa,89.2639723,22.3824293,POINT
+"6126029406",nodes,,,school,Atra Sar: Primary School,89.2637645,22.3896959,POINT
+"9521659548",nodes,,,,JHAPA BROJA BIHARI UNITED SECONDARY SCHOOL,89.2206086,22.3218455,POINT
+"9521614343",nodes,,,,TAPOBAN SECONDARY GIRL'S SCHOOL,89.2162711,22.2907887,POINT
+"9521599682",nodes,,,,SAFIRUN NESA GIRLS HIGH SCHOOL,89.1953249,22.3456858,POINT
+"4374811259",nodes,,,school,Badokhali School,89.8389383,22.735484,POINT
+"5684503217",nodes,,,school,Muniganj High School,89.7909808,22.6704642,POINT
+"9596434705",nodes,,,school,Govt Primary School,89.3156433,22.5792268,POINT
+"9592480843",nodes,,,school,Gayhata Uday Tara High School,89.8384236,24.0699618,POINT
+"6114699192",nodes,,,school,Horihorpur Govt Primary School,89.3253091,22.2717128,POINT
+"6114699278",nodes,,,school,42 no Gazipara Govt Primary School,89.3036824,22.2966856,POINT
+"6127583710",nodes,,,school,Dakshin Bedkashi High School and Ashroy kendro.,89.3174167,22.2409251,POINT
+"6127584074",nodes,,,school,53 no Angtihara Govt. Primary School,89.330239,22.2367939,POINT
+"6127615596",nodes,,,school,54 no Gorilal Govt. Primary School and Ashroy Kendro,89.3184487,22.2311505,POINT
+"6127573243",nodes,,,school,52 no Dakshin Bedkashi Govt. Primary School,89.3139862,22.2486571,POINT
+"6114699169",nodes,,,school,Kopotakko High School,89.3200171,22.2627273,POINT
+"6114699126",nodes,,,school,Padmapukur Shantimoye Govt Primary School,89.3155163,22.2671432,POINT
+"6114699229",nodes,,,school,Shakbariya Govt Primary School,89.3269989,22.2875875,POINT
+"6127615591",nodes,,,school,Angtihara Govt. Primary School,89.3402302,22.2196813,POINT
+"6127580640",nodes,,,school,49 no Jor Shing Govt. Primary School,89.3472281,22.2479241,POINT
+"5783957149",nodes,,,school,Govt Primary School Cum Cyclone Center,89.8327884,22.2520134,POINT
+"5783957918",nodes,,,place_of_worship,Dakkhin Southkhali Jamia Hefzokhana,89.8317088,22.2351503,POINT
+"5783957970",nodes,,,,Bogi Saatghar Hafijia Madrasa,89.8299949,22.2230203,POINT
+"5783957985",nodes,,,school,Dakkhin Khuriakhali 100 No Govt Primary School,89.8141846,22.21519,POINT
+"5783957882",nodes,,,school,Dakkhin Southkhali Primary School,89.8303181,22.2425227,POINT
+"9696943803",nodes,,,school,Baka Primary School,89.6624738,23.0431772,POINT
+"6126339923",nodes,,,school,3no pankhali govt primary school and cyclone centre,89.5157781,22.6276529,POINT
+"6126339833",nodes,,,,pankhali rabeya khatun mohila madrasa,89.4999316,22.6325796,POINT
+"6126339862",nodes,,,school,pamkhali govt primary school cyclone centre,89.5047408,22.6334931,POINT
+"8820819232",nodes,,,,"Masum Primary school, Dacope",89.5212588,22.6064174,POINT
+"3301866763",nodes,,,college,Chalna MM College,89.5147706,22.5975965,POINT
+"6126028772",nodes,,,school,South Mothbari Government Primary School,89.3234208,22.353204,POINT
+"6126028774",nodes,,,school,East Mothbari Government Primary School,89.3257248,22.365629,POINT
+"6113692677",nodes,,,school,Bedkashi High School,89.2971741,22.3043984,POINT
+"6113692993",nodes,,,,Bedkashi Habibiya Dakhil Madrasha,89.3023628,22.3120338,POINT
+"6113693037",nodes,,,,Fatematu Jahura girls Hafijiya Madrasha,89.2925526,22.3124817,POINT
+"6114040734",nodes,,,school,Patharkhali Govt Primary School,89.3240243,22.3033462,POINT
+"6114040881",nodes,,,school,Borobari High School,89.309468,22.3118676,POINT
+"6114040904",nodes,,,school,Borobari Govt primary School,89.3068139,22.3113688,POINT
+"6330549503",nodes,,,school,Kopotakkha Moha Biddaloy,89.2914362,22.3437393,POINT
+"6330363100",nodes,,,school,koyra modinabad model madhdhomic biddaloy,89.2914589,22.3453692,POINT
+"6114041055",nodes,,,school,Bedkashi Botulbazar Govt primary School,89.3150684,22.3270504,POINT
+"6126649374",nodes,,,school,Mothbari Baulia Ghata Government Primary School,89.3400291,22.37592,POINT
+"9521837429",nodes,,,,JAKARIA SHIKHA NEKETAN,89.2846385,22.3918447,POINT
+"6126029389",nodes,,,school,Lokha Sar: Primary school,89.270014,22.3695617,POINT
+"6113692678",nodes,,,school,Bedkashi Govt primary school and cyclone center,89.2976582,22.3046763,POINT
+"6126028777",nodes,,,school,SM Darul Sunnah Dakhil Madrasah,89.309767,22.3682781,POINT
+"6126028779",nodes,,,school,Mothbari Serajia Multipurpose High School,89.3099105,22.3804687,POINT
+"6114040752",nodes,,,,Moktab beside Patharkhali Jame Mosque,89.330762,22.3044095,POINT
+"6113692792",nodes,,,,Darul Arkam Abtedayi Madrasha,89.2909956,22.3040795,POINT
+"6113693029",nodes,,,school,Shonali Asha Non-govt primary school,89.2928222,22.3119271,POINT
+"6330329438",nodes,,,school,sundorbon maddhomic biddaloy,89.2897739,22.3475492,POINT
+"9521571579",nodes,,,,Zobeda Sohrab Model High School,89.1053075,22.3331015,POINT
+"6126339643",nodes,,,school,moukhali primary school and cyclone centre,89.4753371,22.6379801,POINT
+"6126763119",nodes,,,school,khona khatail govt primary school cyclone centre,89.487285,22.5928692,POINT
+"6126763114",nodes,,,,kona goljahan bibi furkaniya madrasa,89.4795603,22.5891645,POINT
+"6126763116",nodes,,,school,4no khona khatail govt primary school,89.4870222,22.5927702,POINT
+"6126339725",nodes,,,school,iyashin high school,89.478423,22.6441948,POINT
+"6126339962",nodes,,,school,khatail govt primary school,89.4787154,22.6149369,POINT
+"9696960379",nodes,,,school,Kalia Pilot High School,89.6301824,23.0408565,POINT
+"9696960374",nodes,,,school,Chandpur Primary School,89.6280393,23.0362303,POINT
+"9584920073",nodes,,,school,Barashat Govt Primary School,89.6206,22.9554783,POINT
+"9584920074",nodes,,,school,Govt Primary School,89.6301844,22.9529842,POINT
+"7417288878",nodes,,,school,Ancur Biddha Pith,89.5632141,22.8059587,POINT
+"5756188672",nodes,,,college,Fakirhat Kazi Azahar Ali College,89.7107339,22.7724022,POINT
+"6126599581",nodes,,,school,110 no Nolbunia Govt Primary School,89.8198521,22.3521373,POINT
+"6126601787",nodes,,,school,Amra Gachia Govt Primary School,89.8101935,22.3335136,POINT
+"6126601788",nodes,,,school,East Amra Gachia Govt Primary School,89.8199996,22.3310524,POINT
+"6126601791",nodes,,,school,Boro Razapur Solimia Dakhil Madrasha,89.7807884,22.3518892,POINT
+"6126601807",nodes,,,school,Radha Laxmi Junior Girls School,89.8033565,22.3852628,POINT
+"6126601808",nodes,,,school,Razapur Yeasin Memorial Govt Primary School,89.8011554,22.3724693,POINT
+"6126599584",nodes,,,kindergarten,Shuvo Biddaniketon Kinder Garden,89.8130152,22.3409465,POINT
+"6126601785",nodes,,,school,Amra Gachia Bohumukhi Madrasha Orphanages,89.8099065,22.3342231,POINT
+"6126601793",nodes,,,school,Ayesha Siddikia Mohila Madrasha Orphanages,89.780252,22.3508845,POINT
+"5876234425",nodes,,,school,Madrasha,89.7664788,22.3233832,POINT
+"5789482181",nodes,,,school,Bi-Dhansagor Government Primary Scholl & Shelter center,89.8360741,22.3748609,POINT
+"5983656033",nodes,,,school,110 no Nolbunia Govt Primary School,89.8198521,22.3521373,POINT
+"6039679848",nodes,,,school,110 no Nolbunia Govt Primary School,89.8198521,22.3521373,POINT
+"5789482177",nodes,,,school,11 no Bi-janerpar Government Primary Shool Shelter center,89.8431981,22.3478134,POINT
+"6039679870",nodes,,,school,Razapur High School,89.8302246,22.3416166,POINT
+"5983656055",nodes,,,school,Razapur High School,89.8302246,22.3416166,POINT
+"5983656056",nodes,,,school,Razapur High School,89.829504,22.3414823,POINT
+"5983656036",nodes,,,kindergarten,Shuvo Biddaniketon Kinder Garden,89.8130152,22.3409465,POINT
+"5983656054",nodes,,,school,Razapur Bazar Mohamanio Hafizia Madrasha Orphanages,89.7793145,22.3388154,POINT
+"6126601802",nodes,,,school,Razapur Bazar Mohamanio Hafizia Madrasha Orphanages,89.7793145,22.3388154,POINT
+"6039679869",nodes,,,school,Razapur Bazar Mohamanio Hafizia Madrasha Orphanages,89.7793145,22.3388154,POINT
+"6098405458",nodes,,,school,Razapur Bazar Mohamanio Hafizia Madrasha Orphanages,89.7793145,22.3388154,POINT
+"6039679858",nodes,,,school,Boro Razapur Solimia Dakhil Madrasha,89.7807884,22.3518892,POINT
+"5983656043",nodes,,,school,Boro Razapur Solimia Dakhil Madrasha,89.7807884,22.3518892,POINT
+"6098405447",nodes,,,school,Boro Razapur Solimia Dakhil Madrasha,89.7807884,22.3518892,POINT
+"6098405448",nodes,,,school,Jamela Mohila Madrasha,89.7804692,22.3511996,POINT
+"5983656044",nodes,,,school,Jamela Mohila Madrasha,89.7804692,22.3511996,POINT
+"5983656045",nodes,,,school,Ayesha Siddikia Mohila Madrasha Orphanages,89.780252,22.3508845,POINT
+"6098405449",nodes,,,school,Ayesha Siddikia Mohila Madrasha Orphanages,89.780252,22.3508845,POINT
+"6039679860",nodes,,,school,Ayesha Siddikia Mohila Madrasha Orphanages,89.780252,22.3508845,POINT
+"6098405446",nodes,,,school,111 no Hogolpati Govt Primary School,89.7825345,22.3512566,POINT
+"5983656042",nodes,,,school,111 no Hogolpati Govt Primary School,89.7825345,22.3512566,POINT
+"5789482175",nodes,,,school,14 no Motherpar Government Primary School,89.8534119,22.3322681,POINT
+"5783609600",nodes,,,school,Amragachi Government primary School Shelter center,89.8124868,22.3228547,POINT
+"6039679855",nodes,,,school,East Amra Gachia Govt Primary School,89.8199996,22.3310524,POINT
+"6039679852",nodes,,,school,Amra Gachia Bohumukhi Madrasha Orphanages,89.8099065,22.3342231,POINT
+"6098405441",nodes,,,school,Amra Gachia Bohumukhi Madrasha Orphanages,89.8099065,22.3342231,POINT
+"5983656039",nodes,,,school,Amra Gachia Govt Primary School,89.8101935,22.3335136,POINT
+"6098405443",nodes,,,school,Amra Gachia Govt Primary School,89.8101935,22.3335136,POINT
+"6126601786",nodes,,,school,Amra Gachia Bohumukhi High School,89.8097053,22.3336649,POINT
+"6098405442",nodes,,,school,Amra Gachia Bohumukhi High School,89.8097053,22.3336649,POINT
+"5983656041",nodes,,,school,Razapur Sundorbon Govt Primary School,89.807471,22.3495995,POINT
+"6039679856",nodes,,,school,Razapur Sundorbon Govt Primary School,89.807471,22.3495995,POINT
+"5983656060",nodes,,,school,Razapur Yeasin Memorial Govt Primary School,89.8011554,22.3724693,POINT
+"6098405466",nodes,,,school,Middle Dhanshagor Govt Primary School,89.799065,22.3765152,POINT
+"6098405463",nodes,,,school,Radha Laxmi Junior Girls School,89.8033565,22.3852628,POINT
+"6098405461",nodes,,,school,Dhanshagor United High School,89.8128623,22.3869344,POINT
+"6126601805",nodes,,,school,Dhanshagor United High School,89.8128623,22.3869344,POINT
+"5876234421",nodes,,,school,North Rajapur Kumi Madrasa,89.7798496,22.3249389,POINT
+"6126601803",nodes,,,school,Razapur High School,89.8302246,22.3416166,POINT
+"6116231636",nodes,,,school,,89.932631,22.1588307,POINT
+"6116231635",nodes,,,school,,89.9409002,22.155856,POINT
+"6116231633",nodes,,,school,Madrasa,89.9380839,22.1666381,POINT
+"6116231631",nodes,,,school,School Cum Cyclone Shelter,89.9443012,22.1712557,POINT
+"6116231646",nodes,,,school,,89.9549442,22.1479599,POINT
+"6116231643",nodes,,,school,Professor Bari Ebtedai Madrasha,89.9331325,22.1293811,POINT
+"5876234387",nodes,,,school,77th Rajeshwar Government Primary School,89.8434448,22.2866568,POINT
+"5876234389",nodes,,,school,Mohsinya Forkania Hafizia Madrasa and Orphanage,89.843941,22.2928166,POINT
+"5876234402",nodes,,,school,West Para Government Primary School,89.8203805,22.2945861,POINT
+"5777563316",nodes,,,school,Southkhali Secondary Girl's School Cum Cyclone Center,89.8262264,22.2634769,POINT
+"5876234403",nodes,,,school,Khada AGM Dakhil Madrasa,89.824959,22.2986758,POINT
+"5876234412",nodes,,,school,South Malia Rajapur Government Primary School,89.8019108,22.3037705,POINT
+"5777563311",nodes,,,school,26 No Sonatola Govt Primary School,89.8167649,22.2590746,POINT
+"5777563301",nodes,,,school,Tafalbari Govt Primary School,89.829156,22.262049,POINT
+"5783957908",nodes,,,place_of_worship,Mohammadia Nurani Kowmi Madrasa,89.8242576,22.2346525,POINT
+"5876234416",nodes,,,school,Small South Rajapur Government Primary School,89.7821617,22.2991126,POINT
+"5876234394",nodes,,,school,Lakurtala Government Primary School,89.8296717,22.2766918,POINT
+"5876234410",nodes,,,school,Janata Secondary School and Mosque Cyclone Center,89.8123848,22.3035149,POINT
+"5876234388",nodes,,,school,Kadamtala Primary School Kam Cyclone Center No 53,89.8421386,22.2918586,POINT
+"5876233965",nodes,,,school,Private Primary School near Zilbunia Cyclone Center,89.8489916,22.3005768,POINT
+"5783957857",nodes,,,school,Purbo Sonatola Govt Primary School,89.8126302,22.2526948,POINT
+"5783957872",nodes,,,school,79 No Southkhali Babla Tola Adarsha Primary School,89.8328742,22.2436473,POINT
+"5783957975",nodes,,,,Sundarban Islamia Dakhila Madrasa,89.8302242,22.2237329,POINT
+"5876234411",nodes,,,school,Eastern Malia Rajapur Madrasah pucca,89.8062587,22.3025372,POINT
+"5783957897",nodes,,,school,Ashroykendra Govt Primary School,89.8231459,22.2350796,POINT
+"5782019946",nodes,,,school,28 No Calitabunia Bazar Primary School Cycole Center,89.8288885,22.2251829,POINT
+"9698148414",nodes,,,school,Shahabag United Academy,89.5962886,23.0468936,POINT
+"6126763177",nodes,,,school,lokkikhola govt primary school and cyclone centre,89.4489241,22.602237,POINT
+"6116328340",nodes,,,school,Bodbuniya J N govt primary school+cyclone center,89.4525652,22.5822737,POINT
+"6126763176",nodes,,,school,lokkhi khola G.T high school,89.4493318,22.6019003,POINT
+"6116328328",nodes,,,school,Tildanga Union Prostabik girls high school+cyclone center,89.4675359,22.5741491,POINT
+"6126763174",nodes,,,school,lokkikhola govt primary school and cyclone centre,89.4580194,22.606137,POINT
+"6116328343",nodes,,,school,Tildanga Govt. Primary School,89.46675,22.5978615,POINT
+"6116328332",nodes,,,school,Kakrabuniya darul ulum Mohamaddiya Madrasha,89.430221,22.573681,POINT
+"6130936650",nodes,,,school,Hazi Abdul Aziz Hafezia Madrasa,89.7807133,22.4024587,POINT
+"6087411564",nodes,,,school,"Riyaj Uddin Government Primary School, 257 no",89.7803432,22.3943446,POINT
+"6087411570",nodes,,,school,"Umajuri Government Primary School, 106 no B",89.7563481,22.4039465,POINT
+"9594405199",nodes,,,school,Govt Primary School,89.5645279,22.829487,POINT
+"1724614209",nodes,,,university,Northern University of Business and Technology Khulna,89.5520198,22.8222846,POINT
+"9594405201",nodes,,,school,Govt Primary School,89.5702613,22.8212294,POINT
+"9594405207",nodes,,,school,Govt Primary School,89.5769952,22.827242,POINT
+"9594405206",nodes,,,school,Rupsha High School,89.5756397,22.8305826,POINT
+"9594405210",nodes,,,school,Govt Primary School,89.590421,22.8236972,POINT
+"6305987285",nodes,,,school,,89.5069194,22.8977575,POINT
+"3577919664",nodes,,,school,Khanabari School,89.5030568,22.8971337,POINT
+"5963826471",nodes,,,school,RRF Secondary School,89.5083523,22.9043345,POINT
+"5963829817",nodes,,,college,"Teacher's Training College, Khulna",89.4991524,22.8983205,POINT
+"3606420835",nodes,,,school,Fulbarigate B.K. School,89.5097738,22.896151,POINT
+"9594405193",nodes,,,school,Burier Danga Govt Primary School,89.4561659,22.9789266,POINT
+"9594405191",nodes,,,school,Phultala Govt Primary School,89.4452625,22.9852122,POINT
+"9584920085",nodes,,,school,Govt Primary School,89.4669859,22.9445358,POINT
+"4510112792",nodes,,,school,Fatema Girls School,89.5762067,22.810823,POINT
+"5340847415",nodes,,,school,,89.5411444,22.8746764,POINT
+"5339377459",nodes,,,school,,89.5462078,22.888007,POINT
+"5340869304",nodes,,,school,,89.5441224,22.876085,POINT
+"5341042766",nodes,,,school,,89.5469078,22.8742896,POINT
+"9594405198",nodes,,,school,Govt Primary School,89.5610406,22.8337501,POINT
+"4510153489",nodes,,,school,Khulna Model School,89.5685324,22.8127054,POINT
+"9594405200",nodes,,,school,Govt Primary School,89.5676254,22.8221285,POINT
+"9594405202",nodes,,,school,Govt Primary School,89.5701294,22.8242202,POINT
+"9594405208",nodes,,,school,Govt Primary School,89.5843842,22.8303118,POINT
+"5273696032",nodes,,,university,,89.5447004,22.8765162,POINT
+"5856952032",nodes,,,school,111 No. Shekh Para Govt. Primary School And Cyclone Shalter,89.8150885,22.4595241,POINT
+"5856952037",nodes,,,school,113 No. Sutalori Govt. Primary School,89.8259944,22.4468595,POINT
+"5843946842",nodes,,,school,284 no East Shommadar Khali Government Primary School,89.7673881,22.4621391,POINT
+"5856952300",nodes,,,school,272 No. Vobanda Govt. Primary School,89.7795586,22.4406495,POINT
+"5856952068",nodes,,,school,South Sutalori M J K M Secondary School,89.8038856,22.4415779,POINT
+"5856952073",nodes,,,school,South Sutalori Govt. Primary School,89.8040029,22.4422813,POINT
+"5856952050",nodes,,,school,Mosque E Nur Jami Mosque,89.8132525,22.44074,POINT
+"6087411561",nodes,,,school,287 no Jomirtola Primary School,89.7866893,22.4273237,POINT
+"5843916189",nodes,,,school,92 no Dhwatla K C Government primary school,89.7220185,22.4941035,POINT
+"5843941115",nodes,,,school,South Bangla Collage and High School and Madrasha(দক্ষিন বাংলা কলেজ এবং হাই স্কুল এবং মাদ্রাসা),89.7527888,22.4649351,POINT
+"5856952062",nodes,,,school,South Sutalori Monir Uddin Dakhil Madrasha,89.8070177,22.4509845,POINT
+"6088107401",nodes,,,school,Amtola Banishanta Gov. Primary School,89.5820903,22.4666032,POINT
+"5865432950",nodes,,,school,Khonkarer Ber Govt. Primary School/Cyclone Center,89.6975917,22.463412,POINT
+"5845496088",nodes,,,school,Madurpalta Niyaj Ali Madrasha and Shelter Center,89.6873161,22.4470479,POINT
+"6088107402",nodes,,,school,Amtola Banishanta High School,89.582081,22.4675501,POINT
+"6088345649",nodes,,,school,Gora Dongmari Forest Gov. Primary School,89.5843998,22.4418791,POINT
+"6088107394",nodes,,,school,Amtola Dolito School,89.5838238,22.4617949,POINT
+"5845496092",nodes,,,school,Madur Palta Government Primary School,89.6816003,22.4468446,POINT
+"5865433204",nodes,,,school,Cowri Danga Madrasha,89.6673362,22.4903816,POINT
+"6088107404",nodes,,,school,Banishant Gov. Primary Schools,89.5575696,22.4757379,POINT
+"6088107385",nodes,,,school,Banishanta Hedati Atimkhana,89.576785,22.4536666,POINT
+"6088107403",nodes,,,school,Dangmari Bishonath Gov. Primry School,89.5419082,22.4734949,POINT
+"5942868337",nodes,,,school,Alhaz Korban Alim Madrasa,89.6231644,22.4751958,POINT
+"6088107393",nodes,,,school,Pashchim Banishanta Gov. primary School,89.5673034,22.4621689,POINT
+"6088107386",nodes,,,school,Sent Joseph's Primary School Cyclone Center,89.5795852,22.4506275,POINT
+"5865433219",nodes,,,school,Akimuddin Edtedaye Madrasha,89.6527854,22.4887291,POINT
+"5835892081",nodes,,,school,Amratola Chopra Gov. Primary School Kam Cyclone Center.,89.6595579,22.506952,POINT
+"5845496091",nodes,,,school,Madur Palta Government Primary School and Shelter Center,89.6815574,22.4467926,POINT
+"9591980473",nodes,,,school,Char Joukuri High School,89.6330186,23.767265,POINT
+"9584920081",nodes,,,school,চিত্রা মহিলা কলেজ,89.6652713,22.9350318,POINT
+"9584920082",nodes,,,school,High School,89.6671234,22.9098872,POINT
+"9584920084",nodes,,,school,Govt Primary School,89.662926,22.8930523,POINT
+"9584920078",nodes,,,school,Ikahari Katenga Fazlul Haque Pilot High School,89.6683318,22.9392357,POINT
+"9584920076",nodes,,,school,,89.6547414,22.9402932,POINT
+"9584896746",nodes,,,,Boronal Dakhil Madrasha,89.6569703,22.9855132,POINT
+"5273651716",nodes,,,school,,89.5394728,22.8710127,POINT
+"6204956185",nodes,,,college,Rayer Mahal Honor's College,89.5149648,22.8436691,POINT
+"8613303885",nodes,,,college,Apparel Merchandising Institute,89.541234,22.819959,POINT
+"9595231140",nodes,,,school,Jhawdanga Madrasa,89.0353435,22.8096599,POINT
+"9595231139",nodes,,,school,Jhawdanga High School,89.0343165,22.8125505,POINT
+"1028350774",nodes,,,school,B.N College Khulna,89.5298469,22.8509383,POINT
+"9799233327",nodes,,,,Institute of computer Education,89.8157769,22.9649736,POINT
+"9518883782",nodes,,,,Kalinchi A Gaffar Secondary School,89.0805302,22.2066459,POINT
+"6112309318",nodes,,,school,vagba govt primary school,89.3542662,22.4546334,POINT
+"6112309322",nodes,,,school,hadda primary girls school,89.4070145,22.4770627,POINT
+"6112309325",nodes,,,school,south hadda polli unnoyon govt primary school,89.407028,22.4500227,POINT
+"6112309328",nodes,,,school,Samsul Ulum Hafiji Madrasha,89.3633804,22.4440731,POINT
+"6112309428",nodes,,,school,V.K.S.A. Gilabari Piji United Academy,89.3637747,22.4302344,POINT
+"6112309327",nodes,,,school,79No Amtola Govt Primary School And Cyclone Centre,89.3635413,22.4445466,POINT
+"6112309321",nodes,,,school,Hadda d.m high school,89.389945,22.46466,POINT
+"6112309342",nodes,,,school,East Mohesshoripur Govt Primay School,89.3480301,22.4368564,POINT
+"6112309343",nodes,,,school,satalia madrasa,89.3314111,22.4358747,POINT
+"6112309316",nodes,,,school,Vagba govt primary school,89.3500243,22.4670729,POINT
+"6087411562",nodes,,,school,223 no Boroitola Guatola Government Primary School,89.7887385,22.4067833,POINT
+"6087411571",nodes,,,school,Rupchad Government Primary School,89.7499752,22.407557,POINT
+"6087411569",nodes,,,school,Hogolpati Secondary School,89.7504687,22.4147182,POINT
+"6087411568",nodes,,,school,HVS Hazi Noor Uddin Dakhil Madrasa,89.752357,22.4186457,POINT
+"5845375380",nodes,,,school,Kochubuniya Darus Salat Dakhil Madrasha,89.6966127,22.4147578,POINT
+"6126373162",nodes,,,school,Lakhikhola dream Bidya Niketan,89.2906925,22.410421,POINT
+"6112309432",nodes,,,school,Hashania Hafijiya Madrasha,89.3591854,22.4136718,POINT
+"9521855391",nodes,,,,BANSH KHALI HIGH SCHOOL,89.3105826,22.4190827,POINT
+"6126029412",nodes,,,school,Madariya Government Primary School,89.2802078,22.4095556,POINT
+"6121988070",nodes,,,school,kalabagi Panditchandra Govt. primary School,89.4508687,22.4185652,POINT
+"6112309431",nodes,,,school,Mohesshoripur Govt High School And Cyclone Centre,89.3451132,22.4165753,POINT
+"6126373161",nodes,,,school,Lakhikhola Child Education Center,89.2906469,22.4105128,POINT
+"6126029411",nodes,,,school,Madarbariya Amini Hafazi Madrasa,89.2799328,22.4090188,POINT
+"10585184251",nodes,,,school,Noapara F P,88.6092393,22.4565302,POINT
+"6282680110",nodes,,,kindergarten,Bashtola kinder garden school,89.9631894,22.1625221,POINT
+"6116231656",nodes,,,school,Madrasha,89.9697541,22.1029906,POINT
+"6116231648",nodes,,,school,Taluker Cahr Duyani Secondary Girls School Cum Cyclone Center,89.9589112,22.121025,POINT
+"6116231644",nodes,,,school,Madrasa,89.947823,22.1354906,POINT
+"6116231645",nodes,,,college,School&College,89.9547565,22.1480841,POINT
+"6116231654",nodes,,,school,Dokkhin Taluker Char Duyani Nesariya Dakhil Madrasah,89.9496442,22.1075445,POINT
+"6116231634",nodes,,,school,,89.9465275,22.1577775,POINT
+"5851368587",nodes,,,school,,89.4007841,23.0265396,POINT
+"5707641826",nodes,,,school,,89.9686396,22.4216781,POINT
+"6122221036",nodes,,,school,gazibari Hamiju Munnah madrasha,89.4565751,22.4536889,POINT
+"6121988043",nodes,,,school,Sutarkhali Bainpara Madar Nagar Govt. Primary School,89.4553131,22.4810058,POINT
+"6121988048",nodes,,,school,"Naliyan Forest Govt, Primary School",89.4387652,22.4625977,POINT
+"6121988050",nodes,,,school,Gonari Jogesh Chandra Govt. Primary School,89.456052,22.5016244,POINT
+"6121988053",nodes,,,school,19 no. kalabagi Govt. Primary School,89.4545969,22.4591399,POINT
+"6121988055",nodes,,,college,Naliyan Alim Madrasha,89.4450402,22.4465571,POINT
+"6121988067",nodes,,,school,south kalabagi govt. primary school,89.4366208,22.4292179,POINT
+"6121988068",nodes,,,school,Madrashaye Darul-hadis sale fiyao Hafezia Madrasha,89.4416714,22.4352598,POINT
+"6116328323",nodes,,,school,DolKhola Govt. Primary School,89.429293,22.5189037,POINT
+"6121988040",nodes,,,school,Gunari Dakhil Madrasha,89.4603395,22.4661174,POINT
+"6121988054",nodes,,,school,Kalabagi Ideal Govt. Primary School,89.4505468,22.4476701,POINT
+"6121988065",nodes,,,school,Kalabagi Sunderbans Secondary School,89.4468078,22.4364027,POINT
+"6121988042",nodes,,,school,Sutarkhali-2 Govt. Primary School,89.4616672,22.4739819,POINT
+"6121988056",nodes,,,school,Kacharipara Primary School,89.4366959,22.4435897,POINT
+"6121988047",nodes,,,school,Naliyan Secondary School,89.4384943,22.4626299,POINT
+"6121988066",nodes,,,school,East Kalabagi Govt. Primary School,89.4441819,22.4366705,POINT
+"6121988045",nodes,,,school,5 No. Gonari Harimohon Govt. Primary School,89.4313958,22.4895535,POINT
+"6121988046",nodes,,,school,South Upennagar Govt. Primary School,89.437412,22.4746462,POINT
+"6121988051",nodes,,,school,Gainpara Govt. Primary School,89.467269,22.5014943,POINT
+"6027830068",nodes,,,school,Nagar Secondary School,89.4914103,22.5091487,POINT
+"9705293755",nodes,,,school,Kashinathpur Abdul Latif High School,89.5994112,23.9659249,POINT
+"9705293754",nodes,,,school,Kashinathpur Abdul Latif High School,89.6037828,23.9640847,POINT
+"9591980474",nodes,,,school,R.S.K Instiution,89.6407999,23.7640969,POINT
+"5342105706",nodes,,,school,,89.5446065,22.8779026,POINT
+"5341042765",nodes,,,school,,89.5469548,22.8741376,POINT
+"9594405203",nodes,,,school,Govt Primary School,89.5697048,22.8266142,POINT
+"3629353790",nodes,,,,S@ifur's Coaching,89.5274357,22.8672598,POINT
+"6317294594",nodes,,,school,হাট গোপালপুর মাধ্যমিক বিদ্যালয়,89.2984039,23.527916,POINT
+"9584920088",nodes,,,school,Govt Primary School,89.4372104,22.9893069,POINT
+"9594405195",nodes,,,school,Govt Primary School,89.4750318,22.9663442,POINT
+"9594405194",nodes,,,school,Govt Primary School Phultala,89.4730887,22.9698674,POINT
+"7416537047",nodes,,,school,Munsur Ali High School,89.4713487,23.6424062,POINT
+"6116328325",nodes,,,school,High School,89.4214783,22.5279879,POINT
+"6116328326",nodes,,,school,Radha Gobindra Govt. primary school,89.4295122,22.5407887,POINT
+"6116328327",nodes,,,school,Kakrabuniya Govt Primary School,89.4420174,22.537567,POINT
+"6116328335",nodes,,,school,Hamida Khatun Govt. Primary School,89.4219089,22.5616164,POINT
+"6116328336",nodes,,,school,North Kamini Basiya Govt. Primary school/Cyclone center,89.4328161,22.5639509,POINT
+"6027830156",nodes,,,school,Parjoy Nogar Amdadul ulum Coui madrasa & Aytem Khana,89.4504207,22.5340602,POINT
+"6027830158",nodes,,,school,South Joy Nagar Gov. Primary School,89.4533618,22.5448205,POINT
+"6116328330",nodes,,,school,Kakrabuniya Govt Primary School,89.4308379,22.5728017,POINT
+"6027830114",nodes,,,school,Kalinagar G.C Secondary School,89.4837821,22.5330928,POINT
+"6027830119",nodes,,,school,Kamarkhola Gov. Primery School,89.4834428,22.5498517,POINT
+"6116328329",nodes,,,school,Arakhali Govt. Primary School,89.4483152,22.5523399,POINT
+"6116328338",nodes,,,school,Mojamnagar Hafejiya Madrasa,89.4203398,22.5628078,POINT
+"6027830138",nodes,,,school,Parjoy nogor Gov. Primary school cam cyclone center.,89.4666535,22.5324449,POINT
+"6027830157",nodes,,,school,Amerunnessa Noorani Hafizia Madrasa,89.4484976,22.5374518,POINT
+"6027830180",nodes,,,school,Rajnogar Cannikcor Gov. Primary School.,89.4650562,22.5542015,POINT
+"6027830179",nodes,,,school,Sundarbans Adarsha Secondary School,89.4631626,22.5536739,POINT
+"6027830151",nodes,,,school,Joy nagar dakhil madrasa cam cyclone center.,89.4553761,22.5337518,POINT
+"6116328324",nodes,,,school,primary School,89.4214207,22.527781,POINT
+"3313524399",nodes,,,school,Batbunia Primary School,89.4640269,22.5706568,POINT
+"3313524400",nodes,,,school,Batbunia Secondary School,89.4632066,22.5706462,POINT
+"6027830113",nodes,,,school,Razzak Hafijia Madrasha,89.4873011,22.5324548,POINT
+"6027830181",nodes,,,school,Kamarkhola lower secondary school cam cyclone center.,89.4781494,22.5657293,POINT
+"6116328334",nodes,,,school,Mojamnagar high School,89.4221945,22.5612424,POINT
+"3310170450",nodes,,,school,,89.5621159,22.8038109,POINT
+"702518270",nodes,,,school,Nirala Ideal School,89.5540138,22.7974462,POINT
+"3057053859",nodes,,,college,শহীদ সোহরাওয়ার্দী সরকারী কলেজ,89.967204,22.5833633,POINT
+"3342752474",nodes,,,school,সদর বালিকা বিদ্যালয়,89.9660638,22.5792959,POINT
+"9603778647",nodes,,,school,Govt Primary School,89.1066683,23.3855174,POINT
+"9586300348",nodes,,,school,Kaliganj Mahila College,89.1383626,23.4021116,POINT
+"9706366716",nodes,,,school,Dhalnagar Junior High School,89.1461481,23.7722273,POINT
+"5865432889",nodes,,,school,Mowkhali PannaDaie Primary School,89.6466082,22.4725332,POINT
+"5839451765",nodes,,,school,Deyer khondo Government Primary School,89.6509105,22.4540682,POINT
+"5865433229",nodes,,,school,Serea Begum Secondary School,89.6460906,22.4864247,POINT
+"6112309345",nodes,,,school,sataliya ajam dakhil madrasa,89.3306386,22.4338368,POINT
+"6112309346",nodes,,,school,north kalikapur govt primary school,89.3368319,22.4287914,POINT
+"5843982692",nodes,,,school,Moddho Burburiya Government Primary School and Shelter center,89.6663198,22.4297187,POINT
+"5845496087",nodes,,,school,Madurpalta Children's Education Center,89.6899152,22.4416907,POINT
+"5856952044",nodes,,,school,165 No. Mujibur Haque Govt. Primary School,89.8239264,22.4416213,POINT
+"9667426383",nodes,,,school,,88.6795811,23.7494087,POINT
+"9524542048",nodes,,,school,M.A. Razzak Adarsha High School,89.9672849,23.7381993,POINT
+"9591980469",nodes,,,school,Chowdhury Abdul Hamid Academy,89.7332417,23.755681,POINT
+"9591980468",nodes,,,school,Goalundo Proper High School,89.7493658,23.7255352,POINT
+"9591980485",nodes,,,school,Jashai High School,89.3884452,23.8327924,POINT
+"9706383723",nodes,,,school,Jotmora Junior Girls High School,89.2461248,23.8115515,POINT
+"9592024998",nodes,,,school,Hat Bongram High School,89.3388426,23.7478392,POINT
+"9591980488",nodes,,,school,Machpara Ml High School,89.3508822,23.8036688,POINT
+"9592024995",nodes,,,school,Suzanagar High School,89.3827076,23.7784133,POINT
+"9591980475",nodes,,,school,Sher -E-Bangla Girls High School,89.6449796,23.7616019,POINT
+"9591980476",nodes,,,school,Rajbari Govt. Girls High School,89.64784,23.7588023,POINT
+"9591980472",nodes,,,school,Kazi Hadayet Hossain Girls High School,89.6492017,23.7697144,POINT
+"9591980471",nodes,,,school,Alla Newaj Khairu High School,89.6608978,23.7723651,POINT
+"9591980481",nodes,,,school,Al-Gazzali High School,89.6469494,23.7427701,POINT
+"9591980478",nodes,,,school,Rajbari Adarsha High School,89.6345933,23.7587058,POINT
+"9705354294",nodes,,,school,Khalil Pur High School,89.5732085,23.837165,POINT
+"5540693831",nodes,,,school,Goalanda J.N.Govt.Primary School,89.7652728,23.7241406,POINT
+"9702548030",nodes,,,school,Goalundo Proper High School,89.7502665,23.72763,POINT
+"9591980464",nodes,,,school,Jamtala High School,89.7609698,23.7227441,POINT
+"9696960367",nodes,,,school,Kalia Madrasha,89.6320458,23.0435382,POINT
+"5223651721",nodes,,,college,BAGDA GOVT. ITI,88.8481732,23.1940782,POINT
+"6816656844",nodes,,,school,Chowgachha High School,89.019139,23.266476,POINT
+"9590538018",nodes,,,school,Govt Primary School,88.9817791,23.2608055,POINT
+"9586424193",nodes,,,school,Gonganandapur Govt Primary School,89.0322086,23.1717115,POINT
+"9586424194",nodes,,,college,Ganganandapur Degree College,89.0332171,23.1669129,POINT
+"9586424195",nodes,,,school,Atlia Govt Primary School,89.0241921,23.1912397,POINT
+"9586424196",nodes,,,school,Atlia Dakhil madrasa,89.0236551,23.1911066,POINT
+"9586424198",nodes,,,school,Dhuliani High School,89.0249865,23.2068527,POINT
+"9586300322",nodes,,,school,Komlapur High School,88.9656462,23.2749879,POINT
+"9586300324",nodes,,,school,Khoringsha Dakhil Madarasa,88.9751773,23.274536,POINT
+"9586424204",nodes,,,college,Birshreshta Nur Mohammad College,88.9822806,23.1865478,POINT
+"5223002182",nodes,,,school,রামকৃষ্ণপুর সরকারি প্রাথমিক বিদ্যালয়,88.9258174,23.2585749,POINT
+"9586300327",nodes,,,school,Shyamnagar Koumi Madrasa,88.9538822,23.2815409,POINT
+"9579063796",nodes,,,school,Mandarbaria Govt Primary School,88.9549689,23.2941198,POINT
+"9586424197",nodes,,,school,Dhuliani Govt Primary School,89.0252165,23.206534,POINT
+"6121988069",nodes,,,school,Johra khatun nurani hafizia madrasha,89.4491306,22.4230852,POINT
+"6112309426",nodes,,,school,Mohesshoripur Cyclone School,89.3598828,22.4252386,POINT
+"5843982694",nodes,,,school,Ajij Vadri Secondary School and Shelter center,89.6552128,22.425489,POINT
+"5876233979",nodes,,,school,Rayanda Model Government Primary School,89.8533985,22.314143,POINT
+"5876233980",nodes,,,school,Rayenda Pilot High School,89.8534468,22.3145301,POINT
+"5876234423",nodes,,,school,West Rajapur Government Primary School No 17,89.7716582,22.3169965,POINT
+"5876233972",nodes,,,school,Rayenda Bazar Islamia Dakhil Madrasa,89.8552895,22.3099544,POINT
+"5789482169",nodes,,,college,Shoronkhola Degree Collage,89.8550829,22.3174754,POINT
+"5876233982",nodes,,,kindergarten,Merit Academy Kindergarten,89.850377,22.3149372,POINT
+"5876233970",nodes,,,school,Ideal Children Government Primary School No 66,89.8405051,22.3100115,POINT
+"5789482163",nodes,,,school,Amena Smrity nimno Secondary School,89.8343468,22.3129147,POINT
+"5789482164",nodes,,,school,16 no Golbuniya Government Primary School Shelter center,89.8344165,22.3128055,POINT
+"3382227053",nodes,,,college,Mathbaria Gov Collage,89.9606803,22.2933384,POINT
+"5876233973",nodes,,,school,Mass education and Momtaz Begum Shishu School,89.8562175,22.3116715,POINT
+"2809017168",nodes,,,school,Garerghat High School,89.4409837,23.261368,POINT
+"2809024908",nodes,,,school,Pulum High School,89.437016,23.2898654,POINT
+"2809051122",nodes,,,college,Bunagati College,89.4223695,23.3116675,POINT
+"9590448552",nodes,,,school,Sheba Sango Girl High School,89.204132,23.1696894,POINT
+"9586300352",nodes,,,school,Arpara Govt Primary School,89.1021677,23.2821098,POINT
+"9586300357",nodes,,,school,JUST School and College,89.1200518,23.2362522,POINT
+"2809028222",nodes,,,school,Naliya Primary School,89.4356849,23.3145427,POINT
+"10706625082",nodes,,,,"Dept. Of ESD, BSMRSTU",89.817065,22.9671497,POINT
+"9929221749",nodes,,,school,Bangabandhu University School,89.8195267,22.9640882,POINT
+"2407488007",nodes,,,school,Adarsha Boys High School,88.835198,23.6387751,POINT
+"10250121609",nodes,,,school,,88.841967,23.6297914,POINT
+"10250121509",nodes,,,school,,88.8113555,23.6313846,POINT
+"5154003615",nodes,,,school,Meherpur Government High School,88.6341937,23.7740675,POINT
+"5735746574",nodes,,,school,Meherpur Government Technical School and College,88.6406746,23.7700496,POINT
+"5153465425",nodes,,,college,Meherpur Government College,88.6420909,23.7689358,POINT
+"9586150774",nodes,,,school,High School,88.8650905,23.4114151,POINT
+"9000226528",nodes,,,school,শ্রীনিবাসকাঠী সতন্ত্র এবতেদিয়া মাদ্রাসা,89.8406314,23.2741943,POINT
+"9579940161",nodes,,,school,Govt Primary School,89.3934077,23.1091378,POINT
+"9705354301",nodes,,,school,Raipur Girls High School,89.472565,23.8666361,POINT
+"9705354300",nodes,,,school,Malifa Habibar Rahman Multilateral High School,89.4790992,23.8578162,POINT
+"9705295965",nodes,,,school,Durgapur Nesara Khatun Girls High School,89.544068,23.9615223,POINT
+"9705295964",nodes,,,school,Bishnopur Monirul Islam High School,89.5156608,23.9684414,POINT
+"9705354298",nodes,,,,Nuruddinpur Junior High School,89.5317957,23.8543692,POINT
+"2456516040",nodes,,,school,Chinakhora High School,89.496046,23.9610666,POINT
+"9705295960",nodes,,,school,Hazi Wazel Ali High School,89.43981,23.9512143,POINT
+"9705354296",nodes,,,school,Udaypur High School,89.5063112,23.8475328,POINT
+"4693178335",nodes,,,school,বাঘইল ১নং সরকারি প্রাথমিক বিদ্যালয়,89.061675,24.1071291,POINT
+"4164600789",nodes,,,school,Barobazar,89.1374094,23.3400666,POINT
+"9603778633",nodes,,,school,Govt Primary School,89.1366143,23.2026471,POINT
+"9603778635",nodes,,,school,Govt Primary School,89.1376201,23.2120434,POINT
+"9590420500",nodes,,,school,Ambottala Govt Primary School,89.1230875,23.2430701,POINT
+"9579940151",nodes,,,school,,89.4753987,23.2761631,POINT
+"9579940154",nodes,,,school,Durbajuri Govt Primary School,89.455549,23.1560621,POINT
+"9579940153",nodes,,,school,Tularampur High School,89.4231012,23.1735782,POINT
+"5508373027",nodes,,,college,Dr. Abdul Rajjak Municipal College,89.2023271,23.1655348,POINT
+"2755581751",nodes,,,college,"Govt. Women's College, Jessore",89.1986251,23.1666228,POINT
+"9603778640",nodes,,,school,Beztala Govt Primary School,89.166574,23.2481269,POINT
+"2805659180",nodes,,,college,Adorsho Degree College,89.4131314,23.4862682,POINT
+"6618920885",nodes,,,school,,89.4381637,23.4524746,POINT
+"3587858009",nodes,,,school,S. M Matlubur Rahman High School,89.1609953,23.5400957,POINT
+"3587859867",nodes,,,school,Baribathan Govt. Primary School,89.147857,23.5224262,POINT
+"9587817367",nodes,,,school,Sheikh Para Govt Primary School,89.4068922,23.4394025,POINT
+"9587817369",nodes,,,school,Arpara Degree College,89.3669721,23.3704567,POINT
+"3587866293",nodes,,,college,Jhenaidah MATS,89.1973768,23.5420432,POINT
+"6317296187",nodes,,,school,,89.2778902,23.5357742,POINT
+"9587817365",nodes,,,school,Goalpara High School,89.2578352,23.541101,POINT
+"9587817363",nodes,,,college,Hatgopalpur College,89.2912784,23.5318128,POINT
+"9587817361",nodes,,,school,,89.4199304,23.4879071,POINT
+"5233397291",nodes,,,school,Nagarkanda Primary School,89.6873279,23.2956925,POINT
+"5233397539",nodes,,,school,Buraich Primary School,89.6946658,23.2998447,POINT
+"7824546498",nodes,,,school,25 No Tagarbon Govt. Primary School,89.7039941,23.2246087,POINT
+"5856951999",nodes,,,school,110 No. Bohor Buniya Govt. Primary School And Cyclone Shalter,89.81098,22.4855412,POINT
+"6088107405",nodes,,,school,Uttar Amtola Gov. Primary School,89.5767528,22.4779438,POINT
+"6088107406",nodes,,,school,ZKNADS Gov. Primary School,89.5808512,22.4905547,POINT
+"5865432980",nodes,,,school,Junior Secondary Girls School,89.7040451,22.4857097,POINT
+"5865433185",nodes,,,school,Khaser Danga Secondary School,89.6995161,22.4861286,POINT
+"6121988044",nodes,,,school,Secondary School,89.4486961,22.4838906,POINT
+"6112309314",nodes,,,school,Vagba darul shunnah madrasa,89.3444279,22.4694189,POINT
+"6112309317",nodes,,,school,Vagba govt primary school and cyclone centre,89.3541791,22.4694871,POINT
+"9579940159",nodes,,,school,Govt Primary School,89.4084536,23.1000725,POINT
+"2810294379",nodes,,,college,Maijpara College,89.4599989,23.2349298,POINT
+"2809012450",nodes,,,school,Maijpara High School,89.4580103,23.2367322,POINT
+"9603772500",nodes,,,school,High School,89.4013327,23.5085873,POINT
+"9603772499",nodes,,,school,Govt Primary School,89.4006685,23.5052756,POINT
+"9587817366",nodes,,,school,Adarsho Govt Primary School,89.4103052,23.4561106,POINT
+"2805657809",nodes,,,college,Government Hossain Shaheed Sharwardi College,89.4190109,23.4891247,POINT
+"4644390540",nodes,,,college,Gobra Mittra College,89.4981492,23.1129462,POINT
+"9579940156",nodes,,,school,Govt Primary School,89.4935666,23.1599829,POINT
+"6126339599",nodes,,,school,north moukhali ishak primary school and cyclone centre,89.4664738,22.6419719,POINT
+"6126339735",nodes,,,school,28no hoglabunia govt primary school,89.4878322,22.6406128,POINT
+"6112309440",nodes,,,school,choukuni madrasa,89.3248183,22.3904138,POINT
+"6112309435",nodes,,,school,kalikapur govt primary and cyclone centre,89.3388985,22.4060233,POINT
+"6126028783",nodes,,,school,31 no. Deyara Antabunia Government Primary School,89.2849754,22.3918076,POINT
+"6112309320",nodes,,,school,hadda primary school and cyclone centre,89.375453,22.4687869,POINT
+"6112309326",nodes,,,school,Est Mohesshoripur Shapla Govt Primary School,89.367578,22.456433,POINT
+"6112309329",nodes,,,school,Dorigon Mohesshoripur Madrasa,89.3629485,22.4434434,POINT
+"6112309425",nodes,,,school,Gilabari Govt Primary School,89.3478906,22.4255832,POINT
+"6112309439",nodes,,,school,choukuni govt primary school,89.3200345,22.3974816,POINT
+"6027830131",nodes,,,school,Saharabaad Hafejiya Nurani Madrasha,89.4720367,22.5186894,POINT
+"6112309323",nodes,,,school,81no gangring govt primary school,89.405365,22.4719991,POINT
+"6112309324",nodes,,,school,hadda chok govt primary school and cyclone,89.4003734,22.4612518,POINT
+"6126029407",nodes,,,school,Simallar's Ait Model sar: Primary school,89.2708804,22.390296,POINT
+"6088107389",nodes,,,school,Khajuria Bina Pani Gov. Primary School,89.5543215,22.4512001,POINT
+"5942670583",nodes,,,school,Secret Hurt Primary School,89.6292986,22.4690781,POINT
+"6027830085",nodes,,,school,Sree Nagar Uttarpara Gov. Primary School,89.4918689,22.5191701,POINT
+"6116328341",nodes,,,school,Tildanga non-govt. nimno maddomik Biddaloy,89.4683835,22.5938486,POINT
+"6116328342",nodes,,,school,South Tildanga Primary School,89.4717067,22.5862621,POINT
+"9595231144",nodes,,,school,Kadamtala Govt Primary School,89.064634,22.734269,POINT
+"9595231133",nodes,,,school,Kolaroa High School,89.0405766,22.8605683,POINT
+"4347009628",nodes,,,school,"Kalaroa Girls' PIlot High School, Play Grounds",89.0432211,22.8581861,POINT
+"9595231127",nodes,,,school,Kazirhat High Scholl,89.0209996,22.9062206,POINT
+"9579051367",nodes,,,school,Govt Primary School,88.9697535,22.8582723,POINT
+"9579051371",nodes,,,school,Govt Primary School,88.976118,22.8289719,POINT
+"4346992674",nodes,,,school,Kalaroa Shishu Laboratory School Play Grounds,89.0416903,22.8600707,POINT
+"6517626421",nodes,,,school,ASHUTOSH COLONY PRIMARY SCHOOL,88.6585119,22.838782,POINT
+"5038564267",nodes,,,school,Baduria Kadmbini Devi Girls' High School,88.7888846,22.7400781,POINT
+"4393752490",nodes,,,school,Sadimonnesa Girls High School,88.9304565,23.5918093,POINT
+"10250121409",nodes,,,school,,88.8618564,23.6427943,POINT
+"9705732055",nodes,,,school,Boalia High School,88.8530321,23.9484246,POINT
+"9579063781",nodes,,,college,Chougacha Govt Collge,89.0302353,23.257494,POINT
+"9586424189",nodes,,,school,Muktapur Govt Primary School,89.0519247,23.2073144,POINT
+"9705227511",nodes,,,school,Amina Monsur Girls High School,89.2648711,23.9993507,POINT
+"9705192969",nodes,,,school,Pabna Gopal Chandra Institute,89.2305884,23.9987335,POINT
+"2429286464",nodes,,,school,Janipur Pilot School,89.2822456,23.803401,POINT
+"5706078298",nodes,,,school,Balipara High School,89.9333659,22.4286799,POINT
+"9521607969",nodes,,,,38 No Durgabati Govt Primary School,89.2248309,22.2913079,POINT
+"6112309438",nodes,,,school,baburabad govt primary school,89.3307754,22.390151,POINT
+"6126029390",nodes,,,school,Megha's Ait Aminia Hafezia Madrasa,89.2680855,22.3762164,POINT
+"6126029410",nodes,,,school,Bamboo sako adjoining Jaipur school,89.2686246,22.4021301,POINT
+"9521599046",nodes,,,,NOWABEKI SECONDARY SCHOOL,89.2007113,22.3468784,POINT
+"6126373115",nodes,,,college,Panjkhana adjacent to Gobindapur College,89.263456,22.3792112,POINT
+"6113693002",nodes,,,,Ashiya Hafijiya Madrasha,89.3001473,22.3122571,POINT
+"9521599681",nodes,,,,KANTHAL BARIA A.G. HIGH SCHOOL,89.1208198,22.347704,POINT
+"9596434707",nodes,,,school,Paikgacha Govt Primary School,89.3060995,22.5832264,POINT
+"9596434709",nodes,,,school,Govt Primary School,89.317071,22.5912258,POINT
+"9596434708",nodes,,,school,Govt Primary School,89.3228116,22.5906899,POINT
+"6112309436",nodes,,,school,choukuni north primary school,89.3393022,22.4050203,POINT
+"6112309344",nodes,,,school,satalia govt primary school and cyclone centre,89.3309632,22.4361027,POINT
+"6112309341",nodes,,,school,South Mohesshoripur Govt Primary School,89.3506291,22.4423328,POINT
+"6113692795",nodes,,,school,Katmarchar Govt primary school,89.2867443,22.3030757,POINT
+"6126028784",nodes,,,school,Deyaria Zakaria Shikkha Niketan School.,89.2848936,22.3919985,POINT
+"6114040651",nodes,,,school,Safollo Shisu School,89.3062681,22.3082869,POINT
+"6113406000",nodes,,,school,Vagba govt primary school,89.3490198,22.467441,POINT
+"6112309437",nodes,,,school,Tetultola govt primary school,89.3472335,22.385605,POINT
+"6148966647",nodes,,,school,,88.9634818,22.5563577,POINT
+"9412215572",nodes,,,school,Nagarukhra High School (H.S),88.6398945,22.9399295,POINT
+"9412215571",nodes,,,school,Nagarukhra Kshetra mohan Girls High School (H.S),88.641895,22.9361216,POINT
+"9592024991",nodes,,,school,Moishala Govt. Primary School,89.4149766,23.7842474,POINT
+"6126028780",nodes,,,school,Mothbari Shantimoi Primary School,89.3230882,22.3836408,POINT
+"9521837434",nodes,,,,KATNIA A.K. HIGH SCHOOL,89.2937533,22.4060088,POINT
+"5876234422",nodes,,,school,96 no North Rajapur Culvert Government Primary School,89.7825479,22.3294645,POINT
+"6127552973",nodes,,,school,Dakshin Bedkashi Girls High School,89.3260454,22.2629972,POINT
+"6127557662",nodes,,,school,Patakhaly Mohoraly bari Jame Mosque Madrasa,89.3252863,22.2492579,POINT
+"9520141463",nodes,,,,Jorshing Govt. Primary School,89.3444071,22.2480367,POINT
+"6127615592",nodes,,,school,105no Chhoto Angtyhara Sundorbon Adorsho Govt. Primary School,89.3276849,22.2159418,POINT
+"6087411572",nodes,,,school,Gulishakhali Rafiq Smrity Primary School,89.7426662,22.3948226,POINT
+"5843982689",nodes,,,school,Karmiya Nurani Madrasha,89.6808748,22.4057753,POINT
+"6130936078",nodes,,,school,Hamejia Dakhil Madrasa,89.750458,22.4056923,POINT
+"6126028776",nodes,,,school,Maharajpur Hamidia Hafizia Madrasah,89.3125096,22.3631312,POINT
+"6127615593",nodes,,,school,Golkhaly Nurania Hafijia Madrasha,89.3198179,22.2136868,POINT
+"6330423945",nodes,,,kindergarten,Kopotakhkho Shishu Academy,89.2919072,22.343552,POINT
+"6116231649",nodes,,,school,Nehlia Ebtedai Madrasha,89.9654129,22.118411,POINT
+"6098405459",nodes,,,school,Razapur High School,89.8302246,22.3416166,POINT
+"6039679871",nodes,,,school,Razapur High School,89.829504,22.3414823,POINT
+"6098405460",nodes,,,school,Razapur High School,89.829504,22.3414823,POINT
+"6098405440",nodes,,,kindergarten,Shuvo Biddaniketon Kinder Garden,89.8130152,22.3409465,POINT
+"5876233974",nodes,,,school,Sher-e-Bangla Primary School No 85,89.8561612,22.3126244,POINT
+"5876234399",nodes,,,school,58th North Tafal Ghar Government Primary School,89.8216411,22.2861703,POINT
+"5777563333",nodes,,,school,Dakkhin Tafalbari Adarsha Govt Primary School,89.8194364,22.2660907,POINT
+"6098405444",nodes,,,school,East Amra Gachia Govt Primary School,89.8199996,22.3310524,POINT
+"5782021565",nodes,,,school,27 No Khuriakhali Govt Primary School Cyclone Center,89.8136562,22.2189953,POINT
+"5783957887",nodes,,,college,Tafalbari School College,89.8294812,22.2427387,POINT
+"5983656037",nodes,,,school,Amra Gachia Bohumukhi Madrasha Orphanages,89.8099065,22.3342231,POINT
+"5983656038",nodes,,,school,Amra Gachia Bohumukhi High School,89.8097053,22.3336649,POINT
+"6126601810",nodes,,,school,Middle Dhanshagor Govt Primary School,89.799065,22.3765152,POINT
+"6118929572",nodes,,,,Purbo Khoriakhali Munsibari Nechariya Hafezia o Etimkhana Madrasa,89.8201579,22.215822,POINT
+"5876234400",nodes,,,school,North Tafal House Quraan Dinina Madrasa,89.8222983,22.2876595,POINT
+"5783957963",nodes,,,school,Sundarban Secondary School,89.8279001,22.2243325,POINT
+"6126601804",nodes,,,school,Razapur High School,89.829504,22.3414823,POINT
+"5783609602",nodes,,,school,Taltoli Government Primary School,89.8189777,22.3179071,POINT
+"9587817387",nodes,,,school,Gopalganj Girl High School,89.826982,23.0043272,POINT
+"2406090600",nodes,,,school,Binapani Girls' High School,89.8312963,23.0077447,POINT
+"9000226601",nodes,,,school,Moulovi Abdul Hye Memorial School And College,89.8272234,23.2709467,POINT
+"9584920079",nodes,,,school,Govt Primary School,89.6673151,22.9393548,POINT
+"6087411563",nodes,,,school,"South Jomirtola Guatola Government Primary School, 84 no",89.7947037,22.4204012,POINT
+"5983656057",nodes,,,school,Dhanshagor United High School,89.8128623,22.3869344,POINT
+"5684209095",nodes,,,college,IMTB,89.8060226,22.6416649,POINT
+"5856952020",nodes,,,school,Jomaddar Para Govt. Primary School,89.8309135,22.4638048,POINT
+"5856949577",nodes,,,school,186 No. Baroikhali Manik Mia Govt. Primary School,89.8453653,22.4648422,POINT
+"6015407712",nodes,,,school,265 no North Dhowatola Government Primary School,89.7371864,22.5110455,POINT
+"2424145993",nodes,,,school,Governemnt Boys School,89.9672359,22.578446,POINT
+"6116328344",nodes,,,school,Naldanga Govt primary school/Cyclone center,89.8205827,22.590551,POINT
+"6087411560",nodes,,,school,Nishanbaria Primary School,89.7548568,22.4175399,POINT
+"9585705170",nodes,,,school,Bilbauch Govt. Primary School,89.6515499,23.0471107,POINT
+"9706383719",nodes,,,school,Panti Secondary School,89.2274838,23.7795857,POINT
+"9706383720",nodes,,,school,Panti Girls High School,89.211495,23.7848786,POINT
+"9706383718",nodes,,,school,B.K.M.N.  High School,89.2365346,23.7660498,POINT
+"9706383721",nodes,,,school,Dansha Girl's High School,89.213764,23.799414,POINT
+"10938941898",nodes,,,school,"Begum Rokeya Kindergarten School, Lalpur - Gopalpur - Banpara Rd, Natore",88.973577,24.1836315,POINT
+"10956819699",nodes,,,school,বেরিলাবাড়ী সরকারী প্রাথমিক বিদ্যালয়,88.8885307,24.1993502,POINT
+"10938970343",nodes,,,school,লালপুর শ্রী সুন্দরী উচ্চ বিদ্যালয়,88.9663645,24.1788934,POINT
+"5221600654",nodes,,,,Ishwardi Govt. College,89.0735819,24.1282827,POINT
+"4393783956",nodes,,,school,Shaheb Nagar Primary School,88.948905,23.599686,POINT
+"9705618009",nodes,,,school,86 No. Asannagor Govt. Primary School,89.03589,23.7419225,POINT
+"9705613301",nodes,,,school,Prantik Junior High School,88.8768442,23.8814145,POINT
+"9602997007",nodes,,,school,Govt Primary School,89.1193178,23.4024042,POINT
+"9705618003",nodes,,,school,Baradi Secondary Girls School,89.1035378,23.8964559,POINT
+"9705482212",nodes,,,school,Mir Abu Abdull Memorial Junior High School,89.1172497,23.8961207,POINT
+"9705482211",nodes,,,school,Collectorate School And College,89.1201761,23.9002998,POINT
+"9705482208",nodes,,,school,Sahittik Mir Mosharraf Hossain High School,89.123275,23.9055139,POINT
+"9705485414",nodes,,,school,G.K. High School,89.1253562,23.9122839,POINT
+"9705482206",nodes,,,school,Educare Ideal School,89.1284672,23.9045965,POINT
+"9705618002",nodes,,,school,Kaburhat High School,89.0774851,23.8742534,POINT
+"9586300359",nodes,,,school,Solua High School,89.105895,23.2375725,POINT
+"10861358724",nodes,,,school,J S High School,88.974047,23.7793191,POINT
+"4393655402",nodes,,,school,Mohammad Juma Primary School,88.9632983,23.5951202,POINT
+"9702548031",nodes,,,school,Goalanda Nazir Uddin Pilot Govt. High School,89.7570757,23.71897,POINT
+"9592480845",nodes,,,school,Kabi Nazrul High School,89.8446088,24.0732145,POINT
+"9592480841",nodes,,,school,Salimabad Tebaria Islamia High School,89.8117304,24.0437335,POINT
+"5312108179",nodes,,,school,Tarail Government Primary School,89.8748207,23.8154163,POINT
+"9524629343",nodes,,,school,Shakrail High School,89.8591903,23.809631,POINT
+"9523574561",nodes,,,school,Shivalaya Govt. High School,89.7867127,23.8367476,POINT
+"9524642459",nodes,,,school,TEOTA ACADEMY,89.7781584,23.8581436,POINT
+"9524642460",nodes,,,school,Shait Ghar Teota High School,89.7802479,23.8717001,POINT
+"9592457849",nodes,,,school,Falshatia Govt. Primary School,89.8469051,23.8459392,POINT
+"9592480859",nodes,,,school,Chak Mirpur High School,89.8481076,23.9616959,POINT
+"9592480860",nodes,,,school,Moulvi Abdur Rahman High School,89.8627238,23.958105,POINT
+"9592480858",nodes,,,school,Daulatpur Pilot Girl High School,89.8302276,23.9697149,POINT
+"9705759518",nodes,,,school,A M H Girls High School,88.8008761,23.9955952,POINT
+"9705759524",nodes,,,school,Pragpur High School,88.7678438,24.0076995,POINT
+"9705613305",nodes,,,school,Aria United High School,88.8950712,23.9538796,POINT
+"9705613306",nodes,,,school,Baragangdia Girls High School,88.8778482,23.9530439,POINT
+"9705613308",nodes,,,school,Jhaudia High School,88.9094836,23.9619878,POINT
+"9705613311",nodes,,,school,B T P High School,88.8652479,23.966694,POINT
+"9705759523",nodes,,,school,Bagoan   K.  C. V. N. High School,88.785412,24.0209256,POINT
+"9705613310",nodes,,,school,G. N. Junior High School,88.8799499,23.9679429,POINT
+"9705706614",nodes,,,school,Dharmadah High School,88.7597313,23.9768767,POINT
+"9705613307",nodes,,,school,Dighol Kandi Junior High School,88.9134759,23.9634455,POINT
+"6604872565",nodes,,,school,ভাষানচর উচ্চ বিদ্যালয়,89.9544007,23.5227308,POINT
+"9809185510",nodes,,,school,Adarsh Balika Uscha Biddalay,89.8357144,23.6026926,POINT
+"8999091928",nodes,,,school,ফুলারপাড় সরকারী প্রাথমিক বিদ্যালয়,89.8298443,23.2779169,POINT
+"9000226602",nodes,,,school,গোবিন্দপুর প্রাইমারি স্কুল ও মাদ্রাসা,89.8314124,23.2659285,POINT
+"2426554019",nodes,,,school,Asraful Ulum Madrasa,89.8206544,23.5975431,POINT
+"9702385193",nodes,,,school,Paranpur High School,89.7554186,23.6002431,POINT
+"4663697198",nodes,,,school,,89.8090482,23.5884374,POINT
+"7418865852",nodes,,,,Bera Fazil Madrash,89.6311623,24.0801893,POINT
+"9705293762",nodes,,,,Masundia Bhawani Pur High School,89.6272249,23.8849679,POINT
+"9591980470",nodes,,,school,Barat Girls High School,89.7294045,23.7489051,POINT
+"9591980460",nodes,,,school,DAULATDIA AKKAS ALI HIGH SCHOOL,89.7587671,23.7491363,POINT
+"9591980462",nodes,,,school,Dewan Para Rahamat Ullah Junior Secondary School,89.7546527,23.7293165,POINT
+"9591980477",nodes,,,school,Bartha High School,89.6382166,23.7610406,POINT
+"9591980459",nodes,,,school,MUKTIJODDHA FAKIR ABDUL JABBAR GIRLS JUNIOR SCHOOL,89.7777726,23.7586561,POINT
+"9524635370",nodes,,,school,MOKSED ALI ACADEMY,89.8499757,23.7958301,POINT
+"7452451741",nodes,,,school,দড়িকান্দি সরকারি প্রাথমিক বিদ্যালয়,89.9573636,23.7376893,POINT
+"9524555945",nodes,,,school,Kalta Avoya Charan  High School,89.9470763,23.8005229,POINT
+"9705354302",nodes,,,school,Satbaria High School,89.4402572,23.8868428,POINT
+"9705442592",nodes,,,school,Gopalpur Azgor Ali High School,89.4313061,23.9133257,POINT
+"9705295959",nodes,,,school,Mathura Pur High School,89.4244052,23.9413782,POINT
+"9705250760",nodes,,,school,Tarabaria JM Govt Primary School,89.3958178,23.9510869,POINT
+"9705295956",nodes,,,school,Natunbazar High School,89.3714088,23.9498573,POINT
+"9705192968",nodes,,,school,"Police Lines School, Pabna",89.229934,23.9996325,POINT
+"9705192966",nodes,,,school,41 No. Cahr Ghoshpur Govt. Primary School,89.2038803,23.9917,POINT
+"9705295962",nodes,,,school,Hoyzor Santipur Sobed Ali Mozior Udden Junior High School,89.4753498,23.9641174,POINT
+"9705295961",nodes,,,school,Jahanara Kanchon Smrity High School,89.4692181,23.96159,POINT
+"9705295540",nodes,,,school,Kadim Malonchi High School,89.6075652,23.8890139,POINT
+"9706383726",nodes,,,school,Uttar Chandpur High School,89.2003343,23.8177323,POINT
+"9591980487",nodes,,,school,Meghna High School,89.3487682,23.8037571,POINT
+"9591980483",nodes,,,school,Patikabari Mohammad Ali Khan High School,89.3762173,23.8738005,POINT
+"9591980486",nodes,,,school,Jashai High School,89.3772149,23.8348394,POINT
+"9706383725",nodes,,,school,Gorai High School,89.2247342,23.8290079,POINT
+"9706383722",nodes,,,school,Enayetpur High School,89.2442852,23.8112875,POINT
+"5149375039",nodes,,,school,Dulai Government Primary School দুলাই সরকারি প্রাথমিক বিদ্যালয়,89.5250213,23.9542707,POINT
+"9705295963",nodes,,,school,Dulai High School,89.522598,23.9543345,POINT
+"9591980484",nodes,,,school,Al-Haj Shahabuddin Ahmed Adarsha Accadamy,89.4105553,23.846042,POINT
+"9705354305",nodes,,,school,Kadoa Junior High School,89.4531674,23.8941325,POINT
+"9706383724",nodes,,,school,Chourangi Secondary School,89.2181594,23.8106269,POINT
+"9579031926",nodes,,,school,Andulia Govt. Primary School,88.9271076,23.2338978,POINT
+"9579063806",nodes,,,school,Borobari Govt Primary School,88.9043893,23.2579758,POINT
+"9586150761",nodes,,,school,Borni Govt Primary School,88.9229664,23.2671995,POINT
+"9579063786",nodes,,,school,Andarkota Govt. Primary School,88.9940372,23.2787406,POINT
+"9579063787",nodes,,,school,Hazrakhana Dhakil Madrasa,88.9986335,23.2872411,POINT
+"5223651821",nodes,,,college,BAGDA GOVT. ITI,88.8481395,23.1941423,POINT
+"9579063783",nodes,,,school,Sara Pailot School,89.0178573,23.2602914,POINT
+"9590420499",nodes,,,school,Chowgachha Kamil madrasa,89.0191371,23.2622081,POINT
+"9590532216",nodes,,,school,Govt Primary School,89.0027882,23.2421113,POINT
+"9602996998",nodes,,,school,Govt Primary School,88.9873329,23.3320967,POINT
+"9603778653",nodes,,,school,High School,88.9961342,23.4032993,POINT
+"9586300332",nodes,,,school,High School,89.0300482,23.3130678,POINT
+"9586300331",nodes,,,school,patibila Govt Primary School,89.0293734,23.296318,POINT
+"9586300349",nodes,,,school,Govt Primary School,89.0573601,23.2714427,POINT
+"9586300351",nodes,,,school,Maruya High School,89.0834012,23.2760423,POINT
+"9586424192",nodes,,,school,Pashapole Govt Primary School,89.0551851,23.2001851,POINT
+"6039679851",nodes,,,kindergarten,Shuvo Biddaniketon Kinder Garden,89.8130152,22.3409465,POINT
+"5856952295",nodes,,,school,174 No. Sutalori Shajahania Govt. Primary School,89.7916393,22.4378716,POINT
+"6039679854",nodes,,,school,Amra Gachia Govt Primary School,89.8101935,22.3335136,POINT
+"6126601789",nodes,,,school,Razapur Sundorbon Govt Primary School,89.807471,22.3495995,POINT
+"5983656062",nodes,,,school,Middle Dhanshagor Govt Primary School,89.799065,22.3765152,POINT
+"5843982697",nodes,,,school,North Bastola Keratul Quran Noorani Karimi Madrasa,89.6484187,22.4440731,POINT
+"5886825472",nodes,,,school,Khantakata Union Secondary School,89.8652458,22.3458784,POINT
+"9592480861",nodes,,,school,Ulail Model High School,89.8835656,23.965161,POINT
+"9592457852",nodes,,,school,Mohadebpur Girls High School,89.8834836,23.8519992,POINT
+"9592457851",nodes,,,school,Mohadebpur Govt Priamry School,89.8910978,23.848367,POINT
+"9592480873",nodes,,,school,Upzila Kendrio Abul Gani High School,89.8232343,23.8461695,POINT
+"9592480872",nodes,,,school,Aricha Belayet Hossain High School,89.7850228,23.8362364,POINT
+"6357502746",nodes,,,school,Hefz Bivhag,89.2937542,23.478577,POINT
+"9603772501",nodes,,,school,Govt Primary School,89.399166,23.5294089,POINT
+"2803872772",nodes,,,school,Wazir Ali High School,89.1773916,23.545291,POINT
+"9592457854",nodes,,,school,Paturia Adarsha High School,89.4341901,23.6686191,POINT
+"9592025003",nodes,,,school,Mohammad Ali Academy,89.415242,23.6856688,POINT
+"9592025004",nodes,,,school,Laribari Adorsha High School,89.4300076,23.6850478,POINT
+"7416551009",nodes,,,school,Bakshadangi Govt. Primary School,89.4724105,23.6413979,POINT
+"9592024996",nodes,,,school,Hossan Danga Nilufar Rafique High School,89.3490281,23.7717099,POINT
+"9592024993",nodes,,,school,Kazi Abdul Majed Academy,89.3984443,23.7819165,POINT
+"2805666418",nodes,,,school,Magura Government Girls High School,89.4203807,23.4913258,POINT
+"2809034237",nodes,,,school,Bunagati Primary School,89.4246001,23.3121881,POINT
+"9702439948",nodes,,,school,34 No. Char Chandpur Govt. Primary School,89.7499396,23.6756392,POINT
+"9702430538",nodes,,,school,Udaypur Girls Ideal Academy,89.6759546,23.6426605,POINT
+"9702439947",nodes,,,school,Khan Khanapur Tamiz Uddin Khan Girls High School,89.7107354,23.6946178,POINT
+"2426548564",nodes,,,university,Primary Teacher Training Institute,89.8258062,23.6001487,POINT
+"2393814299",nodes,,,college,Jessore Commerce College,89.2205191,23.1728774,POINT
+"9579940158",nodes,,,school,Govt Primary School,89.436946,23.0999514,POINT
+"9586300355",nodes,,,school,Churamonkati High School,89.1656992,23.2157896,POINT
+"9524622106",nodes,,,school,Dhakaijora Hazi Korban Ali Memorial Institute,89.8897573,23.7999443,POINT
+"7451536967",nodes,,,school,৩৮ নং দড়িকান্দি সরকারি প্রাথমিক বিদ্যালয়,89.9573669,23.73769,POINT
+"9586300334",nodes,,,school,ABCD Degree College,89.0293368,23.3181005,POINT
+"9603778638",nodes,,,school,Churamonkati Govt Primary School,89.1642243,23.2307331,POINT
+"9586300325",nodes,,,school,Danbaksho Primary School,88.9859481,23.2742589,POINT
+"9705513317",nodes,,,school,Cheuria High School,89.1513219,23.8937434,POINT
+"9705513318",nodes,,,school,Mohini Mohan Vidyapith,89.1481997,23.8974776,POINT
+"9705618006",nodes,,,school,Naturiya Girls High School,89.1554189,23.8133208,POINT
+"9706366710",nodes,,,,Islamic University Laboratory School and College,89.1516998,23.7267253,POINT
+"9705293760",nodes,,,school,Fokir Kandi Girls High School,89.6388539,23.8765989,POINT
+"9705293757",nodes,,,school,Dhobakhola Coronation S. High School,89.6425151,23.9177947,POINT
+"9591980480",nodes,,,school,Matipara Kazi Samir Uddin High School,89.6475342,23.752728,POINT
+"9705293758",nodes,,,school,Khanpura High School,89.6549255,23.893854,POINT
+"5876233976",nodes,,,school,RKDS Pilot Girls School,89.8537526,22.3128254,POINT
+"5789482171",nodes,,,school,Rajoir Government Primary School,89.8560458,22.3234651,POINT
+"5787482557",nodes,,,school,Kalipur manikkkhali govt primary school cum cyclone shelter,89.9626932,22.1313365,POINT
+"5876233968",nodes,,,school,41 No North Kadamtala Primary School,89.847047,22.3047358,POINT
+"5777563286",nodes,,,school,Dakkhin Tafalbari Govt Primary School,89.8270492,22.2589728,POINT
+"5789482165",nodes,,,school,108 no Government Primary School,89.8080397,22.3194803,POINT
+"5735876795",nodes,,,college,Mujibnagar Government Degree College,88.6093563,23.7080046,POINT
+"9555986517",nodes,,,school,Deopul Adhar Memorial High School,88.8118241,22.9586268,POINT
+"9597542177",nodes,,,school,LMS Girls' High School,88.7889738,22.7256438,POINT
+"9597549351",nodes,,,school,Baduria London Missionary Society High School,88.7882121,22.7260475,POINT
+"5155304137",nodes,,,school,Ujalpur Government Primary School,88.6275935,23.817313,POINT
+"9705759528",nodes,,,school,,88.7845932,24.0458031,POINT
+"9705482209",nodes,,,school,Merit Model School,89.1229863,23.9061662,POINT
+"9705482210",nodes,,,school,Kustia Zilla School,89.1208785,23.9051249,POINT
+"9705442594",nodes,,,school,Barkhada Secondary School,89.0934462,23.9331309,POINT
+"9705513321",nodes,,,school,Dinomoni High School,89.1435536,23.8991902,POINT
+"9705482203",nodes,,,school,Hasan Zaman Lalon Junior High School,89.1429327,23.9021633,POINT
+"9705759527",nodes,,,school,J.M.G High School,88.7770726,24.0357588,POINT
+"9705759526",nodes,,,school,Bilgatua High School,88.7421462,24.0120715,POINT
+"2352385860",nodes,,,college,Pabna Covt. Edward College,89.2395872,24.0122726,POINT
+"9705293759",nodes,,,school,Kazir Hat High School,89.6626258,23.8815345,POINT
+"5342532638",nodes,,,school,,89.5266893,22.8848218,POINT
+"3494316193",nodes,,,school,শশি ভূষন শিশু নিকেতন,89.5196753,22.8782389,POINT
+"3577919818",nodes,,,school,Khanabari School,89.5030642,22.8969612,POINT
+"9584920087",nodes,,,school,High School,89.4471021,22.9768605,POINT
+"5339419830",nodes,,,school,,89.5518069,22.8740672,POINT
+"5339419868",nodes,,,school,Pother bazar school,89.5566429,22.8810533,POINT
+"5341283425",nodes,,,school,madrasa,89.5522803,22.8752732,POINT
+"9592457853",nodes,,,school,M.A. Razzak Adarsha High School,89.9652988,23.7366567,POINT
+"9591980461",nodes,,,school,DAULATDIA MODEL HIGH SCHOOL,89.7690315,23.7515596,POINT
+"9696960360",nodes,,,school,Boro Kalia Primary School,89.6316348,23.0536549,POINT
+"4266843625",nodes,,,school,Mollikpur Primary School,89.6435707,23.1577967,POINT
+"6098405437",nodes,,,school,110 no Nolbunia Govt Primary School,89.8198521,22.3521373,POINT
+"5783609605",nodes,,,school,54 no East Khontakata Government Primary School,89.8742741,22.3584232,POINT
+"6130936793",nodes,,,school,GH Nurul Islam Dakhil Madrasa of south Jomirtola,89.7900259,22.3935808,POINT
+"5876233977",nodes,,,kindergarten,Bhasani Kindergarten,89.8536935,22.3134755,POINT
+"5876233971",nodes,,,school,Sharankhola mohila Dakhil Madrasa,89.8409852,22.3104755,POINT
+"5983656040",nodes,,,school,East Amra Gachia Govt Primary School,89.8199996,22.3310524,POINT
+"6039679853",nodes,,,school,Amra Gachia Bohumukhi High School,89.8097053,22.3336649,POINT
+"6098405445",nodes,,,school,Razapur Sundorbon Govt Primary School,89.807471,22.3495995,POINT
+"6039679874",nodes,,,school,Radha Laxmi Junior Girls School,89.8033565,22.3852628,POINT
+"5983656059",nodes,,,school,Radha Laxmi Junior Girls School,89.8033565,22.3852628,POINT
+"5876234405",nodes,,,school,East Khada Government Primary School,89.8276252,22.3053562,POINT
+"6087411567",nodes,,,school,"Government Primary school cum Cyclone center, 99 no",89.7527834,22.4185714,POINT
+"6087411573",nodes,,,school,West Amorbunia Non Governmental Primary School,89.7323584,22.4088167,POINT
+"5865432909",nodes,,,,Saheber Metho Adarsha Govt. Primary School,89.7090769,22.4489344,POINT
+"5846805637",nodes,,,school,Digraj Government Primary School,89.6747285,22.4352921,POINT
+"5856952039",nodes,,,school,Gowabariya Abul Kashem Sriti Dakhil Madrasha,89.8243421,22.4416461,POINT
+"5843982698",nodes,,,school,Yunus Ali Secondary School,89.6774322,22.4543136,POINT
+"5839468413",nodes,,,school,Yunus Ali Secondary School,89.6774724,22.4543383,POINT
+"5845496090",nodes,,,school,Mosque-based children and children's education center,89.6826893,22.4465149,POINT
+"5856949584",nodes,,,school,108 No. Baroikhali Govt. Primary School Cam Cyclone Shalter,89.8407814,22.477199,POINT
+"5835892086",nodes,,,school,Ullubonniya Gov. Primary School.,89.6480902,22.52776,POINT
+"5835892084",nodes,,,school,Chopra Gov. Primary School & Cyclone Center.,89.6471848,22.5060295,POINT
+"5841098038",nodes,,,school,Deyer khondo Government Primary School,89.6509051,22.4540682,POINT
+"5835892077",nodes,,,school,Sonailtola ABS Dakhil Madrasha.,89.6695048,22.515538,POINT
+"6087411566",nodes,,,school,"North Vashandol Primary School, 254 no",89.7544169,22.4173068,POINT
+"5876234420",nodes,,,school,Rajapur Government Primary School No 46,89.78383,22.3252813,POINT
+"4693157304",nodes,,,kindergarten,Govt. South Primary School,89.0664909,24.1197405,POINT
+"10956683612",nodes,,,,আশেকে রাসূল নূরে কোরান সিদ্দিকিয়া হাফিজিয়া মাদ্রাসা,88.9344352,24.1882946,POINT
+"10939033045",nodes,,,school,"South Gunari Secondary School, Ishwardi Union, Natore",89.0074446,24.1677816,POINT
+"10956681667",nodes,,,school,Monjilpukur High School,88.9114871,24.1933569,POINT
+"7503211761",nodes,,,college,Bagsyesta thoferh uddin govt primary school,88.852382,24.1851672,POINT
+"3302228773",nodes,,,,Khademul Islam Madrasha Complex,89.56363,22.8010263,POINT
+"6071752212",nodes,,,,"Institute of Library, Arts, Commerce and Sciences",89.5679631,22.8034168,POINT
+"9594405204",nodes,,,school,High School,89.5684097,22.8297201,POINT
+"9594405209",nodes,,,school,Rupsha Ghat Govt Primary School,89.5880547,22.8251554,POINT
+"6222337757",nodes,,,school,খুলনায় মদিনাতুল উলুম কড়ি্য়া মাদ্রাসা,89.5733705,22.7374013,POINT
+"10206557814",nodes,,,school,Kakmari Primary School,89.1881881,24.1795304,POINT
+"9592480852",nodes,,,school,Sadhana Academy,89.9624386,24.0267319,POINT
+"9628348146",nodes,,,school,Sahabatpu North Government Primary School,89.8789303,24.0884232,POINT
+"6121988052",nodes,,,school,Sutarkhali Secondary School,89.4796139,22.4998278,POINT
+"5835892091",nodes,,,school,Joykhaar Gov. Primary School Kam Cyclone Center.,89.6303393,22.5105781,POINT
+"9522347918",nodes,,,,CHUNKURI HIGH SCHOOL,89.5296033,22.5674519,POINT
+"9522347919",nodes,,,,SHAHID SMRITI  SECONDARY GIRLS SCHOOL,89.5219005,22.5788105,POINT
+"6126339863",nodes,,,school,pankhali momtaj begum high school,89.5047945,22.6331539,POINT
+"5942769101",nodes,,,kindergarten,Nogendronath Shishushikkha School,89.632255,22.4746704,POINT
+"6088107391",nodes,,,school,Talukdr Faruk High School,89.5544878,22.4566288,POINT
+"6088107407",nodes,,,school,Loudob Banishanta Gov. Primary School,89.5642108,22.4907877,POINT
+"6126763110",nodes,,,school,baroikhali lokkhindar govt primary school,89.5038745,22.5895335,POINT
+"6126763111",nodes,,,school,baroikhali lokkhindar govt school and cyclone centre,89.5040354,22.5898357,POINT
+"9592025001",nodes,,,school,Kashba Majail A H High School,89.3552267,23.7108106,POINT
+"6121988049",nodes,,,school,Naliyan Darul Madrasha,89.437927,22.4620747,POINT
+"6116328331",nodes,,,school,Kakrabuniya Alia Madrasha and Orphanage,89.4305831,22.5737751,POINT
+"6116328337",nodes,,,school,Jalalabad madrasha,89.4309103,22.5661169,POINT
+"6027830120",nodes,,,school,Poschim sree Nogar Primary School,89.4737506,22.5178346,POINT
+"6126763124",nodes,,,,lokkikhola dumolalum islamic madrasa,89.4683969,22.610329,POINT
+"6027830139",nodes,,,school,Joy Nagar Gov. Primary School Cam Cyclone Center.,89.4610631,22.5330785,POINT
+"6027830146",nodes,,,school,GP Secondary School,89.4602443,22.5337877,POINT
+"6027830137",nodes,,,school,Vita Vhanga Horichor Primary School cam cyclone center.,89.4494176,22.5206592,POINT
+"6122221035",nodes,,,school,Kalabagi Independent Ibtedayi Madrasah,89.4569774,22.4541265,POINT
+"6121988041",nodes,,,school,Sutarkhali Darul-ul-Madrasha,89.4595402,22.4703286,POINT
+"6112891102",nodes,,,school,South hadda primary and high school,89.4164948,22.4632422,POINT
+"6218230616",nodes,,,college,KALINAGAR COLLEGE,89.4357453,22.617155,POINT
+"6027830136",nodes,,,school,Ferick Dhanga BFC Primary School,89.4553989,22.5149654,POINT
+"5856952057",nodes,,,school,Tapal Baria Govt. Primary School,89.812183,22.4376274,POINT
+"9705192972",nodes,,,school,Central Grils High School,89.2392209,24.0077635,POINT
+"9705192970",nodes,,,school,Jagir Hossain Academy,89.2345409,24.0040067,POINT
+"9705203292",nodes,,,school,Bristy Model School,89.2477232,24.0215438,POINT
+"9705203290",nodes,,,school,Ichamati High School,89.2401741,24.0165683,POINT
+"9705192967",nodes,,,school,Al Haj Ahed Ali Biswas Collegiate High School,89.2170543,23.9983533,POINT
+"9705513320",nodes,,,school,Arua Para Girls Hgih School,89.1436815,23.8983918,POINT
+"9705227512",nodes,,,school,Noldaha Govt Primary School,89.3115936,23.9859514,POINT
+"9705227516",nodes,,,school,Sadullapur High School,89.3850132,23.9647267,POINT
+"9705295957",nodes,,,school,41 No. Char Bhawanipur Govt. Primary School,89.4014284,23.9346434,POINT
+"9579940152",nodes,,,school,Govt Primary School,89.4224487,23.1733594,POINT
+"9586300347",nodes,,,school,Noldanag High School,89.1381594,23.4067156,POINT
+"9603778648",nodes,,,school,Govt Primary School,89.0755513,23.37802,POINT
+"9521569709",nodes,,,,ARPANGASHIA P N HIGH SCHOOL,89.2040927,22.2964446,POINT
+"6126029391",nodes,,,college,Gazi Abdul Jabbar High School and College,89.26346,22.3792658,POINT
+"9520174468",nodes,,,,Dumuria Govt. Primary School,89.250374,22.244054,POINT
+"9516985904",nodes,,,school,Sundarbon Girls high School  Ground,89.1790589,22.2661716,POINT
+"5257243111",nodes,,,college,Munshiganj College,89.1528752,22.2661131,POINT
+"9596434701",nodes,,,school,Morolbari Govt Primary School,89.1308867,22.1907672,POINT
+"9521048917",nodes,,,,Shyamnagr Mohshin Collage,89.1067792,22.3390384,POINT
+"8999091927",nodes,,,school,অর্জুন্দাহ-শ্রীনিবাসকাঠী সরকারি প্রাথমিক বিদ্যালয়,89.8455159,23.2801275,POINT
+"5453201845",nodes,,,school,Bathadanga High School,89.8135035,23.2558956,POINT
+"9592480850",nodes,,,school,Betuajani High School,89.9361826,24.0401115,POINT
+"9523575839",nodes,,,school,Oxford Academy,89.7887934,23.839705,POINT
+"4853513223",nodes,,,school,,89.2296042,23.8608698,POINT
+"9705293761",nodes,,,school,Ratangonj Multilateral High School,89.6207782,23.8673171,POINT
+"9705293753",nodes,,,school,Birahimpur Alhaz Mirza  AB. Rashid High School,89.5615062,23.9666741,POINT
+"9592480870",nodes,,,school,Khalshi Adarsha High School,89.8159956,23.9174759,POINT
+"9705227515",nodes,,,,Dublia High School,89.3624147,23.9722502,POINT
+"9705295958",nodes,,,school,Shahid Dulal Pilot Girls High School,89.4078495,23.9418358,POINT
+"9705250761",nodes,,,school,Nowsher Mondol High School,89.3881868,23.9556635,POINT
+"9705354304",nodes,,,school,Manikhat High School,89.472673,23.888886,POINT
+"7418824195",nodes,,,,Kawsar Teaching House,89.632771,24.0781943,POINT
+"5221821252",nodes,,,,Pabna College,89.2365644,24.0068458,POINT
+"7444507865",nodes,,,,Bera High Government Primary School,89.6287351,24.0815525,POINT
+"7466854856",nodes,,,,Bera Hafizia Madrasah,89.6270393,24.0812575,POINT
+"9705203297",nodes,,,school,Shahid Rafiz Uddin High School,89.1835414,24.0615197,POINT
+"9705759522",nodes,,,,M.G. Secondary Girls School,88.8060309,24.0202881,POINT
+"9705759519",nodes,,,school,Daulat Khali High School,88.8350853,24.0050513,POINT
+"9705759520",nodes,,,school,Chak Daulatpur High School,88.8497711,24.0115499,POINT
+"5221821260",nodes,,,,Pabna Zilla School,89.2332011,24.0022484,POINT
+"9705192973",nodes,,,school,Adarsha Girls High School,89.2380449,24.0104518,POINT
+"9705203296",nodes,,,school,Ruppur High School,89.1954635,24.0492137,POINT
+"2352382625",nodes,,,school,Shahid Fazlur Haque High School,89.2484632,24.0062286,POINT
+"2352385382",nodes,,,school,RM Academy High School,89.2393601,24.0103573,POINT
+"9705227508",nodes,,,school,Ekdanta High School,89.3364528,24.0708758,POINT
+"2739046632",nodes,,,university,Govt M. M. College,89.2020144,23.1604381,POINT
+"9590448555",nodes,,,school,Police Line School,89.1966364,23.17305,POINT
+"9705227509",nodes,,,,Lakshmipur High School,89.3984894,24.0482193,POINT
+"9592480833",nodes,,,school,Nayankhan Memorial High School,89.8736908,24.0572653,POINT
+"9592480838",nodes,,,school,Mamud Nagar Govt Primary School,89.8913498,24.0476231,POINT
+"9592480866",nodes,,,school,Charmastul M.B.A High School,89.8382024,23.9389284,POINT
+"9705732056",nodes,,,school,Boalia Junior Girls High School,88.8470364,23.9556965,POINT
+"9705618000",nodes,,,school,Ibn Sina KG and Junior School,89.105589,23.8903802,POINT
+"9705482207",nodes,,,school,Kalakakali Secondary School,89.1214636,23.9042162,POINT
+"9705442595",nodes,,,,The Old Kushtia High School,89.1275929,23.9284815,POINT
+"9705482204",nodes,,,school,KUSTIA GOVT. GIRLS HIGH SCHOOL,89.1369793,23.9066174,POINT
+"10939189992",nodes,,,,"Rojatus Sunnah Qawmi Madrasah, Lalpur, Pabna Rd, Natore",88.9539395,24.1814806,POINT
+"10938954811",nodes,,,school,"Lalpur Bright Ideal School, Lalpur, Natore",88.9681673,24.1794203,POINT
+"5735983315",nodes,,,school,Kulbaria High School,88.6401695,23.8330294,POINT
+"5153998749",nodes,,,college,Meherpur Government Mohila College,88.632851,23.7742464,POINT
+"534843561",ways_poly,,,college,Noapara Sankarpasa Model Secondary School,89.3996673863053,23.0280319329879,POLYGON
+"490257907",ways_poly,,,school,Primary School,89.7176889035645,23.2371860371885,POLYGON
+"840487103",ways_poly,,,school,,89.280260509623,22.4096783537319,POLYGON
+"840650393",ways_poly,,,school,,89.2831709756234,22.3985024638246,POLYGON
+"541695905",ways_poly,,,school,Mohespur Boys School,88.9156883474829,23.357584932993,POLYGON
+"541695907",ways_poly,,,school,Moheshpur Girl School,88.9165685460658,23.3572142389585,POLYGON
+"353002012",ways_poly,,,college,Jhenaidah Polytechnic Institute,89.1991474516046,23.5418304146698,POLYGON
+"1184829898",ways_poly,,,school,Jashore Govt. Girls' High School,89.2063541630872,23.1648832529273,POLYGON
+"573402392",ways_poly,,,school,Muslim Academy,89.2066397438596,23.1665646038612,POLYGON
+"533128398",ways_poly,,,college,Kazi Nazrul islam Degree College কাজি নজরুল ইসলাম ডিগ্রী কলেজ,89.1664413179983,23.2439429046527,POLYGON
+"533132680",ways_poly,,,college,"Signal Training School, Jessore Cantonment",89.1820492384577,23.1974952428724,POLYGON
+"234396746",ways_poly,,,school,Mohim Institute,89.8232837305586,23.5989847135348,POLYGON
+"679017197",ways_poly,,,school,Burigoalini Forest Primary School,89.2388026035526,22.2495650415112,POLYGON
+"1033305368",ways_poly,,,school,Kopotakko High School,89.3198503520716,22.2630248812401,POLYGON
+"1033545144",ways_poly,,,,SUNDARBAN SECONDARY SCHOOL,89.3230585297716,22.467048011128,POLYGON
+"532666450",ways_poly,,,college,Kanchannagar Model High School কাঞ্চননগর মডেল হাই স্কুল,89.1769903755396,23.5418982608209,POLYGON
+"1033579281",ways_poly,,,,,89.5000116992197,22.5016927047431,POLYGON
+"1033579282",ways_poly,,,,BURIRDABUR SESDP MODEL HIGH SCHOOL,89.536177156293,22.4902759264128,POLYGON
+"381275472",ways_poly,,,school,Narail Government High School,89.5092021709202,23.172486761934,POLYGON
+"232400128",ways_poly,,,school,Damuhuda Pilot Girls high School,88.777497660699,23.603383511773,POLYGON
+"754249083",ways_poly,,,school,,88.8921233769193,23.6461369609818,POLYGON
+"536866284",ways_poly,,,school,Bhayna Pashchimpara Primary School,88.640428573705,23.3125827912493,POLYGON
+"536866325",ways_poly,,,school,Bhayna Jashodamani High School,88.6404274947918,23.3122286395141,POLYGON
+"440550329",ways_poly,,,college,Alamdanga Mohila College,88.9399612994822,23.764000532926,POLYGON
+"1033747857",ways_poly,,,school,Utali Pilot Girls High School,89.8177987282116,23.8482676914475,POLYGON
+"1033735120",ways_poly,,,school,Abdul Jalil Academy,89.786676274332,23.8131308848619,POLYGON
+"306094743",ways_poly,,,school,Noyabati school,89.5338223322087,22.8576608932051,POLYGON
+"552111107",ways_poly,,,,Agriculture Training Institute,89.5173345400942,22.8731283011003,POLYGON
+"1188796622",ways_poly,,,school,Palli Mangal Girls High School,89.5500392032079,22.8144557502883,POLYGON
+"350935316",ways_poly,,,university,Khanjahan Ali College,89.5053215708826,22.9140295545504,POLYGON
+"305272706",ways_poly,,,college,খুলনা পাবলিক কলেজ,89.5330210280409,22.8367846167521,POLYGON
+"252173977",ways_poly,,,school,Rajbari Government High School,89.6469040165119,23.7597895100497,POLYGON
+"581587769",ways_poly,,,university,Jessore University of Science & Technology,89.1252105486392,23.2333829345136,POLYGON
+"1033858994",ways_poly,,,school,Golam Mohiuddin Kamol High School,89.9690608339538,23.7691952695921,POLYGON
+"533104338",ways_poly,,,school,Bezpara Secondary School,89.1371638086755,23.4349413830731,POLYGON
+"1033182662",ways_poly,,,school,Sundarban Secondary school,89.1261596775252,22.2088433358684,POLYGON
+"1248895309",ways_poly,,,school,,89.1545951326565,22.228384420036,POLYGON
+"1033183212",ways_poly,,,,Shahebkhali Siddique Gazi Secondary School,89.0615360826953,22.2215730281209,POLYGON
+"543843395",ways_poly,,,school,Tripani Vidhapith High School,89.1504118149889,22.255964168149,POLYGON
+"533136145",ways_poly,,,school,Banwary Nagar C B Pilot High School,89.4481615939849,24.1573468587014,POLYGON
+"796857233",ways_poly,,,,Bera Monzur Kader Mohil Degree College,89.611115093987,24.0779337815937,POLYGON
+"797890390",ways_poly,,,,Bera Government B. B. Pilot High School,89.6181363640091,24.0833446967825,POLYGON
+"530199972",ways_poly,,,school,Galaxy School & College Bera-Pabna,89.6110382576163,24.0745771323462,POLYGON
+"1049811336",ways_poly,,,school,,89.8775828033703,24.0922672582404,POLYGON
+"638715763",ways_poly,,,school,"Technical Training Center, Khulna",89.4963907649736,22.8988177593685,POLYGON
+"534847348",ways_poly,,,school,Noapara Model Primary School নওয়াপাড়া মডেল প্রাথমিক বিদ্যালয়,89.38815595,23.0421047,POLYGON
+"1033858263",ways_poly,,,school,Diabari High School,89.9555078348376,23.7600259714251,POLYGON
+"352006695",ways_poly,,,school,Khanabari School,89.5037899260731,22.8970999514164,POLYGON
+"352006696",ways_poly,,,school,Khanabari School,89.5030603,22.8969636,POLYGON
+"608293255",ways_poly,,,college,Azam Khan Govt Commerce College,89.568257541708,22.8117633797602,POLYGON
+"325146945",ways_poly,,,college,"Academic Building,Khulna City College",89.5628206153719,22.8094146560011,POLYGON
+"323385425",ways_poly,,,college,Chalna MM College,89.51486753143,22.5974308601884,POLYGON
+"680535202",ways_poly,,,college,Govt. Shahpur Madhugram College,89.3976425293522,22.8663897814054,POLYGON
+"1188796621",ways_poly,,,college,Khulna College,89.5507774906278,22.8149525660325,POLYGON
+"441554588",ways_poly,,,school,Primary School,88.9379662816826,23.5902457789704,POLYGON
+"350945668",ways_poly,,,school,Lakhohati High School,89.5480844151771,22.9247489926912,POLYGON
+"984141225",ways_poly,,,school,Hapania-Singe Primary School,88.6435648975226,22.9230664076292,POLYGON
+"530252435",ways_poly,,,college,Dariapur High School দরিয়াপুর উচ্চ বিদ্যালয়,89.5726310298599,23.9639777726486,POLYGON
+"232400697",ways_poly,,,school,কার্পাসডাঙ্গা উচ্চ বিদ্যালয়,88.7094225617203,23.5736796441077,POLYGON
+"1179672909",ways_poly,,,school,Paikpara High School,88.9030453901854,24.194786736397,POLYGON
+"1179672961",ways_poly,,,college,"PAIKPARA COLLEGE, Pabna Rd, Lalpur, Natore",88.9030998482406,24.1951512603747,POLYGON
+"534841211",ways_poly,,,college,Noapara Pir Bari Madrasa,89.402415033518,23.0255107321695,POLYGON
+"531628696",ways_poly,,,college,Bagha Model High School,88.8357751257879,24.1958765034994,POLYGON
+"534798569",ways_poly,,,college,Educational Institute,89.4860689669359,22.9400604942612,POLYGON
+"1177996454",ways_poly,"100",,school,Pakurtola parimari school,89.6889153592691,24.1956048702353,POLYGON
+"530187443",ways_poly,,,college,Shahzadpur Government College,89.5959779364668,24.1764078938352,POLYGON
+"245265607",ways_poly,,,university,Bangabandhu Sheikh Mujibur Rahman Science and Technology University,89.8176780444728,22.9660217013481,POLYGON
+"1047780183",ways_poly,,,school,,89.8789695328344,24.0878515581443,POLYGON
+"1047780186",ways_poly,,,school,,89.8787738470828,24.0882253807208,POLYGON
+"382396105",ways_poly,,,college,Narail Govt. Victoria College,89.4987502679044,23.1619380149373,POLYGON
+"534826435",ways_poly,,,kindergarten,Rajghtat Kinder Garden School,89.4260287291505,23.0027603079216,POLYGON
+"1033861954",ways_poly,,,school,Jamunabad High School,89.8630666715969,23.7898907705077,POLYGON
+"578172990",ways_poly,,,school,Goalanda J.N.Govt.Primary School,89.765407978733,23.7241753625956,POLYGON
+"596707098",ways_poly,,,school,Kalabagi Sunderbans Secondary School,89.4469549231234,22.4363522317894,POLYGON
+"1033473814",ways_poly,,,,SHANKARKATI KHADIZA JR. GIRLS H. SCHOOL,89.1357305755944,22.3650065665392,POLYGON
+"1033404475",ways_poly,,,,P.D.K. Secondary Girl School,89.0307692,22.3461619,POLYGON
+"1033476158",ways_poly,,,,B.K. HIGH SCHOOL,89.2360575307131,22.3418571410074,POLYGON
+"1033740088",ways_poly,,,school,Aricha Belayet Hossain High School,89.7846551599406,23.836533399503,POLYGON
+"1033580685",ways_poly,,,,LAUDOBE BADAMTALA HIGH SCHOOL,89.5737414703282,22.5173032270383,POLYGON
+"911553429",ways_poly,,,school,,89.8160279911089,23.8031438566971,POLYGON
+"1187883466",ways_poly,,,school,B. K. School,89.5623363716754,22.8130708594929,POLYGON
+"1033388724",ways_poly,,,college,Shyamnagar Technical School and Collage,89.1828076211347,22.2676393605949,POLYGON
+"885644395",ways_poly,,,school,,89.6539844326108,22.4697784901414,POLYGON
+"1033475098",ways_poly,,,,117 No Birshing Govt. Primary School,89.2112450832895,22.2941373676822,POLYGON
+"533933628",ways_poly,,,college,St. Paul's High School,89.6112519083472,22.4676139842742,POLYGON
+"324636397",ways_poly,,,school,Batbunia Secondary School,89.46297625,22.5703934,POLYGON
+"533952407",ways_poly,,,college,Digraj Secondary School,89.5919213138046,22.5325118562648,POLYGON
+"1033580687",ways_poly,,,,BAJUA UNION HIGH SCHOOL,89.56838575,22.5286722,POLYGON
+"334919652",ways_poly,,,college,BN School & College বিএন স্কুল এন্ড কলেজ,89.5880211969016,22.5282133604227,POLYGON
+"305284629",ways_poly,,,,Royermahal Madrasah,89.5233483383063,22.8360058685174,POLYGON
+"1033521281",ways_poly,,,,BAMIA M M HIGH SCHOOL,89.2778149832469,22.4323864840752,POLYGON
+"1033544422",ways_poly,,,,LALUA BAGALI M.M. SECONDARY SCHOOL,89.2508046202979,22.4467661096573,POLYGON
+"668015284",ways_poly,,,school,,89.391435264331,22.5993872607928,POLYGON
+"381276174",ways_poly,,,school,Narail Govt. Primary School,89.5096982474565,23.1716851626381,POLYGON
+"679729849",ways_poly,,,school,Nokipur Pilot School,89.1023003217419,22.3470974541459,POLYGON
+"668015285",ways_poly,,,school,"144, Deluty Purbopara Govt. Primary School",89.4062012041149,22.5953736291625,POLYGON
+"666902881",ways_poly,,,school,Magura Deluti Primary School,89.4147187010645,22.6254974615566,POLYGON
+"666902877",ways_poly,,,school,,89.4353457947497,22.6171145427577,POLYGON
+"440445637",ways_poly,,,school,,89.210021724724,23.0151277855853,POLYGON
+"694212263",ways_poly,,,school,,88.6570427093828,22.8398225697048,POLYGON
+"694212264",ways_poly,,,school,,88.6576626171864,22.8394391033875,POLYGON
+"1154255301",ways_poly,,,kindergarten,,88.6366258009315,22.9072889749752,POLYGON
+"1005462691",ways_poly,,,school,Sri Sri Mahanambrata Missionary School,88.6414655203344,22.9410737746546,POLYGON
+"984141228",ways_poly,,,school,Gangadhar Sishu Niketan,88.6434187444159,22.9285196952319,POLYGON
+"957096706",ways_poly,,,,Al Azhar Hifzul Qurran Balika Madrasa,88.9504758978934,24.1822227818155,POLYGON
+"957415988",ways_poly,,,school,মাধবপুর সরকারি প্রাথমিক বিদ্যালয়,88.9494307515943,24.184060434114,POLYGON
+"531629426",ways_poly,,,college,College,88.8385849526441,24.1955936736985,POLYGON
+"1079214957",ways_poly,,,college,"ইন্সটিটিউট অব লাইভস্টক সাইন্স অ্যান্ড টেকনোলজি, খুলনা",89.4038724033915,22.8649191192721,POLYGON
+"368301306",ways_poly,,,college,Keshabpur College,89.2191899277879,22.9029343913899,POLYGON
+"664061285",ways_poly,,,school,Boroshanta Govt Primary School,89.0546890797529,22.6125248854841,POLYGON
+"1033582433",ways_poly,,,,ABUL HOSSAIN GIRLS HIGH SCHOOL,89.5220919,22.60632185,POLYGON
+"668015283",ways_poly,,,school,,89.402626504805,22.6186057788836,POLYGON
+"534826271",ways_poly,,,school,Rajghat Government Primary School রাজঘাট সরকারি প্রাইমারি বিদ্যালয়,89.42576075,23.00290115,POLYGON
+"573822060",ways_poly,,,,Banasree Shiksha Niketan,89.1545764331183,22.2281013998963,POLYGON
+"230958882",ways_poly,,,college,Jessore Polytechnique Institute,89.217988811376,23.1755057885606,POLYGON
+"367207688",ways_poly,,,college,Upasahar Degree College,89.2083895606613,23.1824535198528,POLYGON
+"535125012",ways_poly,,,school,School ground,89.3087803325152,23.1303731795224,POLYGON
+"1184829903",ways_poly,,,school,Jashore Collectorate School,89.2091793723014,23.1638120304175,POLYGON
+"575184089",ways_poly,,,school,Colectoret School,89.2091341966488,23.1638424932193,POLYGON
+"270523271",ways_poly,,,school,,89.2062872203739,23.1520598368053,POLYGON
+"533120915",ways_poly,,,college,Barobazar High School,89.1548049805478,23.3006724910679,POLYGON
+"305581394",ways_poly,,,college,Govt Haji Muhammad Mohsin College,89.5405535351989,22.8522172823175,POLYGON
+"535179813",ways_poly,,,college,Jessore Govt City College,89.2237031842237,23.1618573933249,POLYGON
+"627566880",ways_poly,,,college,সরকারি ব্রজলাল কলেজ,89.5294424513996,22.8675840610668,POLYGON
+"293510119",ways_poly,,,school,Vashani School area,89.5394009323845,22.856848300316,POLYGON
+"668015282",ways_poly,,,school,,89.4051538520479,22.632882346494,POLYGON
+"666895847",ways_poly,,,school,Jirbunia Sammilony Secondary School,89.4027692120425,22.6190724085511,POLYGON
+"1033580686",ways_poly,,,,BAJUA  SECONDARY  GIRLS SCHOOL,89.56586435,22.52775955,POLYGON
+"573402396",ways_poly,,,school,Badshah Faisal Islami Institute,89.2066247664564,23.164300165478,POLYGON
+"1184820630",ways_poly,,,college,"Govt. Michael Madhusudan (M M) College, Jashore",89.2024492199047,23.161606937344,POLYGON
+"1033180546",ways_poly,,,,Kalinchi A Gaffar Secondary School,89.0804976326076,22.2065757999527,POLYGON
+"324636398",ways_poly,,,school,Batbunia Secondary School,89.4632278992341,22.5706355257256,POLYGON
+"324636396",ways_poly,,,school,Batbunia Primary School,89.4640264243728,22.5706824095642,POLYGON
+"542202891",ways_poly,,,school,Taki Government High School,88.9333082577926,22.5868084203392,POLYGON
+"542202904",ways_poly,,,school,Taki Ramkrishna Mission High School,88.9223190436734,22.5840693644547,POLYGON
+"1145636704",ways_poly,,,college,Bagula Srikrishna College,88.6431842856931,23.3298091311915,POLYGON
+"1121951982",ways_poly,,,university,Mahanambrata Biochemic Medical College & Hospital,88.6379383445331,22.9445552947492,POLYGON
+"1212664923",ways_poly,,,school,NMMEM Primary School,88.6437363781613,22.930759746996,POLYGON
+"485493282",ways_poly,,,school,Purbo Barashur Mohidul Ulum Madrasa,89.7118836621806,23.2122355410004,POLYGON
+"1033404474",ways_poly,,,,,89.038618785014,22.3354347227662,POLYGON
+"1033472993",ways_poly,,,,ISWARIPUR A SOBHAN HIGH SCHOOL,89.1125297595462,22.314552553779,POLYGON
+"1033384047",ways_poly,,,,,89.1090679564846,22.3010090821514,POLYGON
+"439391407",ways_poly,,,school,Barashur Primary School Play Ground,89.7007761237585,23.2174870521447,POLYGON
+"232239851",ways_poly,,,college,Government Bangabandhu College,89.8281224127838,23.0068078879694,POLYGON
+"1033183211",ways_poly,,,,Shahebkhali Siddique Gazi Secondary School,89.0614235645101,22.2217215793876,POLYGON
+"1032928211",ways_poly,,,school,,89.1937880868651,22.2489372153987,POLYGON
+"1185222088",ways_poly,,,school,Barakpur Purbo Para Primary School,89.5282939868311,22.9195199874327,POLYGON
+"1033382707",ways_poly,,,,Bhetkhali A. Karim M. L. School,89.0916850159002,22.2516394856998,POLYGON
+"1033404044",ways_poly,,,,,89.0988489733009,22.2818217728673,POLYGON
+"1033383538",ways_poly,,,,,89.11540565,22.26440095,POLYGON
+"1033382708",ways_poly,,,school,Bhetkhali A. Karim M. L. School,89.0914745115092,22.2513218752526,POLYGON
+"542202898",ways_poly,,,school,Taki S.L. Girl's High School,88.9335968215355,22.5884050423964,POLYGON
+"543843396",ways_poly,,,college,,89.1527123401256,22.2660362443937,POLYGON
+"1033383616",ways_poly,,,,,89.13662895,22.27993205,POLYGON
+"1033383539",ways_poly,,,,Shreefulkati High School,89.1370246055796,22.2801167409249,POLYGON
+"226044428",ways_poly,,,college,Kushtia Polytechnic Institute,89.1335696165803,23.9022859638726,POLYGON
+"1033404473",ways_poly,,,,,89.0619259734944,22.2751299308969,POLYGON
+"553096255",ways_poly,,,school,,89.546476118066,22.887597520197,POLYGON
+"695917551",ways_poly,,,school,Batikamara School,89.249273214792,23.8616577378263,POLYGON
+"1033404527",ways_poly,,,,,89.0832309281774,22.3665066419211,POLYGON
+"1189531320",ways_poly,,,college,জয়নগর ইয়ার আলি খান কলেজ,89.7737232146227,23.2805044002492,POLYGON
+"252173989",ways_poly,,,college,রাজবাড়ী সরকারি আদর্শ মহিলা কলেজ,89.6448792200146,23.7539554620898,POLYGON
+"530737574",ways_poly,,,,Pabna Technical Training Center (PTTC),89.269232250083,24.0107321725507,POLYGON
+"530265022",ways_poly,,,college,Ataikula Amana Khatun Degree College,89.4216618559742,24.0340396126568,POLYGON
+"1033579283",ways_poly,,,,,89.5535741066118,22.4562921281176,POLYGON
+"610017763",ways_poly,,,school,26 No Sonatola Govt Primary School,89.8167615330635,22.259076633366,POLYGON
+"610769712",ways_poly,,,school,Govt Primary School Cum Cyclone Center,89.8326599316074,22.2519367738311,POLYGON
+"600075974",ways_poly,,,school,28 No Calitabunia Bazar Primary School Cycole Center,89.8289061163369,22.225340300206,POLYGON
+"610769739",ways_poly,,,school,Dakkhin Khuriakhali 100 No Govt Primary School,89.8142118738481,22.2152543946652,POLYGON
+"610531282",ways_poly,,,school,Ashroykendra Govt Primary School,89.8229348844174,22.2351259627396,POLYGON
+"1032928408",ways_poly,,,school,,89.1878283227061,22.2564176443055,POLYGON
+"610017771",ways_poly,,,school,Uttar Soantola Govt Primary School,89.80745495,22.27496805,POLYGON
+"371627100",ways_poly,,,university,Pabna Medical Collage,89.209162796313,24.0044198053428,POLYGON
+"1056214555",ways_poly,,,school,Shahid Rafiz Uddin High School,89.1834964063331,24.0614233656462,POLYGON
+"234396394",ways_poly,,,school,Sarda Sundory Mohila College,89.8272439871168,23.6005342880251,POLYGON
+"356040443",ways_poly,,,college,Government Rajendra College,89.8421064447846,23.6027792781561,POLYGON
+"1067844351",ways_poly,,,,Borodikshail Primary School,89.1707097759123,24.0724236398442,POLYGON
+"1033545143",ways_poly,,,,AMADI JAIGIRMOHAL TOKIM UDDIN HIGH SCHOOL,89.2781715243639,22.4578819478898,POLYGON
+"1242595431",ways_poly,,,school,,89.1688599723553,23.9128065109309,POLYGON
+"679031171",ways_poly,,,school,Patakhali Maddomik School,89.2664717950917,22.3041252171349,POLYGON
+"840650289",ways_poly,,,school,,89.2760399335006,22.3946825504914,POLYGON
+"1033305128",ways_poly,,,school,Dakshin Bedkashi High School and Ashroy kendro.,89.3179883983934,22.2406881324331,POLYGON
+"1033545145",ways_poly,,,,V.K. S. A.  GILA BARI P.G. UNITED ACADEMY,89.336741253608,22.4577394195885,POLYGON
+"1033545146",ways_poly,,,,KUMKHALI B B GIRLS HIGH SCHOOL,89.3850731737002,22.4655855579655,POLYGON
+"1033520729",ways_poly,,,,MILONI MADDYAMIK BIDDYAPITH,89.2578220840192,22.4078234835505,POLYGON
+"957415993",ways_poly,,,school,"Madhoppur Govt. Primary School, Lalpur, Natore",88.9491475064638,24.1841547005957,POLYGON
+"532470228",ways_poly,,,college,Banga Bhandhu College,89.1814467201178,23.6082480342136,POLYGON
+"533105137",ways_poly,,,college,Mahtab Uddin Degree College,89.1365250089693,23.4158145955979,POLYGON
+"914192593",ways_poly,,,school,Gatipara Primary School,88.8835030329509,23.0274712764596,POLYGON
+"639107788",ways_poly,,,school,Mobarokganj Sugar Mill School,89.1360363,23.39431715,POLYGON
+"533541446",ways_poly,,,college,Mongla government College,89.6155956590025,22.4734198035302,POLYGON
+"840825807",ways_poly,,,school,,89.3235346308124,22.3532149782131,POLYGON
+"536866326",ways_poly,,,school,Bhayna Purbapara Primary School,88.6428946432003,23.3077290405393,POLYGON
+"1207352832",ways_poly,,,school,Hasanhati Boro Dhopadi Abadat Ali Secondary School Ground,89.0677279937566,23.3285548434974,POLYGON
+"445651009",ways_poly,,,school,আলমডাঙ্গা পাইলট বালিকা উচ্চ বিদ্যালয়,88.9444254293899,23.7581003424477,POLYGON
+"531881490",ways_poly,,,college,বহলবাড়িয়া প্রাথমিক বিদ্যালয়,89.0347456898954,23.9664362869424,POLYGON
+"530761255",ways_poly,,,college,Muladuli High School মুলাডুলি উচ্চ বিদ্যালয়,89.1419258048822,24.1619426738355,POLYGON
+"377690464",ways_poly,,,school,Bilbyaoch Govt Primary School,89.6468374,23.05373735,POLYGON
+"793460890",ways_poly,,,school,Bera High School,89.6289791623172,24.0814010293136,POLYGON
+"524585606",ways_poly,,,,A.H.C TARANGA PRE CADET AND HIGH SCHOOL,89.6303499153985,24.0813860943271,POLYGON
+"381296605",ways_poly,,,school,Narail Govt. Girls High School,89.5120182188714,23.1726953006544,POLYGON
+"371594979",ways_poly,,,school,Khulna Zilla school,89.5734411656747,22.8129788708254,POLYGON
+"793424424",ways_poly,,,,BERA FAZIL MADRASAH,89.6311605916428,24.0800386849261,POLYGON
+"245070521",ways_poly,,,school,Madhukhali Govt. Primary School,89.6310067997019,23.5427015984637,POLYGON
+"539650574",ways_poly,,,college,Ishwardi Govt College,89.0746142069388,24.1289856783004,POLYGON
+"531899664",ways_poly,,,,Kushtia Technical School কুষ্টিয়া টেকনিক্যাল স্কুল,89.1188531703374,23.9031751946432,POLYGON
+"1207376859",ways_poly,,,college,Government Huseyn Shaheed Suhrawardi College Ground,89.4192634573154,23.4883636229184,POLYGON
+"561924846",ways_poly,,,school,Jamiyatu Altaf husaen al islamiah,89.2938201298126,23.4783941275399,POLYGON
+"539676132",ways_poly,,,university,Pabna Polytechnic,89.2413479751554,24.0190649161594,POLYGON
+"747231752",ways_poly,,,school,86 no Palerkhondo Government Primary School,89.7056893165616,22.4744875001048,POLYGON
+"746933770",ways_poly,,,school,231 no Thakurain Tola Primary School,89.7008307,22.45100285,POLYGON
+"532468102",ways_poly,,,school,Mirzapur Amena Khatun High School মির্জাপুর আমেনা খাতুন উচ্চ বিদ্যালয়,89.171499442828,23.6868542983807,POLYGON
+"439802600",ways_poly,,,school,Badokhali school,89.8389425688027,22.7355719088798,POLYGON
+"232400169",ways_poly,,,college,Wadud Shah Degree College,88.7830304692032,23.5984234901663,POLYGON
+"1207349592",ways_poly,,,school,35 No Jattrapur Government Primary School Ground,89.0576646605339,23.3259600722828,POLYGON
+"532475167",ways_poly,,,school,Arappur Precadet আরাপপুর প্রিক্যাডেট,89.1720226287395,23.5508346537752,POLYGON
+"578172970",ways_poly,,,school,Goalanda J.N.Govt.Primary School,89.7653054711447,23.7242723168594,POLYGON
+"578172993",ways_poly,,,school,Goalanda J.N.Govt.Primary School,89.76514985,23.7241465,POLYGON
+"533958456",ways_poly,,,college,Sudarban Degree Girls College,89.6438744505329,22.610515129347,POLYGON
+"551422309",ways_poly,,,school,D Ali Islamia Primary School,89.5642095295425,22.7969091893955,POLYGON
+"1033570592",ways_poly,,,,SUTERKHALI HIGH SCHOOL,89.4704021102582,22.4886834075341,POLYGON
+"1033473815",ways_poly,,,,KAI KHALI S.R. HIGH SCHOOL,89.1523883150374,22.3855526497162,POLYGON
+"551580785",ways_poly,,,school,Jamia Islamia Arabia Darul-ulm Madrasa,89.5591216771576,22.8059494401701,POLYGON
+"533962953",ways_poly,,,college,Shekhpur High School,89.6317098112235,22.7505490969207,POLYGON
+"533961795",ways_poly,,,college,Katakhali Primary School কাটাখালি প্রাথমিক বিদ্যালয়,89.6395997895909,22.7388215630677,POLYGON
+"306096924",ways_poly,,,school,Zia Primary school,89.5495455673516,22.8327385287817,POLYGON
+"531884969",ways_poly,,,college,Talbaria High School,89.0744443515666,23.9533277223568,POLYGON
+"530181246",ways_poly,,,college,Jamuna School and College যমুনা স্কুল অ্যান্ড কলেজের,89.5917793558512,24.1959002019597,POLYGON
+"565685841",ways_poly,,,university,Gopalganj Polytechnic Institute,89.7598125101404,23.0739196512292,POLYGON
+"293510131",ways_poly,,,college,Ahsanullah college,89.5565980763813,22.8136984362656,POLYGON
+"470259609",ways_poly,,,college,Pingolia Madrasha Area,89.7057136076836,23.2239769307839,POLYGON
+"1189531321",ways_poly,,,school,জয়নগর মাধ্যমিক বিদ্যালয়,89.7745151245141,23.2821624976508,POLYGON
+"1189531319",ways_poly,,,school,জয়নগর সরকারি প্রাথমিক বিদ্যালয়,89.7734265763433,23.2810890672824,POLYGON
+"610293088",ways_poly,,,college,Khulna Collegiate Girl's School & KCC Women's College,89.5750723412918,22.8029432457942,POLYGON
+"371685061",ways_poly,,,college,Khulna Alia Kamil (M A) Madrasha,89.5711477852072,22.8064528853488,POLYGON
+"530258995",ways_poly,,,school,Bonogram Girl's High School,89.4739124058765,23.9953087053475,POLYGON
+"796856469",ways_poly,,,,Bera Government Degree College,89.6121458079393,24.0757992850178,POLYGON
+"797891765",ways_poly,,,school,B B High School Ground,89.618129685391,24.0833506354689,POLYGON
+"354439306",ways_poly,,,college,Cantonment Public School & College,89.5018650752529,22.9211448112082,POLYGON
+"1187360549",ways_poly,,,college,Shaheed Sarwardy College,89.5467381636122,22.8085733279165,POLYGON
+"436825396",ways_poly,,,school,Magura Govt. High School,89.4148662223449,23.4863767412954,POLYGON
+"801883770",ways_poly,,,school,New bongaon High school,88.825490181716,23.0534863949524,POLYGON
+"801883768",ways_poly,,,college,Bongaon Dinabandhu Mahavidyalaya,88.8285163272626,23.0567001978075,POLYGON
+"807945761",ways_poly,,,school,Briliant child acadamy,88.8305108686742,23.0378206038429,POLYGON
+"534803086",ways_poly,,,school,Damodar Primary School,89.4788172960903,22.9633066698926,POLYGON
+"532658519",ways_poly,,,,BRTC Training Institute বিআরটিসি ট্রেনিং ইনস্টিটিউট,89.1907434307255,23.5430011037919,POLYGON
+"440548909",ways_poly,,,school,Alamdanga Govt. Pilot High School,88.9480012710461,23.7612224814031,POLYGON
+"440551222",ways_poly,,,college,আলমডাঙ্গা ডিগ্রি কলেজ,88.947757113285,23.7578277839928,POLYGON
+"445649794",ways_poly,,,school,আলমডাঙ্গা সিদ্দিকী মাদ্রাসা,88.9454463310786,23.7568705396233,POLYGON
+"237819447",ways_poly,,,university,ইসলামী বিশ্ববিদ্যালয়,89.150517616823,23.7219908034643,POLYGON
+"530737455",ways_poly,,,,Teachers Traning College,89.277921616906,24.0145546474369,POLYGON
+"802074834",ways_poly,,,school,Bongaon high school,88.8277706685933,23.0455641287064,POLYGON
+"537099041",ways_poly,,,school,বনওয়ারী নগর মডেল সরকারী প্ৰাথমিক বিদ্যালয়,89.4469204141843,24.156963897387,POLYGON
+"530268760",ways_poly,,,school,Pushpapara Kamil (M.A) Madrasha,89.3350042121779,24.0343675824584,POLYGON
+"807689481",ways_poly,,,school,,88.8363994283284,23.0339641510903,POLYGON
+"226044320",ways_poly,,,college,কুষ্টিয়া সরকারি কলেজ,89.1286216375839,23.9021320484235,POLYGON
+"1047780178",ways_poly,,,school,,89.8781602338446,24.0877366787192,POLYGON
+"664061282",ways_poly,,,school,Ticket Government Primary School,89.066868914904,22.6179337012924,POLYGON
+"664061286",ways_poly,,,school,Central High School Subarnabad,89.0483043693624,22.6205900572744,POLYGON
+"1072935116",ways_poly,,,college,"North Khulna Govt. College , Terokhada",89.6734330943154,22.9311841504475,POLYGON
+"1073032053",ways_poly,,,,Ikhari Dhakil Madrasha,89.6636369216605,22.9298196245213,POLYGON
+"530760814",ways_poly,,,college,মুলাডুলি কলেজ,89.1385973109316,24.1559980588619,POLYGON
+"1185223982",ways_poly,,,school,Lion's School and College,89.5439565937666,22.8017003030207,POLYGON
+"530738722",ways_poly,,,college,Islamia College,89.2596347846203,24.0105919919121,POLYGON
+"228199926",ways_poly,,,college,কুষ্টিয়া সরকারি মহিলা কলেজ,89.1244610239931,23.8958277963875,POLYGON
+"545677936",ways_poly,,,school,,89.5394668968432,22.8768304434011,POLYGON
+"530265394",ways_poly,,,college,Ataikula High School,89.4150719719223,24.0329028707077,POLYGON
+"530735076",ways_poly,,,college,PABNA CADET COLLEGE,89.2934514257895,24.0231451446743,POLYGON
+"530757295",ways_poly,,,school,Mokarram Memorial High School,89.1267096309436,24.1091348209004,POLYGON
+"331907342",ways_poly,,,university,Pabna University Of Science & Technology,89.2793440911151,24.0133122856418,POLYGON
+"331901702",ways_poly,,,university,Pabna Textile Engineering College,89.2498165025058,24.0203385821863,POLYGON
+"530742502",ways_poly,,,college,"M. Monsur Ali College এম, মনসুর আলী উচ্চ বিদ্যালয়",89.2510464583038,24.0213691689465,POLYGON
+"228201691",ways_poly,,,school,Kushtia Zilla School,89.1212862724911,23.9051041506282,POLYGON
+"610560709",ways_poly,,,school,29 No Southkhali Govt Primary School,89.8317064908277,22.2341735982733,POLYGON
+"1220350363",ways_poly,,,school,"Harishankarpur J C High Scool Playground, Jhenaidah",89.3006557986901,23.56108908335,POLYGON
+"533971066",ways_poly,,,university,"North Western University, Khulna",89.5575466939469,22.7801880185119,POLYGON
+"746933769",ways_poly,,,school,231 no Thakurain Tola Primary School,89.700931037318,22.4507894254558,POLYGON
+"638715762",ways_poly,,,school,"Govt. Laboratory High School, Khulna",89.4978409019167,22.8982442725976,POLYGON
+"533132997",ways_poly,,,college,"Signal Training School, Jessore Cantonment",89.1824191088156,23.1953837690195,POLYGON
+"232239357",ways_poly,,,college,Government Fazilatunnesa Mujib College,89.8242328454007,23.0058374019881,POLYGON
+"740985650",ways_poly,,,,,89.8152551876789,22.9929024533014,POLYGON
+"376062028",ways_poly,,,school,Shishu Bidya Niketon,89.6328481218792,23.040938024302,POLYGON
+"553096262",ways_poly,,,school,,89.5467888080214,22.8778391804051,POLYGON
+"627577284",ways_poly,,,university,Khulna University,89.5338525423346,22.8023013902372,POLYGON
+"532664479",ways_poly,,,college,Anirban Pre-Cadet And High School অনির্বাণ প্রি-ক্যাডেট এবং হাই স্কুলের,89.1800183791446,23.5432736102563,POLYGON
+"533095730",ways_poly,,,college,Jhenidah Siddikia Kamil Madrasah,89.170888106444,23.5385023262589,POLYGON
+"1097453585",ways_poly,,,,চিত্রা মহিলা কলেজ,89.6654626783727,22.9350168647783,POLYGON
+"371683248",ways_poly,,,college,Government Sundarban Adarsha Collage,89.5724840101549,22.8044339171637,POLYGON
+"687312483",ways_poly,,,,আড়ফাঙ্গাশিয়া সরকারী প্রাথমিক বিদ্যালয়,89.6534093051507,22.973853575211,POLYGON
+"534825718",ways_poly,,,college,RAJGHAT JAFARPUR SECONDARY SCHOOL রাজঘাট জাফরপুর মাধ্যমিক বিদ্যালয়,89.4252686683229,23.0015195710066,POLYGON
+"324283132",ways_poly,,,school,Purba Baniakhamar Govt Primary School,89.5621475734641,22.8038028413101,POLYGON
+"306096923",ways_poly,,,college,খুলনা পলিটেকনিক ইনস্টিটিউট,89.5438056126814,22.8455042405351,POLYGON
+"629090960",ways_poly,,,school,KDA Khanjahan Ali Govt Secondary School,89.5118259957125,22.9003104182311,POLYGON
+"268578751",ways_poly,,,school,Jashore Zilla School,89.2057302022539,23.1604374868984,POLYGON
+"573402587",ways_poly,,,school,Nabakishalay Pre-Cadet Nursery School,89.2075978548526,23.1606910146573,POLYGON
+"359866095",ways_poly,,,school,Monimohon Adarsha Full Gospel Church High School,89.95914855,23.21205215,POLYGON
+"490258065",ways_poly,,,school,Kashiani G.C pilot High School,89.71821625,23.2363505,POLYGON
+"485506172",ways_poly,,,school,Bhatiapara High School,89.7002112622305,23.2094375569273,POLYGON
+"439199273",ways_poly,,,school,Madrasa Area,89.7112617669549,23.2150116336935,POLYGON
+"439388131",ways_poly,,,school,Purbo Borashur Besorkari Primary School,89.7116091983458,23.2129631162391,POLYGON
+"352006719",ways_poly,,,school,Khanabari School,89.5030519028855,22.8971581747771,POLYGON
+"306048632",ways_poly,,,school,Bangabashi school,89.537450991438,22.8593437129942,POLYGON
+"293510690",ways_poly,,,college,Mohashin College,89.5402861940733,22.8517254399963,POLYGON
+"305282723",ways_poly,,,college,Khulna Govt. Women's College,89.5378614829942,22.8376022053692,POLYGON
+"1185222090",ways_poly,,,school,Barakpur Govt. High School,89.521078789704,22.9158288581098,POLYGON
+"1022826373",ways_poly,,,college,"মিলিটারি কলেজিয়েট স্কুল, খুলনা",89.4592764368876,22.951617836024,POLYGON
+"1185222091",ways_poly,,,school,,89.5571480970456,22.9596617281736,POLYGON
+"327372127",ways_poly,,,school,Abdur Samad Memorial Academy School,89.2105104230617,23.1600568761702,POLYGON
+"330218325",ways_poly,,,school,SOS Hermann Gmeiner School Khulna,89.5492269097109,22.8005951326132,POLYGON
+"328707821",ways_poly,,,school,Nanikhir High School,89.9515924765051,23.2381390797451,POLYGON
+"293511599",ways_poly,,,school,Rotary School,89.5421353427678,22.8488615638198,POLYGON
+"1189531322",ways_poly,,,school,জয়নগর বালিকা বিদ্যালয়,89.7747071344897,23.2815803460796,POLYGON
+"376069528",ways_poly,,,university,Khulna University of Engineering and Technology - KUET,89.5021630831012,22.900523074808,POLYGON
+"981896967",ways_poly,,,school,Mahadebpur Primary School,88.6389216465642,22.9481740253451,POLYGON
+"1093278164",ways_poly,,,school,Fatepur High School,88.5837260746088,22.945619187523,POLYGON
+"1001660713",ways_poly,,,school,Saliendra Sishu Vidyamandir & KG school,88.638872073584,22.9399673064694,POLYGON
+"1093278165",ways_poly,,,school,Fatepur Girls School,88.5828927618777,22.9455304477402,POLYGON
+"1005466263",ways_poly,,,college,Haringhata Mahavidyalaya,88.5718814235625,22.9551760278452,POLYGON
+"978366504",ways_poly,,,school,Heritage Day School - CBSE Affiliated,88.6264012307962,22.9447698495559,POLYGON
+"1004617376",ways_poly,,,school,Satberia Junior School Ground,88.6643644015437,22.9473076042116,POLYGON
+"1004617387",ways_poly,,,school,Belemath Primary School,88.6741572823328,22.943427006125,POLYGON
+"978372919",ways_poly,,,school,Nagarukhra High School (H.S),88.6400905691887,22.9396885876502,POLYGON
+"978372930",ways_poly,,,school,Nagarukhra Kshetra Mohan Girls High School (H.S),88.6418739647751,22.9361136357206,POLYGON
+"977799713",ways_poly,,,school,,88.6533409067048,22.9320281215782,POLYGON
+"745216388",ways_poly,,,school,Kalaroa G K M K Pilot High School,89.0413683688276,22.8570841741128,POLYGON
+"488653483",ways_poly,,,school,Satbaria High School,89.4419728934715,23.8874447814443,POLYGON
+"403108129",ways_poly,,,college,,88.8036055580745,23.8891695593755,POLYGON
+"533975608",ways_poly,,,school,Faridpur Zilla School ফরিদপুর জিলা স্কুল,89.84431535,23.60902045,POLYGON
+"436838867",ways_poly,,,college,Kalaroa Govt. College Play Ground,89.0427550293014,22.8545906213827,POLYGON
+"1033571606",ways_poly,,,,DAKKIN GUNARI SECONDSRY SCHOOL,89.4487258299976,22.4838536037085,POLYGON
+"545677943",ways_poly,,,college,Shenhati zaaria madrasha,89.544509990838,22.8711576599486,POLYGON
+"328472019",ways_poly,,,school,,89.5466189293672,22.8165842684068,POLYGON
+"693888151",ways_poly,,,university,"IT Incubation Centre, KUET",89.499281281016,22.9002537792953,POLYGON
+"235414505",ways_poly,,,school,Lion's School,89.5439762031656,22.8019661087625,POLYGON
+"305282722",ways_poly,,,school,Hazi Foyez Uddin School,89.5336045490659,22.8347220576217,POLYGON
+"1185878209",ways_poly,,,school,Al-Hera Kindergarten,89.5193334283199,22.9139573417592,POLYGON
+"545676057",ways_poly,,,school,Shenhati secendary school,89.5394431306507,22.8710480987937,POLYGON
+"533095879",ways_poly,,,college,Government Boys' High School সরকারি বালক উচ্চ বিদ্যালয়,89.1700100132084,23.5373754816345,POLYGON
+"845139155",ways_poly,,,school,পশ্চিম বাদুরতলা সরকারি প্রাথমিক বিদ্যালয়,89.9529838761176,22.0006093413378,POLYGON
+"845139153",ways_poly,,,school,বাদুরতলা স্বতন্ত্র ইবতেদায়ী মাদ্রাসা,89.9563338125454,22.0009410539428,POLYGON
+"537100496",ways_poly,,,school,বনওয়ারী নগর আলিয়া মাদ্রাসা,89.4466565679374,24.1574729464959,POLYGON
+"533135722",ways_poly,,,college,Yeasin Degree Colledge,89.446561019292,24.1571495271077,POLYGON
+"269778442",ways_poly,,,,PTI,89.2083065899111,23.1591905861042,POLYGON
+"270532794",ways_poly,,,school,Moumachi School,89.1990343159974,23.162826375004,POLYGON
+"268846041",ways_poly,,,school,Railgate Primary School,89.2048231010063,23.155479269033,POLYGON
+"1185248415",ways_poly,,,school,,89.5270888875417,22.8843941747315,POLYGON
+"356077600",ways_poly,,,college,Yasin College,89.8534166181815,23.6122993053979,POLYGON
+"978696054",ways_poly,,,school,Dighalgram Netaji Vidyapith (H.S),88.6365296008324,22.8975121648813,POLYGON
+"1042677364",ways_poly,,,school,Laxminathpur FP School,88.7946012214589,22.7355914767624,POLYGON
+"514768335",ways_poly,,,school,Baduria Basic School,88.7833109350042,22.7355983873695,POLYGON
+"531904061",ways_poly,,,,Self-Confidence Academic Education Center,89.11126715,23.8918885,POLYGON
+"928265217",ways_poly,,,,Islam Ganti High School,89.1738689551305,24.0803650727498,POLYGON
+"565326269",ways_poly,,,school,Parbazar Secondary School,89.0953274788527,23.1006354867897,POLYGON
+"745216582",ways_poly,,,school,Kalaroa Govt. Primary School,89.0407791312528,22.8575845745921,POLYGON
+"1055928525",ways_poly,,,school,Dhuldi Joypur  Girls High School,89.6804893168202,23.6889294498609,POLYGON
+"520515583",ways_poly,,,,Ganpur Primary School,88.8012960376347,22.7227189584655,POLYGON
+"1069197619",ways_poly,,,,Baduria LMS High School,88.7882137967486,22.7257934088888,POLYGON
+"542202902",ways_poly,,,school,Taki Bhabanath High School,88.9331902630744,22.5901902796204,POLYGON
+"542202895",ways_poly,,,college,Taki Government College,88.9331876883944,22.5876148987491,POLYGON
+"1033760002",ways_poly,,,school,Barangail Gopal Chandar High School,89.8704995718489,23.8508250669907,POLYGON
+"1054349992",ways_poly,,,college,নাগরপুর সরকারী কলেজ খেলার মাঠ,89.8744030538177,24.0602603434468,POLYGON
+"1047778206",ways_poly,,,school,,89.8781880806511,24.0858361670984,POLYGON
+"694212265",ways_poly,,,school,,88.6586194490352,22.8387008716413,POLYGON
+"534802267",ways_poly,,,college,Damodar M.M High School,89.4795712506614,22.9505507726313,POLYGON
+"1012010653",ways_poly,,,university,Site for Nagarukhra Govt Collage,88.6402730977206,22.9345081131283,POLYGON
+"306096925",ways_poly,,,school,Port school,89.549106634837,22.8356409006562,POLYGON
+"1069135490",ways_poly,,,,Kulia School,88.8277734067586,22.7695817910079,POLYGON
+"514768164",ways_poly,,,school,Baduria Dillip Kumar Momorial High School,88.7840722284869,22.735576644012,POLYGON
+"532466950",ways_poly,,,college,Sheikhpara Dukhi Mahmud College শেখপাড়া দুঃখী মাহমুদ ডি.এম ডিগ্রি কলেজ,89.156504839877,23.710523015323,POLYGON
+"638715761",ways_poly,,,college,"Govt. Teacher's Training College, Khulna",89.4991709876722,22.8984536591527,POLYGON
+"553444223",ways_poly,,,university,"Govt. M A Mazid School and College, Digholia",89.5226131545488,22.8944302066383,POLYGON
+"234785012",ways_poly,,,school,Yeasin High School,89.6484199300785,23.7613477971699,POLYGON
+"6596023",relations,,,school,Purbo Kalia Govt Primary School,89.6331405072628,23.0398216196141,POLYGON
+"10452617",relations,,,college,,89.5729071833648,23.6943852314331,POLYGON
+"8229435",relations,,,school,বেনাপোল উচ্চ বিদ্যালয়,88.9020597570013,23.0454454140044,POLYGON
+"6596020",relations,,,school,Kalia Pilot High School,89.6299881810794,23.0406486833867,POLYGON
+"10030379",relations,,,college,Baliakandi Government College,89.5524117155865,23.635995424608,POLYGON
+"8165132",relations,,,college,Jessore Cantonment College,89.1887453250662,23.1709155222071,POLYGON
+"8257288",relations,,,school,Meherpur Govt. Girls High School,88.6310322696569,23.7760408465595,POLYGON
+"7890111",relations,,,school,ME,89.5017419720638,22.9003700783256,POLYGON
+"6596019",relations,,,school,Kalia P S Girlas School,89.6318116588856,23.0402690729822,POLYGON
+"8165138",relations,,,school,Badshah Faisal School (Upasahar),89.2092485966814,23.1830870159641,POLYGON
+"9932681",relations,,,college,"Government Textile Vocational Institute, Khulna",89.5446718998471,22.7828617157513,POLYGON
+"10018073",relations,,,school,আঙ্কুর কলেজিয়েট স্কুল অ্যান্ড কলেজ,89.645891832026,23.7572019470718,POLYGON
+"10452616",relations,,,school,,89.5748492842968,23.6947896823529,POLYGON

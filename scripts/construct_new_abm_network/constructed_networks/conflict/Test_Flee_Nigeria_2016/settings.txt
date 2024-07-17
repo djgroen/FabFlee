@@ -1,0 +1,20 @@
+# template settings for the network to be used in the acled api 
+# Read by settings.py 
+# left of equals sign (=) is variable name
+# right of the equals sign (=) is variable definition 
+
+# Set the API key
+api_key = j7hcO8*EAEchDkTrNHE4
+email = laura.harbach@brunel.ac.uk
+
+# Network Name 
+network_name = Test_Flee_Nigeria_2016
+
+# Network Type - conflict or disaster_flood
+network_type = conflict 
+
+# Set the network parameters 
+start_date = 2016-01-01
+end_date = 2016-12-31
+country = Nigeria          
+event_type = Battle
