@@ -1,0 +1,764 @@
+LGA,State,Geopolitical zone, Total killed , # of incidents with killing , Total civilians killed ,Christians,Muslims,ATR,Unknown, Security Forces , Terror Groups ,Index
+Aba North,Abia,South East,9,5,5,5, -   , -   , -   ,1,3, Aba NorthAbiaSouth East 
+Aba South,Abia,South East,49,24,32,21, -   , -   ,11,5,12, Aba SouthAbiaSouth East 
+Abadam,Borno,North East,826,58,31,6,8, -   ,17,80,715, AbadamBornoNorth East 
+Abadan,Borno,North East,176,26, -   , -   , -   , -   , -   ,96,80, AbadanBornoNorth East 
+Abaji,Abuja FCT,North Central,24,15,22,4,7, -   ,11, -   ,2, AbajiAbuja FCTNorth Central 
+Abak,Akwa Ibom,South South,2,2,1, -   , -   , -   ,1, -   ,1, AbakAkwa IbomSouth South 
+Abakaliki,Ebonyi,South East,14,8,8,1, -   , -   ,7,3,3, AbakalikiEbonyiSouth East 
+Abakaliki ,Ebonyi,South East,26,14,16,16, -   , -   , -   ,8,2, Abakaliki EbonyiSouth East 
+Abeokuta North,Ogun,South West,15,12,10,6,2, -   ,2,3,2, Abeokuta NorthOgunSouth West 
+Abeokuta North,Ogun,South West,6,6,5,4,1, -   , -   , -   ,1, Abeokuta NorthOgunSouth West 
+Abeokuta South,Ogun,South West,21,10,19,2,4, -   ,13, -   ,2, Abeokuta SouthOgunSouth West 
+Abeokuta South,Ogun,South West,19,10,17,9,4,4, -   , -   ,2, Abeokuta SouthOgunSouth West 
+Abi,Cross River,South South,2,1,2,2, -   , -   , -   , -   , -   , AbiCross RiverSouth South 
+Aboh Mbaise,Imo,South East,14,8,13,8,2, -   ,3,1, -   , Aboh MbaiseImoSouth East 
+Abua/Odual,Rivers,South South,3,2,1,1, -   , -   , -   ,2, -   , Abua/OdualRiversSouth South 
+Abuja Municipal,Abuja FCT,North Central,73,45,63,20,11,1,31,5,5, Abuja MunicipalAbuja FCTNorth Central 
+Adavi,Kogi,North Central,9,5,6, -   ,1, -   ,5,3, -   , AdaviKogiNorth Central 
+Adiyani ,Jigawa,North West,3,1,3,3, -   , -   , -   , -   , -   , Adiyani JigawaNorth West 
+Ado,Benue,North Central,184,20,180,170, -   , -   ,10,1,3, AdoBenueNorth Central 
+Ado-Ekiti,Ekiti,South West,16,14,15,6,3, -   ,6, -   ,1, Ado-EkitiEkitiSouth West 
+Ado-Odo/Ota,Ogun,South West,19,11,13,6, -   , -   ,7,1,5, Ado-Odo/OtaOgunSouth West 
+Afijio,Oyo,South West,11,5,10,6,1,2,1,1, -   , AfijioOyoSouth West 
+Afikpo North,Ebonyi,South East,17,7,12,9, -   , -   ,3,4,1, Afikpo NorthEbonyiSouth East 
+Afikpo North ,Ebonyi,South East,2,1,2,2, -   , -   , -   , -   , -   , Afikpo North EbonyiSouth East 
+Afikpo North LGA,Ebonyi,South East,1,1, -   , -   , -   , -   , -   , -   ,1, Afikpo North LGAEbonyiSouth East 
+Afikpo South,Ebonyi,South East,7,3,7, -   , -   , -   ,7, -   , -   , Afikpo SouthEbonyiSouth East 
+Afikpo South ,Ebonyi,South East,114,7,113,113, -   , -   , -   ,1, -   , Afikpo South EbonyiSouth East 
+Agaie,Niger,North Central,13,7,11,8, -   , -   ,3, -   ,2, AgaieNigerNorth Central 
+Agatu,Benue,North Central,163,35,163,126, -   , -   ,37, -   , -   , AgatuBenueNorth Central 
+Agbadu,Kogi,North Central,15,2,15,15, -   , -   , -   , -   , -   , AgbaduKogiNorth Central 
+Agege,Lagos,South West,18,11,8,3,1,1,3, -   ,10, AgegeLagosSouth West 
+Aguata,Anambra,South East,76,23,34,30, -   , -   ,4,10,32, AguataAnambraSouth East 
+Agwara,Niger,North Central,3,2,3,3, -   , -   , -   , -   , -   , AgwaraNigerNorth Central 
+Ahiazu Mbaise,Imo,South East,2,2,2,1, -   , -   ,1, -   , -   , Ahiazu MbaiseImoSouth East 
+Ahoada East,Rivers,South South,35,8,15,7, -   ,8, -   ,1,19, Ahoada EastRiversSouth South 
+Ahoada West,Rivers,South South,36,15,34,26, -   , -   ,8, -   ,2, Ahoada WestRiversSouth South 
+Aiyekire,Ekiti,South West,1,1,1, -   , -   , -   ,1, -   , -   , AiyekireEkitiSouth West 
+Ajaokuta,Kogi,North Central,26,4,21,7,3, -   ,11,5, -   , AjaokutaKogiNorth Central 
+Ajeromi-Ifelodun,Lagos,South West,11,6,7,4,1, -   ,2,1,3, Ajeromi-IfelodunLagosSouth West 
+Akamkpa,Cross River,South South,2,2,1,1, -   , -   , -   ,1, -   , AkamkpaCross RiverSouth South 
+Akinyele,Oyo,South West,54,39,47,11,1, -   ,35,3,4, AkinyeleOyoSouth West 
+Akko,Gombe,North East,3,3,2,1,1, -   , -   , -   ,1, AkkoGombeNorth East 
+Akoko North-East,Ondo,South West,28,13,27,14,3,1,9, -   ,1, Akoko North-EastOndoSouth West 
+Akoko North-West,Ondo,South West,7,6,7,2, -   , -   ,5, -   , -   , Akoko North-WestOndoSouth West 
+Akoko South-East,Ondo,South West,2,2,1,1, -   , -   , -   , -   ,1, Akoko South-EastOndoSouth West 
+Akoko South-West,Ondo,South West,5,4,2,1, -   , -   ,1,1,2, Akoko South-WestOndoSouth West 
+Akoko-Edo,Edo,South South,22,6,11,11, -   , -   , -   ,5,6, Akoko-EdoEdoSouth South 
+Akpabuyo,Cross River,South South,30,10,19, -   , -   , -   ,19, -   ,11, AkpabuyoCross RiverSouth South 
+Akuku-Toru,Rivers,South South,4,2,1,1, -   , -   , -   ,3, -   , Akuku-ToruRiversSouth South 
+Akure North,Ondo,South West,13,10,13,5,1, -   ,7, -   , -   , Akure NorthOndoSouth West 
+Akure South,Ondo,South West,28,21,27,15, -   ,1,11,1, -   , Akure SouthOndoSouth West 
+Akwanga,Nasarawa,North Central,9,7,4,2,1, -   ,1,3,2, AkwangaNasarawaNorth Central 
+Aleiro,Kebbi,North West,1,1,1, -   , -   , -   ,1, -   , -   , AleiroKebbiNorth West 
+Alimosho,Lagos,South West,46,26,43,20,3, -   ,20,1,2, AlimoshoLagosSouth West 
+Alkaleri,Bauchi,North East,91,15,50,14,36, -   , -   , -   ,41, AlkaleriBauchiNorth East 
+Amowo Odofin,Lagos,South West,4,3,4, -   , -   , -   ,4, -   , -   , Amowo OdofinLagosSouth West 
+Amuwo Odofin,Lagos,South West,5,4,4,3,1, -   , -   ,1, -   , Amuwo OdofinLagosSouth West 
+Anambra East,Anambra,South East,23,8,13,3, -   , -   ,10,2,8, Anambra EastAnambraSouth East 
+Anambra West,Anambra,South East,1,1, -   , -   , -   , -   , -   , -   ,1, Anambra WestAnambraSouth East 
+Anaocha,Anambra,South East,25,7,6,6, -   , -   , -   ,12,7, AnaochaAnambraSouth East 
+Anaocha ,Anambra,South East,1,1,1,1, -   , -   , -   , -   , -   , Anaocha AnambraSouth East 
+Andoni,Rivers,South South,10,5,10,3, -   , -   ,7, -   , -   , AndoniRiversSouth South 
+Aninri,Enugu,South East,2,1,2,2, -   , -   , -   , -   , -   , AninriEnuguSouth East 
+Aniocha North,Delta,South South,12,9,11,9, -   , -   ,2,1, -   , Aniocha NorthDeltaSouth South 
+Aniocha South,Delta,South South,30,20,15,3, -   ,3,9,6,9, Aniocha SouthDeltaSouth South 
+Anka,Zamfara,North West,443,28,334,79,221, -   ,34,10,99, AnkaZamfaraNorth West 
+Ankpa,Kogi,North Central,15,3,14,5, -   , -   ,9,1, -   , AnkpaKogiNorth Central 
+Apa,Benue,North Central,233,26,229,210, -   , -   ,19,1,3, ApaBenueNorth Central 
+Apapa,Lagos,South West,26,14,19,11, -   , -   ,8,1,6, ApapaLagosSouth West 
+Ardo Kola,Taraba,North East,34,6,32,11,16, -   ,5,1,1, Ardo KolaTarabaNorth East 
+Arewa Dandi,Kebbi,North West,7,1, -   , -   , -   , -   , -   ,7, -   , Arewa DandiKebbiNorth West 
+Argungu,Kebbi,North West,1,1, -   , -   , -   , -   , -   ,1, -   , ArgunguKebbiNorth West 
+Arochukwu,Abia,South East,16,5,3,1, -   , -   ,2,2,11, ArochukwuAbiaSouth East 
+Asa,Kwara,North Central,12,10,10,2,4, -   ,4, -   ,2, AsaKwaraNorth Central 
+Asari-Toru,Rivers,South South,4,3,3,3, -   , -   , -   ,1, -   , Asari-ToruRiversSouth South 
+Askira/Uba,Borno,North East,451,47,199,150,19, -   ,30,36,216, Askira/UbaBornoNorth East 
+Atakumosa East,Osun,South West,3,1, -   , -   , -   , -   , -   , -   ,3, Atakumosa EastOsunSouth West 
+Atakumosa West,Osun,South West,14,5,7, -   , -   , -   ,7,3,4, Atakumosa WestOsunSouth West 
+Atakunmosa East,Osun,South West,1,1,1,1, -   , -   , -   , -   , -   , Atakunmosa EastOsunSouth West 
+Atakunmosa West,Osun,South West,7,4,4,4, -   , -   , -   ,2,1, Atakunmosa WestOsunSouth West 
+Atiba,Oyo,South West,2,1, -   , -   , -   , -   , -   ,2, -   , AtibaOyoSouth West 
+Atisbo,Oyo,South West,4,2,4, -   , -   , -   ,4, -   , -   , AtisboOyoSouth West 
+Augie,Kebbi,North West,10,4,9,4,2, -   ,3, -   ,1, AugieKebbiNorth West 
+Auyo,Jigawa,North West,1,1,1, -   ,1, -   , -   , -   , -   , AuyoJigawaNorth West 
+Awe,Nasarawa,North Central,8,4,6,2, -   , -   ,4, -   ,2, AweNasarawaNorth Central 
+Awgu,Enugu,South East,8,6,5,5, -   , -   , -   , -   ,3, AwguEnuguSouth East 
+Awka North,Anambra,South East,41,11,31,23, -   , -   ,8, -   ,10, Awka NorthAnambraSouth East 
+Awka South,Anambra,South East,77,34,53,38, -   , -   ,15,11,13, Awka SouthAnambraSouth East 
+Ayamelum,Anambra,South East,35,10,33,11, -   , -   ,22,2, -   , AyamelumAnambraSouth East 
+Babura,Jigawa,North West,3,3,2, -   ,1, -   ,1, -   ,1, BaburaJigawaNorth West 
+Badagry,Lagos,South West,4,4,4, -   ,3, -   ,1, -   , -   , BadagryLagosSouth West 
+Bade,Yobe,North East,30,6,26,2,1, -   ,23, -   ,4, BadeYobeNorth East 
+Bagudo,Kebbi,North West,4,3,3,2,1, -   , -   , -   ,1, BagudoKebbiNorth West 
+Bagwai,Kano,North West,2,1,2, -   , -   , -   ,2, -   , -   , BagwaiKanoNorth West 
+Bakori,Katsina,North West,170,8,120,66,48,4,2,50, -   , BakoriKatsinaNorth West 
+Bakura,Zamfara,North West,294,30,166,45,107, -   ,14,13,115, BakuraZamfaraNorth West 
+Bakura,Niger,North Central,19,1, -   , -   , -   , -   , -   , -   ,19, BakuraNigerNorth Central 
+Balanga,Gombe,North East,29,5,28,23, -   , -   ,5,1, -   , BalangaGombeNorth East 
+Bali,Taraba,North East,254,28,246,169,22,12,43, -   ,8, BaliTarabaNorth East 
+Bama,Borno,North East,2140,164,146,5,57, -   ,84,131,1863, BamaBornoNorth East 
+Barkin Ladi,Plateau,North Central,154,52,141,124,1,1,15,4,9, Barkin LadiPlateauNorth Central 
+Baruten,Kwara,North Central,7,3,6, -   ,1, -   ,5,1, -   , BarutenKwaraNorth Central 
+Bassa,Plateau,North Central,615,157,607,442,14, -   ,151,7,1, BassaPlateauNorth Central 
+Bassa,Kogi,North Central,17,3,17,14, -   , -   ,3, -   , -   , BassaKogiNorth Central 
+Batagarawa,Katsina,North West,47,16,46,5,31, -   ,10, -   ,1, BatagarawaKatsinaNorth West 
+Batsari,Katsina,North West,382,56,184,52,73, -   ,59,16,182, BatsariKatsinaNorth West 
+Bauchi,Bauchi,North East,7,6,7, -   , -   , -   ,7, -   , -   , BauchiBauchiNorth East 
+Bauchi ,Bauchi,North East,18,11,17,5,11,1, -   , -   ,1, Bauchi BauchiNorth East 
+Bauchi Central Local Government Area,Bauchi,North East,3,1,3, -   ,3, -   , -   , -   , -   , Bauchi Central Local Government AreaBauchiNorth East 
+Baure,Katsina,North West,1,1,1, -   ,1, -   , -   , -   , -   , BaureKatsinaNorth West 
+Bayo,Borno,North East,18,3,18,2,16, -   , -   , -   , -   , BayoBornoNorth East 
+Bekwarra,Cross River,South South,1,1,1,1, -   , -   , -   , -   , -   , BekwarraCross RiverSouth South 
+Bende,Abia,South East,1,1, -   , -   , -   , -   , -   ,1, -   , BendeAbiaSouth East 
+Biase,Cross River,South South,29,10,27,8, -   , -   ,19,2, -   , BiaseCross RiverSouth South 
+Bida,Niger,North Central,8,1, -   , -   , -   , -   , -   , -   ,8, BidaNigerNorth Central 
+Billiri,Gombe,North East,30,6,30,24,2, -   ,4, -   , -   , BilliriGombeNorth East 
+Bindawa,Katsina,North West,2,1, -   , -   , -   , -   , -   , -   ,2, BindawaKatsinaNorth West 
+Binji,Sokoto,North West,1,1,1, -   , -   , -   ,1, -   , -   , BinjiSokotoNorth West 
+Birnin Gwari,Kaduna,North West,949,156,337,177,74, -   ,86,63,549, Birnin GwariKadunaNorth West 
+Birnin Kebbi,Kebbi,North West,13,4,13, -   ,12, -   ,1, -   , -   , Birnin KebbiKebbiNorth West 
+Birnin Kudu,Jigawa,North West,2,2,2,1, -   , -   ,1, -   , -   , Birnin KuduJigawaNorth West 
+Birnin Magaji/Kiyaw,Zamfara,North West,180,11,19, -   ,16, -   ,3, -   ,161, Birnin Magaji/KiyawZamfaraNorth West 
+Biu,Borno,North East,292,38,79,49,20, -   ,10,43,170, BiuBornoNorth East 
+Bodinga,Sokoto,North West,2,2,2,1, -   , -   ,1, -   , -   , BodingaSokotoNorth West 
+Bogoro,Bauchi,North East,1,1,1,1, -   , -   , -   , -   , -   , BogoroBauchiNorth East 
+Boki,Cross River,South South,39,5,39,27, -   , -   ,12, -   , -   , BokiCross RiverSouth South 
+Bokkos,Plateau,North Central,109,32,109,90,8, -   ,11, -   , -   , BokkosPlateauNorth Central 
+Boluwaduro,Osun,South West,1,1,1,1, -   , -   , -   , -   , -   , BoluwaduroOsunSouth West 
+Bomadi,Delta,South South,2,2,1, -   , -   , -   ,1,1, -   , BomadiDeltaSouth South 
+Bonny,Rivers,South South,5,3,1, -   , -   , -   ,1, -   ,4, BonnyRiversSouth South 
+Borgu,Niger,North Central,108,16,16,8,5, -   ,3,2,90, BorguNigerNorth Central 
+Boripe,Osun,South West,4,2,4,4, -   , -   , -   , -   , -   , BoripeOsunSouth West 
+Bosso,Niger,North Central,138,12,20,12,6, -   ,2,62,56, BossoNigerNorth Central 
+Brass,Bayelsa,South South,8,4,8,8, -   , -   , -   , -   , -   , BrassBayelsaSouth South 
+Bukkuyum,Zamfara,North West,378,35,206,37,134, -   ,35,4,168, BukkuyumZamfaraNorth West 
+Bungudu,Zamfara,North West,322,48,237,22,99, -   ,116,27,58, BunguduZamfaraNorth West 
+Bunza,Kebbi,North West,1,1,1, -   , -   , -   ,1, -   , -   , BunzaKebbiNorth West 
+Bursari,Yobe,North East,34,5,7, -   , -   , -   ,7,14,13, BursariYobeNorth East 
+Buruku,Benue,North Central,16,6,13,12, -   , -   ,1, -   ,3, BurukuBenueNorth Central 
+Burutu,Delta,South South,5,5,5,4, -   , -   ,1, -   , -   , BurutuDeltaSouth South 
+Bwari,Abuja FCT,North Central,17,10,15,14,1, -   , -   ,2, -   , BwariAbuja FCTNorth Central 
+Calabar Municipal,Cross River,South South,35,16,19,3, -   , -   ,16,7,9, Calabar MunicipalCross RiverSouth South 
+Calabar South,Cross River,South South,6,4,6,2, -   , -   ,4, -   , -   , Calabar SouthCross RiverSouth South 
+Chanchaga,Niger,North Central,217,15,14,5,6, -   ,3,3,200, ChanchagaNigerNorth Central 
+Charanchi,Katsina,North West,3,1,3, -   , -   , -   ,3, -   , -   , CharanchiKatsinaNorth West 
+Chibok,Borno,North East,322,47,213,158,11, -   ,44,5,104, ChibokBornoNorth East 
+Chikun,Kaduna,North West,1064,253,718,535,34, -   ,149,21,325, ChikunKadunaNorth West 
+Damaturu,Yobe,North East,85,13,10, -   , -   , -   ,10,20,55, DamaturuYobeNorth East 
+Dambatta        ,Kano,North West,3,1,3, -   , -   , -   ,3, -   , -   , Dambatta        KanoNorth West 
+Damboa,Borno,North East,1002,121,119,30,28, -   ,61,265,618, DamboaBornoNorth East 
+Dandume,Katsina,North West,48,17,26,1,13, -   ,12, -   ,22, DandumeKatsinaNorth West 
+Dange Shuni,Sokoto,North West,2,2,2, -   ,1, -   ,1, -   , -   , Dange ShuniSokotoNorth West 
+Danja,Katsina,North West,11,8,8,2,5, -   ,1, -   ,3, DanjaKatsinaNorth West 
+Danko,Kebbi,North West,5,4,5, -   , -   , -   ,5, -   , -   , DankoKebbiNorth West 
+Danmusa,Katsina,North West,321,47,120,5,41, -   ,74,12,189, DanmusaKatsinaNorth West 
+Darazo,Bauchi,North East,1,1,1, -   , -   , -   ,1, -   , -   , DarazoBauchiNorth East 
+Dass,Bauchi,North East,1,1,1, -   , -   , -   ,1, -   , -   , DassBauchiNorth East 
+Daura,Katsina,North West,1,1, -   , -   , -   , -   , -   ,1, -   , DauraKatsinaNorth West 
+Degema,Rivers,South South,11,3,7,7, -   , -   , -   , -   ,4, DegemaRiversSouth South 
+Dekina,Kogi,North Central,35,16,33,19,7,1,6, -   ,2, DekinaKogiNorth Central 
+Demsa,Adamawa,North East,3,2,1, -   ,1, -   , -   ,1,1, DemsaAdamawaNorth East 
+Dikwa,Borno,North East,564,65,98,22,33, -   ,43,106,360, DikwaBornoNorth East 
+Doma,Nasarawa,North Central,108,10,96,23,65, -   ,8,10,2, DomaNasarawaNorth Central 
+Donga,Taraba,North East,67,23,63,46, -   , -   ,17, -   ,4, DongaTarabaNorth East 
+Dukku,Gombe,North East,1,1, -   , -   , -   , -   , -   , -   ,1, DukkuGombeNorth East 
+Dunukofia,Anambra,South East,3,3,2, -   ,1, -   ,1,1, -   , DunukofiaAnambraSouth East 
+Dutse,Jigawa,North West,19,5,18,15,2, -   ,1,1, -   , DutseJigawaNorth West 
+Dutsin-Ma,Katsina,North West,132,33,75,3,26, -   ,46,8,49, Dutsin-MaKatsinaNorth West 
+Dutsinma,Katsina,North West,2,1,2, -   , -   , -   ,2, -   , -   , DutsinmaKatsinaNorth West 
+Ebonyi,Ebonyi,South East,37,8,34, -   , -   , -   ,34,1,2, EbonyiEbonyiSouth East 
+Ebonyi LGA,Ebonyi,South East,1,1, -   , -   , -   , -   , -   ,1, -   , Ebonyi LGAEbonyiSouth East 
+Edati,Niger,North Central,3,1,3, -   , -   , -   ,3, -   , -   , EdatiNigerNorth Central 
+Ede North,Osun,South West,13,7,10,5,2, -   ,3, -   ,3, Ede NorthOsunSouth West 
+Edu,Kwara,North Central,4,2,4, -   ,1, -   ,3, -   , -   , EduKwaraNorth Central 
+Egbeda,Oyo,South West,4,4,4,2,1, -   ,1, -   , -   , EgbedaOyoSouth West 
+Egbedore,Osun,South West,3,3,2,1, -   , -   ,1,1, -   , EgbedoreOsunSouth West 
+Egor,Edo,South South,10,9,10, -   , -   , -   ,10, -   , -   , EgorEdoSouth South 
+Ehime Mbano,Imo,South East,20,6,2,2, -   , -   , -   ,17,1, Ehime MbanoImoSouth East 
+Ejigbo,Osun,South West,6,2,6, -   , -   , -   ,6, -   , -   , EjigboOsunSouth West 
+Ekeremor,Bayelsa,South South,4,2,3,3, -   , -   , -   , -   ,1, EkeremorBayelsaSouth South 
+Ekermor,Bayelsa,South South,11,2,2, -   , -   , -   ,2,8,1, EkermorBayelsaSouth South 
+Eket,Akwa Ibom,South South,18,7,18,6, -   , -   ,12, -   , -   , EketAkwa IbomSouth South 
+Ekiti,Kwara,North Central,7,6,6,5, -   , -   ,1, -   ,1, EkitiKwaraNorth Central 
+Ekiti East,Ekiti,South West,4,2,4, -   , -   , -   ,4, -   , -   , Ekiti EastEkitiSouth West 
+Ekiti West,Ekiti,South West,3,2,1,1, -   , -   , -   ,2, -   , Ekiti WestEkitiSouth West 
+Ekiti West,Ekiti,South West,1,1,1,1, -   , -   , -   , -   , -   , Ekiti WestEkitiSouth West 
+Ekwusigo,Anambra,South East,25,9,9,2, -   , -   ,7,8,8, EkwusigoAnambraSouth East 
+Eleme,Rivers,South South,20,6,13,4, -   , -   ,9, -   ,7, ElemeRiversSouth South 
+Emohua,Rivers,South South,81,36,43,22, -   , -   ,21,14,24, EmohuaRiversSouth South 
+Enugu East,Enugu,South East,19,12,13,11, -   , -   ,2,1,5, Enugu EastEnuguSouth East 
+Enugu North,Enugu,South East,27,15,17,12, -   , -   ,5,6,4, Enugu NorthEnuguSouth East 
+Enugu South,Enugu,South East,57,19,25,23, -   , -   ,2,26,6, Enugu SouthEnuguSouth East 
+Epe,Lagos,South West,7,4,7,2,1, -   ,4, -   , -   , EpeLagosSouth West 
+Esan Central,Edo,South South,7,2,1,1, -   , -   , -   , -   ,6, Esan CentralEdoSouth South 
+Esan North East,Edo,South South,3,1,3,3, -   , -   , -   , -   , -   , Esan North EastEdoSouth South 
+Esan North-East,Edo,South South,5,3,2, -   , -   , -   ,2,2,1, Esan North-EastEdoSouth South 
+Esan West,Edo,South South,4,3,2,2, -   , -   , -   ,2, -   , Esan WestEdoSouth South 
+Ese Odo,Ondo,South West,2,2,2,1, -   ,1, -   , -   , -   , Ese OdoOndoSouth West 
+Essien Udim,Akwa Ibom,South South,12,5,1, -   , -   , -   ,1,8,3, Essien UdimAkwa IbomSouth South 
+Etche,Rivers,South South,18,9,15,4, -   , -   ,11, -   ,3, EtcheRiversSouth South 
+Ethiope East,Delta,South South,18,14,14,7, -   , -   ,7,3,1, Ethiope EastDeltaSouth South 
+Ethiope West,Delta,South South,36,14,18,14,1, -   ,3, -   ,18, Ethiope WestDeltaSouth South 
+Eti-Osa,Lagos,South West,11,10,11,7, -   , -   ,4, -   , -   , Eti-OsaLagosSouth West 
+Etim Ekpo,Akwa Ibom,South South,8,5,4,2, -   , -   ,2,1,3, Etim EkpoAkwa IbomSouth South 
+Etsako East,Edo,South South,12,4,7,3, -   , -   ,4,4,1, Etsako EastEdoSouth South 
+Etsako West,Edo,South South,35,19,18,9, -   , -   ,9,5,12, Etsako WestEdoSouth South 
+Ewekoro,Ogun,South West,13,6,9,3,1,4,1, -   ,4, EwekoroOgunSouth West 
+Ezeagu,Enugu,South East,9,3,5,4,1, -   , -   ,4, -   , EzeaguEnuguSouth East 
+Ezinihitte Mbaise,Imo,South East,4,3,3,3, -   , -   , -   , -   ,1, Ezinihitte MbaiseImoSouth East 
+Ezza North,Ebonyi,South East,4,1,4, -   , -   , -   ,4, -   , -   , Ezza NorthEbonyiSouth East 
+Ezza North ,Ebonyi,South East,8,7,4,4, -   , -   , -   ,3,1, Ezza North EbonyiSouth East 
+Ezza South,Ebonyi,South East,3,1, -   , -   , -   , -   , -   ,3, -   , Ezza SouthEbonyiSouth East 
+Ezza South ,Ebonyi,South East,18,1,18,18, -   , -   , -   , -   , -   , Ezza South EbonyiSouth East 
+Fagge        ,Kano,North West,20,3,20,18,2, -   , -   , -   , -   , Fagge        KanoNorth West 
+Fakai,Kebbi,North West,50,5,50,25,15, -   ,10, -   , -   , FakaiKebbiNorth West 
+Farin gamu,Niger,North Central,2,1,2,2, -   , -   , -   , -   , -   , Farin gamuNigerNorth Central 
+Faskari,Katsina,North West,602,79,465,160,142, -   ,163,4,133, FaskariKatsinaNorth West 
+Fika,Yobe,North East,11,1,11, -   , -   , -   ,11, -   , -   , FikaYobeNorth East 
+Fufore,Adamawa,North East,12,4,9, -   ,1, -   ,8, -   ,3, FuforeAdamawaNorth East 
+Funtua,Katsina,North West,38,14,26,3,17, -   ,6,5,7, FuntuaKatsinaNorth West 
+Gabasawa        ,Kano,North West,5,1,5, -   ,5, -   , -   , -   , -   , Gabasawa        KanoNorth West 
+Gada,Sokoto,North West,1,1,1, -   , -   , -   ,1, -   , -   , GadaSokotoNorth West 
+Gagarawa,Jigawa,North West,2,1,2, -   ,2, -   , -   , -   , -   , GagarawaJigawaNorth West 
+Gamawa,Bauchi,North East,3,1, -   , -   , -   , -   , -   , -   ,3, GamawaBauchiNorth East 
+Gamawa ,Bauchi,North East,2,1,2, -   ,2, -   , -   , -   , -   , Gamawa BauchiNorth East 
+Ganjuwa ,Bauchi,North East,7,1,7,3,4, -   , -   , -   , -   , Ganjuwa BauchiNorth East 
+Ganye,Adamawa,North East,7,4,3, -   , -   , -   ,3, -   ,4, GanyeAdamawaNorth East 
+Garki,Jigawa,North West,6,3,3, -   , -   , -   ,3, -   ,3, GarkiJigawaNorth West 
+Garko,Kano,North West,2,1,2, -   , -   , -   ,2, -   , -   , GarkoKanoNorth West 
+Gashaka,Taraba,North East,2,2,2,1,1, -   , -   , -   , -   , GashakaTarabaNorth East 
+Gassol,Taraba,North East,221,31,168,107,22, -   ,39, -   ,53, GassolTarabaNorth East 
+Gbako,Niger,North Central,4,2,4, -   ,4, -   , -   , -   , -   , GbakoNigerNorth Central 
+Gboko,Benue,North Central,31,10,30,17,2,1,10, -   ,1, GbokoBenueNorth Central 
+Geidam,Yobe,North East,94,16,35,14,1, -   ,20,20,39, GeidamYobeNorth East 
+Girei,Adamawa,North East,32,4,31,29, -   , -   ,2,1, -   , GireiAdamawaNorth East 
+Giwa,Kaduna,North West,732,88,504,228,201, -   ,75,1,227, GiwaKadunaNorth West 
+Gokana,Rivers,South South,4,3,4,3, -   , -   ,1, -   , -   , GokanaRiversSouth South 
+Gombe,Gombe,North East,16,8,15,4,7, -   ,4, -   ,1, GombeGombeNorth East 
+Gombi,Adamawa,North East,28,12,16,11, -   , -   ,5,6,6, GombiAdamawaNorth East 
+Goronyo,Sokoto,North West,216,25,202,70,107,1,24, -   ,14, GoronyoSokotoNorth West 
+Gubio,Borno,North East,346,30,211,126,39, -   ,46,38,97, GubioBornoNorth East 
+Gudu,Sokoto,North West,6,3,2, -   ,1, -   ,1,4, -   , GuduSokotoNorth West 
+Gujba,Yobe,North East,435,44,34,4,19, -   ,11,122,279, GujbaYobeNorth East 
+Guma,Benue,North Central,742,150,707,657,4, -   ,46,16,19, GumaBenueNorth Central 
+Gumel,Jigawa,North West,1,1,1, -   , -   , -   ,1, -   , -   , GumelJigawaNorth West 
+Gummi,Zamfara,North West,141,17,105,30,60, -   ,15, -   ,36, GummiZamfaraNorth West 
+Gurara,Niger,North Central,60,9,23,16,7, -   , -   ,12,25, GuraraNigerNorth Central 
+Guri,Jigawa,North West,7,5,7, -   , -   , -   ,7, -   , -   , GuriJigawaNorth West 
+"Guri, Jigawa",Jigawa,North West,16,5,6,4,2, -   , -   ,1,9," Guri, JigawaJigawaNorth West "
+Gusau,Zamfara,North West,412,75,219,23,158, -   ,38,46,147, GusauZamfaraNorth West 
+Guyuk,Adamawa,North East,39,5,39,3, -   , -   ,36, -   , -   , GuyukAdamawaNorth East 
+Guzamala,Borno,North East,399,27,10, -   , -   , -   ,10,73,316, GuzamalaBornoNorth East 
+Gwadabawa,Sokoto,North West,47,8,45,2,43, -   , -   ,2, -   , GwadabawaSokotoNorth West 
+Gwagwalada,Abuja FCT,North Central,29,18,23,1,10, -   ,12,6, -   , GwagwaladaAbuja FCTNorth Central 
+Gwale,Kano,North West,2,1,2, -   , -   , -   ,2, -   , -   , GwaleKanoNorth West 
+Gwale        ,Kano,North West,1,1,1, -   ,1, -   , -   , -   , -   , Gwale        KanoNorth West 
+Gwando,Kebbi,North West,1,1,1, -   ,1, -   , -   , -   , -   , GwandoKebbiNorth West 
+Gwaram,Jigawa,North West,1,1,1, -   , -   , -   ,1, -   , -   , GwaramJigawaNorth West 
+Gwer East,Benue,North Central,37,17,32,16, -   , -   ,16, -   ,5, Gwer EastBenueNorth Central 
+Gwer West,Benue,North Central,306,55,303,258, -   ,1,44,3, -   , Gwer WestBenueNorth Central 
+Gwiwa,Jigawa,North West,2,1, -   , -   , -   , -   , -   , -   ,2, GwiwaJigawaNorth West 
+Gwoza,Borno,North East,1196,142,114,28,8, -   ,78,38,1044, GwozaBornoNorth East 
+Hadejia,Jigawa,North West,2,2,2,2, -   , -   , -   , -   , -   , HadejiaJigawaNorth West 
+Hawul,Borno,North East,39,10,16,4, -   , -   ,12,18,5, HawulBornoNorth East 
+Hong,Adamawa,North East,106,12,106,55, -   , -   ,51, -   , -   , HongAdamawaNorth East 
+Ibadan North,Oyo,South West,26,15,17,8,3, -   ,6,4,5, Ibadan NorthOyoSouth West 
+Ibadan North-East,Oyo,South West,1,1, -   , -   , -   , -   , -   , -   ,1, Ibadan North-EastOyoSouth West 
+Ibadan North-West,Oyo,South West,23,16,19,5,1, -   ,13, -   ,4, Ibadan North-WestOyoSouth West 
+Ibadan South-East,Oyo,South West,3,2,2, -   , -   , -   ,2, -   ,1, Ibadan South-EastOyoSouth West 
+Ibadan South-West,Oyo,South West,24,13,21,8, -   , -   ,13,1,2, Ibadan South-WestOyoSouth West 
+Ibarapa Central,Oyo,South West,11,8,11,3, -   , -   ,8, -   , -   , Ibarapa CentralOyoSouth West 
+Ibarapa East,Oyo,South West,3,2,3,1, -   , -   ,2, -   , -   , Ibarapa EastOyoSouth West 
+Ibarapa North,Oyo,South West,46,14,45,22,1, -   ,22,1, -   , Ibarapa NorthOyoSouth West 
+Ibeju-Lekki,Lagos,South West,18,12,14,7, -   , -   ,7,2,2, Ibeju-LekkiLagosSouth West 
+Ibeno,Akwa Ibom,South South,7,2,7,7, -   , -   , -   , -   , -   , IbenoAkwa IbomSouth South 
+Ibesikpo Asutan,Akwa Ibom,South South,1,1,1,1, -   , -   , -   , -   , -   , Ibesikpo AsutanAkwa IbomSouth South 
+Ibi,Taraba,North East,2,1,2, -   , -   , -   ,2, -   , -   , IbiTarabaNorth East 
+Ibiono Ibom,Akwa Ibom,South South,2,1,2,2, -   , -   , -   , -   , -   , Ibiono IbomAkwa IbomSouth South 
+Idah,Kogi,North Central,10,6,6,3, -   , -   ,3, -   ,4, IdahKogiNorth Central 
+Idanre,Ondo,South West,1,1,1,1, -   , -   , -   , -   , -   , IdanreOndoSouth West 
+Ideato North,Imo,South East,28,10,12,10, -   , -   ,2,3,13, Ideato NorthImoSouth East 
+Ideato South,Imo,South East,1,1,1,1, -   , -   , -   , -   , -   , Ideato SouthImoSouth East 
+Idemili North,Anambra,South East,77,33,34,18, -   , -   ,16,21,22, Idemili NorthAnambraSouth East 
+Idemili South,Anambra,South East,36,23,18,8, -   ,2,8,3,15, Idemili SouthAnambraSouth East 
+Ido,Oyo,South West,11,3,11,10,1, -   , -   , -   , -   , IdoOyoSouth West 
+Ido-Osi,Ekiti,South West,1,1, -   , -   , -   , -   , -   , -   ,1, Ido-OsiEkitiSouth West 
+Ifako-Ijaiye,Lagos,South West,11,6,10,1, -   , -   ,9, -   ,1, Ifako-IjaiyeLagosSouth West 
+Ife Central,Osun,South West,6,4,4,2, -   , -   ,2, -   ,2, Ife CentralOsunSouth West 
+Ife North,Osun,South West,2,1,2, -   , -   , -   ,2, -   , -   , Ife NorthOsunSouth West 
+Ife South,Osun,South West,2,2,1, -   , -   , -   ,1, -   ,1, Ife SouthOsunSouth West 
+Ifedayo,Osun,South West,1,1,1,1, -   , -   , -   , -   , -   , IfedayoOsunSouth West 
+Ifelodun,Kwara,North Central,8,8,7,3,3, -   ,1, -   ,1, IfelodunKwaraNorth Central 
+Ifelodun,Osun,South West,2,2,2,1,1, -   , -   , -   , -   , IfelodunOsunSouth West 
+Ifo,Ogun,South West,11,6,5,3, -   , -   ,2, -   ,6, IfoOgunSouth West 
+Igabi,Kaduna,North West,463,109,278,93,102, -   ,83,60,125, IgabiKadunaNorth West 
+Igalamela-Odolu,Kogi,North Central,14,6,8,3, -   , -   ,5, -   ,6, Igalamela-OdoluKogiNorth Central 
+Igbo Etiti,Enugu,South East,1,1,1, -   , -   , -   ,1, -   , -   , Igbo EtitiEnuguSouth East 
+Igbo Eze North,Enugu,South East,23,13,13,12, -   , -   ,1,7,3, Igbo Eze NorthEnuguSouth East 
+Igbo Eze South,Enugu,South East,3,2,3,3, -   , -   , -   , -   , -   , Igbo Eze SouthEnuguSouth East 
+Ihiala,Anambra,South East,87,28,27,22, -   , -   ,5,31,29, IhialaAnambraSouth East 
+Ihiala ,Anambra,South East,10,1, -   , -   , -   , -   , -   , -   ,10, Ihiala AnambraSouth East 
+Ihitte/Uboma,Imo,South East,5,3,3,2, -   , -   ,1,2, -   , Ihitte/UbomaImoSouth East 
+Ijebu East,Ogun,South West,1,1,1, -   , -   , -   ,1, -   , -   , Ijebu EastOgunSouth West 
+Ijebu North,Ogun,South West,4,4,3,1,1, -   ,1,1, -   , Ijebu NorthOgunSouth West 
+Ijebu North,Oyo,South West,1,1, -   , -   , -   , -   , -   ,1, -   , Ijebu NorthOyoSouth West 
+Ijebu Ode,Ogun,South West,4,4,3, -   ,1, -   ,2,1, -   , Ijebu OdeOgunSouth West 
+Ijero,Ekiti,South West,1,1,1,1, -   , -   , -   , -   , -   , IjeroEkitiSouth West 
+Ijumu,Kogi,North Central,2,2,2, -   , -   , -   ,2, -   , -   , IjumuKogiNorth Central 
+Ika,Akwa Ibom,South South,2,1, -   , -   , -   , -   , -   ,2, -   , IkaAkwa IbomSouth South 
+Ika North East,Delta,South South,10,6,3,2, -   , -   ,1, -   ,7, Ika North EastDeltaSouth South 
+Ika South,Delta,South South,9,5,8,7,1, -   , -   ,1, -   , Ika SouthDeltaSouth South 
+Ikara,Kaduna,North West,25,5,25,3,8, -   ,14, -   , -   , IkaraKadunaNorth West 
+Ikeduru,Imo,South East,14,4,4,3, -   , -   ,1, -   ,10, IkeduruImoSouth East 
+Ikeja,Lagos,South West,15,9,15,9,1, -   ,5, -   , -   , IkejaLagosSouth West 
+Ikenne,Ogun,South West,13,5,9,9, -   , -   , -   , -   ,4, IkenneOgunSouth West 
+Ikere,Ekiti,South West,30,11,30,12, -   , -   ,18, -   , -   , IkereEkitiSouth West 
+Ikole,Ekiti,South West,7,5,5, -   , -   , -   ,5,1,1, IkoleEkitiSouth West 
+Ikom,Cross River,South South,4,1,4, -   , -   , -   ,4, -   , -   , IkomCross RiverSouth South 
+Ikono,Akwa Ibom,South South,2,1, -   , -   , -   , -   , -   ,2, -   , IkonoAkwa IbomSouth South 
+Ikorodu,Lagos,South West,61,23,50,3, -   , -   ,47,2,9, IkoroduLagosSouth West 
+Ikot Abasi,Akwa Ibom,South South,4,1,4,4, -   , -   , -   , -   , -   , Ikot AbasiAkwa IbomSouth South 
+Ikot Ekpene,Akwa Ibom,South South,1,1,1, -   , -   , -   ,1, -   , -   , Ikot EkpeneAkwa IbomSouth South 
+Ikpoba-Okha,Edo,South South,28,11,21,13, -   , -   ,8,1,6, Ikpoba-OkhaEdoSouth South 
+Ikwerre,Rivers,South South,20,6,8,5, -   , -   ,3,12, -   , IkwerreRiversSouth South 
+Ikwo,Ebonyi,South East,1,1,1, -   , -   , -   ,1, -   , -   , IkwoEbonyiSouth East 
+Ikwo ,Ebonyi,South East,23,9,16,16, -   , -   , -   , -   ,7, Ikwo EbonyiSouth East 
+Ikwuano,Abia,South East,10,2,10, -   , -   , -   ,10, -   , -   , IkwuanoAbiaSouth East 
+Ila,Osun,South West,1,1,1, -   ,1, -   , -   , -   , -   , IlaOsunSouth West 
+Ilaje,Ondo,South West,14,7,10,5, -   , -   ,5,4, -   , IlajeOndoSouth West 
+Ilejemeje,Ekiti,South West,1,1,1,1, -   , -   , -   , -   , -   , IlejemejeEkitiSouth West 
+Ilesa East,Osun,South West,17,7,13,11,1,1, -   , -   ,4, Ilesa EastOsunSouth West 
+Ilesa West,Osun,South West,27,10,27,16,8, -   ,3, -   , -   , Ilesa WestOsunSouth West 
+Ilesha West,Osun,South West,4,3,4, -   , -   , -   ,4, -   , -   , Ilesha WestOsunSouth West 
+Illela,Sokoto,North West,180,19,146,51,59, -   ,36,2,32, IllelaSokotoNorth West 
+Ilorin East,Kwara,North Central,30,19,21,9,4, -   ,8, -   ,9, Ilorin EastKwaraNorth Central 
+Ilorin South,Kwara,North Central,2,2,2,1, -   , -   ,1, -   , -   , Ilorin SouthKwaraNorth Central 
+Ilorin West,Kwara,North Central,34,20,24,7,2, -   ,15, -   ,10, Ilorin WestKwaraNorth Central 
+Imeko Afon,Ogun,South West,12,6,9,3, -   , -   ,6, -   ,3, Imeko AfonOgunSouth West 
+Ini,Akwa Ibom,South South,10,3,3, -   , -   , -   ,3,7, -   , IniAkwa IbomSouth South 
+Ipokia,Ogun,South West,6,3,6,3, -   , -   ,3, -   , -   , IpokiaOgunSouth West 
+Irele,Ondo,South West,2,1, -   , -   , -   , -   , -   ,2, -   , IreleOndoSouth West 
+Irepodun,Kwara,North Central,4,1,4, -   , -   , -   ,4, -   , -   , IrepodunKwaraNorth Central 
+Irepodun,Osun,South West,3,2,3, -   , -   , -   ,3, -   , -   , IrepodunOsunSouth West 
+Irepodun/Ifelodun,Ekiti,South West,3,2,3,1, -   , -   ,2, -   , -   , Irepodun/IfelodunEkitiSouth West 
+Irewole,Osun,South West,14,5,10,2,1, -   ,7,4, -   , IrewoleOsunSouth West 
+Isa,Sokoto,North West,83,13,20,2,9, -   ,9, -   ,63, IsaSokotoNorth West 
+Iseyin,Oyo,South West,8,3,1,1, -   , -   , -   ,6,1, IseyinOyoSouth West 
+Ishielu,Ebonyi,South East,51,8,49,35, -   , -   ,14,2, -   , IshieluEbonyiSouth East 
+Ishielu ,Ebonyi,South East,45,15,29,29, -   , -   , -   ,6,10, Ishielu EbonyiSouth East 
+Isi Uzo,Enugu,South East,197,34,189,189, -   , -   , -   ,4,4, Isi UzoEnuguSouth East 
+Isiala Mbano,Imo,South East,12,7,9,9, -   , -   , -   ,3, -   , Isiala MbanoImoSouth East 
+Isiala Ngwa North,Abia,South East,1,1, -   , -   , -   , -   , -   ,1, -   , Isiala Ngwa NorthAbiaSouth East 
+Isiala Ngwa South,Abia,South East,3,3,2, -   , -   , -   ,2,1, -   , Isiala Ngwa SouthAbiaSouth East 
+Isin,Kwara,North Central,7,6,7,4,2,1, -   , -   , -   , IsinKwaraNorth Central 
+Isokan,Osun,South West,16,6,15,1, -   , -   ,14, -   ,1, IsokanOsunSouth West 
+Isoko North,Delta,South South,15,7,14,3,1, -   ,10, -   ,1, Isoko NorthDeltaSouth South 
+Isoko South,Delta,South South,36,11,21,3, -   , -   ,18,7,8, Isoko SouthDeltaSouth South 
+Isu,Imo,South East,4,3,1, -   , -   , -   ,1,2,1, IsuImoSouth East 
+Isuikwuato,Abia,South East,6,6,6,6, -   , -   , -   , -   , -   , IsuikwuatoAbiaSouth East 
+Itu,Akwa Ibom,South South,6,4,6,1, -   , -   ,5, -   , -   , ItuAkwa IbomSouth South 
+Ivo ,Ebonyi,South East,16,7,12,12, -   , -   , -   , -   ,4, Ivo EbonyiSouth East 
+Iwajowa,Oyo,South West,19,5,16,2,11, -   ,3, -   ,3, IwajowaOyoSouth West 
+Iwo,Osun,South West,9,5,7,2, -   , -   ,5, -   ,2, IwoOsunSouth West 
+Izzi,Ebonyi,South East,6,3,3, -   , -   , -   ,3,3, -   , IzziEbonyiSouth East 
+Izzi ,Ebonyi,South East,10,6,10,9, -   , -   ,1, -   , -   , Izzi EbonyiSouth East 
+Jaba,Kaduna,North West,1,1,1,1, -   , -   , -   , -   , -   , JabaKadunaNorth West 
+Jada,Adamawa,North East,2,2,2, -   ,1, -   ,1, -   , -   , JadaAdamawaNorth East 
+Jalingo,Taraba,North East,28,19,21,14,1, -   ,6,2,5, JalingoTarabaNorth East 
+Jama'are,Bauchi,North East,1,1,1, -   ,1, -   , -   , -   , -   , Jama'areBauchiNorth East 
+Jega,Kebbi,North West,4,1,4, -   , -   , -   ,4, -   , -   , JegaKebbiNorth West 
+Jema'a,Kaduna,North West,122,30,118,97,6, -   ,15,4, -   , Jema'aKadunaNorth West 
+Jere,Borno,North East,307,26,237,3,178, -   ,56,40,30, JereBornoNorth East 
+Jibia,Katsina,North West,417,67,116,18,55, -   ,43,31,270, JibiaKatsinaNorth West 
+Jos East,Plateau,North Central,22,10,19,16,2, -   ,1,1,2, Jos EastPlateauNorth Central 
+Jos North,Plateau,North Central,218,62,209,119,43,1,46,1,8, Jos NorthPlateauNorth Central 
+Jos South,Plateau,North Central,156,52,144,109,8, -   ,27, -   ,12, Jos SouthPlateauNorth Central 
+Kabba/Bunu,Kogi,North Central,13,11,9,8, -   , -   ,1,4, -   , Kabba/BunuKogiNorth Central 
+Kachia,Kaduna,North West,201,43,151,113,32, -   ,6,2,48, KachiaKadunaNorth West 
+Kaduna North,Kaduna,North West,193,41,78,15,12, -   ,51,39,76, Kaduna NorthKadunaNorth West 
+Kaduna South,Kaduna,North West,33,11,28,23, -   , -   ,5,3,2, Kaduna SouthKadunaNorth West 
+Kafur,Katsina,North West,16,7,16,8,8, -   , -   , -   , -   , KafurKatsinaNorth West 
+Kaga,Borno,North East,371,45,71,23,26, -   ,22,148,152, KagaBornoNorth East 
+Kagarko,Kaduna,North West,114,24,35,19,15, -   ,1,1,78, KagarkoKadunaNorth West 
+Kagoro,Kaduna,North West,8,3,8,6, -   , -   ,2, -   , -   , KagoroKadunaNorth West 
+Kaiama,Kwara,North Central,2,2,2,1,1, -   , -   , -   , -   , KaiamaKwaraNorth Central 
+Kaita,Katsina,North West,1,1,1, -   ,1, -   , -   , -   , -   , KaitaKatsinaNorth West 
+Kajola,Oyo,South West,3,1,3, -   , -   , -   ,3, -   , -   , KajolaOyoSouth West 
+Kajuru,Kaduna,North West,870,254,858,699,50,1,108,1,11, KajuruKadunaNorth West 
+Kala/Balge,Borno,North East,179,16,85,11,50, -   ,24,29,65, Kala/BalgeBornoNorth East 
+Kanam,Plateau,North Central,246,5,104,100, -   , -   ,4, -   ,142, KanamPlateauNorth Central 
+Kankara,Katsina,North West,165,34,107,10,48,11,38,7,51, KankaraKatsinaNorth West 
+Kankia,Katsina,North West,4,3,1, -   ,1, -   , -   , -   ,3, KankiaKatsinaNorth West 
+Kano Municipal,Kano,North West,1,1,1, -   , -   , -   ,1, -   , -   , Kano MunicipalKanoNorth West 
+Kano Municipal      ,Kano,North West,12,4,12,4,8, -   , -   , -   , -   , Kano Municipal      KanoNorth West 
+Kano Municipal        ,Kano,North West,48,3,5,2,3, -   , -   ,5,38, Kano Municipal        KanoNorth West 
+Karasuwa,Yobe,North East,1,1, -   , -   , -   , -   , -   ,1, -   , KarasuwaYobeNorth East 
+Karim Lamido,Taraba,North East,111,9,92,48,24,5,15,9,10, Karim LamidoTarabaNorth East 
+Karim Lamidu,Taraba,North East,5,2,5, -   , -   , -   ,5, -   , -   , Karim LamiduTarabaNorth East 
+Karu,Nasarawa,North Central,96,9,94,83,8, -   ,3, -   ,2, KaruNasarawaNorth Central 
+Katagum,Bauchi,North East,1,1, -   , -   , -   , -   , -   , -   ,1, KatagumBauchiNorth East 
+Katcha,Niger,North Central,9,3,9,7,2, -   , -   , -   , -   , KatchaNigerNorth Central 
+Katsina,Katsina,North West,42,13,19,9,9, -   ,1, -   ,23, KatsinaKatsinaNorth West 
+Katsina-Ala,Benue,North Central,553,52,506,423, -   , -   ,83,2,45, Katsina-AlaBenueNorth Central 
+Kaugama,Jigawa,North West,1,1,1, -   ,1, -   , -   , -   , -   , KaugamaJigawaNorth West 
+Kaura,Kaduna,North West,366,57,362,330,10, -   ,22,4, -   , KauraKadunaNorth West 
+Kaura Namoda,Zamfara,North West,242,28,151,28,99, -   ,24,5,86, Kaura NamodaZamfaraNorth West 
+Kauru,Kaduna,North West,184,32,177,114,1, -   ,62,1,6, KauruKadunaNorth West 
+Kazaure,Jigawa,North West,1,1,1, -   ,1, -   , -   , -   , -   , KazaureJigawaNorth West 
+Keana,Nasarawa,North Central,52,12,52,34,2, -   ,16, -   , -   , KeanaNasarawaNorth Central 
+Keffi,Nasarawa,North Central,6,3, -   , -   , -   , -   , -   ,4,2, KeffiNasarawaNorth Central 
+Khana,Rivers,South South,30,13,29,10, -   , -   ,19, -   ,1, KhanaRiversSouth South 
+Kiri Kasama,Jigawa,North West,4,2,4, -   ,3, -   ,1, -   , -   , Kiri KasamaJigawaNorth West 
+Kiru        ,Kano,North West,1,1,1, -   ,1, -   , -   , -   , -   , Kiru        KanoNorth West 
+Kiyawa,Zamfara,North West,20,1, -   , -   , -   , -   , -   , -   ,20, KiyawaZamfaraNorth West 
+Kogi,Kogi,North Central,66,17,36,24,2, -   ,10, -   ,30, KogiKogiNorth Central 
+Koko/Besse,Kebbi,North West,10,3,8,6,2, -   , -   ,2, -   , Koko/BesseKebbiNorth West 
+Kokona,Nasarawa,North Central,61,6,61,44,17, -   , -   , -   , -   , KokonaNasarawaNorth Central 
+Konduga,Borno,North East,987,80,231,77,75, -   ,79,169,587, KondugaBornoNorth East 
+Konshisha,Benue,North Central,87,12,45,14, -   , -   ,31,21,21, KonshishaBenueNorth Central 
+Kontagora,Niger,North Central,110,14,27,10,11, -   ,6,1,82, KontagoraNigerNorth Central 
+Kosofe,Lagos,South West,30,17,28,7,1, -   ,20, -   ,2, KosofeLagosSouth West 
+Kotonkarfe,Kogi,North Central,1,1,1,1, -   , -   , -   , -   , -   , KotonkarfeKogiNorth Central 
+Kubau,Kaduna,North West,1,1, -   , -   , -   , -   , -   ,1, -   , KubauKadunaNorth West 
+Kuje,Abuja FCT,North Central,28,18,23,13,5, -   ,5,3,2, KujeAbuja FCTNorth Central 
+Kukawa,Borno,North East,994,70,165,12,38, -   ,115,177,652, KukawaBornoNorth East 
+Kumbotso,Kano,North West,1,1, -   , -   , -   , -   , -   , -   ,1, KumbotsoKanoNorth West 
+Kurfi,Katsina,North West,62,13,23, -   , -   , -   ,23, -   ,39, KurfiKatsinaNorth West 
+Kurmi,Taraba,North East,22,7,15,6, -   , -   ,9,7, -   , KurmiTarabaNorth East 
+Kusada,Katsina,North West,1,1,1, -   , -   , -   ,1, -   , -   , KusadaKatsinaNorth West 
+Kwali,Abuja FCT,North Central,10,9,9,3,3, -   ,3, -   ,1, KwaliAbuja FCTNorth Central 
+Kwande,Benue,North Central,149,23,149,130, -   ,7,12, -   , -   , KwandeBenueNorth Central 
+Kware,Sokoto,North West,7,5,3, -   ,2, -   ,1, -   ,4, KwareSokotoNorth West 
+Kwaya Kusar,Borno,North East,3,1, -   , -   , -   , -   , -   , -   ,3, Kwaya KusarBornoNorth East 
+Lafia,Nasarawa,North Central,66,15,60,43,13, -   ,4, -   ,6, LafiaNasarawaNorth Central 
+Lagos Island,Lagos,South West,37,24,29,11,3, -   ,15,1,7, Lagos IslandLagosSouth West 
+Lamurde,Adamawa,North East,52,9,52,3,4, -   ,45, -   , -   , LamurdeAdamawaNorth East 
+Langtang North,Plateau,North Central,30,3,30,10, -   , -   ,20, -   , -   , Langtang NorthPlateauNorth Central 
+Lapai,Niger,North Central,59,26,47,21,12, -   ,14,2,10, LapaiNigerNorth Central 
+Lau,Taraba,North East,41,10,41,19,6, -   ,16, -   , -   , LauTarabaNorth East 
+Lavun,Niger,North Central,80,10,35,21,12, -   ,2,1,44, LavunNigerNorth Central 
+Lere,Kaduna,North West,23,12,12,7,1, -   ,4, -   ,11, LereKadunaNorth West 
+Logo,Benue,North Central,152,50,137,103,2,1,31,2,13, LogoBenueNorth Central 
+Lokoja,Kogi,North Central,44,20,28,8,3, -   ,17,4,12, LokojaKogiNorth Central 
+Madagali,Adamawa,North East,211,18,182,131, -   , -   ,51,10,19, MadagaliAdamawaNorth East 
+Mafa,Borno,North East,369,50,63,18,15, -   ,30,76,230, MafaBornoNorth East 
+Magama,Niger,North Central,93,13,30,20,10, -   , -   ,9,54, MagamaNigerNorth Central 
+Magumeri,Borno,North East,224,35,74,2,28, -   ,44,63,87, MagumeriBornoNorth East 
+Maiduguri,Borno,North East,13,1,13,13, -   , -   , -   , -   , -   , MaiduguriBornoNorth East 
+Maiduguri Metropolitan Council (MMC),Borno,North East,830,98,285,81,45, -   ,159,158,387, Maiduguri Metropolitan Council (MMC)BornoNorth East 
+Maigatari,Jigawa,North West,7,4,5, -   ,5, -   , -   ,2, -   , MaigatariJigawaNorth West 
+Maiha,Adamawa,North East,19,7,3,1, -   , -   ,2, -   ,16, MaihaAdamawaNorth East 
+Maiyama,Kebbi,North West,9,2,9,6,3, -   , -   , -   , -   , MaiyamaKebbiNorth West 
+Makarfi,Kaduna,North West,21,4,10,9, -   , -   ,1,1,10, MakarfiKadunaNorth West 
+Makurdi,Benue,North Central,172,65,153,102,2, -   ,49,2,17, MakurdiBenueNorth Central 
+Malam Madori,Jigawa,North West,8,5,8,2,5, -   ,1, -   , -   , Malam MadoriJigawaNorth West 
+Malumfashi,Katsina,North West,62,17,61,17,24, -   ,20, -   ,1, MalumfashiKatsinaNorth West 
+Mangu,Plateau,North Central,384,65,349,305,33, -   ,11,2,33, ManguPlateauNorth Central 
+Mani,Katsina,North West,3,1,3, -   , -   , -   ,3, -   , -   , ManiKatsinaNorth West 
+Maradun,Zamfara,North West,790,48,286,48,145, -   ,93,13,491, MaradunZamfaraNorth West 
+Mariga,Niger,North Central,659,45,208,107,52, -   ,49,23,428, MarigaNigerNorth Central 
+Markudi,Benue,North Central,8,1,5,5, -   , -   , -   ,3, -   , MarkudiBenueNorth Central 
+Marte,Borno,North East,1016,58,68,3,34, -   ,31,96,852, MarteBornoNorth East 
+Maru,Zamfara,North West,1067,81,360,18,137, -   ,205,103,604, MaruZamfaraNorth West 
+Mashegu,Niger,North Central,240,33,158,55,84,2,17,1,81, MasheguNigerNorth Central 
+Mashi,Katsina,North West,5,1, -   , -   , -   , -   , -   ,5, -   , MashiKatsinaNorth West 
+Matazu,Katsina,North West,1,1,1, -   , -   , -   ,1, -   , -   , MatazuKatsinaNorth West 
+Matazuu,Katsina,North West,45,17,30,4,11, -   ,15, -   ,15, MatazuuKatsinaNorth West 
+Mayo-Belwa,Adamawa,North East,2,2,2,1, -   , -   ,1, -   , -   , Mayo-BelwaAdamawaNorth East 
+Mbaitoli,Imo,South East,17,10,14,9,1, -   ,4,3, -   , MbaitoliImoSouth East 
+Mbo,Akwa Ibom,South South,8,4,8,2, -   , -   ,6, -   , -   , MboAkwa IbomSouth South 
+Michika,Adamawa,North East,42,12,26,23, -   , -   ,3, -   ,16, MichikaAdamawaNorth East 
+Mikang,Plateau,North Central,5,2,5,5, -   , -   , -   , -   , -   , MikangPlateauNorth Central 
+Minjibir        ,Kano,North West,2,2,2, -   ,2, -   , -   , -   , -   , Minjibir        KanoNorth West 
+Misau,Bauchi,North East,10,2,10, -   ,1, -   ,9, -   , -   , MisauBauchiNorth East 
+Mkpat Enin,Akwa Ibom,South South,2,2,1,1, -   , -   , -   ,1, -   , Mkpat EninAkwa IbomSouth South 
+Moba,Ekiti,South West,1,1,1,1, -   , -   , -   , -   , -   , MobaEkitiSouth West 
+Mobbar,Borno,North East,371,39,56,20,22, -   ,14,63,252, MobbarBornoNorth East 
+Mokwa,Niger,North Central,3,2,3,2,1, -   , -   , -   , -   , MokwaNigerNorth Central 
+Monguno,Borno,North East,907,77,388,244,99, -   ,45,208,311, MongunoBornoNorth East 
+Mopa-Muro,Kogi,North Central,1,1,1, -   , -   , -   ,1, -   , -   , Mopa-MuroKogiNorth Central 
+Moro,Kwara,North Central,9,4,2,2, -   , -   , -   , -   ,7, MoroKwaraNorth Central 
+Mubi North,Adamawa,North East,10,1, -   , -   , -   , -   , -   , -   ,10, Mubi NorthAdamawaNorth East 
+Mubi South,Adamawa,North East,4,3,1,1, -   , -   , -   ,2,1, Mubi SouthAdamawaNorth East 
+Munya,Niger,North Central,748,126,509,299,92,1,117,42,197, MunyaNigerNorth Central 
+Musawa,Katsina,North West,10,4,4, -   , -   , -   ,4, -   ,6, MusawaKatsinaNorth West 
+Mushin,Lagos,South West,27,9,27,1,1, -   ,25, -   , -   , MushinLagosSouth West 
+Nasarawa,Nasarawa,North Central,21,10,20,4,2, -   ,14, -   ,1, NasarawaNasarawaNorth Central 
+Nasarawa-Eggon,Nasarawa,North Central,4,4,3,1,1, -   ,1, -   ,1, Nasarawa-EggonNasarawaNorth Central 
+Ndokwa East,Delta,South South,5,5,3,3, -   , -   , -   ,2, -   , Ndokwa EastDeltaSouth South 
+Ndokwa West,Delta,South South,23,10,5,2, -   , -   ,3,5,13, Ndokwa WestDeltaSouth South 
+Nembe,Bayelsa,South South,10,4,10,10, -   , -   , -   , -   , -   , NembeBayelsaSouth South 
+Ngala,Borno,North East,676,67,188,66,106, -   ,16,90,398, NgalaBornoNorth East 
+Nganzai,Borno,North East,247,30,90,30,45, -   ,15,88,69, NganzaiBornoNorth East 
+Ngaski,Kebbi,North West,30,3,1, -   ,1, -   , -   ,28,1, NgaskiKebbiNorth West 
+Ngor Okpala,Imo,South East,23,12,10,3, -   , -   ,7,8,5, Ngor OkpalaImoSouth East 
+Nguru,Yobe,North East,2,1,2, -   , -   , -   ,2, -   , -   , NguruYobeNorth East 
+Ningi,Bauchi,North East,50,14,21,9,11, -   ,1,1,28, NingiBauchiNorth East 
+Njaba,Imo,South East,25,12,15,10, -   , -   ,5,2,8, NjabaImoSouth East 
+Njikoka,Anambra,South East,17,6,12,7, -   , -   ,5,5, -   , NjikokaAnambraSouth East 
+Nkanu East,Enugu,South East,30,20,27,21,1, -   ,5,2,1, Nkanu EastEnuguSouth East 
+Nkanu West,Enugu,South East,9,5,3,3, -   , -   , -   ,6, -   , Nkanu WestEnuguSouth East 
+Nkwere,Imo,South East,3,2,2,2, -   , -   , -   , -   ,1, NkwereImoSouth East 
+Nkwerre,Imo,South East,6,4,6,6, -   , -   , -   , -   , -   , NkwerreImoSouth East 
+Nnewi North,Anambra,South East,17,8,9,7, -   , -   ,2,8, -   , Nnewi NorthAnambraSouth East 
+Nnewi South,Anambra,South East,35,13,14,14, -   , -   , -   ,6,15, Nnewi SouthAnambraSouth East 
+Nsukka,Enugu,South East,16,10,12,10, -   , -   ,2,2,2, NsukkaEnuguSouth East 
+Numan,Adamawa,North East,9,6,6,3, -   , -   ,3,3, -   , NumanAdamawaNorth East 
+Obafemi Owode,Ogun,South West,28,14,21,11,1,1,8,3,4, Obafemi OwodeOgunSouth West 
+Obi,Nasarawa,North Central,18,4,18,3,1, -   ,14, -   , -   , ObiNasarawaNorth Central 
+Obi,Benue,North Central,16,3,16,6, -   , -   ,10, -   , -   , ObiBenueNorth Central 
+Obi Ngwa,Abia,South East,4,4,4,1, -   , -   ,3, -   , -   , Obi NgwaAbiaSouth East 
+Obio/Akpor,Rivers,South South,29,18,18,8, -   , -   ,10,8,3, Obio/AkporRiversSouth South 
+Obokun,Osun,South West,4,3,3, -   , -   , -   ,3,1, -   , ObokunOsunSouth West 
+Obowo,Imo,South East,12,5,5,3, -   , -   ,2,2,5, ObowoImoSouth East 
+Obua,Rivers,South South,5,1, -   , -   , -   , -   , -   ,5, -   , ObuaRiversSouth South 
+Obubra,Cross River,South South,29,5,21,21, -   , -   , -   ,6,2, ObubraCross RiverSouth South 
+Obudu,Cross River,South South,11,6,2, -   , -   ,1,1,3,6, ObuduCross RiverSouth South 
+Odeda,Ogun,South West,11,6,10,5, -   , -   ,5, -   ,1, OdedaOgunSouth West 
+Odigbo,Ondo,South West,11,6,9,7, -   ,2, -   ,2, -   , OdigboOndoSouth West 
+Odo Otin,Osun,South West,1,1,1, -   , -   , -   ,1, -   , -   , Odo OtinOsunSouth West 
+Odo-Otin,Osun,South West,1,1,1,1, -   , -   , -   , -   , -   , Odo-OtinOsunSouth West 
+Odogbolu,Ogun,South West,3,2,3,1, -   , -   ,2, -   , -   , OdogboluOgunSouth West 
+Odukpani,Cross River,South South,7,2,5,5, -   , -   , -   , -   ,2, OdukpaniCross RiverSouth South 
+Odundun,Osun,South West,1,1,1,1, -   , -   , -   , -   , -   , OdundunOsunSouth West 
+Offa,Kwara,North Central,5,3,2, -   ,1, -   ,1, -   ,3, OffaKwaraNorth Central 
+Ofu,Kogi,North Central,13,8,10,2,2,1,5,1,2, OfuKogiNorth Central 
+Ogba/Egbema/Ndoni,Rivers,South South,2,1,2,2, -   , -   , -   , -   , -   , Ogba/Egbema/NdoniRiversSouth South 
+Ogbadibo,Benue,North Central,9,6,7,4, -   , -   ,3, -   ,2, OgbadiboBenueNorth Central 
+Ogbaru,Anambra,South East,41,11,37,28, -   , -   ,9,3,1, OgbaruAnambraSouth East 
+Ogbia,Bayelsa,South South,14,8,11,10, -   , -   ,1,3, -   , OgbiaBayelsaSouth South 
+Ogbomosho North,Oyo,South West,7,5,7,4, -   , -   ,3, -   , -   , Ogbomosho NorthOyoSouth West 
+Ogbomosho South,Oyo,South West,1,1,1, -   , -   , -   ,1, -   , -   , Ogbomosho SouthOyoSouth West 
+Ogo Oluwa,Oyo,South West,3,1,3, -   , -   , -   ,3, -   , -   , Ogo OluwaOyoSouth West 
+Ogoja,Cross River,South South,4,2,4,1, -   , -   ,3, -   , -   , OgojaCross RiverSouth South 
+Ogori/Magongo,Kogi,North Central,1,1,1, -   , -   , -   ,1, -   , -   , Ogori/MagongoKogiNorth Central 
+Ogu/Bolo,Rivers,South South,1,1,1, -   , -   , -   ,1, -   , -   , Ogu/BoloRiversSouth South 
+Ogun Waterside,Ogun,South West,1,1,1,1, -   , -   , -   , -   , -   , Ogun WatersideOgunSouth West 
+Oguta,Imo,South East,99,24,68,65,1, -   ,2,11,20, OgutaImoSouth East 
+Ohafia,Abia,South East,79,16,62,18, -   , -   ,44,13,4, OhafiaAbiaSouth East 
+Ohaji/Egbema,Imo,South East,32,11,28,13, -   , -   ,15,3,1, Ohaji/EgbemaImoSouth East 
+Ohaozara,Ebonyi,South East,1,1,1, -   , -   , -   ,1, -   , -   , OhaozaraEbonyiSouth East 
+Ohaozara ,Ebonyi,South East,11,8,5,5, -   , -   , -   ,5,1, Ohaozara EbonyiSouth East 
+Ohaukwu,Ebonyi,South East,96,8,92,30, -   , -   ,62, -   ,4, OhaukwuEbonyiSouth East 
+Ohaukwu ,Ebonyi,South East,126,13,125,125, -   , -   , -   ,1, -   , Ohaukwu EbonyiSouth East 
+Ohimini,Benue,North Central,7,4,7,2, -   , -   ,5, -   , -   , OhiminiBenueNorth Central 
+Oji River,Enugu,South East,27,10,10,10, -   , -   , -   ,13,4, Oji RiverEnuguSouth East 
+Ojo,Lagos,South West,46,28,30,4, -   ,3,23,3,13, OjoLagosSouth West 
+Oju,Benue,North Central,71,8,71,34, -   , -   ,37, -   , -   , OjuBenueNorth Central 
+Okehi,Kogi,North Central,5,4,2,1, -   , -   ,1,1,2, OkehiKogiNorth Central 
+Okene,Kogi,North Central,25,15,19,8,4,2,5,3,3, OkeneKogiNorth Central 
+Okigwe,Imo,South East,32,12,24,18, -   , -   ,6,8, -   , OkigweImoSouth East 
+Okitipupa,Ondo,South West,7,2,6,6, -   , -   , -   , -   ,1, OkitipupaOndoSouth West 
+Okobo,Akwa Ibom,South South,2,1,2, -   , -   , -   ,2, -   , -   , OkoboAkwa IbomSouth South 
+Okpe,Delta,South South,12,8,10,4, -   , -   ,6,2, -   , OkpeDeltaSouth South 
+Okpokwu,Benue,North Central,77,10,76,76, -   , -   , -   , -   ,1, OkpokwuBenueNorth Central 
+Okrika,Rivers,South South,8,3,4,1, -   , -   ,3, -   ,4, OkrikaRiversSouth South 
+Olamaboro,Kogi,North Central,1,1,1, -   , -   , -   ,1, -   , -   , OlamaboroKogiNorth Central 
+Olorunda,Osun,South West,1,1,1,1, -   , -   , -   , -   , -   , OlorundaOsunSouth West 
+Omala,Kogi,North Central,26,10,26,13,1, -   ,12, -   , -   , OmalaKogiNorth Central 
+Omumma,Rivers,South South,1,1,1, -   , -   , -   ,1, -   , -   , OmummaRiversSouth South 
+Ondo East,Ondo,South West,5,4,5,2, -   ,1,2, -   , -   , Ondo EastOndoSouth West 
+Ondo West,Ondo,South West,17,8,17,14, -   , -   ,3, -   , -   , Ondo WestOndoSouth West 
+Onicha,Ebonyi,South East,24,8,24, -   ,1, -   ,23, -   , -   , OnichaEbonyiSouth East 
+Onicha ,Ebonyi,South East,59,17,34,33, -   , -   ,1,12,13, Onicha EbonyiSouth East 
+Onisha North,Anambra,South East,9,4,7, -   , -   , -   ,7,2, -   , Onisha NorthAnambraSouth East 
+Onisha South,Anambra,South East,1,1,1, -   , -   , -   ,1, -   , -   , Onisha SouthAnambraSouth East 
+Onitsha North,Anambra,South East,20,11,8,8, -   , -   , -   ,5,7, Onitsha NorthAnambraSouth East 
+Onuimo,Imo,South East,14,4,12,12, -   , -   , -   ,2, -   , OnuimoImoSouth East 
+Opobo/Nkoro,Rivers,South South,1,1, -   , -   , -   , -   , -   , -   ,1, Opobo/NkoroRiversSouth South 
+Oredo,Edo,South South,117,57,80,18,1,3,58,4,33, OredoEdoSouth South 
+Orelope,Oyo,South West,6,3,6,5,1, -   , -   , -   , -   , OrelopeOyoSouth West 
+Orhionwon,Edo,South South,1,1,1, -   , -   , -   ,1, -   , -   , OrhionwonEdoSouth South 
+Ori Ire,Oyo,South West,12,4,12,1, -   , -   ,11, -   , -   , Ori IreOyoSouth West 
+Oriade,Osun,South West,2,2,2,2, -   , -   , -   , -   , -   , OriadeOsunSouth West 
+Orlu,Imo,South East,114,31,89,56, -   , -   ,33,10,15, OrluImoSouth East 
+Orolu,Osun,South West,2,2,2,1,1, -   , -   , -   , -   , OroluOsunSouth West 
+Oron,Akwa Ibom,South South,5,2,4, -   , -   , -   ,4,1, -   , OronAkwa IbomSouth South 
+Orsu,Imo,South East,27,15,21,11,3, -   ,7,1,5, OrsuImoSouth East 
+Oru East,Imo,South East,42,12,13,6, -   , -   ,7,7,22, Oru EastImoSouth East 
+Oru West,Imo,South East,6,4, -   , -   , -   , -   , -   ,3,3, Oru WestImoSouth East 
+Oruk Anam,Akwa Ibom,South South,19,10,17,9, -   , -   ,8, -   ,2, Oruk AnamAkwa IbomSouth South 
+Orumba North,Anambra,South East,20,6,17,4,9, -   ,4,3, -   , Orumba NorthAnambraSouth East 
+Orumba South,Anambra,South East,23,7,2,1, -   , -   ,1,14,7, Orumba SouthAnambraSouth East 
+Ose,Ondo,South West,42,18,35,24, -   , -   ,11,3,4, OseOndoSouth West 
+Oshimili North,Delta,South South,43,16,29,6,11, -   ,12,8,6, Oshimili NorthDeltaSouth South 
+Oshimili South,Delta,South South,35,19,24,9,1, -   ,14,8,3, Oshimili SouthDeltaSouth South 
+Oshodi-Isolo,Lagos,South West,13,12,11,6,1, -   ,4,2, -   , Oshodi-IsoloLagosSouth West 
+Osisioma Ngwa,Abia,South East,5,3, -   , -   , -   , -   , -   ,3,2, Osisioma NgwaAbiaSouth East 
+Osogbo,Osun,South West,36,29,33,8,3,2,20, -   ,3, OsogboOsunSouth West 
+Otukpo,Benue,North Central,128,12,127,122, -   , -   ,5, -   ,1, OtukpoBenueNorth Central 
+Ovia North-East,Edo,South South,49,21,41,26, -   , -   ,15,3,5, Ovia North-EastEdoSouth South 
+Ovia South-West,Edo,South South,5,3,2,1, -   , -   ,1, -   ,3, Ovia South-WestEdoSouth South 
+Owan East,Edo,South South,11,3,11, -   , -   , -   ,11, -   , -   , Owan EastEdoSouth South 
+Owan West,Edo,South South,13,7,13,7, -   , -   ,6, -   , -   , Owan WestEdoSouth South 
+Owerri,Bayelsa,South South,1,1, -   , -   , -   , -   , -   ,1, -   , OwerriBayelsaSouth South 
+Owerri Municipal,Imo,South East,41,25,23,9,1, -   ,13,14,4, Owerri MunicipalImoSouth East 
+Owerri North,Imo,South East,20,10,10,5, -   , -   ,5,2,8, Owerri NorthImoSouth East 
+Owerri West,Imo,South East,42,17,15,10,1, -   ,4,18,9, Owerri WestImoSouth East 
+Owo,Ondo,South West,78,14,73,53,1, -   ,19, -   ,5, OwoOndoSouth West 
+Oye,Ekiti,South West,4,4,4,3, -   , -   ,1, -   , -   , OyeEkitiSouth West 
+Oyi,Anambra,South East,77,12,63,34,19, -   ,10,6,8, OyiAnambraSouth East 
+Oyigbo,Rivers,South South,40,8,26, -   , -   , -   ,26,5,9, OyigboRiversSouth South 
+Oyo East,Oyo,South West,1,1,1, -   ,1, -   , -   , -   , -   , Oyo EastOyoSouth West 
+Oyo West,Oyo,South West,5,3,4, -   , -   , -   ,4,1, -   , Oyo WestOyoSouth West 
+Oyun,Kwara,North Central,3,3,3, -   ,2, -   ,1, -   , -   , OyunKwaraNorth Central 
+Paikoro,Niger,North Central,71,28,48,37,7, -   ,4,4,19, PaikoroNigerNorth Central 
+Pankshin,Plateau,North Central,2,2,2,2, -   , -   , -   , -   , -   , PankshinPlateauNorth Central 
+Patani,Delta,South South,1,1,1, -   , -   , -   ,1, -   , -   , PataniDeltaSouth South 
+"Patani, Delta",Delta,South South,5,2,5,5, -   , -   , -   , -   , -   ," Patani, DeltaDeltaSouth South "
+Patigi,Kwara,North Central,2,2,2, -   ,1, -   ,1, -   , -   , PatigiKwaraNorth Central 
+Port Harcourt City,Rivers,South South,50,35,39,13,1, -   ,25,5,6, Port Harcourt CityRiversSouth South 
+Port-Harcourt,Rivers,South South,9,2, -   , -   , -   , -   , -   ,9, -   , Port-HarcourtRiversSouth South 
+Potiskum,Yobe,North East,1,1,1, -   , -   , -   ,1, -   , -   , PotiskumYobeNorth East 
+Qua'an Pan,Plateau,North Central,5,3,1,1, -   , -   , -   , -   ,4, Qua'an PanPlateauNorth Central 
+Rabah,Sokoto,North West,220,16,80,13,67, -   , -   ,24,116, RabahSokotoNorth West 
+Rafi,Niger,North Central,605,96,240,98,65,1,76,59,306, RafiNigerNorth Central 
+Rano,Kano,North West,1,1,1, -   , -   , -   ,1, -   , -   , RanoKanoNorth West 
+Rano        ,Kano,North West,4,1,4, -   ,4, -   , -   , -   , -   , Rano        KanoNorth West 
+Remo North,Ogun,South West,2,2,2,1, -   , -   ,1, -   , -   , Remo NorthOgunSouth West 
+Rijau,Niger,North Central,46,13,40,17,11, -   ,12, -   ,6, RijauNigerNorth Central 
+Rijau/Rafi,Niger,North Central,22,1,22,22, -   , -   , -   , -   , -   , Rijau/RafiNigerNorth Central 
+Rimi,Katsina,North West,6,1, -   , -   , -   , -   , -   , -   ,6, RimiKatsinaNorth West 
+Rimin Gado        ,Kano,North West,1,1,1, -   ,1, -   , -   , -   , -   , Rimin Gado        KanoNorth West 
+Ringim,Jigawa,North West,4,4,2, -   ,1, -   ,1,2, -   , RingimJigawaNorth West 
+Riyau,Niger,North Central,2,1,2,2, -   , -   , -   , -   , -   , RiyauNigerNorth Central 
+Riyom,Plateau,North Central,158,75,153,132,9, -   ,12,2,3, RiyomPlateauNorth Central 
+Rogo,Kano,North West,1,1,1, -   , -   , -   ,1, -   , -   , RogoKanoNorth West 
+Rogo        ,Kano,North West,2,1,2, -   ,2, -   , -   , -   , -   , Rogo        KanoNorth West 
+Roni,Jigawa,North West,1,1,1, -   ,1, -   , -   , -   , -   , RoniJigawaNorth West 
+Sabon Birni,Sokoto,North West,558,56,359,29,177, -   ,153,44,155, Sabon BirniSokotoNorth West 
+Sabon Gari,Kaduna,North West,18,12,17,9,1, -   ,7, -   ,1, Sabon GariKadunaNorth West 
+Sabuwa,Katsina,North West,86,19,80,16,24, -   ,40, -   ,6, SabuwaKatsinaNorth West 
+Safana,Katsina,North West,265,29,52,4,30, -   ,18,27,186, SafanaKatsinaNorth West 
+Sagamu,Ogun,South West,60,19,26,7,2,11,6,10,24, SagamuOgunSouth West 
+Sagbama,Bayelsa,South South,6,6,4,3, -   , -   ,1, -   ,2, SagbamaBayelsaSouth South 
+Sakaba,Kebbi,North West,329,15,208,155,50, -   ,3,83,38, SakabaKebbiNorth West 
+Saki East,Oyo,South West,2,1,2, -   , -   , -   ,2, -   , -   , Saki EastOyoSouth West 
+Saki West,Oyo,South West,1,1,1, -   , -   , -   ,1, -   , -   , Saki WestOyoSouth West 
+Sandamu,Katsina,North West,17,4,12, -   , -   , -   ,12, -   ,5, SandamuKatsinaNorth West 
+Sanga,Kaduna,North West,55,11,48,2, -   , -   ,46,6,1, SangaKadunaNorth West 
+Sapele,Delta,South South,10,6,6, -   , -   , -   ,6,2,2, SapeleDeltaSouth South 
+"Sapele, Delta",Delta,South South,30,15,20,20, -   , -   , -   ,6,4," Sapele, DeltaDeltaSouth South "
+Sardauna,Taraba,North East,46,3,35,24,11, -   , -   ,6,5, SardaunaTarabaNorth East 
+Shagari,Sokoto,North West,1,1,1, -   ,1, -   , -   , -   , -   , ShagariSokotoNorth West 
+Shanga,Kebbi,North West,8,3,8,1,2, -   ,5, -   , -   , ShangaKebbiNorth West 
+Shani,Borno,North East,18,2,11,11, -   , -   , -   ,1,6, ShaniBornoNorth East 
+Shanono        ,Kano,North West,3,2,3, -   ,3, -   , -   , -   , -   , Shanono        KanoNorth West 
+Shelleng,Adamawa,North East,1,1, -   , -   , -   , -   , -   , -   ,1, ShellengAdamawaNorth East 
+Shendam,Plateau,North Central,10,5,10,8,2, -   , -   , -   , -   , ShendamPlateauNorth Central 
+Shinkafi,Zamfara,North West,279,33,90,7,21, -   ,62,20,169, ShinkafiZamfaraNorth West 
+Shiroro,Niger,North Central,1498,171,986,571,291, -   ,124,180,332, ShiroroNigerNorth Central 
+Shomolu,Lagos,South West,14,7,13,5,2,6, -   , -   ,1, ShomoluLagosSouth West 
+Shongom,Gombe,North East,3,1,2,2, -   , -   , -   , -   ,1, ShongomGombeNorth East 
+Silame,Sokoto,North West,1,1,1, -   , -   , -   ,1, -   , -   , SilameSokotoNorth West 
+Sokoto North,Sokoto,North West,17,4,6, -   ,6, -   , -   ,1,10, Sokoto NorthSokotoNorth West 
+Sokoto South,Sokoto,North West,24,3,23,23, -   , -   , -   ,1, -   , Sokoto SouthSokotoNorth West 
+Somolu,Lagos,South West,2,2,2, -   , -   , -   ,2, -   , -   , SomoluLagosSouth West 
+Song,Adamawa,North East,15,8,11,4, -   , -   ,7, -   ,4, SongAdamawaNorth East 
+Southern Ijaw,Bayelsa,South South,23,10,15,1, -   , -   ,14,1,7, Southern IjawBayelsaSouth South 
+Sule Takarkar,Jigawa,North West,3,2,3, -   , -   , -   ,3, -   , -   , Sule TakarkarJigawaNorth West 
+Sule Tankarkar,Jigawa,North West,2,1, -   , -   , -   , -   , -   , -   ,2, Sule TankarkarJigawaNorth West 
+Suleja,Niger,North Central,50,12,9,2, -   , -   ,7,32,9, SulejaNigerNorth Central 
+Sumaila        ,Kano,North West,5,3,2,2, -   , -   , -   , -   ,3, Sumaila        KanoNorth West 
+Surulere,Lagos,South West,16,10,16,6, -   ,1,9, -   , -   , SurulereLagosSouth West 
+Surulere,Oyo,South West,1,1,1, -   ,1, -   , -   , -   , -   , SurulereOyoSouth West 
+Tafa,Niger,North Central,7,3,7,3,4, -   , -   , -   , -   , TafaNigerNorth Central 
+Tafawa-Balewa,Bauchi,North East,17,7,17,9,7, -   ,1, -   , -   , Tafawa-BalewaBauchiNorth East 
+Tai,Rivers,South South,6,4,6,2, -   , -   ,4, -   , -   , TaiRiversSouth South 
+Takai,Kano,North West,7,1,7, -   ,7, -   , -   , -   , -   , TakaiKanoNorth West 
+Takai        ,Kano,North West,2,2,2, -   ,2, -   , -   , -   , -   , Takai        KanoNorth West 
+Takum,Taraba,North East,462,40,420,407,8,3,2,13,29, TakumTarabaNorth East 
+Talata Mafara,Zamfara,North West,191,27,148,8,100, -   ,40, -   ,43, Talata MafaraZamfaraNorth West 
+Tangaza,Sokoto,North West,60,8,53,8,35, -   ,10, -   ,7, TangazaSokotoNorth West 
+Tarka,Benue,North Central,29,2,29,29, -   , -   , -   , -   , -   , TarkaBenueNorth Central 
+Tarmua,Yobe,North East,7,1, -   , -   , -   , -   , -   ,1,6, TarmuaYobeNorth East 
+Tarmuwa,Yobe,North East,7,2,7,4, -   , -   ,3, -   , -   , TarmuwaYobeNorth East 
+"Taura, Jigawa",Jigawa,North West,3,2,1, -   ,1, -   , -   ,2, -   ," Taura, JigawaJigawaNorth West "
+Tofa        ,Kano,North West,1,1, -   , -   , -   , -   , -   , -   ,1, Tofa        KanoNorth West 
+Toro,Bauchi,North East,11,6,7,1,6, -   , -   ,1,3, ToroBauchiNorth East 
+TOTAL,,,55910,9970,30880,16769,6235,154,7722,4953,20077, TOTAL 
+Toto,Nasarawa,North Central,53,20,36,9,10, -   ,17,1,16, TotoNasarawaNorth Central 
+Toungo,Adamawa,North East,15,6,11,9, -   , -   ,2, -   ,4, ToungoAdamawaNorth East 
+Tsafe,Zamfara,North West,277,37,143,7,102, -   ,34,8,126, TsafeZamfaraNorth West 
+Tudun Wada        ,Kano,North West,31,4,25,7,18, -   , -   , -   ,6, Tudun Wada        KanoNorth West 
+Tureta,Sokoto,North West,33,6,33,6,18, -   ,9, -   , -   , TuretaSokotoNorth West 
+Udi,Enugu,South East,3,3,3,2,1, -   , -   , -   , -   , UdiEnuguSouth East 
+Udu,Delta,South South,27,15,24, -   , -   , -   ,24,2,1, UduDeltaSouth South 
+"Udu, Nigeria",Delta,South South,23,14,19,16,1, -   ,2, -   ,4," Udu, NigeriaDeltaSouth South "
+Udung Uko,Akwa Ibom,South South,2,1, -   , -   , -   , -   , -   ,2, -   , Udung UkoAkwa IbomSouth South 
+Ughelli North,Delta,South South,109,57,75,32,1, -   ,42,14,20, Ughelli NorthDeltaSouth South 
+Ughelli South,Delta,South South,3,3,3,1, -   , -   ,2, -   , -   , Ughelli SouthDeltaSouth South 
+Uhunmwode,Edo,South South,13,7,8, -   , -   , -   ,8, -   ,5, UhunmwodeEdoSouth South 
+Uhunmwonde,Edo,South South,13,5,7,7, -   , -   , -   , -   ,6, UhunmwondeEdoSouth South 
+Ukanafun,Akwa Ibom,South South,8,4,8,7, -   , -   ,1, -   , -   , UkanafunAkwa IbomSouth South 
+Ukum,Benue,North Central,193,29,158,117,2, -   ,39,5,30, UkumBenueNorth Central 
+Ukwa East,Abia,South East,2,1,2, -   , -   , -   ,2, -   , -   , Ukwa EastAbiaSouth East 
+Ukwa West,Abia,South East,15,5,13,4,8, -   ,1,2, -   , Ukwa WestAbiaSouth East 
+Ukwuani people,Delta,South South,20,9,7,3, -   , -   ,4,8,5, Ukwuani peopleDeltaSouth South 
+Umu Nneochi,Abia,South East,3,1, -   , -   , -   , -   , -   , -   ,3, Umu NneochiAbiaSouth East 
+Umuahia North,Abia,South East,9,8,6,2, -   , -   ,4,3, -   , Umuahia NorthAbiaSouth East 
+Umuahia South,Abia,South East,7,3,1,1, -   , -   , -   ,2,4, Umuahia SouthAbiaSouth East 
+Ungogo,Kano,North West,1,1,1, -   ,1, -   , -   , -   , -   , UngogoKanoNorth West 
+Ungogo        ,Kano,North West,2,1, -   , -   , -   , -   , -   , -   ,2, Ungogo        KanoNorth West 
+Uruan,Akwa Ibom,South South,10,3,10,6, -   , -   ,4, -   , -   , UruanAkwa IbomSouth South 
+Ushongo,Benue,North Central,9,4,9,7, -   , -   ,2, -   , -   , UshongoBenueNorth Central 
+Ussa,Taraba,North East,62,3,62,46,16, -   , -   , -   , -   , UssaTarabaNorth East 
+Uvwie,Delta,South South,25,14,18,8, -   , -   ,10,3,4, UvwieDeltaSouth South 
+Uyo,Akwa Ibom,South South,49,15,43,21,2, -   ,20, -   ,6, UyoAkwa IbomSouth South 
+Uzo-Uwani,Enugu,South East,32,13,20,16, -   , -   ,4,6,6, Uzo-UwaniEnuguSouth East 
+Vandeikya,Borno,North East,1,1,1,1, -   , -   , -   , -   , -   , VandeikyaBornoNorth East 
+Vandeikya,Benue,North Central,1,1, -   , -   , -   , -   , -   , -   ,1, VandeikyaBenueNorth Central 
+Wamako,Sokoto,North West,23,8,13, -   ,1, -   ,12, -   ,10, WamakoSokotoNorth West 
+Wamba,Nasarawa,North Central,1,1,1, -   , -   , -   ,1, -   , -   , WambaNasarawaNorth Central 
+Warji,Bauchi,North East,2,2,2, -   ,2, -   , -   , -   , -   , WarjiBauchiNorth East 
+Warri North,Delta,South South,13,6,5,5, -   , -   , -   ,1,7, Warri NorthDeltaSouth South 
+Warri South,Delta,South South,53,37,32,9, -   , -   ,23,5,16, Warri SouthDeltaSouth South 
+Wasagu/Danko,Kebbi,North West,809,58,641,397,197,29,18,64,104, Wasagu/DankoKebbiNorth West 
+Wase,Plateau,North Central,135,23,73,34,33, -   ,6,5,57, WasePlateauNorth Central 
+Wudil,Kano,North West,10,2,10, -   ,10, -   , -   , -   , -   , WudilKanoNorth West 
+Wukari,Taraba,North East,101,41,88,58, -   , -   ,30, -   ,13, WukariTarabaNorth East 
+Wurno,Sokoto,North West,12,5,6,3,3, -   , -   , -   ,6, WurnoSokotoNorth West 
+Wushishi,Niger,North Central,69,8,49,14,33, -   ,2,2,18, WushishiNigerNorth Central 
+Yagba East,Kogi,North Central,27,4,25,10,13, -   ,2, -   ,2, Yagba EastKogiNorth Central 
+Yagba West,Kogi,North Central,10,5,7,5,1, -   ,1,3, -   , Yagba WestKogiNorth Central 
+Yakurr,Cross River,South South,38,10,37,20, -   , -   ,17,1, -   , YakurrCross RiverSouth South 
+Yala,Cross River,South South,8,2,8,8, -   , -   , -   , -   , -   , YalaCross RiverSouth South 
+Yamaltu-Deba,Gombe,North East,1,1,1, -   ,1, -   , -   , -   , -   , Yamaltu-DebaGombeNorth East 
+Yankwashi,Jigawa,North West,1,1, -   , -   , -   , -   , -   , -   ,1, YankwashiJigawaNorth West 
+Yauri,Kebbi,North West,8,3,7,6,1, -   , -   ,1, -   , YauriKebbiNorth West 
+Yenagoa,Bayelsa,South South,81,49,65,21,2, -   ,42,3,13, YenagoaBayelsaSouth South 
+Yewa North,Ogun,South West,47,18,43,18,1, -   ,24,1,3, Yewa NorthOgunSouth West 
+Yewa South,Ogun,South West,8,6,6,4, -   , -   ,2,2, -   , Yewa SouthOgunSouth West 
+Yola North,Adamawa,North East,15,11,13,3,6, -   ,4,1,1, Yola NorthAdamawaNorth East 
+Yola South,Adamawa,North East,7,6,5,1,2, -   ,2, -   ,2, Yola SouthAdamawaNorth East 
+Yola-North,Adamawa,North East,11,7,8,1, -   , -   ,7, -   ,3, Yola-NorthAdamawaNorth East 
+Yola-South,Adamawa,North East,1,1,1, -   , -   , -   ,1, -   , -   , Yola-SouthAdamawaNorth East 
+Yorro,Taraba,North East,21,2,21,21, -   , -   , -   , -   , -   , YorroTarabaNorth East 
+Yunusari,Yobe,North East,51,12,17,2,1, -   ,14,24,10, YunusariYobeNorth East 
+Zaki,Bauchi,North East,2,1,2, -   ,2, -   , -   , -   , -   , ZakiBauchiNorth East 
+Zango,Katsina,North West,1,1,1, -   , -   , -   ,1, -   , -   , ZangoKatsinaNorth West 
+Zangon Kataf,Kaduna,North West,1246,225,1232,1013,35,1,183,1,13, Zangon KatafKadunaNorth West 
+Zaria,Kaduna,North West,58,31,44,4,37, -   ,3,2,12, ZariaKadunaNorth West 
+Zurmi,Zamfara,North West,616,57,177,33,84, -   ,60,8,431, ZurmiZamfaraNorth West 
+Zuru,Kebbi,North West,79,11,78,53,12,5,8,1, -   , ZuruKebbiNorth West 
+,Imo,South East,364,4,284,256,28, -   , -   ,80, -   , ImoSouth East 
+,Niger,North Central,141,14,91,30,10, -   ,51,11,39, NigerNorth Central 
+,Kaduna,North West,68,8,53,51,2, -   , -   , -   ,15, KadunaNorth West 
+,Zamfara,North West,46,3,43,6,37, -   , -   , -   ,3, ZamfaraNorth West 
+,Anambra,South East,45,2,40,40, -   , -   , -   ,5, -   , AnambraSouth East 
+,Benue,North Central,33,12,33,33, -   , -   , -   , -   , -   , BenueNorth Central 
+,Nasarawa,North Central,32,1,32,32, -   , -   , -   , -   , -   , NasarawaNorth Central 
+,Yobe,North East,10,3,10,10, -   , -   , -   , -   , -   , YobeNorth East 
+,Borno,North East,18,8,8,8, -   , -   , -   ,10, -   , BornoNorth East 
+,Oyo,South West,6,1,6,4,2, -   , -   , -   , -   , OyoSouth West 
+,Katsina,North West,4,2,4,3,1, -   , -   , -   , -   , KatsinaNorth West 
+,Taraba,North East,4,1,4,4, -   , -   , -   , -   , -   , TarabaNorth East 
+,Plateau,North Central,3,2,3,3, -   , -   , -   , -   , -   , PlateauNorth Central 
+,Sokoto,North West,3,1,3,1,2, -   , -   , -   , -   , SokotoNorth West 
+,Kebbi,North West,2,1,2,1,1, -   , -   , -   , -   , KebbiNorth West 
+,Abuja FCT,North Central,1,1,1,1, -   , -   , -   , -   , -   , Abuja FCTNorth Central 
+,Bauchi,North East,1,1,1, -   ,1, -   , -   , -   , -   , BauchiNorth East 
+,Rivers,South South,4,1, -   , -   , -   , -   , -   , -   ,4, RiversSouth South 
+,Ebonyi,South East,3,1, -   , -   , -   , -   , -   ,2,1, EbonyiSouth East 
