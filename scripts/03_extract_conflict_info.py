@@ -137,22 +137,9 @@ def extract_conflict_info(country, start_date, end_date, location_type, added_co
         event_dates = group['event_date'].tolist()
         event_count = len(event_dates)
         formatted_dates = [date_format(date) for date in event_dates]
-
-        if event_count == 1:
-            # For locations with one event date
-            conflict_period = [between_date(formatted_dates[0], end_date)]
-            modified_conflict_period = conflict_period[0] + int(added_conflict_days)
-
-        elif event_count == 2:
-            # For locations with two event dates
-            conflict_period = [between_date(formatted_dates[0], end_date)]
-            modified_conflict_period = conflict_period[0] + int(added_conflict_days)
-
-        else:
-            # For locations with more than two event dates
-            conflict_period = [between_date(formatted_dates[0], end_date)]
-            modified_conflict_period = conflict_period[0] + int(added_conflict_days)
-
+        conflict_period = [between_date(formatted_dates[-1], formatted_dates[0])]
+        modified_conflict_period = conflict_period[-1] + int(added_conflict_days)
+        
         results_df.loc[len(results_df)] = {
             "name": name,
             "country": country,
