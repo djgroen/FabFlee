@@ -47,7 +47,8 @@ Left blank for now.
 ------------------------------------------------------------------------------------------------------
 4. sim_period.csv
 
-September 1st 2024 for 32 days at the moment. 
+October 1st 2024 for 90 days (3months) at the moment. This allows us to investigate the human impact 
+of possible further escalations in the Israel - Lebanon conflict.
 
 ------------------------------------------------------------------------------------------------------
 5. registration_corrections.csv
