@@ -1,0 +1,13 @@
+#name,region,country,latitude,longitude,location_type,conflict_date,population
+Halba,Akkar Governorate,Lebanon,34.550556,36.078056,town,,432000
+Baalbek-Hermel,Bekaa Governorate,Lebanon,34.006336,36.207322,town,,472000
+Beirut,Beirut Governorate,Lebanon,33.883333,35.5,town,,419000
+Zahleh,Beqaa Governorate,Lebanon,33.833333,35.9,town,,540000
+Jounieh,Keserwan-Jbeil,Lebanon,34.1,35.8,town,,300000
+Baabda,Mount Lebanon,Lebanon,33.833333,35.533333,town,,1531000
+Nabatiye,Nabatieh,Lebanon,33.3,35.5,town,,391000
+Tripoli,North,Lebanon,34.433333,35.85,town,,803000
+Sidon,South,Lebanon,25.92,50.55,town,,602000
+Damascus,Damascus Governorate,Syria,33.513056,36.291944,town,,2503000
+Homs,Homs Governorate,Syria,34.730833,36.709444,town,,775404
+Tartus,Tartus Governorate,Syria,34.883333,35.883333,town,,458327
