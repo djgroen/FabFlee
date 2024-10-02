@@ -1,5 +1,7 @@
 """
-Summary: This script reads the settings.txt file and extracts the network settings from it. 
+Summary: 
+This script reads the settings.txt file and extracts the network settings from it. 
+This script is called in Flee_simulation_construction.py
 """
 import os #used in create_constructed_network_directory
 
@@ -13,30 +15,45 @@ def obtain_network_settings():
         None
     
     Returns:
-        settings: dict
+        settings: dict 
     """
+    print("Obtaining network settings from settings.txt")
 
-    # print("Obtaining network settings from settings.txt")
-
+    # Create empty settings dictionary 
     settings = {}
-    with open("../input_files/settings.txt", "r") as file:
-        
-        for line in file:
-            if "network_name" in line:
-                settings["network_name"] = line.split("=")[1].strip()
-            if "network_type" in line:
-                settings["network_type"] = line.split("=")[1].strip()
-            if "country" in line:
-                settings["country"] = line.split("=")[1].strip()
-            if "start_date" in line:
-                settings["start_date"] = line.split("=")[1].strip()
-            if "end_date" in line:
-                settings["end_date"] = line.split("=")[1].strip()
-            if "event_type" in line:
-                settings["event_type"] = line.split("=")[1].strip()
-            
-    # print(settings["event_type"])
-    
+
+    # Go up one directory (scripts)
+    current_directory = os.path.dirname(__file__)
+
+    # Go to 'input_files' directory
+    settings_directory = os.path.join(current_directory, '..', 'input_files')
+
+    # Combine with file name
+    settings_path = os.path.join(settings_directory, 'settings.txt')
+
+    # Now you can access the file
+    try:
+        with open(settings_path, 'r') as file:
+            # Read the settings file and extract the network settings
+            for line in file:
+                if "network_name" in line:
+                    settings["network_name"] = line.split("=")[1].strip()
+                if "network_type" in line:
+                    settings["network_type"] = line.split("=")[1].strip()
+                if "country" in line:
+                    settings["country"] = line.split("=")[1].strip()
+                if "start_date" in line:
+                    settings["start_date"] = line.split("=")[1].strip()
+                if "end_date" in line:
+                    settings["end_date"] = line.split("=")[1].strip()
+                if "event_type" in line:
+                    settings["event_type"] = line.split("=")[1].strip()
+
+    except FileNotFoundError:
+        print("settings.txt not found.")
+    except PermissionError:
+        print("Permission denied for settings.txt.")
+
     return settings
     
 
@@ -54,7 +71,7 @@ def create_constructed_network_directory():
     Returns:
         None
     """
-    # print("Creating directory to store the constructed network")
+    print("Creating directory to store the constructed network")
 
     #Get sim settings
     network_type = obtain_network_settings()["network_type"]
@@ -69,7 +86,7 @@ def create_constructed_network_directory():
     return network_dir_name
 
 
-def mv_settings_txt():
+def cp_settings_txt():
     """
     Summary:
         Move the settings.txt file to the constructed network directory.
@@ -80,8 +97,7 @@ def mv_settings_txt():
     Returns:
         None
     """
-
-    print("Moving settings.txt to the constructed network directory")
+    print("Copying settings.txt to the constructed network directory")
 
     # Get the network directory name
     network_dir_name = create_constructed_network_directory()
@@ -89,17 +105,12 @@ def mv_settings_txt():
     # Copy settings.txt to the network directory
     os.system(f"cp ../input_files/settings.txt {network_dir_name}/settings.txt") 
     
-    #TODO: modify cp to mv when testing is done
-
 
 if __name__ == "__main__":
-
-    print("Obtaining network settings from settings.txt")
+    
     obtain_network_settings()
-
-    print("Creating directory to store the constructed network")
+    
     create_constructed_network_directory()
 
-    print("Moving settings.txt to the constructed network directory")
-    mv_settings_txt()
+    cp_settings_txt()
 
