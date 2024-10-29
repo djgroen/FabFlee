@@ -4,13 +4,18 @@ log_levels:
   init: 0
   conflict: 0
   link: 0
+  granularity: location
 spawn_rules:
   sum_from_camps: True
   conflict_spawn_decay: [1.0,1.0,1.0,0.5,0.1]
   conflict_spawn_decay_interval: 30
   empty_camps_on_day0: True
+  take_from_population: False
+  insert_day0: True
 move_rules:
   max_move_speed: 400.0
+  max_walk_speed: 35.0
+  foreign_weight: 1.0
   camp_weight: 1.0
   softening: 50.0
   default_movechance: 0.5
@@ -18,5 +23,10 @@ move_rules:
   avoid_short_stints: True
   capacity_scaling: 1.25
   distance_power: 0.75
+  conflict_weight: 0.25
+  conflict_movechance: 1.0
+  camp_movechance: 0.001
+  awareness_level: 1
+  weight_power: 1.0
 optimisations:
   hasten: 1
