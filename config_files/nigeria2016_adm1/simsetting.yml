@@ -11,7 +11,7 @@ spawn_rules:
 move_rules:
   max_move_speed: 360.0
   max_walk_speed: 42.0
-  max_crossing_speed: 20
+  max_crossing_speed: 20.0
   foreign_weight: 1.0
   camp_weight: 1.0
   conflict_weight: 0.25
@@ -25,4 +25,3 @@ move_rules:
   weight_power: 1.0
 optimisations:
   hasten: 1
-
