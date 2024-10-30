@@ -10,7 +10,7 @@ spawn_rules:
   conflict_spawn_decay_interval: 30
   empty_camps_on_day0: False
 move_rules:
-  max_move_speed: 360.0
+  max_move_speed: 200.0
   camp_weight: 2.0
   softening: 10.0
   default_movechance: 0.5
