@@ -9,9 +9,8 @@ spawn_rules:
   take_from_population: False
   insert_day0: True
 move_rules:
-  max_move_speed: 360.0
-  max_walk_speed: 42.0
-  max_crossing_speed: 20
+  max_move_speed: 200.0
+  max_walk_speed: 35.0
   foreign_weight: 1.0
   camp_weight: 1.0
   conflict_weight: 0.25
