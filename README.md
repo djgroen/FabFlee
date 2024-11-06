@@ -2,7 +2,7 @@
 FabFlee is a plugin for automated [Flee](https://github.com/djgroen/flee)-based simulations. It provides an environment to construct, modify and execute simulations as a single run or ensemble runs. FabFlee aims to predict the distribution of incoming refugees across destination camps under a range of different policy situations.
 
 ## Installation
-Simply type `fab localhost install_plugin:FabFlee` anywhere inside your FabSim3 to install FabFlee directory.
+Simply type `fabsim localhost install_plugin:FabFlee` anywhere inside your FabSim3 to install FabFlee directory.
 
 ## Explanation of files
 * FabFlee.py - main file containing various command implementations.
