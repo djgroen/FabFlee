@@ -1,0 +1,39 @@
+log_levels:
+  agent: 0  # Logs agent movement. Set to 0 for no logging.
+  link: 0   # Logs link usage (cumulative agent counts).
+  camp: 1   # Logs camp details, such as capacity and agent numbers.
+  conflict: 0 # Logs conflict-driven spawning information.
+  init: 0   # Logs initialisation information.
+
+spawn_rules:
+  conflict_driven_spawning:
+    spawn_mode: "pop_ratio"  # Spawning proportional to population.
+    displaced_per_conflict_day: 0.01  # Adjusted rate of displacement per conflict zone per day.
+  take_from_population: True  # Subtract spawned agents from the population.
+  insert_day0: True  # Prepopulate camps with agents on day 0.
+  conflict_zone_spawning_only: True  # Spawn only from conflict zones.
+
+move_rules:
+  max_move_speed: 360.0  # Maximum distance agents can travel in a day.
+  max_walk_speed: 35.0  # Maximum walking distance per day.
+  max_crossing_speed: 20.0  # Maximum speed for river crossings.
+  foreign_weight: 1.0  # No extra attraction for foreign locations.
+  camp_weight: 1.5  # Increased attraction to camps.
+  conflict_weight: 0.25  # Reduced attraction to conflict zones.
+  conflict_movechance: 1.0  # Agents are highly likely to leave conflict zones.
+  camp_movechance: 0.01  # Rarely leave camps unless overcrowded.
+  idpcamp_movechance: 0.1  # Moderate chance of leaving IDP camps.
+  default_movechance: 0.3  # Standard chance of movement for regular locations.
+  awareness_level: 2  # Agents are aware of locations two link steps away.
+  capacity_buffer: 0.8  # Locations considered full at 80% capacity.
+  capacity_scaling: 1.0  # Location capacities remain unadjusted.
+  avoid_short_stints: True  # Agents avoid short movements (<1 day's distance).
+  start_on_foot: True  # Agents start their journey on foot.
+  softening: 10.0  # Softens minor distance differences.
+  weight_softening: 0.1  # Adds randomness to route selection.
+  weight_power: 1.0  # Default weighting based on distance.
+  distance_power: 1.0  # Linear impact of distance on route weights.
+  home_distance_power: 0.5  # Moderate preference for staying near home.
+
+optimisations:
+  hasten: 1  # Activates runtime optimisations.

@@ -1,0 +1,1489 @@
+#name1,#name2,distance,forced_redirection
+Aba North,Aba South,6.32,0
+Aba North,Obi Ngwa,11.29,0
+Aba North,Ugwunagbo,13.4,0
+Aba South,Ugwunagbo,8.24,0
+Aba South,Osisioma Ngwa,16.16,0
+Arochukwu,Ohafia,18.65,0
+Arochukwu,Ini,31.99,0
+Arochukwu,Biase,64.91,0
+Bende,Umuahia North,16.84,0
+Bende,Umuahia South,28.57,0
+Bende,Isuikwuato,42.61,0
+Ikwuano,Umuahia South,17.27,0
+Ikwuano,Isiala-Ngwa South,24.11,0
+Ikwuano,Obot Akara,25.84,0
+Isiala-Ngwa North,Isiala-Ngwa South,13.48,0
+Isiala-Ngwa North,Obi Ngwa,18.46,0
+Isiala-Ngwa North,Osisioma Ngwa,27.15,0
+Isiala-Ngwa South,Umuahia South,17.54,0
+Isiala-Ngwa South,Ezinihitte,27.71,0
+Isuikwuato,Okigwe,20.55,0
+Isuikwuato,Umu-Nneochi,30.14,0
+Isuikwuato,Ihitte/Uboma,44.91,0
+Obi Ngwa,Aba South,14.67,0
+Obi Ngwa,Osisioma Ngwa,22.04,0
+Ohafia,Afikpo South,24.49,0
+Ohafia,Afikpo North,33.91,0
+Osisioma Ngwa,Aba North,15.68,0
+Ugwunagbo,Ukwa East,14.05,0
+Ukwa East,Ukwa West,27.6,0
+Ukwa East,Aba North,21.78,0
+Ukwa West,Ugwunagbo,14.48,0
+Ukwa West,Omumma,28.67,0
+Ukwa West,Aba South,17.12,0
+Umuahia North,Ihitte/Uboma,16.64,0
+Umuahia North,Umuahia South,18.22,0
+Umuahia South,Obowo,24.99,0
+Umu-Nneochi,Okigwe,23.38,0
+Umu-Nneochi,Orumba South,29.7,0
+Demsa,Numan,7.88,0
+Demsa,Yola North,38.32,0
+Demsa,Lamurde,48.6,0
+Fufore,Girei,69.95,0
+Fufore,Yola South,54.4,0
+Fufore,Camp(12),52.71,0
+Ganye,Toungo,56.78,0
+Ganye,Zing,83.28,0
+Ganye,Mayo-Belwa,87.44,0
+Girei,Yola South,26.99,0
+Girei,Camp(12),30.79,0
+Girei,Yola North,46.87,0
+Gombi,Hawul,100.37,0
+Gombi,Hong,58.76,0
+Gombi,Song,75.53,0
+Guyuk,Shelleng,37.38,0
+Guyuk,Lamurde,42.53,0
+Guyuk,Shani,47.43,0
+Hong,Mubi North,55.44,0
+Hong,Bade,74.88,0
+Hong,Mubi South,65.72,0
+Jada,Mayo-Belwa,55.68,0
+Jada,Ganye,74.79,0
+Jada,Camp(12),123.1,0
+Lamurde,Numan,41.28,0
+Madagali,Michika,35.88,0
+Madagali,Askira/Uba,61.38,0
+Madagali,Gwoza,50.38,0
+Maiha,Bade,39.34,0
+Maiha,Mubi South,73.98,0
+Maiha,Mubi North,63.58,0
+Mayo-Belwa,Zing,48.72,0
+Mayo-Belwa,Yola North,70.1,0
+Michika,Askira/Uba,34.97,0
+Michika,Mubi North,47.76,0
+Mubi North,Mubi South,24.5,0
+Mubi North,Bade,33.69,0
+Mubi South,Bade,15.64,0
+Numan,Yola North,37.53,0
+Shelleng,Shani,38.89,0
+Shelleng,Lamurde,72.74,0
+Song,Girei,74.7,0
+Song,Maiha,77.79,0
+Toungo,Jada,91.93,0
+Toungo,Mayo-Belwa,105.84,0
+Yola North,Camp(12),23.83,0
+Yola North,Yola South,22.13,0
+Yola South,Camp(12),3.27,0
+Abak,Nsit Ibom,21.78,0
+Abak,Etinan,26.34,0
+Abak,Essien Udim,25.68,0
+Eastern Obolo,Ikot Abasi,34.0,0
+Eastern Obolo,Opobo - Nkoro,90.42,0
+Eastern Obolo,Mkpat Enin,28.33,0
+Eket,Onna,12.65,0
+Eket,Esit Eket,16.97,0
+Eket,Nsit Ubium,21.63,0
+Esit Eket,Ibeno,24.96,0
+Esit Eket,Urue-Offong/Oruko,16.84,0
+Essien Udim,Ikot Ekpene,15.13,0
+Essien Udim,Ika,20.64,0
+Essien Udim,Obot Akara,22.36,0
+Etim Ekpo,Ukanafun,12.71,0
+Etim Ekpo,Ika,10.04,0
+Etim Ekpo,Oruk Anam,26.8,0
+Etinan,Nsit Ibom,12.97,0
+Etinan,Nsit Ubium,18.83,0
+Etinan,Ibesikpo Asutan,16.68,0
+Ibeno,Mbo,21.35,0
+Ibeno,Eket,39.09,0
+Ibesikpo Asutan,Nsit Ibom,12.56,0
+Ibesikpo Asutan,Uyo,12.18,0
+Ibesikpo Asutan,Nsit Atai,16.27,0
+Ibiono Ibom,Ikono,19.96,0
+Ibiono Ibom,Itu,16.75,0
+Ibiono Ibom,Ikot Ekpene,23.89,0
+Ika,Ukanafun,23.2,0
+Ikono,Ikot Ekpene,11.81,0
+Ikono,Essien Udim,23.41,0
+Ikot Abasi,Opobo - Nkoro,65.07,0
+Ikot Abasi,Mkpat Enin,26.01,0
+Ikot Ekpene,Obot Akara,23.17,0
+Ini,Ikwuano,34.88,0
+Ini,Obot Akara,35.4,0
+Itu,Uyo,33.79,0
+Itu,Uruan,47.47,0
+Mbo,Udung Uko,16.7,0
+Mbo,Urue-Offong/Oruko,15.26,0
+Mbo,Oron,22.3,0
+Mkpat Enin,Onna,17.09,0
+Mkpat Enin,Oruk Anam,22.78,0
+Nsit Atai,Nsit Ubium,13.52,0
+Nsit Atai,Okobo,17.43,0
+Nsit Ibom,Uyo,24.54,0
+Obot Akara,Isiala-Ngwa North,23.53,0
+Okobo,Urue-Offong/Oruko,22.23,0
+Okobo,Oron,15.32,0
+Onna,Nsit Ubium,22.88,0
+Oron,Udung Uko,9.64,0
+Oron,Calabar South,34.1,0
+Oruk Anam,Ukanafun,13.37,0
+Udung Uko,Urue-Offong/Oruko,12.94,0
+Uruan,Uyo,12.85,0
+Uruan,Ibesikpo Asutan,16.99,0
+Aguata,Nnewi South,21.9,0
+Aguata,Orumba South,26.78,0
+Aguata,Anaocha,20.01,0
+Anambra East,Oyi,15.26,0
+Anambra East,Dunukofia,15.96,0
+Anambra East,Njikoka,20.25,0
+Anambra West,Ayamelum,53.94,0
+Anambra West,Anambra East,30.1,0
+Anambra West,Oshimili North,81.03,0
+Anaocha,Njikoka,15.92,0
+Anaocha,Awka South,16.23,0
+Awka North,Dunukofia,57.94,0
+Awka North,Awka South,41.14,0
+Awka North,Njikoka,49.89,0
+Awka South,Njikoka,17.36,0
+Awka South,Orumba North,29.11,0
+Ayamelum,Awka North,47.63,0
+Ayamelum,Anambra East,29.0,0
+Dunukofia,Oyi,11.92,0
+Dunukofia,Njikoka,11.82,0
+Ekwusigo,Nnewi North,11.43,0
+Ekwusigo,Idemili South,13.03,0
+Ekwusigo,Ogbaru,29.97,0
+Idemili North,Idemili South,22.1,0
+Idemili North,Onitsha North,10.9,0
+Idemili North,Oyi,15.58,0
+Idemili South,Onitsha North,13.71,0
+Ihiala,Oru West,15.81,0
+Ihiala,Orsu,14.22,0
+Ihiala,Ogbaru,22.97,0
+Njikoka,Oyi,16.33,0
+Nnewi North,Nnewi South,13.13,0
+Nnewi North,Idemili South,12.65,0
+Nnewi South,Orsu,15.91,0
+Ogbaru,Idemili South,40.82,0
+Onitsha North,Onitsha South,4.55,0
+Onitsha North,Oshimili South,14.4,0
+Onitsha South,Oshimili South,8.93,0
+Onitsha South,Idemili South,12.19,0
+Orumba North,Orumba South,23.79,0
+Orumba North,Anaocha,26.64,0
+Orumba South,Ideato North,30.37,0
+Alkaleri,Kanam,109.18,0
+Alkaleri,Kirfi,112.19,0
+Alkaleri,Akko,193.06,0
+Bauchi,Ganjuwa,52.34,0
+Bauchi,Kirfi,151.74,0
+Bauchi,Warji,177.89,0
+Bogoro,Tafawa-Balewa,27.54,0
+Bogoro,Kanke,49.89,0
+Bogoro,Dass,72.38,0
+Damban,Potiskum,51.66,0
+Damban,Nangere,62.6,0
+Damban,Misau,68.94,0
+Darazo,Misau,39.97,0
+Darazo,Dukku,87.92,0
+Darazo,Giade,67.59,0
+Dass,Tafawa-Balewa,66.32,0
+Dass,Jos East,77.1,0
+Dass,Toro,79.88,0
+Gamawa,Zaki,57.74,0
+Gamawa,Jakusko,59.37,0
+Gamawa,Katagum,65.63,0
+Ganjuwa,Warji,160.55,0
+Ganjuwa,Gwaram,117.62,0
+Giade,Shira,41.63,0
+Giade,Misau,44.58,0
+Giade,Katagum,51.06,0
+Itas/Gadau,Jama'Are,37.92,0
+Itas/Gadau,Kafin Hausa,42.33,0
+Itas/Gadau,Zaki,46.54,0
+Jama'Are,Buji,28.53,0
+Jama'Are,Shira,57.2,0
+Katagum,Misau,38.64,0
+Katagum,Shira,46.48,0
+Kirfi,Dukku,135.81,0
+Ningi,Sumaila,109.6,0
+Ningi,Takai,150.77,0
+Ningi,Birnin Kudu,105.52,0
+Shira,Gwaram,69.34,0
+Tafawa-Balewa,Jos East,107.68,0
+Toro,Jos East,110.58,0
+Toro,Tafawa-Balewa,120.88,0
+Warji,Gwaram,43.88,0
+Warji,Buji,75.18,0
+Warji,Birnin Kudu,78.36,0
+Zaki,Kafin Hausa,36.07,0
+Zaki,Hadejia,49.52,0
+Zaki,Auyo,54.05,0
+Brass,Akuku Toru,147.78,0
+Brass,Nembe,54.4,0
+Brass,Ogbia,56.89,0
+Ekeremor,Southern Ijaw,215.02,0
+Ekeremor,Bomadi,62.63,0
+Ekeremor,Sagbama,69.69,0
+Kolokuma/Opokuma,Sagbama,43.79,0
+Kolokuma/Opokuma,Yenagoa,53.14,0
+Kolokuma/Opokuma,Patani,50.94,0
+Nembe,Ogbia,52.97,0
+Nembe,Akuku Toru,143.94,0
+Ogbia,Yenagoa,26.12,0
+Ogbia,Abua - Odual,102.24,0
+Ogbia,Kolokuma/Opokuma,71.56,0
+Sagbama,Patani,15.64,0
+Sagbama,Yenagoa,70.08,0
+Southern Ijaw,Ogbia,114.1,0
+Southern Ijaw,Nembe,148.22,0
+Ado,Omala,19.68,0
+Ado,Agatu,33.89,0
+Ado,Apa,60.14,0
+Agatu,Apa,33.72,0
+Agatu,Omala,50.59,0
+Apa,Ankpa,41.55,0
+Buruku,Logo,67.6,0
+Buruku,Ushongo,61.27,0
+Buruku,Gboko,44.32,0
+Gboko,Tarka,55.52,0
+Gboko,Ushongo,52.72,0
+Guma,Camp(14),18.74,0
+Guma,Tarka,86.26,0
+Guma,Camp(11),44.1,0
+Gwer East,Gwer West,38.41,0
+Gwer East,Oturkpo,58.98,0
+Gwer East,Obi,56.58,0
+Gwer West,Apa,57.13,0
+Gwer West,Makurdi,47.9,0
+Katsina-Ala,Ukum,39.84,0
+Katsina-Ala,Buruku,101.28,0
+Katsina-Ala,Takum,52.53,0
+Konshisha,Obi,47.36,0
+Konshisha,Oju,53.16,0
+Konshisha,Gboko,67.47,0
+Kwande,Vandeikya,50.19,0
+Kwande,Obanliku,64.8,0
+Kwande,Ushongo,61.51,0
+Logo,Tarka,59.71,0
+Logo,Ukum,69.89,0
+Makurdi,Camp(11),22.68,0
+Makurdi,Tarka,45.23,0
+Makurdi,Guma,45.59,0
+Obi,Oju,28.67,0
+Obi,Oturkpo,30.33,0
+Ogbadibo,Udenu,31.78,0
+Ogbadibo,Igbo-Eze North,38.69,0
+Ogbadibo,Olamaboro,37.43,0
+Ohimini,Oturkpo,29.89,0
+Ohimini,Okpokwu,31.8,0
+Ohimini,Apa,58.85,0
+Oju,Yala,49.09,0
+Oju,Izzi,58.35,0
+Okpokwu,Oturkpo,41.54,0
+Okpokwu,Ogbadibo,35.23,0
+Tarka,Camp(14),94.77,0
+Ukum,Wukari,48.24,0
+Ushongo,Vandeikya,47.61,0
+Vandeikya,Bekwara,17.04,0
+Vandeikya,Obudu,46.0,0
+Abadam,Guzamala,72.66,0
+Abadam,Kukawa,73.62,0
+Abadam,Mobbar,118.11,0
+Askira/Uba,Chibok,39.2,0
+Bama,Camp(8),13.75,0
+Bama,Camp(4),52.11,0
+Bama,Mafa,118.54,0
+Bayo,Kwaya Kusar,22.58,0
+Bayo,Yamaltu/Deba,49.21,0
+Bayo,Shani,73.97,0
+Biu,Hawul,24.95,0
+Biu,Kwaya Kusar,45.44,0
+Biu,Gombi,113.31,0
+Chibok,Damboa,48.79,0
+Chibok,Camp(5),71.1,0
+Damboa,Camp(5),48.74,0
+Damboa,Kaga,89.92,0
+Dikwa,Camp(3),32.73,0
+Dikwa,Camp(4),37.29,0
+Dikwa,Kala/Balge,54.2,0
+Gubio,Mobbar,93.2,0
+Gubio,Nganzai,53.76,0
+Gubio,Guzamala,66.07,0
+Guzamala,Camp(7),71.48,0
+Guzamala,Nganzai,70.93,0
+Guzamala,Monguno,65.69,0
+Gwoza,Camp(8),48.89,0
+Gwoza,Bama,56.7,0
+Hawul,Shani,78.65,0
+Jere,Camp(2),11.7,0
+Jere,Maiduguri,12.78,0
+Jere,Konduga,41.56,0
+Kaga,Camp(5),47.4,0
+Kaga,Magumeri,75.93,0
+Kala/Balge,Camp(4),81.76,0
+Kala/Balge,Camp(3),84.01,0
+Konduga,Maiduguri,29.63,0
+Konduga,Camp(2),49.81,0
+Kukawa,Camp(7),48.99,0
+Kukawa,Monguno,67.59,0
+Kwaya Kusar,Shani,58.05,0
+Mafa,Camp(2),41.1,0
+Mafa,Camp(3),41.16,0
+Magumeri,Gubio,73.31,0
+Magumeri,Nganzai,70.23,0
+Magumeri,Jere,84.29,0
+Maiduguri,Camp(2),22.24,0
+Marte,Ngala,33.43,0
+Marte,Monguno,50.2,0
+Marte,Camp(3),48.28,0
+Mobbar,Guzamala,76.24,0
+Monguno,Camp(7),25.35,0
+Ngala,Camp(6),20.01,0
+Ngala,Camp(3),59.54,0
+Nganzai,Jere,85.97,0
+Abi,Afikpo North,40.51,0
+Abi,Yakurr,29.14,0
+Abi,Ezza South,30.28,0
+Akamkpa,Odukpani,81.22,0
+Akamkpa,Calabar Municipal,68.19,0
+Akamkpa,Akpabuyo,71.24,0
+Akpabuyo,Calabar South,27.06,0
+Akpabuyo,Calabar Municipal,26.38,0
+Akpabuyo,Oron,48.15,0
+Bekwara,Obudu,29.3,0
+Bekwara,Ogoja,41.74,0
+Biase,Ohafia,73.07,0
+Biase,Yakurr,74.64,0
+Boki,Obudu,44.54,0
+Boki,Obanliku,44.75,0
+Boki,Ogoja,80.16,0
+Calabar Municipal,Calabar South,13.84,0
+Calabar Municipal,Oron,30.27,0
+Calabar South,Udung Uko,38.15,0
+Etung,Ikom,14.52,0
+Etung,Obubra,66.85,0
+Etung,Boki,73.38,0
+Ikom,Obubra,53.03,0
+Ikom,Boki,59.87,0
+Obanliku,Obudu,43.01,0
+Obubra,Ikwo,46.71,0
+Obubra,Yakurr,46.15,0
+Odukpani,Itu,28.2,0
+Odukpani,Uruan,71.52,0
+Odukpani,Calabar Municipal,37.28,0
+Ogoja,Yala,37.12,0
+Ogoja,Obudu,62.71,0
+Yakurr,Afikpo North,46.03,0
+Yakurr,Ikwo,64.61,0
+Yala,Izzi,41.38,0
+Aniocha North,Oshimili North,28.89,0
+Aniocha North,Ika North East,30.51,0
+Aniocha North,Esan South East,38.73,0
+Aniocha South,Ika North East,34.87,0
+Aniocha South,Aniocha North,32.64,0
+Aniocha South,Oshimili North,34.85,0
+Bomadi,Ughelli South,88.71,0
+Bomadi,Udu,110.75,0
+Bomadi,Patani,45.73,0
+Burutu,Warri South,84.3,0
+Burutu,Warri South West,52.83,0
+Burutu,Bomadi,150.73,0
+Ethiope East,Ughelli North,26.75,0
+Ethiope East,Uvwie,31.47,0
+Ethiope East,Isoko North,42.33,0
+Ethiope West,Sapele,15.31,0
+Ethiope West,Okpe,27.14,0
+Ethiope West,Orhionmwon,37.87,0
+Ika North East,Ika South,28.31,0
+Ika South,Orhionmwon,29.5,0
+Ika South,Aniocha South,63.61,0
+Isoko North,Ughelli North,15.71,0
+Isoko North,Isoko South,22.14,0
+Isoko South,Ughelli North,32.93,0
+Isoko South,Patani,60.34,0
+Ndokwa East,Ndokwa West,25.91,0
+Ndokwa East,Ogba - Egbema - Ndoni,42.05,0
+Ndokwa East,Ukwuani,46.85,0
+Ndokwa West,Ukwuani,29.78,0
+Ndokwa West,Aniocha South,51.73,0
+Okpe,Warri South,32.2,0
+Okpe,Uvwie,15.6,0
+Okpe,Sapele,26.45,0
+Oshimili North,Oshimili South,35.82,0
+Oshimili North,Onitsha South,38.22,0
+Oshimili South,Idemili South,14.11,0
+Patani,Ughelli South,58.98,0
+Sapele,Warri South,57.65,0
+Udu,Uvwie,13.47,0
+Udu,Ughelli South,30.04,0
+Udu,Ughelli North,31.86,0
+Ughelli North,Ughelli South,17.33,0
+Ukwuani,Ethiope East,47.49,0
+Uvwie,Warri South,18.64,0
+Warri North,Ese-Odo,275.55,0
+Warri North,Warri South West,61.97,0
+Warri North,Ilaje,290.29,0
+Warri South,Udu,32.23,0
+Warri South West,Warri South,53.63,0
+Abakaliki,Ezza North,21.79,0
+Abakaliki,Ebonyi,22.67,0
+Abakaliki,Ezza South,28.91,0
+Afikpo North,Afikpo South,26.32,0
+Afikpo North,Ohaozara,33.63,0
+Afikpo South,Ivo,25.2,0
+Ebonyi,Ezza South,11.14,0
+Ebonyi,Ezza North,11.81,0
+Ezza North,Ezza South,22.57,0
+Ezza South,Ikwo,26.09,0
+Ikwo,Ebonyi,31.51,0
+Ishielu,Ohaukwu,33.76,0
+Ishielu,Nkanu East,40.69,0
+Ishielu,Ezza North,43.23,0
+Ivo,Aninri,34.47,0
+Ivo,Ohaozara,37.01,0
+Izzi,Ohaukwu,48.31,0
+Izzi,Abakaliki,46.78,0
+Ohaozara,Onicha,15.52,0
+Ohaozara,Afikpo South,39.4,0
+Ohaukwu,Abakaliki,36.72,0
+Onicha,Ezza South,30.52,0
+Onicha,Aninri,37.54,0
+Akoko-Edo,Ogori/Magongo,21.34,0
+Akoko-Edo,Akoko South East,36.81,0
+Akoko-Edo,Okene,61.12,0
+Egor,Ovia North East,11.35,0
+Egor,Oredo,16.88,0
+Egor,Ikpoba-Okha,26.55,0
+Esan Central,Esan West,16.67,0
+Esan Central,Igueben,15.96,0
+Esan Central,Esan North East,37.62,0
+Esan North East,Etsako Central,29.01,0
+Esan North East,Esan South East,34.06,0
+Esan South East,Igueben,43.42,0
+Esan West,Igueben,29.08,0
+Esan West,Uhunmwonde,36.97,0
+Etsako Central,Etsako East,35.43,0
+Etsako Central,Etsako West,27.62,0
+Etsako East,Idah,29.54,0
+Etsako East,Etsako West,48.63,0
+Etsako West,Owan East,36.09,0
+Etsako West,Esan North East,68.58,0
+Ikpoba-Okha,Oredo,25.55,0
+Ikpoba-Okha,Ovia North East,34.81,0
+Oredo,Ovia North East,32.49,0
+Orhionmwon,Ikpoba-Okha,54.1,0
+Ovia North East,Ovia South West,40.25,0
+Ovia South West,Egor,42.73,0
+Ovia South West,Oredo,60.11,0
+Owan East,Owan West,38.02,0
+Owan East,Akoko-Edo,50.19,0
+Owan West,Ose,44.63,0
+Owan West,Esan West,54.01,0
+Uhunmwonde,Igueben,61.04,0
+Uhunmwonde,Esan Central,54.73,0
+Ado Ekiti,Irepodun/Ifelodun,11.9,0
+Ado Ekiti,Ikere,14.04,0
+Ado Ekiti,Ekiti,15.89,0
+Gbonyin,Emure,26.7,0
+Gbonyin,Ekiti East,27.66,0
+Gbonyin,Ise/Orun,27.27,0
+Efon,Ido,32.94,0
+Efon,Odeda,31.36,0
+Efon,Ibadan South West,29.22,0
+Ekiti East,Akoko North West,25.64,0
+Ekiti East,Ikole,32.4,0
+Ekiti South West,Oriade,28.99,0
+Ekiti South West,Ikere,43.53,0
+Ekiti South West,Ifedore,27.61,0
+Ekiti West,Ijero,16.56,0
+Ekiti West,Ekiti South West,29.12,0
+Ekiti West,Ado Ekiti,30.78,0
+Emure,Ise/Orun,17.52,0
+Emure,Akoko South West,30.76,0
+Ido-Osi,Ilejemeje,15.52,0
+Ido-Osi,Oye,26.02,0
+Ido-Osi,Ijero,19.48,0
+Ijero,Ifedayo,22.21,0
+Ikere,Ise/Orun,33.64,0
+Ikole,Oye,27.32,0
+Ikole,Gbonyin,31.25,0
+Ilejemeje,Moba,18.26,0
+Ilejemeje,Oye,17.12,0
+Irepodun/Ifelodun,Ekiti,4.04,0
+Irepodun/Ifelodun,Ido-Osi,23.46,0
+Ise/Orun,Akure North,60.43,0
+Moba,Ido-Osi,19.58,0
+Moba,Ifedayo,28.01,0
+Oye,Ekiti,26.45,0
+Aninri,Awgu,26.54,0
+Aninri,Ohaozara,34.01,0
+Awgu,Oji-River,23.57,0
+Awgu,Nkanu West,28.6,0
+Enugu East,Enugu North,16.9,0
+Enugu East,Enugu South,23.58,0
+Enugu East,Udi,30.22,0
+Enugu North,Enugu South,7.28,0
+Enugu North,Nkanu West,18.44,0
+Enugu South,Nkanu West,13.5,0
+Enugu South,Udi,24.47,0
+Ezeagu,Udi,22.05,0
+Ezeagu,Awka North,30.95,0
+Ezeagu,Oji-River,44.52,0
+Igbo-Etiti,Nsukka,21.88,0
+Igbo-Etiti,Enugu East,53.77,0
+Igbo-Etiti,Uzo-Uwani,37.39,0
+Igbo-Eze North,Igbo-Eze South,16.38,0
+Igbo-Eze North,Udenu,18.77,0
+Igbo-Eze North,Nsukka,21.18,0
+Igbo-Eze South,Nsukka,18.32,0
+Igbo-Eze South,Udenu,30.35,0
+Isi-Uzo,Udenu,26.87,0
+Isi-Uzo,Enugu East,42.2,0
+Isi-Uzo,Ogbadibo,58.26,0
+Nkanu East,Nkanu West,18.4,0
+Nkanu East,Enugu South,27.52,0
+Nkanu East,Enugu North,32.24,0
+Oji-River,Orumba North,31.44,0
+Oji-River,Orumba South,30.12,0
+Udenu,Nsukka,22.35,0
+Udi,Enugu North,24.11,0
+Uzo-Uwani,Ayamelum,41.1,0
+Uzo-Uwani,Ezeagu,80.53,0
+Abaji,Lapai,24.84,0
+Abaji,Kwali,68.24,0
+Abaji,Gwagwalada,47.44,0
+Abuja Municipal Area Council,Camp(1),9.84,0
+Abuja Municipal Area Council,Bwari,30.48,0
+Abuja Municipal Area Council,Karu,36.86,0
+Bwari,Camp(1),30.78,0
+Bwari,Tafa,29.33,0
+Gwagwalada,Suleja,46.68,0
+Gwagwalada,Gurara,87.32,0
+Gwagwalada,Tafa,47.99,0
+Kuje,Kwali,51.89,0
+Kuje,Camp(1),72.22,0
+Kuje,Abuja Municipal Area Council,61.44,0
+Kwali,Lapai,76.23,0
+Akko,Billiri,70.41,0
+Akko,Gombe,52.44,0
+Akko,Yamaltu/Deba,62.73,0
+Balanga,Kaltungo,58.24,0
+Balanga,Guyuk,66.21,0
+Balanga,Lamurde,78.86,0
+Billiri,Shomgom,47.0,0
+Billiri,Kaltungo,51.71,0
+Dukku,Kwami,68.39,0
+Funakaye,Gulani,57.09,0
+Funakaye,Nafada,45.63,0
+Funakaye,Kwami,89.82,0
+Gombe,Kwami,57.36,0
+Gombe,Yamaltu/Deba,45.24,0
+Kaltungo,Shomgom,46.72,0
+Kwami,Yamaltu/Deba,71.79,0
+Nafada,Fika,43.13,0
+Nafada,Gulani,63.15,0
+Shomgom,Balanga,66.86,0
+Abo-Mbaise,Zangon-Kataf,76.38,0
+Abo-Mbaise,Camp(13),77.41,0
+Abo-Mbaise,Kachia,56.06,0
+Ahiazu-Mbaise,Obowo,12.59,0
+Ahiazu-Mbaise,Ezinihitte,13.08,0
+Ahiazu-Mbaise,Ikeduru,16.18,0
+Ehime-Mbano,Ihitte/Uboma,18.33,0
+Ehime-Mbano,Isiala-Mbano,13.22,0
+Ehime-Mbano,Unuimo,24.8,0
+Ezinihitte,Obowo,13.93,0
+Ideato North,Ideato South,8.43,0
+Ideato North,Orlu,21.78,0
+Ideato North,Unuimo,15.68,0
+Ideato South,Nkwerre,9.35,0
+Ideato South,Unuimo,13.66,0
+Ihitte/Uboma,Obowo,15.25,0
+Ikeduru,Isiala-Mbano,21.3,0
+Ikeduru,Owerri North,18.04,0
+Isiala-Mbano,Nwangele,11.76,0
+Isiala-Mbano,Nkwerre,14.48,0
+Isu,Njaba,13.05,0
+Isu,Nwangele,9.85,0
+Isu,Nkwerre,10.06,0
+Mbaitoli,Isu,13.93,0
+Mbaitoli,Njaba,16.65,0
+Mbaitoli,Owerri Municipal,14.5,0
+Ngor-Okpala,Owerri North,14.18,0
+Ngor-Okpala,Owerri West,32.58,0
+Ngor-Okpala,Owerri Municipal,27.96,0
+Njaba,Oru East,7.39,0
+Njaba,Oru West,16.47,0
+Nkwerre,Nwangele,4.88,0
+Oguta,Oru West,21.7,0
+Oguta,Oru East,21.17,0
+Oguta,Ihiala,21.56,0
+Ohaji/Egbema,Owerri West,21.77,0
+Ohaji/Egbema,Owerri Municipal,26.54,0
+Ohaji/Egbema,Ogba - Egbema - Ndoni,28.13,0
+Okigwe,Unuimo,14.28,0
+Okigwe,Ehime-Mbano,30.03,0
+Orlu,Orsu,13.52,0
+Orlu,Nkwerre,14.41,0
+Orlu,Ideato South,21.38,0
+Oru East,Oru West,6.69,0
+Oru East,Isu,19.13,0
+Owerri Municipal,Owerri West,15.26,0
+Owerri Municipal,Owerri North,16.02,0
+Owerri North,Owerri West,21.28,0
+Auyo,Hadejia,26.74,0
+Auyo,Kafin Hausa,24.91,0
+Auyo,Malam Madori,36.73,0
+Babura,Baure,61.52,0
+Babura,Dambatta,36.44,0
+Babura,Yankwashi,41.3,0
+Biriniwa,Machina,102.79,0
+Biriniwa,Kiri Kasama,55.92,0
+Biriniwa,Guri,57.65,0
+Birnin Kudu,Buji,51.72,0
+Birnin Kudu,Dutse,41.59,0
+Birnin Kudu,Takai,46.29,0
+Buji,Kiyawa,49.7,0
+Dutse,Kiyawa,38.74,0
+Dutse,Takai,39.45,0
+Gagarawa,Gumel,34.54,0
+Gagarawa,Maigatari,52.11,0
+Gagarawa,Kaugama,48.08,0
+Garki,Sule Tankarkar,37.11,0
+Garki,Ringim,57.19,0
+Garki,Taura,47.36,0
+Gumel,Sule Tankarkar,27.72,0
+Gumel,Maigatari,49.63,0
+Guri,Nguru,36.72,0
+Guri,Kiri Kasama,25.61,0
+Gwaram,Giade,40.93,0
+Gwiwa,Kazaure,30.41,0
+Gwiwa,Roni,30.12,0
+Gwiwa,Ingawa,33.47,0
+Hadejia,Malam Madori,30.62,0
+Hadejia,Kiri Kasama,28.85,0
+Jahun,Miga,24.36,0
+Jahun,Kiyawa,46.77,0
+Jahun,Taura,59.88,0
+Kaugama,Malam Madori,57.72,0
+Kaugama,Maigatari,26.56,0
+Kazaure,Roni,18.21,0
+Kazaure,Yankwashi,41.21,0
+Miga,Auyo,40.58,0
+Miga,Kafin Hausa,47.48,0
+Ringim,Ajingi,41.89,0
+Ringim,Gabasawa,40.34,0
+Roni,Kunchi,28.92,0
+Roni,Makoda,23.35,0
+Sule Tankarkar,Gagarawa,58.76,0
+Taura,Gagarawa,50.25,0
+Taura,Ringim,35.3,0
+Yankwashi,Zango,39.54,0
+Yankwashi,Baure,45.79,0
+Birnin-Gwari,Muya,109.46,0
+Birnin-Gwari,Giwa,105.59,0
+Birnin-Gwari,Sabuwa,98.51,0
+Chikun,Kaduna South,10.48,0
+Chikun,Kaduna North,20.96,0
+Chikun,Muya,68.86,0
+Giwa,Muya,112.35,0
+Giwa,Sabuwa,53.81,0
+Giwa,Dandume,80.79,0
+Igabi,Kaduna North,30.16,0
+Igabi,Kaduna South,36.0,0
+Igabi,Zaria,56.62,0
+Ikara,Makarfi,35.29,0
+Ikara,Kiru,34.92,0
+Ikara,Bebeji,37.79,0
+Jaba,Jema'A,47.78,0
+Jaba,Kagarko,60.68,0
+Jaba,Kaura,63.33,0
+Jema'A,Sanga,88.87,0
+Jema'A,Kaura,57.01,0
+Kachia,Kagarko,61.81,0
+Kachia,Kajuru,111.31,0
+Kaduna North,Kaduna South,10.89,0
+Kagarko,Bwari,60.62,0
+Kagarko,Tafa,61.89,0
+Kajuru,Abo-Mbaise,57.07,0
+Kajuru,Kauru,178.8,0
+Kaura,Riyom,51.72,0
+Kaura,Camp(13),47.54,0
+Kauru,Lere,77.54,0
+Kauru,Abo-Mbaise,173.66,0
+Kubau,Doguwa,77.44,0
+Kubau,Soba,48.81,0
+Kubau,Kauru,91.61,0
+Kudan,Sabon-Gari,27.05,0
+Kudan,Makarfi,35.16,0
+Kudan,Zaria,42.01,0
+Lere,Bassa,83.23,0
+Lere,Kubau,123.07,0
+Makarfi,Rogo,26.17,0
+Sabon-Gari,Zaria,23.63,0
+Sabon-Gari,Makarfi,41.19,0
+Sanga,Akwanga,33.55,0
+Sanga,Wamba,59.63,0
+Soba,Ikara,55.55,0
+Soba,Zaria,58.66,0
+Zangon-Kataf,Camp(13),1.1,0
+Zangon-Kataf,Kaura,46.5,0
+Ajingi,Gaya,18.91,0
+Ajingi,Warawa,41.19,0
+Albasu,Gaya,21.98,0
+Albasu,Takai,28.18,0
+Albasu,Garko,32.09,0
+Bagwai,Bichi,22.79,0
+Bagwai,Shanono,31.82,0
+Bagwai,Tsanyawa,37.41,0
+Bebeji,Garum Mallam,23.51,0
+Bebeji,Rano,49.27,0
+Bebeji,Kiru,43.83,0
+Bichi,Dawakin Tofa,17.14,0
+Bichi,Tofa,41.42,0
+Bunkure,Kura,20.35,0
+Bunkure,Garum Mallam,47.77,0
+Bunkure,Rano,24.38,0
+Dala,Fagge,4.0,0
+Dala,Gwale,7.66,0
+Dala,Kano Municipal,9.29,0
+Dambatta,Makoda,22.38,0
+Dambatta,Minjibir,48.41,0
+Dambatta,Roni,53.74,0
+Dawakin Kudu,Wudil,20.82,0
+Dawakin Kudu,Warawa,34.42,0
+Dawakin Kudu,Bunkure,54.61,0
+Dawakin Tofa,Tofa,24.94,0
+Dawakin Tofa,Ungogo,18.57,0
+Doguwa,Sumaila,125.07,0
+Doguwa,Tudun Wada,85.4,0
+Fagge,Kano Municipal,7.27,0
+Fagge,Ungogo,13.29,0
+Gabasawa,Gezawa,22.93,0
+Gabasawa,Warawa,39.49,0
+Gabasawa,Minjibir,36.05,0
+Garko,Kibiya,36.56,0
+Garko,Wudil,28.17,0
+Garum Mallam,Kura,39.32,0
+Gaya,Wudil,29.42,0
+Gezawa,Minjibir,26.9,0
+Gezawa,Warawa,22.48,0
+Gwale,Kano Municipal,9.52,0
+Gwale,Fagge,15.95,0
+Gwarzo,Karaye,19.89,0
+Gwarzo,Malumfashi,25.96,0
+Gwarzo,Shanono,36.13,0
+Kabo,Rimin Gado,16.44,0
+Kabo,Madobi,22.97,0
+Kabo,Tofa,29.9,0
+Kano Municipal,Tarauni,6.45,0
+Karaye,Malumfashi,32.72,0
+Karaye,Kiru,65.91,0
+Kibiya,Rano,31.18,0
+Kibiya,Bunkure,32.42,0
+Kiru,Rogo,42.5,0
+Kumbotso,Tarauni,11.12,0
+Kumbotso,Kano Municipal,16.01,0
+Kumbotso,Gwale,12.2,0
+Kunchi,Makoda,36.79,0
+Kunchi,Ingawa,36.93,0
+Kura,Madobi,28.42,0
+Madobi,Rimin Gado,23.42,0
+Minjibir,Ungogo,36.59,0
+Minjibir,Fagge,40.41,0
+Nasarawa,Lafia,36.64,0
+Nasarawa,Doma,42.25,0
+Nasarawa,Nasarawa-Eggon,69.38,0
+Rano,Tudun Wada,47.66,0
+Rimin Gado,Tofa,18.86,0
+Rogo,Kafur,41.21,0
+Shanono,Tsanyawa,27.24,0
+Sumaila,Kibiya,42.33,0
+Sumaila,Garko,42.31,0
+Sumaila,Tudun Wada,55.34,0
+Tarauni,Fagge,11.21,0
+Tofa,Gwale,21.45,0
+Tsanyawa,Kusada,27.57,0
+Tudun Wada,Kibiya,41.4,0
+Tudun Wada,Bebeji,70.61,0
+Ungogo,Dala,10.47,0
+Ungogo,Kano Municipal,18.1,0
+Warawa,Wudil,20.78,0
+Bakori,Funtua,36.47,0
+Bakori,Danja,45.16,0
+Bakori,Kafur,37.08,0
+Batagarawa,Jibia,19.17,0
+Batagarawa,Rimi,35.52,0
+Batagarawa,Kurfi,33.32,0
+Batsari,Jibia,44.45,0
+Batsari,Kurfi,34.6,0
+Batsari,Batagarawa,44.47,0
+Baure,Zango,39.14,0
+Bindawa,Mani,29.0,0
+Bindawa,Ingawa,38.24,0
+Bindawa,Rimi,43.21,0
+Charanchi,Katsina,38.73,0
+Charanchi,Kankia,29.0,0
+Charanchi,Dutsin-Ma,50.25,0
+Dandume,Funtua,19.84,0
+Dandume,Sabuwa,35.03,0
+Dandume,Danja,48.16,0
+Danja,Funtua,31.44,0
+Danja,Kudan,35.51,0
+Dan Musa,Safana,41.83,0
+Dan Musa,Dutsin-Ma,59.9,0
+Dan Musa,Kankara,62.54,0
+Daura,Sandamu,17.91,0
+Daura,Mai'Adua,24.91,0
+Daura,Zango,32.57,0
+Dutsin-Ma,Katsina,27.69,0
+Dutsin-Ma,Matazu,59.34,0
+Faskari,Tsafe,32.95,0
+Faskari,Funtua,33.98,0
+Faskari,Bakori,56.16,0
+Ingawa,Kusada,33.31,0
+Jibia,Rimi,37.64,0
+Kafur,Malumfashi,34.34,0
+Kaita,Mashi,63.54,0
+Kaita,Rimi,49.08,0
+Kaita,Mani,58.85,0
+Kankara,Bakori,58.76,0
+Kankara,Faskari,56.37,0
+Kankia,Kusada,36.94,0
+Kankia,Katsina,30.55,0
+Katsina,Kurfi,52.91,0
+Mai'Adua,Mashi,29.44,0
+Mai'Adua,Sandamu,41.53,0
+Malumfashi,Shanono,45.93,0
+Mani,Rimi,33.04,0
+Mani,Mashi,42.51,0
+Matazu,Musawa,38.6,0
+Matazu,Kankia,60.51,0
+Musawa,Shanono,29.59,0
+Musawa,Malumfashi,43.79,0
+Sabuwa,Funtua,49.78,0
+Safana,Kurfi,54.08,0
+Safana,Dutsin-Ma,41.5,0
+Sandamu,Zango,24.55,0
+Sandamu,Gwiwa,30.51,0
+Aleiro,Jega,36.43,0
+Aleiro,Gwandu,46.92,0
+Aleiro,Birnin Kebbi,53.48,0
+Arewa-Dandi,Birnin Kebbi,53.07,0
+Arewa-Dandi,Kalgo,71.25,0
+Arewa-Dandi,Argungu,42.47,0
+Argungu,Augie,31.07,0
+Argungu,Gwandu,68.86,0
+Argungu,Birnin Kebbi,55.11,0
+Augie,Silame,44.57,0
+Augie,Yabo,83.5,0
+Bagudo,Koko/Besse,33.52,0
+Bagudo,Suru,72.25,0
+Bagudo,Shanga,71.17,0
+Birnin Kebbi,Kalgo,21.24,0
+Bunza,Kalgo,54.55,0
+Bunza,Dandi,51.1,0
+Bunza,Birnin Kebbi,68.16,0
+Dandi,Suru,75.18,0
+Dandi,Maiyama,106.44,0
+Fakai,Zuru,50.34,0
+Fakai,Kebbe,131.04,0
+Fakai,Koko/Besse,55.06,0
+Gwandu,Tambuwal,49.2,0
+Jega,Maiyama,30.55,0
+Jega,Kebbe,58.49,0
+Koko/Besse,Shanga,37.67,0
+Maiyama,Suru,41.83,0
+Maiyama,Aleiro,52.57,0
+Ngaski,Yauri,39.08,0
+Ngaski,Agwara,65.66,0
+Ngaski,Magama,97.06,0
+Sakaba,Wasagu/Danko,59.91,0
+Sakaba,Rijau,49.7,0
+Sakaba,Zuru,59.11,0
+Shanga,Fakai,85.54,0
+Wasagu/Danko,Zuru,61.89,0
+Wasagu/Danko,Maru,91.71,0
+Yauri,Agwara,31.03,0
+Yauri,Shanga,56.71,0
+Zuru,Rijau,47.53,0
+Adavi,Okehi,24.16,0
+Adavi,Ajaokuta,83.25,0
+Adavi,Okene,57.57,0
+Ajaokuta,Kogi,41.49,0
+Ajaokuta,Okene,50.78,0
+Ankpa,Omala,35.95,0
+Ankpa,Olamaboro,47.1,0
+Bassa,Jos North,21.23,0
+Bassa,Camp(9),29.97,0
+Bassa,Jos South,39.71,0
+Dekina,Ofu,48.83,0
+Dekina,Lokoja,66.0,0
+Dekina,Omala,70.93,0
+Ibaji,Anambra West,87.6,0
+Ibaji,Etsako Central,70.66,0
+Ibaji,Idah,39.4,0
+Idah,Etsako Central,34.34,0
+Igalamela-Odolu,Ofu,72.74,0
+Igalamela-Odolu,Igbo-Eze South,45.34,0
+Igalamela-Odolu,Idah,38.78,0
+Ijumu,Akoko North West,42.55,0
+Ijumu,Ekiti East,33.71,0
+Ijumu,Akoko North East,55.91,0
+Kabba/Bunu,Mopa-Muro,36.64,0
+Kabba/Bunu,Ijumu,50.18,0
+Kabba/Bunu,Okehi,84.77,0
+Kogi,Lokoja,8.35,0
+Kogi,Adavi,39.47,0
+Lokoja,Ajaokuta,37.11,0
+Lokoja,Adavi,46.43,0
+Mopa-Muro,Yagba East,26.94,0
+Mopa-Muro,Ijumu,64.01,0
+Ofu,Idah,48.09,0
+Ogori/Magongo,Okene,39.71,0
+Ogori/Magongo,Akoko South East,34.0,0
+Okehi,Okene,51.53,0
+Okehi,Ajaokuta,93.43,0
+Olamaboro,Igbo-Eze North,23.58,0
+Olamaboro,Igbo-Eze South,41.97,0
+Yagba East,Yagba West,27.56,0
+Yagba East,Ikole,62.72,0
+Yagba West,Oke-Ero,49.03,0
+Yagba West,Mopa-Muro,53.29,0
+Asa,Ilorin West,19.85,0
+Asa,Ilorin South,33.23,0
+Asa,Ori Ire,38.76,0
+Baruten,Irepo,82.99,0
+Baruten,Kaiama,89.56,0
+Baruten,Orelope,86.79,0
+Edu,Mokwa,187.27,0
+Edu,Ilorin East,80.88,0
+Edu,Isin,81.89,0
+Ekiti,Ido-Osi,21.72,0
+Ifelodun,Boripe,8.19,0
+Ifelodun,Olorunda,10.61,0
+Ifelodun,Odo-Otin,14.29,0
+Ilorin East,Ilorin South,47.09,0
+Ilorin East,Ilorin West,39.27,0
+Ilorin East,Moro,70.95,0
+Ilorin South,Ilorin West,20.5,0
+Ilorin South,Oyun,37.57,0
+Irepodun,Offa,28.0,0
+Irepodun,Isin,23.55,0
+Irepodun,Oyun,39.99,0
+Isin,Oke-Ero,51.26,0
+Isin,Moba,42.15,0
+Kaiama,Irepo,91.63,0
+Kaiama,Borgu,120.61,0
+Moro,Ilorin West,46.12,0
+Moro,Asa,54.25,0
+Offa,Oyun,12.38,0
+Offa,Odo-Otin,18.93,0
+Oke-Ero,Ilejemeje,40.87,0
+Oke-Ero,Moba,48.0,0
+Oyun,Odo-Otin,30.02,0
+Pategi,Edati,55.77,0
+Pategi,Bida,59.22,0
+Pategi,Yagba West,96.42,0
+Agege,Ifako-Ijaye,9.68,0
+Agege,Ikeja,5.73,0
+Agege,Alimosho,9.35,0
+Ajeromi-Ifelodun,Apapa,4.92,0
+Ajeromi-Ifelodun,Surulere,7.41,0
+Ajeromi-Ifelodun,Lagos Mainland,10.11,0
+Alimosho,Oshodi-Isolo,11.63,0
+Alimosho,Ikeja,14.75,0
+Amuwo-Odofin,Ajeromi-Ifelodun,11.67,0
+Amuwo-Odofin,Surulere,14.39,0
+Amuwo-Odofin,Ojo,15.08,0
+Apapa,Surulere,5.65,0
+Apapa,Lagos Mainland,8.36,0
+Badagry,Ipokia,65.27,0
+Badagry,Ado-Odo/Ota,47.39,0
+Badagry,Ojo,35.48,0
+Epe,Ibeju/Lekki,35.36,0
+Epe,Ijebu Ode,33.92,0
+Epe,Odogbolu,50.43,0
+Eti-Osa,Lagos Island,67.33,0
+Eti-Osa,Lagos Mainland,28.98,0
+Eti-Osa,Ikorodu,57.08,0
+Ibeju/Lekki,Eti-Osa,38.8,0
+Ibeju/Lekki,Lagos Island,99.93,0
+Ifako-Ijaye,Ikeja,8.11,0
+Ifako-Ijaye,Alimosho,14.0,0
+Ikeja,Oshodi-Isolo,10.11,0
+Ikorodu,Kosofe,17.45,0
+Ikorodu,Lagos Island,13.83,0
+Ikorodu,Shomolu,25.5,0
+Kosofe,Shomolu,8.34,0
+Kosofe,Ikeja,10.65,0
+Kosofe,Mushin,14.72,0
+Lagos Island,Kosofe,27.81,0
+Lagos Island,Lagos Mainland,39.7,0
+Lagos Mainland,Surulere,9.17,0
+Lagos Mainland,Shomolu,6.3,0
+Lagos Mainland,Mushin,7.61,0
+Mushin,Shomolu,6.1,0
+Mushin,Surulere,6.88,0
+Mushin,Oshodi-Isolo,8.36,0
+Ojo,Alimosho,23.27,0
+Ojo,Oshodi-Isolo,28.8,0
+Oshodi-Isolo,Surulere,12.63,0
+Shomolu,Surulere,7.84,0
+Akwanga,Nasarawa-Eggon,54.23,0
+Akwanga,Kokona,51.78,0
+Awe,Keana,49.9,0
+Awe,Camp(14),75.66,0
+Awe,Guma,88.54,0
+Doma,Camp(11),86.65,0
+Doma,Lafia,49.63,0
+Karu,Keffi,45.46,0
+Karu,Camp(1),42.47,0
+Keana,Camp(14),42.85,0
+Keana,Guma,55.76,0
+Keana,Camp(11),42.12,0
+Keffi,Kokona,23.94,0
+Keffi,Abuja Municipal Area Council,57.71,0
+Kokona,Karu,64.39,0
+Lafia,Nasarawa-Eggon,32.88,0
+Nasarawa-Eggon,Kokona,80.25,0
+Toto,Kuje,64.64,0
+Toto,Kwali,75.19,0
+Toto,Omala,208.96,0
+Wamba,Bokkos,178.29,0
+Wamba,Akwanga,56.98,0
+Agaie,Katcha,28.91,0
+Agaie,Lapai,72.57,0
+Agaie,Abaji,83.39,0
+Agwara,Shanga,85.87,0
+Bida,Edati,17.49,0
+Bida,Gbako,25.62,0
+Bida,Katcha,53.95,0
+Borgu,Agwara,81.31,0
+Borgu,Ngaski,142.11,0
+Bosso,Chanchaga,30.65,0
+Bosso,Wushishi,71.43,0
+Bosso,Gbako,72.55,0
+Chanchaga,Paikoro,60.52,0
+Chanchaga,Shiroro,80.07,0
+Edati,Gbako,40.4,0
+Gbako,Lavun,90.68,0
+Gurara,Suleja,49.25,0
+Gurara,Tafa,48.28,0
+Katcha,Lapai,63.57,0
+Katcha,Edati,67.83,0
+Kontagora,Magama,67.2,0
+Kontagora,Mariga,64.57,0
+Kontagora,Mashegu,89.83,0
+Lavun,Mokwa,73.61,0
+Lavun,Wushishi,133.99,0
+Magama,Mashegu,58.84,0
+Mariga,Rafi,76.71,0
+Mariga,Sakaba,99.61,0
+Mashegu,Lavun,244.43,0
+Mokwa,Pategi,155.32,0
+Muya,Kaduna South,59.15,0
+Paikoro,Gurara,118.0,0
+Paikoro,Suleja,77.19,0
+Rafi,Shiroro,191.4,0
+Rafi,Wushishi,78.59,0
+Rijau,Yauri,71.04,0
+Shiroro,Paikoro,75.99,0
+Suleja,Tafa,12.96,0
+Tafa,Camp(1),39.97,0
+Wushishi,Gbako,111.58,0
+Abeokuta North,Abeokuta South,29.71,0
+Abeokuta North,Ibarapa Central,50.77,0
+Abeokuta North,Odeda,47.11,0
+Abeokuta South,Odeda,29.68,0
+Abeokuta South,Obafemi-Owode,46.56,0
+Ado-Odo/Ota,Alimosho,36.86,0
+Ado-Odo/Ota,Ojo,27.46,0
+Ado-Odo/Ota,Yewa South (Egbado South),32.6,0
+Ewekoro,Ifo,34.05,0
+Ewekoro,Abeokuta North,59.25,0
+Ewekoro,Abeokuta South,42.75,0
+Ifo,Ifako-Ijaye,28.52,0
+Ifo,Agege,27.23,0
+Ifo,Alimosho,31.39,0
+Ijebu East,Ijebu North East,52.38,0
+Ijebu East,Ijebu Ode,49.11,0
+Ijebu East,Ijebu North,69.59,0
+Ijebu North,Ijebu North East,18.62,0
+Ijebu North,Oluyole,35.41,0
+Ijebu North,Ijebu Ode,32.0,0
+Ijebu North East,Ijebu Ode,14.89,0
+Ijebu North East,Odogbolu,35.84,0
+Ijebu Ode,Odogbolu,22.13,0
+Ikenne,Sagamu,11.59,0
+Ikenne,Remo North,19.26,0
+Ikenne,Odogbolu,17.27,0
+Imeko Afon,Ibarapa North,87.15,0
+Imeko Afon,Iwajowa,44.89,0
+Imeko Afon,Ibarapa Central,81.03,0
+Ipokia,Yewa South (Egbado South),30.86,0
+Ipokia,Ado-Odo/Ota,45.47,0
+Obafemi-Owode,Sagamu,26.9,0
+Obafemi-Owode,Ikenne,36.21,0
+Odeda,Ibarapa Central,37.68,0
+Odogbolu,Sagamu,37.73,0
+Ogun Waterside,Okitipupa,60.05,0
+Ogun Waterside,Ijebu East,65.29,0
+Ogun Waterside,Epe,114.71,0
+Remo North,Sagamu,24.28,0
+Remo North,Odogbolu,36.22,0
+Yewa North (Egbado North),Abeokuta North,38.17,0
+Yewa North (Egbado North),Ewekoro,55.12,0
+Yewa North (Egbado North),Yewa South (Egbado South),69.23,0
+Yewa South (Egbado South),Ewekoro,52.88,0
+Akoko North East,Akoko North West,14.75,0
+Akoko North East,Akoko South East,16.83,0
+Akoko North East,Akoko South West,41.49,0
+Akoko South East,Akoko South West,27.47,0
+Akoko South West,Owo,31.24,0
+Akure North,Akure South,24.28,0
+Akure North,Ifedore,32.34,0
+Akure South,Ifedore,22.16,0
+Akure South,Ondo East,35.03,0
+Ese-Odo,Ilaje,76.61,0
+Ese-Odo,Irele,30.8,0
+Idanre,Akure South,38.92,0
+Idanre,Akure North,60.76,0
+Idanre,Ondo East,43.2,0
+Ifedore,Ikere,37.64,0
+Ilaje,Irele,46.27,0
+Ilaje,Okitipupa,54.08,0
+Ile-Oluji-Okeigbo,Ondo East,34.47,0
+Ile-Oluji-Okeigbo,Ondo West,31.18,0
+Ile-Oluji-Okeigbo,Atakunmosa East,49.81,0
+Irele,Okitipupa,28.73,0
+Irele,Odigbo,32.47,0
+Odigbo,Okitipupa,28.09,0
+Odigbo,Ondo West,51.32,0
+Ondo East,Ondo West,30.07,0
+Ondo West,Ife South,45.68,0
+Ose,Owo,25.98,0
+Ose,Akoko South West,53.65,0
+Owo,Emure,39.73,0
+Aiyedade,Isokan,29.6,0
+Aiyedade,Ife North,27.45,0
+Aiyedade,Irewole,32.75,0
+Aiyedire,Iwo,8.42,0
+Aiyedire,Irewole,33.77,0
+Aiyedire,Lagelu,29.28,0
+Atakunmosa East,Atakunmosa West,24.18,0
+Atakunmosa East,Oriade,17.8,0
+Atakunmosa East,Ilesha East,25.53,0
+Atakunmosa West,Ife East,18.19,0
+Atakunmosa West,Ilesha East,24.1,0
+Boluwaduro,Ila,20.32,0
+Boluwaduro,Odo-Otin,21.17,0
+Boluwaduro,Boripe,25.59,0
+Boripe,Olorunda,19.56,0
+Boripe,Osogbo,19.44,0
+Ede North,Egbedore,9.61,0
+Ede North,Ede South,10.48,0
+Ede North,Osogbo,16.28,0
+Ede South,Ife Central,21.66,0
+Ede South,Egbedore,15.39,0
+Egbedore,Orolu,18.03,0
+Ejigbo,Ogo Oluwa,18.99,0
+Ejigbo,Orolu,25.19,0
+Ejigbo,Egbedore,19.24,0
+Ife Central,Ife East,24.05,0
+Ife Central,Atakunmosa West,25.92,0
+Ifedayo,Ila,20.74,0
+Ife East,Ife South,24.21,0
+Ife North,Ife South,46.15,0
+Ife North,Ife East,33.61,0
+Ila,Ijero,29.72,0
+Ilesha East,Ilesha West,7.62,0
+Ilesha East,Oriade,22.05,0
+Ilesha West,Obokun,29.65,0
+Ilesha West,Atakunmosa West,26.24,0
+Irewole,Isokan,20.34,0
+Irewole,Lagelu,39.22,0
+Isokan,Ona-Ara,37.07,0
+Iwo,Ola-Oluwa,13.3,0
+Iwo,Lagelu,21.23,0
+Obokun,Boripe,23.7,0
+Obokun,Ilesha East,30.51,0
+Odo-Otin,Boripe,21.04,0
+Ola-Oluwa,Aiyedire,21.31,0
+Ola-Oluwa,Ejigbo,26.38,0
+Olorunda,Orolu,31.88,0
+Osogbo,Olorunda,18.2,0
+Afijio,Oyo East,25.62,0
+Afijio,Akinyele,23.91,0
+Afijio,Oyo West,33.18,0
+Akinyele,Ibadan North,15.69,0
+Akinyele,Ibadan North West,21.79,0
+Akinyele,Ibadan North East,20.96,0
+Atiba,Oyo West,90.04,0
+Atiba,Itesiwaju,62.58,0
+Atiba,Ori Ire,168.93,0
+Atisbo,Saki West,51.91,0
+Atisbo,Itesiwaju,66.73,0
+Atisbo,Kajola,65.67,0
+Egbeda,Ibadan North East,14.24,0
+Egbeda,Lagelu,15.82,0
+Egbeda,Ibadan North,18.61,0
+Ibadan North,Ibadan North East,5.96,0
+Ibadan North,Ibadan North West,8.53,0
+Ibadan North,Ibadan South East,9.23,0
+Ibadan North East,Ibadan South East,7.51,0
+Ibadan North East,Ibadan North West,8.48,0
+Ibadan North West,Ibadan South West,5.25,0
+Ibadan South East,Ibadan South West,8.11,0
+Ibadan South East,Ibadan North West,8.02,0
+Ibadan South West,Ibadan North,10.2,0
+Ibarapa Central,Ibarapa North,34.21,0
+Ibarapa East,Ido,40.24,0
+Ibarapa East,Odeda,59.39,0
+Ibarapa East,Ibarapa Central,37.47,0
+Ibarapa North,Ibarapa East,46.69,0
+Ido,Ibadan North West,27.32,0
+Ido,Akinyele,45.63,0
+Irepo,Orelope,32.24,0
+Irepo,Olorunsogo,39.35,0
+Irepo,Saki East,60.33,0
+Iseyin,Oyo West,33.2,0
+Iseyin,Kajola,29.5,0
+Iseyin,Itesiwaju,33.98,0
+Itesiwaju,Kajola,40.04,0
+Iwajowa,Kajola,55.75,0
+Iwajowa,Ibarapa North,79.27,0
+Ogbomosho North,Ogbomosho South,13.46,0
+Ogbomosho North,Ori Ire,27.93,0
+Ogbomosho North,Ogo Oluwa,27.35,0
+Ogbomosho South,Ogo Oluwa,19.95,0
+Ogbomosho South,Ejigbo,31.17,0
+Ogo Oluwa,Oyo East,37.33,0
+Olorunsogo,Orelope,33.67,0
+Olorunsogo,Moro,76.42,0
+Oluyole,Ibadan South East,22.71,0
+Oluyole,Ibadan South West,22.09,0
+Oluyole,Ona-Ara,44.52,0
+Ona-Ara,Egbeda,37.99,0
+Orelope,Saki East,34.11,0
+Ori Ire,Ogbomosho South,32.0,0
+Oyo East,Ola-Oluwa,32.21,0
+Oyo West,Oyo East,39.12,0
+Saki East,Saki West,43.1,0
+Saki East,Atisbo,62.66,0
+Saki West,Itesiwaju,100.2,0
+Barkin Ladi,Jos South,31.91,0
+Barkin Ladi,Riyom,33.9,0
+Barkin Ladi,Camp(9),42.26,0
+Bokkos,Mangu,54.55,0
+Bokkos,Barkin Ladi,57.58,0
+Jos East,Camp(9),38.03,0
+Jos East,Jos North,37.5,0
+Jos East,Jos South,49.89,0
+Jos North,Camp(9),12.85,0
+Jos North,Jos South,22.64,0
+Jos South,Camp(9),14.39,0
+Kanam,Wase,67.03,0
+Kanam,Kanke,72.58,0
+Kanke,Pankshin,35.85,0
+Kanke,Langtang North,47.98,0
+Langtang North,Mikang,41.56,0
+Langtang North,Wase,72.05,0
+Langtang South,Shendam,67.81,0
+Langtang South,Ibi,93.22,0
+Langtang South,Langtang North,59.65,0
+Mangu,Pankshin,37.24,0
+Mangu,Barkin Ladi,50.53,0
+Mikang,Shendam,36.44,0
+Mikang,Pankshin,105.04,0
+Qua'An Pan,Shendam,79.58,0
+Qua'An Pan,Wamba,115.52,0
+Qua'An Pan,Mikang,88.23,0
+Riyom,Jos South,37.17,0
+Wase,Langtang South,115.99,0
+Abua - Odual,Ahoada West,49.44,0
+Abua - Odual,Ahoada East,30.73,0
+Ahoada East,Emuoha,24.35,0
+Ahoada East,Ahoada West,19.93,0
+Ahoada West,Emuoha,39.62,0
+Akuku Toru,Degema,54.0,0
+Akuku Toru,Asari-Toru,52.11,0
+Andoni,Opobo - Nkoro,28.11,0
+Andoni,Khana,35.39,0
+Andoni,Gokana,47.14,0
+Asari-Toru,Port-Harcourt,46.72,0
+Asari-Toru,Degema,30.99,0
+Asari-Toru,Obio/Akpor,38.62,0
+Bonny,Ogu - Bolo,63.55,0
+Bonny,Gokana,53.37,0
+Bonny,Andoni,41.47,0
+Degema,Okrika,91.94,0
+Degema,Port-Harcourt,76.95,0
+Eleme,Ogu - Bolo,23.98,0
+Eleme,Okrika,15.58,0
+Eleme,Tai,15.6,0
+Emuoha,Ikwerre,23.93,0
+Etche,Omumma,22.03,0
+Etche,Ukwa West,29.23,0
+Etche,Oyigbo,38.25,0
+Gokana,Ogu - Bolo,12.37,0
+Gokana,Tai,15.98,0
+Gokana,Khana,19.4,0
+Ikwerre,Etche,43.85,0
+Ikwerre,Ahoada East,31.56,0
+Khana,Opobo - Nkoro,28.43,0
+Obio/Akpor,Port-Harcourt,16.7,0
+Obio/Akpor,Oyigbo,15.67,0
+Obio/Akpor,Eleme,23.05,0
+Ogba - Egbema - Ndoni,Oguta,43.05,0
+Ogu - Bolo,Tai,19.93,0
+Okrika,Port-Harcourt,28.03,0
+Okrika,Ogu - Bolo,36.19,0
+Omumma,Aba South,18.8,0
+Omumma,Ugwunagbo,24.02,0
+Oyigbo,Eleme,25.72,0
+Oyigbo,Port-Harcourt,24.12,0
+Port-Harcourt,Eleme,25.63,0
+Binji,Silame,50.55,0
+Binji,Tangaza,49.22,0
+Binji,Augie,76.12,0
+Bodinga,Wamakko,40.99,0
+Bodinga,Sokoto South,35.43,0
+Bodinga,Dange Shuni,35.15,0
+Dange Shuni,Sokoto South,37.92,0
+Dange Shuni,Sokoto North,40.23,0
+Gada,Goronyo,59.81,0
+Gada,Illela,68.07,0
+Gada,Gwadabawa,66.98,0
+Goronyo,Wurno,70.13,0
+Goronyo,Rabah,136.82,0
+Gudu,Binji,120.97,0
+Gudu,Tangaza,95.77,0
+Gudu,Augie,161.99,0
+Gwadabawa,Wurno,31.76,0
+Gwadabawa,Illela,39.14,0
+Gwadabawa,Kware,52.61,0
+Illela,Tangaza,113.39,0
+Isa,Shinkafi,32.9,0
+Isa,Sabon Birni,50.27,0
+Isa,Zurmi,116.6,0
+Kebbe,Gummi,78.58,0
+Kware,Sokoto North,16.25,0
+Kware,Sokoto South,18.08,0
+Kware,Wurno,33.05,0
+Rabah,Wurno,76.44,0
+Rabah,Dange Shuni,136.28,0
+Sabon Birni,Goronyo,67.8,0
+Sabon Birni,Shinkafi,77.89,0
+Shagari,Tambuwal,28.28,0
+Shagari,Yabo,39.16,0
+Shagari,Bodinga,51.11,0
+Silame,Yabo,37.33,0
+Sokoto North,Sokoto South,9.17,0
+Sokoto North,Wamakko,19.56,0
+Sokoto South,Wamakko,20.31,0
+Tambuwal,Yabo,53.45,0
+Tangaza,Gwadabawa,85.28,0
+Tureta,Dange Shuni,65.41,0
+Tureta,Bakura,66.38,0
+Tureta,Birnin Magaji,156.19,0
+Wamakko,Kware,35.02,0
+Wurno,Sokoto South,41.7,0
+Yabo,Bodinga,37.69,0
+Ardo-Kola,Jalingo,31.12,0
+Ardo-Kola,Yorro,91.56,0
+Ardo-Kola,Karim-Lamido,133.51,0
+Bali,Gassol,141.29,0
+Bali,Gashaka,128.49,0
+Bali,Ardo-Kola,129.52,0
+Donga,Wukari,46.53,0
+Donga,Takum,76.14,0
+Donga,Ukum,91.39,0
+Gashaka,Sardauna,102.62,0
+Gashaka,Kurmi,240.68,0
+Gassol,Langtang South,228.58,0
+Gassol,Wase,307.03,0
+Ibi,Wukari,36.57,0
+Ibi,Awe,97.94,0
+Jalingo,Yorro,71.09,0
+Jalingo,Lau,42.59,0
+Karim-Lamido,Jalingo,114.03,0
+Karim-Lamido,Lau,91.06,0
+Kurmi,Sardauna,333.52,0
+Kurmi,Ussa,129.18,0
+Lau,Yorro,52.24,0
+Lau,Zing,64.49,0
+Sardauna,Ussa,355.89,0
+Takum,Ussa,22.97,0
+Ussa,Katsina-Ala,74.98,0
+Ussa,Donga,98.33,0
+Yorro,Zing,32.48,0
+Zing,Jalingo,83.38,0
+Bursari,Jakusko,13.48,0
+Bursari,Guri,146.99,0
+Bursari,Gamawa,71.77,0
+Damaturu,Gujba,51.89,0
+Damaturu,Tarmua,65.68,0
+Damaturu,Fune,71.15,0
+Fika,Potiskum,51.47,0
+Fika,Funakaye,62.58,0
+Fune,Nangere,60.34,0
+Fune,Potiskum,91.24,0
+Fune,Tarmua,140.76,0
+Geidam,Yunusari,31.93,0
+Geidam,Tarmua,238.68,0
+Geidam,Mobbar,124.12,0
+Gujba,Gulani,94.47,0
+Gujba,Fika,197.6,0
+Gulani,Bayo,66.45,0
+Jakusko,Guri,134.46,0
+Karasuwa,Yusufari,72.93,0
+Karasuwa,Nguru,36.47,0
+Karasuwa,Guri,49.08,0
+Machina,Nguru,51.42,0
+Machina,Yusufari,68.36,0
+Nangere,Potiskum,11.48,0
+Nguru,Yusufari,36.27,0
+Yunusari,Tarmua,268.68,0
+Yunusari,Mobbar,155.79,0
+Yusufari,Guri,73.25,0
+Anka,Camp(10),28.9,0
+Anka,Bukkuyum,69.96,0
+Anka,Talata Mafara,62.39,0
+Bakura,Talata Mafara,49.18,0
+Bakura,Camp(10),49.82,0
+Birnin Magaji,Gummi,46.98,0
+Birnin Magaji,Bukkuyum,55.34,0
+Bukkuyum,Camp(10),70.02,0
+Bungudu,Gusau,37.44,0
+Bungudu,Maru,86.24,0
+Bungudu,Tsafe,93.16,0
+Gummi,Tambuwal,63.28,0
+Gusau,Kaura Namoda,38.98,0
+Gusau,Tsafe,60.47,0
+Kaura Namoda,Maradun,75.26,0
+Kaura Namoda,Zurmi,62.35,0
+Maradun,Shinkafi,64.73,0
+Maradun,Talata Mafara,60.93,0
+Maru,Anka,65.66,0
+Maru,Tsafe,95.58,0
+Shinkafi,Zurmi,124.38,0
+Talata Mafara,Camp(10),53.52,0
+Zurmi,Maradun,91.21,0
+Camp(4),Camp(8),52.5,0
+Camp(5),Konduga,72.92,0
+Camp(6),Marte,53.39,0
+Camp(6),Camp(3),62.66,0
+Camp(11),Camp(14),48.72,0
