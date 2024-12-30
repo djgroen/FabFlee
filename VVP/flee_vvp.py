@@ -7,10 +7,10 @@
 #
 # author: Hamid Arabnejad
 #
-try:
-    from fabsim.base.fab import *
-except ImportError:
-    from base.fab import *
+from fabsim.base.decorators import ptask
+from fabsim.base.environment_manager import env
+from fabsim.base.job_manager import job_manager
+from fabsim.base.command_runner import cmd_runner
 
 from pprint import pprint
 import yaml
@@ -26,7 +26,7 @@ import re
 import pickle
 import matplotlib.pyplot as plt
 from scipy.stats.mstats import gmean
-from plugins.FabFlee.FabFlee import *
+from FabFlee import *
 
 try:
     from fabsim.VVP.vvp import ensemble_vvp_LoR
@@ -36,8 +36,7 @@ except ImportError:
     from VVP.vvp import ensemble_vvp_QoI
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def flee_init_vvp_QoI(config, simulation_period, mode='serial', **args):
     """
     Quantity of Interest (QoI) extracts a distribution of QoIs from the
@@ -54,13 +53,13 @@ def flee_init_vvp_QoI(config, simulation_period, mode='serial', **args):
         fab training_hidalgo flee_init_vvp_QoI:mali,simulation_period=10
 
     """
-    update_environment()
+    env.update()
 
     #############################################
     # load flee vvp configuration from yml file #
     #############################################
     flee_VVP_config_file = os.path.join(
-        get_plugin_path("FabFlee"),
+        env.plugin_dir,
         "VVP",
         "flee_VVP_config.yml"
     )
@@ -72,7 +71,7 @@ def flee_init_vvp_QoI(config, simulation_period, mode='serial', **args):
     campaign_name = "flee_VVP_{}_{}".format(sampler_name, config)
 
     campaign_work_dir = os.path.join(
-        get_plugin_path("FabFlee"),
+        env.plugin_dir,
         "VVP",
         "flee_vvp_QoI_{}_PO{}_{}".format(
             sampler_name, polynomial_order, config
@@ -99,8 +98,8 @@ def flee_init_vvp_QoI(config, simulation_period, mode='serial', **args):
         polynomial_order
     )
     env.prevent_results_overwrite = "delete"
-    with_config(config)
-    execute(put_configs, config)
+    job_manager.set_config(config)
+    job_manager.transfer_config_files(config)
 
     ##################################################
     # prepare env variable to submit an ensemble job #
@@ -122,8 +121,7 @@ def flee_init_vvp_QoI(config, simulation_period, mode='serial', **args):
     )
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def flee_init_vvp_LoR(config, simulation_period, mode='serial', **args):
     """
     Level of Refinement (LoR) is a general verification pattern that seeks
@@ -139,13 +137,13 @@ def flee_init_vvp_LoR(config, simulation_period, mode='serial', **args):
         fab localhost flee_init_vvp_LoR:mali,simulation_period=10
 
     """
-    update_environment()
+    env.update()
 
     #############################################
     # load flee vvp configuration from yml file #
     #############################################
     flee_VVP_config_file = os.path.join(
-        get_plugin_path("FabFlee"),
+        env.plugin_dir,
         "VVP",
         "flee_VVP_config.yml"
     )
@@ -165,7 +163,7 @@ def flee_init_vvp_LoR(config, simulation_period, mode='serial', **args):
             config
         )
         campaign_work_dir = os.path.join(
-            get_plugin_path("FabFlee"),
+            env.plugin_dir,
             "VVP",
             "flee_vvp_LoR_{}_{}".format(sampler_name, config),
             "campaign_po{}".format(polynomial_order)
@@ -191,8 +189,8 @@ def flee_init_vvp_LoR(config, simulation_period, mode='serial', **args):
             polynomial_order
         )
         env.prevent_results_overwrite = "delete"
-        with_config(config)
-        execute(put_configs, config)
+        job_manager.set_config(config)
+        job_manager.transfer_config_files(config)
 
         ##################################################
         # prepare env variable to submit an ensemble job #
@@ -213,8 +211,7 @@ def flee_init_vvp_LoR(config, simulation_period, mode='serial', **args):
         )
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def flee_analyse_vvp_QoI(config):
     """
     flee_analyse_vvp_LoR will analysis the output of each vvp ensemble series
@@ -223,12 +220,12 @@ def flee_analyse_vvp_QoI(config):
         fab localhost flee_analyse_vvp_QoI:mali
         fab training_hidalgo flee_analyse_vvp_QoI:mali
     """
-    update_environment()
+    env.update()
     #############################################
     # load flee vvp configuration from yml file #
     #############################################
     flee_VVP_config_file = os.path.join(
-        get_plugin_path("FabFlee"),
+        env.plugin_dir,
         "VVP",
         "flee_VVP_config.yml"
     )
@@ -241,7 +238,7 @@ def flee_analyse_vvp_QoI(config):
     # set a default dir to save results sobol #
     ###########################################
     campaign_work_dir = os.path.join(
-        get_plugin_path("FabFlee"),
+        env.plugin_dir,
         "VVP",
         "flee_vvp_QoI_{}_PO{}_{}".format(
             sampler_name, polynomial_order, config
@@ -269,7 +266,7 @@ def flee_analyse_vvp_QoI(config):
         sampler_name,
         polynomial_order
     )
-    with_config(config)
+    job_manager.set_config(config)
 
     job_folder_name = template(env.job_name_template)
     print("fetching results from remote machine ...")
@@ -285,7 +282,7 @@ def flee_analyse_vvp_QoI(config):
     des = campaign.campaign_db.runs_dir()
     print("Syncing output_dir ...")
     # with hide('output', 'running', 'warnings'), settings(warn_only=True):
-    local(
+    cmd_runner.local(
         "rsync -pthrz "
         "--include='/*/' "
         "--include='out_uncertainty.csv' "
@@ -405,8 +402,7 @@ def flee_analyse_vvp_QoI(config):
     # plt.show()
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def flee_analyse_vvp_LoR(config):
     """
     flee_analyse_vvp_LoR will analysis the output of each vvp ensemble series
@@ -414,13 +410,13 @@ def flee_analyse_vvp_LoR(config):
     usage example:
         fab localhost flee_analyse_vvp_LoR:mali
     """
-    update_environment()
+    env.update()
 
     #############################################
     # load flee vvp configuration from yml file #
     #############################################
     flee_VVP_config_file = os.path.join(
-        get_plugin_path("FabFlee"),
+        env.plugin_dir,
         "VVP",
         "flee_VVP_config.yml"
     )
@@ -437,7 +433,7 @@ def flee_analyse_vvp_LoR(config):
     # set a default dir to save results sobol #
     ###########################################
     sobol_work_dir = os.path.join(
-        get_plugin_path("FabFlee"),
+        env.plugin_dir,
         "VVP",
         "flee_vvp_LoR_{}_{}".format(sampler_name, config),
         "sobol"
@@ -458,7 +454,7 @@ def flee_analyse_vvp_LoR(config):
         )
 
         campaign_work_dir = os.path.join(
-            get_plugin_path("FabFlee"),
+            env.plugin_dir,
             "VVP",
             "flee_vvp_LoR_{}_{}".format(sampler_name, config),
             "campaign_po{}".format(polynomial_order)
@@ -485,7 +481,7 @@ def flee_analyse_vvp_LoR(config):
             sampler_name,
             polynomial_order
         )
-        with_config(config)
+        job_manager.set_config(config)
 
         job_folder_name = template(env.job_name_template)
         print("fetching results from remote machine ...")
@@ -502,7 +498,7 @@ def flee_analyse_vvp_LoR(config):
         des = campaign.campaign_db.runs_dir()
         print("Syncing output_dir ...")
         # with hide('output', 'running', 'warnings'), settings(warn_only=True):
-        local(
+        cmd_runner.local(
             "rsync -pthrz "
             "--include='/*/' "
             "--include='{}' "
@@ -744,7 +740,7 @@ def flee_analyse_vvp_LoR(config):
         ########################################
         print("copy sobols.yml file to sobol folder ...")
         # here instead of mkdirs and copy, I used rsync
-        local(
+        cmd_runner.local(
             "rsync -pthrz "
             "--include='/*/' "
             "--include='sobols.yml' "
@@ -910,7 +906,7 @@ def load_VVP_campaign_config(flee_VVP_config_file):
     # load parameter space for the easyvvuq sampler app #
     #####################################################
     sampler_params_json_PATH = os.path.join(
-        get_plugin_path("FabFlee"),
+        env.plugin_dir,
         "templates",
         "params.json"
     )
@@ -942,7 +938,7 @@ def init_VVP_campaign(campaign_name, campaign_config,
     # Create an encoder #
     #####################
     encoder = uq.encoders.GenericEncoder(
-        template_fname=os.path.join(get_plugin_path("FabFlee"),
+        template_fname=os.path.join(env.plugin_dir,
                                     "templates",
                                     campaign_config["encoder_template_fname"]
                                     ),
@@ -1057,7 +1053,7 @@ def backup_campaign_files(campaign_work_dir):
     os.mkdir(backup_dir)
 
     # with hide("output", "running", "warnings"), settings(warn_only=True):
-    local(
+    cmd_runner.local(
         "rsync -av -m -v \
         --include='*.db' \
         --include='*.pickle' \
@@ -1070,7 +1066,7 @@ def backup_campaign_files(campaign_work_dir):
 def load_campaign_files(campaign_work_dir):
     backup_dir = os.path.join(campaign_work_dir, "backup")
     # with hide("output", "running", "warnings"), settings(warn_only=True):
-    local(
+    cmd_runner.local(
         "rsync -av -m -v \
         --include='*.db' \
         --include='*.pickle' \

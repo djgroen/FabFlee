@@ -1,12 +1,10 @@
-try:
-    from fabsim.base.fab import *
-except ImportError:
-    from base.fab import *
 
-from plugins.FabFlee.FabFlee import *
+from fabsim.base.decorators import ptask
+from fabsim.base.environment_manager import env
+from FabFlee import *
 
 
-@task
+@ptask
 def flee_get_perf(results_dir):
     print("{}/{}".format(env.local_results, results_dir))
     my_file = open(

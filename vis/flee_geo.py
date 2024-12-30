@@ -1,9 +1,8 @@
-try:
-    from fabsim.base.fab import *
-except ImportError:
-    from base.fab import *
+from fabsim.base.decorators import ptask
+from fabsim.base.environment_manager import env
+from fabsim.base.job_manager import job_manager
 
-from plugins.FabFlee.FabFlee import *
+from FabFlee import *
 
 import plotly.express as px
 import flee.InputGeography
@@ -18,13 +17,13 @@ from IPython.display import display, HTML
 from folium.plugins import MarkerCluster
 
 
-@task
+@ptask
 def plot_flee_agents_location(results_dir, day, age=None, gender=None, proc="0"):
     """
     Plots the movement of refugees by chosen time and demographic prompts using agents.out.0
     """
     file_path = "{}/{}/agents.out.{}".format(env.local_results, results_dir, proc)
-    
+
     # Check if the file exists
     if os.path.exists(file_path):
         # Check if the file is empty
@@ -34,7 +33,7 @@ def plot_flee_agents_location(results_dir, day, age=None, gender=None, proc="0")
     else:
         print(f"The {file_path} file does not exist.")
         exit()  # Exit the code
-    
+
     # Initialize an empty list to store valid lines
     valid_lines = []
 
@@ -42,18 +41,18 @@ def plot_flee_agents_location(results_dir, day, age=None, gender=None, proc="0")
     with open(file_path, 'r') as file:
         for line in file:
             columns = line.strip().split(',')
-            if len(columns) <= 14:  # Adjust the column count as needed 
+            if len(columns) <= 14:  # Adjust the column count as needed
                 valid_lines.append(line)
             else:
                 print(f"Skipped line with {len(columns)} columns: {line}")
 
     print("Number of valid lines:", len(valid_lines))
-                
+
     # Read the valid lines into a DataFrame
     from io import StringIO
 
     # Specify the relevant column names
-    default_columns = ['#time', 'rank-agentid', 'current_location', 'gps_x', 'gps_y']  
+    default_columns = ['#time', 'rank-agentid', 'current_location', 'gps_x', 'gps_y']
     header = valid_lines[0].split(',')
 
     # Create a new df to store the columns
@@ -117,12 +116,12 @@ def plot_flee_agents_location(results_dir, day, age=None, gender=None, proc="0")
 
     # Calculate the total number of agents per location
     location_counts = filtered_df['current_location'].value_counts()
-    
+
     print(location_counts)
 
     # Create a Folium map centered at the first agent's coordinates
     m = folium.Map(location=[filtered_df.iloc[0]['gps_x'], filtered_df.iloc[0]['gps_y']], zoom_start=5)
-    
+
     # Add circle markers for each location with radius proportional to the agent count
     for location, count in location_counts.items():
         location_data = filtered_df[filtered_df['current_location'] == location].iloc[0]
@@ -140,16 +139,16 @@ def plot_flee_agents_location(results_dir, day, age=None, gender=None, proc="0")
     output_file_path = os.path.join(output_dir, output_file_name)
     m.save(output_file_path)
 
-    print(f"Map has been saved in {output_dir} as {output_file_name}") 
+    print(f"Map has been saved in {output_dir} as {output_file_name}")
 
 
 
-@task
+@ptask
 def plot_flee_links(config):
     """
     Plots the location graph in a configuration directory.
     """
-    with_config(config)
+    job_manager.set_config(config)
 
     #print(env)
 
@@ -174,7 +173,7 @@ def plot_flee_links(config):
         lats = np.append(lats, [ ll[l[0]][0], ll[l[1]][0], None])
         lons = np.append(lons, [ ll[l[0]][1], ll[l[1]][1], None])
         names = np.append(names, ["","",None])
-        
+
     fig = px.line_geo(lat=lats,lon=lons)
 
     loclons = []
@@ -216,7 +215,7 @@ def plot_flee_links(config):
     fig.show()
 
 
-@task
+@ptask
 def plot_flee_agents(results_dir, proc="0", agentid="0"):
     """
     Plots the trajectory of an individual agent in Flee

@@ -1,12 +1,8 @@
-try:
-    from fabsim.base.fab import *
-except ImportError:
-    from base.fab import *
-
-from plugins.FabFlee.FabFlee import *
+from fabsim.base.decorators import ptask
+from FabFlee import *
 
 
-@task
+@ptask
 def run_ssudan_paper():
     for postfix in ["default", "reg", "links", "ccamp", "cborder",
                     "redirect", "adjumani1", "adjumani2"]:

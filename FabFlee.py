@@ -6,10 +6,13 @@
 #
 # This file contains FabSim definitions specific to fabFlee.
 
-try:
-    from fabsim.base.fab import *
-except ImportError:
-    from base.fab import *
+from fabsim.base.environment_manager import env
+from fabsim.base.job_manager import job_manager
+from fabsim.deploy.templates import template
+from fabsim.VVP import vvp
+from fabsim.base.decorators import ptask
+from fabsim.base.manage_remote_job import wait_complete
+from fabsim.base.command_runner import cmd_runner
 
 # Import V&V primitives.
 try:
@@ -20,27 +23,24 @@ except ImportError:
 import glob
 import csv
 import os
+import sys
 import numpy as np
 import pandas as pd
 from shutil import copyfile, rmtree, move
-# Add local script, blackbox and template path.
-add_local_paths("FabFlee")
-
+from pprint import pprint
 # Import conflicts
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def get_flee_location():
     """
     Print the $flee_location env variable for the target machine.
     """
-    update_environment()
+    env.update()
     print(env.machine_name, env.flee_location)
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def sflee(config, simulation_period, **args):
     """ Submit a Flee job to the remote queue.
     The job results will be stored with a name pattern as
@@ -54,31 +54,31 @@ def sflee(config, simulation_period, **args):
             wall_time : wall-time job limit
             memory : memory per node
     """
-    update_environment(args, {"simulation_period": simulation_period})
-    with_config(config)
-    execute(put_configs, config)
-    job(dict(script='pflee', cores=1, wall_time='0:15:0', memory='2G'), args)
+
+    env.update({**args, "simulation_period": simulation_period})
+    job_manager.set_config(config)
+    job_manager.transfer_config_files( config)
+    job_manager.job(dict(script='pflee', cores=1, wall_time='0:15:0', memory='2G'), args)
 
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def sync_flee():
     """
     Synchronize the Flee version, so that the remote machine has the latest
     version from localhost.
     """
-    update_environment()
+    env.update()
     flee_location_local = user_config["localhost"].get(
         "flee_location", user_config["default"].get("flee_location"))
 
-    rsync_project(
+    cmd_runner.rsync_project(
         local_dir=flee_location_local + '/',
         remote_dir=env.flee_location
     )
 
 
-@task
+@ptask
 def flees(config, simulation_period, **args):
     # Save relevant arguments to a Python or numpy list.
     print(args)
@@ -88,16 +88,15 @@ def flees(config, simulation_period, **args):
     # Run the flee() a number of times.
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def flee_ensemble(config, simulation_period, script='flee', label="", **args):
     """
     Submits an ensemble of dummy jobs.
     One job is run for each file in <config_file_directory>/flee_test/SWEEP.
     """
-    update_environment(args)
-    with_config(config)
-    path_to_config = find_config_file_path(config)
+    env.update(args)
+    job_manager.set_config(config)
+    path_to_config = job_manager.get_config_file_path(config)
     print("local config file path at: %s" % path_to_config)
     sweep_dir = path_to_config + "/SWEEP"
     env.script = script
@@ -112,7 +111,7 @@ def flee_ensemble(config, simulation_period, script='flee', label="", **args):
         print("adding label: ", label)
         env.job_name_template += "_{}".format(label)
 
-    run_ensemble(config, sweep_dir, **args)
+    job_manager.run_ensemble(config, sweep_dir, **args)
 
 
 def load_module_from_path(moduleName, PATH_to_module):
@@ -144,8 +143,7 @@ def load_module_from_path(moduleName, PATH_to_module):
         sys.exit()
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def flare_local(config, simulation_period, out_dir="", file_suffix=""):
     """
     Run an instance of Flare on the local host.
@@ -162,13 +160,13 @@ def flare_local(config, simulation_period, out_dir="", file_suffix=""):
         out_dir = "{}_single".format(config)
 
     flare_out_dir = "{}/results-flare/{}".format(
-        get_plugin_path("FabFlee"), out_dir
+        env.plugin_dir, out_dir
     )
     config_dir = "{}/config_files/{}".format(
-        get_plugin_path("FabFlee"), config
+        env.plugin_dir, config
     )
 
-    local("mkdir -p {}/input_csv".format(flare_out_dir))
+    cmd_runner.local("mkdir -p {}/input_csv".format(flare_out_dir))
 
     # load run_flare function from script directory
     from .scripts.run_flare import run_flare
@@ -182,8 +180,7 @@ def flare_local(config, simulation_period, out_dir="", file_suffix=""):
     )
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def flare_ensemble(config, simulation_period, N, out_dir, file_suffix=""):
     """
     Run an ensemble of flare instances locally.
@@ -198,48 +195,45 @@ def flare_ensemble(config, simulation_period, N, out_dir, file_suffix=""):
                     instance_out_dir, file_suffix=file_suffix)
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def couple_flare_to_flee(config, flare_out="flare-out-scratch"):
     """
     Converts Flare output and places it in a Flee input directory to create
     a configuration for an ensemble run.
     """
-    with_config(config)
+    job_manager.set_config(config)
     config_dir = env.job_config_path_local
-    local("rm -rf %s/SWEEP" % (config_dir))
-    local("mkdir -p %s/SWEEP" % (config_dir))
-    local("cp -r %s/results-flare/%s/* %s/SWEEP/"
-          % (get_plugin_path("FabFlee"), flare_out, config_dir))
+    cmd_runner.local("rm -rf %s/SWEEP" % (config_dir))
+    cmd_runner.local("mkdir -p %s/SWEEP" % (config_dir))
+    cmd_runner.local("cp -r %s/results-flare/%s/* %s/SWEEP/"
+          % (env.plugin_dir, flare_out, config_dir))
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def flee_conflict_forecast(config, simulation_period, N, **args):
     """
     Run Flare ensemble, convert output to Flee ensemble input,
     run Flee ensemble.
     (visualize Flee output with uncertainty).
     """
-    update_environment(args)
+    env.update(args)
 
-    local("rm -rf %s/results-flare/flare-out-scratch/*" %
-          (get_plugin_path("FabFlee")))
+    cmd_runner.local("rm -rf %s/results-flare/flare-out-scratch/*" %
+          (env.plugin_dir))
     flare_ensemble(config, simulation_period, N, "flare-out-scratch")
 
     couple_flare_to_flee(config, flare_out="flare-out-scratch")
 
-    # config_dir = "%s/config_files/%s" % (get_plugin_path("FabFlee"), config)
-    # local("mkdir -p %s/SWEEP" % (config_dir))
-    # local("cp -r %s/results-flare/flare-out-scratch/* %s/SWEEP/"
-    # % (get_plugin_path("FabFlee"), config_dir))
+    # config_dir = "%s/config_files/%s" % (env.plugin_dir, config)
+    # cmd_runner.local("mkdir -p %s/SWEEP" % (config_dir))
+    # cmd_runner.local("cp -r %s/results-flare/flare-out-scratch/* %s/SWEEP/"
+    # % (env.plugin_dir, config_dir))
 
     flee_ensemble(config, simulation_period, **args)
 
 
 # Flee parallelisation tasks
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def pflee(config, simulation_period, profile=False, **args):
     """ Submit a Pflee job to the remote queue.
     The job results will be stored with a name pattern as defined
@@ -252,59 +246,55 @@ def pflee(config, simulation_period, profile=False, **args):
             memory : memory per node
     """
     '''
-    update_environment({"input_directory": "%s/config_files/%s/input_csv"
-                        % (get_plugin_path("FabFlee"), config),
+    env.update({"input_directory": "%s/config_files/%s/input_csv"
+                        % (env.plugin_dir, config),
                         "validation_data_directory":
                         "%s/config_files/%s/source_data"
-                        % (get_plugin_path("FabFlee"), config)})
+                        % (env.plugin_dir, config)})
     print_local_environment()
     '''
-    update_environment(args, {"simulation_period": simulation_period})
-    with_config(config)
-    execute(put_configs, config)
+    env.update({**args, "simulation_period": simulation_period})
+    job_manager.set_config(config)
+    job_manager.transfer_config_files( config)
     if bool(profile) is True:
-        job(dict(script='pflee_profile', wall_time='0:30:0', memory='2G'), args)
+        job_manager.job(dict(script='pflee_profile', wall_time='0:30:0', memory='2G'), args)
     else:
-        job(dict(script='pflee', wall_time='0:30:0', memory='2G'), args)
+        job_manager.job(dict(script='pflee', wall_time='0:30:0', memory='2G'), args)
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def pflee_test(config, pmode="advanced", N="100000", **args):
     """
     Run a short parallel test with a particular config.
     """
-    update_environment(args, {"simulation_period": 100,
-                              "flee_parallel_mode": pmode,
-                              "flee_num_agents": int(N)
-                              }
-                       )
-    with_config(config)
-    execute(put_configs, config)
-    job(dict(script='pflee_test', wall_time='0:15:0', memory='2G'), args)
+    # env.update({**args, "simulation_period": simulation_period})
+    env.update({**args, "simulation_period": 100,
+                        "flee_parallel_mode": pmode,
+                        "flee_num_agents": int(N)
+                })
+    job_manager.set_config(config)
+    job_manager.transfer_config_files( config)
+    job_manager.job(dict(script='pflee_test', wall_time='0:15:0', memory='2G'), args)
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def pflee_pmode_compare(config, cores, N="100000", **args):
     """
     Run a short parallel test with a particular config. 60 min limit per run.
     """
     # maps to args in test_par.py
     for pmode in ["advanced", "classic", "adv-lolat", "cl-hilat"]:
-        update_environment(args, {"simulation_period": 10,
-                                  "flee_parallel_mode": pmode,
-                                  "flee_num_agents": int(N)
-                                  }
-                           )
-        with_config(config)
-        execute(put_configs, config)
-        job(dict(script='pflee_test', wall_time='1:00:0',
+        env.update({**args, "simulation_period": 10,
+                            "flee_parallel_mode": pmode,
+                            "flee_num_agents": int(N)
+                           })
+        job_manager.set_config(config)
+        job_manager.transfer_config_files( config)
+        job_manager.job(dict(script='pflee_test', wall_time='1:00:0',
                  memory='2G', cores=cores, label=pmode), args)
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def pflee_report(results_key):
     for item in glob.glob("{}/*{}*/perf.log".format(env.local_results,
                                                     results_key)):
@@ -315,18 +305,16 @@ def pflee_report(results_key):
                 if k == 1:
                     print(float(e[1]))
 
-    # local("grep main {}/{}/perf.log".format(env.local_results,results_key))
+    # cmd_runner.local("grep main {}/{}/perf.log".format(env.local_results,results_key))
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def pflee_ensemble(config, simulation_period, **args):
     flee_ensemble(config, simulation_period, script='pflee', **args)
 
 
 # Coupling Flee and food security tasks
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def food_flee(config, simulation_period, **args):
     """ Submit a Flee job to the remote queue.
     The job results will be stored with a name pattern as defined
@@ -338,20 +326,19 @@ def food_flee(config, simulation_period, **args):
             wall_time : wall-time job limit
             memory : memory per node
     """
-    update_environment({"input_directory": "%s/config_files/%s/input_csv"
-                        % (get_plugin_path("FabFlee"), config),
+    env.update({"input_directory": "%s/config_files/%s/input_csv"
+                        % (env.plugin_dir, config),
                         "validation_data_directory":
                         "%s/config_files/%s/source_data"
-                        % (get_plugin_path("FabFlee"), config)})
+                        % (env.plugin_dir, config)})
     # print_local_environment()
-    update_environment(args, {"simulation_period": simulation_period})
-    with_config(config)
-    execute(put_configs, config)
-    job(dict(script='flee_food', wall_time='0:15:0', memory='2G'), args)
+    env.update({**args, "simulation_period": simulation_period})
+    job_manager.set_config(config)
+    job_manager.transfer_config_files( config)
+    job_manager.job(dict(script='flee_food', wall_time='0:15:0', memory='2G'), args)
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 # Syntax: fab localhost compare_food:food_flee_conflict_name_localhost_16
 def compare_food(output_dir_1=""):
     """
@@ -362,45 +349,43 @@ def compare_food(output_dir_1=""):
         **or any name the food directory you want to use has.
         Make sure that the non-food one exists as well.
     """
-    local("mkdir -p %s/%s/comparison" % (env.results_path, output_dir_1))
+    cmd_runner.local("mkdir -p %s/%s/comparison" % (env.results_path, output_dir_1))
     output_dir_2 = output_dir_1.partition("_")[2]
-    local("python3 %s/compare.py %s/%s %s/%s"
+    cmd_runner.local("python3 %s/compare.py %s/%s %s/%s"
           % (env.flee_location,
              env.results_path, output_dir_1,
              env.results_path, output_dir_2))
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def plot_flee_profile(output_dir="", profiler="gprof2dot"):
     """
     Requires graphviz and gprof2dot or snakeviz modules, as well as eog.
-    
+
     Syntax:
     fab localhost plot_flee_profile:output_dir,profiler
     """
     if profiler == "gprof2dot":
         # Use gprof2dot to generate the profile visualization
-        local(f"gprof2dot --colour-nodes-by-selftime -f pstats {env.local_results}/{output_dir}/prof.log | dot -Tpng -o {env.local_results}/{output_dir}/profile.png")
-        
+        cmd_runner.local(f"gprof2dot --colour-nodes-by-selftime -f pstats {env.local_results}/{output_dir}/prof.log | dot -Tpng -o {env.local_results}/{output_dir}/profile.png")
+
         # Open the generated profile image with eog
-        local(f"eog {env.local_results}/{output_dir}/profile.png")
+        cmd_runner.local(f"eog {env.local_results}/{output_dir}/profile.png")
     elif profiler == "snakeviz":
         # Use snakeviz to visualize the profile
-        local(f"snakeviz {env.local_results}/{output_dir}/prof.log")
+        cmd_runner.local(f"snakeviz {env.local_results}/{output_dir}/prof.log")
         print(f"Snakeviz output saved as HTML: {env.local_results}/{output_dir}/profile.html")
     else:
         print("Invalid profiler choice. Please choose 'gprof2dot' or 'snakeviz'.")
 
 
 # Post-processing tasks
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 # Syntax: fab localhost
 # plot_output:flee_conflict_name_localhost_16(,graphs_dir_name)
 def plot_output(output_dir="", graphs_dir=""):
     """ Plot generated output results using plot-flee-output.py. """
-    local("mkdir -p %s/%s/%s" % (env.local_results, output_dir, graphs_dir))
+    cmd_runner.local("mkdir -p %s/%s/%s" % (env.local_results, output_dir, graphs_dir))
 
     # import plot_flee_output.py from env.flee_location
     # when we have pip flee installation option, this part should be changed
@@ -413,15 +398,14 @@ def plot_output(output_dir="", graphs_dir=""):
         os.path.join(env.local_results, output_dir, graphs_dir)
     )
     '''
-    local("python3 %s/plot-flee-output.py %s/%s %s/%s/%s"
+    cmd_runner.local("python3 %s/plot-flee-output.py %s/%s %s/%s/%s"
           % (env.flee_location,
              env.local_results, output_dir,
              env.local_results, output_dir, graphs_dir))
     '''
 
-    
-@task
-@load_plugin_env_vars("FabFlee")
+
+@ptask
 # Syntax: fab localhost flee_compare:<model#1>,<model#2>,...,,model#n>
 def flee_compare(*models,output_dir=""):
     """
@@ -429,17 +413,16 @@ def flee_compare(*models,output_dir=""):
     """
     output_dir = models[0].partition("_")[0]
 
-    local("mkdir -p %s/%s_comparison" % (env.local_results, output_dir))
+    cmd_runner.local("mkdir -p %s/%s_comparison" % (env.local_results, output_dir))
 
     output_dir = "%s/%s_comparison" % (env.local_results, output_dir)
 
     from flee.postprocessing.plot_flee_compare import plot_flee_compare
     plot_flee_compare(*models,data_dir=env.local_results,output_dir=output_dir)
-    
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+
+@ptask
 # Syntax: fab localhost
 # plot_forecast:flee_conflict_name_localhost_16(,graphs_dir_name)
 def plot_forecast(output_dir="", region_names=""):
@@ -471,8 +454,7 @@ def plot_forecast(output_dir="", region_names=""):
     )
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def cflee(config, coupling_type="file", weather_coupling="False",
           num_instances="1", instance_cores="1",
           job_wall_time="00:12:00", ** args):
@@ -497,13 +479,12 @@ def cflee(config, coupling_type="file", weather_coupling="False",
         weather_coupling=True,num_instances=10,instance_cores=4
 
     """
-    update_environment(args, {"coupling_type": coupling_type.lower(),
-                              "weather_coupling": weather_coupling.lower(),
-                              "num_instances": num_instances,
-                              "instance_cores": instance_cores,
-                              "job_wall_time": job_wall_time
-                              }
-                       )
+    env.update({**args, "coupling_type": coupling_type.lower(),
+                        "weather_coupling": weather_coupling.lower(),
+                        "num_instances": num_instances,
+                        "instance_cores": instance_cores,
+                        "job_wall_time": job_wall_time
+                       })
 
     env.cores = int(num_instances) * int(instance_cores) * 2
     env.py_pkg = ["qcg-pilotjob", "pandas", "seaborn", "matplotlib", "jinja2"]
@@ -517,14 +498,13 @@ def cflee(config, coupling_type="file", weather_coupling="False",
     label = "coupling_{}_weather_{}".format(
         coupling_type, weather_coupling.lower()
     )
-    with_config(config)
-    execute(put_configs, config)
+    job_manager.set_config(config)
+    job_manager.transfer_config_files( config)
 
-    job(dict(script=script, memory="24G", label=label), args)
+    job_manager.job(dict(script=script, memory="24G", label=label), args)
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def cflee_ensemble(config, coupling_type="file", weather_coupling="False",
                    num_workers="1", worker_cores="1",
                    N="1", simulation_period="425",
@@ -537,14 +517,13 @@ def cflee_ensemble(config, coupling_type="file", weather_coupling="False",
         fab eagle_vecma cflee_ensemble:mscalecity,coupling_type=file,
         weather_coupling=True,num_workers=10,worker_cores=4,N=3
     """
-    update_environment(args, {"coupling_type": coupling_type,
-                              "weather_coupling": weather_coupling.lower(),
-                              "num_workers": num_workers,
-                              "worker_cores": worker_cores,
-                              "job_wall_time": job_wall_time,
-                              "simulation_period": simulation_period
-                              }
-                       )
+    env.update({**args, "coupling_type": coupling_type,
+                        "weather_coupling": weather_coupling.lower(),
+                        "num_workers": num_workers,
+                        "worker_cores": worker_cores,
+                        "job_wall_time": job_wall_time,
+                        "simulation_period": simulation_period
+                       })
     env.cores = int(num_workers) * int(worker_cores) * 2
 
     if coupling_type == 'file':
@@ -553,7 +532,7 @@ def cflee_ensemble(config, coupling_type="file", weather_coupling="False",
     elif coupling_type == 'muscle3':
         script = 'flee_muscle3_coupling'
         label = 'muscle3_coupling'
-    with_config(config)
+    job_manager.set_config(config)
 
     # clean config SWEEP dir if exists
     config_sweep_dir = env.job_config_path_local + "/SWEEP"
@@ -562,7 +541,7 @@ def cflee_ensemble(config, coupling_type="file", weather_coupling="False",
 
     # clean flare SWEEP dir if exists
     flare_sweep_dir = "%s/results-flare/%s" % (
-        get_plugin_path("FabFlee"), "SWEEP")
+        env.plugin_dir, "SWEEP")
     if os.path.exists(flare_sweep_dir):
         rmtree(flare_sweep_dir)
 
@@ -574,35 +553,33 @@ def cflee_ensemble(config, coupling_type="file", weather_coupling="False",
     # move flare SWEEP dir to config folder
     move(flare_sweep_dir, config_sweep_dir)
 
-    execute(put_configs, config)
+    job_manager.transfer_config_files( config)
 
     # submit ensambe jobs
-    path_to_config = find_config_file_path(config)
+    path_to_config = job_manager.get_config_file_path(config)
     sweep_dir = path_to_config + "/SWEEP"
     env.script = script
     env.label = label
-    run_ensemble(config, sweep_dir, **args)
+    job_manager.run_ensemble(config, sweep_dir, **args)
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def flee_and_plot(config, simulation_period, **args):
     """
     Runs Flee and plots the output in a graph subdir
     """
-    # update_environment(args, {"simulation_period": simulation_period})
+    # env.update(args, {"simulation_period": simulation_period})
     env.simulation_settings = "simsetting.csv"
     flee(config, simulation_period, **args)
     plot_output("%s" % (env.job_name), "graph")
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 # Syntax: fab localhost
 # plot_uq_output:flee_conflict_name_localhost_16(,graphs_dir_name)
 def plot_uq_output(output_dir="", graphs_dir=""):
     """ Plot generated output results using plot-flee-output.py. """
-    local("mkdir -p %s/%s/%s" % (env.local_results, output_dir, graphs_dir))
+    cmd_runner.local("mkdir -p %s/%s/%s" % (env.local_results, output_dir, graphs_dir))
 
     # import plot_flee_uq_output.py from env.flee_location
     # when we have pip flee installation option, this part should be changed
@@ -615,7 +592,7 @@ def plot_uq_output(output_dir="", graphs_dir=""):
         os.path.join(env.local_results, output_dir, graphs_dir)
     )
     '''
-    local("python3 %s/plot-flee-uq-output.py %s/%s %s/%s/%s"
+    cmd_runner.local("python3 %s/plot-flee-uq-output.py %s/%s %s/%s/%s"
           % (env.flee_location,
              env.local_results, output_dir,
              env.local_results, output_dir, graphs_dir))
@@ -630,7 +607,7 @@ def vvp_validate_results(output_dir="", **kwargs):
     flee_location_local = user_config["localhost"].get(
         "flee_location", user_config["default"].get("flee_location"))
 
-    local("export PYTHONPATH=%s:${PYTHONPATH}; export FLEE_TYPE_CHECK=False; python3 %s/flee/postprocessing/extract-validation-results.py %s "
+    cmd_runner.local("export PYTHONPATH=%s:${PYTHONPATH}; export FLEE_TYPE_CHECK=False; python3 %s/flee/postprocessing/extract-validation-results.py %s "
           "> %s/validation_results.yml"
           % (flee_location_local, flee_location_local, output_dir, output_dir))
 
@@ -649,8 +626,7 @@ def vvp_validate_results(output_dir="", **kwargs):
     return None
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def flee_MOO(config, simulation_period=60, cores=1, **args):
     """
     fabsim localhost flee_MOO:moo_f1_c1_t3
@@ -658,7 +634,7 @@ def flee_MOO(config, simulation_period=60, cores=1, **args):
     if not isinstance(cores, int):
         cores = int(cores)
 
-    update_environment(
+    env.update(
         args,
         {"cores": cores, "simulation_period": simulation_period}
     )
@@ -669,14 +645,15 @@ def flee_MOO(config, simulation_period=60, cores=1, **args):
         env.flee_mode = "serial"
     # set env flag to clear the previous execution folder in case of exists
     env.prevent_results_overwrite = "delete"
-    with_config(config)
+    job_manager.set_config(config)
 
     ###########################################################################
     # MOO_setting.yaml contains the required setting for executing MOO code,  #
     # so, to be available on the remote machine, we temporally copy           #
     # MOO_setting.yaml file to the target config folder in                    #
     # FabFLee/config_files directory.                                         #
-    # later, after execute(put_configs,..), we delete it from config folder   #
+    # later, after job_manager.transfer_config_files(..), we delete it from   #
+    # config folder                                                           #
     # --------------                                                          #
     # Note :                                                                  #
     #       Hamid: I think this is better solution instead of opening another #
@@ -684,20 +661,19 @@ def flee_MOO(config, simulation_period=60, cores=1, **args):
     #       a single file                                                     #
     ###########################################################################
     copyfile(
-        src=os.path.join(get_plugin_path("FabFlee"), "MOO_setting.yaml"),
+        src=os.path.join(env.plugin_dir, "MOO_setting.yaml"),
         dst=os.path.join(env.job_config_path_local, "MOO_setting.yaml")
     )
-    execute(put_configs, config)
+    job_manager.transfer_config_files( config)
     # now, we delete MOO_setting.yaml file from local config folder in
     # FabFLee/config_files directory
     os.remove(os.path.join(env.job_config_path_local, "MOO_setting.yaml"))
 
     script = "moo_flee"
-    job(dict(script=script))
+    job_manager.job(dict(script=script))
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 # Syntax: fabsim localhost
 # validate_results:flee_conflict_name_localhost_16
 def validate_results(output_dir):
@@ -745,8 +721,7 @@ def make_vvp_mean(np_array, **kwargs):
     return mean_score
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def validate_flee_output(results_dir, mode="rescaled"):
     """
     Goes through all the output directories and calculates the validation
@@ -763,13 +738,12 @@ def validate_flee_output(results_dir, mode="rescaled"):
     return vresults
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def validate_flee(config='validation', simulation_period=0, cores=4, skip_runs=False, label="", mode="rescaled", **args):
     """
     Runs all the validation test and returns all scores + aggregate statistics
     """
-    
+
     env.flee_validation_mode = mode
 
     if len(label) > 0:
@@ -785,59 +759,58 @@ def validate_flee(config='validation', simulation_period=0, cores=4, skip_runs=F
                        cores=cores, **args)
 
     # if not run locally, wait for runs to complete
-    update_environment()
+    env.update()
     if env.host != "localhost":
         wait_complete("")
 
-    fetch_results()
+    job_manager.fetch_results()
 
     results_dir = template(env.job_name_template)
     validate_flee_output(results_dir, mode)
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 # Syntax: fabsim localhost new_conflict:<config_name>
 def new_conflict(config, **args):
-    local(template("mkdir -p %s/config_files/%s"
-                   % (get_plugin_path("FabFlee"), config)))
+    cmd_runner.local(template("mkdir -p %s/config_files/%s"
+                   % (env.plugin_dir, config)))
 
-    local(template("mkdir -p %s/config_files/%s/input_csv"
-                   % (get_plugin_path("FabFlee"), config)))
+    cmd_runner.local(template("mkdir -p %s/config_files/%s/input_csv"
+                   % (env.plugin_dir, config)))
 
-    local(template("mkdir -p %s/config_files/%s/source_data"
-                   % (get_plugin_path("FabFlee"), config)))
+    cmd_runner.local(template("mkdir -p %s/config_files/%s/source_data"
+                   % (env.plugin_dir, config)))
 
-    local(template("cp %s/flee/config_template/run.py \
+    cmd_runner.local(template("cp %s/flee/config_template/run.py \
         %s/config_files/%s")
-          % (env.flee_location, get_plugin_path("FabFlee"), config))
+          % (env.flee_location, env.plugin_dir, config))
 
-    local(template("cp %s/flee/config_template/run_par.py \
+    cmd_runner.local(template("cp %s/flee/config_template/run_par.py \
         %s/config_files/%s")
-          % (env.flee_location, get_plugin_path("FabFlee"), config))
+          % (env.flee_location, env.plugin_dir, config))
 
-    local(template("cp %s/flee/config_template/simsetting.csv \
+    cmd_runner.local(template("cp %s/flee/config_template/simsetting.csv \
         %s/config_files/%s")
-          % (env.flee_location, get_plugin_path("FabFlee"), config))
+          % (env.flee_location, env.plugin_dir, config))
 
-    local(template("cp %s/flee/config_template/input_csv/sim_period.csv "
+    cmd_runner.local(template("cp %s/flee/config_template/input_csv/sim_period.csv "
                    "%s/config_files/%s/input_csv")
-          % (env.flee_location, get_plugin_path("FabFlee"), config))
+          % (env.flee_location, env.plugin_dir, config))
 
-    local(template("cp %s/flee/config_template/input_csv/closures.csv "
+    cmd_runner.local(template("cp %s/flee/config_template/input_csv/closures.csv "
                    "%s/config_files/%s/input_csv")
-          % (env.flee_location, get_plugin_path("FabFlee"), config))
+          % (env.flee_location, env.plugin_dir, config))
 
-    local(template("cp %s/flee/config_template/input_csv/"
+    cmd_runner.local(template("cp %s/flee/config_template/input_csv/"
                    "registration_corrections.csv "
                    "%s/config_files/%s/input_csv")
-          % (env.flee_location, get_plugin_path("FabFlee"), config))
+          % (env.flee_location, env.plugin_dir, config))
 
 
 # ACLED data extraction task
 # Syntax: fabsim localhost
 # process_acled:country,start_date=dd-mm-yyyy,filter=[earliest,fatalities]
-@task
+@ptask
 def process_acled(country, start_date, filter_opt, admin_level):
     """
     Process .csv files sourced from acleddata.com to a <locations.csv> format
@@ -854,23 +827,23 @@ def process_acled(country, start_date, filter_opt, admin_level):
     from .scripts.acled2locations import acled2locations
 
     acled2locations(
-        fab_flee_loc=get_plugin_path("FabFlee"),
+        fab_flee_loc=env.plugin_dir,
         country=country,
         start_date=start_date,
         filter_opt=filter_opt,
         admin_level=admin_level
     )
 
-    # local("python3 %s/scripts/acled2locations.py %s %s %s %s %s"
-    #       % (get_plugin_path("FabFlee"),
-    #          get_plugin_path("FabFlee"),
+    # cmd_runner.local("python3 %s/scripts/acled2locations.py %s %s %s %s %s"
+    #       % (env.plugin_dir,
+    #          env.plugin_dir,
     #          country,
     #          start_date,
     #          filter_opt,
     #          admin_level))
 
 
-@task
+@ptask
 # Syntax: fabsim localhost
 # extract_conflict_file:<country_name>,simulation_period=<number>
 def extract_conflict_file(config, simulation_period, **args):
@@ -878,16 +851,16 @@ def extract_conflict_file(config, simulation_period, **args):
     Travels to the input_csv directory of a specific config and extracts
     a conflict progression CSV file from locations.csv.
     """
-    # config_dir = "%s/config_files/%s" % (get_plugin_path("FabFlee"), config)
-    # local("python3 %s/scripts/location2conflict.py %s \
+    # config_dir = "%s/config_files/%s" % (env.plugin_dir, config)
+    # cmd_runner.local("python3 %s/scripts/location2conflict.py %s \
     #         %s/input_csv/locations.csv %s/input_csv/conflicts.csv"
-    #       % (get_plugin_path("FabFlee"),
+    #       % (env.plugin_dir,
     #          simulation_period,
     #          config_dir,
     #          config_dir))
 
     config_dir = os.path.join(
-        get_plugin_path("FabFlee"), "config_files", config
+        env.plugin_dir, "config_files", config
     )
     from .scripts.location2conflict import location2conflict
     location2conflict(
@@ -897,12 +870,11 @@ def extract_conflict_file(config, simulation_period, **args):
     )
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 # Syntax: fabsim localhost add_population:<config_name>
 def add_population(config, PL="100", CL="100", **args):
-    # update_environment(args, {"simulation_period": simulation_period})
-    with_config(config)
+    # env.update(args, {"simulation_period": simulation_period})
+    job_manager.set_config(config)
     if env.machine_name != 'localhost':
         print("Error : This task should only executed on your localhost")
         print("Please re-run is again with :")
@@ -910,7 +882,7 @@ def add_population(config, PL="100", CL="100", **args):
         exit()
     env.cityGraph_POPULATION_LIMIT = PL
     env.cityGraph_CITIES_LIMIT = CL
-    local("python %s --cityGraph_location %s --API_KEY %s "
+    cmd_runner.local("python %s --cityGraph_location %s --API_KEY %s "
           "--POPULATION_LIMIT %s --CITIES_LIMIT %s "
           "--config_location %s --config_name %s"
           % (os.path.join(env.localplugins["FabFlee"],
@@ -928,7 +900,7 @@ def add_population(config, PL="100", CL="100", **args):
 # FabFlee execution tasks
 
 
-@task
+@ptask
 def load_conflict(conflict_name):
     # Syntax: fab localhost load_conflict:conflict_name
     """
@@ -945,32 +917,32 @@ def load_conflict(conflict_name):
 
     # 2. Move these CSVs to an "active_conflict" directory.
     # This is located in $FABSIM/conflict_data/active_conflict.
-    local(template("mkdir -p %s/conflict_data/active_conflict"
-                   % (get_plugin_path("FabFlee"))))
+    cmd_runner.local(template("mkdir -p %s/conflict_data/active_conflict"
+                   % (env.plugin_dir)))
 
-    local(template("cp %s/conflict_data/%s/*.csv \
+    cmd_runner.local(template("cp %s/conflict_data/%s/*.csv \
         %s/conflict_data/active_conflict/")
-          % (get_plugin_path("FabFlee"), conflict_name,
-             get_plugin_path("FabFlee")))
+          % (env.plugin_dir, conflict_name,
+             env.plugin_dir))
 
-    local(template("mkdir -p %s/conflict_data/active_conflict/source_data"
-                   % (get_plugin_path("FabFlee"))))
+    cmd_runner.local(template("mkdir -p %s/conflict_data/active_conflict/source_data"
+                   % (env.plugin_dir)))
 
-    local(template("cp %s/conflict_data/%s/source_data/*.csv \
+    cmd_runner.local(template("cp %s/conflict_data/%s/source_data/*.csv \
         %s/conflict_data/active_conflict/source_data/")
-          % (get_plugin_path("FabFlee"), conflict_name,
-             get_plugin_path("FabFlee")))
+          % (env.plugin_dir, conflict_name,
+             env.plugin_dir))
 
-    local(template("cp %s/config_files/run.py \
+    cmd_runner.local(template("cp %s/config_files/run.py \
         %s/conflict_data/active_conflict")
-          % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee")))
+          % (env.plugin_dir, env.plugin_dir))
 
     with open("%s/conflict_data/active_conflict/commands.log.txt"
-              % (get_plugin_path("FabFlee")), "a") as myfile:
+              % (env.plugin_dir), "a") as myfile:
         myfile.write("fab localhost load_conflict:%s\n" % conflict_name)
 
 
-@task
+@ptask
 def instantiate(conflict_name):
     # Syntax: fab localhost instantiate:conflict_name
     """
@@ -980,60 +952,60 @@ def instantiate(conflict_name):
 
     # 1. Copy modified active_conflict directory to instantiate runs with
     # specific conflict name
-    local(template("mkdir -p %s/config_files/%s"
-                   % (get_plugin_path("FabFlee"), conflict_name)))
+    cmd_runner.local(template("mkdir -p %s/config_files/%s"
+                   % (env.plugin_dir, conflict_name)))
 
-    local(template("mkdir -p %s/config_files/%s/input_csv"
-                   % (get_plugin_path("FabFlee"), conflict_name)))
+    cmd_runner.local(template("mkdir -p %s/config_files/%s/input_csv"
+                   % (env.plugin_dir, conflict_name)))
 
-    local(template("cp %s/conflict_data/active_conflict/*.csv \
+    cmd_runner.local(template("cp %s/conflict_data/active_conflict/*.csv \
         %s/config_files/%s/input_csv")
-          % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"),
+          % (env.plugin_dir, env.plugin_dir,
              conflict_name))
 
-    local(template("cp %s/conflict_data/active_conflict/commands.log.txt \
+    cmd_runner.local(template("cp %s/conflict_data/active_conflict/commands.log.txt \
         %s/config_files/%s/")
-          % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"),
+          % (env.plugin_dir, env.plugin_dir,
              conflict_name))
 
-    local(template("mkdir -p %s/config_files/%s/source_data"
-                   % (get_plugin_path("FabFlee"), conflict_name)))
+    cmd_runner.local(template("mkdir -p %s/config_files/%s/source_data"
+                   % (env.plugin_dir, conflict_name)))
 
-    local(template("cp %s/conflict_data/active_conflict/source_data/*.csv \
+    cmd_runner.local(template("cp %s/conflict_data/active_conflict/source_data/*.csv \
         %s/config_files/%s/source_data")
-          % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"),
+          % (env.plugin_dir, env.plugin_dir,
              conflict_name))
 
-    local(template("cp %s/conflict_data/active_conflict/run.py \
+    cmd_runner.local(template("cp %s/conflict_data/active_conflict/run.py \
         %s/config_files/%s/run.py")
-          % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"),
+          % (env.plugin_dir, env.plugin_dir,
              conflict_name))
 
-    local(template("cp %s/config_files/run_food.py \
+    cmd_runner.local(template("cp %s/config_files/run_food.py \
         %s/config_files/%s/run_food.py")
-          % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"),
+          % (env.plugin_dir, env.plugin_dir,
              conflict_name))
     # line added to copy run_food.py as well (otherwise executing
     # food_flee doesn't work...)
 
     # line added to copy simsetting.csv and make sure that
     # flee.SimulationSettings....ReadfromCSV works.
-    local(template("cp %s/config_files/simsetting.csv \
+    cmd_runner.local(template("cp %s/config_files/simsetting.csv \
         %s/config_files/%s/simsetting.csv")
-          % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"),
+          % (env.plugin_dir, env.plugin_dir,
              conflict_name))
 
 
-@task
+@ptask
 def clear_active_conflict():     # Syntax: fab localhost clear_active_conflict
     """ Delete all content in the active conflict directory. """
 
-    local(template("rm -rf %s/conflict_data/active_conflict/"
-                   % (get_plugin_path("FabFlee"))))
+    cmd_runner.local(template("rm -rf %s/conflict_data/active_conflict/"
+                   % (env.plugin_dir)))
 
 
 # FabFlee refinement tasks
-@task
+@ptask
 # Syntax: fab localhost
 # change_capacities:camp_name=capacity(,camp_name2=capacity2)
 def change_capacities(**capacities):
@@ -1046,7 +1018,7 @@ def change_capacities(**capacities):
     for c in capacities.keys():
         capacities_string += "%s=%s" % (c, capacities[c])
     with open("%s/conflict_data/active_conflict/commands.log.txt"
-              % (get_plugin_path("FabFlee")), "a") as myfile:
+              % (env.plugin_dir), "a") as myfile:
         myfile.write("fab localhost change_capacities:%s\n"
                      % capacities_string)
 
@@ -1055,7 +1027,7 @@ def change_capacities(**capacities):
     # population value accordingly.
     import csv
     r = csv.reader(open("%s/conflict_data/active_conflict/locations.csv"
-                        % (get_plugin_path("FabFlee"))))
+                        % (env.plugin_dir)))
     lines = [l for l in r]
 
     for camp_name in capacities.keys():
@@ -1071,11 +1043,11 @@ def change_capacities(**capacities):
 
     # 3. Write the updated CSV file.
     writer = csv.writer(open("%s/conflict_data/active_conflict/locations.csv"
-                             % (get_plugin_path("FabFlee")), "w"))
+                             % (env.plugin_dir), "w"))
     writer.writerows(lines)
 
 
-@task
+@ptask
 def find_capacity(csv_name):
     # Syntax: fab localhost find_capacity:csv_name
     """
@@ -1085,18 +1057,18 @@ def find_capacity(csv_name):
 
     import csv
     csv_file = open("%s/conflict_data/active_conflict/source_data/%s"
-                    % (get_plugin_path("FabFlee"), csv_name)).readlines()
+                    % (env.plugin_dir, csv_name)).readlines()
     print(max(((i, int(l.split(',')[1])) for i, l in enumerate(
         csv_file)), key=lambda t: t[1])[1])
 
 
-@task
+@ptask
 # Syntax: fab localhost add_camp:camp_name,region,country(,lat,lon)
 def add_camp(camp_name, region=" ", country=" ", lat=0.0, lon=0.0):
     """ Add an additional new camp to locations.csv. """
 
     with open("%s/conflict_data/active_conflict/commands.log.txt"
-              % (get_plugin_path("FabFlee")), "a") as myfile:
+              % (env.plugin_dir), "a") as myfile:
         myfile.write("fab localhost add_camp:%s\n" % camp_name)
 
     # 1. Add (or make existing forwarding hub) a new camp to locations.csv
@@ -1104,7 +1076,7 @@ def add_camp(camp_name, region=" ", country=" ", lat=0.0, lon=0.0):
     # If existing camp, change location_type to camp
     import csv
     r = csv.reader(open("%s/conflict_data/active_conflict/locations.csv"
-                        % (get_plugin_path("FabFlee")), "r"))
+                        % (env.plugin_dir), "r"))
     lines = [l for l in r]
 
     for i in range(1, len(lines)):
@@ -1117,17 +1089,17 @@ def add_camp(camp_name, region=" ", country=" ", lat=0.0, lon=0.0):
     # 2. Append one line to lines, containing the details of the new camp.
     add_camp = [camp_name, region, country, lat, lon, "camp"]
     with open("%s/conflict_data/active_conflict/locations.csv"
-              % (get_plugin_path("FabFlee")), "a") as new_csv:
+              % (env.plugin_dir), "a") as new_csv:
         writer = csv.writer(new_csv)
         writer.writerow(add_camp)
     print(add_camp)
 
 
-@task
+@ptask
 def add_new_link(name1, name2, distance):
     """  Add a new link between locations to routes.csv. """
     with open("%s/conflict_data/active_conflict/commands.log.txt"
-              % (get_plugin_path("FabFlee")), "a") as myfile:
+              % (env.plugin_dir), "a") as myfile:
         myfile.write("fab localhost add_new_link:%s,%s,%s\n"
                      % (name1, name2, distance))
 
@@ -1135,7 +1107,7 @@ def add_new_link(name1, name2, distance):
     # and change distance between two locations.
     import csv
     r = csv.reader(open("%s/conflict_data/active_conflict/routes.csv"
-                        % (get_plugin_path("FabFlee"))))
+                        % (env.plugin_dir)))
     lines = [l for l in r]
 
     for i in range(1, len(lines)):
@@ -1149,30 +1121,30 @@ def add_new_link(name1, name2, distance):
     # 2. Append one line to lines, containing the details of links.
     add_new_link = [name1, name2, distance]
     with open("%s/conflict_data/active_conflict/routes.csv"
-              % (get_plugin_path("FabFlee")), "a") as new_csv:
+              % (env.plugin_dir), "a") as new_csv:
         writer = csv.writer(new_csv)
         writer.writerow(add_new_link)
     print(add_new_link)
 
 
-@task
+@ptask
 # Syntax: fab localhost delete_location:location_name
 def delete_location(location_name):
     """ Delete not required camp (or location) from locations.csv. """
 
     with open("%s/conflict_data/active_conflict/commands.log.txt"
-              % (get_plugin_path("FabFlee")), "a") as myfile:
+              % (env.plugin_dir), "a") as myfile:
         myfile.write("fab localhost delete_location:%s\n" % location_name)
 
     # 1. Delete camp from locations.csv containing the details of the camp.
     # 2. Write the updated CSV file.
     import csv
     r = csv.reader(open("%s/conflict_data/active_conflict/locations.csv"
-                        % (get_plugin_path("FabFlee")), "r"))
+                        % (env.plugin_dir), "r"))
     lines = [l for l in r]
 
     writer = csv.writer(open("%s/conflict_data/active_conflict/locations.csv"
-                             % (get_plugin_path("FabFlee")), "w"))
+                             % (env.plugin_dir), "w"))
 
     for i in range(0, len(lines)):
         if lines[i][0].strip() != location_name:
@@ -1190,13 +1162,13 @@ def delete_location(location_name):
         return
 
 
-@task
+@ptask
 # Syntax: fab localhost change_distance:name1,name2,distance
 def change_distance(source, destination, distance):
     """ Change distance between two locations in routes.csv. """
 
     with open("%s/conflict_data/active_conflict/commands.log.txt"
-              % (get_plugin_path("FabFlee")), "a") as myfile:
+              % (env.plugin_dir), "a") as myfile:
         myfile.write("fab localhost change_distance:%s,%s,%s\n"
                      % (source, destination, distance))
 
@@ -1204,7 +1176,7 @@ def change_distance(source, destination, distance):
     # and change distance between two locations.
     import csv
     r = csv.reader(open("%s/conflict_data/active_conflict/routes.csv"
-                        % (get_plugin_path("FabFlee"))))
+                        % (env.plugin_dir)))
     lines = [l for l in r]
 
     for i in range(1, len(lines)):
@@ -1217,18 +1189,18 @@ def change_distance(source, destination, distance):
 
     # 2. Write the updated closures.csv in the active_conflict directory.
     writer = csv.writer(open("%s/conflict_data/active_conflict/routes.csv"
-                             % (get_plugin_path("FabFlee")), "w"))
+                             % (env.plugin_dir), "w"))
     writer.writerows(lines)
 
 
-@task
+@ptask
 # Syntax: fab localhost
 # close_camp:camp_name,country(,closure_start,closure_end)
 def close_camp(camp_name, country, closure_start=0, closure_end=-1):
     """ Close camp located within neighbouring country. """
 
     with open("%s/conflict_data/active_conflict/commands.log.txt"
-              % (get_plugin_path("FabFlee")), "a") as myfile:
+              % (env.plugin_dir), "a") as myfile:
         myfile.write("fab localhost close_camp:%s,%s\n" % (camp_name, country))
 
     # 1. Change closure_start and closure_end or add a new
@@ -1236,7 +1208,7 @@ def close_camp(camp_name, country, closure_start=0, closure_end=-1):
     # Format: closure type <location>,name1,name2,closure_start,closure_end
     import csv
     r = csv.reader(open("%s/conflict_data/active_conflict/closures.csv"
-                        % (get_plugin_path("FabFlee"))))  # Here your csv file
+                        % (env.plugin_dir)))  # Here your csv file
     lines = [l for l in r]
     camp_found = False
 
@@ -1259,11 +1231,11 @@ def close_camp(camp_name, country, closure_start=0, closure_end=-1):
 
     # 2. Write the updated closures.csv in the active_conflict directory.
     writer = csv.writer(open("%s/conflict_data/active_conflict/closures.csv"
-                             % (get_plugin_path("FabFlee")), "w"))
+                             % (env.plugin_dir), "w"))
     writer.writerows(lines)
 
 
-@task
+@ptask
 # Syntax: fab localhost
 # close_border:country1,country2(,closure_start,closure_end)
 def close_border(country1, country2, closure_start=0, closure_end=-1):
@@ -1273,7 +1245,7 @@ def close_border(country1, country2, closure_start=0, closure_end=-1):
     """
 
     with open("%s/conflict_data/active_conflict/commands.log.txt"
-              % (get_plugin_path("FabFlee")), "a") as myfile:
+              % (env.plugin_dir), "a") as myfile:
         myfile.write("fab localhost close_border:%s,%s\n"
                      % (country1, country2))
 
@@ -1282,7 +1254,7 @@ def close_border(country1, country2, closure_start=0, closure_end=-1):
     # Format: closure type <country>,name1,name2,closure_start,closure_end
     import csv
     r = csv.reader(open("%s/conflict_data/active_conflict/closures.csv"
-                        % (get_plugin_path("FabFlee"))))
+                        % (env.plugin_dir)))
     lines = [l for l in r]
     border_found = False
 
@@ -1303,20 +1275,20 @@ def close_border(country1, country2, closure_start=0, closure_end=-1):
                       closure_start, closure_end])
 
     '''
-    local(template("cp %s/conflict_data/%s/*.csv \
+    cmd_runner.local(template("cp %s/conflict_data/%s/*.csv \
         %s/conflict_data/active_conflict/")
-          % (get_plugin_path("FabFlee"), conflict_name,
-             get_plugin_path("FabFlee")))
+          % (env.plugin_dir, conflict_name,
+             env.plugin_dir))
     print(lines)
     '''
 
     # 2. Write the updated closures.csv in the active_conflict directory.
     writer = csv.writer(open("%s/conflict_data/active_conflict/closures.csv"
-                             % (get_plugin_path("FabFlee")), "w"))
+                             % (env.plugin_dir), "w"))
     writer.writerows(lines)
 
 
-@task
+@ptask
 def redirect(source, destination):
     # Syntax: fab localhost redirect:location_name1,location_name2
     """
@@ -1324,7 +1296,7 @@ def redirect(source, destination):
     """
 
     with open("%s/conflict_data/active_conflict/commands.log.txt"
-              % (get_plugin_path("FabFlee")), "a") as myfile:
+              % (env.plugin_dir), "a") as myfile:
         myfile.write("fab localhost redirect:%s,%s\n" % (source, destination))
 
     # 1. Read locations.csv and for each location in the dict, find in the csv,
@@ -1332,7 +1304,7 @@ def redirect(source, destination):
     # 2. Change location_type of source location to forwarding_hub.
     import csv
     r = csv.reader(open("%s/conflict_data/active_conflict/locations.csv"
-                        % (get_plugin_path("FabFlee"))))
+                        % (env.plugin_dir)))
     lines = [l for l in r]
 
     for i in range(1, len(lines)):
@@ -1344,13 +1316,13 @@ def redirect(source, destination):
 
     # 3. Write the updated CSV file.
     writer = csv.writer(open("%s/conflict_data/active_conflict/locations.csv"
-                             % (get_plugin_path("FabFlee")), "w"))
+                             % (env.plugin_dir), "w"))
     writer.writerows(lines)
 
     # 4. Find the route from source to destination in routes.csv, and enable
     # forced_redirection.
     r = csv.reader(open("%s/conflict_data/active_conflict/routes.csv"
-                        % (get_plugin_path("FabFlee"))))
+                        % (env.plugin_dir)))
     lines = [l for l in r]
 
     for i in range(1, len(lines)):
@@ -1371,15 +1343,12 @@ def redirect(source, destination):
 
     # 5. Write the updated CSV file.
     writer = csv.writer(open("%s/conflict_data/active_conflict/routes.csv"
-                             % (get_plugin_path("FabFlee")), "w"))
+                             % (env.plugin_dir), "w"))
     writer.writerows(lines)
 
 
-# Test Functions
-# from plugins.FabFlee.test_FabFlee import *
-
 try:
-    from plugins.FabFlee.run_simulation_sets import *
+    from run_simulation_sets import *
 except:
     exc_type, exc_value, exc_traceback = sys.exc_info()
     print("Error: failed to import settings module run_simulation_sets")
@@ -1392,8 +1361,8 @@ except:
 
 try:
     # loads Sensitivity analysis (SA) tasks
-    from plugins.FabFlee.SA.flee_SA import flee_init_SA
-    from plugins.FabFlee.SA.flee_SA import flee_analyse_SA
+    from SA.flee_SA import flee_init_SA
+    from SA.flee_SA import flee_analyse_SA
 except:
     exc_type, exc_value, exc_traceback = sys.exc_info()
     print("Error: failed to import settings module flee_SA")
@@ -1407,7 +1376,7 @@ except:
 
 try:
     # loads Automated Visualisation tasks
-    from plugins.FabFlee.vis.flee_geo import *
+    from vis.flee_geo import *
 except:
     exc_type, exc_value, exc_traceback = sys.exc_info()
     print("Error: failed to import settings module flee_vis")
@@ -1421,11 +1390,11 @@ except:
 
 try:
     # # loads Validation and Verification Patterns (VVP) tasks
-    from plugins.FabFlee.VVP.flee_vvp import flee_init_vvp_LoR
-    from plugins.FabFlee.VVP.flee_vvp import flee_analyse_vvp_LoR
+    from VVP.flee_vvp import flee_init_vvp_LoR
+    from VVP.flee_vvp import flee_analyse_vvp_LoR
 
-    from plugins.FabFlee.VVP.flee_vvp import flee_init_vvp_QoI
-    from plugins.FabFlee.VVP.flee_vvp import flee_analyse_vvp_QoI
+    from VVP.flee_vvp import flee_init_vvp_QoI
+    from VVP.flee_vvp import flee_analyse_vvp_QoI
 except:
     exc_type, exc_value, exc_traceback = sys.exc_info()
     print("Error: failed to import settings module flee_vvp")
@@ -1437,7 +1406,7 @@ except:
     pass
 
 try:
-    from plugins.FabFlee.run_perf_benchmarks import *
+    from run_perf_benchmarks import *
 except:
     exc_type, exc_value, exc_traceback = sys.exc_info()
     print("Error: failed to import settings module run_perf_benchmarks")

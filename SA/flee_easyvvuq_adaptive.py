@@ -1,4 +1,8 @@
-from base.fab import *
+from fabsim.base.decorators import ptask
+from fabsim.base.environment_manager import env
+from fabsim.base.job_manager import job_manager
+from fabsim.base.command_runner import cmd_runner
+
 import numpy as np
 import easyvvuq as uq
 import chaospy as cp
@@ -14,7 +18,7 @@ from sqlalchemy import create_engine
 import re
 import pandas as pd
 import matplotlib.pyplot as plt
-from plugins.FabFlee.FabFlee import *
+from FabFlee import *
 
 try:
     import glob
@@ -25,7 +29,7 @@ except ImportError:
 
 
 # load custom Campaign
-from plugins.FabFlee.customEasyVVUQ import CustomCampaign, CustomSCAnalysis
+from customEasyVVUQ import CustomCampaign, CustomSCAnalysis
 uq.Campaign = CustomCampaign
 uq.analysis.SCAnalysis = CustomSCAnalysis
 
@@ -37,7 +41,7 @@ order to be executed
     loop
         fab eagle_vecma flee_adapt_look_ahead:mali,simulation_period=100
         fab eagle_vecma flee_adapt_dimension:mali
-==================================================================        
+==================================================================
 '''
 work_dir_adapt = os.path.join(os.path.dirname(__file__),
                               'flee_easyvvuq_adaptive')
@@ -62,7 +66,7 @@ class custom_redirection(object):
             f.flush()
 
 
-@task
+@ptask
 def flee_adapt_dimension(config, ** args):
     '''
     fab eagle_vecma flee_adapt_dimension:GB_suppress
@@ -96,7 +100,7 @@ def flee_adapt_dimension(config, ** args):
         work_dir_adapt, "campaign_analysis.pickle"))
 
     # fetch only the required folder from remote machine
-    with_config(config)
+    job_manager.set_config(config)
     # env.job_name_template += "_{}".format(job_label)
     # fetch results from remote machine
     job_label = campaign._campaign_dir
@@ -113,7 +117,7 @@ def flee_adapt_dimension(config, ** args):
 
     print("Syncing output_dir ...")
     with hide('output', 'running', 'warnings'), settings(warn_only=True):
-        local(
+        cmd_runner.local(
             "rsync -av -m -v \
             --include='/*/' \
             --include='out.csv'  \
@@ -262,7 +266,7 @@ def flee_adapt_dimension(config, ** args):
     backup_campaign_files()
 
 
-@task
+@ptask
 def flee_adapt_look_ahead(config, simulation_period, mode='parallel', ** args):
     '''
     ============================================================================
@@ -304,7 +308,7 @@ def flee_adapt_look_ahead(config, simulation_period, mode='parallel', ** args):
     # 1. clean config SWEEP dir
     # 2. copy all generated runs by easyvvuq to config SWEEP folder
     #   2.1 only new run_id generated at this step should be copied
-    path_to_config = find_config_file_path(config)
+    path_to_config = job_manager.get_config_file_path(config)
     sweep_dir = path_to_config + "/SWEEP"
 
     if os.path.exists(sweep_dir):
@@ -314,7 +318,7 @@ def flee_adapt_look_ahead(config, simulation_period, mode='parallel', ** args):
     print("Copying easyvvuq runs to %s SWEEP folder ..." % (config))
     for run_id in run_ids:
         with hide('output', 'running', 'warnings'), settings(warn_only=True):
-            local("cp -r %s %s" % (os.path.join(campaign.work_dir,
+            cmd_runner.local("cp -r %s %s" % (os.path.join(campaign.work_dir,
                                                 campaign.campaign_dir,
                                                 'SWEEP',
                                                 run_id
@@ -356,7 +360,7 @@ def flee_adapt_look_ahead(config, simulation_period, mode='parallel', ** args):
     backup_campaign_files()
 
 
-@task
+@ptask
 def flee_adapt_analyse(config, ** args):
     '''
     ============================================================================
@@ -385,7 +389,7 @@ def flee_adapt_analyse(config, ** args):
     campaign.set_sampler(sampler)
 
     # fetch only the required folder from remote machine
-    with_config(config)
+    job_manager.set_config(config)
     # env.job_name_template += "_{}".format(job_label)
     # fetch results from remote machine
     job_label = campaign._campaign_dir
@@ -398,7 +402,7 @@ def flee_adapt_analyse(config, ** args):
 
     print("Syncing output_dir ...")
     with hide('output', 'running', 'warnings'), settings(warn_only=True):
-        local(
+        cmd_runner.local(
             "rsync -av -m -v \
             --include='/*/' \
             --include='out.csv'  \
@@ -426,7 +430,7 @@ def flee_adapt_analyse(config, ** args):
     backup_campaign_files()
 
 
-@task
+@ptask
 def flee_adapt_init(config, simulation_period, mode='parallel', ** args):
     '''
     ============================================================================
@@ -453,7 +457,7 @@ def flee_adapt_init(config, simulation_period, mode='parallel', ** args):
     job_label = campaign._campaign_dir
 
     # Define parameter space for the flee-adaptive app
-    params = json.load(open(os.path.join(get_plugin_path("FabFlee"),
+    params = json.load(open(os.path.join(env.plugin_dir,
                                          'templates',
                                          'params.json'
                                          )
@@ -464,7 +468,7 @@ def flee_adapt_init(config, simulation_period, mode='parallel', ** args):
 
     # Create an encoder and decoder
     encoder = uq.encoders.GenericEncoder(
-        template_fname=get_plugin_path("FabFlee") +
+        template_fname=env.plugin_dir +
         '/templates/simsetting.template',
         delimiter='$',
         target_filename='simsetting.csv'
@@ -522,7 +526,7 @@ def flee_adapt_init(config, simulation_period, mode='parallel', ** args):
     # 1. clean config SWEEP dir
     # 2. copy all generated runs by easyvvuq to config SWEEP folder
     #   2.1 only new run_id generated at this step should be copied
-    path_to_config = find_config_file_path(config)
+    path_to_config = job_manager.get_config_file_path(config)
     sweep_dir = path_to_config + "/SWEEP"
 
     if os.path.exists(sweep_dir):
@@ -532,7 +536,7 @@ def flee_adapt_init(config, simulation_period, mode='parallel', ** args):
     print("Copying easyvvuq runs to %s SWEEP folder ..." % (config))
     for run_id in run_ids:
         with hide('output', 'running', 'warnings'), settings(warn_only=True):
-            local("cp -r %s %s" % (os.path.join(campaign.work_dir,
+            cmd_runner.local("cp -r %s %s" % (os.path.join(campaign.work_dir,
                                                 campaign.campaign_dir,
                                                 'SWEEP',
                                                 run_id
@@ -576,7 +580,7 @@ def backup_campaign_files():
         rmtree(backup_dir)
     os.mkdir(backup_dir)
     with hide('output', 'running', 'warnings'), settings(warn_only=True):
-        local(
+        cmd_runner.local(
             "rsync -av -m -v \
             --include='*.db' \
             --include='*.pickle' \
@@ -589,7 +593,7 @@ def backup_campaign_files():
 def load_campaign_files():
 
     with hide('output', 'running', 'warnings'), settings(warn_only=True):
-        local(
+        cmd_runner.local(
             "rsync -av -m -v \
             --include='*.db' \
             --include='*.pickle' \

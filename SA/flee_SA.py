@@ -1,7 +1,7 @@
-try:
-    from fabsim.base.fab import *
-except ImportError:
-    from base.fab import *
+from fabsim.base.decorators import ptask
+from fabsim.base.environment_manager import env
+from fabsim.base.job_manager import job_manager
+from fabsim.base.command_runner import cmd_runner
 
 import chaospy as cp
 import numpy as np
@@ -17,13 +17,12 @@ import ruamel.yaml
 from shutil import copyfile, rmtree
 from pprint import pprint
 import json
-from plugins.FabFlee.FabFlee import *
+from FabFlee import *
 
 # authors: Hamid Arabnejad, Diana Suleimenova, Wouter Edeling, Derek Groen
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def flee_init_SA(config, simulation_period=-1, mode="serial",
                  sampler_name=None, ** args):
     """
@@ -38,13 +37,13 @@ def flee_init_SA(config, simulation_period=-1, mode="serial",
 
     ==========================================================================
     """
-    update_environment()
+    env.update(args)
 
     #############################################
     # load flee SA configuration from yml file #
     #############################################
     flee_SA_config_file = os.path.join(
-        get_plugin_path("FabFlee"),
+        env.plugin_dir,
         "SA",
         "flee_SA_config.yml"
     )
@@ -59,7 +58,7 @@ def flee_init_SA(config, simulation_period=-1, mode="serial",
     campaign_name = "flee_SA_{}_{}".format(sampler_name, config)
 
     campaign_work_dir = os.path.join(
-        get_plugin_path("FabFlee"),
+        env.plugin_dir,
         "SA",
         "flee_SA_{}_{}".format(sampler_name, config)
     )
@@ -82,8 +81,8 @@ def flee_init_SA(config, simulation_period=-1, mode="serial",
     ###########################################################
     env.job_desc = "_SA_%s" % (sampler_name)
     env.prevent_results_overwrite = "delete"
-    with_config(config)
-    execute(put_configs, config)
+    job_manager.set_config(config)
+    job_manager.transfer_config_files(config)
 
     ##################################################
     # prepare env variable to submit an ensemble job #
@@ -104,8 +103,7 @@ def flee_init_SA(config, simulation_period=-1, mode="serial",
     )
 
 
-@task
-@load_plugin_env_vars("FabFlee")
+@ptask
 def flee_analyse_SA(config, sampler_name=None, ** args):
     """
     ==========================================================================
@@ -119,13 +117,13 @@ def flee_analyse_SA(config, sampler_name=None, ** args):
 
     ==========================================================================
     """
-    update_environment()
+    env.update()
 
     #############################################
     # load flee SA configuration from yml file #
     #############################################
     flee_SA_config_file = os.path.join(
-        get_plugin_path("FabFlee"),
+        env.plugin_dir,
         "SA",
         "flee_SA_config.yml"
     )
@@ -140,7 +138,7 @@ def flee_analyse_SA(config, sampler_name=None, ** args):
     campaign_name = "flee_SA_{}_{}".format(sampler_name, config)
 
     campaign_work_dir = os.path.join(
-        get_plugin_path("FabFlee"),
+        env.plugin_dir,
         "SA",
         "flee_SA_{}_{}".format(sampler_name, config)
     )
@@ -164,7 +162,7 @@ def flee_analyse_SA(config, sampler_name=None, ** args):
     # here, we ONLY fetch the required results folders #
     ####################################################
     env.job_desc = "_SA_{}".format(sampler_name)
-    with_config(config)
+    job_manager.set_config(config)
 
     job_folder_name = template(env.job_name_template)
     print("fetching results from remote machine ...")
@@ -179,7 +177,7 @@ def flee_analyse_SA(config, sampler_name=None, ** args):
     src = os.path.join(env.local_results, job_folder_name, "RUNS")
     des = campaign.campaign_db.runs_dir()
     print("Syncing output_dir ...")
-    local(
+    cmd_runner.local(
         "rsync -pthrz "
         "--include='/*/' "
         "--include='{}' "
@@ -560,7 +558,7 @@ def backup_campaign_files(campaign_work_dir):
         rmtree(backup_dir)
     os.mkdir(backup_dir)
 
-    local(
+    cmd_runner.local(
         "rsync -av -m -v \
             --include='*.db' \
             --include='*.pickle' \
@@ -572,7 +570,7 @@ def backup_campaign_files(campaign_work_dir):
 
 def load_campaign_files(campaign_work_dir):
     backup_dir = os.path.join(campaign_work_dir, "backup")
-    local(
+    cmd_runner.local(
         "rsync -av -m -v \
             --include='*.db' \
             --include='*.pickle' \

@@ -9,7 +9,7 @@ import sys
 import math
 from pprint import pprint
 import matplotlib.pyplot as plt
-from plugins.FabFlee.FabFlee import *
+from FabFlee import *
 import UQP.uqp as uqp
 
 # Source file for UQP examples FabFlee.
@@ -18,7 +18,7 @@ import UQP.uqp as uqp
 def _flee_uqp(config_info, replicas, args):
     flee(config_info["config"], config_info["simulation_period"],
          replicas=replicas, args)
-    fetch_results()
+    job_manager.fetch_results()
     return template(env.job_name_template)
 
 

@@ -5,19 +5,12 @@
 #
 # This file contains FabSim definitions specific to FabFlee.
 
-try:
-    from fabsim.base.fab import *
-except ImportError:
-    from base.fab import *
+from fabsim.base.decorators import ptask
+from fabsim.base.environment_manager import env
 
-try:
-    from fabsim.plugins.FabFlee.FabFlee import *
-except ImportError:
-    from plugins.FabFlee.FabFlee import *
+from FabFlee import *
 
 
-# Add local script, blackbox and template path.
-add_local_paths("FabFlee")
 
 ## TEST FUNCTIONS
 
@@ -32,7 +25,7 @@ def pr_utest(test_name, test_outcome_bool):
     print("%s has failed." % test_name)
 
 
-@task
+@ptask
 def test_load_conflict():    # fab localhost test_load_conflict
   # write a function that tests whether this worked! It should return FALSE when it doesn't, TRUE when it does.
 
@@ -52,7 +45,7 @@ def test_load_conflict():    # fab localhost test_load_conflict
   pr_utest("test_load_conflict-match_csv_files",test_result)
 
 
-@task
+@ptask
 def test_change_capacities():    # fab localhost test_change_capacities
   # write a function that tests whether this worked! It should return FALSE when it doesn't, TRUE when it does.
 
@@ -74,7 +67,7 @@ def test_change_capacities():    # fab localhost test_change_capacities
   pr_utest("test_add_camp-match_capacity_change",test_result)
 
 
-@task
+@ptask
 def test_add_camp():    # fab localhost test_add_camp
   # write a function that tests whether this worked! It should return FALSE when it doesn't, TRUE when it does.
 
@@ -104,7 +97,7 @@ def test_add_camp():    # fab localhost test_add_camp
   pr_utest("test_add_camp-match_newline",test_result)
 
 
-@task
+@ptask
 def test_delete_location():      # fab localhost test_delete_location
   # write a function that tests whether this worked! It should return FALSE when it doesn't, TRUE when it does.
 
@@ -125,7 +118,7 @@ def test_delete_location():      # fab localhost test_delete_location
   pr_utest("test_delete_location-check_deleted_line",test_result)
 
 
-@task
+@ptask
 def test_close_camp():			    # fab localhost test_close_camp
   # write a function that tests whether this worked! It should return FALSE when it doesn't, TRUE when it does.
 
@@ -145,7 +138,7 @@ def test_close_camp():			    # fab localhost test_close_camp
   pr_utest("test_close_camp-check_camp_closure",test_result)
 
 
-@task
+@ptask
 def test_close_border():                   # fab localhost test_close_border
   # write a function that tests whether this worked! It should return FALSE when it doesn't, TRUE when it does.
 
@@ -165,7 +158,7 @@ def test_close_border():                   # fab localhost test_close_border
   pr_utest("test_close_border-check_border_closure",test_result)
 
 
-@task
+@ptask
 def test_redirect():		    # fab localhost test_redirect
   # write a function that tests whether this worked! It should return FALSE when it doesn't, TRUE when it does.
 
@@ -199,7 +192,7 @@ def test_redirect():		    # fab localhost test_redirect
   pr_utest("test_redirect-check_forced_redirection",test_result)
 
 
-@task
+@ptask
 def test_clear_active_conflict():     # fab localhost test_clear_active_conflict
   # write a function that tests whether this worked! It should return FALSE when it doesn't, TRUE when it does.
 

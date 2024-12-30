@@ -141,3 +141,7 @@ machines_FabFlee_user.yml
 
 # ignore .DS_Store files on Mac
 .DS_Store
+
+# FabSim ignore list
+localhost_exe
+results
