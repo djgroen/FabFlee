@@ -1,0 +1,581 @@
+#name1,#name2,distance,forced_redirection
+Igbo-Eze North,Nsukka,21.18,0
+Igbo-Eze North,Igalamela-Odolu,58.86,0
+Igbo-Eze North,Okpokwu,66.55,0
+Fune,Potiskum,91.24,0
+Fune,Tarmua,140.76,0
+Fune,Damban,142.7,0
+Ife Central,Ife East,24.05,0
+Ife Central,Ifelodun,67.35,0
+Ife Central,Ejigbo,63.99,0
+Bichi,Ungogo,35.09,0
+Bichi,Dala,36.52,0
+Bichi,Rimin Gado,57.9,0
+Fakai,Zuru,50.34,0
+Fakai,Gummi,141.04,0
+Fakai,Rijau,97.26,0
+Uruan,Uyo,12.85,0
+Uruan,Oron,43.55,0
+Uruan,Ibiono Ibom,48.84,0
+Yola North,Camp(12),23.83,0
+Yola North,Fufore,74.12,0
+Yola North,Lamurde,78.19,0
+Obio/Akpor,Port-Harcourt,16.7,0
+Obio/Akpor,Degema,74.66,0
+Obio/Akpor,Aba South,50.57,0
+Qua'An Pan,Shendam,79.58,0
+Qua'An Pan,Awe,116.31,0
+Qua'An Pan,Mangu,89.58,0
+Esan South East,Igueben,43.42,0
+Esan South East,Anambra West,120.18,0
+Esan South East,Esan West,60.75,0
+Yewa North (Egbado North),Abeokuta South,58.77,0
+Yewa North (Egbado North),Ifo,87.53,0
+Yewa North (Egbado North),Odeda,76.06,0
+Katcha,Pategi,109.53,0
+Katcha,Kabba/Bunu,245.92,0
+Katcha,Gwagwalada,139.41,0
+Warji,Gwaram,43.88,0
+Warji,Birnin Kudu,78.36,0
+Warji,Ganjuwa,160.55,0
+Kaduna South,Chikun,13.2,0
+Kaduna South,Igabi,36.01,0
+Kaduna South,Muya,59.65,0
+Taura,Jahun,59.83,0
+Taura,Maigatari,114.63,0
+Taura,Gabasawa,65.38,0
+Bodinga,Sokoto North,34.76,0
+Bodinga,Tureta,82.22,0
+Bodinga,Tambuwal,65.02,0
+Askira/Uba,Michika,34.97,0
+Askira/Uba,Hong,90.24,0
+Askira/Uba,Damboa,87.75,0
+Irepo,Saki East,60.33,0
+Irepo,Baruten,83.0,0
+Irepo,Kaiama,91.63,0
+Ohaukwu,Izzi,48.3,0
+Ohaukwu,Enugu East,73.07,0
+Ohaukwu,Onicha,64.62,0
+Boki,Ogoja,80.16,0
+Boki,Ikom,59.87,0
+Boki,Etung,73.38,0
+Bunkure,Dawakin Kudu,48.75,0
+Bunkure,Rimin Gado,69.06,0
+Bunkure,Tudun Wada,67.55,0
+Warri South,Sapele,58.02,0
+Warri South,Ethiope West,59.36,0
+Warri South,Warri South West,53.63,0
+Gashaka,Sardauna,102.62,0
+Gashaka,Kurmi,240.68,0
+Gashaka,Bali,128.49,0
+Ijebu North,Ona-Ara,47.24,0
+Ijebu North,Egbeda,60.14,0
+Ijebu North,Ibadan North East,47.91,0
+Guzamala,Camp(7),71.48,0
+Guzamala,Nganzai,70.93,0
+Guzamala,Gubio,65.96,0
+Akoko North West,Gbonyin,45.32,0
+Akoko North West,Akoko-Edo,67.37,0
+Akoko North West,Yagba East,74.8,0
+Akko,Gombe,52.44,0
+Akko,Yamaltu/Deba,62.73,0
+Akko,Shomgom,91.82,0
+Ibarapa East,Odeda,59.39,0
+Ibarapa East,Iseyin,53.51,0
+Ibarapa East,Abeokuta South,72.06,0
+Nnewi South,Aguata,21.95,0
+Nnewi South,Anaocha,16.59,0
+Nnewi South,Idemili North,29.32,0
+Logo,Ukum,69.89,0
+Logo,Camp(14),135.11,0
+Logo,Guma,126.5,0
+Obi Ngwa,Aba South,14.67,0
+Obi Ngwa,Essien Udim,30.79,0
+Obi Ngwa,Umuahia South,45.78,0
+Oredo,Sapele,69.34,0
+Oredo,Ethiope West,66.16,0
+Oredo,Orhionmwon,70.54,0
+Jos North,Camp(9),12.85,0
+Jos North,Bassa,21.59,0
+Jos North,Barkin Ladi,50.75,0
+Arewa-Dandi,Birnin Kebbi,53.07,0
+Arewa-Dandi,Argungu,42.47,0
+Arewa-Dandi,Aleiro,102.64,0
+Irepodun,Odo-Otin,45.77,0
+Irepodun,Ilorin South,47.69,0
+Irepodun,Ifelodun,58.28,0
+Kafin Hausa,Itas/Gadau,42.33,0
+Kafin Hausa,Jahun,53.91,0
+Kafin Hausa,Malam Madori,61.4,0
+Jema'A,Akwanga,73.21,0
+Jema'A,Zangon-Kataf,62.23,0
+Jema'A,Camp(13),63.3,0
+Alimosho,Mushin,21.42,0
+Alimosho,Ifo,30.36,0
+Alimosho,Ado-Odo/Ota,36.91,0
+Ngaski,Magama,97.06,0
+Ngaski,Rijau,96.59,0
+Ngaski,Borgu,142.12,0
+Oyo West,Iseyin,33.21,0
+Oyo West,Atiba,90.07,0
+Oyo West,Kajola,62.09,0
+Ardo-Kola,Jalingo,31.12,0
+Ardo-Kola,Karim-Lamido,133.51,0
+Ardo-Kola,Zing,103.81,0
+Dawakin Kudu,Dala,48.67,0
+Dawakin Kudu,Ungogo,55.92,0
+Ado,Oturkpo,143.81,0
+Ado,Okpokwu,127.76,0
+Ado,Igbo-Eze North,109.8,0
+Chanchaga,Paikoro,60.52,0
+Chanchaga,Shiroro,80.07,0
+Chanchaga,Rafi,111.12,0
+Gbonyin,Ado Ekiti,34.9,0
+Gbonyin,Ikere,47.16,0
+Yusufari,Nguru,36.27,0
+Yusufari,Biriniwa,87.64,0
+Yusufari,Kiri Kasama,90.5,0
+Mai'Adua,Daura,24.89,0
+Mai'Adua,Mani,57.29,0
+Mai'Adua,Kusada,92.11,0
+Ilaje,Okitipupa,54.08,0
+Ilaje,Ogun Waterside,109.51,0
+Ilaje,Warri North,289.39,0
+Guyuk,Lamurde,42.53,0
+Guyuk,Shani,47.43,0
+Guyuk,Balanga,66.21,0
+Nafada,Funakaye,45.63,0
+Nafada,Dukku,83.48,0
+Nafada,Gombe,104.1,0
+Langtang North,Wase,72.05,0
+Langtang North,Shendam,69.5,0
+Langtang North,Kanam,84.4,0
+Kiru,Gwarzo,77.05,0
+Kiru,Kafur,83.49,0
+Kiru,Rimin Gado,81.31,0
+Port-Harcourt,Degema,79.93,0
+Port-Harcourt,Bonny,46.59,0
+Saki West,Saki East,43.12,0
+Saki West,Kajola,98.79,0
+Saki West,Iwajowa,148.17,0
+Wasagu/Danko,Zuru,61.89,0
+Wasagu/Danko,Maru,91.71,0
+Wasagu/Danko,Rijau,86.29,0
+Konshisha,Gboko,67.47,0
+Konshisha,Gwer East,51.99,0
+Konshisha,Oturkpo,77.77,0
+Ona-Ara,Egbeda,37.99,0
+Ona-Ara,Ibadan North East,25.96,0
+Darazo,Dukku,87.92,0
+Darazo,Gwaram,80.53,0
+Darazo,Damban,80.67,0
+Umuahia North,Umuahia South,18.22,0
+Umuahia North,Isiala-Mbano,40.81,0
+Umuahia North,Ohafia,56.93,0
+Ilorin South,Ilorin West,20.5,0
+Ilorin South,Odo-Otin,67.04,0
+Babura,Dambatta,36.44,0
+Babura,Gabasawa,77.79,0
+Babura,Ungogo,88.55,0
+Etsako West,Esan West,55.89,0
+Etsako West,Akoko-Edo,59.84,0
+Etsako West,Igueben,55.76,0
+Anaocha,Aguata,20.0,0
+Anaocha,Idemili North,18.66,0
+Ussa,Kurmi,129.15,0
+Ussa,Ukum,103.32,0
+Ussa,Kwande,157.13,0
+Birnin-Gwari,Muya,109.46,0
+Birnin-Gwari,Giwa,105.59,0
+Birnin-Gwari,Mariga,123.05,0
+Ganye,Toungo,56.78,0
+Ganye,Zing,83.28,0
+Ganye,Jada,74.79,0
+Kala/Balge,Camp(4),81.76,0
+Kala/Balge,Camp(3),84.01,0
+Kala/Balge,Ngala,92.51,0
+Gwarzo,Musawa,57.42,0
+Gwarzo,Rimin Gado,53.51,0
+Kusada,Katsina,59.94,0
+Kusada,Bichi,61.73,0
+Kusada,Dutsin-Ma,71.47,0
+Ndokwa West,Aniocha South,51.73,0
+Ndokwa West,Ogba-Egbema-Ndoni,67.54,0
+Ndokwa West,Ughelli North,73.78,0
+Kiri Kasama,Biriniwa,55.92,0
+Kiri Kasama,Nguru,56.75,0
+Kiri Kasama,Malam Madori,57.94,0
+Afikpo South,Ohafia,24.49,0
+Afikpo South,Onicha,41.91,0
+Afikpo South,Umuahia North,58.5,0
+Mbaitoli,Isiala-Mbano,26.57,0
+Mbaitoli,Nnewi South,46.76,0
+Mbaitoli,Aguata,53.01,0
+Enugu North,Enugu East,16.61,0
+Enugu North,Onicha,84.45,0
+Enugu North,Nsukka,57.87,0
+Kolokuma/Opokuma,Yenagoa,53.14,0
+Kolokuma/Opokuma,Abua-Odual,83.66,0
+Kolokuma/Opokuma,Ughelli North,74.66,0
+Oruk Anam,Mkpat Enin,22.78,0
+Oruk Anam,Khana,42.31,0
+Oruk Anam,Essien Udim,41.01,0
+Maiyama,Aleiro,52.57,0
+Maiyama,Birnin Kebbi,73.63,0
+Maiyama,Dandi,106.45,0
+Ado Ekiti,Ikere,14.04,0
+Ado Ekiti,Ijero,45.03,0
+Adavi,Okene,57.57,0
+Adavi,Akoko-Edo,68.76,0
+Adavi,Kabba/Bunu,112.05,0
+Ondo West,Ife East,58.7,0
+Ondo West,Akure South,56.99,0
+Ondo West,Okitipupa,77.46,0
+Kaga,Camp(5),47.4,0
+Kaga,Damboa,89.92,0
+Kaga,Magumeri,75.93,0
+Degema,Bonny,54.66,0
+Kubau,Soba,48.81,0
+Kubau,Kauru,91.61,0
+Kubau,Lere,123.11,0
+Etung,Ikom,14.52,0
+Etung,Akamkpa,256.17,0
+Sokoto North,Gwadabawa,50.04,0
+Sokoto North,Tureta,86.96,0
+Hong,Maiha,98.66,0
+Hong,Michika,80.56,0
+Damban,Potiskum,51.66,0
+Damban,Katagum,55.04,0
+Damban,Gamawa,81.49,0
+Nasarawa-Eggon,Akwanga,54.25,0
+Nasarawa-Eggon,Nasarawa,69.32,0
+Nasarawa-Eggon,Qua'An Pan,101.59,0
+Vandeikya,Kwande,50.22,0
+Vandeikya,Ogoja,58.38,0
+Vandeikya,Konshisha,66.84,0
+Gabasawa,Ungogo,57.13,0
+Gabasawa,Dawakin Kudu,69.05,0
+Gabasawa,Dala,49.78,0
+Gudu,Augie,161.99,0
+Gudu,Argungu,197.91,0
+Gudu,Arewa-Dandi,141.31,0
+Itas/Gadau,Katagum,62.98,0
+Itas/Gadau,Jahun,85.22,0
+Idemili North,Aguata,37.79,0
+Lavun,Mokwa,73.61,0
+Lavun,Mashegu,244.43,0
+Lavun,Edu,233.06,0
+Gwer East,Oturkpo,58.98,0
+Gwer East,Gboko,83.79,0
+Esan West,Igueben,29.08,0
+Jakusko,Gamawa,59.38,0
+Jakusko,Kiri Kasama,153.34,0
+Jakusko,Nguru,121.7,0
+Ibi,Wukari,36.57,0
+Ibi,Awe,97.94,0
+Ibi,Ukum,83.63,0
+Orhionmwon,Ethiope West,37.84,0
+Orhionmwon,Sapele,51.85,0
+Kaiama,Baruten,89.57,0
+Kaiama,Borgu,120.61,0
+Ifelodun,Odo-Otin,14.29,0
+Ifelodun,Ejigbo,56.01,0
+Balanga,Lamurde,78.86,0
+Balanga,Yamaltu/Deba,72.21,0
+Kurmi,Sardauna,333.52,0
+Sagamu,Ijebu North,54.1,0
+Sagamu,Ifo,75.6,0
+Sagamu,Abeokuta South,54.44,0
+Borgu,Magama,162.57,0
+Zangon-Kataf,Camp(13),1.1,0
+Zangon-Kataf,Kauru,114.8,0
+Akpabuyo,Oron,48.15,0
+Akpabuyo,Uruan,129.34,0
+Akpabuyo,Uyo,115.79,0
+Kirfi,Dukku,135.81,0
+Kirfi,Bauchi,151.59,0
+Kirfi,Alkaleri,112.21,0
+Akoko-Edo,Okene,61.12,0
+Dass,Tafawa-Balewa,66.32,0
+Dass,Toro,79.88,0
+Dass,Jos North,75.56,0
+Izzi,Ogoja,93.67,0
+Izzi,Ikwo,62.54,0
+Warri North,Warri South West,61.97,0
+Warri North,Oredo,116.7,0
+Ilorin West,Moro,46.12,0
+Ilorin West,Ogbomosho North,51.34,0
+Igalamela-Odolu,Nsukka,45.38,0
+Igalamela-Odolu,Anambra West,127.84,0
+Ado-Odo/Ota,Ifo,33.37,0
+Ado-Odo/Ota,Mushin,53.1,0
+Katagum,Gamawa,70.63,0
+Yagba East,Kabba/Bunu,67.38,0
+Yagba East,Pategi,101.33,0
+Ibadan North East,Egbeda,15.96,0
+Ibadan North East,Lagelu,25.92,0
+Soba,Sabon-Gari,55.82,0
+Soba,Igabi,102.27,0
+Yamaltu/Deba,Gombe,45.18,0
+Ibiono Ibom,Uyo,41.52,0
+Ibiono Ibom,Essien Udim,35.52,0
+Khana,Bonny,71.76,0
+Khana,Mkpat Enin,56.72,0
+Mobbar,Gubio,93.27,0
+Mobbar,Guzamala,76.24,0
+Mobbar,Abadam,118.11,0
+Argungu,Augie,31.07,0
+Argungu,Birnin Kebbi,55.11,0
+Zing,Jalingo,83.38,0
+Zing,Jada,100.21,0
+Rafi,Mariga,76.71,0
+Rafi,Shiroro,191.4,0
+Ughelli North,Warri South,47.78,0
+Ughelli North,Ethiope West,71.9,0
+Kanam,Alkaleri,109.16,0
+Kanam,Wase,67.03,0
+Aba South,Essien Udim,41.44,0
+Baruten,Saki East,106.57,0
+Pategi,Edu,74.66,0
+Dala,Ungogo,10.92,0
+Dala,Rimin Gado,27.19,0
+Jada,Camp(12),123.1,0
+Jada,Yola North,106.32,0
+Southern Ijaw,Ekeremor,215.8,0
+Southern Ijaw,Yenagoa,95.11,0
+Southern Ijaw,Kolokuma/Opokuma,122.9,0
+Ose,Owo,25.98,0
+Ose,Akoko-Edo,84.48,0
+Ose,Esan West,91.2,0
+Okpokwu,Oturkpo,41.54,0
+Okpokwu,Ohaukwu,96.33,0
+Song,Maiha,77.79,0
+Song,Fufore,125.36,0
+Song,Hong,79.35,0
+Umu-Nneochi,Aguata,55.87,0
+Umu-Nneochi,Isiala-Mbano,44.97,0
+Umu-Nneochi,Umuahia North,52.61,0
+Sardauna,Ussa,355.89,0
+Dutsin-Ma,Katsina,27.69,0
+Dutsin-Ma,Musawa,50.72,0
+Ife East,Ifelodun,75.41,0
+Kajola,Iseyin,29.72,0
+Kajola,Iwajowa,55.75,0
+Kajola,Ibarapa East,57.98,0
+Guma,Camp(14),18.74,0
+Guma,Camp(11),44.1,0
+Shendam,Ibi,77.33,0
+Bukkuyum,Camp(10),70.02,0
+Bukkuyum,Gummi,60.98,0
+Bukkuyum,Tureta,125.42,0
+Rijau,Zuru,47.53,0
+Biriniwa,Malam Madori,65.78,0
+Biriniwa,Nguru,52.99,0
+Anambra West,Idemili North,53.98,0
+Anambra West,Aniocha South,92.0,0
+Odo-Otin,Ejigbo,69.18,0
+Saki East,Atiba,153.11,0
+Lagelu,Egbeda,15.82,0
+Lagelu,Ona-Ara,48.15,0
+Potiskum,Gamawa,67.98,0
+Shomgom,Balanga,66.86,0
+Shomgom,Lamurde,102.84,0
+Tarmua,Geidam,237.99,0
+Tarmua,Magumeri,94.63,0
+Lere,Kauru,77.54,0
+Lere,Bassa,83.23,0
+Funakaye,Gombe,61.08,0
+Funakaye,Yamaltu/Deba,74.73,0
+Ogun Waterside,Okitipupa,60.05,0
+Ogun Waterside,Ondo West,137.43,0
+Nganzai,Gubio,53.76,0
+Nganzai,Camp(2),96.98,0
+Ethiope West,Sapele,15.31,0
+Bagudo,Maiyama,113.16,0
+Bagudo,Dandi,102.35,0
+Bagudo,Fakai,88.54,0
+Iwajowa,Iseyin,83.96,0
+Iwajowa,Ibarapa East,97.06,0
+Magama,Mashegu,58.84,0
+Magama,Rijau,96.37,0
+Sabon-Gari,Igabi,66.52,0
+Sabon-Gari,Kafur,61.76,0
+Akure South,Ikere,42.97,0
+Akure South,Ado Ekiti,52.47,0
+Akure South,Owo,51.93,0
+Ogbomosho North,Ejigbo,36.81,0
+Ogbomosho North,Atiba,155.91,0
+Ijero,Ikere,57.63,0
+Ijero,Irepodun,78.95,0
+Paikoro,Gwagwalada,70.87,0
+Paikoro,Shiroro,75.99,0
+Karim-Lamido,Jalingo,114.03,0
+Karim-Lamido,Wase,156.34,0
+Musawa,Kankara,63.48,0
+Abeokuta South,Odeda,29.68,0
+Abeokuta South,Ifo,63.94,0
+Isiala-Mbano,Aguata,42.97,0
+Yakurr,Ikwo,64.61,0
+Yakurr,Ohafia,98.79,0
+Yakurr,Afikpo South,81.03,0
+Birnin Kudu,Dutse,41.59,0
+Birnin Kudu,Takai,46.29,0
+Ogba-Egbema-Ndoni,Mbaitoli,57.14,0
+Ogba-Egbema-Ndoni,Kolokuma/Opokuma,105.6,0
+Hawul,Biu,25.32,0
+Hawul,Shani,78.65,0
+Hawul,Hong,110.9,0
+Atiba,Iseyin,57.29,0
+Abua-Odual,Yenagoa,83.38,0
+Abua-Odual,Degema,55.58,0
+Mani,Daura,62.44,0
+Mani,Kusada,65.36,0
+Dambatta,Ungogo,59.39,0
+Dambatta,Gabasawa,83.73,0
+Ganjuwa,Bauchi,52.34,0
+Ganjuwa,Gwaram,117.62,0
+Enugu East,Nsukka,53.66,0
+Aleiro,Birnin Kebbi,53.48,0
+Aleiro,Argungu,83.32,0
+Akamkpa,Akpabuyo,71.24,0
+Akamkpa,Yakurr,174.15,0
+Sumaila,Tudun Wada,55.34,0
+Sumaila,Takai,50.84,0
+Sumaila,Ningi,109.53,0
+Edu,Mokwa,187.27,0
+Edu,Ilorin South,122.52,0
+Ukum,Wukari,48.24,0
+Tambuwal,Gummi,63.3,0
+Tambuwal,Aleiro,74.38,0
+Moro,Ilorin South,61.56,0
+Moro,Irepo,109.91,0
+Malam Madori,Maigatari,61.79,0
+Kabba/Bunu,Akoko North West,72.26,0
+Muya,Giwa,112.3,0
+Muya,Chikun,68.74,0
+Dandi,Birnin Kebbi,82.63,0
+Warri South West,Sapele,109.57,0
+Aniocha South,Idemili North,57.32,0
+Aniocha South,Esan South East,68.98,0
+Dutse,Takai,39.45,0
+Dutse,Jahun,72.48,0
+Abuja Municipal Area Council,Camp(1),9.84,0
+Abuja Municipal Area Council,Bwari,30.48,0
+Abuja Municipal Area Council,Karu,36.86,0
+Ekeremor,Kolokuma/Opokuma,120.38,0
+Ekeremor,Yenagoa,147.92,0
+Zurmi,Batsari,95.27,0
+Zurmi,Gusau,100.63,0
+Zurmi,Talata Mafara,158.08,0
+Maiduguri,Camp(2),22.24,0
+Maiduguri,Magumeri,72.85,0
+Maiduguri,Nganzai,76.71,0
+Mangu,Barkin Ladi,50.53,0
+Mangu,Camp(9),87.07,0
+Uyo,Oron,43.13,0
+Kuje,Camp(1),72.22,0
+Kuje,Abuja Municipal Area Council,61.44,0
+Kuje,Gwagwalada,85.82,0
+Shani,Balanga,70.51,0
+Igabi,Chikun,45.59,0
+Igabi,Muya,73.54,0
+Katsina,Batsari,87.32,0
+Mashegu,Mokwa,199.03,0
+Wukari,Logo,81.88,0
+Gada,Gwadabawa,66.98,0
+Gada,Sabon Birni,86.33,0
+Gada,Sokoto North,108.48,0
+Ifo,Mushin,40.55,0
+Kukawa,Camp(7),48.99,0
+Kukawa,Abadam,73.62,0
+Kukawa,Guzamala,94.98,0
+Okene,Etsako West,94.76,0
+Geidam,Mobbar,124.12,0
+Geidam,Gubio,114.53,0
+Bali,Gassol,141.29,0
+Bali,Ardo-Kola,129.52,0
+Rimin Gado,Ungogo,37.17,0
+Nasarawa,Akwanga,109.48,0
+Nasarawa,Camp(11),102.51,0
+Fufore,Camp(12),52.71,0
+Owo,Gbonyin,83.82,0
+Bauchi,Warji,177.89,0
+Kankara,Dutsin-Ma,76.39,0
+Kankara,Kafur,60.77,0
+Giwa,Igabi,104.06,0
+Giwa,Sabon-Gari,67.33,0
+Augie,Bodinga,109.88,0
+Augie,Arewa-Dandi,65.63,0
+Bassa,Camp(9),29.97,0
+Gwoza,Camp(8),48.89,0
+Gwoza,Bama,56.7,0
+Gwoza,Michika,73.91,0
+Magumeri,Gubio,73.31,0
+Magumeri,Nganzai,70.23,0
+Kauru,Camp(13),115.87,0
+Mariga,Rijau,141.71,0
+Gwagwalada,Camp(1),52.25,0
+Gwagwalada,Abuja Municipal Area Council,75.41,0
+Gwagwalada,Bwari,68.26,0
+Gboko,Logo,91.84,0
+Gboko,Guma,110.01,0
+Talata Mafara,Camp(10),53.52,0
+Talata Mafara,Tureta,105.23,0
+Talata Mafara,Gusau,82.96,0
+Onicha,Ikwo,51.85,0
+Onicha,Umu-Nneochi,74.69,0
+Bwari,Camp(1),30.78,0
+Bwari,Karu,58.25,0
+Toungo,Jada,91.93,0
+Toungo,Zing,117.17,0
+Batsari,Dutsin-Ma,72.72,0
+Maigatari,Biriniwa,76.27,0
+Sabon Birni,Zurmi,160.28,0
+Sabon Birni,Gwadabawa,118.67,0
+Damboa,Camp(5),48.74,0
+Ningi,Takai,150.77,0
+Ningi,Birnin Kudu,105.52,0
+Tudun Wada,Kiru,78.6,0
+Awe,Camp(14),75.66,0
+Awe,Guma,88.54,0
+Gujba,Kaga,127.25,0
+Gujba,Funakaye,144.67,0
+Gujba,Nafada,124.71,0
+Gusau,Maru,87.8,0
+Kwande,Boki,103.13,0
+Bama,Camp(8),13.75,0
+Bama,Camp(4),52.11,0
+Mokwa,Pategi,155.32,0
+Daura,Babura,89.63,0
+Odeda,Ibadan North East,60.65,0
+Tafawa-Balewa,Toro,120.88,0
+Tafawa-Balewa,Mangu,97.25,0
+Barkin Ladi,Camp(9),42.26,0
+Mkpat Enin,Uyo,51.52,0
+Kafur,Gwarzo,80.45,0
+Maiha,Fufore,190.89,0
+Maru,Camp(10),93.66,0
+Alkaleri,Akko,193.06,0
+Gwadabawa,Bodinga,83.9,0
+Umuahia South,Isiala-Mbano,50.02,0
+Karu,Camp(1),42.47,0
+Biu,Shani,69.96,0
+Biu,Damboa,87.23,0
+Toro,Bassa,125.49,0
+Abadam,Guzamala,72.66,0
+Tureta,Camp(10),91.38,0
+Ikom,Ikwo,114.25,0
+Gassol,Wase,307.03,0
+Gassol,Ibi,135.36,0
+Ikwo,Ohaukwu,64.44,0
+Ngala,Camp(6),20.01,0
+Ngala,Camp(3),59.54,0
+Camp(2),Bama,89.3,0
+Camp(3),Camp(4),49.85,0
+Camp(3),Camp(6),62.66,0
+Camp(4),Camp(8),52.5,0
+Camp(5),Maiduguri,81.01,0
+Camp(6),Kala/Balge,95.97,0
+Camp(7),Ngala,94.23,0
+Camp(11),Camp(14),48.72,0
+Camp(11),Gwer East,94.53,0
