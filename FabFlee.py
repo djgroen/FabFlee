@@ -419,7 +419,67 @@ def plot_output(output_dir="", graphs_dir=""):
              env.local_results, output_dir, graphs_dir))
     '''
 
-    
+
+@task
+@load_plugin_env_vars("FabFlee")
+def create_agents_video(output_dir=""):
+    """
+    Generate PNGs and videos for links based on simulation outputs.
+    """
+    import sys
+    from flee.postprocessing.video_agents import process_files
+
+    try:
+        # Create directories if they do not exist
+        local("mkdir -p %s/%s" % (env.local_results, output_dir))
+
+        # Dynamically add flee.postprocessing path for imports
+        for p in env.flee_location.split(":"):
+            sys.path.insert(0, p)
+
+        # Absolute path to the output directory
+        full_output_dir = os.path.join(env.local_results, output_dir)
+
+        print(f"Processing agents PNGs and videos in directory: {full_output_dir}")
+        
+        # Call the PNG and video generation function from the script
+        process_files(full_output_dir)
+        
+        print(f"Agents PNGs and video successfully generated in: {full_output_dir}")
+    except Exception as e:
+        print(f"Error occurred in process_agents_output: {traceback.format_exc()}")
+
+
+@task
+@load_plugin_env_vars("FabFlee")
+def create_links_video(output_dir=""):
+    """
+    Generate PNGs and videos for links based on simulation outputs.
+    """
+    import sys
+    from flee.postprocessing.video_links import process_files
+
+    try:
+        # Create directories if they do not exist
+        local("mkdir -p %s/%s" % (env.local_results, output_dir))
+
+        # Dynamically add flee.postprocessing path for imports
+        for p in env.flee_location.split(":"):
+            sys.path.insert(0, p)
+
+        # Absolute path to the output directory
+        full_output_dir = os.path.join(env.local_results, output_dir)
+
+        print(f"Processing links PNGs and videos in directory: {full_output_dir}")
+        
+        # Call the PNG and video generation function from the script
+        process_files(full_output_dir)
+        
+        print(f"Links PNGs and video successfully generated in: {full_output_dir}")
+    except Exception as e:
+        print(f"Error occurred in process_links_output: {traceback.format_exc()}")
+
+
 @task
 @load_plugin_env_vars("FabFlee")
 # Syntax: fab localhost flee_compare:<model#1>,<model#2>,...,,model#n>
@@ -436,8 +496,7 @@ def flee_compare(*models,output_dir=""):
     from flee.postprocessing.plot_flee_compare import plot_flee_compare
     plot_flee_compare(*models,data_dir=env.local_results,output_dir=output_dir)
     
-
-
+    
 @task
 @load_plugin_env_vars("FabFlee")
 # Syntax: fab localhost

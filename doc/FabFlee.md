@@ -14,16 +14,28 @@ In this tutorial, you will get step-by-step guidance on the usage of several VEC
     
     
 ## Contents
-  * [Multiscale Migration simulations](#multiscale-migration-simulations)
-  * [Installation of required software packages](#installation)
-  * [Execution of migration simulations](#execution-of-migration-simulations)
-    + [Execution of single-model migration simulations](#execution-of-single-model-migration-simulations)
-    + [Ensemble execution of migration simulations](#ensemble-execution-of-migration-simulations)
-    + [Execution of the Flee simulations or ensembles with replicated instances](#executiion-of-the-flee-simuations-or-ensembles-with-replicated-instances)
-    + [Execution of coupled migration simulations](#execution-of-coupled-migration-simulations)
-  * [Execution on a supercomputer](#execution-on-a-supercomputer)
-  * [Sensitivity analysis of parameters using EasyVVUQ](#sensitivity-analysis-of-parameters-using-easyvvuq)
-  * [Acknowledgements](#acknowledgements)
+- [FabFlee tutorial for Multiscale Migration Prediction](#fabflee-tutorial-for-multiscale-migration-prediction)
+    - [A step-by-step guide for Execution of multiscale migration simulations and Execution of EasyVVUQ on local and HPC resources.](#a-step-by-step-guide-for-execution-of-multiscale-migration-simulations-and-execution-of-easyvvuq-on-local-and-hpc-resources)
+  - [Preface](#preface)
+  - [Contents](#contents)
+  - [Multiscale migration simulations](#multiscale-migration-simulations)
+  - [Installation](#installation)
+  - [Execution of migration simulations](#execution-of-migration-simulations)
+    - [Execution of single-model migration simulations](#execution-of-single-model-migration-simulations)
+    - [Ensemble execution of migration simulations](#ensemble-execution-of-migration-simulations)
+    - [Execution of the Flee simulations or ensembles with replicated instances](#execution-of-the-flee-simulations-or-ensembles-with-replicated-instances)
+    - [Execution of coupled migration simulations](#execution-of-coupled-migration-simulations)
+  - [Execution on a supercomputer](#execution-on-a-supercomputer)
+    - [Setup tasks for advanced use](#setup-tasks-for-advanced-use)
+    - [Running an ensemble simulation on a supercomputer using QCG Broker and Pilot Jobs](#running-an-ensemble-simulation-on-a-supercomputer-using-qcg-broker-and-pilot-jobs)
+    - [Running the coupled simulation on a supercomputer](#running-the-coupled-simulation-on-a-supercomputer)
+  - [Sensitivity analysis of parameters using EasyVVUQ](#sensitivity-analysis-of-parameters-using-easyvvuq)
+    - [Preparation of parameters for sensitivity analysis](#preparation-of-parameters-for-sensitivity-analysis)
+    - [Run EasyVVUQ analysis on a localhost](#run-easyvvuq-analysis-on-a-localhost)
+    - [Run EasyVVUQ analysis on a remote machine](#run-easyvvuq-analysis-on-a-remote-machine)
+    - [Run EasyVVUQ analysis on a remote machine using QCG-Pilot Job](#run-easyvvuq-analysis-on-a-remote-machine-using-qcg-pilot-job)
+    - [The execution of sensitivity analysis using a conflict scenario](#the-execution-of-sensitivity-analysis-using-a-conflict-scenario)
+  - [Acknowledgements](#acknowledgements)
 
 ## Multiscale migration simulations
 FabFlee is a FabSim3 toolkit plugin for multiscale migration simulations which automates complex simulation workflows. In this tutorial, we demonstrate different types of migration simulations. We explain how you can do basic analysis with an agent-based migration model [FLEE](https://github.com/djgroen/flee.git) using a single model. This tutorial also demonstrates how you can combine Flee with a simple stochastic conflict evolution model [Flare](https://github.com/djgroen/flare-release.git) to perform a set of runs based on different conflict evolutions, and visualize the migrant arrivals with confidence intervals. The FLEE agent-based migration model has been used in a *Scientific Reports* paper to make forecasts of forced migration in conflicts (https://www.nature.com/articles/s41598-017-13828-9), while the Flare model is still in the prototype stage. In addition, we explain how you can perform a coupled application run that features basic uncertainty quantification of input parameters in the Flee algorithm using EasyVVUQ and QCG Pilot Job. 
@@ -145,7 +157,43 @@ To see to what extent the definition of the maximum run speed in Flee affects th
     As output, you will get a range of files in the `out` subfolder of your results directory. For example, the image `Niamey-4_V2.png`, which visualizes migrant arrivals in Niamey with 95% confidence intervals based on the move speed, might look like this:
 
     ![Arrivals with confidence interval based on movespeed](https://raw.githubusercontent.com/djgroen/FabFlee/master/doc/Niamey-4_V2.png)
+5. To create videos from agents:
+   ```
+   fabsim localhost create_agents_video:<output_dir>
+   ```
+6. To create video from links:
+   ```
+   fabsim localhost create_links_video:<output_dir>
+   ```
+**Note**: Videos (.mp4) are generated from Flee `agents.out.*` and `links.out.*` log files. To enable the creation of these files, ensure the log_levels parameters for agent and link are set appropriately in the simsettings.yml configuration file. Additionally, the following Python packages are required: `basemap==1.4.1` and `moviepy==1.0.3`.
 
+After generating videos for agents and links, users can combine them into a single video by overlaying the two.
+
+Ensure both videos (agent_movements_animation.mp4 and link_movements_animation.mp4) are resized to the same resolution (e.g., 1280x720):
+```
+ffmpeg -i agents_movements_animation.mp4 -vf "scale=1280:720" agents_resized.mp4
+ffmpeg -i links_movements_animation.mp4 -vf "scale=1280:720" links_resized.mp4
+```
+Combine the resized videos into a single video with adjustable transparency for both layers:
+```
+ffmpeg -i agents_resized.mp4 -i links_resized.mp4 -filter_complex \
+"[0:v]format=rgba,colorchannelmixer=aa=0.5[bg]; \
+[1:v]format=rgba,colorchannelmixer=aa=0.5[fg]; \
+[bg][fg]overlay=0:0" combined_video.mp4
+```
+**Note:** If no admin privilege exist, download and extract binary by visiting the official FFmpeg download page, or for Linux, use a static build from johnvansickle.com.
+```
+wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
+```
+Extract files:
+```
+tar -xvf ffmpeg-release-amd64-static.tar.xz
+```
+Test the installation and Full Path:
+```
+/path/to/ffmpeg-7.0.2-amd64-static/ffmpeg -version
+```
+After installation, use newly installed ffmpeg full path in the video editing commands.
 
 ### Execution of the Flee simulations or ensembles with replicated instances
 
