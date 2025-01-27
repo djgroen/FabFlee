@@ -19,7 +19,7 @@ localhost:
   # location of flee in your local PC
   flee_location: "<PATH_TO_FLEE>"
 
-  # location of flee in your local PC
+  # location of flare in your local PC
   flare_location: "<PATH_TO_FLARE>"
 
   # location of City Graph application,
