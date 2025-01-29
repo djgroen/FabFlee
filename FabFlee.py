@@ -921,7 +921,7 @@ def validate_flee(config='validation', simulation_period=0, cores=4, skip_runs=F
     results_dir = template(env.job_name_template)
     validate_flee_output(results_dir, mode)
 
-
+'''
 @task
 @load_plugin_env_vars("FabFlee")
 # Syntax: fabsim localhost new_conflict:<config_name>
@@ -963,7 +963,7 @@ def new_conflict(config, **args):
                    "registration_corrections.csv "
                    "%s/config_files/%s/input_csv")
           % (env.flee_location, get_plugin_path("FabFlee"), config))
-
+'''
 
 # ACLED data extraction task
 
@@ -1059,7 +1059,7 @@ def add_population(config, PL="100", CL="100", **args):
           )
 
 # FabFlee execution tasks
-
+'''
 @task
 # Syntax: fabsim localhost load_conflict:<conflict_name>
 def load_conflict(conflict_name):
@@ -1100,7 +1100,7 @@ def load_conflict(conflict_name):
     with open("%s/conflict_data/active_conflict/commands.log.txt"
               % (get_plugin_path("FabFlee")), "a") as myfile:
         myfile.write("fab localhost load_conflict:%s\n" % conflict_name)
-
+'''
 
 @task
 # Syntax: fabsim localhost instantiate:conflict_name
@@ -1155,7 +1155,7 @@ def instantiate(conflict_name):
           % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"),
              conflict_name))
 
-
+'''
 @task
 # Syntax: fabsim localhost clear_active_conflict
 def clear_active_conflict():
@@ -1207,7 +1207,7 @@ def change_capacities(**capacities):
     writer = csv.writer(open("%s/conflict_data/active_conflict/locations.csv"
                              % (get_plugin_path("FabFlee")), "w"))
     writer.writerows(lines)
-
+'''
 
 @task
 # Syntax: fabsim localhost find_capacity:<csv_name>
@@ -1589,4 +1589,16 @@ except:
     import traceback
     traceback.print_tb(exc_traceback)
     print("The FabFlee run_perf_benchmarks functionalities are not imported as a result.")
+    pass
+    
+try:
+    from plugins.FabFlee.construct import *
+except:
+    exc_type, exc_value, exc_traceback = sys.exc_info()
+    print("Error: failed to import CONSTRUCT.PY command")
+    pprint(exc_type)
+    pprint(exc_value)
+    import traceback
+    traceback.print_tb(exc_traceback)
+    print("Try Again")
     pass
