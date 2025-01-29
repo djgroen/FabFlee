@@ -1026,7 +1026,7 @@ def extract_conflict_file(config, simulation_period, **args):
         output_file=os.path.join(config_dir, "input_csv", "conflicts.csv"),
     )
 
-
+'''
 @task
 @load_plugin_env_vars("FabFlee")
 # Syntax: fabsim localhost add_population:<config_name>
@@ -1057,6 +1057,7 @@ def add_population(config, PL="100", CL="100", **args):
              config
              )
           )
+'''
 
 # FabFlee execution tasks
 '''
@@ -1101,7 +1102,7 @@ def load_conflict(conflict_name):
               % (get_plugin_path("FabFlee")), "a") as myfile:
         myfile.write("fab localhost load_conflict:%s\n" % conflict_name)
 '''
-
+'''
 @task
 # Syntax: fabsim localhost instantiate:conflict_name
 def instantiate(conflict_name):
@@ -1154,7 +1155,7 @@ def instantiate(conflict_name):
         %s/config_files/%s/simsetting.csv")
           % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"),
              conflict_name))
-
+'''
 '''
 @task
 # Syntax: fabsim localhost clear_active_conflict
@@ -1168,6 +1169,8 @@ def clear_active_conflict():
 
 
 # FabFlee refinement tasks
+'''
+'''
 @task
 # Syntax: fabsim localhost change_capacities:camp_name=capacity(,camp_name2=capacity2)
 def change_capacities(**capacities):
@@ -1208,7 +1211,7 @@ def change_capacities(**capacities):
                              % (get_plugin_path("FabFlee")), "w"))
     writer.writerows(lines)
 '''
-
+'''
 @task
 # Syntax: fabsim localhost find_capacity:<csv_name>
 def find_capacity(csv_name):
@@ -1222,7 +1225,6 @@ def find_capacity(csv_name):
                     % (get_plugin_path("FabFlee"), csv_name)).readlines()
     print(max(((i, int(l.split(',')[1])) for i, l in enumerate(
         csv_file)), key=lambda t: t[1])[1])
-
 
 @task
 # Syntax: fabsim localhost add_camp:camp_name,region,country(,lat,lon)
@@ -1257,8 +1259,8 @@ def add_camp(camp_name, region=" ", country=" ", lat=0.0, lon=0.0):
         writer = csv.writer(new_csv)
         writer.writerow(add_camp)
     print(add_camp)
-
-
+'''
+'''
 @task
 # Syntax: fabsim localhost add_new_link:<name1>,<name2>,<distance>
 def add_new_link(name1, name2, distance):
@@ -1292,8 +1294,8 @@ def add_new_link(name1, name2, distance):
         writer = csv.writer(new_csv)
         writer.writerow(add_new_link)
     print(add_new_link)
-
-
+'''
+'''
 @task
 # Syntax: fabsim localhost delete_location:<location_name>
 def delete_location(location_name):
@@ -1329,8 +1331,8 @@ def delete_location(location_name):
         print("Warning: camp %s is deleted from locations.csv."
               % (location_name))
         return
-
-
+'''
+'''
 @task
 # Syntax: fabsim localhost change_distance:name1,name2,distance
 def change_distance(source, destination, distance):
@@ -1362,8 +1364,8 @@ def change_distance(source, destination, distance):
     writer = csv.writer(open("%s/conflict_data/active_conflict/routes.csv"
                              % (get_plugin_path("FabFlee")), "w"))
     writer.writerows(lines)
-
-
+'''
+'''
 @task
 # Syntax: fabsim localhost close_camp:camp_name,country(,closure_start,closure_end)
 def close_camp(camp_name, country, closure_start=0, closure_end=-1):
@@ -1405,8 +1407,8 @@ def close_camp(camp_name, country, closure_start=0, closure_end=-1):
     writer = csv.writer(open("%s/conflict_data/active_conflict/closures.csv"
                              % (get_plugin_path("FabFlee")), "w"))
     writer.writerows(lines)
-
-
+'''
+'''
 @task
 # Syntax: fabsim localhost close_border:country1,country2(,closure_start,closure_end)
 def close_border(country1, country2, closure_start=0, closure_end=-1):
@@ -1445,20 +1447,20 @@ def close_border(country1, country2, closure_start=0, closure_end=-1):
         lines.append(["country", country1, country2,
                       closure_start, closure_end])
 
-    '''
+    """
     local(template("cp %s/conflict_data/%s/*.csv \
         %s/conflict_data/active_conflict/")
           % (get_plugin_path("FabFlee"), conflict_name,
              get_plugin_path("FabFlee")))
     print(lines)
-    '''
+    """
 
     # 2. Write the updated closures.csv in the active_conflict directory.
     writer = csv.writer(open("%s/conflict_data/active_conflict/closures.csv"
                              % (get_plugin_path("FabFlee")), "w"))
     writer.writerows(lines)
-
-
+'''
+'''
 @task
 # Syntax: fabsim localhost redirect:location_name1,location_name2
 def redirect(source, destination):
@@ -1516,7 +1518,7 @@ def redirect(source, destination):
     writer = csv.writer(open("%s/conflict_data/active_conflict/routes.csv"
                              % (get_plugin_path("FabFlee")), "w"))
     writer.writerows(lines)
-
+'''
 
 # Test Functions
 # from plugins.FabFlee.test_FabFlee import *
