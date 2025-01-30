@@ -34,48 +34,6 @@ def clear_active_conflict():
                    % (get_plugin_path("FabFlee"))))
 
 @task
-@load_plugin_env_vars("FabFlee")
-# Syntax: fabsim localhost new_conflict:<config_name>
-def new_conflict(config, **args):
-    """
-    Create a new conflict configuration directory for Flee simulations.
-    """
-
-    local(template("mkdir -p %s/config_files/%s"
-                   % (get_plugin_path("FabFlee"), config)))
-
-    local(template("mkdir -p %s/config_files/%s/input_csv"
-                   % (get_plugin_path("FabFlee"), config)))
-
-    local(template("mkdir -p %s/config_files/%s/source_data"
-                   % (get_plugin_path("FabFlee"), config)))
-
-    local(template("cp %s/flee/config_template/run.py \
-        %s/config_files/%s")
-          % (env.flee_location, get_plugin_path("FabFlee"), config))
-
-    local(template("cp %s/flee/config_template/run_par.py \
-        %s/config_files/%s")
-          % (env.flee_location, get_plugin_path("FabFlee"), config))
-
-    local(template("cp %s/flee/config_template/simsetting.csv \
-        %s/config_files/%s")
-          % (env.flee_location, get_plugin_path("FabFlee"), config))
-
-    local(template("cp %s/flee/config_template/input_csv/sim_period.csv "
-                   "%s/config_files/%s/input_csv")
-          % (env.flee_location, get_plugin_path("FabFlee"), config))
-
-    local(template("cp %s/flee/config_template/input_csv/closures.csv "
-                   "%s/config_files/%s/input_csv")
-          % (env.flee_location, get_plugin_path("FabFlee"), config))
-
-    local(template("cp %s/flee/config_template/input_csv/"
-                   "registration_corrections.csv "
-                   "%s/config_files/%s/input_csv")
-          % (env.flee_location, get_plugin_path("FabFlee"), config))
-
-@task
 # Syntax: fabsim localhost load_conflict:<conflict_name>
 def load_conflict(conflict_name):
     """
@@ -116,90 +74,7 @@ def load_conflict(conflict_name):
               % (get_plugin_path("FabFlee")), "a") as myfile:
         myfile.write("fab localhost load_conflict:%s\n" % conflict_name)
 
-@task
-# Syntax: fabsim localhost instantiate:conflict_name
-def instantiate(conflict_name):
-    """
-    Copy modified active conflict directory to config_files
-    (i.e. flee_conflict_name) to run instance with Flee.
-    """
 
-    # 1. Copy modified active_conflict directory to instantiate runs with
-    # specific conflict name
-    local(template("mkdir -p %s/config_files/%s"
-                   % (get_plugin_path("FabFlee"), conflict_name)))
-
-    local(template("mkdir -p %s/config_files/%s/input_csv"
-                   % (get_plugin_path("FabFlee"), conflict_name)))
-
-    local(template("cp %s/conflict_data/active_conflict/*.csv \
-        %s/config_files/%s/input_csv")
-          % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"),
-             conflict_name))
-
-    local(template("cp %s/conflict_data/active_conflict/commands.log.txt \
-        %s/config_files/%s/")
-          % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"),
-             conflict_name))
-
-    local(template("mkdir -p %s/config_files/%s/source_data"
-                   % (get_plugin_path("FabFlee"), conflict_name)))
-
-    local(template("cp %s/conflict_data/active_conflict/source_data/*.csv \
-        %s/config_files/%s/source_data")
-          % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"),
-             conflict_name))
-
-    local(template("cp %s/conflict_data/active_conflict/run.py \
-        %s/config_files/%s/run.py")
-          % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"),
-             conflict_name))
-
-    local(template("cp %s/config_files/run_food.py \
-        %s/config_files/%s/run_food.py")
-          % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"),
-             conflict_name))
-    # line added to copy run_food.py as well (otherwise executing
-    # food_flee doesn't work...)
-
-    # line added to copy simsetting.csv and make sure that
-    # flee.SimulationSettings....ReadfromCSV works.
-    local(template("cp %s/config_files/simsetting.csv \
-        %s/config_files/%s/simsetting.csv")
-          % (get_plugin_path("FabFlee"), get_plugin_path("FabFlee"),
-             conflict_name))
-
-@task
-@load_plugin_env_vars("FabFlee")
-# Syntax: fabsim localhost add_population:<config_name>
-def add_population(config, PL="100", CL="100", **args):
-    # update_environment(args, {"simulation_period": simulation_period})
-    """
-    Add population and city limits to the Flee simulation configuration.
-    """
-    with_config(config)
-    if env.machine_name != 'localhost':
-        print("Error : This task should only executed on your localhost")
-        print("Please re-run is again with :")
-        print("\t fab localhost add_population:%s" % (config))
-        exit()
-    env.cityGraph_POPULATION_LIMIT = PL
-    env.cityGraph_CITIES_LIMIT = CL
-    local("python %s --cityGraph_location %s --API_KEY %s "
-          "--POPULATION_LIMIT %s --CITIES_LIMIT %s "
-          "--config_location %s --config_name %s"
-          % (os.path.join(env.localplugins["FabFlee"],
-                          "scripts",
-                          "population2locations.py"),
-             env.cityGraph_location,
-             env.cityGraph_API_KEY,
-             env.cityGraph_POPULATION_LIMIT,
-             env.cityGraph_CITIES_LIMIT,
-             env.job_config_path_local,
-             config
-             )
-          )
-    
 @task
 # Syntax: fabsim localhost add_camp:camp_name,region,country(,lat,lon)
 def add_camp(camp_name, region=" ", country=" ", lat=0.0, lon=0.0):
