@@ -1120,10 +1120,10 @@ except:
     pass
     
 try:
-    from plugins.FabFlee.construct import *
+    from FabSim3.plugins.FabFlee.refinement import *
 except:
     exc_type, exc_value, exc_traceback = sys.exc_info()
-    print("Error: failed to import CONSTRUCT.PY command")
+    print("Error: failed to import REFINEMENT.PY command")
     pprint(exc_type)
     pprint(exc_value)
     import traceback
