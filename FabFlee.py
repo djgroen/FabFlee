@@ -1120,13 +1120,14 @@ except:
     pass
     
 try:
-    from FabSim3.plugins.FabFlee.refinement import *
+    from plugins.FabFlee.refinement import *
 except:
     exc_type, exc_value, exc_traceback = sys.exc_info()
-    print("Error: failed to import REFINEMENT.PY command")
+    print("Error: failed to import refinement.py command")
     pprint(exc_type)
     pprint(exc_value)
     import traceback
     traceback.print_tb(exc_traceback)
-    print("Try Again")
+    print("The refinement functionalities are not imported as a result.")
     pass
+    
