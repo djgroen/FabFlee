@@ -23,11 +23,9 @@ import os
 import numpy as np
 import pandas as pd
 from shutil import copyfile, rmtree, move
+
 # Add local script, blackbox and template path.
 add_local_paths("FabFlee")
-
-# Import conflicts
-
 
 @task
 @load_plugin_env_vars("FabFlee")
