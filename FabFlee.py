@@ -23,11 +23,9 @@ import os
 import numpy as np
 import pandas as pd
 from shutil import copyfile, rmtree, move
+
 # Add local script, blackbox and template path.
 add_local_paths("FabFlee")
-
-# Import conflicts
-
 
 @task
 @load_plugin_env_vars("FabFlee")
@@ -418,7 +416,7 @@ def compare_food(output_dir_1=""):
     Compare results of the food based simulation with the original
     flee results throughout the whole simulation.
     Syntax:
-        fab localhost compare_food:food_flee_conflict_name_localhost_16
+        fabsim localhost compare_food:food_flee_conflict_name_localhost_16
         **or any name the food directory you want to use has.
         Make sure that the non-food one exists as well.
     """
@@ -432,7 +430,7 @@ def compare_food(output_dir_1=""):
 
 @task
 @load_plugin_env_vars("FabFlee")
-# Syntax: fab localhost plot_flee_profile:output_dir,profiler
+# Syntax: fabsim localhost plot_flee_profile:output_dir,profiler
 def plot_flee_profile(output_dir="", profiler="gprof2dot"):
     """
     Plot a Flee profile using the specified profiler.
@@ -958,19 +956,19 @@ def new_conflict(config, **args):
           % (env.flee_location, get_plugin_path("FabFlee"), config))
 
 @task
-# Syntax: fabsim localhost process_acled:country,start_date=dd-mm-yyyy,filter=[earliest,fatalities]
+# Syntax: fabsim localhost process_acled:country,dd-mm-yyyy,earliest/fatalities,location/admin2/admin1
 def process_acled(country, start_date, filter_opt, admin_level):
     """
     Process .csv files sourced from acleddata.com to a <locations.csv> format
     Syntax:
         fabsim localhost process_acled:
-        country (e.g ssudan, mali),
-        start_date - "dd-mm-yyyy (date to calculate conflict_date from),
-        filter_opt:[earliest,fatalities]
-        **earliest keeps the first occurence of each admin2,
-        fatalities keeps admin2 with the highest fatalities.
+        country (e.g. ssudan, mali),
+        start_date: "dd-mm-yyyy (date to calculate conflict_date from),
+        filter_opt: earliest or fatalities
+        **earliest keeps the first occurence of each admin_level,
+        fatalities keeps admin_level with the highest fatalities.
         admin_level: is how high the admin level you want to apply the
-        filter_opt to i.e location, admin2, admin1
+        filter_opt to i.e. admin1, admin2 or location.
     """
     from .scripts.acled2locations import acled2locations
 
@@ -982,13 +980,6 @@ def process_acled(country, start_date, filter_opt, admin_level):
         admin_level=admin_level
     )
 
-    # local("python3 %s/scripts/acled2locations.py %s %s %s %s %s"
-    #       % (get_plugin_path("FabFlee"),
-    #          get_plugin_path("FabFlee"),
-    #          country,
-    #          start_date,
-    #          filter_opt,
-    #          admin_level))
 
 @task
 @load_plugin_env_vars("FabFlee")
@@ -1002,7 +993,7 @@ def add_population(config, PL="100", CL="100", **args):
     if env.machine_name != 'localhost':
         print("Error : This task should only executed on your localhost")
         print("Please re-run is again with :")
-        print("\t fab localhost add_population:%s" % (config))
+        print("\t fabsim localhost add_population:%s" % (config))
         exit()
     env.cityGraph_POPULATION_LIMIT = PL
     env.cityGraph_CITIES_LIMIT = CL
