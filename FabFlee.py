@@ -59,7 +59,7 @@ def sflee(config, simulation_period, **args):
     update_environment(args, {"simulation_period": simulation_period})
     with_config(config)
     execute(put_configs, config)
-    job(dict(script='pflee', cores=1, wall_time='0:15:0', memory='2G'), args)
+    job(dict(script='flee', cores=1, wall_time='0:15:0', memory='2G'), args)
 
 
 
