@@ -16,6 +16,8 @@ import folium
 import pandas as pd
 from IPython.display import display, HTML
 from folium.plugins import MarkerCluster
+import plotly.io as pio
+pio.renderers.default = "browser"
 
 
 @task
