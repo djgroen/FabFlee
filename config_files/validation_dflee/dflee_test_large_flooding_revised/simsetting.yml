@@ -14,7 +14,7 @@ spawn_rules:
   flood_zone_spawning_only: True
   conflict_zone_spawning_only: False
   take_from_population: True
-  flood_driven_spawning:
+  flood_driven_spawn_mode:
     flood_spawn_mode: "pop_ratio"
     displaced_per_flood_day: [0.0,0.0,0.0,0.0,0.0]
 

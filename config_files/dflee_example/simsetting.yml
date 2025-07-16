@@ -5,10 +5,6 @@ log_levels:
   Flood: 0
   link: 0
 
-# Set to 100 to scale down the population by 100 and increase the execution time.
-optimisations:
-  hasten: 1000
-
 spawn_rules:
   flood_driven_spawning: True
   flood_zone_spawning_only: True
@@ -23,3 +19,7 @@ move_rules:
   flood_rules:
     flood_movechances: [0.3,0.4,0.7,1.0,1.0]
     flood_loc_weights: [1.0,0.5,0.2,0.0,0.0]
+
+# Set to 100 to scale down the population by 100 and increase the execution time.
+optimisations:
+  hasten: 1
