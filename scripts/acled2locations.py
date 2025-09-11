@@ -2,150 +2,118 @@ import pandas as pd
 import warnings
 import sys
 import os
-import calendar as cal
 from datetime import datetime
 
+def acled2locations(fab_flee_loc, country, start_date, filter_option, admin_level):
+    """
+    Processes ACLED conflict data for a given country, filters it based on a
+    start date and a specified filter option, and saves the output to a CSV file.
 
-def month_convert(month):
-    name_to_number = {name: number
-                      for number, name in enumerate(cal.month_name) if number
-                      }  # dict month : month_num
-    month_num = name_to_number.get(month)  # month number in int form
-    return month_num
+    Args:
+        fabflee (str): The plugin directory path.
+        country (str): The name of the country.
+        start_date (str): The start date for filtering in 'dd-mm-yyyy' format.
+        filter_option (str): The filter to apply ('earliest' or 'fatalities').
+        admin_level (str): The administrative level to filter by.
+    """
 
+    # 1. Define input and output file paths
+    input_file_path = os.path.join(fab_flee_loc, "config_files", country, "acled.csv")
+    output_dir = os.path.join(fab_flee_loc, "config_files", country, "input_csv")
 
-def date_format(in_date):
-    # converting date from textbased to dd-mm-yyyy format
-    split_date = in_date.split()
-    month_num = month_convert(split_date[1])
-    out_date = split_date[0] + "-" + str(month_num) + "-" + split_date[2]
-    return out_date
-
-
-def between_date(d1, d2):
-    # Gets difference between two dates in string format "dd-mm-yy"
-    d1list = d1.split("-")
-    d2list = d2.split("-")
-    date1 = datetime(int(d1list[2]), int(d1list[1]), int(d1list[0]))
-    date2 = datetime(int(d2list[2]), int(d2list[1]), int(d2list[0]))
-
-    return abs((date1 - date2).days) + 0  # Maybe add +1
-
-
-def date_verify(date):
-    date_format = "%d-%m-%Y"
-    try:
-        date_obj = datetime.strptime(date, date_format)
-        return True
-
-    except ValueError:
-        print("Incorrect data format please input dd-mm-yyyy")
-        return False
-
-
-def drop_rows(inputdata, columnname, dropparameter):
-    removedrows = inputdata.index[
-        inputdata[columnname] == dropparameter].tolist()
-    outputdata = inputdata.drop(removedrows)
-    return outputdata
-
-
-def filter_table(df, colname, adminlevel):
-    if adminlevel == "admin1":
-        adminlist = df.admin1.unique()
-    elif adminlevel == "location":
-        adminlist = df.location.unique()
+    # Map filter_option to a single-letter abbreviation
+    filter_abbreviations = {'earliest': 'e', 'fatalities': 'f'}
+    filter_abbr = filter_abbreviations.get(filter_option, filter_option)
+    
+    # Conditionally set the output file name based on admin level and filter option
+    if admin_level == 'location' and filter_option == 'earliest':
+        output_file_name = "locations.csv"
+    elif admin_level == 'location' and filter_option == 'fatalities':
+        output_file_name = "locations_f.csv"
     else:
-        adminlist = df.admin2.unique()
-    newdf = pd.DataFrame(columns=df.columns)
+        # Map filter_option to a single-letter abbreviation for other admin levels
+        filter_abbreviations = {'earliest': 'e', 'fatalities': 'f'}
+        filter_abbr = filter_abbreviations.get(filter_option, filter_option)
+        output_file_name = f"locations_{admin_level}{filter_abbr}.csv" 
+        
+    output_file_path = os.path.join(output_dir, output_file_name)    
+    
+    # Ensure the output directory exists by checking first, for older Python versions
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
 
-    for admin in adminlist:
-        tempdf = df.loc[df[adminlevel] == admin]
-        tempdf.sort_values(colname, ascending=True)
-        newdf = newdf.append(tempdf.tail(1))
-    print(newdf)
-    return newdf
-
-
-def find_csv(country):
-    path_to_dir = os.getcwd()
-    print(path_to_dir)
-    filename = country + "-acled.csv"
-    locations = os.path.join(
-        "config_files", country, "source_data", filename
-    )
-    print(locations)
-
-    return locations
-
-# Takes path to acled csv file, a start date in dd-mm-yyyy format, and a
-# filter (First occurence or highest fatalities)
-
-
-def acled2locations(fab_flee_loc, country, start_date,
-                    filter_opt, admin_level):
-    warnings.filterwarnings('ignore')
-    input_file = os.path.join(fab_flee_loc, "config_files",
-                              country,
-                              "acled.csv")
-    print("Current Path: ", input_file)
+    # 2. Read and initial data preparation
     try:
-        tempdf = pd.read_csv(input_file)
-    except:
-        print("Runtime Error: File Cannot be found")
+        df = pd.read_csv(input_file_path)
+    except FileNotFoundError:
+        print(f"Runtime Error: File not found at {input_file_path}")
+        return
 
-    df = tempdf[["event_date", "country", "admin1", "admin2",
-                 "location", "latitude", "longitude", "fatalities"]]
-    # event_date is given in incorrect format, so formatting to dd-mm-yyyy
-    # required
-    event_dates = df["event_date"].tolist()
-    formatted_event_dates = [date_format(date) for date in event_dates]
-    conflict_dates = [between_date(d, start_date)
-                      for d in formatted_event_dates]
-    # replacing event_date
-    df.loc[:, "event_date"] = conflict_dates
-    df.rename(columns={'event_date': 'conflict_date'}, inplace=True)
-
-    df = drop_rows(df, 'fatalities', 0)
-    if filter_opt == 'earliest':
-        filter_opt = 'conflict_date'
-
+    # 3. Data Transformation
+    # Select relevant columns
+    df = df[["event_date", "country", "admin1", "admin2", "admin3", "location", "latitude", "longitude", "fatalities"]]
+    
+    # Validate the provided admin_level
+    valid_admin_levels = ['admin1', 'admin2', 'admin3', 'location']
+    if admin_level not in valid_admin_levels:
+        print(f"Error: Invalid admin_level '{admin_level}'. Must be one of {valid_admin_levels}.")
+        return
+    
+    # Convert 'event_date' to a datetime object and calculate conflict date
     try:
-        df = filter_table(df, filter_opt, admin_level)
-    except:
-        print("Runtime error: filter_opt value must be earliest or fatalities")
+        start_date = pd.to_datetime(start_date, format="%d-%m-%Y")
+        df['event_date'] = pd.to_datetime(df['event_date'], format="%Y-%m-%d")
+        df['conflict_date'] = (df['event_date'] - start_date).dt.days
+    except ValueError as e:
+        print(f"Date format error: {e}. Please ensure start date is 'dd-mm-yyyy'.")
+        return
+    
+    # Remove entries with zero fatalities
+    df = df[df['fatalities'] > 0].copy()
 
-    # Exporting CSV to locations.csv
-    output_df = df[['location', 'admin1', 'country',
-                    'latitude', 'longitude', 'conflict_date']]
-    output_df.rename(columns={'location': '#name',
-                              'admin1': 'region'}, inplace=True)
-    output_df["location_type"] = "conflict_zone"
-    output_df["population"] = "0"
-    output_df = output_df[
-        ['#name', 'region', 'country', 'latitude',
-         'longitude', 'location_type', 'conflict_date',
-         'population']
-    ]
-    output_file = os.path.join(fab_flee_loc, "config_files",
-                               country, "input_csv",
-                               "locations.csv")
+    # 4. Filter logic based on user choice
+    if filter_option == 'earliest':
+        # Sort by conflict_date and keep the first occurrence per location
+        df.sort_values(by='conflict_date', ascending=True, inplace=True)
+        df.drop_duplicates(subset=[admin_level], keep='first', inplace=True)
+    elif filter_option == 'fatalities':
+        # Sort by fatalities and keep the highest fatality entry per location
+        df.sort_values(by='fatalities', ascending=True, inplace=True)
+        df.drop_duplicates(subset=[admin_level], keep='first', inplace=True)
+    else:
+        print("Invalid filter_option value. Must be 'earliest' or 'fatalities'.")
+        return
 
-    try:
-        output_df.to_csv(output_file, index=False, mode='x')
-    except FileExistsError:
-        print("File Already exists, saving as new_locations.csv")
-        output_file = os.path.join(fab_flee_loc, "config_files",
-                                   country, "input_csv",
-                                   "new_locations.csv")
-        output_df.to_csv(output_file, index=False, mode='x')
+    # 5. Finalize output DataFrame
+    output_df = df[['location', 'admin1', 'country', 'latitude', 'longitude', 'conflict_date']].copy()
+    output_df.rename(columns={'location': '#name', 'admin1': 'region'}, inplace=True)
+    
+    # Replace spaces in '#name' column with underscores
+    output_df['#name'] = output_df['#name'].astype(str).str.replace(' ', '_')
+    
+    # Add new columns as per the required output format
+    output_df['location_type'] = "conflict_zone"
+    output_df['population'] = "0"
+    
+    # Reorder columns
+    output_df = output_df[['#name', 'region', 'country', 'latitude', 'longitude', 'location_type', 'conflict_date', 'population']]
+    
+    # Sort the final output DataFrame by conflict_date in ascending order
+    output_df.sort_values(by='conflict_date', ascending=True, inplace=True)
 
+    # 6. Export to CSV
+    output_df.to_csv(output_file_path, index=False)
+    print(f"Data successfully saved to {output_file_path}")
+    print(output_df.reset_index(drop=True).head().to_string())
+    print(f"\nThe file contains {len(output_df)} locations.")
 
 if __name__ == '__main__':
 
     fabflee = sys.argv[1]
     country = sys.argv[2]
     start_date = sys.argv[3]
-    filter_opt = sys.argv[4]
-    adminlevel = sys.argv[5]
-    acled2locations(fabflee, country, start_date, filter_opt, adminlevel)
+    filter_option = sys.argv[4]
+    admin_level = sys.argv[5]
+
+    acled2locations(fabflee, country, start_date, filter_option, admin_level)
+

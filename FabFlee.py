@@ -957,7 +957,7 @@ def new_conflict(config, **args):
 
 @task
 # Syntax: fabsim localhost process_acled:country,dd-mm-yyyy,earliest/fatalities,location/admin2/admin1
-def process_acled(country, start_date, filter_opt, admin_level):
+def process_acled(country, start_date, filter_option, admin_level):
     """
     Process .csv files sourced from acleddata.com to a <locations.csv> format
     Syntax:
@@ -976,7 +976,7 @@ def process_acled(country, start_date, filter_opt, admin_level):
         fab_flee_loc=get_plugin_path("FabFlee"),
         country=country,
         start_date=start_date,
-        filter_opt=filter_opt,
+        filter_option=filter_option,
         admin_level=admin_level
     )
 
