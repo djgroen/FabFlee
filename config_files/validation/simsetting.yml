@@ -28,5 +28,5 @@ move_rules:
   conflict_weight: 0.25
   foreign_weight: 1.0
 optimisations:
-  hasten: 1
+  hasten: 100
 
