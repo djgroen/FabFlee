@@ -1,4 +1,3 @@
-,
 # this one we exclude because it only has decreasing values in the data.
 # As such there is no measurable influx to match against.	
 2015-04-27,18054
