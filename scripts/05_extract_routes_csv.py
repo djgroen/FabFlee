@@ -95,7 +95,7 @@ def extract_routes_csv(country):
     routes_out = os.path.join(country_dir, 'routes.csv')
     with open(routes_out, mode='w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(['name1', 'name2', 'distance', 'force_redirection'])
+        writer.writerow(['#name1', 'name2', 'distance', 'force_redirection'])
         for route in routes:
             writer.writerow(route)
 
