@@ -32,7 +32,6 @@ This command will process location data in the 'nigeria2016' directory and gener
 import os 
 import sys 
 import csv
-import requests 
 import pandas as pd
 import numpy as np
 
@@ -61,6 +60,8 @@ def extract_routes_csv(country):
 
     # Load the locations data from locations.csv into a DataFrame
     locations_df = pd.read_csv(locations_file)
+    # Strip leading '#' from column names (e.g. '#name' -> 'name')
+    locations_df.columns = [col.lstrip('#') for col in locations_df.columns]
 
     # Nearest Neighbor with Intermediate Stops
     visited = [False] * len(locations_df)
