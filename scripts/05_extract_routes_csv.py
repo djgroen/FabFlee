@@ -52,11 +52,11 @@ def find_nearest_neighbor(current_index, visited, locations_df):
 
 def extract_routes_csv(country):
 
-    # Get the current directory
-    current_dir = os.getcwd()
+    # Resolve to absolute path so both relative names and absolute paths work
+    country_dir = os.path.abspath(country)
 
     # Get the locations file
-    locations_file = os.path.join(current_dir, country, "locations.csv")
+    locations_file = os.path.join(country_dir, "locations.csv")
 
     # Load the locations data from locations.csv into a DataFrame
     locations_df = pd.read_csv(locations_file)
@@ -92,13 +92,14 @@ def extract_routes_csv(country):
         routes.append([locations_df.iloc[current_index]['name'], locations_df.iloc[next_index]['name'], round(direct_distance, 2), 0])
 
     # Save the routes to a CSV file
-    with open(f'{country}/routes.csv', mode='w', newline='') as file:
+    routes_out = os.path.join(country_dir, 'routes.csv')
+    with open(routes_out, mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(['name1', 'name2', 'distance', 'force_redirection'])
         for route in routes:
             writer.writerow(route)
 
-    print(f'{country}/routes.csv created. Please inspect the file for unwanted anomalies!')
+    print(f'{routes_out} created. Please inspect the file for unwanted anomalies!')
 
 # Specify desired country
 country = sys.argv[1]

@@ -16,7 +16,7 @@ Usage:
 
 Command:
 Run the script using the following command:
-"python extract_routes_info.py <country>"
+"python 06_extract_routes_info.py <country>"
 
 Example Usage:
 "python 06_extract_routes_info.py nigeria2016"
@@ -32,14 +32,18 @@ import webbrowser
 
 def extract_routes_info(country):
 
-    # Get the current directory
-    current_dir = os.getcwd()
+    # Resolve to absolute path so both relative names and absolute paths work
+    country_dir = os.path.abspath(country)
+    country_name = os.path.basename(country_dir)
 
     # Get the locations file
-    locations_file = os.path.join(current_dir, country, "locations.csv")
+    locations_file = os.path.join(country_dir, "locations.csv")
 
     # Load the locations data from locations.csv into a DataFrame
     locations_df = pd.read_csv(locations_file)
+    # Strip leading '#' from column names (e.g. '#name' -> 'name')
+    locations_df.columns = [col.lstrip('#') for col in locations_df.columns]
+
 
     # Initialize a map and zoom_start to suit your dataset
     map_center = [locations_df['latitude'].mean(), locations_df['longitude'].mean()]
@@ -75,7 +79,7 @@ def extract_routes_info(country):
         ).add_to(mymap)
 
     # Draw routes
-    routes_df = pd.read_csv(f'{country}/routes.csv')
+    routes_df = pd.read_csv(os.path.join(country_dir, 'routes.csv'))
     for _, row in routes_df.iterrows():
         loc1 = locations_df[locations_df['name'] == row['name1']].iloc[0]
         loc2 = locations_df[locations_df['name'] == row['name2']].iloc[0]
@@ -85,10 +89,11 @@ def extract_routes_info(country):
         ).add_to(mymap)
 
     # Save map to HTML file
-    mymap.save(f'{country}/{country}_map.html')
+    map_file = os.path.join(country_dir, f'{country_name}_map.html')
+    mymap.save(map_file)
 
     # Open the map in a web browser
-    webbrowser.open(f"{country}/{country}_map.html")
+    webbrowser.open(map_file)
 
 # Specify desired country
 country = sys.argv[1]
