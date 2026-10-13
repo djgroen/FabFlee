@@ -121,6 +121,132 @@ def flee_ensemble(config, simulation_period, script='flee', label="", **args):
     run_ensemble(config, sweep_dir, **args)
 
 
+def _generate_flee_weather_sweep(sweep_dir, mode, seeds, configs, q1s, q2s, Qs):
+    """
+    (Re)generate <config>/SWEEP/<label>/wc_args for a weather-coupled ensemble.
+
+    Each run gets a tiny wc_args file holding its own weather flags, which the
+    flee_weather template reads. Labels follow the original single-scale scripts'
+    output-folder names (e.g. M1_seed3 and q10.15_q20.75_Q8000_seed1).
+    """
+    flags_for = {
+        "M0": "--weather_coupling=false",
+        "M1": "--weather_coupling=true --use_precipitation=true --use_discharge=false",
+        "M2": "--weather_coupling=true --use_precipitation=false --use_discharge=true",
+        "M3": "--weather_coupling=true --use_precipitation=true --use_discharge=true",
+    }
+
+    if os.path.exists(sweep_dir):
+        rmtree(sweep_dir)
+    os.makedirs(sweep_dir)
+
+    def _add(item_label, wc_args):
+        run_dir = os.path.join(sweep_dir, item_label)
+        os.makedirs(run_dir)
+        with open(os.path.join(run_dir, "wc_args"), "w") as handle:
+            handle.write(wc_args.strip() + "\n")
+
+    labels = []
+    if mode == "core":
+        for cfg in configs.split():
+            for seed in seeds.split():
+                label = "%s_seed%s" % (cfg, seed)
+                _add(label, "%s --seed=%s" % (flags_for[cfg], seed))
+                labels.append(label)
+    elif mode == "sweep":
+        for q1 in q1s.split():
+            for q2 in q2s.split():
+                for Q in Qs.split():
+                    for seed in seeds.split():
+                        label = "q1%s_q2%s_Q%s_seed%s" % (q1, q2, Q, seed)
+                        _add(label,
+                             "--weather_coupling=true --use_precipitation=true "
+                             "--use_discharge=true --q1=%s --q2=%s --Q=%s --seed=%s"
+                             % (q1, q2, Q, seed))
+                        labels.append(label)
+    else:
+        raise RuntimeError(
+            "[ERROR] mode must be 'core' or 'sweep', got: %s" % mode)
+    return labels
+
+
+@task
+@load_plugin_env_vars("FabFlee")
+# Syntax: fabsim archer2 flee_weather_ensemble:ssudan2016_weather,mode=sweep,simulation_period=426
+def flee_weather_ensemble(config, simulation_period="426", mode="sweep",
+                          seeds="1 2 3 4 5",
+                          configs="M0 M1 M2 M3",
+                          q1s="0.10 0.15 0.20",
+                          q2s="0.60 0.75 0.90",
+                          Qs="6000 8000 10000",
+                          label="", pj_type="", simsetting="", **args):
+    """
+    Submit a weather-coupled single-scale Flee ensemble (M0-M3 counterfactuals
+    and/or the q1/q2/Q threshold sensitivity sweep).
+
+    This drives the single-scale weather_coupling patch: each run gets its own
+    flags via SWEEP/<label>/wc_args, read by templates/flee_weather.
+
+    mode:
+        'core'  -> configs x seeds            (default 4 x 5 = 20 runs)
+        'sweep' -> q1s x q2s x Qs x seeds     (default 3 x 3 x 3 x 5 = 135 runs)
+
+    simsetting: settings file inside the config to use. Empty => chosen by mode:
+    'simsetting_core.yml' for core (agent/link logs ON, matching the paper's
+    core setup) and 'simsetting.yml' for the sweep (logs off, saves disk).
+
+    pj_type: optional ensemble backend chosen on the command line, e.g.
+    pj_type=qcg (QCG-PilotJob), pj_type=rp (RADICAL-Pilot), or
+    pj_type=slurm-array / slurm-manager. Left empty => traditional submission
+    (one SLURM job per run). This stays a CLI choice until the ensemble backend
+    for real apps is standardised upstream.
+
+    The re-generated SWEEP/<label>/ dirs keep the original single-scale scripts'
+    output-folder naming (e.g. M1_seed3 and q10.15_q20.75_Q8000_seed1).
+    """
+    update_environment(args)
+    with_config(config)
+    path_to_config = find_config_file_path(config)
+    print("local config file path at: %s" % path_to_config)
+    sweep_dir = os.path.join(path_to_config, "SWEEP")
+
+    labels = _generate_flee_weather_sweep(
+        sweep_dir, mode, seeds, configs, q1s, q2s, Qs)
+    print("[INFO] generated %d weather sweep runs in %s"
+          % (len(labels), sweep_dir))
+
+    env.script = "flee_weather"
+    env.simulation_period = simulation_period
+
+    # Pick the settings file for this ensemble: the core setup has agent/link
+    # logs ON (simsetting_core.yml), the sweep keeps them off to save disk.
+    if not simsetting:
+        simsetting = "simsetting_core.yml" if mode == "core" else "simsetting.yml"
+    env.simsetting_file = simsetting
+    print("[INFO] simsetting: %s" % simsetting)
+
+    # pj_type is an explicit command-line choice (e.g. pj_type=qcg) rather than
+    # a hardcoded default, until the team standardises the ensemble backend for
+    # real apps. Empty => traditional submission (one SLURM job per run).
+    if pj_type:
+        env.pj_type = pj_type
+        # PilotJob backends (QCG/RP) launch each task directly inside the
+        # existing allocation, so the machine's default run_command
+        # (archer2: "srun ...") must not be nested inside the task script --
+        # nesting fails with a cpu-bind error. Non-pilot runs keep it.
+        if pj_type.lower() in ("qcg", "rp"):
+            env.run_command = ""
+
+    if hasattr(env, 'NoEnvScript'):
+        del env['NoEnvScript']
+
+    if len(label) > 0:
+        print("adding label: ", label)
+        env.job_name_template += "_{}".format(label)
+
+    run_ensemble(config, sweep_dir, **args)
+
+
 def load_module_from_path(moduleName, PATH_to_module):
     import importlib
 

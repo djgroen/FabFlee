@@ -1,0 +1,36 @@
+cd $job_results
+$run_prefix
+
+export FLEE_TYPE_CHECK=$FLEE_TYPE_CHECK
+
+if [ -z "$flee_location" ]
+then
+	echo "Please set $$flee_location in your deploy/machines_user.yml file."
+else
+	export PYTHONPATH=$flee_location:$$PYTHONPATH
+fi
+
+# Install the single-scale weather patch into the Flee package so the runner can
+# "from flee import weather_coupling". The patch is shipped with the config, so
+# the only manual Flee setup is checking out the tagged flee_src (see README).
+# Installed ONCE per checkout, atomically: under a concurrent ensemble every task
+# used to `cp` this into the shared flee package, and a reader occasionally saw
+# the file mid-write (imported module then lacked `configure`). Writing a tmp
+# file then renaming is atomic, and the existence check skips the copy once done.
+FLEE_PKG="$$($python3_command -c 'import flee, os; print(os.path.dirname(flee.__file__))')"
+if [ ! -f "$$FLEE_PKG/weather_coupling.py" ] || ! grep -qs "def configure" "$$FLEE_PKG/weather_coupling.py"; then
+	tmp_patch="$$FLEE_PKG/weather_coupling.py.$$$$"
+	cp weather_coupling.py "$$tmp_patch"
+	mv -f "$$tmp_patch" "$$FLEE_PKG/weather_coupling.py"
+fi
+
+/usr/bin/env > env.log
+
+# Per-run weather flags are supplied by the ensemble's SWEEP/<label>/wc_args file,
+# copied into the job directory by run_prefix. Read it here so each run gets its
+# own M0-M3 / q1,q2,Q / seed settings. ($$X -> shell $X after FabSim templating.)
+WC_ARGS="$$(cat wc_args 2>/dev/null)"
+
+# Each ensemble pins its settings file via env.simsetting_file (core:
+# simsetting_core.yml has agent/link logs ON; sweep keeps simsetting.yml, logs off).
+time $run_command $python3_command run_par.py input_csv source_data $simulation_period ${simsetting_file} $$WC_ARGS > out.csv 2> run.log
