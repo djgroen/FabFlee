@@ -20,6 +20,7 @@ except ImportError:
 import glob
 import csv
 import os
+import re
 import numpy as np
 import pandas as pd
 from shutil import copyfile, rmtree, move
@@ -234,6 +235,138 @@ def flee_weather_ensemble(config, simulation_period="426", mode="sweep",
         # existing allocation, so the machine's default run_command
         # (archer2: "srun ...") must not be nested inside the task script --
         # nesting fails with a cpu-bind error. Non-pilot runs keep it.
+        if pj_type.lower() in ("qcg", "rp"):
+            env.run_command = ""
+
+    if hasattr(env, 'NoEnvScript'):
+        del env['NoEnvScript']
+
+    if len(label) > 0:
+        print("adding label: ", label)
+        env.job_name_template += "_{}".format(label)
+
+    run_ensemble(config, sweep_dir, **args)
+
+
+# One-at-a-time (OAT) epistemic/structural UQ axes. Each axis sweeps a single
+# move_rules setting that lives only in simsetting.yml (SimulationSettings), not
+# in run_par.py command-line flags. Only the NEW levels are run; the reference
+# level (awareness 3, speed 360) is the existing core ensemble and is reused.
+_EPISTEMIC_AXES = {
+    "awareness": ("awareness_level", ["1", "2"], "aw"),
+    "speed": ("max_move_speed", ["200", "280"], "spd"),
+}
+
+
+def _write_epistemic_simsetting(base_path, out_path, key, value):
+    """
+    Copy the config's base simsetting.yml to out_path, overriding one move_rules
+    knob and switching agent/link logging off (this analysis needs only out.csv:
+    ARD from 'Total error', R from the per-camp 'sim' columns).
+    """
+    with open(base_path) as handle:
+        text = handle.read()
+    text = re.sub(r"(?m)^(\s*)%s:\s*\S+.*$" % key,
+                  r"\g<1>%s: %s" % (key, value), text)
+    text = re.sub(r"(?m)^(\s*)agent:\s*\S+.*$", r"\g<1>agent: 0", text)
+    text = re.sub(r"(?m)^(\s*)link:\s*\S+.*$", r"\g<1>link: 0", text)
+    with open(out_path, "w") as handle:
+        handle.write(text)
+
+
+def _generate_epistemic_sweep(sweep_dir, axis, configs, seeds):
+    """
+    (Re)generate <config>/SWEEP/<label>/ for one OAT epistemic axis.
+
+    Each run dir gets a per-run simsetting.yml (one structural knob overridden,
+    logging off) plus a wc_args holding its M0-M3 flags and seed. Climate stays
+    at the reference thresholds (no --q1/--q2/--Q => runner defaults), so the
+    only free parameters are the swept knob and the seed.
+    """
+    if axis not in _EPISTEMIC_AXES:
+        raise RuntimeError("[ERROR] axis must be one of %s, got: %s"
+                           % (sorted(_EPISTEMIC_AXES), axis))
+    key, levels, prefix = _EPISTEMIC_AXES[axis]
+
+    flags_for = {
+        "M0": "--weather_coupling=false",
+        "M1": "--weather_coupling=true --use_precipitation=true --use_discharge=false",
+        "M2": "--weather_coupling=true --use_precipitation=false --use_discharge=true",
+        "M3": "--weather_coupling=true --use_precipitation=true --use_discharge=true",
+    }
+
+    base_settings = os.path.join(os.path.dirname(sweep_dir), "simsetting.yml")
+    if not os.path.exists(base_settings):
+        raise RuntimeError("[ERROR] base settings not found: %s" % base_settings)
+
+    if os.path.exists(sweep_dir):
+        rmtree(sweep_dir)
+    os.makedirs(sweep_dir)
+
+    labels = []
+    for level in levels:
+        for cfg in configs.split():
+            for seed in seeds.split():
+                label = "%s%s_%s_seed%s" % (prefix, level, cfg, seed)
+                run_dir = os.path.join(sweep_dir, label)
+                os.makedirs(run_dir)
+                with open(os.path.join(run_dir, "wc_args"), "w") as handle:
+                    handle.write("%s --seed=%s\n" % (flags_for[cfg], seed))
+                _write_epistemic_simsetting(
+                    base_settings, os.path.join(run_dir, "simsetting.yml"),
+                    key, level)
+                labels.append(label)
+    return labels
+
+
+@task
+@load_plugin_env_vars("FabFlee")
+# Syntax: fabsim archer2 flee_epistemic_ensemble:ssudan2016_weather,axis=awareness,pj_type=qcg
+def flee_epistemic_ensemble(config, simulation_period="426", axis="awareness",
+                            seeds="1 2 3 4 5", configs="M0 M1 M2 M3",
+                            label="", pj_type="", **args):
+    """
+    Submit one axis of the OAT epistemic/structural UQ sweep.
+
+    Varies a single structural parameter across the NEW levels only (the
+    reference cell -- awareness 3 / speed 360 -- is the existing core ensemble
+    and is NOT re-run):
+
+        axis='awareness' -> awareness_level in {1, 2}
+        axis='speed'     -> max_move_speed in {200, 280} km/day
+
+    Climate is held at the reference thresholds (runner defaults q1=0.15,
+    q2=0.75, Q=8000) and every M0-M3 configuration runs all 5 seeds, so each
+    axis is 2 x 4 x 5 = 40 runs.
+
+    The swept knob is a SimulationSettings field read from simsetting.yml, not a
+    run_par.py flag, so each run ships its own SWEEP/<label>/simsetting.yml
+    (based on the config's simsetting.yml, logging off), which run_ensemble
+    copies over the config copy in the job directory. Per-run M0-M3 flags and
+    the seed go in SWEEP/<label>/wc_args as usual.
+
+    Give each concurrent axis a distinct job_desc (e.g. job_desc=_awareness) so
+    the two jobs stage into separate remote config dirs and cannot race.
+    """
+    update_environment(args)
+    with_config(config)
+    path_to_config = find_config_file_path(config)
+    print("local config file path at: %s" % path_to_config)
+    sweep_dir = os.path.join(path_to_config, "SWEEP")
+
+    labels = _generate_epistemic_sweep(sweep_dir, axis, configs, seeds)
+    print("[INFO] generated %d epistemic (%s) runs in %s"
+          % (len(labels), axis, sweep_dir))
+
+    env.script = "flee_weather"
+    env.simulation_period = simulation_period
+    # Each run ships its own simsetting.yml (logging off) in SWEEP/<label>/.
+    env.simsetting_file = "simsetting.yml"
+
+    if pj_type:
+        env.pj_type = pj_type
+        # PilotJob backends (QCG/RP) launch each task inside the existing
+        # allocation, so the machine run_command ("srun ...") must not be nested.
         if pj_type.lower() in ("qcg", "rp"):
             env.run_command = ""
 
