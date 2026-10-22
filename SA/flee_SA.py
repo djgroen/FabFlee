@@ -91,7 +91,7 @@ def flee_init_SA(config, simulation_period=-1, mode="serial",
     # prepare env variable to submit an ensemble job #
     ##################################################
     if mode == "serial":
-        flee_script = "flee"
+        flee_script = "sflee"
     else:
         flee_script = "pflee"
 
